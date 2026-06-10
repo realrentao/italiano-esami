@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CILS — Livello C2 — Online Exam</title>
+<link rel="preload" href="C2/audio/ascolto_1_c2.mp3" as="fetch" crossorigin="anonymous">
 <style>
   * { box-sizing: border-box; }
   body { font-family: 'Segoe UI', system-ui, sans-serif; max-width: 900px; margin: 0 auto; padding: 30px 20px; background: #f8f9fa; color: #222; }
@@ -153,6 +154,18 @@ function keywordScore(text, keywords) {
 function wordCount(text) {
   return text.trim().split(/\s+/).filter(w => w.length > 0).length;
 }
+
+// Preload first audio silently
+(function() {
+  var firstAudio = document.querySelector('[data-audio-src]');
+  if (firstAudio) {
+    var src = firstAudio.getAttribute('data-audio-src');
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', src, true);
+    xhr.responseType = 'arraybuffer';
+    xhr.send();
+  }
+})();
 
 function submitExam() {
   var total = 0;
