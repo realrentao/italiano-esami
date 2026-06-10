@@ -334,11 +334,11 @@ function submitExam() {
   document.getElementById('totalScore').textContent = Math.round(total) + '/' + maxTotal;
   
   var msg = '';
-  if (pct >= 85) msg = '🟢 Eccellente! Livello raggiunto brillantemente. Sei pronto per l'esame vero!';
-  else if (pct >= 70) msg = '🔵 Buono! Hai una solida preparazione. Rivedi gli errori per perfezionarti.';
-  else if (pct >= 55) msg = '🟡 Discreto. Sei sulla buona strada, ma devi studiare di più alcune aree.';
-  else if (pct >= 40) msg = '🟠 Insufficiente. Ti consiglio di ripassare le basi e riprovare.';
-  else msg = '🔴 Molto insufficiente. Hai bisogno di studiare molto prima di affrontare l'esame.';
+  if (pct >= 85) msg = "🟢 Eccellente! Livello raggiunto brillantemente. Sei pronto per l'esame vero!";
+  else if (pct >= 70) msg = "🔵 Buono! Hai una solida preparazione. Rivedi gli errori per perfezionarti.";
+  else if (pct >= 55) msg = "🟡 Discreto. Sei sulla buona strada, ma devi studiare di più alcune aree.";
+  else if (pct >= 40) msg = "🟠 Insufficiente. Ti consiglio di ripassare le basi e riprovare.";
+  else msg = "🔴 Molto insufficiente. Hai bisogno di studiare molto prima di affrontare l'esame.";
   document.getElementById('scoreMessage').textContent = msg + ' (Punteggio: ' + pct + '%)';
   
   // Show answer reference table
