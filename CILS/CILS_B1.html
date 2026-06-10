@@ -42,6 +42,11 @@
   .detail-table th { background: #f0f0f0; }
   .detail-table .pass { color: #2e7d32; font-weight: bold; }
   .detail-table .fail { color: #c62828; font-weight: bold; }
+  .ref-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 8px; }
+  .ref-table th, .ref-table td { padding: 6px 8px; border: 1px solid #e0e0e0; text-align: left; }
+  .ref-table th { background: #f5f5f5; font-weight: 500; }
+  .ref-table tr.ref-corr td { background: #f1f8e9; }
+  .ref-table tr.ref-wrong td { background: #fff3f0; }
 </style>
 </head>
 <body>
@@ -134,6 +139,7 @@ function submitExam() {
   var total = 0;
   var maxTotal = 0;
   var details = [];
+  var detailIdx = 0;
   
   // Score each section
   var sections = document.querySelectorAll('.section');
@@ -141,49 +147,66 @@ function submitExam() {
     var sectionTotal = 0;
     var sectionMax = 0;
     var sectionItems = 0;
+    var secName = sec.querySelector('h2').textContent.replace(/\(max.*?\)/, '').trim();
     
     // Multiple choice (listen/read)
     var choiceQs = sec.querySelectorAll('.question[data-type="listen"], .question[data-type="read"]');
     choiceQs.forEach(function(q) {
-      var ans = parseInt(q.dataset.ans);
+      var ansIdx = parseInt(q.dataset.ans);
       var pts = parseInt(q.dataset.points) || 4;
       var selected = q.querySelector('input[type="radio"]:checked');
       var fb = q.querySelector('.feedback');
+      var qtext = q.querySelector('.question-text') ? q.querySelector('.question-text').textContent.trim() : '';
+      // Get all option texts
+      var opts = q.querySelectorAll('.opts label');
+      var optTexts = [];
+      opts.forEach(function(o) { optTexts.push(o.textContent.trim()); });
+      var correctAns = optTexts[ansIdx] || ('Opzione ' + (ansIdx+1));
+      var userAns = selected ? optTexts[parseInt(selected.value)] : '(Non risposto)';
+      
       sectionMax += pts;
       maxTotal += pts;
       sectionItems++;
+      var correct = false;
       if (selected) {
         var val = parseInt(selected.value);
-        if (val === ans) {
+        if (val === ansIdx) {
           sectionTotal += pts;
           total += pts;
+          correct = true;
           fb.className = 'feedback correct';
           fb.textContent = '✓ Corretto! (' + pts + '/' + pts + ' pt)';
         } else {
           fb.className = 'feedback wrong';
-          fb.textContent = '✗ Sbagliato. Risposta corretta: ' + q.dataset.ans + '. (0/' + pts + ' pt)';
+          fb.textContent = '✗ Hai risposto: ' + userAns + '. Corretta: ' + correctAns + ' (0/' + pts + ' pt)';
         }
       } else {
         fb.className = 'feedback wrong';
-        fb.textContent = '⚠ Non risposto. (0/' + pts + ' pt)';
+        fb.textContent = '⚠ Non risposto. Corretta: ' + correctAns + ' (0/' + pts + ' pt)';
       }
+      details.push({sec: secName, num: detailIdx+1, q: qtext, user: userAns, correct: correctAns, status: correct ? '✓' : '✗', pts: correct ? pts : 0, maxPts: pts});
+      detailIdx++;
     });
     
     // Fill-in grammar
     var fillQs = sec.querySelectorAll('.question[data-type="fill"]');
     fillQs.forEach(function(q) {
       var ans = q.dataset.ans.split(',').map(s => normalize(s));
-      var pts = parseInt(q.dataset.points) || (3 > 0 ? section['max_points'] / 3 : 3);
+      var pts = parseInt(q.dataset.points) || 3;
       var input = q.querySelector('input[type="text"]');
       var fb = q.querySelector('.feedback');
+      var qtext = q.textContent.replace(/\s+/g, ' ').trim().substring(0, 80);
+      var userAns = (input && input.value.trim()) ? input.value.trim() : '(Non risposto)';
+      var correctAns = q.dataset.ans;
+      
       sectionMax += pts;
       maxTotal += pts;
       sectionItems++;
+      var correct = false;
       if (input && input.value.trim()) {
-        var userAns = normalize(input.value);
-        var correct = false;
+        var userAnsNorm = normalize(input.value);
         for (var a of ans) {
-          if (userAns === a || userAns.includes(a) || a.includes(userAns)) {
+          if (userAnsNorm === a || userAnsNorm.includes(a) || a.includes(userAnsNorm)) {
             correct = true;
             break;
           }
@@ -195,12 +218,14 @@ function submitExam() {
           fb.textContent = '✓ Corretto! (' + pts + '/' + pts + ' pt)';
         } else {
           fb.className = 'feedback wrong';
-          fb.textContent = '✗ Risposta suggerita: ' + q.dataset.ans + ' (0/' + pts + ' pt)';
+          fb.textContent = '✗ Hai scritto: ' + userAns + '. Corretta: ' + correctAns + ' (0/' + pts + ' pt)';
         }
       } else {
         fb.className = 'feedback wrong';
-        fb.textContent = '⚠ Non risposto. (0/' + pts + ' pt)';
+        fb.textContent = '⚠ Non risposto. Corretta: ' + correctAns + ' (0/' + pts + ' pt)';
       }
+      details.push({sec: secName, num: detailIdx+1, q: qtext.substring(0,60), user: userAns, correct: correctAns, status: correct ? '✓' : '✗', pts: correct ? pts : 0, maxPts: pts});
+      detailIdx++;
     });
     
     // Writing
@@ -211,22 +236,26 @@ function submitExam() {
       sectionMax += pts;
       maxTotal += pts;
       sectionItems++;
+      var qtext = q.textContent.replace(/\s+/g, ' ').trim().substring(0, 80);
       if (ta) {
         var text = ta.value;
         var wc = wordCount(text);
+        var userAns = text ? text.substring(0, 80) + (text.length > 80 ? '...' : '') : '(Vuoto)';
         try {
           var keys = JSON.parse(ta.dataset.keywords);
           var ks = keywordScore(text, keys);
-          // Writing: combine keyword match + length bonus
           var lenBonus = Math.min(wc, 100) / 100 * 5;
           var score = Math.min(ks + lenBonus, 20);
           sectionTotal += score;
           total += score;
+          var keyStr = keys.join(', ');
+          details.push({sec: secName, num: detailIdx+1, q: qtext.substring(0,50), user: userAns, correct: 'Parole chiave: ' + keyStr.substring(0,60), status: score >= 12 ? '✓' : '△', pts: Math.round(score), maxPts: pts});
         } catch(e) {
-          sectionTotal += 0;
-          total += 0;
+          sectionTotal += 0; total += 0;
+          details.push({sec: secName, num: detailIdx+1, q: qtext.substring(0,50), user: userAns, correct: '(consultare il docente)', status: '?', pts: 0, maxPts: pts});
         }
       }
+      detailIdx++;
     });
     
     // Speaking (text)
@@ -237,9 +266,11 @@ function submitExam() {
       sectionMax += pts;
       maxTotal += pts;
       sectionItems++;
+      var qtext = q.textContent.replace(/\s+/g, ' ').trim().substring(0, 80);
       if (ta) {
         var text = ta.value;
         var wc = wordCount(text);
+        var userAns = text ? text.substring(0, 80) + (text.length > 80 ? '...' : '') : '(Vuoto)';
         try {
           var keys = JSON.parse(ta.dataset.keywords);
           var ks = keywordScore(text, keys);
@@ -247,11 +278,14 @@ function submitExam() {
           var score = Math.min(ks + lenBonus, 20);
           sectionTotal += score;
           total += score;
+          var keyStr = keys.join(', ');
+          details.push({sec: secName, num: detailIdx+1, q: qtext.substring(0,50), user: userAns, correct: 'Parole chiave: ' + keyStr.substring(0,60), status: score >= 12 ? '✓' : '△', pts: Math.round(score), maxPts: pts});
         } catch(e) {
-          sectionTotal += 0;
-          total += 0;
+          sectionTotal += 0; total += 0;
+          details.push({sec: secName, num: detailIdx+1, q: qtext.substring(0,50), user: userAns, correct: '(consultare il docente)', status: '?', pts: 0, maxPts: pts});
         }
       }
+      detailIdx++;
     });
     
     // Show section score
@@ -277,6 +311,32 @@ function submitExam() {
   else msg = '🔴 Molto insufficiente. Hai bisogno di studiare molto prima di affrontare l'esame.';
   document.getElementById('scoreMessage').textContent = msg + ' (Punteggio: ' + pct + '%)';
   
+  // Show answer reference table
+  var refDiv = document.getElementById('answerReference');
+  if (!refDiv) {
+    refDiv = document.createElement('div');
+    refDiv.id = 'answerReference';
+    refDiv.className = 'section';
+    document.querySelector('.btn-submit').parentNode.parentNode.appendChild(refDiv);
+  }
+  refDiv.style.display = 'block';
+  refDiv.innerHTML = '<h2>📋 Riepilogo risposte</h2>';
+  
+  if (details.length > 0) {
+    var table = '<table class="ref-table"><thead><tr><th>#</th><th>Domanda</th><th>La tua risposta</th><th>Risposta corretta</th><th>Esito</th><th>Punti</th></tr></thead><tbody>';
+    for (var d of details) {
+      var cls = d.status === '✓' ? 'ref-corr' : (d.status === '?' ? '' : 'ref-wrong');
+      table += '<tr class="' + cls + '"><td>' + d.num + '</td><td>' + d.q.substring(0,45) + '</td><td>' + d.user.substring(0,40) + '</td><td>' + d.correct.substring(0,60) + '</td><td>' + d.status + '</td><td>' + Math.round(d.pts) + '/' + d.maxPts + '</td></tr>';
+    }
+    table += '</tbody></table>';
+    refDiv.innerHTML += table;
+    
+    // Summary
+    var corrCount = details.filter(function(d) { return d.status === '✓'; }).length;
+    var partCount = details.filter(function(d) { return d.status === '△'; }).length;
+    refDiv.innerHTML += '<p style="margin-top:12px;font-size:13px;color:#666;">✓ Corrette: ' + corrCount + ' · △ Parziali: ' + partCount + ' · ✗ Errate: ' + (details.length - corrCount - partCount) + ' · Totale: ' + details.length + ' domande</p>';
+  }
+  
   // Sound effect
   try {
     var ctx = new (window.AudioContext || window.webkitAudioContext)();
@@ -299,6 +359,8 @@ function resetExam() {
   document.querySelectorAll('.feedback').forEach(function(f) { f.className = 'feedback'; f.textContent = ''; });
   document.querySelectorAll('.section-score').forEach(function(s) { s.style.display = 'none'; });
   document.getElementById('scoreBar').style.display = 'none';
+  var ref = document.getElementById('answerReference');
+  if (ref) ref.style.display = 'none';
 }
 </script>
 </body>
