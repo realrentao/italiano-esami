@@ -1,0 +1,13 @@
+# Python
+generate_exams.py
+generate_missing_audio.py
+create_nav.py
+__pycache__/
+*.pyc
+
+# Generated audio source
+audio_temp/
+audio_c2/
+
+# Temp
+*.log
