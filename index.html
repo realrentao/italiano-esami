@@ -27,10 +27,15 @@
   .exam-type a:hover { transform: scale(1.02); background: rgba(255,255,255,.1); }
   .info-section { text-align: center; margin-top: 50px; padding: 30px; background: rgba(255,255,255,.05); border-radius: 16px; }
   .info-section p { font-size: 13px; opacity: .7; line-height: 1.8; }
+  .italian-flag { display: inline-flex; width: 32px; height: 22px; border-radius: 3px; overflow: hidden; vertical-align: middle; margin-right: 6px; }
+  .italian-flag span { flex: 1; }
+  .italian-flag .green { background: #009246; }
+  .italian-flag .white { background: #ffffff; }
+  .italian-flag .red { background: #ce2b37; }
 </style></head>
 <body>
 <div class="container">
-  <h1>🇮🇹 Esami di Italiano</h1>
+  <h1><span class="italian-flag"><span class="green"></span><span class="white"></span><span class="red"></span></span> Esami di Italiano</h1>
   <p class="subtitle">Simulazioni interattive CILS e CELI — A1 a C2</p>
   
   <div class="exam-type">
