@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CELI 1 — Livello A2 — Online Exam</title>
-<link rel="preload" href="A2/audio/ascolto_3_1_a2.mp3" as="fetch" crossorigin="anonymous">
+<link rel="preload" href="A2/audio/ascolto_3_1_a2" as="fetch" crossorigin="anonymous">
 <style>
   * { box-sizing: border-box; }
   body { font-family: 'Segoe UI', system-ui, sans-serif; max-width: 900px; margin: 0 auto; padding: 30px 20px; background: #f8f9fa; color: #222; }
@@ -62,7 +62,7 @@
   <h2 id="totalScore">0/100</h2>
   <p id="scoreMessage"></p>
 </div>
-<div class="section" id="sec-ascolto">  <h2>Ascolto <span style="font-weight:normal;font-size:13px;color:#999;">(max 20 punti)</span></h2>  <div class="question stem" data-type="listen" data-ans="1" data-points="6">    <button class="play-btn" data-audio-src="A2/audio/ascolto_3_1_a2.mp3" onclick="playAudio(this)">▶ Ascolta</button>    <div style="font-weight:500;margin:6px 0;" class="question-text">Cosa ha dimenticato la signora?</div>    <div class="opts" data-q="0">      <label><input type="radio" name="q_ascolto_0" value="0"> Il telefono</label>      <label><input type="radio" name="q_ascolto_0" value="1"> Le chiavi</label>      <label><input type="radio" name="q_ascolto_0" value="2"> Il portafoglio</label>    </div>    <div id="fb_ascolto_0" class="feedback"></div>  </div>  <div class="question stem" data-type="listen" data-ans="0" data-points="6">    <button class="play-btn" data-audio-src="A2/audio/ascolto_2_1_a2.mp3" onclick="playAudio(this)">▶ Ascolta</button>    <div style="font-weight:500;margin:6px 0;" class="question-text">A che ora parte l'aereo?</div>    <div class="opts" data-q="1">      <label><input type="radio" name="q_ascolto_1" value="0"> 14:30</label>      <label><input type="radio" name="q_ascolto_1" value="1"> 15:30</label>      <label><input type="radio" name="q_ascolto_1" value="2"> 16:30</label>    </div>    <div id="fb_ascolto_1" class="feedback"></div>  </div>  <div class="question stem" data-type="listen" data-ans="1" data-points="6">    <button class="play-btn" data-audio-src="A2/audio/ascolto_3_1_a2.mp3" onclick="playAudio(this)">▶ Ascolta</button>    <div style="font-weight:500;margin:6px 0;" class="question-text">Perché Marco non è venuto?</div>    <div class="opts" data-q="2">      <label><input type="radio" name="q_ascolto_2" value="0"> Era stanco</label>      <label><input type="radio" name="q_ascolto_2" value="1"> Era malato</label>      <label><input type="radio" name="q_ascolto_2" value="2"> Lavorava</label>    </div>    <div id="fb_ascolto_2" class="feedback"></div>  </div>  <div id="score_ascolto" class="section-score"></div></div><div class="section" id="sec-lettura">  <h2>Lettura <span style="font-weight:normal;font-size:13px;color:#999;">(max 20 punti)</span></h2>  <div class="question" data-type="read" data-ans="1" data-points="6">    <div class="read-text">Il ristorante 'Da Gino' è aperto dal martedì alla domenica. A pranzo apre alle 12:30 e chiude alle 15:00. Il lunedì è chiuso.</div>    <div style="font-weight:500;margin:6px 0;">Il ristorante apre a pranzo alle...</div>    <div class="opts" data-q="0">      <label><input type="radio" name="q_lettura_0" value="0"> 12:00</label>      <label><input type="radio" name="q_lettura_0" value="1"> 12:30</label>      <label><input type="radio" name="q_lettura_0" value="2"> 13:00</label>    </div>    <div id="fb_lettura_0" class="feedback"></div>  </div>  <div class="question" data-type="read" data-ans="2" data-points="6">    <div style="font-weight:500;margin:6px 0;">Che giorno è chiuso?</div>    <div class="opts" data-q="1">      <label><input type="radio" name="q_lettura_1" value="0"> Domenica</label>      <label><input type="radio" name="q_lettura_1" value="1"> Martedì</label>      <label><input type="radio" name="q_lettura_1" value="2"> Lunedì</label>    </div>    <div id="fb_lettura_1" class="feedback"></div>  </div>  <div class="question" data-type="read" data-ans="1" data-points="6">    <div style="font-weight:500;margin:6px 0;">Cosa offre il ristorante?</div>    <div class="opts" data-q="2">      <label><input type="radio" name="q_lettura_2" value="0"> Pizza</label>      <label><input type="radio" name="q_lettura_2" value="1"> Cucina italiana</label>      <label><input type="radio" name="q_lettura_2" value="2"> Cucina giapponese</label>    </div>    <div id="fb_lettura_2" class="feedback"></div>  </div>  <div id="score_lettura" class="section-score"></div></div><div class="section" id="sec-grammatica">  <h2>Competenza linguistica <span style="font-weight:normal;font-size:13px;color:#999;">(max 20 punti)</span></h2>  <div class="question" data-type="fill" data-ans='studio' data-points="5">    <div style="margin:6px 0;">Io (studiare) <input type="text" class="fill-input" name="q_gramm_0" placeholder="..."> italiano. <span class="hint">(presente)</span></div>    <div id="fb_gramm_0" class="feedback"></div>  </div>  <div class="question" data-type="fill" data-ans='lavorano' data-points="5">    <div style="margin:6px 0;">Loro (lavorare) <input type="text" class="fill-input" name="q_gramm_1" placeholder="..."> in banca. <span class="hint">(presente)</span></div>    <div id="fb_gramm_1" class="feedback"></div>  </div>  <div class="question" data-type="fill" data-ans='c'è' data-points="5">    <div style="margin:6px 0;">In città <input type="text" class="fill-input" name="q_gramm_2" placeholder="..."> un museo. <span class="hint">(c'è/ci sono)</span></div>    <div id="fb_gramm_2" class="feedback"></div>  </div>  <div class="question" data-type="fill" data-ans='ci sono' data-points="5">    <div style="margin:6px 0;">Nella classe <input type="text" class="fill-input" name="q_gramm_3" placeholder="..."> 20 studenti. <span class="hint">(c'è/ci sono)</span></div>    <div id="fb_gramm_3" class="feedback"></div>  </div>  <div id="score_grammatica" class="section-score"></div></div><div class="section" id="sec-scritta">  <h2>Produzione scritta <span style="font-weight:normal;font-size:13px;color:#999;">(max 20 punti)</span></h2>  <div class="question" data-type="write" data-keys='{"['invito', 'cena', 'casa', 'vieni', 'sabato', 'domenica', 'amici', 'mangiare']"}'>    <div style="font-weight:500;margin:6px 0;">Email a un amico per invitarlo a cena (40-50 parole).</div>    <textarea class="writing-area" name="q_write_0" placeholder="Scrivi qui la tua risposta..." data-keywords='["invito", "cena", "casa", "vieni", "sabato", "domenica", "amici", "mangiare"]'></textarea>    <div class="hint" style="margin-top:4px;">Parole chiave suggerite: invito, cena, casa, vieni, sabato</div>  </div>  <div id="score_scritta" class="section-score"></div></div><div class="section" id="sec-orale">  <h2>Produzione orale <span style="font-weight:normal;font-size:13px;color:#999;">(max 20 punti)</span></h2>  <div class="question" data-type="speak" data-keys='{"['mattino', 'sveglia', 'colazione', 'lavoro', 'pranzo', 'sera']"}'>    <div style="font-weight:500;margin:6px 0;">1. Descrivi la tua routine quotidiana.</div>    <textarea class="writing-area" name="q_speak_0" placeholder="Scrivi qui la tua risposta..." data-keywords='["mattino", "sveglia", "colazione", "lavoro", "pranzo", "sera"]'></textarea>    <div class="hint" style="margin-top:4px;">Parole chiave suggerite: mattino, sveglia, colazione, lavoro, pranzo</div>  </div>  <div class="question" data-type="speak" data-keys='{"['vacanza', 'viaggio', 'mare', 'montagna', 'bello', 'divertente']"}'>    <div style="font-weight:500;margin:6px 0;">2. Parla delle tue ultime vacanze.</div>    <textarea class="writing-area" name="q_speak_1" placeholder="Scrivi qui la tua risposta..." data-keywords='["vacanza", "viaggio", "mare", "montagna", "bello", "divertente"]'></textarea>    <div class="hint" style="margin-top:4px;">Parole chiave suggerite: vacanza, viaggio, mare, montagna, bello</div>  </div>  <div id="score_orale" class="section-score"></div></div>
+<div class="section" id="sec-ascolto">  <h2>Ascolto <span style="font-weight:normal;font-size:13px;color:#999;">(max 20 punti)</span></h2>  <div class="question stem" data-type="listen" data-ans="1" data-points="6">    <button class="play-btn" data-audio-js="A2/audio/ascolto_3_1_a2" onclick="playAudio(this)">▶ Ascolta</button>    <div style="font-weight:500;margin:6px 0;" class="question-text">Cosa ha dimenticato la signora?</div>    <div class="opts" data-q="0">      <label><input type="radio" name="q_ascolto_0" value="0"> Il telefono</label>      <label><input type="radio" name="q_ascolto_0" value="1"> Le chiavi</label>      <label><input type="radio" name="q_ascolto_0" value="2"> Il portafoglio</label>    </div>    <div id="fb_ascolto_0" class="feedback"></div>  </div>  <div class="question stem" data-type="listen" data-ans="0" data-points="6">    <button class="play-btn" data-audio-js="A2/audio/ascolto_2_1_a2" onclick="playAudio(this)">▶ Ascolta</button>    <div style="font-weight:500;margin:6px 0;" class="question-text">A che ora parte l'aereo?</div>    <div class="opts" data-q="1">      <label><input type="radio" name="q_ascolto_1" value="0"> 14:30</label>      <label><input type="radio" name="q_ascolto_1" value="1"> 15:30</label>      <label><input type="radio" name="q_ascolto_1" value="2"> 16:30</label>    </div>    <div id="fb_ascolto_1" class="feedback"></div>  </div>  <div class="question stem" data-type="listen" data-ans="1" data-points="6">    <button class="play-btn" data-audio-js="A2/audio/ascolto_3_1_a2" onclick="playAudio(this)">▶ Ascolta</button>    <div style="font-weight:500;margin:6px 0;" class="question-text">Perché Marco non è venuto?</div>    <div class="opts" data-q="2">      <label><input type="radio" name="q_ascolto_2" value="0"> Era stanco</label>      <label><input type="radio" name="q_ascolto_2" value="1"> Era malato</label>      <label><input type="radio" name="q_ascolto_2" value="2"> Lavorava</label>    </div>    <div id="fb_ascolto_2" class="feedback"></div>  </div>  <div id="score_ascolto" class="section-score"></div></div><div class="section" id="sec-lettura">  <h2>Lettura <span style="font-weight:normal;font-size:13px;color:#999;">(max 20 punti)</span></h2>  <div class="question" data-type="read" data-ans="1" data-points="6">    <div class="read-text">Il ristorante 'Da Gino' è aperto dal martedì alla domenica. A pranzo apre alle 12:30 e chiude alle 15:00. Il lunedì è chiuso.</div>    <div style="font-weight:500;margin:6px 0;">Il ristorante apre a pranzo alle...</div>    <div class="opts" data-q="0">      <label><input type="radio" name="q_lettura_0" value="0"> 12:00</label>      <label><input type="radio" name="q_lettura_0" value="1"> 12:30</label>      <label><input type="radio" name="q_lettura_0" value="2"> 13:00</label>    </div>    <div id="fb_lettura_0" class="feedback"></div>  </div>  <div class="question" data-type="read" data-ans="2" data-points="6">    <div style="font-weight:500;margin:6px 0;">Che giorno è chiuso?</div>    <div class="opts" data-q="1">      <label><input type="radio" name="q_lettura_1" value="0"> Domenica</label>      <label><input type="radio" name="q_lettura_1" value="1"> Martedì</label>      <label><input type="radio" name="q_lettura_1" value="2"> Lunedì</label>    </div>    <div id="fb_lettura_1" class="feedback"></div>  </div>  <div class="question" data-type="read" data-ans="1" data-points="6">    <div style="font-weight:500;margin:6px 0;">Cosa offre il ristorante?</div>    <div class="opts" data-q="2">      <label><input type="radio" name="q_lettura_2" value="0"> Pizza</label>      <label><input type="radio" name="q_lettura_2" value="1"> Cucina italiana</label>      <label><input type="radio" name="q_lettura_2" value="2"> Cucina giapponese</label>    </div>    <div id="fb_lettura_2" class="feedback"></div>  </div>  <div id="score_lettura" class="section-score"></div></div><div class="section" id="sec-grammatica">  <h2>Competenza linguistica <span style="font-weight:normal;font-size:13px;color:#999;">(max 20 punti)</span></h2>  <div class="question" data-type="fill" data-ans='studio' data-points="5">    <div style="margin:6px 0;">Io (studiare) <input type="text" class="fill-input" name="q_gramm_0" placeholder="..."> italiano. <span class="hint">(presente)</span></div>    <div id="fb_gramm_0" class="feedback"></div>  </div>  <div class="question" data-type="fill" data-ans='lavorano' data-points="5">    <div style="margin:6px 0;">Loro (lavorare) <input type="text" class="fill-input" name="q_gramm_1" placeholder="..."> in banca. <span class="hint">(presente)</span></div>    <div id="fb_gramm_1" class="feedback"></div>  </div>  <div class="question" data-type="fill" data-ans='c'è' data-points="5">    <div style="margin:6px 0;">In città <input type="text" class="fill-input" name="q_gramm_2" placeholder="..."> un museo. <span class="hint">(c'è/ci sono)</span></div>    <div id="fb_gramm_2" class="feedback"></div>  </div>  <div class="question" data-type="fill" data-ans='ci sono' data-points="5">    <div style="margin:6px 0;">Nella classe <input type="text" class="fill-input" name="q_gramm_3" placeholder="..."> 20 studenti. <span class="hint">(c'è/ci sono)</span></div>    <div id="fb_gramm_3" class="feedback"></div>  </div>  <div id="score_grammatica" class="section-score"></div></div><div class="section" id="sec-scritta">  <h2>Produzione scritta <span style="font-weight:normal;font-size:13px;color:#999;">(max 20 punti)</span></h2>  <div class="question" data-type="write" data-keys='{"['invito', 'cena', 'casa', 'vieni', 'sabato', 'domenica', 'amici', 'mangiare']"}'>    <div style="font-weight:500;margin:6px 0;">Email a un amico per invitarlo a cena (40-50 parole).</div>    <textarea class="writing-area" name="q_write_0" placeholder="Scrivi qui la tua risposta..." data-keywords='["invito", "cena", "casa", "vieni", "sabato", "domenica", "amici", "mangiare"]'></textarea>    <div class="hint" style="margin-top:4px;">Parole chiave suggerite: invito, cena, casa, vieni, sabato</div>  </div>  <div id="score_scritta" class="section-score"></div></div><div class="section" id="sec-orale">  <h2>Produzione orale <span style="font-weight:normal;font-size:13px;color:#999;">(max 20 punti)</span></h2>  <div class="question" data-type="speak" data-keys='{"['mattino', 'sveglia', 'colazione', 'lavoro', 'pranzo', 'sera']"}'>    <div style="font-weight:500;margin:6px 0;">1. Descrivi la tua routine quotidiana.</div>    <textarea class="writing-area" name="q_speak_0" placeholder="Scrivi qui la tua risposta..." data-keywords='["mattino", "sveglia", "colazione", "lavoro", "pranzo", "sera"]'></textarea>    <div class="hint" style="margin-top:4px;">Parole chiave suggerite: mattino, sveglia, colazione, lavoro, pranzo</div>  </div>  <div class="question" data-type="speak" data-keys='{"['vacanza', 'viaggio', 'mare', 'montagna', 'bello', 'divertente']"}'>    <div style="font-weight:500;margin:6px 0;">2. Parla delle tue ultime vacanze.</div>    <textarea class="writing-area" name="q_speak_1" placeholder="Scrivi qui la tua risposta..." data-keywords='["vacanza", "viaggio", "mare", "montagna", "bello", "divertente"]'></textarea>    <div class="hint" style="margin-top:4px;">Parole chiave suggerite: vacanza, viaggio, mare, montagna, bello</div>  </div>  <div id="score_orale" class="section-score"></div></div>
 <div style="text-align:center;margin:30px 0;">
   <button class="btn-submit" onclick="submitExam()">📝 Invia e valuta</button>
   <button class="btn-reset" onclick="resetExam()">🔄 Ricomincia</button>
@@ -90,53 +90,55 @@ function _stopCurrent() {
 var _audioGen = 0;
 
 function playAudio(btn) {
-  var src = btn.getAttribute('data-audio-src');
-  if (!src) { console.error('No audio source'); return; }
+  var jsPath = btn.getAttribute('data-audio-js');
+  if (!jsPath) { console.error('No audio source'); return; }
   
-  // If this button is already playing, stop it
   if (btn.classList.contains('playing')) { _stopCurrent(); return; }
-  
-  // Stop previous and mark this as latest
   _stopCurrent();
   var myGen = ++_audioGen;
   
   btn.classList.add('loading');
   btn.innerHTML = '⏳...';
   
-  fetch(src)
-    .then(function(r) {
-      if (!r.ok) throw new Error('HTTP ' + r.status);
-      return r.arrayBuffer();
-    })
-    .then(function(buf) {
-      if (myGen !== _audioGen) return;  // Another button was clicked, discard
-      var ctx = _getAudioCtx();
-      if (ctx.state === 'suspended') ctx.resume();
-      ctx.decodeAudioData(buf, function(buffer) {
-        if (myGen !== _audioGen) return;  // Check again after decode
-        var source = ctx.createBufferSource();
-        source.buffer = buffer;
-        source.connect(ctx.destination);
-        source.start(0);
-        window._curSource = source;
-        window._curBtn = btn;
-        btn.classList.remove('loading');
-        btn.classList.add('playing');
-        btn.innerHTML = '⏹ Ferma';
-        source.onended = function() { _stopCurrent(); };
-      }, function(err) {
-        console.error('Decode failed:', err);
-        btn.classList.remove('loading');
-        btn.innerHTML = '❌';
-        setTimeout(function() { btn.innerHTML = '▶ Riprova'; }, 2000);
-      });
-    })
-    .catch(function(err) {
-      console.error('Fetch failed:', err);
-      btn.classList.remove('loading');
+  window._audioLoaded = function(b64) {
+    window._audioLoaded = null;
+    if (myGen !== _audioGen) return;
+    btn.classList.remove('loading');
+    
+    var parts = b64.split(',');
+    var raw = atob(parts[1]);
+    var buf = new ArrayBuffer(raw.length);
+    var view = new Uint8Array(buf);
+    for (var i = 0; i < raw.length; i++) view[i] = raw.charCodeAt(i);
+    
+    var ctx = _getAudioCtx();
+    if (ctx.state === 'suspended') ctx.resume();
+    ctx.decodeAudioData(buf, function(buffer) {
+      if (myGen !== _audioGen) return;
+      var source = ctx.createBufferSource();
+      source.buffer = buffer;
+      source.connect(ctx.destination);
+      source.start(0);
+      window._curSource = source;
+      window._curBtn = btn;
+      btn.classList.add('playing');
+      btn.innerHTML = '⏹ Ferma';
+      source.onended = function() { _stopCurrent(); };
+    }, function(err) {
       btn.innerHTML = '❌';
       setTimeout(function() { btn.innerHTML = '▶ Riprova'; }, 2000);
     });
+  };
+  
+  var script = document.createElement('script');
+  script.src = jsPath + '.js';
+  script.onerror = function() {
+    btn.classList.remove('loading');
+    window._audioLoaded = null;
+    btn.innerHTML = '❌';
+    setTimeout(function() { btn.innerHTML = '▶ Riprova'; }, 2000);
+  };
+  document.head.appendChild(script);
 }
 
 function normalize(s) {
