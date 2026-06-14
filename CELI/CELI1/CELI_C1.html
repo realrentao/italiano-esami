@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CELI 4 — Livello C1 — Online Exam</title>
-<link rel="preload" href="C1/audio/ascolto_1_4_c1" as="fetch" crossorigin="anonymous">
+<link rel="preload" href="C1/audio/ascolto_1_4_c1.js" as="script" crossorigin="anonymous">
 <style>
   * { box-sizing: border-box; }
   body { font-family: 'Segoe UI', system-ui, sans-serif; max-width: 900px; margin: 0 auto; padding: 30px 20px; background: #f8f9fa; color: #222; }
@@ -62,7 +62,7 @@
   <h2 id="totalScore">0/100</h2>
   <p id="scoreMessage"></p>
 </div>
-<div class="section" id="sec-ascolto">  <h2>Ascolto <span style="font-weight:normal;font-size:13px;color:#999;">(max 20 punti)</span></h2>  <div class="question stem" data-type="listen" data-ans="1" data-points="5">    <button class="play-btn" data-audio-js="C1/audio/ascolto_1_4_c1" onclick="playAudio(this)">▶ Ascolta</button>    <div style="font-weight:500;margin:6px 0;" class="question-text">Tesi principale del relatore?</div>    <div class="opts" data-q="0">      <label><input type="radio" name="q_ascolto_0" value="0"> Città troppo affollate</label>      <label><input type="radio" name="q_ascolto_0" value="1"> Mobilità sostenibile prioritaria</label>      <label><input type="radio" name="q_ascolto_0" value="2"> Trasporti inefficienti</label>    </div>    <div id="fb_ascolto_0" class="feedback"></div>  </div>  <div class="question stem" data-type="listen" data-ans="1" data-points="5">    <button class="play-btn" data-audio-js="C1/audio/ascolto_2_c1" onclick="playAudio(this)">▶ Ascolta</button>    <div style="font-weight:500;margin:6px 0;" class="question-text">Quale misura viene menzionata?</div>    <div class="opts" data-q="1">      <label><input type="radio" name="q_ascolto_1" value="0"> Pedaggi</label>      <label><input type="radio" name="q_ascolto_1" value="1"> Zone a traffico limitato</label>      <label><input type="radio" name="q_ascolto_1" value="2"> Divieto</label>    </div>    <div id="fb_ascolto_1" class="feedback"></div>  </div>  <div class="question stem" data-type="listen" data-ans="1" data-points="5">    <button class="play-btn" data-audio-js="C1/audio/ascolto_3_c1" onclick="playAudio(this)">▶ Ascolta</button>    <div style="font-weight:500;margin:6px 0;" class="question-text">Cosa manca secondo il relatore?</div>    <div class="opts" data-q="2">      <label><input type="radio" name="q_ascolto_2" value="0"> Fondi</label>      <label><input type="radio" name="q_ascolto_2" value="1"> Visione organica</label>      <label><input type="radio" name="q_ascolto_2" value="2"> Consenso</label>    </div>    <div id="fb_ascolto_2" class="feedback"></div>  </div>  <div class="question stem" data-type="listen" data-ans="1" data-points="5">    <button class="play-btn" data-audio-js="C1/audio/ascolto_4_c1" onclick="playAudio(this)">▶ Ascolta</button>    <div style="font-weight:500;margin:6px 0;" class="question-text">Critica al sistema attuale?</div>    <div class="opts" data-q="3">      <label><input type="radio" name="q_ascolto_3" value="0"> Costi alti</label>      <label><input type="radio" name="q_ascolto_3" value="1"> Manca coordinamento</label>      <label><input type="radio" name="q_ascolto_3" value="2"> Persone non collaborano</label>    </div>    <div id="fb_ascolto_3" class="feedback"></div>  </div>  <div id="score_ascolto" class="section-score"></div></div><div class="section" id="sec-lettura">  <h2>Lettura <span style="font-weight:normal;font-size:13px;color:#999;">(max 20 punti)</span></h2>  <div class="question" data-type="read" data-ans="1" data-points="5">    <div class="read-text">Entro il 2050 un terzo della popolazione italiana avrà più di 65 anni. Questo comporterà una riduzione della forza lavoro e un aumento della spesa previdenziale. Soluzioni: aumento età pensionabile, integrazione giovani e politiche migratorie. Alcuni economisti puntano sull'innovazione tecnologica per aumentare la produttività.</div>    <div style="font-weight:500;margin:6px 0;">Sfida principale per il futuro del lavoro?</div>    <div class="opts" data-q="0">      <label><input type="radio" name="q_lettura_0" value="0"> Robotizzazione</label>      <label><input type="radio" name="q_lettura_0" value="1"> Invecchiamento popolazione</label>      <label><input type="radio" name="q_lettura_0" value="2"> Globalizzazione</label>    </div>    <div id="fb_lettura_0" class="feedback"></div>  </div>  <div class="question" data-type="read" data-ans="1" data-points="5">    <div style="font-weight:500;margin:6px 0;">% over 65 nel 2050?</div>    <div class="opts" data-q="1">      <label><input type="radio" name="q_lettura_1" value="0"> Un quarto</label>      <label><input type="radio" name="q_lettura_1" value="1"> Un terzo</label>      <label><input type="radio" name="q_lettura_1" value="2"> La metà</label>    </div>    <div id="fb_lettura_1" class="feedback"></div>  </div>  <div class="question" data-type="read" data-ans="1" data-points="5">    <div style="font-weight:500;margin:6px 0;">Conseguenza menzionata?</div>    <div class="opts" data-q="2">      <label><input type="radio" name="q_lettura_2" value="0"> Più produttività</label>      <label><input type="radio" name="q_lettura_2" value="1"> Meno forza lavoro</label>      <label><input type="radio" name="q_lettura_2" value="2"> Più giovani</label>    </div>    <div id="fb_lettura_2" class="feedback"></div>  </div>  <div class="question" data-type="read" data-ans="1" data-points="5">    <div style="font-weight:500;margin:6px 0;">Soluzione alternativa?</div>    <div class="opts" data-q="3">      <label><input type="radio" name="q_lettura_3" value="0"> Salari più bassi</label>      <label><input type="radio" name="q_lettura_3" value="1"> Aumentare produttività</label>      <label><input type="radio" name="q_lettura_3" value="2"> Chiudere fabbriche</label>    </div>    <div id="fb_lettura_3" class="feedback"></div>  </div>  <div id="score_lettura" class="section-score"></div></div><div class="section" id="sec-grammatica">  <h2>Competenza linguistica <span style="font-weight:normal;font-size:13px;color:#999;">(max 20 punti)</span></h2>  <div class="question" data-type="fill" data-ans='è stata approvata' data-points="5">    <div style="margin:6px 0;">Il governo ha approvato la legge. → La legge __ dal governo. <span class="hint">(passivo)</span></div>    <div id="fb_gramm_0" class="feedback"></div>  </div>  <div class="question" data-type="fill" data-ans='avessi, verrei' data-points="5">    <div style="margin:6px 0;">Se (avere) __ tempo, (venire) __ con te. <span class="hint">(periodo ipotetico II)</span></div>    <div id="fb_gramm_1" class="feedback"></div>  </div>  <div class="question" data-type="fill" data-ans='fosse piovuto, avremmo fatto' data-points="5">    <div style="margin:6px 0;">Se non (piovere) __ ieri, (fare) __ una gita. <span class="hint">(periodo ipotetico III)</span></div>    <div id="fb_gramm_2" class="feedback"></div>  </div>  <div class="question" data-type="fill" data-ans='fosse' data-points="5">    <div style="margin:6px 0;">Nonostante (essere) <input type="text" class="fill-input" name="q_gramm_3" placeholder="..."> stanco, è venuto. <span class="hint">(congiuntivo)</span></div>    <div id="fb_gramm_3" class="feedback"></div>  </div>  <div id="score_grammatica" class="section-score"></div></div><div class="section" id="sec-scritta">  <h2>Produzione scritta <span style="font-weight:normal;font-size:13px;color:#999;">(max 20 punti)</span></h2>  <div class="question" data-type="write" data-keys='{"['social media', 'comunicazione', 'cambiamento', 'relazioni', 'informazione', 'linguaggio', 'vantaggi', 'svantaggi', 'opinione', 'ritengo', 'conclusione']"}'>    <div style="font-weight:500;margin:6px 0;">Saggio argomentativo: 'I social media stanno cambiando il modo in cui comunichiamo?' (200-250 parole).</div>    <textarea class="writing-area" name="q_write_0" placeholder="Scrivi qui la tua risposta..." data-keywords='["social media", "comunicazione", "cambiamento", "relazioni", "informazione", "linguaggio", "vantaggi", "svantaggi", "opinione", "ritengo", "conclusione"]'></textarea>    <div class="hint" style="margin-top:4px;">Parole chiave suggerite: social media, comunicazione, cambiamento, relazioni, informazione</div>  </div>  <div id="score_scritta" class="section-score"></div></div><div class="section" id="sec-orale">  <h2>Produzione orale <span style="font-weight:normal;font-size:13px;color:#999;">(max 20 punti)</span></h2>  <div class="question" data-type="speak" data-keys='{"['fenomeno', 'sociale', 'causa', 'conseguenza', 'contemporaneo', 'analisi', 'prospettiva']"}'>    <div style="font-weight:500;margin:6px 0;">1. Analisi di un fenomeno sociale contemporaneo.</div>    <textarea class="writing-area" name="q_speak_0" placeholder="Scrivi qui la tua risposta..." data-keywords='["fenomeno", "sociale", "causa", "conseguenza", "contemporaneo", "analisi", "prospettiva"]'></textarea>    <div class="hint" style="margin-top:4px;">Parole chiave suggerite: fenomeno, sociale, causa, conseguenza, contemporaneo</div>  </div>  <div class="question" data-type="speak" data-keys='{"['attualità', 'dibattito', 'opinione', 'argomento', 'critico', 'proposta']"}'>    <div style="font-weight:500;margin:6px 0;">2. Dibattito su un tema d'attualità.</div>    <textarea class="writing-area" name="q_speak_1" placeholder="Scrivi qui la tua risposta..." data-keywords='["attualit\u00e0", "dibattito", "opinione", "argomento", "critico", "proposta"]'></textarea>    <div class="hint" style="margin-top:4px;">Parole chiave suggerite: attualità, dibattito, opinione, argomento, critico</div>  </div>  <div class="question" data-type="speak" data-keys='{"['relazione', 'argomento', 'dati', 'analisi', 'conclusione', 'raccomandazione']"}'>    <div style="font-weight:500;margin:6px 0;">3. Relazione su un argomento complesso.</div>    <textarea class="writing-area" name="q_speak_2" placeholder="Scrivi qui la tua risposta..." data-keywords='["relazione", "argomento", "dati", "analisi", "conclusione", "raccomandazione"]'></textarea>    <div class="hint" style="margin-top:4px;">Parole chiave suggerite: relazione, argomento, dati, analisi, conclusione</div>  </div>  <div id="score_orale" class="section-score"></div></div>
+<div class="section" id="sec-ascolto">  <h2>Ascolto <span style="font-weight:normal;font-size:13px;color:#999;">(max 20 punti)</span></h2>  <div class="question stem" data-type="listen" data-ans="1" data-points="5">    <button class="play-btn" data-audio-js="C1/audio/ascolto_1_4_c1" onclick="playAudio(this)">▶ Ascolta</button>    <div style="font-weight:500;margin:6px 0;" class="question-text">Tesi principale del relatore?</div>    <div class="opts" data-q="0">      <label><input type="radio" name="q_ascolto_0" value="0"> Città troppo affollate</label>      <label><input type="radio" name="q_ascolto_0" value="1"> Mobilità sostenibile prioritaria</label>      <label><input type="radio" name="q_ascolto_0" value="2"> Trasporti inefficienti</label>    </div>    <div id="fb_ascolto_0" class="feedback"></div>  </div>  <div class="question stem" data-type="listen" data-ans="1" data-points="5">    <button class="play-btn" data-audio-js="C1/audio/ascolto_2_c1" onclick="playAudio(this)">▶ Ascolta</button>    <div style="font-weight:500;margin:6px 0;" class="question-text">Quale misura viene menzionata?</div>    <div class="opts" data-q="1">      <label><input type="radio" name="q_ascolto_1" value="0"> Pedaggi</label>      <label><input type="radio" name="q_ascolto_1" value="1"> Zone a traffico limitato</label>      <label><input type="radio" name="q_ascolto_1" value="2"> Divieto</label>    </div>    <div id="fb_ascolto_1" class="feedback"></div>  </div>  <div class="question stem" data-type="listen" data-ans="1" data-points="5">    <button class="play-btn" data-audio-js="C1/audio/ascolto_3_c1" onclick="playAudio(this)">▶ Ascolta</button>    <div style="font-weight:500;margin:6px 0;" class="question-text">Cosa manca secondo il relatore?</div>    <div class="opts" data-q="2">      <label><input type="radio" name="q_ascolto_2" value="0"> Fondi</label>      <label><input type="radio" name="q_ascolto_2" value="1"> Visione organica</label>      <label><input type="radio" name="q_ascolto_2" value="2"> Consenso</label>    </div>    <div id="fb_ascolto_2" class="feedback"></div>  </div>  <div class="question stem" data-type="listen" data-ans="1" data-points="5">    <button class="play-btn" data-audio-js="C1/audio/ascolto_5_4_c1" onclick="playAudio(this)">▶ Ascolta</button>    <div style="font-weight:500;margin:6px 0;" class="question-text">Critica al sistema attuale?</div>    <div class="opts" data-q="3">      <label><input type="radio" name="q_ascolto_3" value="0"> Costi alti</label>      <label><input type="radio" name="q_ascolto_3" value="1"> Manca coordinamento</label>      <label><input type="radio" name="q_ascolto_3" value="2"> Persone non collaborano</label>    </div>    <div id="fb_ascolto_3" class="feedback"></div>  </div>  <div id="score_ascolto" class="section-score"></div></div><div class="section" id="sec-lettura">  <h2>Lettura <span style="font-weight:normal;font-size:13px;color:#999;">(max 20 punti)</span></h2>  <div class="question" data-type="read" data-ans="1" data-points="5">    <div class="read-text">Entro il 2050 un terzo della popolazione italiana avrà più di 65 anni. Questo comporterà una riduzione della forza lavoro e un aumento della spesa previdenziale. Soluzioni: aumento età pensionabile, integrazione giovani e politiche migratorie. Alcuni economisti puntano sull'innovazione tecnologica per aumentare la produttività.</div>    <div style="font-weight:500;margin:6px 0;">Sfida principale per il futuro del lavoro?</div>    <div class="opts" data-q="0">      <label><input type="radio" name="q_lettura_0" value="0"> Robotizzazione</label>      <label><input type="radio" name="q_lettura_0" value="1"> Invecchiamento popolazione</label>      <label><input type="radio" name="q_lettura_0" value="2"> Globalizzazione</label>    </div>    <div id="fb_lettura_0" class="feedback"></div>  </div>  <div class="question" data-type="read" data-ans="1" data-points="5">    <div style="font-weight:500;margin:6px 0;">% over 65 nel 2050?</div>    <div class="opts" data-q="1">      <label><input type="radio" name="q_lettura_1" value="0"> Un quarto</label>      <label><input type="radio" name="q_lettura_1" value="1"> Un terzo</label>      <label><input type="radio" name="q_lettura_1" value="2"> La metà</label>    </div>    <div id="fb_lettura_1" class="feedback"></div>  </div>  <div class="question" data-type="read" data-ans="1" data-points="5">    <div style="font-weight:500;margin:6px 0;">Conseguenza menzionata?</div>    <div class="opts" data-q="2">      <label><input type="radio" name="q_lettura_2" value="0"> Più produttività</label>      <label><input type="radio" name="q_lettura_2" value="1"> Meno forza lavoro</label>      <label><input type="radio" name="q_lettura_2" value="2"> Più giovani</label>    </div>    <div id="fb_lettura_2" class="feedback"></div>  </div>  <div class="question" data-type="read" data-ans="1" data-points="5">    <div style="font-weight:500;margin:6px 0;">Soluzione alternativa?</div>    <div class="opts" data-q="3">      <label><input type="radio" name="q_lettura_3" value="0"> Salari più bassi</label>      <label><input type="radio" name="q_lettura_3" value="1"> Aumentare produttività</label>      <label><input type="radio" name="q_lettura_3" value="2"> Chiudere fabbriche</label>    </div>    <div id="fb_lettura_3" class="feedback"></div>  </div>  <div id="score_lettura" class="section-score"></div></div><div class="section" id="sec-grammatica">  <h2>Competenza linguistica <span style="font-weight:normal;font-size:13px;color:#999;">(max 20 punti)</span></h2>  <div class="question" data-type="fill" data-ans='è stata approvata' data-points="5">    <div style="margin:6px 0;">Il governo ha approvato la legge. → La legge __ dal governo. <span class="hint">(passivo)</span></div>    <div id="fb_gramm_0" class="feedback"></div>  </div>  <div class="question" data-type="fill" data-ans='avessi, verrei' data-points="5">    <div style="margin:6px 0;">Se (avere) __ tempo, (venire) __ con te. <span class="hint">(periodo ipotetico II)</span></div>    <div id="fb_gramm_1" class="feedback"></div>  </div>  <div class="question" data-type="fill" data-ans='fosse piovuto, avremmo fatto' data-points="5">    <div style="margin:6px 0;">Se non (piovere) __ ieri, (fare) __ una gita. <span class="hint">(periodo ipotetico III)</span></div>    <div id="fb_gramm_2" class="feedback"></div>  </div>  <div class="question" data-type="fill" data-ans='fosse' data-points="5">    <div style="margin:6px 0;">Nonostante (essere) <input type="text" class="fill-input" name="q_gramm_3" placeholder="..."> stanco, è venuto. <span class="hint">(congiuntivo)</span></div>    <div id="fb_gramm_3" class="feedback"></div>  </div>  <div id="score_grammatica" class="section-score"></div></div><div class="section" id="sec-scritta">  <h2>Produzione scritta <span style="font-weight:normal;font-size:13px;color:#999;">(max 20 punti)</span></h2>  <div class="question" data-type="write" data-keys='{"['social media', 'comunicazione', 'cambiamento', 'relazioni', 'informazione', 'linguaggio', 'vantaggi', 'svantaggi', 'opinione', 'ritengo', 'conclusione']"}'>    <div style="font-weight:500;margin:6px 0;">Saggio argomentativo: 'I social media stanno cambiando il modo in cui comunichiamo?' (200-250 parole).</div>    <textarea class="writing-area" name="q_write_0" placeholder="Scrivi qui la tua risposta..." data-keywords='["social media", "comunicazione", "cambiamento", "relazioni", "informazione", "linguaggio", "vantaggi", "svantaggi", "opinione", "ritengo", "conclusione"]'></textarea>    <div class="hint" style="margin-top:4px;">Parole chiave suggerite: social media, comunicazione, cambiamento, relazioni, informazione</div>  </div>  <div id="score_scritta" class="section-score"></div></div><div class="section" id="sec-orale">  <h2>Produzione orale <span style="font-weight:normal;font-size:13px;color:#999;">(max 20 punti)</span></h2>  <div class="question" data-type="speak" data-keys='{"['fenomeno', 'sociale', 'causa', 'conseguenza', 'contemporaneo', 'analisi', 'prospettiva']"}'>    <div style="font-weight:500;margin:6px 0;">1. Analisi di un fenomeno sociale contemporaneo.</div>    <textarea class="writing-area" name="q_speak_0" placeholder="Scrivi qui la tua risposta..." data-keywords='["fenomeno", "sociale", "causa", "conseguenza", "contemporaneo", "analisi", "prospettiva"]'></textarea>    <div class="hint" style="margin-top:4px;">Parole chiave suggerite: fenomeno, sociale, causa, conseguenza, contemporaneo</div>  </div>  <div class="question" data-type="speak" data-keys='{"['attualità', 'dibattito', 'opinione', 'argomento', 'critico', 'proposta']"}'>    <div style="font-weight:500;margin:6px 0;">2. Dibattito su un tema d'attualità.</div>    <textarea class="writing-area" name="q_speak_1" placeholder="Scrivi qui la tua risposta..." data-keywords='["attualit\u00e0", "dibattito", "opinione", "argomento", "critico", "proposta"]'></textarea>    <div class="hint" style="margin-top:4px;">Parole chiave suggerite: attualità, dibattito, opinione, argomento, critico</div>  </div>  <div class="question" data-type="speak" data-keys='{"['relazione', 'argomento', 'dati', 'analisi', 'conclusione', 'raccomandazione']"}'>    <div style="font-weight:500;margin:6px 0;">3. Relazione su un argomento complesso.</div>    <textarea class="writing-area" name="q_speak_2" placeholder="Scrivi qui la tua risposta..." data-keywords='["relazione", "argomento", "dati", "analisi", "conclusione", "raccomandazione"]'></textarea>    <div class="hint" style="margin-top:4px;">Parole chiave suggerite: relazione, argomento, dati, analisi, conclusione</div>  </div>  <div id="score_orale" class="section-score"></div></div>
 <div style="text-align:center;margin:30px 0;">
   <button class="btn-submit" onclick="submitExam()">📝 Invia e valuta</button>
   <button class="btn-reset" onclick="resetExam()">🔄 Ricomincia</button>
@@ -90,53 +90,56 @@ function _stopCurrent() {
 var _audioGen = 0;
 
 function playAudio(btn) {
-  var src = btn.getAttribute('data-audio-src');
-  if (!src) { console.error('No audio source'); return; }
+  var jsPath = btn.getAttribute('data-audio-js');
+  if (!jsPath) { console.error('No audio source'); return; }
   
-  // If this button is already playing, stop it
   if (btn.classList.contains('playing')) { _stopCurrent(); return; }
-  
-  // Stop previous and mark this as latest
   _stopCurrent();
   var myGen = ++_audioGen;
   
   btn.classList.add('loading');
   btn.innerHTML = '⏳...';
   
-  fetch(src)
-    .then(function(r) {
-      if (!r.ok) throw new Error('HTTP ' + r.status);
-      return r.arrayBuffer();
-    })
-    .then(function(buf) {
-      if (myGen !== _audioGen) return;  // Another button was clicked, discard
-      var ctx = _getAudioCtx();
-      if (ctx.state === 'suspended') ctx.resume();
-      ctx.decodeAudioData(buf, function(buffer) {
-        if (myGen !== _audioGen) return;  // Check again after decode
-        var source = ctx.createBufferSource();
-        source.buffer = buffer;
-        source.connect(ctx.destination);
-        source.start(0);
-        window._curSource = source;
-        window._curBtn = btn;
-        btn.classList.remove('loading');
-        btn.classList.add('playing');
-        btn.innerHTML = '⏹ Ferma';
-        source.onended = function() { _stopCurrent(); };
-      }, function(err) {
-        console.error('Decode failed:', err);
-        btn.classList.remove('loading');
-        btn.innerHTML = '❌';
-        setTimeout(function() { btn.innerHTML = '▶ Riprova'; }, 2000);
-      });
-    })
-    .catch(function(err) {
-      console.error('Fetch failed:', err);
+  window._audioLoaded = function(b64) {
+    window._audioLoaded = null;
+    if (myGen !== _audioGen) return;
+    btn.classList.remove('loading');
+    
+    var parts = b64.split(',');
+    var raw = atob(parts[1]);
+    var buf = new ArrayBuffer(raw.length);
+    var view = new Uint8Array(buf);
+    for (var i = 0; i < raw.length; i++) view[i] = raw.charCodeAt(i);
+    
+    var ctx = _getAudioCtx();
+    if (ctx.state === 'suspended') ctx.resume();
+    ctx.decodeAudioData(buf, function(buffer) {
+      if (myGen !== _audioGen) return;
+      var source = ctx.createBufferSource();
+      source.buffer = buffer;
+      source.connect(ctx.destination);
+      source.start(0);
+      window._curSource = source;
+      window._curBtn = btn;
+      btn.classList.add('playing');
+      btn.innerHTML = '⏹ Ferma';
+      source.onended = function() { _stopCurrent(); };
+    }, function(err) {
       btn.classList.remove('loading');
       btn.innerHTML = '❌';
       setTimeout(function() { btn.innerHTML = '▶ Riprova'; }, 2000);
     });
+  };
+  
+  var script = document.createElement('script');
+  script.src = jsPath + '.js?' + Date.now();
+  script.onerror = function() {
+    btn.classList.remove('loading');
+    window._audioLoaded = null;
+    btn.innerHTML = '❌';
+    setTimeout(function() { btn.innerHTML = '▶ Riprova'; }, 2000);
+  };
+  document.head.appendChild(script);
 }
 
 function normalize(s) {
@@ -165,12 +168,11 @@ function wordCount(text) {
 
 // Preload first audio silently
 (function() {
-  var firstAudio = document.querySelector('[data-audio-src]');
+  var firstAudio = document.querySelector('[data-audio-js]');
   if (firstAudio) {
-    var src = firstAudio.getAttribute('data-audio-src');
+    var src = firstAudio.getAttribute('data-audio-js');
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', src, true);
-    xhr.responseType = 'arraybuffer';
+    xhr.open('GET', src + '.js', true);
     xhr.send();
   }
 })();
