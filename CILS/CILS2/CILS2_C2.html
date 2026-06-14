@@ -1,71 +1,133 @@
 <!DOCTYPE html>
+
 <html lang="it">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>CILS CILS2 — CILS2_C2 — Online Exam</title>
+
 <link rel="preload" href="C2/audio/ascolto_1_c2.js" as="script" crossorigin="anonymous">
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Segoe UI', system-ui, sans-serif; background: #f5f5f5; color: #222; padding: 20px; }
-.container { max-width: 800px; margin: 0 auto; }
-h1 { font-size: 22px; margin-bottom: 4px; }
-h1 small { font-size: 14px; font-weight: 400; color: #666; }
-.header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; }
-.header .meta { font-size: 13px; color: #666; }
-.section { background: #fff; border-radius: 12px; padding: 20px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,.08); border-left: 4px solid #3498db; }
-.section.ascolto { border-left-color: #e67e22; }
-.section.lettura { border-left-color: #2ecc71; }
-.section.grammatica { border-left-color: #9b59b6; }
-.section.scrittura { border-left-color: #3498db; }
-.section.orale { border-left-color: #e74c3c; }
-.section h2 { font-size: 16px; margin-bottom: 4px; }
-.section h2 small { font-size: 12px; color: #999; }
-.question { margin: 14px 0; padding: 10px; background: #fafafa; border-radius: 8px; border: 1px solid #eee; }
-.question.stem { border-left: 3px solid #3498db; }
-.question.stem[data-type="listen"] { border-left-color: #e67e22; }
-.question-text { font-weight: 500; margin: 6px 0; font-size: 14px; }
-.opts label { display: block; margin: 4px 0; padding: 6px 10px; border-radius: 6px; cursor: pointer; font-size: 13px; transition: background .2s; }
-.opts label:hover { background: #eef; }
-.opts input { margin-right: 8px; }
-input[type="text"] { width: 100%; padding: 8px 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; }
-textarea { width: 100%; min-height: 80px; padding: 8px 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; resize: vertical; }
-.feedback { margin-top: 6px; padding: 4px 10px; border-radius: 6px; font-size: 12px; display: none; }
-.feedback.correct { display: block; background: #d4edda; color: #155724; }
-.feedback.wrong { display: block; background: #f8d7da; color: #721c24; }
-.play-btn { padding: 6px 16px; background: #e67e22; color: #fff; border: none; border-radius: 20px; cursor: pointer; font-size: 13px; transition: all .2s; }
-.play-btn:hover { background: #d35400; }
-.play-btn.loading { opacity: .6; }
-.play-btn.playing { background: #c0392b; }
-.btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin: 20px 0; }
-.btn-row button { padding: 10px 24px; border: none; border-radius: 8px; cursor: pointer; font-size: 14px; transition: all .2s; }
-.btn-submit { background: #27ae60; color: #fff; }
-.btn-submit:hover { background: #219a52; }
-.btn-reset { background: #95a5a6; color: #fff; }
-.btn-reset:hover { background: #7f8c8d; }
-.score-box { background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; padding: 16px; border-radius: 12px; text-align: center; margin: 20px 0; display: none; }
-.score-box h3 { font-size: 36px; }
-.score-box .grade { font-size: 16px; opacity: .9; }
-table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 13px; display: none; }
-th, td { padding: 8px 12px; text-align: left; border-bottom: 1px solid #eee; }
-th { background: #f8f9fa; font-weight: 600; }
-.script-btn { padding: 3px 10px; background: #fff8e1; border: 1px solid #ffc107; border-radius: 16px; cursor: pointer; font-size: 11px; vertical-align: middle; }
-.script-btn:hover { background: #ffe082; }
+
+  * { box-sizing: border-box; }
+
+  body { font-family: 'Segoe UI', system-ui, sans-serif; max-width: 900px; margin: 0 auto; padding: 30px 20px; background: #f8f9fa; color: #222; }
+
+  .header { background: linear-gradient(135deg, #1a5276, #2e86c1); color: white; padding: 25px; border-radius: 12px; margin-bottom: 25px; }
+
+  .header h1 { margin: 0; font-size: 22px; }
+
+  .header p { margin: 5px 0 0; opacity: .85; font-size: 13px; }
+
+  .section { background: white; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 1px 4px rgba(0,0,0,.08); }
+
+  .section h2 { font-size: 16px; color: #1a5276; margin: 0 0 15px; padding-bottom: 8px; border-bottom: 2px solid #1a5276; }
+
+  .question { margin: 16px 0; padding: 12px; border-radius: 8px; background: #f8fbff; }
+
+  .question.stem { background: #fff8e1; }
+
+  .read-text { background: #f0f0f0; padding: 15px; border-radius: 8px; margin: 10px 0; font-size: 14px; line-height: 1.7; }
+
+  .opts { margin: 8px 0; }
+
+  .opts label { display: block; padding: 6px 10px; border-radius: 6px; cursor: pointer; transition: background .15s; }
+
+  .opts label:hover { background: #e8f0fe; }
+
+  .opts input[type="radio"] { margin-right: 8px; }
+
+  .fill-input { padding: 6px 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; width: 200px; }
+
+  .fill-input:focus { border-color: #1a5276; outline: none; box-shadow: 0 0 0 2px rgba(26,82,118,.2); }
+
+  .writing-area { width: 100%; min-height: 120px; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 14px; line-height: 1.6; font-family: inherit; resize: vertical; }
+
+  .writing-area:focus { border-color: #7b1fa2; outline: none; }
+
+  .play-btn { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; background: #e8f5e9; color: #2e7d32; border: 1px solid #a5d6a7; border-radius: 20px; cursor: pointer; font-size: 13px; margin-bottom: 8px; transition: all .15s; }
+
+  .play-btn:hover { background: #c8e6c9; }
+
+  .play-btn.playing { background: #fff3cd; border-color: #ffc107; color: #856404; }
+
+  .play-btn.loading { background: #e3f2fd; border-color: #90caf9; color: #1565c0; }
+
+  .score-bar { background: linear-gradient(135deg, #27ae60, #2ecc71); color: white; padding: 20px; border-radius: 12px; text-align: center; margin-bottom: 20px; display: none; }
+
+  .score-bar h2 { margin: 0; font-size: 28px; }
+
+  .score-bar p { margin: 5px 0 0; font-size: 14px; }
+
+  .btn-submit { padding: 12px 40px; background: linear-gradient(135deg, #1a5276, #2e86c1); color: white; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; }
+
+  .btn-submit:hover { opacity: .9; }
+
+  .btn-reset { padding: 10px 30px; background: white; color: #666; border: 1px solid #ccc; border-radius: 8px; font-size: 14px; cursor: pointer; margin-left: 10px; }
+
+  .feedback { display: none; margin-top: 8px; padding: 6px 10px; border-radius: 4px; font-size: 13px; }
+
+  .feedback.correct { background: #e8f5e9; color: #2e7d32; display: block; }
+
+  .feedback.wrong { background: #ffebee; color: #c62828; display: block; }
+
+  .hint { font-size: 12px; color: #888; margin-left: 4px; }
+
+  .section-score { margin-top: 10px; padding: 8px; background: #f5f5f5; border-radius: 6px; text-align: right; font-size: 13px; color: #666; display: none; }
+
+  .detail-table { width: 100%; margin-top: 20px; border-collapse: collapse; font-size: 13px; }
+
+  .detail-table th, .detail-table td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+
+  .detail-table th { background: #f0f0f0; }
+
+  .detail-table .pass { color: #2e7d32; font-weight: bold; }
+
+  .detail-table .fail { color: #c62828; font-weight: bold; }
+
+  .ref-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 8px; }
+
+  .ref-table th, .ref-table td { padding: 6px 8px; border: 1px solid #e0e0e0; text-align: left; }
+
+  .ref-table th { background: #f5f5f5; font-weight: 500; }
+
+  .ref-table tr.ref-corr td { background: #f1f8e9; }
+
+  .ref-table tr.ref-wrong td { background: #fff3f0; }
+
 </style></head>
+
 <body>
+
 <div class="container">
+
   <div class="header">
+
     <div>
-      <h1>CILS CILS2 — CILS2_C2 <small>Online Exam</small></h1>
+
+      <h1>{title} <small>Online Exam</small></h1>
+
     </div>
+
     <div class="meta">
+
       <span id="timer">00:00</span>
+
     </div>
+
+  </div>
+  <div id="scoreBar" class="score-bar">
+    <h2 id="totalScore">0/100</h2>
+    <p id="scoreMessage"></p>
   </div>
   <div class="section ascolto" id="sec_0">
     <h2>Ascolto <small>20 pt</small></h2>
   <div class="question stem" data-type="listen" data-ans="1" data-script='Il rapporto annuale sull&#39;economia digitale evidenzia che l&#39;Italia è ancora indietro nella digitalizzazione della pubblica amministrazione rispetto alla media europea.' data-points="4">
-    <button class="play-btn" data-audio-js="C2/audio/ascolto_1_c2" onclick="playAudio(this)">▶ Ascolta</button> <button class="script-btn" onclick="showScript(this)">?? Testo</button>
+    <button class="play-btn" data-audio-js="C2/audio/ascolto_1_c2" onclick="playAudio(this)">▶ Ascolta</button> <button class="script-btn" onclick="showScript(this)">\ud83d\udcc4 Testo</button>
     <div style="font-weight:500;margin:6px 0;" class="question-text">Cosa evidenzia il rapporto digitale?</div>
     <div class="opts" data-q="0">
       <label><input type="radio" name="q_0_0" value="0"> L'Italia è avanti</label>
@@ -75,7 +137,7 @@ th { background: #f8f9fa; font-weight: 600; }
     <div id="fb_0_0" class="feedback"></div>
   </div>
   <div class="question stem" data-type="listen" data-ans="0" data-script='La direzione del museo ha annunciato una partnership con il Louvre per lo scambio di opere d&#39;arte e progetti di ricerca e restauro.' data-points="4">
-    <button class="play-btn" data-audio-js="C2/audio/ascolto_2_c2" onclick="playAudio(this)">▶ Ascolta</button> <button class="script-btn" onclick="showScript(this)">?? Testo</button>
+    <button class="play-btn" data-audio-js="C2/audio/ascolto_2_c2" onclick="playAudio(this)">▶ Ascolta</button> <button class="script-btn" onclick="showScript(this)">\ud83d\udcc4 Testo</button>
     <div style="font-weight:500;margin:6px 0;" class="question-text">Cosa ha annunciato il museo?</div>
     <div class="opts" data-q="1">
       <label><input type="radio" name="q_0_1" value="0"> Una partnership col Louvre</label>
@@ -85,7 +147,7 @@ th { background: #f8f9fa; font-weight: 600; }
     <div id="fb_0_1" class="feedback"></div>
   </div>
   <div class="question stem" data-type="listen" data-ans="1" data-script='L&#39;indagine sociologica su duemila giovani rivela che oltre il sessanta per cento considera la flessibilità lavorativa più importante dello stipendio elevato.' data-points="4">
-    <button class="play-btn" data-audio-js="C2/audio/ascolto_3_c2" onclick="playAudio(this)">▶ Ascolta</button> <button class="script-btn" onclick="showScript(this)">?? Testo</button>
+    <button class="play-btn" data-audio-js="C2/audio/ascolto_3_c2" onclick="playAudio(this)">▶ Ascolta</button> <button class="script-btn" onclick="showScript(this)">\ud83d\udcc4 Testo</button>
     <div style="font-weight:500;margin:6px 0;" class="question-text">Cosa emerge dall'indagine?</div>
     <div class="opts" data-q="2">
       <label><input type="radio" name="q_0_2" value="0"> Più stipendio</label>
@@ -95,7 +157,7 @@ th { background: #f8f9fa; font-weight: 600; }
     <div id="fb_0_2" class="feedback"></div>
   </div>
   <div class="question stem" data-type="listen" data-ans="0" data-script='Il nuovo centro di ricerca sulla fusione nucleare inaugurato a Frascati rappresenta un passo avanti nella collaborazione scientifica internazionale.' data-points="4">
-    <button class="play-btn" data-audio-js="C2/audio/ascolto_4_c2" onclick="playAudio(this)">▶ Ascolta</button> <button class="script-btn" onclick="showScript(this)">?? Testo</button>
+    <button class="play-btn" data-audio-js="C2/audio/ascolto_4_c2" onclick="playAudio(this)">▶ Ascolta</button> <button class="script-btn" onclick="showScript(this)">\ud83d\udcc4 Testo</button>
     <div style="font-weight:500;margin:6px 0;" class="question-text">Cosa rappresenta il nuovo centro?</div>
     <div class="opts" data-q="3">
       <label><input type="radio" name="q_0_3" value="0"> Un passo avanti scientifico</label>
@@ -105,7 +167,7 @@ th { background: #f8f9fa; font-weight: 600; }
     <div id="fb_0_3" class="feedback"></div>
   </div>
   <div class="question stem" data-type="listen" data-ans="0" data-script='L&#39;Organizzazione Mondiale della Sanità raccomanda almeno centocinquanta minuti di attività fisica moderata a settimana per prevenire malattie cardiovascolari.' data-points="4">
-    <button class="play-btn" data-audio-js="C2/audio/ascolto_5_c2" onclick="playAudio(this)">▶ Ascolta</button> <button class="script-btn" onclick="showScript(this)">?? Testo</button>
+    <button class="play-btn" data-audio-js="C2/audio/ascolto_5_c2" onclick="playAudio(this)">▶ Ascolta</button> <button class="script-btn" onclick="showScript(this)">\ud83d\udcc4 Testo</button>
     <div style="font-weight:500;margin:6px 0;" class="question-text">Cosa raccomanda l'OMS?</div>
     <div class="opts" data-q="4">
       <label><input type="radio" name="q_0_4" value="0"> 150 minuti di sport a settimana</label>
@@ -180,197 +242,712 @@ th { background: #f8f9fa; font-weight: 600; }
     <div id="fb_4_0" class="feedback"></div>
   </div>
   </div>
+<div id="answerReference" style="display:none;margin-top:20px;">
+  <h3>Risposte corrette</h3>
+  <div id="refContent"></div>
+</div>
   <div class="btn-row">
+
     <button class="btn-submit" onclick="submitExam()">📝 Invia e valuta</button>
+
     <button class="btn-reset" onclick="resetExam()">🔄 Ricomincia</button>
+
   </div>
+
   
+
   <div class="score-box" id="scoreBox">
+
     <h3 id="scorePct">0%</h3>
+
     <div class="grade" id="scoreGrade">—</div>
+
   </div>
+
   
+
   <table id="resultTable">
+
     <thead><tr><th>Sezione</th><th>Punteggio</th><th>Max</th></tr></thead>
+
     <tbody id="resultBody"></tbody>
+
   </table>
+
 </div>
 
+
+
 <script>
+
 var _audioCtx = null;
-var _audioGen = 0;
 
 function _getAudioCtx() {
+
   if (!_audioCtx) _audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
   return _audioCtx;
+
 }
+
+
 
 function _stopCurrent() {
-  if (window._curSource) { try { window._curSource.stop(); } catch(e) {} window._curSource = null; }
-  if (window._curBtn) {
-    window._curBtn.classList.remove('playing');
-    window._curBtn.innerHTML = '▶ Ascolta';
-    window._curBtn = null;
+
+  if (window._curSource) {
+
+    try { _curSource.stop(); } catch(e) {}
+
+    window._curSource = null;
+
   }
+
+  if (window._curBtn) {
+
+    window._curBtn.classList.remove('playing');
+
+    window._curBtn.innerHTML = '▶ Ascolta';
+
+    window._curBtn = null;
+
+  }
+
 }
 
-function showScript(btn) {
-  var qDiv = btn.closest('.question');
-  if (!qDiv) return;
-  var scriptText = qDiv.getAttribute('data-script');
-  if (!scriptText) return;
-  var fb = qDiv.querySelector('.script-text');
-  if (!fb) {
-    fb = document.createElement('div');
-    fb.className = 'script-text';
-    fb.style.cssText = 'margin-top:8px;padding:10px;background:#fff8e1;border-radius:6px;font-size:13px;line-height:1.6;border-left:3px solid #ffc107;display:none;';
-    btn.parentNode.insertBefore(fb, btn.nextSibling);
-  }
-  if (fb.style.display === 'none') {
-    fb.textContent = '?? ' + scriptText;
-    fb.style.display = 'block';
-    btn.textContent = '?? Nascondi testo';
-  } else {
-    fb.style.display = 'none';
-    btn.textContent = '?? Testo';
-  }
-}
+
+
+var _audioGen = 0;
+
+
 
 function playAudio(btn) {
-  var jsPath = btn.getAttribute('data-audio-js');
-  if (!jsPath) { console.error('No audio source'); return; }
+
+  var src = btn.getAttribute('data-audio-src');
+
+  if (!src) { console.error('No audio source'); return; }
+
+  
+
+  // If this button is already playing, stop it
+
   if (btn.classList.contains('playing')) { _stopCurrent(); return; }
+
+  
+
+  // Stop previous and mark this as latest
+
   _stopCurrent();
+
   var myGen = ++_audioGen;
+
+  
+
   btn.classList.add('loading');
+
   btn.innerHTML = '⏳...';
-  window._audioLoaded = function(b64) {
-    window._audioLoaded = null;
-    if (myGen !== _audioGen) return;
-    btn.classList.remove('loading');
-    var parts = b64.split(',');
-    var raw = atob(parts[1]);
-    var buf = new ArrayBuffer(raw.length);
-    var view = new Uint8Array(buf);
-    for (var i = 0; i < raw.length; i++) view[i] = raw.charCodeAt(i);
-    var ctx = _getAudioCtx();
-    if (ctx.state === 'suspended') ctx.resume();
-    ctx.decodeAudioData(buf, function(buffer) {
-      if (myGen !== _audioGen) return;
-      var source = ctx.createBufferSource();
-      source.buffer = buffer;
-      source.connect(ctx.destination);
-      source.start(0);
-      window._curSource = source;
-      window._curBtn = btn;
-      btn.classList.add('playing');
-      btn.innerHTML = '⏹ Ferma';
-      source.onended = function() { _stopCurrent(); };
-    }, function(err) {
+
+  
+
+  fetch(src)
+
+    .then(function(r) {
+
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+
+      return r.arrayBuffer();
+
+    })
+
+    .then(function(buf) {
+
+      if (myGen !== _audioGen) return;  // Another button was clicked, discard
+
+      var ctx = _getAudioCtx();
+
+      if (ctx.state === 'suspended') ctx.resume();
+
+      ctx.decodeAudioData(buf, function(buffer) {
+
+        if (myGen !== _audioGen) return;  // Check again after decode
+
+        var source = ctx.createBufferSource();
+
+        source.buffer = buffer;
+
+        source.connect(ctx.destination);
+
+        source.start(0);
+
+        window._curSource = source;
+
+        window._curBtn = btn;
+
+        btn.classList.remove('loading');
+
+        btn.classList.add('playing');
+
+        btn.innerHTML = '⏹ Ferma';
+
+        source.onended = function() { _stopCurrent(); };
+
+      }, function(err) {
+
+        console.error('Decode failed:', err);
+
+        btn.classList.remove('loading');
+
+        btn.innerHTML = '❌';
+
+        setTimeout(function() { btn.innerHTML = '▶ Riprova'; }, 2000);
+
+      });
+
+    })
+
+    .catch(function(err) {
+
+      console.error('Fetch failed:', err);
+
       btn.classList.remove('loading');
+
       btn.innerHTML = '❌';
+
       setTimeout(function() { btn.innerHTML = '▶ Riprova'; }, 2000);
+
     });
-  };
-  var script = document.createElement('script');
-  script.src = jsPath + '.js?' + Date.now();
-  script.onerror = function() {
-    btn.classList.remove('loading');
-    window._audioLoaded = null;
-    btn.innerHTML = '❌';
-    setTimeout(function() { btn.innerHTML = '▶ Riprova'; }, 2000);
-  };
-  document.head.appendChild(script);
+
 }
+
+
+
+function normalize(s) {
+
+  return s.toLowerCase().replace(/[\s'´\`‘’\.]+/g, ' ').trim();
+
+}
+
+
+
+function keywordScore(text, keywords) {
+
+  if (!text || text.trim().length < 10) return 0;
+
+  var t = text.toLowerCase();
+
+  var found = 0;
+
+  for (var k of keywords) {
+
+    if (t.includes(k.toLowerCase())) found++;
+
+  }
+
+  var total = keywords.length;
+
+  var ratio = found / total;
+
+  if (ratio >= 0.6) return 20;
+
+  if (ratio >= 0.4) return 15;
+
+  if (ratio >= 0.2) return 10;
+
+  if (found > 0) return 5;
+
+  return 0;
+
+}
+
+
 
 function wordCount(text) {
-  return text.trim().split(/\s+/).filter(function(w) { return w.length > 0; }).length;
+
+  return text.trim().split(/\s+/).filter(w => w.length > 0).length;
+
 }
+
+
 
 // Preload first audio silently
+
 (function() {
-  var firstAudio = document.querySelector('[data-audio-js]');
+
+  var firstAudio = document.querySelector('[data-audio-src]');
+
   if (firstAudio) {
-    var src = firstAudio.getAttribute('data-audio-js');
+
+    var src = firstAudio.getAttribute('data-audio-src');
+
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', src + '.js', true);
+
+    xhr.open('GET', src, true);
+
+    xhr.responseType = 'arraybuffer';
+
     xhr.send();
+
   }
+
 })();
 
+
+
 function submitExam() {
-  var sections = document.querySelectorAll('.section');
+
   var total = 0;
-  var grandMax = 0;
-  var sectionRows = '';
+
+  var maxTotal = 0;
+
+  var details = [];
+
+  var detailIdx = 0;
+
   
-  sections.forEach(function(sec, si) {
-    var questions = sec.querySelectorAll('.question');
+
+  // Score each section
+
+  var sections = document.querySelectorAll('.section');
+
+  sections.forEach(function(sec) {
+
     var sectionTotal = 0;
+
     var sectionMax = 0;
+
+    var sectionItems = 0;
+
+    var secName = sec.querySelector('h2').textContent.replace(/\(max.*?\)/, '').trim();
+
     
-    questions.forEach(function(q, qi) {
-      var pts = parseInt(q.getAttribute('data-points')) || 4;
-      sectionMax += pts;
+
+    // Multiple choice (listen/read)
+
+    var choiceQs = sec.querySelectorAll('.question[data-type="listen"], .question[data-type="read"]');
+
+    choiceQs.forEach(function(q) {
+
+      var ansIdx = parseInt(q.dataset.ans);
+
+      var pts = parseInt(q.dataset.points) || 4;
+
+      var selected = q.querySelector('input[type="radio"]:checked');
+
+      var fb = q.querySelector('.feedback');
+
+      var qtext = q.querySelector('.question-text') ? q.querySelector('.question-text').textContent.trim() : '';
+
+      // Get all option texts
+
+      var opts = q.querySelectorAll('.opts label');
+
+      var optTexts = [];
+
+      opts.forEach(function(o) { optTexts.push(o.textContent.trim()); });
+
+      var correctAns = optTexts[ansIdx] || ('Opzione ' + (ansIdx+1));
+
+      var userAns = selected ? optTexts[parseInt(selected.value)] : '(Non risposto)';
+
       
-      // Listening/Reading: radio buttons
-      if (q.querySelector('.opts')) {
-        var ansIdx = parseInt(q.getAttribute('data-ans'));
-        var selected = q.querySelector('input[type="radio"]:checked');
-        var fb = q.querySelector('.feedback');
-        var opts = q.querySelectorAll('.opts label');
-        var correctAns = opts.length > ansIdx ? opts[ansIdx].textContent.trim() : '';
-        var userAns = selected ? selected.parentElement.textContent.trim() : '';
-        var scriptText = q.getAttribute('data-script') || '';
-        
-        if (selected) {
-          var val = parseInt(selected.value);
-          if (val === ansIdx) {
-            sectionTotal += pts;
-            total += pts;
-            fb.className = 'feedback correct';
-            fb.innerHTML = '✓ Corretto! (' + pts + '/' + pts + ' pt)' + (scriptText ? '<br><span style="font-size:12px;color:#666;">?? ' + scriptText + '</span>' : '');
-          } else {
-            fb.className = 'feedback wrong';
-            fb.innerHTML = '✗ Hai risposto: ' + userAns + '. Corretta: ' + correctAns + ' (0/' + pts + ' pt)' + (scriptText ? '<br><span style="font-size:12px;color:#666;">?? ' + scriptText + '</span>' : '');
-          }
+
+      sectionMax += pts;
+
+      maxTotal += pts;
+
+      sectionItems++;
+
+      var correct = false;
+
+      if (selected) {
+
+        var val = parseInt(selected.value);
+
+        if (val === ansIdx) {
+
+          sectionTotal += pts;
+
+          total += pts;
+
+          correct = true;
+
+          fb.className = 'feedback correct';
+
+          fb.textContent = '✓ Corretto! (' + pts + '/' + pts + ' pt)';
+
         } else {
+
           fb.className = 'feedback wrong';
-          fb.innerHTML = '⚠ Non risposto. Corretta: ' + correctAns + ' (0/' + pts + ' pt)' + (scriptText ? '<br><span style="font-size:12px;color:#666;">?? ' + scriptText + '</span>' : '');
+
+          fb.textContent = '✗ Hai risposto: ' + userAns + '. Corretta: ' + correctAns + ' (0/' + pts + ' pt)';
+
         }
+
+      } else {
+
+        fb.className = 'feedback wrong';
+
+        fb.textContent = '⚠ Non risposto. Corretta: ' + correctAns + ' (0/' + pts + ' pt)';
+
       }
+
+      details.push({sec: secName, num: detailIdx+1, q: qtext, user: userAns, correct: correctAns, status: correct ? '✓' : '✗', pts: correct ? pts : 0, maxPts: pts});
+
+      detailIdx++;
+
     });
+
     
-    sectionRows += '<tr><td>' + sec.querySelector('h2').textContent + '</td><td>' + sectionTotal + '</td><td>' + sectionMax + '</td></tr>';
-    grandMax += sectionMax;
+
+    // Fill-in grammar
+
+    var fillQs = sec.querySelectorAll('.question[data-type="fill"]');
+
+    fillQs.forEach(function(q) {
+
+      var ans = q.dataset.ans.split(',').map(s => normalize(s));
+
+      var pts = parseInt(q.dataset.points) || 3;
+
+      var input = q.querySelector('input[type="text"]');
+
+      var fb = q.querySelector('.feedback');
+
+      var qtext = q.textContent.replace(/\s+/g, ' ').trim().substring(0, 80);
+
+      var userAns = (input && input.value.trim()) ? input.value.trim() : '(Non risposto)';
+
+      var correctAns = q.dataset.ans;
+
+      
+
+      sectionMax += pts;
+
+      maxTotal += pts;
+
+      sectionItems++;
+
+      var correct = false;
+
+      if (input && input.value.trim()) {
+
+        var userAnsNorm = normalize(input.value);
+
+        for (var a of ans) {
+
+          if (userAnsNorm === a || userAnsNorm.includes(a) || a.includes(userAnsNorm)) {
+
+            correct = true;
+
+            break;
+
+          }
+
+        }
+
+        if (correct) {
+
+          sectionTotal += pts;
+
+          total += pts;
+
+          fb.className = 'feedback correct';
+
+          fb.textContent = '✓ Corretto! (' + pts + '/' + pts + ' pt)';
+
+        } else {
+
+          fb.className = 'feedback wrong';
+
+          fb.textContent = '✗ Hai scritto: ' + userAns + '. Corretta: ' + correctAns + ' (0/' + pts + ' pt)';
+
+        }
+
+      } else {
+
+        fb.className = 'feedback wrong';
+
+        fb.textContent = '⚠ Non risposto. Corretta: ' + correctAns + ' (0/' + pts + ' pt)';
+
+      }
+
+      details.push({sec: secName, num: detailIdx+1, q: qtext.substring(0,60), user: userAns, correct: correctAns, status: correct ? '✓' : '✗', pts: correct ? pts : 0, maxPts: pts});
+
+      detailIdx++;
+
+    });
+
+    
+
+    // Writing
+
+    var writeQs = sec.querySelectorAll('.question[data-type="write"]');
+
+    writeQs.forEach(function(q) {
+
+      var ta = q.querySelector('textarea');
+
+      var pts = 20;
+
+      sectionMax += pts;
+
+      maxTotal += pts;
+
+      sectionItems++;
+
+      var qtext = q.textContent.replace(/\s+/g, ' ').trim().substring(0, 80);
+
+      if (ta) {
+
+        var text = ta.value;
+
+        var wc = wordCount(text);
+
+        var userAns = text ? text.substring(0, 80) + (text.length > 80 ? '...' : '') : '(Vuoto)';
+
+        try {
+
+          var keys = JSON.parse(ta.dataset.keywords);
+
+          var ks = keywordScore(text, keys);
+
+          var lenBonus = Math.min(wc, 100) / 100 * 5;
+
+          var score = Math.min(ks + lenBonus, 20);
+
+          sectionTotal += score;
+
+          total += score;
+
+          var keyStr = keys.join(', ');
+
+          details.push({sec: secName, num: detailIdx+1, q: qtext.substring(0,50), user: userAns, correct: 'Parole chiave: ' + keyStr.substring(0,60), status: score >= 12 ? '✓' : '△', pts: Math.round(score), maxPts: pts});
+
+        } catch(e) {
+
+          sectionTotal += 0; total += 0;
+
+          details.push({sec: secName, num: detailIdx+1, q: qtext.substring(0,50), user: userAns, correct: '(consultare il docente)', status: '?', pts: 0, maxPts: pts});
+
+        }
+
+      }
+
+      detailIdx++;
+
+    });
+
+    
+
+    // Speaking (text)
+
+    var speakQs = sec.querySelectorAll('.question[data-type="speak"]');
+
+    speakQs.forEach(function(q) {
+
+      var ta = q.querySelector('textarea');
+
+      var pts = 20;
+
+      sectionMax += pts;
+
+      maxTotal += pts;
+
+      sectionItems++;
+
+      var qtext = q.textContent.replace(/\s+/g, ' ').trim().substring(0, 80);
+
+      if (ta) {
+
+        var text = ta.value;
+
+        var wc = wordCount(text);
+
+        var userAns = text ? text.substring(0, 80) + (text.length > 80 ? '...' : '') : '(Vuoto)';
+
+        try {
+
+          var keys = JSON.parse(ta.dataset.keywords);
+
+          var ks = keywordScore(text, keys);
+
+          var lenBonus = Math.min(wc, 80) / 80 * 5;
+
+          var score = Math.min(ks + lenBonus, 20);
+
+          sectionTotal += score;
+
+          total += score;
+
+          var keyStr = keys.join(', ');
+
+          details.push({sec: secName, num: detailIdx+1, q: qtext.substring(0,50), user: userAns, correct: 'Parole chiave: ' + keyStr.substring(0,60), status: score >= 12 ? '✓' : '△', pts: Math.round(score), maxPts: pts});
+
+        } catch(e) {
+
+          sectionTotal += 0; total += 0;
+
+          details.push({sec: secName, num: detailIdx+1, q: qtext.substring(0,50), user: userAns, correct: '(consultare il docente)', status: '?', pts: 0, maxPts: pts});
+
+        }
+
+      }
+
+      detailIdx++;
+
+    });
+
+    
+
+    // Show section score
+
+    var secScore = sec.querySelector('.section-score');
+
+    if (secScore) {
+
+      secScore.style.display = 'block';
+
+      var pct = sectionMax > 0 ? Math.round(sectionTotal / sectionMax * 100) : 0;
+
+      secScore.textContent = 'Sezione: ' + Math.round(sectionTotal) + '/' + sectionMax + ' (' + pct + '%)';
+
+    }
+
   });
+
   
-  var pct = grandMax > 0 ? Math.round(total / grandMax * 100) : 0;
-  var grade = '';
-  if (pct >= 85) grade = '?? Eccellente';
-  else if (pct >= 70) grade = '?? Buono';
-  else if (pct >= 55) grade = '?? Discreto';
-  else if (pct >= 40) grade = '?? Insufficiente';
-  else grade = '?? Insufficiente grave';
+
+  // Overall score
+
+  var pct = maxTotal > 0 ? Math.round(total / maxTotal * 100) : 0;
+
+  var scoreBar = document.getElementById('scoreBar');
+
+  scoreBar.style.display = 'block';
+
+  document.getElementById('totalScore').textContent = Math.round(total) + '/' + maxTotal;
+
   
-  document.getElementById('scoreBox').style.display = 'block';
-  document.getElementById('scorePct').textContent = pct + '%';
-  document.getElementById('scoreGrade').textContent = total + '/' + grandMax + ' pt — ' + grade;
+
+  var msg = '';
+
+  if (pct >= 85) msg = "🟢 Eccellente! Livello raggiunto brillantemente. Sei pronto per l'esame vero!";
+
+  else if (pct >= 70) msg = "🔵 Buono! Hai una solida preparazione. Rivedi gli errori per perfezionarti.";
+
+  else if (pct >= 55) msg = "🟡 Discreto. Sei sulla buona strada, ma devi studiare di più alcune aree.";
+
+  else if (pct >= 40) msg = "🟠 Insufficiente. Ti consiglio di ripassare le basi e riprovare.";
+
+  else msg = "🔴 Molto insufficiente. Hai bisogno di studiare molto prima di affrontare l'esame.";
+
+  document.getElementById('scoreMessage').textContent = msg + ' (Punteggio: ' + pct + '%)';
+
   
-  var table = document.getElementById('resultTable');
-  table.style.display = 'table';
-  document.getElementById('resultBody').innerHTML = sectionRows;
-  table.scrollIntoView({ behavior: 'smooth' });
+
+  // Show answer reference table
+
+  var refDiv = document.getElementById('answerReference');
+
+  if (!refDiv) {
+
+    refDiv = document.createElement('div');
+
+    refDiv.id = 'answerReference';
+
+    refDiv.className = 'section';
+
+    document.querySelector('.btn-submit').parentNode.parentNode.appendChild(refDiv);
+
+  }
+
+  refDiv.style.display = 'block';
+
+  refDiv.innerHTML = '<h2>📋 Riepilogo risposte</h2>';
+
+  
+
+  if (details.length > 0) {
+
+    var table = '<table class="ref-table"><thead><tr><th>#</th><th>Domanda</th><th>La tua risposta</th><th>Risposta corretta</th><th>Esito</th><th>Punti</th></tr></thead><tbody>';
+
+    for (var d of details) {
+
+      var cls = d.status === '✓' ? 'ref-corr' : (d.status === '?' ? '' : 'ref-wrong');
+
+      table += '<tr class="' + cls + '"><td>' + d.num + '</td><td>' + d.q.substring(0,45) + '</td><td>' + d.user.substring(0,40) + '</td><td>' + d.correct.substring(0,60) + '</td><td>' + d.status + '</td><td>' + Math.round(d.pts) + '/' + d.maxPts + '</td></tr>';
+
+    }
+
+    table += '</tbody></table>';
+
+    refDiv.innerHTML += table;
+
+    
+
+    // Summary
+
+    var corrCount = details.filter(function(d) { return d.status === '✓'; }).length;
+
+    var partCount = details.filter(function(d) { return d.status === '△'; }).length;
+
+    refDiv.innerHTML += '<p style="margin-top:12px;font-size:13px;color:#666;">✓ Corrette: ' + corrCount + ' · △ Parziali: ' + partCount + ' · ✗ Errate: ' + (details.length - corrCount - partCount) + ' · Totale: ' + details.length + ' domande</p>';
+
+  }
+
+  
+
+  // Sound effect
+
+  try {
+
+    var ctx = new (window.AudioContext || window.webkitAudioContext)();
+
+    var osc = ctx.createOscillator();
+
+    osc.type = 'sine';
+
+    osc.frequency.value = pct >= 70 ? 880 : 440;
+
+    osc.connect(ctx.destination);
+
+    osc.start();
+
+    setTimeout(function() { osc.stop(); }, 300);
+
+  } catch(e) {}
+
+  
+
+  window.scrollTo(0, 0);
+
 }
 
+
+
 function resetExam() {
-  document.querySelectorAll('.feedback').forEach(function(el) { el.style.display = 'none'; el.className = 'feedback'; });
-  document.querySelectorAll('input[type="radio"]').forEach(function(el) { el.checked = false; });
-  document.querySelectorAll('input[type="text"]').forEach(function(el) { el.value = ''; });
-  document.querySelectorAll('textarea').forEach(function(el) { el.value = ''; });
-  document.getElementById('scoreBox').style.display = 'none';
-  document.getElementById('resultTable').style.display = 'none';
+
+  if (!confirm('Sei sicuro di voler ricominciare? Tutte le risposte verranno cancellate.')) return;
+
+  document.querySelectorAll('input[type="radio"]').forEach(function(r) { r.checked = false; });
+
+  document.querySelectorAll('input[type="text"]').forEach(function(i) { i.value = ''; });
+
+  document.querySelectorAll('textarea').forEach(function(t) { t.value = ''; });
+
+  document.querySelectorAll('.feedback').forEach(function(f) { f.className = 'feedback'; f.textContent = ''; });
+
+  document.querySelectorAll('.section-score').forEach(function(s) { s.style.display = 'none'; });
+
+  document.getElementById('scoreBar').style.display = 'none';
+
+  var ref = document.getElementById('answerReference');
+
+  if (ref) ref.style.display = 'none';
+
 }
+
 </script>
+
 </body>
+
 </html>
