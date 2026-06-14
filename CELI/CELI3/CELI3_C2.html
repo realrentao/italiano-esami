@@ -321,102 +321,111 @@ var _audioGen = 0;
 
 
 function playAudio(btn) {
-
+  // Support both data-audio-js (base64 callback) and data-audio-src (fetch MP3)
+  var jsPath = btn.getAttribute('data-audio-js');
   var src = btn.getAttribute('data-audio-src');
-
-  if (!src) { console.error('No audio source'); return; }
-
+  var audioSrc = jsPath || src;
+  if (!audioSrc) { console.error('No audio source'); return; }
   
-
-  // If this button is already playing, stop it
-
   if (btn.classList.contains('playing')) { _stopCurrent(); return; }
-
-  
-
-  // Stop previous and mark this as latest
-
   _stopCurrent();
-
   var myGen = ++_audioGen;
-
   
-
   btn.classList.add('loading');
-
-  btn.innerHTML = '⏳...';
-
+  btn.innerHTML = '...';
   
-
-  fetch(src)
-
-    .then(function(r) {
-
-      if (!r.ok) throw new Error('HTTP ' + r.status);
-
-      return r.arrayBuffer();
-
-    })
-
-    .then(function(buf) {
-
-      if (myGen !== _audioGen) return;  // Another button was clicked, discard
-
-      var ctx = _getAudioCtx();
-
-      if (ctx.state === 'suspended') ctx.resume();
-
-      ctx.decodeAudioData(buf, function(buffer) {
-
-        if (myGen !== _audioGen) return;  // Check again after decode
-
-        var source = ctx.createBufferSource();
-
-        source.buffer = buffer;
-
-        source.connect(ctx.destination);
-
-        source.start(0);
-
-        window._curSource = source;
-
-        window._curBtn = btn;
-
-        btn.classList.remove('loading');
-
-        btn.classList.add('playing');
-
-        btn.innerHTML = '⏹ Ferma';
-
-        source.onended = function() { _stopCurrent(); };
-
-      }, function(err) {
-
-        console.error('Decode failed:', err);
-
-        btn.classList.remove('loading');
-
-        btn.innerHTML = '❌';
-
-        setTimeout(function() { btn.innerHTML = '▶ Riprova'; }, 2000);
-
-      });
-
-    })
-
-    .catch(function(err) {
-
-      console.error('Fetch failed:', err);
-
+  if (jsPath) {
+    // Base64 JS callback mode
+    window._audioLoaded = function(b64) {
+      window._audioLoaded = null;
+      if (myGen !== _audioGen) return;
       btn.classList.remove('loading');
-
-      btn.innerHTML = '❌';
-
-      setTimeout(function() { btn.innerHTML = '▶ Riprova'; }, 2000);
-
+      var parts = b64.split(',');
+      var raw = atob(parts[1]);
+      var buf = new ArrayBuffer(raw.length);
+      var view = new Uint8Array(buf);
+      for (var i = 0; i < raw.length; i++) view[i] = raw.charCodeAt(i);
+      var ctx = _getAudioCtx();
+      if (ctx.state === 'suspended') ctx.resume();
+      ctx.decodeAudioData(buf, function(buffer) {
+        if (myGen !== _audioGen) return;
+        var source = ctx.createBufferSource();
+        source.buffer = buffer;
+        source.connect(ctx.destination);
+        source.start(0);
+        window._curSource = source;
+        window._curBtn = btn;
+        btn.classList.add('playing');
+        btn.innerHTML = 'Ferma';
+        source.onended = function() { _stopCurrent(); };
+      }, function(err) {
+        btn.classList.remove('loading');
+        btn.innerHTML = 'Riprova';
+      });
+    };
+    var script = document.createElement('script');
+    script.src = jsPath + '.js?' + Date.now();
+    script.onerror = function() {
+      btn.classList.remove('loading');
+      window._audioLoaded = null;
+      btn.innerHTML = 'Riprova';
+    };
+    document.head.appendChild(script);
+  } else {
+    // Original fetch MP3 mode
+    fetch(src).then(function(r) {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.arrayBuffer();
+    }).then(function(buf) {
+      if (myGen !== _audioGen) return;
+      var ctx = _getAudioCtx();
+      if (ctx.state === 'suspended') ctx.resume();
+      ctx.decodeAudioData(buf, function(buffer) {
+        if (myGen !== _audioGen) return;
+        var source = ctx.createBufferSource();
+        source.buffer = buffer;
+        source.connect(ctx.destination);
+        source.start(0);
+        window._curSource = source;
+        window._curBtn = btn;
+        btn.classList.remove('loading');
+        btn.classList.add('playing');
+        btn.innerHTML = 'Ferma';
+        source.onended = function() { _stopCurrent(); };
+      }, function(err) {
+        btn.classList.remove('loading');
+        btn.innerHTML = 'Riprova';
+      });
+    }).catch(function(err) {
+      btn.classList.remove('loading');
+      btn.innerHTML = 'Riprova';
     });
-
+  }
 }
+
+
+function showScript(btn) {
+  var qDiv = btn.closest('.question.stem') || btn.parentElement;
+  if (!qDiv) return;
+  var scriptText = qDiv.getAttribute('data-script');
+  if (!scriptText) return;
+  var existing = qDiv.querySelector('.script-text');
+  if (!existing) {
+    existing = document.createElement('div');
+    existing.className = 'script-text';
+    existing.style.cssText = 'margin-top:8px;padding:10px;background:#fff8e1;border-radius:6px;font-size:13px;line-height:1.6;border-left:3px solid #ffc107;display:none;';
+    btn.parentNode.insertBefore(existing, btn.nextSibling);
+  }
+  if (existing.style.display === 'none' || !existing.textContent) {
+    existing.textContent = scriptText;
+    existing.style.display = 'block';
+    btn.textContent = 'Nascondi testo';
+  } else {
+    existing.style.display = 'none';
+    btn.textContent = 'Testo';
+  }
+}
+
 
 
 
