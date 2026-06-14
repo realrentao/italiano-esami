@@ -3,76 +3,150 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CILS 2 B1 — B1 — Online Exam</title>
+<title>CILS CILS2 — CILS2_B1 — Online Exam</title>
 <link rel="preload" href="B1/audio/ascolto_1_b1.js" as="script" crossorigin="anonymous">
 <style>
-  * { box-sizing: border-box; }
-  body { font-family: 'Segoe UI', system-ui, sans-serif; max-width: 900px; margin: 0 auto; padding: 30px 20px; background: #f8f9fa; color: #222; }
-  .header { background: linear-gradient(135deg, #1a5276, #2e86c1); color: white; padding: 25px; border-radius: 12px; margin-bottom: 25px; }
-  .header h1 { margin: 0; font-size: 22px; }
-  .header p { margin: 5px 0 0; opacity: .85; font-size: 13px; }
-  .section { background: white; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 1px 4px rgba(0,0,0,.08); }
-  .section h2 { font-size: 16px; color: #1a5276; margin: 0 0 15px; padding-bottom: 8px; border-bottom: 2px solid #1a5276; }
-  .question { margin: 16px 0; padding: 12px; border-radius: 8px; background: #f8fbff; }
-  .question.stem { background: #fff8e1; }
-  .read-text { background: #f0f0f0; padding: 15px; border-radius: 8px; margin: 10px 0; font-size: 14px; line-height: 1.7; }
-  .opts { margin: 8px 0; }
-  .opts label { display: block; padding: 6px 10px; border-radius: 6px; cursor: pointer; transition: background .15s; }
-  .opts label:hover { background: #e8f0fe; }
-  .opts input[type="radio"] { margin-right: 8px; }
-  .fill-input { padding: 6px 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; width: 200px; }
-  .fill-input:focus { border-color: #1a5276; outline: none; box-shadow: 0 0 0 2px rgba(26,82,118,.2); }
-  .writing-area { width: 100%; min-height: 120px; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 14px; line-height: 1.6; font-family: inherit; resize: vertical; }
-  .writing-area:focus { border-color: #7b1fa2; outline: none; }
-  .play-btn { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; background: #e8f5e9; color: #2e7d32; border: 1px solid #a5d6a7; border-radius: 20px; cursor: pointer; font-size: 13px; margin-bottom: 8px; transition: all .15s; }
-  .play-btn:hover { background: #c8e6c9; }
-  .play-btn.playing { background: #fff3cd; border-color: #ffc107; color: #856404; }
-  .play-btn.loading { background: #e3f2fd; border-color: #90caf9; color: #1565c0; }
-  .score-bar { background: linear-gradient(135deg, #27ae60, #2ecc71); color: white; padding: 20px; border-radius: 12px; text-align: center; margin-bottom: 20px; display: none; }
-  .score-bar h2 { margin: 0; font-size: 28px; }
-  .score-bar p { margin: 5px 0 0; font-size: 14px; }
-  .btn-submit { padding: 12px 40px; background: linear-gradient(135deg, #1a5276, #2e86c1); color: white; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; }
-  .btn-submit:hover { opacity: .9; }
-  .btn-reset { padding: 10px 30px; background: white; color: #666; border: 1px solid #ccc; border-radius: 8px; font-size: 14px; cursor: pointer; margin-left: 10px; }
-  .feedback { display: none; margin-top: 8px; padding: 6px 10px; border-radius: 4px; font-size: 13px; }
-  .feedback.correct { background: #e8f5e9; color: #2e7d32; display: block; }
-  .feedback.wrong { background: #ffebee; color: #c62828; display: block; }
-  .hint { font-size: 12px; color: #888; margin-left: 4px; }
-  .section-score { margin-top: 10px; padding: 8px; background: #f5f5f5; border-radius: 6px; text-align: right; font-size: 13px; color: #666; display: none; }
-  .detail-table { width: 100%; margin-top: 20px; border-collapse: collapse; font-size: 13px; }
-  .detail-table th, .detail-table td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
-  .detail-table th { background: #f0f0f0; }
-  .detail-table .pass { color: #2e7d32; font-weight: bold; }
-  .detail-table .fail { color: #c62828; font-weight: bold; }
-  .ref-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 8px; }
-  .ref-table th, .ref-table td { padding: 6px 8px; border: 1px solid #e0e0e0; text-align: left; }
-  .ref-table th { background: #f5f5f5; font-weight: 500; }
-  .ref-table tr.ref-corr td { background: #f1f8e9; }
-  .ref-table tr.ref-wrong td { background: #fff3f0; }
-</style>
-</head>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', system-ui, sans-serif; background: #f5f5f5; color: #222; padding: 20px; }
+.container { max-width: 800px; margin: 0 auto; }
+h1 { font-size: 22px; margin-bottom: 4px; }
+h1 small { font-size: 14px; font-weight: 400; color: #666; }
+.header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; }
+.header .meta { font-size: 13px; color: #666; }
+.section { background: #fff; border-radius: 12px; padding: 20px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,.08); border-left: 4px solid #3498db; }
+.section.ascolto { border-left-color: #e67e22; }
+.section.lettura { border-left-color: #2ecc71; }
+.section.grammatica { border-left-color: #9b59b6; }
+.section.scrittura { border-left-color: #3498db; }
+.section.orale { border-left-color: #e74c3c; }
+.section h2 { font-size: 16px; margin-bottom: 4px; }
+.section h2 small { font-size: 12px; color: #999; }
+.question { margin: 14px 0; padding: 10px; background: #fafafa; border-radius: 8px; border: 1px solid #eee; }
+.question.stem { border-left: 3px solid #3498db; }
+.question.stem[data-type="listen"] { border-left-color: #e67e22; }
+.question-text { font-weight: 500; margin: 6px 0; font-size: 14px; }
+.opts label { display: block; margin: 4px 0; padding: 6px 10px; border-radius: 6px; cursor: pointer; font-size: 13px; transition: background .2s; }
+.opts label:hover { background: #eef; }
+.opts input { margin-right: 8px; }
+input[type="text"] { width: 100%; padding: 8px 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; }
+textarea { width: 100%; min-height: 80px; padding: 8px 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; resize: vertical; }
+.feedback { margin-top: 6px; padding: 4px 10px; border-radius: 6px; font-size: 12px; display: none; }
+.feedback.correct { display: block; background: #d4edda; color: #155724; }
+.feedback.wrong { display: block; background: #f8d7da; color: #721c24; }
+.play-btn { padding: 6px 16px; background: #e67e22; color: #fff; border: none; border-radius: 20px; cursor: pointer; font-size: 13px; transition: all .2s; }
+.play-btn:hover { background: #d35400; }
+.play-btn.loading { opacity: .6; }
+.play-btn.playing { background: #c0392b; }
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin: 20px 0; }
+.btn-row button { padding: 10px 24px; border: none; border-radius: 8px; cursor: pointer; font-size: 14px; transition: all .2s; }
+.btn-submit { background: #27ae60; color: #fff; }
+.btn-submit:hover { background: #219a52; }
+.btn-reset { background: #95a5a6; color: #fff; }
+.btn-reset:hover { background: #7f8c8d; }
+.score-box { background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; padding: 16px; border-radius: 12px; text-align: center; margin: 20px 0; display: none; }
+.score-box h3 { font-size: 36px; }
+.score-box .grade { font-size: 16px; opacity: .9; }
+table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 13px; display: none; }
+th, td { padding: 8px 12px; text-align: left; border-bottom: 1px solid #eee; }
+th { background: #f8f9fa; font-weight: 600; }
+.script-btn { padding: 3px 10px; background: #fff8e1; border: 1px solid #ffc107; border-radius: 16px; cursor: pointer; font-size: 11px; vertical-align: middle; }
+.script-btn:hover { background: #ffe082; }
+</style></head>
 <body>
-
-<div class="header">
-  <h1>CILS 2 B1 — B1</h1>
-  <p>Durata: 2 ore · CILS Certificazione</p>
-</div>
-
-<div id="scoreBar" class="score-bar">
-  <h2 id="totalScore">0/100</h2>
-  <p id="scoreMessage"></p>
-</div>
-<div class="section" id="sec-ascolto">  <h2>Ascolto <span style="font-weight:normal;font-size:13px;color:#999;">(max 20 punti)</span></h2>  <div class="question stem" data-type="listen" data-ans="0" data-script='Secondo un recente studio dell&#39;università, leggere almeno trenta minuti al giorno riduce lo stress del sessanta per cento e migliora notevolmente la memoria.' data-points="4">    <button class="play-btn" data-audio-js="B1/audio/ascolto_1_b1" onclick="playAudio(this)">▶ Ascolta</button> <button class="script-btn" onclick="showScript(this)" style="padding:3px 10px;background:#fff8e1;border:1px solid #ffc107;border-radius:16px;cursor:pointer;font-size:11px;vertical-align:middle;">📄 Testo</button>    <div style="font-weight:500;margin:6px 0;" class="question-text">Cosa dice lo studio sulla lettura?</div>    <div class="opts" data-q="0">      <label><input type="radio" name="q_ascolto_0" value="0"> Leggere fa bene</label>      <label><input type="radio" name="q_ascolto_0" value="1"> Leggere è noioso</label>      <label><input type="radio" name="q_ascolto_0" value="2"> I libri costano</label>    </div>    <div id="fb_ascolto_0" class="feedback"></div>  </div>  <div class="question stem" data-type="listen" data-ans="0" data-script='L&#39;associazione culturale organizza visite guidate gratuite ai musei della città ogni prima domenica del mese senza bisogno di prenotazione.' data-points="4">    <button class="play-btn" data-audio-js="B1/audio/ascolto_2_b1" onclick="playAudio(this)">▶ Ascolta</button> <button class="script-btn" onclick="showScript(this)" style="padding:3px 10px;background:#fff8e1;border:1px solid #ffc107;border-radius:16px;cursor:pointer;font-size:11px;vertical-align:middle;">📄 Testo</button>    <div style="font-weight:500;margin:6px 0;" class="question-text">Cosa offre l'associazione culturale?</div>    <div class="opts" data-q="1">      <label><input type="radio" name="q_ascolto_1" value="0"> Visite gratuite</label>      <label><input type="radio" name="q_ascolto_1" value="1"> Corsi di lingua</label>      <label><input type="radio" name="q_ascolto_1" value="2"> Concerti</label>    </div>    <div id="fb_ascolto_1" class="feedback"></div>  </div>  <div class="question stem" data-type="listen" data-ans="0" data-script='Il problema principale della nostra città rimane il traffico nelle ore di punta. Il comune sta valutando l&#39;introduzione di un pedaggio per il centro storico.' data-points="4">    <button class="play-btn" data-audio-js="B1/audio/ascolto_3_b1" onclick="playAudio(this)">▶ Ascolta</button> <button class="script-btn" onclick="showScript(this)" style="padding:3px 10px;background:#fff8e1;border:1px solid #ffc107;border-radius:16px;cursor:pointer;font-size:11px;vertical-align:middle;">📄 Testo</button>    <div style="font-weight:500;margin:6px 0;" class="question-text">Qual è il problema principale della città?</div>    <div class="opts" data-q="2">      <label><input type="radio" name="q_ascolto_2" value="0"> Il traffico</label>      <label><input type="radio" name="q_ascolto_2" value="1"> L'inquinamento</label>      <label><input type="radio" name="q_ascolto_2" value="2"> Il rumore</label>    </div>    <div id="fb_ascolto_2" class="feedback"></div>  </div>  <div class="question stem" data-type="listen" data-ans="1" data-script='L&#39;insegnante ha detto che per l&#39;esame finale dobbiamo preparare una presentazione su un argomento a scelta della durata di dieci minuti.' data-points="4">    <button class="play-btn" data-audio-js="B1/audio/ascolto_4_b1" onclick="playAudio(this)">▶ Ascolta</button> <button class="script-btn" onclick="showScript(this)" style="padding:3px 10px;background:#fff8e1;border:1px solid #ffc107;border-radius:16px;cursor:pointer;font-size:11px;vertical-align:middle;">📄 Testo</button>    <div style="font-weight:500;margin:6px 0;" class="question-text">Cosa chiede l'insegnante?</div>    <div class="opts" data-q="3">      <label><input type="radio" name="q_ascolto_3" value="0"> Una ricerca scritta</label>      <label><input type="radio" name="q_ascolto_3" value="1"> Una presentazione orale</label>      <label><input type="radio" name="q_ascolto_3" value="2"> Un esame a sorpresa</label>    </div>    <div id="fb_ascolto_3" class="feedback"></div>  </div>  <div class="question stem" data-type="listen" data-ans="0" data-script='La nuova biblioteca comunale offre un servizio di prestito digitale con migliaia di ebook e audiolibri scaricabili gratuitamente da casa.' data-points="4">    <button class="play-btn" data-audio-js="B1/audio/ascolto_5_b1" onclick="playAudio(this)">▶ Ascolta</button> <button class="script-btn" onclick="showScript(this)" style="padding:3px 10px;background:#fff8e1;border:1px solid #ffc107;border-radius:16px;cursor:pointer;font-size:11px;vertical-align:middle;">📄 Testo</button>    <div style="font-weight:500;margin:6px 0;" class="question-text">Cosa offre la nuova biblioteca?</div>    <div class="opts" data-q="4">      <label><input type="radio" name="q_ascolto_4" value="0"> Prestito digitale</label>      <label><input type="radio" name="q_ascolto_4" value="1"> Corsi gratuiti</label>      <label><input type="radio" name="q_ascolto_4" value="2"> Sala studio</label>    </div>    <div id="fb_ascolto_4" class="feedback"></div>  </div>  <div id="score_ascolto" class="section-score"></div></div><div class="section" id="sec-lettura">  <h2>Lettura <span style="font-weight:normal;font-size:13px;color:#999;">(max 20 punti)</span></h2>  <div class="question" data-type="read" data-ans="1" data-points="10">    <div class="read-text">La nuova palestra in centro offre corsi di nuoto, spinning e yoga. L'abbonamento mensile costa 50 euro. Aperta tutti i giorni dalle 7 alle 23.</div>    <div style="font-weight:500;margin:6px 0;">Dove si trova il negozio?</div>    <div class="opts" data-q="0">      <label><input type="radio" name="q_lettura_0" value="0"> In via Roma</label>      <label><input type="radio" name="q_lettura_0" value="1"> In via Garibaldi</label>      <label><input type="radio" name="q_lettura_0" value="2"> In piazza</label>    </div>    <div id="fb_lettura_0" class="feedback"></div>  </div>  <div class="question" data-type="read" data-ans="0" data-points="10">    <div style="font-weight:500;margin:6px 0;">Quando ci sono le presentazioni?</div>    <div class="opts" data-q="1">      <label><input type="radio" name="q_lettura_1" value="0"> Il giovedì sera</label>      <label><input type="radio" name="q_lettura_1" value="1"> Il sabato</label>      <label><input type="radio" name="q_lettura_1" value="2"> La domenica</label>    </div>    <div id="fb_lettura_1" class="feedback"></div>  </div>  <div id="score_lettura" class="section-score"></div></div><div class="section" id="sec-grammatica">  <h2>Grammatica <span style="font-weight:normal;font-size:13px;color:#999;">(max 20 punti)</span></h2>  <div class="question" data-type="fill" data-ans='studia' data-points="4">    <div style="margin:6px 0;">Mio fratello (studiare) <input type="text" class="fill-input" name="q_gramm_0" placeholder="..."> all'università. <span class="hint">(presente)</span></div>    <div id="fb_gramm_0" class="feedback"></div>  </div>  <div class="question" data-type="fill" data-ans='leggo' data-points="4">    <div style="margin:6px 0;">(Io) (leggere) <input type="text" class="fill-input" name="q_gramm_1" placeholder="..."> un libro. <span class="hint">(presente)</span></div>    <div id="fb_gramm_1" class="feedback"></div>  </div>  <div class="question" data-type="fill" data-ans='partite' data-points="4">    <div style="margin:6px 0;">Voi (partire) <input type="text" class="fill-input" name="q_gramm_2" placeholder="..."> domani? <span class="hint">(presente)</span></div>    <div id="fb_gramm_2" class="feedback"></div>  </div>  <div class="question" data-type="fill" data-ans='sono andato' data-points="4">    <div style="margin:6px 0;">Ieri (io) (andare) <input type="text" class="fill-input" name="q_gramm_3" placeholder="..."> al cinema. <span class="hint">(passato prossimo)</span></div>    <div id="fb_gramm_3" class="feedback"></div>  </div>  <div class="question" data-type="fill" data-ans='hanno finito' data-points="4">    <div style="margin:6px 0;">Loro (finire) <input type="text" class="fill-input" name="q_gramm_4" placeholder="..."> i compiti. <span class="hint">(passato prossimo)</span></div>    <div id="fb_gramm_4" class="feedback"></div>  </div>  <div id="score_grammatica" class="section-score"></div></div><div class="section" id="sec-scritta">  <h2>Scritta <span style="font-weight:normal;font-size:13px;color:#999;">(max 20 punti)</span></h2>  <div class="question" data-type="write" data-keys='{"['chiamo', 'vivo', 'lavoro', 'studio', 'piace', 'tempo', 'libero', 'famiglia', 'amici', 'casa']"}'>    <div style="font-weight:500;margin:6px 0;">Scrivi 5-6 frasi per descriverti: chi sei, cosa fai, cosa ti piace.</div>    <textarea class="writing-area" name="q_write_0" placeholder="Scrivi qui la tua risposta..." data-keywords='["chiamo", "vivo", "lavoro", "studio", "piace", "tempo", "libero", "famiglia", "amici", "casa"]'></textarea>    <div class="hint" style="margin-top:4px;">Parole chiave suggerite: chiamo, vivo, lavoro, studio, piace</div>  </div>  <div id="score_scritta" class="section-score"></div></div><div class="section" id="sec-orale">  <h2>Orale <span style="font-weight:normal;font-size:13px;color:#999;">(max 20 punti)</span></h2>  <div class="question" data-type="speak" data-keys='{"['chiamo', 'sono', 'vivo', 'madre', 'padre', 'sorella', 'fratello', 'piace', 'sport', 'musica', 'leggere', 'sera']"}'>    <div style="font-weight:500;margin:6px 0;">Rispondi: 1) Presentati. 2) Parla della tua famiglia. 3) Cosa fai nel tempo libero?</div>    <textarea class="writing-area" name="q_speak_0" placeholder="Scrivi qui la tua risposta..." data-keywords='["chiamo", "sono", "vivo", "madre", "padre", "sorella", "fratello", "piace", "sport", "musica", "leggere", "sera"]'></textarea>    <div class="hint" style="margin-top:4px;">Parole chiave suggerite: chiamo, sono, vivo, madre, padre</div>  </div>  <div id="score_orale" class="section-score"></div></div>
-<div style="text-align:center;margin:30px 0;">
-  <button class="btn-submit" onclick="submitExam()">📝 Invia e valuta</button>
-  <button class="btn-reset" onclick="resetExam()">🔄 Ricomincia</button>
+<div class="container">
+  <div class="header">
+    <div>
+      <h1>CILS CILS2 — CILS2_B1 <small>Online Exam</small></h1>
+    </div>
+    <div class="meta">
+      <span id="timer">00:00</span>
+    </div>
+  </div>
+  <div class="section ascolto" id="sec_0">
+    <h2>Ascolto <small>20 pt</small></h2>
+  <div class="question stem" data-type="listen" data-ans="0" data-script='Secondo un recente studio dell&#39;università, leggere almeno trenta minuti al giorno riduce lo stress del sessanta per cento e migliora notevolmente la memoria.' data-points="4">
+    <button class="play-btn" data-audio-js="B1/audio/ascolto_1_b1" onclick="playAudio(this)">▶ Ascolta</button> <button class="script-btn" onclick="showScript(this)">?? Testo</button>
+    <div style="font-weight:500;margin:6px 0;" class="question-text">Cosa dice lo studio sulla lettura?</div>
+    <div class="opts" data-q="0">
+      <label><input type="radio" name="q_0_0" value="0"> Leggere fa bene</label>
+      <label><input type="radio" name="q_0_0" value="1"> Leggere è noioso</label>
+      <label><input type="radio" name="q_0_0" value="2"> I libri costano</label>
+    </div>
+    <div id="fb_0_0" class="feedback"></div>
+  </div>
+  <div class="question stem" data-type="listen" data-ans="0" data-script='L&#39;associazione culturale organizza visite guidate gratuite ai musei della città ogni prima domenica del mese senza bisogno di prenotazione.' data-points="4">
+    <button class="play-btn" data-audio-js="B1/audio/ascolto_2_b1" onclick="playAudio(this)">▶ Ascolta</button> <button class="script-btn" onclick="showScript(this)">?? Testo</button>
+    <div style="font-weight:500;margin:6px 0;" class="question-text">Cosa offre l'associazione culturale?</div>
+    <div class="opts" data-q="1">
+      <label><input type="radio" name="q_0_1" value="0"> Visite gratuite</label>
+      <label><input type="radio" name="q_0_1" value="1"> Corsi di lingua</label>
+      <label><input type="radio" name="q_0_1" value="2"> Concerti</label>
+    </div>
+    <div id="fb_0_1" class="feedback"></div>
+  </div>
+  <div class="question stem" data-type="listen" data-ans="0" data-script='Il problema principale della nostra città rimane il traffico nelle ore di punta. Il comune sta valutando l&#39;introduzione di un pedaggio per il centro storico.' data-points="4">
+    <button class="play-btn" data-audio-js="B1/audio/ascolto_3_b1" onclick="playAudio(this)">▶ Ascolta</button> <button class="script-btn" onclick="showScript(this)">?? Testo</button>
+    <div style="font-weight:500;margin:6px 0;" class="question-text">Qual è il problema principale della città?</div>
+    <div class="opts" data-q="2">
+      <label><input type="radio" name="q_0_2" value="0"> Il traffico</label>
+      <label><input type="radio" name="q_0_2" value="1"> L'inquinamento</label>
+      <label><input type="radio" name="q_0_2" value="2"> Il rumore</label>
+    </div>
+    <div id="fb_0_2" class="feedback"></div>
+  </div>
+  <div class="question stem" data-type="listen" data-ans="1" data-script='L&#39;insegnante ha detto che per l&#39;esame finale dobbiamo preparare una presentazione su un argomento a scelta della durata di dieci minuti.' data-points="4">
+    <button class="play-btn" data-audio-js="B1/audio/ascolto_4_b1" onclick="playAudio(this)">▶ Ascolta</button> <button class="script-btn" onclick="showScript(this)">?? Testo</button>
+    <div style="font-weight:500;margin:6px 0;" class="question-text">Cosa chiede l'insegnante?</div>
+    <div class="opts" data-q="3">
+      <label><input type="radio" name="q_0_3" value="0"> Una ricerca scritta</label>
+      <label><input type="radio" name="q_0_3" value="1"> Una presentazione orale</label>
+      <label><input type="radio" name="q_0_3" value="2"> Un esame a sorpresa</label>
+    </div>
+    <div id="fb_0_3" class="feedback"></div>
+  </div>
+  <div class="question stem" data-type="listen" data-ans="0" data-script='La nuova biblioteca comunale offre un servizio di prestito digitale con migliaia di ebook e audiolibri scaricabili gratuitamente da casa.' data-points="4">
+    <button class="play-btn" data-audio-js="B1/audio/ascolto_5_b1" onclick="playAudio(this)">▶ Ascolta</button> <button class="script-btn" onclick="showScript(this)">?? Testo</button>
+    <div style="font-weight:500;margin:6px 0;" class="question-text">Cosa offre la nuova biblioteca?</div>
+    <div class="opts" data-q="4">
+      <label><input type="radio" name="q_0_4" value="0"> Prestito digitale</label>
+      <label><input type="radio" name="q_0_4" value="1"> Corsi gratuiti</label>
+      <label><input type="radio" name="q_0_4" value="2"> Sala studio</label>
+    </div>
+    <div id="fb_0_4" class="feedback"></div>
+  </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn-submit" onclick="submitExam()">📝 Invia e valuta</button>
+    <button class="btn-reset" onclick="resetExam()">🔄 Ricomincia</button>
+  </div>
+  
+  <div class="score-box" id="scoreBox">
+    <h3 id="scorePct">0%</h3>
+    <div class="grade" id="scoreGrade">—</div>
+  </div>
+  
+  <table id="resultTable">
+    <thead><tr><th>Sezione</th><th>Punteggio</th><th>Max</th></tr></thead>
+    <tbody id="resultBody"></tbody>
+  </table>
 </div>
 
 <script>
 var _audioCtx = null;
+var _audioGen = 0;
+
 function _getAudioCtx() {
   if (!_audioCtx) _audioCtx = new (window.AudioContext || window.webkitAudioContext)();
   return _audioCtx;
+}
+
+function _stopCurrent() {
+  if (window._curSource) { try { window._curSource.stop(); } catch(e) {} window._curSource = null; }
+  if (window._curBtn) {
+    window._curBtn.classList.remove('playing');
+    window._curBtn.innerHTML = '▶ Ascolta';
+    window._curBtn = null;
+  }
 }
 
 function showScript(btn) {
@@ -88,51 +162,32 @@ function showScript(btn) {
     btn.parentNode.insertBefore(fb, btn.nextSibling);
   }
   if (fb.style.display === 'none') {
-    fb.textContent = '🎧 ' + scriptText;
+    fb.textContent = '?? ' + scriptText;
     fb.style.display = 'block';
-    btn.textContent = '📄 Nascondi testo';
+    btn.textContent = '?? Nascondi testo';
   } else {
     fb.style.display = 'none';
-    btn.textContent = '📄 Testo';
+    btn.textContent = '?? Testo';
   }
 }
-
-function _stopCurrent() {
-  if (window._curSource) {
-    try { _curSource.stop(); } catch(e) {}
-    window._curSource = null;
-  }
-  if (window._curBtn) {
-    window._curBtn.classList.remove('playing');
-    window._curBtn.innerHTML = '▶ Ascolta';
-    window._curBtn = null;
-  }
-}
-
-var _audioGen = 0;
 
 function playAudio(btn) {
   var jsPath = btn.getAttribute('data-audio-js');
   if (!jsPath) { console.error('No audio source'); return; }
-  
   if (btn.classList.contains('playing')) { _stopCurrent(); return; }
   _stopCurrent();
   var myGen = ++_audioGen;
-  
   btn.classList.add('loading');
   btn.innerHTML = '⏳...';
-  
   window._audioLoaded = function(b64) {
     window._audioLoaded = null;
     if (myGen !== _audioGen) return;
     btn.classList.remove('loading');
-    
     var parts = b64.split(',');
     var raw = atob(parts[1]);
     var buf = new ArrayBuffer(raw.length);
     var view = new Uint8Array(buf);
     for (var i = 0; i < raw.length; i++) view[i] = raw.charCodeAt(i);
-    
     var ctx = _getAudioCtx();
     if (ctx.state === 'suspended') ctx.resume();
     ctx.decodeAudioData(buf, function(buffer) {
@@ -152,7 +207,6 @@ function playAudio(btn) {
       setTimeout(function() { btn.innerHTML = '▶ Riprova'; }, 2000);
     });
   };
-  
   var script = document.createElement('script');
   script.src = jsPath + '.js?' + Date.now();
   script.onerror = function() {
@@ -164,28 +218,8 @@ function playAudio(btn) {
   document.head.appendChild(script);
 }
 
-function normalize(s) {
-  return s.toLowerCase().replace(/[\s'´\`‘’\.]+/g, ' ').trim();
-}
-
-function keywordScore(text, keywords) {
-  if (!text || text.trim().length < 10) return 0;
-  var t = text.toLowerCase();
-  var found = 0;
-  for (var k of keywords) {
-    if (t.includes(k.toLowerCase())) found++;
-  }
-  var total = keywords.length;
-  var ratio = found / total;
-  if (ratio >= 0.6) return 20;
-  if (ratio >= 0.4) return 15;
-  if (ratio >= 0.2) return 10;
-  if (found > 0) return 5;
-  return 0;
-}
-
 function wordCount(text) {
-  return text.trim().split(/\s+/).filter(w => w.length > 0).length;
+  return text.trim().split(/\s+/).filter(function(w) { return w.length > 0; }).length;
 }
 
 // Preload first audio silently
@@ -200,232 +234,77 @@ function wordCount(text) {
 })();
 
 function submitExam() {
-  var total = 0;
-  var maxTotal = 0;
-  var details = [];
-  var detailIdx = 0;
-  
-  // Score each section
   var sections = document.querySelectorAll('.section');
-  sections.forEach(function(sec) {
+  var total = 0;
+  var grandMax = 0;
+  var sectionRows = '';
+  
+  sections.forEach(function(sec, si) {
+    var questions = sec.querySelectorAll('.question');
     var sectionTotal = 0;
     var sectionMax = 0;
-    var sectionItems = 0;
-    var secName = sec.querySelector('h2').textContent.replace(/\(max.*?\)/, '').trim();
     
-    // Multiple choice (listen/read)
-    var choiceQs = sec.querySelectorAll('.question[data-type="listen"], .question[data-type="read"]');
-    choiceQs.forEach(function(q) {
-      var ansIdx = parseInt(q.dataset.ans);
-      var pts = parseInt(q.dataset.points) || 4;
-      var selected = q.querySelector('input[type="radio"]:checked');
-      var fb = q.querySelector('.feedback');
-      var qtext = q.querySelector('.question-text') ? q.querySelector('.question-text').textContent.trim() : '';
-      // Get all option texts
-      var opts = q.querySelectorAll('.opts label');
-      var optTexts = [];
-      opts.forEach(function(o) { optTexts.push(o.textContent.trim()); });
-      var correctAns = optTexts[ansIdx] || ('Opzione ' + (ansIdx+1));
-      var userAns = selected ? optTexts[parseInt(selected.value)] : '(Non risposto)';
-      
+    questions.forEach(function(q, qi) {
+      var pts = parseInt(q.getAttribute('data-points')) || 4;
       sectionMax += pts;
-      maxTotal += pts;
-      sectionItems++;
-      var correct = false;
-      var scriptText = q.dataset.script || '';
-      if (selected) {
-        var val = parseInt(selected.value);
-        if (val === ansIdx) {
-          sectionTotal += pts;
-          total += pts;
-          correct = true;
-          fb.className = 'feedback correct';
-          fb.innerHTML = '✓ Corretto! (' + pts + '/' + pts + ' pt)' + (scriptText ? '<br><span style="font-size:12px;color:#666;">🎧 ' + scriptText + '</span>' : '');
-        } else {
-          fb.className = 'feedback wrong';
-          fb.innerHTML = '✗ Hai risposto: ' + userAns + '. Corretta: ' + correctAns + ' (0/' + pts + ' pt)' + (scriptText ? '<br><span style="font-size:12px;color:#666;">🎧 ' + scriptText + '</span>' : '');
-        }
-      } else {
-        fb.className = 'feedback wrong';
-        fb.innerHTML = '⚠ Non risposto. Corretta: ' + correctAns + ' (0/' + pts + ' pt)' + (scriptText ? '<br><span style="font-size:12px;color:#666;">🎧 ' + scriptText + '</span>' : '');
-      }
-      details.push({sec: secName, num: detailIdx+1, q: qtext, user: userAns, correct: correctAns, status: correct ? '✓' : '✗', pts: correct ? pts : 0, maxPts: pts});
-      detailIdx++;
-    });
-    
-    // Fill-in grammar
-    var fillQs = sec.querySelectorAll('.question[data-type="fill"]');
-    fillQs.forEach(function(q) {
-      var ans = q.dataset.ans.split(',').map(s => normalize(s));
-      var pts = parseInt(q.dataset.points) || 3;
-      var input = q.querySelector('input[type="text"]');
-      var fb = q.querySelector('.feedback');
-      var qtext = q.textContent.replace(/\s+/g, ' ').trim().substring(0, 80);
-      var userAns = (input && input.value.trim()) ? input.value.trim() : '(Non risposto)';
-      var correctAns = q.dataset.ans;
       
-      sectionMax += pts;
-      maxTotal += pts;
-      sectionItems++;
-      var correct = false;
-      if (input && input.value.trim()) {
-        var userAnsNorm = normalize(input.value);
-        for (var a of ans) {
-          if (userAnsNorm === a || userAnsNorm.includes(a) || a.includes(userAnsNorm)) {
-            correct = true;
-            break;
+      // Listening/Reading: radio buttons
+      if (q.querySelector('.opts')) {
+        var ansIdx = parseInt(q.getAttribute('data-ans'));
+        var selected = q.querySelector('input[type="radio"]:checked');
+        var fb = q.querySelector('.feedback');
+        var opts = q.querySelectorAll('.opts label');
+        var correctAns = opts.length > ansIdx ? opts[ansIdx].textContent.trim() : '';
+        var userAns = selected ? selected.parentElement.textContent.trim() : '';
+        var scriptText = q.getAttribute('data-script') || '';
+        
+        if (selected) {
+          var val = parseInt(selected.value);
+          if (val === ansIdx) {
+            sectionTotal += pts;
+            total += pts;
+            fb.className = 'feedback correct';
+            fb.innerHTML = '✓ Corretto! (' + pts + '/' + pts + ' pt)' + (scriptText ? '<br><span style="font-size:12px;color:#666;">?? ' + scriptText + '</span>' : '');
+          } else {
+            fb.className = 'feedback wrong';
+            fb.innerHTML = '✗ Hai risposto: ' + userAns + '. Corretta: ' + correctAns + ' (0/' + pts + ' pt)' + (scriptText ? '<br><span style="font-size:12px;color:#666;">?? ' + scriptText + '</span>' : '');
           }
-        }
-        if (correct) {
-          sectionTotal += pts;
-          total += pts;
-          fb.className = 'feedback correct';
-          fb.textContent = '✓ Corretto! (' + pts + '/' + pts + ' pt)';
         } else {
           fb.className = 'feedback wrong';
-          fb.textContent = '✗ Hai scritto: ' + userAns + '. Corretta: ' + correctAns + ' (0/' + pts + ' pt)';
-        }
-      } else {
-        fb.className = 'feedback wrong';
-        fb.textContent = '⚠ Non risposto. Corretta: ' + correctAns + ' (0/' + pts + ' pt)';
-      }
-      details.push({sec: secName, num: detailIdx+1, q: qtext.substring(0,60), user: userAns, correct: correctAns, status: correct ? '✓' : '✗', pts: correct ? pts : 0, maxPts: pts});
-      detailIdx++;
-    });
-    
-    // Writing
-    var writeQs = sec.querySelectorAll('.question[data-type="write"]');
-    writeQs.forEach(function(q) {
-      var ta = q.querySelector('textarea');
-      var pts = 20;
-      sectionMax += pts;
-      maxTotal += pts;
-      sectionItems++;
-      var qtext = q.textContent.replace(/\s+/g, ' ').trim().substring(0, 80);
-      if (ta) {
-        var text = ta.value;
-        var wc = wordCount(text);
-        var userAns = text ? text.substring(0, 80) + (text.length > 80 ? '...' : '') : '(Vuoto)';
-        try {
-          var keys = JSON.parse(ta.dataset.keywords);
-          var ks = keywordScore(text, keys);
-          var lenBonus = Math.min(wc, 100) / 100 * 5;
-          var score = Math.min(ks + lenBonus, 20);
-          sectionTotal += score;
-          total += score;
-          var keyStr = keys.join(', ');
-          details.push({sec: secName, num: detailIdx+1, q: qtext.substring(0,50), user: userAns, correct: 'Parole chiave: ' + keyStr.substring(0,60), status: score >= 12 ? '✓' : '△', pts: Math.round(score), maxPts: pts});
-        } catch(e) {
-          sectionTotal += 0; total += 0;
-          details.push({sec: secName, num: detailIdx+1, q: qtext.substring(0,50), user: userAns, correct: '(consultare il docente)', status: '?', pts: 0, maxPts: pts});
+          fb.innerHTML = '⚠ Non risposto. Corretta: ' + correctAns + ' (0/' + pts + ' pt)' + (scriptText ? '<br><span style="font-size:12px;color:#666;">?? ' + scriptText + '</span>' : '');
         }
       }
-      detailIdx++;
     });
     
-    // Speaking (text)
-    var speakQs = sec.querySelectorAll('.question[data-type="speak"]');
-    speakQs.forEach(function(q) {
-      var ta = q.querySelector('textarea');
-      var pts = 20;
-      sectionMax += pts;
-      maxTotal += pts;
-      sectionItems++;
-      var qtext = q.textContent.replace(/\s+/g, ' ').trim().substring(0, 80);
-      if (ta) {
-        var text = ta.value;
-        var wc = wordCount(text);
-        var userAns = text ? text.substring(0, 80) + (text.length > 80 ? '...' : '') : '(Vuoto)';
-        try {
-          var keys = JSON.parse(ta.dataset.keywords);
-          var ks = keywordScore(text, keys);
-          var lenBonus = Math.min(wc, 80) / 80 * 5;
-          var score = Math.min(ks + lenBonus, 20);
-          sectionTotal += score;
-          total += score;
-          var keyStr = keys.join(', ');
-          details.push({sec: secName, num: detailIdx+1, q: qtext.substring(0,50), user: userAns, correct: 'Parole chiave: ' + keyStr.substring(0,60), status: score >= 12 ? '✓' : '△', pts: Math.round(score), maxPts: pts});
-        } catch(e) {
-          sectionTotal += 0; total += 0;
-          details.push({sec: secName, num: detailIdx+1, q: qtext.substring(0,50), user: userAns, correct: '(consultare il docente)', status: '?', pts: 0, maxPts: pts});
-        }
-      }
-      detailIdx++;
-    });
-    
-    // Show section score
-    var secScore = sec.querySelector('.section-score');
-    if (secScore) {
-      secScore.style.display = 'block';
-      var pct = sectionMax > 0 ? Math.round(sectionTotal / sectionMax * 100) : 0;
-      secScore.textContent = 'Sezione: ' + Math.round(sectionTotal) + '/' + sectionMax + ' (' + pct + '%)';
-    }
+    sectionRows += '<tr><td>' + sec.querySelector('h2').textContent + '</td><td>' + sectionTotal + '</td><td>' + sectionMax + '</td></tr>';
+    grandMax += sectionMax;
   });
   
-  // Overall score
-  var pct = maxTotal > 0 ? Math.round(total / maxTotal * 100) : 0;
-  var scoreBar = document.getElementById('scoreBar');
-  scoreBar.style.display = 'block';
-  document.getElementById('totalScore').textContent = Math.round(total) + '/' + maxTotal;
+  var pct = grandMax > 0 ? Math.round(total / grandMax * 100) : 0;
+  var grade = '';
+  if (pct >= 85) grade = '?? Eccellente';
+  else if (pct >= 70) grade = '?? Buono';
+  else if (pct >= 55) grade = '?? Discreto';
+  else if (pct >= 40) grade = '?? Insufficiente';
+  else grade = '?? Insufficiente grave';
   
-  var msg = '';
-  if (pct >= 85) msg = "🟢 Eccellente! Livello raggiunto brillantemente. Sei pronto per l'esame vero!";
-  else if (pct >= 70) msg = "🔵 Buono! Hai una solida preparazione. Rivedi gli errori per perfezionarti.";
-  else if (pct >= 55) msg = "🟡 Discreto. Sei sulla buona strada, ma devi studiare di più alcune aree.";
-  else if (pct >= 40) msg = "🟠 Insufficiente. Ti consiglio di ripassare le basi e riprovare.";
-  else msg = "🔴 Molto insufficiente. Hai bisogno di studiare molto prima di affrontare l'esame.";
-  document.getElementById('scoreMessage').textContent = msg + ' (Punteggio: ' + pct + '%)';
+  document.getElementById('scoreBox').style.display = 'block';
+  document.getElementById('scorePct').textContent = pct + '%';
+  document.getElementById('scoreGrade').textContent = total + '/' + grandMax + ' pt — ' + grade;
   
-  // Show answer reference table
-  var refDiv = document.getElementById('answerReference');
-  if (!refDiv) {
-    refDiv = document.createElement('div');
-    refDiv.id = 'answerReference';
-    refDiv.className = 'section';
-    document.querySelector('.btn-submit').parentNode.parentNode.appendChild(refDiv);
-  }
-  refDiv.style.display = 'block';
-  refDiv.innerHTML = '<h2>📋 Riepilogo risposte</h2>';
-  
-  if (details.length > 0) {
-    var table = '<table class="ref-table"><thead><tr><th>#</th><th>Domanda</th><th>La tua risposta</th><th>Risposta corretta</th><th>Esito</th><th>Punti</th></tr></thead><tbody>';
-    for (var d of details) {
-      var cls = d.status === '✓' ? 'ref-corr' : (d.status === '?' ? '' : 'ref-wrong');
-      table += '<tr class="' + cls + '"><td>' + d.num + '</td><td>' + d.q.substring(0,45) + '</td><td>' + d.user.substring(0,40) + '</td><td>' + d.correct.substring(0,60) + '</td><td>' + d.status + '</td><td>' + Math.round(d.pts) + '/' + d.maxPts + '</td></tr>';
-    }
-    table += '</tbody></table>';
-    refDiv.innerHTML += table;
-    
-    // Summary
-    var corrCount = details.filter(function(d) { return d.status === '✓'; }).length;
-    var partCount = details.filter(function(d) { return d.status === '△'; }).length;
-    refDiv.innerHTML += '<p style="margin-top:12px;font-size:13px;color:#666;">✓ Corrette: ' + corrCount + ' · △ Parziali: ' + partCount + ' · ✗ Errate: ' + (details.length - corrCount - partCount) + ' · Totale: ' + details.length + ' domande</p>';
-  }
-  
-  // Sound effect
-  try {
-    var ctx = new (window.AudioContext || window.webkitAudioContext)();
-    var osc = ctx.createOscillator();
-    osc.type = 'sine';
-    osc.frequency.value = pct >= 70 ? 880 : 440;
-    osc.connect(ctx.destination);
-    osc.start();
-    setTimeout(function() { osc.stop(); }, 300);
-  } catch(e) {}
-  
-  window.scrollTo(0, 0);
+  var table = document.getElementById('resultTable');
+  table.style.display = 'table';
+  document.getElementById('resultBody').innerHTML = sectionRows;
+  table.scrollIntoView({ behavior: 'smooth' });
 }
 
 function resetExam() {
-  if (!confirm('Sei sicuro di voler ricominciare? Tutte le risposte verranno cancellate.')) return;
-  document.querySelectorAll('input[type="radio"]').forEach(function(r) { r.checked = false; });
-  document.querySelectorAll('input[type="text"]').forEach(function(i) { i.value = ''; });
-  document.querySelectorAll('textarea').forEach(function(t) { t.value = ''; });
-  document.querySelectorAll('.feedback').forEach(function(f) { f.className = 'feedback'; f.textContent = ''; });
-  document.querySelectorAll('.section-score').forEach(function(s) { s.style.display = 'none'; });
-  document.getElementById('scoreBar').style.display = 'none';
-  var ref = document.getElementById('answerReference');
-  if (ref) ref.style.display = 'none';
+  document.querySelectorAll('.feedback').forEach(function(el) { el.style.display = 'none'; el.className = 'feedback'; });
+  document.querySelectorAll('input[type="radio"]').forEach(function(el) { el.checked = false; });
+  document.querySelectorAll('input[type="text"]').forEach(function(el) { el.value = ''; });
+  document.querySelectorAll('textarea').forEach(function(el) { el.value = ''; });
+  document.getElementById('scoreBox').style.display = 'none';
+  document.getElementById('resultTable').style.display = 'none';
 }
 </script>
 </body>
