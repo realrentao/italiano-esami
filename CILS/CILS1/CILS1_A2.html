@@ -11,95 +11,53 @@
 <title>CILS CILS1 — CILS1_A2 — Online Exam</title>
 
 <link rel="preload" href="A2/audio/ascolto_1_a2.js" as="script" crossorigin="anonymous">
-<style>
-
-  * { box-sizing: border-box; }
-
+<style>* { box-sizing: border-box; }
   body { font-family: 'Segoe UI', system-ui, sans-serif; max-width: 900px; margin: 0 auto; padding: 30px 20px; background: #f8f9fa; color: #222; }
-
   .header { background: linear-gradient(135deg, #1a5276, #2e86c1); color: white; padding: 25px; border-radius: 12px; margin-bottom: 25px; }
-
   .header h1 { margin: 0; font-size: 22px; }
-
   .header p { margin: 5px 0 0; opacity: .85; font-size: 13px; }
-
   .section { background: white; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 1px 4px rgba(0,0,0,.08); }
-
   .section h2 { font-size: 16px; color: #1a5276; margin: 0 0 15px; padding-bottom: 8px; border-bottom: 2px solid #1a5276; }
-
   .question { margin: 16px 0; padding: 12px; border-radius: 8px; background: #f8fbff; }
-
   .question.stem { background: #fff8e1; }
-
   .read-text { background: #f0f0f0; padding: 15px; border-radius: 8px; margin: 10px 0; font-size: 14px; line-height: 1.7; }
-
   .opts { margin: 8px 0; }
-
   .opts label { display: block; padding: 6px 10px; border-radius: 6px; cursor: pointer; transition: background .15s; }
-
   .opts label:hover { background: #e8f0fe; }
-
   .opts input[type="radio"] { margin-right: 8px; }
-
   .fill-input { padding: 6px 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; width: 200px; }
-
   .fill-input:focus { border-color: #1a5276; outline: none; box-shadow: 0 0 0 2px rgba(26,82,118,.2); }
-
   .writing-area { width: 100%; min-height: 120px; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 14px; line-height: 1.6; font-family: inherit; resize: vertical; }
-
   .writing-area:focus { border-color: #7b1fa2; outline: none; }
-
   .play-btn { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; background: #e8f5e9; color: #2e7d32; border: 1px solid #a5d6a7; border-radius: 20px; cursor: pointer; font-size: 13px; margin-bottom: 8px; transition: all .15s; }
-
   .play-btn:hover { background: #c8e6c9; }
-
   .play-btn.playing { background: #fff3cd; border-color: #ffc107; color: #856404; }
-
   .play-btn.loading { background: #e3f2fd; border-color: #90caf9; color: #1565c0; }
-
   .score-bar { background: linear-gradient(135deg, #27ae60, #2ecc71); color: white; padding: 20px; border-radius: 12px; text-align: center; margin-bottom: 20px; display: none; }
-
   .score-bar h2 { margin: 0; font-size: 28px; }
-
   .score-bar p { margin: 5px 0 0; font-size: 14px; }
-
   .btn-submit { padding: 12px 40px; background: linear-gradient(135deg, #1a5276, #2e86c1); color: white; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; }
-
   .btn-submit:hover { opacity: .9; }
-
   .btn-reset { padding: 10px 30px; background: white; color: #666; border: 1px solid #ccc; border-radius: 8px; font-size: 14px; cursor: pointer; margin-left: 10px; }
-
   .feedback { display: none; margin-top: 8px; padding: 6px 10px; border-radius: 4px; font-size: 13px; }
-
   .feedback.correct { background: #e8f5e9; color: #2e7d32; display: block; }
-
   .feedback.wrong { background: #ffebee; color: #c62828; display: block; }
-
   .hint { font-size: 12px; color: #888; margin-left: 4px; }
-
   .section-score { margin-top: 10px; padding: 8px; background: #f5f5f5; border-radius: 6px; text-align: right; font-size: 13px; color: #666; display: none; }
-
   .detail-table { width: 100%; margin-top: 20px; border-collapse: collapse; font-size: 13px; }
-
   .detail-table th, .detail-table td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
-
   .detail-table th { background: #f0f0f0; }
-
   .detail-table .pass { color: #2e7d32; font-weight: bold; }
-
   .detail-table .fail { color: #c62828; font-weight: bold; }
-
   .ref-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 8px; }
-
   .ref-table th, .ref-table td { padding: 6px 8px; border: 1px solid #e0e0e0; text-align: left; }
-
   .ref-table th { background: #f5f5f5; font-weight: 500; }
-
   .ref-table tr.ref-corr td { background: #f1f8e9; }
-
   .ref-table tr.ref-wrong td { background: #fff3f0; }
 
-</style></head>
+.script-btn { padding: 3px 10px; background: #fff8e1; border: 1px solid #ffc107; border-radius: 16px; cursor: pointer; font-size: 11px; vertical-align: middle; margin-left: 4px; }
+.script-btn:hover { background: #ffecb3; }
+.script-text { margin-top: 8px; padding: 10px; background: #fff8e1; border-radius: 6px; font-size: 13px; line-height: 1.6; border-left: 3px solid #ffc107; }</style></head>
 
 <body>
 
@@ -287,110 +245,51 @@
 
 
 
-<script>
-
-var _audioCtx = null;
-
+<script>var _audioCtx = null;
 function _getAudioCtx() {
-
   if (!_audioCtx) _audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-
   return _audioCtx;
-
 }
-
-
 
 function _stopCurrent() {
-
   if (window._curSource) {
-
     try { _curSource.stop(); } catch(e) {}
-
     window._curSource = null;
-
   }
-
   if (window._curBtn) {
-
     window._curBtn.classList.remove('playing');
-
     window._curBtn.innerHTML = '▶ Ascolta';
-
     window._curBtn = null;
-
   }
-
 }
-
-
 
 var _audioGen = 0;
 
-
-
 function playAudio(btn) {
-  // Support both data-audio-js (base64 callback) and data-audio-src (fetch MP3)
-  var jsPath = btn.getAttribute('data-audio-js');
   var src = btn.getAttribute('data-audio-src');
-  var audioSrc = jsPath || src;
-  if (!audioSrc) { console.error('No audio source'); return; }
+  if (!src) { console.error('No audio source'); return; }
   
+  // If this button is already playing, stop it
   if (btn.classList.contains('playing')) { _stopCurrent(); return; }
+  
+  // Stop previous and mark this as latest
   _stopCurrent();
   var myGen = ++_audioGen;
   
   btn.classList.add('loading');
-  btn.innerHTML = '...';
+  btn.innerHTML = '⏳...';
   
-  if (jsPath) {
-    // Base64 JS callback mode
-    window._audioLoaded = function(b64) {
-      window._audioLoaded = null;
-      if (myGen !== _audioGen) return;
-      btn.classList.remove('loading');
-      var parts = b64.split(',');
-      var raw = atob(parts[1]);
-      var buf = new ArrayBuffer(raw.length);
-      var view = new Uint8Array(buf);
-      for (var i = 0; i < raw.length; i++) view[i] = raw.charCodeAt(i);
-      var ctx = _getAudioCtx();
-      if (ctx.state === 'suspended') ctx.resume();
-      ctx.decodeAudioData(buf, function(buffer) {
-        if (myGen !== _audioGen) return;
-        var source = ctx.createBufferSource();
-        source.buffer = buffer;
-        source.connect(ctx.destination);
-        source.start(0);
-        window._curSource = source;
-        window._curBtn = btn;
-        btn.classList.add('playing');
-        btn.innerHTML = 'Ferma';
-        source.onended = function() { _stopCurrent(); };
-      }, function(err) {
-        btn.classList.remove('loading');
-        btn.innerHTML = 'Riprova';
-      });
-    };
-    var script = document.createElement('script');
-    script.src = jsPath + '.js?' + Date.now();
-    script.onerror = function() {
-      btn.classList.remove('loading');
-      window._audioLoaded = null;
-      btn.innerHTML = 'Riprova';
-    };
-    document.head.appendChild(script);
-  } else {
-    // Original fetch MP3 mode
-    fetch(src).then(function(r) {
+  fetch(src)
+    .then(function(r) {
       if (!r.ok) throw new Error('HTTP ' + r.status);
       return r.arrayBuffer();
-    }).then(function(buf) {
-      if (myGen !== _audioGen) return;
+    })
+    .then(function(buf) {
+      if (myGen !== _audioGen) return;  // Another button was clicked, discard
       var ctx = _getAudioCtx();
       if (ctx.state === 'suspended') ctx.resume();
       ctx.decodeAudioData(buf, function(buffer) {
-        if (myGen !== _audioGen) return;
+        if (myGen !== _audioGen) return;  // Check again after decode
         var source = ctx.createBufferSource();
         source.buffer = buffer;
         source.connect(ctx.destination);
@@ -399,20 +298,286 @@ function playAudio(btn) {
         window._curBtn = btn;
         btn.classList.remove('loading');
         btn.classList.add('playing');
-        btn.innerHTML = 'Ferma';
+        btn.innerHTML = '⏹ Ferma';
         source.onended = function() { _stopCurrent(); };
       }, function(err) {
+        console.error('Decode failed:', err);
         btn.classList.remove('loading');
-        btn.innerHTML = 'Riprova';
+        btn.innerHTML = '❌';
+        setTimeout(function() { btn.innerHTML = '▶ Riprova'; }, 2000);
       });
-    }).catch(function(err) {
+    })
+    .catch(function(err) {
+      console.error('Fetch failed:', err);
       btn.classList.remove('loading');
-      btn.innerHTML = 'Riprova';
+      btn.innerHTML = '❌';
+      setTimeout(function() { btn.innerHTML = '▶ Riprova'; }, 2000);
     });
-  }
 }
 
+function normalize(s) {
+  return s.toLowerCase().replace(/[\s'´\`‘’\.]+/g, ' ').trim();
+}
 
+function keywordScore(text, keywords) {
+  if (!text || text.trim().length < 10) return 0;
+  var t = text.toLowerCase();
+  var found = 0;
+  for (var k of keywords) {
+    if (t.includes(k.toLowerCase())) found++;
+  }
+  var total = keywords.length;
+  var ratio = found / total;
+  if (ratio >= 0.6) return 20;
+  if (ratio >= 0.4) return 15;
+  if (ratio >= 0.2) return 10;
+  if (found > 0) return 5;
+  return 0;
+}
+
+function wordCount(text) {
+  return text.trim().split(/\s+/).filter(w => w.length > 0).length;
+}
+
+// Preload first audio silently
+(function() {
+  var firstAudio = document.querySelector('[data-audio-src]');
+  if (firstAudio) {
+    var src = firstAudio.getAttribute('data-audio-src');
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', src, true);
+    xhr.responseType = 'arraybuffer';
+    xhr.send();
+  }
+})();
+
+function submitExam() {
+  var total = 0;
+  var maxTotal = 0;
+  var details = [];
+  var detailIdx = 0;
+  
+  // Score each section
+  var sections = document.querySelectorAll('.section');
+  sections.forEach(function(sec) {
+    var sectionTotal = 0;
+    var sectionMax = 0;
+    var sectionItems = 0;
+    var secName = sec.querySelector('h2').textContent.replace(/\(max.*?\)/, '').trim();
+    
+    // Multiple choice (listen/read)
+    var choiceQs = sec.querySelectorAll('.question[data-type="listen"], .question[data-type="read"]');
+    choiceQs.forEach(function(q) {
+      var ansIdx = parseInt(q.dataset.ans);
+      var pts = parseInt(q.dataset.points) || 4;
+      var selected = q.querySelector('input[type="radio"]:checked');
+      var fb = q.querySelector('.feedback');
+      var qtext = q.querySelector('.question-text') ? q.querySelector('.question-text').textContent.trim() : '';
+      // Get all option texts
+      var opts = q.querySelectorAll('.opts label');
+      var optTexts = [];
+      opts.forEach(function(o) { optTexts.push(o.textContent.trim()); });
+      var correctAns = optTexts[ansIdx] || ('Opzione ' + (ansIdx+1));
+      var userAns = selected ? optTexts[parseInt(selected.value)] : '(Non risposto)';
+      
+      sectionMax += pts;
+      maxTotal += pts;
+      sectionItems++;
+      var correct = false;
+      if (selected) {
+        var val = parseInt(selected.value);
+        if (val === ansIdx) {
+          sectionTotal += pts;
+          total += pts;
+          correct = true;
+          fb.className = 'feedback correct';
+          fb.textContent = '✓ Corretto! (' + pts + '/' + pts + ' pt)';
+        } else {
+          fb.className = 'feedback wrong';
+          fb.textContent = '✗ Hai risposto: ' + userAns + '. Corretta: ' + correctAns + ' (0/' + pts + ' pt)';
+        }
+      } else {
+        fb.className = 'feedback wrong';
+        fb.textContent = '⚠ Non risposto. Corretta: ' + correctAns + ' (0/' + pts + ' pt)';
+      }
+      details.push({sec: secName, num: detailIdx+1, q: qtext, user: userAns, correct: correctAns, status: correct ? '✓' : '✗', pts: correct ? pts : 0, maxPts: pts});
+      detailIdx++;
+    });
+    
+    // Fill-in grammar
+    var fillQs = sec.querySelectorAll('.question[data-type="fill"]');
+    fillQs.forEach(function(q) {
+      var ans = q.dataset.ans.split(',').map(s => normalize(s));
+      var pts = parseInt(q.dataset.points) || 3;
+      var input = q.querySelector('input[type="text"]');
+      var fb = q.querySelector('.feedback');
+      var qtext = q.textContent.replace(/\s+/g, ' ').trim().substring(0, 80);
+      var userAns = (input && input.value.trim()) ? input.value.trim() : '(Non risposto)';
+      var correctAns = q.dataset.ans;
+      
+      sectionMax += pts;
+      maxTotal += pts;
+      sectionItems++;
+      var correct = false;
+      if (input && input.value.trim()) {
+        var userAnsNorm = normalize(input.value);
+        for (var a of ans) {
+          if (userAnsNorm === a || userAnsNorm.includes(a) || a.includes(userAnsNorm)) {
+            correct = true;
+            break;
+          }
+        }
+        if (correct) {
+          sectionTotal += pts;
+          total += pts;
+          fb.className = 'feedback correct';
+          fb.textContent = '✓ Corretto! (' + pts + '/' + pts + ' pt)';
+        } else {
+          fb.className = 'feedback wrong';
+          fb.textContent = '✗ Hai scritto: ' + userAns + '. Corretta: ' + correctAns + ' (0/' + pts + ' pt)';
+        }
+      } else {
+        fb.className = 'feedback wrong';
+        fb.textContent = '⚠ Non risposto. Corretta: ' + correctAns + ' (0/' + pts + ' pt)';
+      }
+      details.push({sec: secName, num: detailIdx+1, q: qtext.substring(0,60), user: userAns, correct: correctAns, status: correct ? '✓' : '✗', pts: correct ? pts : 0, maxPts: pts});
+      detailIdx++;
+    });
+    
+    // Writing
+    var writeQs = sec.querySelectorAll('.question[data-type="write"]');
+    writeQs.forEach(function(q) {
+      var ta = q.querySelector('textarea');
+      var pts = 20;
+      sectionMax += pts;
+      maxTotal += pts;
+      sectionItems++;
+      var qtext = q.textContent.replace(/\s+/g, ' ').trim().substring(0, 80);
+      if (ta) {
+        var text = ta.value;
+        var wc = wordCount(text);
+        var userAns = text ? text.substring(0, 80) + (text.length > 80 ? '...' : '') : '(Vuoto)';
+        try {
+          var keys = JSON.parse(ta.dataset.keywords);
+          var ks = keywordScore(text, keys);
+          var lenBonus = Math.min(wc, 100) / 100 * 5;
+          var score = Math.min(ks + lenBonus, 20);
+          sectionTotal += score;
+          total += score;
+          var keyStr = keys.join(', ');
+          details.push({sec: secName, num: detailIdx+1, q: qtext.substring(0,50), user: userAns, correct: 'Parole chiave: ' + keyStr.substring(0,60), status: score >= 12 ? '✓' : '△', pts: Math.round(score), maxPts: pts});
+        } catch(e) {
+          sectionTotal += 0; total += 0;
+          details.push({sec: secName, num: detailIdx+1, q: qtext.substring(0,50), user: userAns, correct: '(consultare il docente)', status: '?', pts: 0, maxPts: pts});
+        }
+      }
+      detailIdx++;
+    });
+    
+    // Speaking (text)
+    var speakQs = sec.querySelectorAll('.question[data-type="speak"]');
+    speakQs.forEach(function(q) {
+      var ta = q.querySelector('textarea');
+      var pts = 20;
+      sectionMax += pts;
+      maxTotal += pts;
+      sectionItems++;
+      var qtext = q.textContent.replace(/\s+/g, ' ').trim().substring(0, 80);
+      if (ta) {
+        var text = ta.value;
+        var wc = wordCount(text);
+        var userAns = text ? text.substring(0, 80) + (text.length > 80 ? '...' : '') : '(Vuoto)';
+        try {
+          var keys = JSON.parse(ta.dataset.keywords);
+          var ks = keywordScore(text, keys);
+          var lenBonus = Math.min(wc, 80) / 80 * 5;
+          var score = Math.min(ks + lenBonus, 20);
+          sectionTotal += score;
+          total += score;
+          var keyStr = keys.join(', ');
+          details.push({sec: secName, num: detailIdx+1, q: qtext.substring(0,50), user: userAns, correct: 'Parole chiave: ' + keyStr.substring(0,60), status: score >= 12 ? '✓' : '△', pts: Math.round(score), maxPts: pts});
+        } catch(e) {
+          sectionTotal += 0; total += 0;
+          details.push({sec: secName, num: detailIdx+1, q: qtext.substring(0,50), user: userAns, correct: '(consultare il docente)', status: '?', pts: 0, maxPts: pts});
+        }
+      }
+      detailIdx++;
+    });
+    
+    // Show section score
+    var secScore = sec.querySelector('.section-score');
+    if (secScore) {
+      secScore.style.display = 'block';
+      var pct = sectionMax > 0 ? Math.round(sectionTotal / sectionMax * 100) : 0;
+      secScore.textContent = 'Sezione: ' + Math.round(sectionTotal) + '/' + sectionMax + ' (' + pct + '%)';
+    }
+  });
+  
+  // Overall score
+  var pct = maxTotal > 0 ? Math.round(total / maxTotal * 100) : 0;
+  var scoreBar = document.getElementById('scoreBar');
+  scoreBar.style.display = 'block';
+  document.getElementById('totalScore').textContent = Math.round(total) + '/' + maxTotal;
+  
+  var msg = '';
+  if (pct >= 85) msg = "🟢 Eccellente! Livello raggiunto brillantemente. Sei pronto per l'esame vero!";
+  else if (pct >= 70) msg = "🔵 Buono! Hai una solida preparazione. Rivedi gli errori per perfezionarti.";
+  else if (pct >= 55) msg = "🟡 Discreto. Sei sulla buona strada, ma devi studiare di più alcune aree.";
+  else if (pct >= 40) msg = "🟠 Insufficiente. Ti consiglio di ripassare le basi e riprovare.";
+  else msg = "🔴 Molto insufficiente. Hai bisogno di studiare molto prima di affrontare l'esame.";
+  document.getElementById('scoreMessage').textContent = msg + ' (Punteggio: ' + pct + '%)';
+  
+  // Show answer reference table
+  var refDiv = document.getElementById('answerReference');
+  if (!refDiv) {
+    refDiv = document.createElement('div');
+    refDiv.id = 'answerReference';
+    refDiv.className = 'section';
+    document.querySelector('.btn-submit').parentNode.parentNode.appendChild(refDiv);
+  }
+  refDiv.style.display = 'block';
+  refDiv.innerHTML = '<h2>📋 Riepilogo risposte</h2>';
+  
+  if (details.length > 0) {
+    var table = '<table class="ref-table"><thead><tr><th>#</th><th>Domanda</th><th>La tua risposta</th><th>Risposta corretta</th><th>Esito</th><th>Punti</th></tr></thead><tbody>';
+    for (var d of details) {
+      var cls = d.status === '✓' ? 'ref-corr' : (d.status === '?' ? '' : 'ref-wrong');
+      table += '<tr class="' + cls + '"><td>' + d.num + '</td><td>' + d.q.substring(0,45) + '</td><td>' + d.user.substring(0,40) + '</td><td>' + d.correct.substring(0,60) + '</td><td>' + d.status + '</td><td>' + Math.round(d.pts) + '/' + d.maxPts + '</td></tr>';
+    }
+    table += '</tbody></table>';
+    refDiv.innerHTML += table;
+    
+    // Summary
+    var corrCount = details.filter(function(d) { return d.status === '✓'; }).length;
+    var partCount = details.filter(function(d) { return d.status === '△'; }).length;
+    refDiv.innerHTML += '<p style="margin-top:12px;font-size:13px;color:#666;">✓ Corrette: ' + corrCount + ' · △ Parziali: ' + partCount + ' · ✗ Errate: ' + (details.length - corrCount - partCount) + ' · Totale: ' + details.length + ' domande</p>';
+  }
+  
+  // Sound effect
+  try {
+    var ctx = new (window.AudioContext || window.webkitAudioContext)();
+    var osc = ctx.createOscillator();
+    osc.type = 'sine';
+    osc.frequency.value = pct >= 70 ? 880 : 440;
+    osc.connect(ctx.destination);
+    osc.start();
+    setTimeout(function() { osc.stop(); }, 300);
+  } catch(e) {}
+  
+  window.scrollTo(0, 0);
+}
+
+function resetExam() {
+  if (!confirm('Sei sicuro di voler ricominciare? Tutte le risposte verranno cancellate.')) return;
+  document.querySelectorAll('input[type="radio"]').forEach(function(r) { r.checked = false; });
+  document.querySelectorAll('input[type="text"]').forEach(function(i) { i.value = ''; });
+  document.querySelectorAll('textarea').forEach(function(t) { t.value = ''; });
+  document.querySelectorAll('.feedback').forEach(function(f) { f.className = 'feedback'; f.textContent = ''; });
+  document.querySelectorAll('.section-score').forEach(function(s) { s.style.display = 'none'; });
+  document.getElementById('scoreBar').style.display = 'none';
+  var ref = document.getElementById('answerReference');
+  if (ref) ref.style.display = 'none';
+}
 function showScript(btn) {
   var qDiv = btn.closest('.question.stem') || btn.parentElement;
   if (!qDiv) return;
@@ -422,7 +587,7 @@ function showScript(btn) {
   if (!existing) {
     existing = document.createElement('div');
     existing.className = 'script-text';
-    existing.style.cssText = 'margin-top:8px;padding:10px;background:#fff8e1;border-radius:6px;font-size:13px;line-height:1.6;border-left:3px solid #ffc107;display:none;';
+    existing.style.display = 'none';
     btn.parentNode.insertBefore(existing, btn.nextSibling);
   }
   if (existing.style.display === 'none' || !existing.textContent) {
@@ -433,538 +598,7 @@ function showScript(btn) {
     existing.style.display = 'none';
     btn.textContent = 'Testo';
   }
-}
-
-
-
-
-function normalize(s) {
-
-  return s.toLowerCase().replace(/[\s'´\`‘’\.]+/g, ' ').trim();
-
-}
-
-
-
-function keywordScore(text, keywords) {
-
-  if (!text || text.trim().length < 10) return 0;
-
-  var t = text.toLowerCase();
-
-  var found = 0;
-
-  for (var k of keywords) {
-
-    if (t.includes(k.toLowerCase())) found++;
-
-  }
-
-  var total = keywords.length;
-
-  var ratio = found / total;
-
-  if (ratio >= 0.6) return 20;
-
-  if (ratio >= 0.4) return 15;
-
-  if (ratio >= 0.2) return 10;
-
-  if (found > 0) return 5;
-
-  return 0;
-
-}
-
-
-
-function wordCount(text) {
-
-  return text.trim().split(/\s+/).filter(w => w.length > 0).length;
-
-}
-
-
-
-// Preload first audio silently
-
-(function() {
-
-  var firstAudio = document.querySelector('[data-audio-src]');
-
-  if (firstAudio) {
-
-    var src = firstAudio.getAttribute('data-audio-src');
-
-    var xhr = new XMLHttpRequest();
-
-    xhr.open('GET', src, true);
-
-    xhr.responseType = 'arraybuffer';
-
-    xhr.send();
-
-  }
-
-})();
-
-
-
-function submitExam() {
-
-  var total = 0;
-
-  var maxTotal = 0;
-
-  var details = [];
-
-  var detailIdx = 0;
-
-  
-
-  // Score each section
-
-  var sections = document.querySelectorAll('.section');
-
-  sections.forEach(function(sec) {
-
-    var sectionTotal = 0;
-
-    var sectionMax = 0;
-
-    var sectionItems = 0;
-
-    var secName = sec.querySelector('h2').textContent.replace(/\(max.*?\)/, '').trim();
-
-    
-
-    // Multiple choice (listen/read)
-
-    var choiceQs = sec.querySelectorAll('.question[data-type="listen"], .question[data-type="read"]');
-
-    choiceQs.forEach(function(q) {
-
-      var ansIdx = parseInt(q.dataset.ans);
-
-      var pts = parseInt(q.dataset.points) || 4;
-
-      var selected = q.querySelector('input[type="radio"]:checked');
-
-      var fb = q.querySelector('.feedback');
-
-      var qtext = q.querySelector('.question-text') ? q.querySelector('.question-text').textContent.trim() : '';
-
-      // Get all option texts
-
-      var opts = q.querySelectorAll('.opts label');
-
-      var optTexts = [];
-
-      opts.forEach(function(o) { optTexts.push(o.textContent.trim()); });
-
-      var correctAns = optTexts[ansIdx] || ('Opzione ' + (ansIdx+1));
-
-      var userAns = selected ? optTexts[parseInt(selected.value)] : '(Non risposto)';
-
-      
-
-      sectionMax += pts;
-
-      maxTotal += pts;
-
-      sectionItems++;
-
-      var correct = false;
-
-      if (selected) {
-
-        var val = parseInt(selected.value);
-
-        if (val === ansIdx) {
-
-          sectionTotal += pts;
-
-          total += pts;
-
-          correct = true;
-
-          fb.className = 'feedback correct';
-
-          fb.textContent = '✓ Corretto! (' + pts + '/' + pts + ' pt)';
-
-        } else {
-
-          fb.className = 'feedback wrong';
-
-          fb.textContent = '✗ Hai risposto: ' + userAns + '. Corretta: ' + correctAns + ' (0/' + pts + ' pt)';
-
-        }
-
-      } else {
-
-        fb.className = 'feedback wrong';
-
-        fb.textContent = '⚠ Non risposto. Corretta: ' + correctAns + ' (0/' + pts + ' pt)';
-
-      }
-
-      details.push({sec: secName, num: detailIdx+1, q: qtext, user: userAns, correct: correctAns, status: correct ? '✓' : '✗', pts: correct ? pts : 0, maxPts: pts});
-
-      detailIdx++;
-
-    });
-
-    
-
-    // Fill-in grammar
-
-    var fillQs = sec.querySelectorAll('.question[data-type="fill"]');
-
-    fillQs.forEach(function(q) {
-
-      var ans = q.dataset.ans.split(',').map(s => normalize(s));
-
-      var pts = parseInt(q.dataset.points) || 3;
-
-      var input = q.querySelector('input[type="text"]');
-
-      var fb = q.querySelector('.feedback');
-
-      var qtext = q.textContent.replace(/\s+/g, ' ').trim().substring(0, 80);
-
-      var userAns = (input && input.value.trim()) ? input.value.trim() : '(Non risposto)';
-
-      var correctAns = q.dataset.ans;
-
-      
-
-      sectionMax += pts;
-
-      maxTotal += pts;
-
-      sectionItems++;
-
-      var correct = false;
-
-      if (input && input.value.trim()) {
-
-        var userAnsNorm = normalize(input.value);
-
-        for (var a of ans) {
-
-          if (userAnsNorm === a || userAnsNorm.includes(a) || a.includes(userAnsNorm)) {
-
-            correct = true;
-
-            break;
-
-          }
-
-        }
-
-        if (correct) {
-
-          sectionTotal += pts;
-
-          total += pts;
-
-          fb.className = 'feedback correct';
-
-          fb.textContent = '✓ Corretto! (' + pts + '/' + pts + ' pt)';
-
-        } else {
-
-          fb.className = 'feedback wrong';
-
-          fb.textContent = '✗ Hai scritto: ' + userAns + '. Corretta: ' + correctAns + ' (0/' + pts + ' pt)';
-
-        }
-
-      } else {
-
-        fb.className = 'feedback wrong';
-
-        fb.textContent = '⚠ Non risposto. Corretta: ' + correctAns + ' (0/' + pts + ' pt)';
-
-      }
-
-      details.push({sec: secName, num: detailIdx+1, q: qtext.substring(0,60), user: userAns, correct: correctAns, status: correct ? '✓' : '✗', pts: correct ? pts : 0, maxPts: pts});
-
-      detailIdx++;
-
-    });
-
-    
-
-    // Writing
-
-    var writeQs = sec.querySelectorAll('.question[data-type="write"]');
-
-    writeQs.forEach(function(q) {
-
-      var ta = q.querySelector('textarea');
-
-      var pts = 20;
-
-      sectionMax += pts;
-
-      maxTotal += pts;
-
-      sectionItems++;
-
-      var qtext = q.textContent.replace(/\s+/g, ' ').trim().substring(0, 80);
-
-      if (ta) {
-
-        var text = ta.value;
-
-        var wc = wordCount(text);
-
-        var userAns = text ? text.substring(0, 80) + (text.length > 80 ? '...' : '') : '(Vuoto)';
-
-        try {
-
-          var keys = JSON.parse(ta.dataset.keywords);
-
-          var ks = keywordScore(text, keys);
-
-          var lenBonus = Math.min(wc, 100) / 100 * 5;
-
-          var score = Math.min(ks + lenBonus, 20);
-
-          sectionTotal += score;
-
-          total += score;
-
-          var keyStr = keys.join(', ');
-
-          details.push({sec: secName, num: detailIdx+1, q: qtext.substring(0,50), user: userAns, correct: 'Parole chiave: ' + keyStr.substring(0,60), status: score >= 12 ? '✓' : '△', pts: Math.round(score), maxPts: pts});
-
-        } catch(e) {
-
-          sectionTotal += 0; total += 0;
-
-          details.push({sec: secName, num: detailIdx+1, q: qtext.substring(0,50), user: userAns, correct: '(consultare il docente)', status: '?', pts: 0, maxPts: pts});
-
-        }
-
-      }
-
-      detailIdx++;
-
-    });
-
-    
-
-    // Speaking (text)
-
-    var speakQs = sec.querySelectorAll('.question[data-type="speak"]');
-
-    speakQs.forEach(function(q) {
-
-      var ta = q.querySelector('textarea');
-
-      var pts = 20;
-
-      sectionMax += pts;
-
-      maxTotal += pts;
-
-      sectionItems++;
-
-      var qtext = q.textContent.replace(/\s+/g, ' ').trim().substring(0, 80);
-
-      if (ta) {
-
-        var text = ta.value;
-
-        var wc = wordCount(text);
-
-        var userAns = text ? text.substring(0, 80) + (text.length > 80 ? '...' : '') : '(Vuoto)';
-
-        try {
-
-          var keys = JSON.parse(ta.dataset.keywords);
-
-          var ks = keywordScore(text, keys);
-
-          var lenBonus = Math.min(wc, 80) / 80 * 5;
-
-          var score = Math.min(ks + lenBonus, 20);
-
-          sectionTotal += score;
-
-          total += score;
-
-          var keyStr = keys.join(', ');
-
-          details.push({sec: secName, num: detailIdx+1, q: qtext.substring(0,50), user: userAns, correct: 'Parole chiave: ' + keyStr.substring(0,60), status: score >= 12 ? '✓' : '△', pts: Math.round(score), maxPts: pts});
-
-        } catch(e) {
-
-          sectionTotal += 0; total += 0;
-
-          details.push({sec: secName, num: detailIdx+1, q: qtext.substring(0,50), user: userAns, correct: '(consultare il docente)', status: '?', pts: 0, maxPts: pts});
-
-        }
-
-      }
-
-      detailIdx++;
-
-    });
-
-    
-
-    // Show section score
-
-    var secScore = sec.querySelector('.section-score');
-
-    if (secScore) {
-
-      secScore.style.display = 'block';
-
-      var pct = sectionMax > 0 ? Math.round(sectionTotal / sectionMax * 100) : 0;
-
-      secScore.textContent = 'Sezione: ' + Math.round(sectionTotal) + '/' + sectionMax + ' (' + pct + '%)';
-
-    }
-
-  });
-
-  
-
-  // Overall score
-
-  var pct = maxTotal > 0 ? Math.round(total / maxTotal * 100) : 0;
-
-  var scoreBar = document.getElementById('scoreBar');
-
-  scoreBar.style.display = 'block';
-
-  document.getElementById('totalScore').textContent = Math.round(total) + '/' + maxTotal;
-
-  
-
-  var msg = '';
-
-  if (pct >= 85) msg = "🟢 Eccellente! Livello raggiunto brillantemente. Sei pronto per l'esame vero!";
-
-  else if (pct >= 70) msg = "🔵 Buono! Hai una solida preparazione. Rivedi gli errori per perfezionarti.";
-
-  else if (pct >= 55) msg = "🟡 Discreto. Sei sulla buona strada, ma devi studiare di più alcune aree.";
-
-  else if (pct >= 40) msg = "🟠 Insufficiente. Ti consiglio di ripassare le basi e riprovare.";
-
-  else msg = "🔴 Molto insufficiente. Hai bisogno di studiare molto prima di affrontare l'esame.";
-
-  document.getElementById('scoreMessage').textContent = msg + ' (Punteggio: ' + pct + '%)';
-
-  
-
-  // Show answer reference table
-
-  var refDiv = document.getElementById('answerReference');
-
-  if (!refDiv) {
-
-    refDiv = document.createElement('div');
-
-    refDiv.id = 'answerReference';
-
-    refDiv.className = 'section';
-
-    document.querySelector('.btn-submit').parentNode.parentNode.appendChild(refDiv);
-
-  }
-
-  refDiv.style.display = 'block';
-
-  refDiv.innerHTML = '<h2>📋 Riepilogo risposte</h2>';
-
-  
-
-  if (details.length > 0) {
-
-    var table = '<table class="ref-table"><thead><tr><th>#</th><th>Domanda</th><th>La tua risposta</th><th>Risposta corretta</th><th>Esito</th><th>Punti</th></tr></thead><tbody>';
-
-    for (var d of details) {
-
-      var cls = d.status === '✓' ? 'ref-corr' : (d.status === '?' ? '' : 'ref-wrong');
-
-      table += '<tr class="' + cls + '"><td>' + d.num + '</td><td>' + d.q.substring(0,45) + '</td><td>' + d.user.substring(0,40) + '</td><td>' + d.correct.substring(0,60) + '</td><td>' + d.status + '</td><td>' + Math.round(d.pts) + '/' + d.maxPts + '</td></tr>';
-
-    }
-
-    table += '</tbody></table>';
-
-    refDiv.innerHTML += table;
-
-    
-
-    // Summary
-
-    var corrCount = details.filter(function(d) { return d.status === '✓'; }).length;
-
-    var partCount = details.filter(function(d) { return d.status === '△'; }).length;
-
-    refDiv.innerHTML += '<p style="margin-top:12px;font-size:13px;color:#666;">✓ Corrette: ' + corrCount + ' · △ Parziali: ' + partCount + ' · ✗ Errate: ' + (details.length - corrCount - partCount) + ' · Totale: ' + details.length + ' domande</p>';
-
-  }
-
-  
-
-  // Sound effect
-
-  try {
-
-    var ctx = new (window.AudioContext || window.webkitAudioContext)();
-
-    var osc = ctx.createOscillator();
-
-    osc.type = 'sine';
-
-    osc.frequency.value = pct >= 70 ? 880 : 440;
-
-    osc.connect(ctx.destination);
-
-    osc.start();
-
-    setTimeout(function() { osc.stop(); }, 300);
-
-  } catch(e) {}
-
-  
-
-  window.scrollTo(0, 0);
-
-}
-
-
-
-function resetExam() {
-
-  if (!confirm('Sei sicuro di voler ricominciare? Tutte le risposte verranno cancellate.')) return;
-
-  document.querySelectorAll('input[type="radio"]').forEach(function(r) { r.checked = false; });
-
-  document.querySelectorAll('input[type="text"]').forEach(function(i) { i.value = ''; });
-
-  document.querySelectorAll('textarea').forEach(function(t) { t.value = ''; });
-
-  document.querySelectorAll('.feedback').forEach(function(f) { f.className = 'feedback'; f.textContent = ''; });
-
-  document.querySelectorAll('.section-score').forEach(function(s) { s.style.display = 'none'; });
-
-  document.getElementById('scoreBar').style.display = 'none';
-
-  var ref = document.getElementById('answerReference');
-
-  if (ref) ref.style.display = 'none';
-
-}
-
-</script>
+}</script>
 
 </body>
 
