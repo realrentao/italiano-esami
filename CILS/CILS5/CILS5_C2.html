@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CILS CILS5 — CILS5_C2 — Online Exam</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', system-ui, sans-serif; background: #f5f5f5; color: #222; padding: 20px; }
+.container { max-width: 800px; margin: 0 auto; }
+h1 { font-size: 22px; margin-bottom: 4px; }
+h1 small { font-size: 14px; font-weight: 400; color: #666; }
+.header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; }
+.header .meta { font-size: 13px; color: #666; }
+.section { background: #fff; border-radius: 12px; padding: 20px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,.08); border-left: 4px solid #3498db; }
+.section.ascolto { border-left-color: #e67e22; }
+.section.lettura { border-left-color: #2ecc71; }
+.section.grammatica { border-left-color: #9b59b6; }
+.section.scrittura { border-left-color: #3498db; }
+.section.orale { border-left-color: #e74c3c; }
+.section h2 { font-size: 16px; margin-bottom: 4px; }
+.section h2 small { font-size: 12px; color: #999; }
+.question { margin: 14px 0; padding: 10px; background: #fafafa; border-radius: 8px; border: 1px solid #eee; }
+.question.stem { border-left: 3px solid #3498db; }
+.question.stem[data-type="listen"] { border-left-color: #e67e22; }
+.question-text { font-weight: 500; margin: 6px 0; font-size: 14px; }
+.opts label { display: block; margin: 4px 0; padding: 6px 10px; border-radius: 6px; cursor: pointer; font-size: 13px; transition: background .2s; }
+.opts label:hover { background: #eef; }
+.opts input { margin-right: 8px; }
+input[type="text"] { width: 100%; padding: 8px 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; }
+textarea { width: 100%; min-height: 80px; padding: 8px 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; resize: vertical; }
+.feedback { margin-top: 6px; padding: 4px 10px; border-radius: 6px; font-size: 12px; display: none; }
+.feedback.correct { display: block; background: #d4edda; color: #155724; }
+.feedback.wrong { display: block; background: #f8d7da; color: #721c24; }
+.play-btn { padding: 6px 16px; background: #e67e22; color: #fff; border: none; border-radius: 20px; cursor: pointer; font-size: 13px; transition: all .2s; }
+.play-btn:hover { background: #d35400; }
+.play-btn.loading { opacity: .6; }
+.play-btn.playing { background: #c0392b; }
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin: 20px 0; }
+.btn-row button { padding: 10px 24px; border: none; border-radius: 8px; cursor: pointer; font-size: 14px; transition: all .2s; }
+.btn-submit { background: #27ae60; color: #fff; }
+.btn-submit:hover { background: #219a52; }
+.btn-reset { background: #95a5a6; color: #fff; }
+.btn-reset:hover { background: #7f8c8d; }
+.score-box { background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; padding: 16px; border-radius: 12px; text-align: center; margin: 20px 0; display: none; }
+.score-box h3 { font-size: 36px; }
+.score-box .grade { font-size: 16px; opacity: .9; }
+table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 13px; display: none; }
+th, td { padding: 8px 12px; text-align: left; border-bottom: 1px solid #eee; }
+th { background: #f8f9fa; font-weight: 600; }
+.script-btn { padding: 3px 10px; background: #fff8e1; border: 1px solid #ffc107; border-radius: 16px; cursor: pointer; font-size: 11px; vertical-align: middle; }
+.script-btn:hover { background: #ffe082; }
+</style></head>
+<body>
+<div class="container">
+  <div class="header">
+    <div>
+      <h1>CILS CILS5 — CILS5_C2 <small>Online Exam</small></h1>
+    </div>
+    <div class="meta">
+      <span id="timer">00:00</span>
+    </div>
+  </div>
+  <div class="section ascolto" id="sec_0">
+    <h2>Ascolto <small>20 pt</small></h2>
+  <div class="question stem" data-type="listen" data-ans="0" data-script='La Corte europea ha stabilito un risarcimento per violazione dei diritti umani.' data-points="4">
+    <div style="font-size:12px;color:#999;margin-bottom:4px;">?? Ascolto 1</div>
+    <div style="font-weight:500;margin:6px 0;" class="question-text">Cosa stabilisce la sentenza?</div>
+    <div class="opts" data-q="0">
+      <label><input type="radio" name="q_0_0" value="0"> Risarcimento danni</label>
+      <label><input type="radio" name="q_0_0" value="1"> Carcere</label>
+      <label><input type="radio" name="q_0_0" value="2"> Assoluzione</label>
+    </div>
+    <div id="fb_0_0" class="feedback"></div>
+  </div>
+  <div class="question stem" data-type="listen" data-ans="0" data-script='Il governo investe cinquanta miliardi per la transizione ecologica.' data-points="4">
+    <div style="font-size:12px;color:#999;margin-bottom:4px;">?? Ascolto 2</div>
+    <div style="font-weight:500;margin:6px 0;" class="question-text">Strategia del governo?</div>
+    <div class="opts" data-q="1">
+      <label><input type="radio" name="q_0_1" value="0"> Transizione ecologica</label>
+      <label><input type="radio" name="q_0_1" value="1"> Digitalizzazione</label>
+      <label><input type="radio" name="q_0_1" value="2"> Debito</label>
+    </div>
+    <div id="fb_0_1" class="feedback"></div>
+  </div>
+  <div class="question stem" data-type="listen" data-ans="0" data-script='L&#39;Eurostat evidenzia un progressivo invecchiamento della popolazione.' data-points="4">
+    <div style="font-size:12px;color:#999;margin-bottom:4px;">?? Ascolto 3</div>
+    <div style="font-weight:500;margin:6px 0;" class="question-text">Analisi demografica?</div>
+    <div class="opts" data-q="2">
+      <label><input type="radio" name="q_0_2" value="0"> Invecchiamento</label>
+      <label><input type="radio" name="q_0_2" value="1"> Aumento nascite</label>
+      <label><input type="radio" name="q_0_2" value="2"> Calo immigrazione</label>
+    </div>
+    <div id="fb_0_2" class="feedback"></div>
+  </div>
+  <div class="question stem" data-type="listen" data-ans="0" data-script='Il convegno di fisica a Trieste ha come tema l&#39;intelligenza artificiale.' data-points="4">
+    <div style="font-size:12px;color:#999;margin-bottom:4px;">?? Ascolto 4</div>
+    <div style="font-weight:500;margin:6px 0;" class="question-text">Tema del convegno?</div>
+    <div class="opts" data-q="3">
+      <label><input type="radio" name="q_0_3" value="0"> Intelligenza artificiale</label>
+      <label><input type="radio" name="q_0_3" value="1"> Clima</label>
+      <label><input type="radio" name="q_0_3" value="2"> Energia</label>
+    </div>
+    <div id="fb_0_3" class="feedback"></div>
+  </div>
+  <div class="question stem" data-type="listen" data-ans="2" data-script='La direttiva impone standard ambientali per l&#39;industria automobilistica.' data-points="4">
+    <div style="font-size:12px;color:#999;margin-bottom:4px;">?? Ascolto 5</div>
+    <div style="font-weight:500;margin:6px 0;" class="question-text">Direttiva europea?</div>
+    <div class="opts" data-q="4">
+      <label><input type="radio" name="q_0_4" value="0"> Privacy</label>
+      <label><input type="radio" name="q_0_4" value="1"> Antitrust</label>
+      <label><input type="radio" name="q_0_4" value="2"> Standard ambientali</label>
+    </div>
+    <div id="fb_0_4" class="feedback"></div>
+  </div>
+  </div>
+  <div class="section lettura" id="sec_1">
+    <h2>Lettura <small>20 pt</small></h2>
+  <div class="question stem" data-type="read" data-ans="0" data-points="10">
+    <div style="font-weight:500;margin:6px 0;" class="question-text">Direttiva riguarda?</div>
+    <div class="opts" data-q="0">
+      <label><input type="radio" name="q_1_0" value="0"> Trasparenza prezzi</label>
+      <label><input type="radio" name="q_1_0" value="1"> Dati</label>
+      <label><input type="radio" name="q_1_0" value="2"> Consumatori</label>
+    </div>
+    <div id="fb_1_0" class="feedback"></div>
+  </div>
+  <div class="question stem" data-type="read" data-ans="0" data-points="10">
+    <div style="font-weight:500;margin:6px 0;" class="question-text">Chi è obbligato?</div>
+    <div class="opts" data-q="1">
+      <label><input type="radio" name="q_1_1" value="0"> Piattaforme digitali</label>
+      <label><input type="radio" name="q_1_1" value="1"> Negozi fisici</label>
+      <label><input type="radio" name="q_1_1" value="2"> Tutti venditori</label>
+    </div>
+    <div id="fb_1_1" class="feedback"></div>
+  </div>
+  </div>
+  <div class="section grammatica" id="sec_2">
+    <h2>Grammatica <small>20 pt</small></h2>
+  <div class="question" data-type="grammar" data-keywords="" data-points="10">
+    <div style="font-weight:500;margin:6px 0;" class="question-text">Lungi dal ___ (voler) offendere...</div>
+    <input type="text" id="inp_2_0" placeholder="Scrivi la risposta..." autocomplete="off">
+    <div id="fb_2_0" class="feedback"></div>
+  </div>
+  <div class="question" data-type="grammar" data-keywords="" data-points="10">
+    <div style="font-weight:500;margin:6px 0;" class="question-text">Per quanto ___ (sforzarsi)...</div>
+    <input type="text" id="inp_2_1" placeholder="Scrivi la risposta..." autocomplete="off">
+    <div id="fb_2_1" class="feedback"></div>
+  </div>
+  </div>
+  <div class="section scrittura" id="sec_3">
+    <h2>Scrittura <small>20 pt</small></h2>
+  <div class="question" data-type="scrittura" data-keywords="intelligenza|lavoro" data-points="20">
+    <div style="font-weight:500;margin:6px 0;" class="question-text">Analizza l'impatto dell'IA sul mercato del lavoro.</div>
+    <textarea id="inp_3_0" placeholder="Scrivi qui..." autocomplete="off"></textarea>
+    <div id="fb_3_0" class="feedback"></div>
+  </div>
+  </div>
+  <div class="section orale" id="sec_4">
+    <h2>Orale <small>20 pt</small></h2>
+  <div class="question" data-type="orale" data-keywords="digitalizzazione|cittadini" data-points="20">
+    <div style="font-weight:500;margin:6px 0;" class="question-text">Analizza la digitalizzazione della PA.</div>
+    <textarea id="inp_4_0" placeholder="Scrivi qui..." autocomplete="off"></textarea>
+    <div id="fb_4_0" class="feedback"></div>
+  </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn-submit" onclick="submitExam()">📝 Invia e valuta</button>
+    <button class="btn-reset" onclick="resetExam()">🔄 Ricomincia</button>
+  </div>
+  
+  <div class="score-box" id="scoreBox">
+    <h3 id="scorePct">0%</h3>
+    <div class="grade" id="scoreGrade">—</div>
+  </div>
+  
+  <table id="resultTable">
+    <thead><tr><th>Sezione</th><th>Punteggio</th><th>Max</th></tr></thead>
+    <tbody id="resultBody"></tbody>
+  </table>
+</div>
+
+<script>
+var _audioCtx = null;
+var _audioGen = 0;
+
+function _getAudioCtx() {
+  if (!_audioCtx) _audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  return _audioCtx;
+}
+
+function _stopCurrent() {
+  if (window._curSource) { try { window._curSource.stop(); } catch(e) {} window._curSource = null; }
+  if (window._curBtn) {
+    window._curBtn.classList.remove('playing');
+    window._curBtn.innerHTML = '▶ Ascolta';
+    window._curBtn = null;
+  }
+}
+
+function showScript(btn) {
+  var qDiv = btn.closest('.question');
+  if (!qDiv) return;
+  var scriptText = qDiv.getAttribute('data-script');
+  if (!scriptText) return;
+  var fb = qDiv.querySelector('.script-text');
+  if (!fb) {
+    fb = document.createElement('div');
+    fb.className = 'script-text';
+    fb.style.cssText = 'margin-top:8px;padding:10px;background:#fff8e1;border-radius:6px;font-size:13px;line-height:1.6;border-left:3px solid #ffc107;display:none;';
+    btn.parentNode.insertBefore(fb, btn.nextSibling);
+  }
+  if (fb.style.display === 'none') {
+    fb.textContent = '?? ' + scriptText;
+    fb.style.display = 'block';
+    btn.textContent = '?? Nascondi testo';
+  } else {
+    fb.style.display = 'none';
+    btn.textContent = '?? Testo';
+  }
+}
+
+function playAudio(btn) {
+  var jsPath = btn.getAttribute('data-audio-js');
+  if (!jsPath) { console.error('No audio source'); return; }
+  if (btn.classList.contains('playing')) { _stopCurrent(); return; }
+  _stopCurrent();
+  var myGen = ++_audioGen;
+  btn.classList.add('loading');
+  btn.innerHTML = '⏳...';
+  window._audioLoaded = function(b64) {
+    window._audioLoaded = null;
+    if (myGen !== _audioGen) return;
+    btn.classList.remove('loading');
+    var parts = b64.split(',');
+    var raw = atob(parts[1]);
+    var buf = new ArrayBuffer(raw.length);
+    var view = new Uint8Array(buf);
+    for (var i = 0; i < raw.length; i++) view[i] = raw.charCodeAt(i);
+    var ctx = _getAudioCtx();
+    if (ctx.state === 'suspended') ctx.resume();
+    ctx.decodeAudioData(buf, function(buffer) {
+      if (myGen !== _audioGen) return;
+      var source = ctx.createBufferSource();
+      source.buffer = buffer;
+      source.connect(ctx.destination);
+      source.start(0);
+      window._curSource = source;
+      window._curBtn = btn;
+      btn.classList.add('playing');
+      btn.innerHTML = '⏹ Ferma';
+      source.onended = function() { _stopCurrent(); };
+    }, function(err) {
+      btn.classList.remove('loading');
+      btn.innerHTML = '❌';
+      setTimeout(function() { btn.innerHTML = '▶ Riprova'; }, 2000);
+    });
+  };
+  var script = document.createElement('script');
+  script.src = jsPath + '.js?' + Date.now();
+  script.onerror = function() {
+    btn.classList.remove('loading');
+    window._audioLoaded = null;
+    btn.innerHTML = '❌';
+    setTimeout(function() { btn.innerHTML = '▶ Riprova'; }, 2000);
+  };
+  document.head.appendChild(script);
+}
+
+function wordCount(text) {
+  return text.trim().split(/\s+/).filter(function(w) { return w.length > 0; }).length;
+}
+
+// Preload first audio silently
+(function() {
+  var firstAudio = document.querySelector('[data-audio-js]');
+  if (firstAudio) {
+    var src = firstAudio.getAttribute('data-audio-js');
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', src + '.js', true);
+    xhr.send();
+  }
+})();
+
+function submitExam() {
+  var sections = document.querySelectorAll('.section');
+  var total = 0;
+  var grandMax = 0;
+  var sectionRows = '';
+  
+  sections.forEach(function(sec, si) {
+    var questions = sec.querySelectorAll('.question');
+    var sectionTotal = 0;
+    var sectionMax = 0;
+    
+    questions.forEach(function(q, qi) {
+      var pts = parseInt(q.getAttribute('data-points')) || 4;
+      sectionMax += pts;
+      
+      // Listening/Reading: radio buttons
+      if (q.querySelector('.opts')) {
+        var ansIdx = parseInt(q.getAttribute('data-ans'));
+        var selected = q.querySelector('input[type="radio"]:checked');
+        var fb = q.querySelector('.feedback');
+        var opts = q.querySelectorAll('.opts label');
+        var correctAns = opts.length > ansIdx ? opts[ansIdx].textContent.trim() : '';
+        var userAns = selected ? selected.parentElement.textContent.trim() : '';
+        var scriptText = q.getAttribute('data-script') || '';
+        
+        if (selected) {
+          var val = parseInt(selected.value);
+          if (val === ansIdx) {
+            sectionTotal += pts;
+            total += pts;
+            fb.className = 'feedback correct';
+            fb.innerHTML = '✓ Corretto! (' + pts + '/' + pts + ' pt)' + (scriptText ? '<br><span style="font-size:12px;color:#666;">?? ' + scriptText + '</span>' : '');
+          } else {
+            fb.className = 'feedback wrong';
+            fb.innerHTML = '✗ Hai risposto: ' + userAns + '. Corretta: ' + correctAns + ' (0/' + pts + ' pt)' + (scriptText ? '<br><span style="font-size:12px;color:#666;">?? ' + scriptText + '</span>' : '');
+          }
+        } else {
+          fb.className = 'feedback wrong';
+          fb.innerHTML = '⚠ Non risposto. Corretta: ' + correctAns + ' (0/' + pts + ' pt)' + (scriptText ? '<br><span style="font-size:12px;color:#666;">?? ' + scriptText + '</span>' : '');
+        }
+      }
+    });
+    
+    sectionRows += '<tr><td>' + sec.querySelector('h2').textContent + '</td><td>' + sectionTotal + '</td><td>' + sectionMax + '</td></tr>';
+    grandMax += sectionMax;
+  });
+  
+  var pct = grandMax > 0 ? Math.round(total / grandMax * 100) : 0;
+  var grade = '';
+  if (pct >= 85) grade = '?? Eccellente';
+  else if (pct >= 70) grade = '?? Buono';
+  else if (pct >= 55) grade = '?? Discreto';
+  else if (pct >= 40) grade = '?? Insufficiente';
+  else grade = '?? Insufficiente grave';
+  
+  document.getElementById('scoreBox').style.display = 'block';
+  document.getElementById('scorePct').textContent = pct + '%';
+  document.getElementById('scoreGrade').textContent = total + '/' + grandMax + ' pt — ' + grade;
+  
+  var table = document.getElementById('resultTable');
+  table.style.display = 'table';
+  document.getElementById('resultBody').innerHTML = sectionRows;
+  table.scrollIntoView({ behavior: 'smooth' });
+}
+
+function resetExam() {
+  document.querySelectorAll('.feedback').forEach(function(el) { el.style.display = 'none'; el.className = 'feedback'; });
+  document.querySelectorAll('input[type="radio"]').forEach(function(el) { el.checked = false; });
+  document.querySelectorAll('input[type="text"]').forEach(function(el) { el.value = ''; });
+  document.querySelectorAll('textarea').forEach(function(el) { el.value = ''; });
+  document.getElementById('scoreBox').style.display = 'none';
+  document.getElementById('resultTable').style.display = 'none';
+}
+</script>
+</body>
+</html>
