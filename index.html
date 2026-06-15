@@ -1,52 +1,114 @@
 <!DOCTYPE html>
 <html lang="it">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Esami Italiani Online — CILS &amp; CELI</title><style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: linear-gradient(135deg, #0f0c29, #302b63, #24243e); min-height: 100vh; color: #fff; }
-  .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
-  h1 { text-align: center; font-size: 32px; font-weight: 300; letter-spacing: 2px; margin-bottom: 8px; }
-  .subtitle { text-align: center; font-size: 14px; opacity: .6; margin-bottom: 40px; }
-  .exam-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin: 30px 0; }
-  .exam-card { background: rgba(255,255,255,.08); backdrop-filter: blur(10px); border-radius: 16px; padding: 24px; text-decoration: none; color: #fff; border: 1px solid rgba(255,255,255,.1); transition: all .3s ease; display: flex; flex-direction: column; }
-  .exam-card:hover { transform: translateY(-4px); background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.3); box-shadow: 0 20px 40px rgba(0,0,0,.3); }
-  .exam-card .level { font-size: 28px; font-weight: 700; }
-  .exam-card .desc { font-size: 13px; opacity: .7; margin-top: 4px; }
-  .exam-card .badge { display: inline-block; font-size: 11px; padding: 2px 10px; border-radius: 10px; margin-top: 10px; }
-  .badge.green { background: rgba(46,204,113,.3); color: #2ecc71; }
-  .badge.teal { background: rgba(26,188,156,.3); color: #1abc9c; }
-  .badge.blue { background: rgba(52,152,219,.3); color: #3498db; }
-  .badge.purple { background: rgba(155,89,182,.3); color: #9b59b6; }
-  .badge.coral { background: rgba(231,76,60,.3); color: #e74c3c; }
-  .badge.red { background: rgba(192,57,43,.3); color: #c0392b; }
-  .badge.orange { background: rgba(230,126,34,.3); color: #e67e22; }
-  .back-link { display: inline-block; color: rgba(255,255,255,.6); text-decoration: none; font-size: 13px; margin-bottom: 20px; }
-  .back-link:hover { color: #fff; }
-  .back-link::before { content: '← '; }
-  .exam-type { text-align: center; margin: 30px 0; }
-  .exam-type a { display: inline-block; padding: 16px 48px; border-radius: 12px; text-decoration: none; color: #fff; font-size: 18px; margin: 10px; transition: all .3s; border: 1px solid rgba(255,255,255,.15); }
-  .exam-type a:hover { transform: scale(1.02); background: rgba(255,255,255,.1); }
-  .info-section { text-align: center; margin-top: 50px; padding: 30px; background: rgba(255,255,255,.05); border-radius: 16px; }
-  .info-section p { font-size: 13px; opacity: .7; line-height: 1.8; }
-</style></head>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulazioni - Italiano V2</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: 'Lato', -apple-system, sans-serif;
+  background: #FDF8F3; color: #2C1810;
+}
+.top-band {
+  height:4px; background:linear-gradient(90deg,#009246 0%,#009246 33%,#FFF 33%,#FFF 66%,#CE2B37 66%,#CE2B37 100%);
+}
+.container { max-width:960px; margin:0 auto; padding:40px 20px; }
+.header {
+  text-align:center; margin-bottom:40px;
+}
+.header h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size:32px; margin-bottom:8px;
+}
+.header h1 small { font-weight:400; font-size:18px; opacity:0.7; }
+.header p { font-size:14px; color:#666; }
+.level-card {
+  background:#FFF; border:1px solid #E8DCD0; border-radius:8px;
+  margin-bottom:18px; overflow:hidden;
+  box-shadow:0 1px 3px rgba(0,0,0,0.04);
+}
+.level-header {
+  background: #2C1810; color:#FFF;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size:18px; padding:12px 20px;
+}
+.level-header span { font-weight:400; font-size:14px; opacity:0.7; margin-left:10px; }
+.level-body { padding:16px 20px; display:flex; gap:8px; flex-wrap:wrap; }
+.set-btn {
+  display:inline-block; padding:8px 18px;
+  background:#FFF; color:#2C1810;
+  border:1px solid #009246; border-radius:6px;
+  text-decoration:none; font-size:14px; font-weight:500;
+  transition:all 0.2s;
+}
+.set-btn:hover { background:#009246; color:#FFF; }
+.footer { text-align:center; margin-top:40px; font-size:13px; color:#999; }
+</style>
+</head>
 <body>
+<div class="top-band"></div>
 <div class="container">
-  <span class="italian-flag" style="display:inline-flex;width:32px;height:22px;border-radius:3px;overflow:hidden;vertical-align:middle;margin-right:6px;"><span style="flex:1;background:#009246;"></span><span style="flex:1;background:#fff;"></span><span style="flex:1;background:#ce2b37;"></span></span>
-  <h1 style="display:inline-block;vertical-align:middle;">Esami di Italiano</h1>
-  <p class="subtitle">Simulazioni interattive CILS e CELI — 3 set ciascuno</p>
-  
-  <div class="exam-type">
-    <a href="CILS/index.html" style="background:linear-gradient(135deg,#1a5276,#2e86c1);">📝 CILS<br><span style="font-size:12px;opacity:.8;">Università di Siena</span></a>
-    <a href="CELI/index.html" style="background:linear-gradient(135deg,#6c3483,#a569bd);">📝 CELI<br><span style="font-size:12px;opacity:.8;">Università di Perugia</span></a>
-  </div>
-
-  <div class="info-section">
-    <h3 style="font-weight:400;margin-bottom:10px;">Come funziona</h3>
-    <p>
-      Ogni certificazione offre <strong>3 set di simulazioni</strong>.<br>
-      Ogni prova contiene 5 sezioni: Ascolto · Lettura · Grammatica · Scrittura · Produzione orale<br>
-      Ascolta i file audio e premi <strong>"Invia e valuta"</strong> per ricevere il tuo punteggio.
-    </p>
-  </div>
+<div class="header">
+  <h1>Lingua Italiana <small>Certificazione</small></h1>
+  <p>30 simulazioni complete · A1 → C2 · 5 set per livello</p>
 </div>
-</body></html>
+
+<div class="level-card">
+  <div class="level-header">A1 <span>Base</span></div>
+  <div class="level-body"><a href="A1/Set_1/A1_Set_1.html" class="set-btn">Set 1</a>
+<a href="A1/Set_2/A1_Set_2.html" class="set-btn">Set 2</a>
+<a href="A1/Set_3/A1_Set_3.html" class="set-btn">Set 3</a>
+<a href="A1/Set_4/A1_Set_4.html" class="set-btn">Set 4</a>
+<a href="A1/Set_5/A1_Set_5.html" class="set-btn">Set 5</a>
+</div>
+</div>
+<div class="level-card">
+  <div class="level-header">A2 <span>Elementare</span></div>
+  <div class="level-body"><a href="A2/Set_1/A2_Set_1.html" class="set-btn">Set 1</a>
+<a href="A2/Set_2/A2_Set_2.html" class="set-btn">Set 2</a>
+<a href="A2/Set_3/A2_Set_3.html" class="set-btn">Set 3</a>
+<a href="A2/Set_4/A2_Set_4.html" class="set-btn">Set 4</a>
+<a href="A2/Set_5/A2_Set_5.html" class="set-btn">Set 5</a>
+</div>
+</div>
+<div class="level-card">
+  <div class="level-header">B1 <span>Intermedio</span></div>
+  <div class="level-body"><a href="B1/Set_1/B1_Set_1.html" class="set-btn">Set 1</a>
+<a href="B1/Set_2/B1_Set_2.html" class="set-btn">Set 2</a>
+<a href="B1/Set_3/B1_Set_3.html" class="set-btn">Set 3</a>
+<a href="B1/Set_4/B1_Set_4.html" class="set-btn">Set 4</a>
+<a href="B1/Set_5/B1_Set_5.html" class="set-btn">Set 5</a>
+</div>
+</div>
+<div class="level-card">
+  <div class="level-header">B2 <span>Intermedio-Avanzato</span></div>
+  <div class="level-body"><a href="B2/Set_1/B2_Set_1.html" class="set-btn">Set 1</a>
+<a href="B2/Set_2/B2_Set_2.html" class="set-btn">Set 2</a>
+<a href="B2/Set_3/B2_Set_3.html" class="set-btn">Set 3</a>
+<a href="B2/Set_4/B2_Set_4.html" class="set-btn">Set 4</a>
+<a href="B2/Set_5/B2_Set_5.html" class="set-btn">Set 5</a>
+</div>
+</div>
+<div class="level-card">
+  <div class="level-header">C1 <span>Avanzato</span></div>
+  <div class="level-body"><a href="C1/Set_1/C1_Set_1.html" class="set-btn">Set 1</a>
+<a href="C1/Set_2/C1_Set_2.html" class="set-btn">Set 2</a>
+<a href="C1/Set_3/C1_Set_3.html" class="set-btn">Set 3</a>
+<a href="C1/Set_4/C1_Set_4.html" class="set-btn">Set 4</a>
+<a href="C1/Set_5/C1_Set_5.html" class="set-btn">Set 5</a>
+</div>
+</div>
+<div class="level-card">
+  <div class="level-header">C2 <span>Padronanza</span></div>
+  <div class="level-body"><a href="C2/Set_1/C2_Set_1.html" class="set-btn">Set 1</a>
+<a href="C2/Set_2/C2_Set_2.html" class="set-btn">Set 2</a>
+<a href="C2/Set_3/C2_Set_3.html" class="set-btn">Set 3</a>
+<a href="C2/Set_4/C2_Set_4.html" class="set-btn">Set 4</a>
+<a href="C2/Set_5/C2_Set_5.html" class="set-btn">Set 5</a>
+</div>
+</div>
+<div class="footer">Italian Business Style &copy; 2026</div>
+</div>
+</body>
+</html>
