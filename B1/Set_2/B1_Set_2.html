@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulazione 2 - Intermedio (B1)</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Lato', -apple-system, 'Segoe UI', sans-serif;
+  background: #FDF8F3;
+  color: #2C1810;
+  padding: 0;
+  min-height: 100vh;
+}
+.top-band {
+  height: 4px;
+  background: linear-gradient(90deg, #009246 0%, #009246 33%, #FFFFFF 33%, #FFFFFF 66%, #CE2B37 66%, #CE2B37 100%);
+}
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 30px 20px 50px;
+}
+.header {
+  background: linear-gradient(135deg, #2C1810 0%, #4A2C1A 100%);
+  color: #FFF;
+  padding: 30px 35px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  position: relative;
+  overflow: hidden;
+}
+.header::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 120px; height: 100%;
+  background: repeating-linear-gradient(
+    -45deg, transparent, transparent 8px, rgba(255,255,255,0.03) 8px, rgba(255,255,255,0.03) 16px
+  );
+}
+.header h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 600;
+  font-size: 26px;
+  margin-bottom: 4px;
+}
+.header .meta { font-size: 13px; opacity: 0.7; margin-top: 6px; }
+.score-bar {
+  background: #FFF; border: 1px solid #E8DCD0; border-radius: 8px;
+  padding: 16px 24px; margin-bottom: 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.score-bar h2 { font-size: 20px; color: #009246; font-weight: 700; }
+.score-bar p { font-size: 13px; color: #666; }
+.section {
+  background: #FFF; border: 1px solid #E8DCD0; border-radius: 8px;
+  margin-bottom: 18px; overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.section h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 17px; padding: 14px 22px; margin: 0;
+  background: #FAF5F0; border-bottom: 1px solid #E8DCD0;
+  color: #2C1810;
+}
+.question { padding: 16px 22px; border-bottom: 1px solid #F0EAE4; }
+.question:last-child { border-bottom: none; }
+.question-text { font-weight: 500; margin: 8px 0; font-size: 15px; line-height: 1.5; }
+.text {
+  background: #FAF5F0; border-left: 3px solid #009246;
+  padding: 12px 16px; margin: 8px 0;
+  border-radius: 0 6px 6px 0;
+  font-size: 13px; line-height: 1.6; color: #444;
+}
+.opts label {
+  display: block; padding: 7px 12px; margin: 3px 0;
+  border-radius: 6px; cursor: pointer; transition: background 0.15s; font-size: 14px;
+}
+.opts label:hover { background: #F5F0EB; }
+.opts input[type="radio"] { margin-right: 8px; accent-color: #009246; }
+input[type="text"], textarea {
+  width: 100%; padding: 10px 14px;
+  border: 1px solid #D4C8BC; border-radius: 6px;
+  font-size: 14px; transition: border-color 0.2s;
+}
+input[type="text"]:focus, textarea:focus { outline: none; border-color: #009246; box-shadow: 0 0 0 3px rgba(0,146,70,0.1); }
+.feedback { margin-top: 8px; padding: 8px 12px; border-radius: 6px; font-size: 13px; display: none; }
+.feedback.correct { display: block; background: #E8F5E9; color: #1B5E20; border-left: 3px solid #009246; }
+.feedback.wrong { display: block; background: #FFEBEE; color: #B71C1C; border-left: 3px solid #CE2B37; }
+.play-btn {
+  padding: 6px 16px; background: #2C1810; color: #FFF;
+  border: none; border-radius: 20px; cursor: pointer; font-size: 12px; transition: background 0.2s;
+}
+.play-btn:hover { background: #4A2C1A; }
+.play-btn.playing { background: #CE2B37; }
+.play-btn.loading { background: #B8860B; }
+.script-btn {
+  padding: 4px 14px; background: #FFF; color: #B8860B;
+  border: 1px solid #B8860B; border-radius: 20px;
+  cursor: pointer; font-size: 11px; transition: all 0.2s; vertical-align: middle; margin-left: 6px;
+}
+.script-btn:hover { background: #FFF8E1; }
+.script-text {
+  margin-top: 8px; padding: 12px; background: #FFFBEB;
+  border-radius: 6px; font-size: 13px; line-height: 1.6;
+  border-left: 3px solid #B8860B; color: #5D4037;
+}
+.btn-row { text-align: center; padding: 20px 0 10px; }
+.btn {
+  padding: 12px 28px; border: none; border-radius: 6px;
+  cursor: pointer; font-size: 14px; font-weight: 600; margin: 0 8px; transition: all 0.2s;
+}
+.btn.primary { background: #009246; color: #FFF; }
+.btn.primary:hover { background: #007A3B; box-shadow: 0 2px 6px rgba(0,146,70,0.3); }
+.btn.secondary {
+  background: #FFF; color: #2C1810; border: 1px solid #D4C8BC;
+}
+.btn.secondary:hover { background: #F5F0EB; }
+#answerReference { background: #FFF; border: 1px solid #E8DCD0; border-radius: 8px; padding: 20px; margin-top: 20px; }
+#answerReference h3 { font-family: 'Playfair Display', Georgia, serif; color: #009246; margin-bottom: 12px; }
+#resultTable { width: 100%; border-collapse: collapse; font-size: 13px; }
+#resultTable th { background: #2C1810; color: #FFF; padding: 8px 12px; text-align: left; }
+#resultTable td { padding: 8px 12px; border-bottom: 1px solid #F0EAE4; }
+.score-grade { margin-top: 8px; padding: 8px 12px; border-radius: 6px; font-weight: 500; display: inline-block; }
+</style>
+</head>
+<body>
+<div class="top-band"></div>
+<div class="container">
+<div class="header">
+  <h1>Simulazione 2 <small>Intermedio (B1)</small></h1>
+  <div class="meta">Lingua Italiana · Certificazione · 5 prove</div>
+</div>
+<div id="scoreBar" class="score-bar">
+  <h2 id="totalScore">0/100</h2>
+  <p id="scoreMessage"></p>
+</div>\n<div class="section" id="sec_ascolto">\n  <h2>Prova 1 - Ascolto <span style="font-weight:400;font-size:13px;color:#999;">(max 20 pt)</span></h2>\n  <div class="question stem" data-type="listen" data-ans="0" data-points="4" data-script="L'articolo di oggi critica l'alto livello di inquinamento atmosferico in città.">\n    <button class="play-btn" data-audio-js="B1/audio/ascolto_2_1_b1" onclick="playAudio(this)">Ascolta</button>\n    <button class="script-btn" onclick="showScript(this)">Testo</button>\n    <div class="question-text">Cosa critica l'articolo?</div>\n    <div class="opts" data-q="0">\n      <label><input type="radio" name="q_ascolto_0" value="0"> Inquinamento</label>\n      <label><input type="radio" name="q_ascolto_0" value="1"> Traffico</label>\n      <label><input type="radio" name="q_ascolto_0" value="2"> Rumore</label>\n      <label><input type="radio" name="q_ascolto_0" value="3"> Criminalità</label>\n    </div>\n    <div id="fb_ascolto_0" class="feedback"></div>\n  </div>\n  <div class="question stem" data-type="listen" data-ans="0" data-points="4" data-script="La nuova app permette di prenotare visite mediche senza fare code.">\n    <button class="play-btn" data-audio-js="B1/audio/ascolto_2_2_b1" onclick="playAudio(this)">Ascolta</button>\n    <button class="script-btn" onclick="showScript(this)">Testo</button>\n    <div class="question-text">Quale servizio offre la nuova app?</div>\n    <div class="opts" data-q="1">\n      <label><input type="radio" name="q_ascolto_1" value="0"> Prenotazione visite</label>\n      <label><input type="radio" name="q_ascolto_1" value="1"> Consegna a domicilio</label>\n      <label><input type="radio" name="q_ascolto_1" value="2"> Taxi sharing</label>\n      <label><input type="radio" name="q_ascolto_1" value="3"> Prenotazione ristoranti</label>\n    </div>\n    <div id="fb_ascolto_1" class="feedback"></div>\n  </div>\n  <div class="question stem" data-type="listen" data-ans="0" data-points="4" data-script="L'associazione culturale propone scambi giovanili con scuole tedesche e spagnole.">\n    <button class="play-btn" data-audio-js="B1/audio/ascolto_2_3_b1" onclick="playAudio(this)">Ascolta</button>\n    <button class="script-btn" onclick="showScript(this)">Testo</button>\n    <div class="question-text">Cosa propone l'associazione?</div>\n    <div class="opts" data-q="2">\n      <label><input type="radio" name="q_ascolto_2" value="0"> Corsi di lingua</label>\n      <label><input type="radio" name="q_ascolto_2" value="1"> Scambi culturali</label>\n      <label><input type="radio" name="q_ascolto_2" value="2"> Borse di studio</label>\n      <label><input type="radio" name="q_ascolto_2" value="3"> Stage all'estero</label>\n    </div>\n    <div id="fb_ascolto_2" class="feedback"></div>\n  </div>\n  <div class="question stem" data-type="listen" data-ans="0" data-points="4" data-script="Marta cambia lavoro perché ha ricevuto un'offerta migliore da un'azienda internazionale.">\n    <button class="play-btn" data-audio-js="B1/audio/ascolto_2_4_b1" onclick="playAudio(this)">Ascolta</button>\n    <button class="script-btn" onclick="showScript(this)">Testo</button>\n    <div class="question-text">Perché Marta cambia lavoro?</div>\n    <div class="opts" data-q="3">\n      <label><input type="radio" name="q_ascolto_3" value="0"> Miglior offerta</label>\n      <label><input type="radio" name="q_ascolto_3" value="1"> Problemi colleghi</label>\n      <label><input type="radio" name="q_ascolto_3" value="2"> Trasferimento</label>\n      <label><input type="radio" name="q_ascolto_3" value="3"> Licenziamento</label>\n    </div>\n    <div id="fb_ascolto_3" class="feedback"></div>\n  </div>\n  <div class="question stem" data-type="listen" data-ans="0" data-points="4" data-script="I residenti del quartiere segnalano la mancanza di parcheggi per auto e biciclette.">\n    <button class="play-btn" data-audio-js="B1/audio/ascolto_2_5_b1" onclick="playAudio(this)">Ascolta</button>\n    <button class="script-btn" onclick="showScript(this)">Testo</button>\n    <div class="question-text">Quale problema segnalano i residenti?</div>\n    <div class="opts" data-q="4">\n      <label><input type="radio" name="q_ascolto_4" value="0"> Mancanza parcheggi</label>\n      <label><input type="radio" name="q_ascolto_4" value="1"> Illuminazione</label>\n      <label><input type="radio" name="q_ascolto_4" value="2"> Rifiuti</label>\n      <label><input type="radio" name="q_ascolto_4" value="3"> Verde pubblico</label>\n    </div>\n    <div id="fb_ascolto_4" class="feedback"></div>\n  </div>\n</div>\n<div class="section" id="sec_lettura">\n  <h2>Prova 2 - Lettura <span style="font-weight:400;font-size:13px;color:#999;">(max 20 pt)</span></h2>\n  <div class="question stem" data-type="read" data-ans="0" data-points="20">\n    <div class="text">Il Ministero dell'Istruzione annuncia l'attivazione di nuovi corsi di laurea in inglese nelle università italiane.</div>\n    <div class="question-text">Cosa annuncia il comunicato?</div>\n    <div class="opts" data-q="0">\n      <label><input type="radio" name="q_lettura_0" value="0"> Nuovi corsi in inglese</label>\n      <label><input type="radio" name="q_lettura_0" value="1"> Riforma esami di Stato</label>\n      <label><input type="radio" name="q_lettura_0" value="2"> Assunzioni docenti</label>\n      <label><input type="radio" name="q_lettura_0" value="3"> Borse di studio</label>\n    </div>\n    <div id="fb_lettura_0" class="feedback"></div>\n  </div>\n</div>\n<div class="section" id="sec_grammatica">\n  <h2>Prova 3 - Grammatica <span style="font-weight:400;font-size:13px;color:#999;">(max 20 pt)</span></h2>\n  <div class="question" data-type="grammar" data-keywords="tu faccia" data-points="10">\n    <div class="question-text">Bisogna che ______ (tu, fare) i compiti.</div>\n    <input type="text" id="inp_grammatica_0" placeholder="Scrivi..." autocomplete="off">\n    <div id="fb_grammatica_0" class="feedback"></div>\n  </div>\n  <div class="question" data-type="grammar" data-keywords="piovesse" data-points="10">\n    <div class="question-text">Nonostante ______ (piovere), siamo usciti.</div>\n    <input type="text" id="inp_grammatica_1" placeholder="Scrivi..." autocomplete="off">\n    <div id="fb_grammatica_1" class="feedback"></div>\n  </div>\n</div>\n<div class="section" id="sec_scrittura">\n  <h2>Prova 4 - Scrittura <span style="font-weight:400;font-size:13px;color:#999;">(max 20 pt)</span></h2>\n  <div class="question" data-type="scrittura" data-keywords="evento|partecipato|giorno|persone|interessante|organizzazione|successo" data-points="20">\n    <div class="question-text">Scrivi un articolo di giornale su un evento a cui hai partecipato. 80-100 parole.</div>\n    <textarea id="inp_scrittura_0" placeholder="Scrivi qui..." rows="4" autocomplete="off"></textarea>\n    <div id="fb_scrittura_0" class="feedback"></div>\n  </div>\n</div>\n<div class="section" id="sec_orale">\n  <h2>Prova 5 - Produzione orale <span style="font-weight:400;font-size:13px;color:#999;">(max 20 pt)</span></h2>\n  <div class="question" data-type="orale" data-keywords="social|media|comunicazione|tempo|privacy|informazione|dipendenza" data-points="20">\n    <div class="question-text">Discuti dei pro e contro dei social media.</div>\n    <textarea id="inp_orale_0" placeholder="Scrivi qui..." rows="4" autocomplete="off"></textarea>\n    <div id="fb_orale_0" class="feedback"></div>\n  </div>\n</div>\n<div id="answerReference" style="display:none;">
+  <h3>Risultati</h3>
+  <table id="resultTable">
+    <thead><tr><th>Sezione</th><th>Punteggio</th><th>Max</th></tr></thead>
+    <tbody id="resultBody"></tbody>
+  </table>
+</div>\n<div class="btn-row">\n  <button class="btn primary" onclick="submitExam()">Invia e valuta</button>\n  <button class="btn secondary" onclick="resetExam()">Ricomincia</button>\n</div></div>
+<script>
+var _audioCtx = null;
+var _audioGen = 0;
+function _getAudioCtx() { if (!_audioCtx) _audioCtx = new (window.AudioContext || window.webkitAudioContext)(); return _audioCtx; }
+function _stopCurrent() {
+  if (window._curSource) { try { _curSource.stop(); } catch(e) {} window._curSource = null; }
+  if (window._curBtn) { window._curBtn.classList.remove('playing'); window._curBtn.innerHTML = 'Ascolta'; window._curBtn = null; }
+}
+function playAudio(btn) {
+  var src = btn.getAttribute('data-audio-js') || btn.getAttribute('data-audio-src');
+  if (!src) { console.error('No audio source'); return; }
+  var isJsMode = btn.getAttribute('data-audio-js');
+  if (btn.classList.contains('playing')) { _stopCurrent(); return; }
+  _stopCurrent();
+  var myGen = ++_audioGen;
+  btn.classList.add('loading'); btn.innerHTML = '...';
+  window._curBtn = btn;
+  if (isJsMode) {
+    window._audioLoaded = function(b64) { window._audioLoaded = null; if (myGen !== _audioGen) return; btn.classList.remove('loading'); var p = b64.split(','); var r = atob(p[1]); var b = new ArrayBuffer(r.length); var v = new Uint8Array(b); for (var i=0;i<r.length;i++) v[i]=r.charCodeAt(i); _playBuf(b); };
+    var sc = document.createElement('script'); sc.src = src+'.js?'+Date.now(); sc.onerror = function(){btn.classList.remove('loading');window._audioLoaded=null;btn.innerHTML='Riprova';}; document.head.appendChild(sc);
+  } else {
+    fetch(src).then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.arrayBuffer();}).then(function(b){if(myGen!==_audioGen)return;_playBuf(b);}).catch(function(e){btn.classList.remove('loading');btn.innerHTML='Riprova';});
+  }
+}
+function _playBuf(buf) {
+  var ctx = _getAudioCtx(); if (ctx.state === 'suspended') ctx.resume();
+  var b = window._curBtn;
+  ctx.decodeAudioData(buf, function(buffer) {
+    var s = ctx.createBufferSource(); s.buffer = buffer; s.connect(ctx.destination); s.start(0);
+    window._curSource = s;
+    if (b) { b.classList.remove('loading'); b.classList.add('playing'); b.innerHTML = 'Ferma'; }
+    s.onended = function() { _stopCurrent(); };
+  }, function(err) { if (b) { b.classList.remove('loading'); b.innerHTML = 'Riprova'; } });
+}
+function showScript(btn) {
+  var q = btn.closest('.question.stem') || btn.parentElement;
+  if (!q) return; var st = q.getAttribute('data-script'); if (!st) return;
+  var e = q.querySelector('.script-text');
+  if (!e) { e = document.createElement('div'); e.className = 'script-text'; e.style.display = 'none'; btn.parentNode.insertBefore(e, btn.nextSibling); }
+  if (e.style.display === 'none' || !e.textContent) { e.textContent = st; e.style.display = 'block'; btn.textContent = 'Nascondi testo'; }
+  else { e.style.display = 'none'; btn.textContent = 'Testo'; }
+}
+function normalize(s) { return s.toLowerCase().replace(/[\s'\\'\\`\\u2018\\u2019\\.]+/g, ' ').trim(); }
+function keywordScore(text, keywords) {
+  if (!text || !keywords.length) return 0;
+  var n = normalize(text); var hits = 0;
+  keywords.forEach(function(kw){if(n.indexOf(normalize(kw))>=0)hits++;});
+  if (hits===0 && text.trim().length>10) return 2;
+  return Math.round((hits/keywords.length)*20);
+}
+function wordCount(text) { return text.trim().split(/\\s+/).filter(function(w){return w.length>0;}).length; }
+function submitExam() {
+  var total=0;var maxTotal=0;var details=[];
+  document.querySelectorAll('.section').forEach(function(sec){
+    var sTotal=0;var sMax=0;var items=sec.querySelectorAll('.question');
+    items.forEach(function(q){
+      var type=q.getAttribute('data-type');var pts=parseInt(q.getAttribute('data-points'))||4;
+      sMax+=pts;maxTotal+=pts;
+      if (type==='listen'||type==='read') {
+        var a=parseInt(q.getAttribute('data-ans'));var sel=q.querySelector('input[type=\"radio\"]:checked');var opts=q.querySelectorAll('.opts label');
+        var u=sel?opts[parseInt(sel.value)].textContent.trim():'-';var c=opts[a]?opts[a].textContent.trim():'-';
+        if (sel&&parseInt(sel.value)===a){sTotal+=pts;total+=pts;q.querySelector('.feedback').className='feedback correct';q.querySelector('.feedback').innerHTML='Corretto! ('+pts+'/'+pts+')';}
+        else{q.querySelector('.feedback').className='feedback wrong';q.querySelector('.feedback').innerHTML='Risposta: '+u+' | Corretta: '+c+' (0/'+pts+')';}
+        var st=q.getAttribute('data-script');if(st)q.querySelector('.feedback').innerHTML+='<br><span style=\"font-size:12px;color:#666;\">'+st+'</span>';
+      } else if (type==='grammar') {
+        var inp=q.querySelector('input[type=\"text\"]');var ut=inp?inp.value.trim():'';var kws=(q.getAttribute('data-keywords')||'').split('|').filter(function(w){return w;});
+        var sc=keywordScore(ut,kws);sTotal+=sc;total+=sc;q.querySelector('.feedback').className='feedback '+(sc>=pts*0.6?'correct':'wrong');
+        q.querySelector('.feedback').innerHTML=(sc>=pts*0.6?'Corretto':'Parziale')+' ('+sc+'/'+pts+')';
+      } else if (type==='scrittura'||type==='orale') {
+        var ta=q.querySelector('textarea');var ut=ta?ta.value.trim():'';var kws=(q.getAttribute('data-keywords')||'').split('|').filter(function(w){return w;});
+        var base=keywordScore(ut,kws);var bonus=Math.min(5,Math.floor(wordCount(ut)/10));var sc=Math.min(pts,base+bonus);
+        sTotal+=sc;total+=sc;q.querySelector('.feedback').className='feedback '+(sc>=pts*0.6?'correct':'wrong');
+        q.querySelector('.feedback').innerHTML=(sc>=pts*0.6?'Buono':'Da migliorare')+' ('+sc+'/'+pts+')';
+      }
+    });
+    details.push({name:sec.querySelector('h2').textContent.replace(/<span.*/,'').trim(),score:sTotal,max:sMax});
+  });
+  var pct=Math.round((total/maxTotal)*100);
+  document.getElementById('totalScore').textContent=total+'/'+maxTotal;
+  var msg=document.getElementById('scoreMessage');
+  if (pct>=85) msg.innerHTML='<span class=\"score-grade\" style=\"background:#E8F5E9;color:#009246;\">Eccellente!</span>';
+  else if (pct>=70) msg.innerHTML='<span class=\"score-grade\" style=\"background:#E3F2FD;color:#1565C0;\">Buono!</span>';
+  else if (pct>=55) msg.innerHTML='<span class=\"score-grade\" style=\"background:#FFF8E1;color:#B8860B;\">Discreto</span>';
+  else if (pct>=40) msg.innerHTML='<span class=\"score-grade\" style=\"background:#FBE9E7;color:#E65100;\">Insufficiente</span>';
+  else msg.innerHTML='<span class=\"score-grade\" style=\"background:#FFEBEE;color:#CE2B37;\">Grave</span>';
+  var ref=document.getElementById('answerReference');if(ref){ref.style.display='block';var tb=document.getElementById('resultBody');if(tb){tb.innerHTML='';details.forEach(function(d){tb.innerHTML+='<tr><td>'+d.name+'</td><td>'+d.score+'</td><td>'+d.max+'</td></tr>';});}}
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function resetExam() {
+  document.querySelectorAll('input[type=\"radio\"]').forEach(function(r){r.checked=false;});
+  document.querySelectorAll('input[type=\"text\"]').forEach(function(t){t.value='';});
+  document.querySelectorAll('textarea').forEach(function(t){t.value='';});
+  document.querySelectorAll('.feedback').forEach(function(f){f.className='feedback';f.innerHTML='';});
+  document.querySelectorAll('.script-text').forEach(function(s){s.style.display='none';});
+  document.querySelectorAll('.script-btn').forEach(function(b){b.textContent='Testo';});
+  document.getElementById('totalScore').textContent='0/100';
+  document.getElementById('scoreMessage').innerHTML='';
+  var ref=document.getElementById('answerReference');if(ref)ref.style.display='none';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
