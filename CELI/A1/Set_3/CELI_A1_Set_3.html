@@ -3,46 +3,45 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CELI - Base (A1) - Simulazione 3</title>
+<title>CELI - A1 - Simulazione 3</title>
 <style>*{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Lato',-apple-system,'Segoe UI',sans-serif;background:#FDF8F3;color:#2C1810;min-height:100vh}
 .top-band{height:4px;background:linear-gradient(90deg,#009246 0%,#009246 33%,#FFF 33%,#FFF 66%,#CE2B37 66%,#CE2B37 100%)}
 .container{max-width:900px;margin:0 auto;padding:30px 20px 50px}
-.header{background:linear-gradient(135deg,#2C1810 0%,#4A2C1A 100%);color:#FFF;padding:30px 35px;border-radius:8px;margin-bottom:24px;position:relative;overflow:hidden}
-.header::before{content:'';position:absolute;top:0;right:0;width:120px;height:100%;background:repeating-linear-gradient(-45deg,transparent,transparent 8px,rgba(255,255,255,0.03) 8px,rgba(255,255,255,0.03) 16px)}
+.header{background:linear-gradient(135deg,#2C1810 0%,#4A2C1A 100%);color:#FFF;padding:30px 35px;border-radius:8px;margin-bottom:24px}
 .header h1{font-family:'Playfair Display',Georgia,serif;font-weight:600;font-size:26px;margin-bottom:4px}
 .header .meta{font-size:13px;opacity:0.7;margin-top:6px}
-.score-bar{background:#FFF;border:1px solid #E8DCD0;border-radius:8px;padding:16px 24px;margin-bottom:24px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.score-bar{background:#FFF;border:1px solid #E8DCD0;border-radius:8px;padding:16px 24px;margin-bottom:24px;display:flex;align-items:center;justify-content:space-between}
 .score-bar h2{font-size:20px;color:#009246;font-weight:700}
-.score-bar p{font-size:13px;color:#666}
-.section{background:#FFF;border:1px solid #E8DCD0;border-radius:8px;margin-bottom:18px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
-.section h2{font-family:'Playfair Display',Georgia,serif;font-size:17px;padding:14px 22px;margin:0;background:#FAF5F0;border-bottom:1px solid #E8DCD0;color:#2C1810}
+.section{background:#FFF;border:1px solid #E8DCD0;border-radius:8px;margin-bottom:18px;overflow:hidden}
+.section h2{font-family:'Playfair Display',Georgia,serif;font-size:17px;padding:14px 22px;background:#FAF5F0;border-bottom:1px solid #E8DCD0;color:#2C1810}
 .question{padding:16px 22px;border-bottom:1px solid #F0EAE4}
 .question:last-child{border-bottom:none}
 .question-text{font-weight:500;margin:8px 0;font-size:15px;line-height:1.5}
 .text{background:#FAF5F0;border-left:3px solid #009246;padding:12px 16px;margin:8px 0;border-radius:0 6px 6px 0;font-size:13px;line-height:1.6;color:#444}
-.opts label{display:block;padding:7px 12px;margin:3px 0;border-radius:6px;cursor:pointer;transition:background 0.15s;font-size:14px}
+.opts label{display:block;padding:7px 12px;margin:3px 0;border-radius:6px;cursor:pointer;font-size:14px}
 .opts label:hover{background:#F5F0EB}
 .opts input[type="radio"]{margin-right:8px;accent-color:#009246}
-input[type="text"],textarea{width:100%;padding:10px 14px;border:1px solid #D4C8BC;border-radius:6px;font-size:14px;transition:border-color 0.2s}
+input[type="text"],textarea{width:100%;padding:10px 14px;border:1px solid #D4C8BC;border-radius:6px;font-size:14px}
 input[type="text"]:focus,textarea:focus{outline:none;border-color:#009246;box-shadow:0 0 0 3px rgba(0,146,70,0.1)}
+textarea{resize:vertical;min-height:80px}
 .feedback{margin-top:8px;padding:8px 12px;border-radius:6px;font-size:13px;display:none}
 .feedback.correct{display:block;background:#E8F5E9;color:#1B5E20;border-left:3px solid #009246}
 .feedback.wrong{display:block;background:#FFEBEE;color:#B71C1C;border-left:3px solid #CE2B37}
-.play-btn{padding:6px 16px;background:#2C1810;color:#FFF;border:none;border-radius:20px;cursor:pointer;font-size:12px;transition:background 0.2s}
+.play-btn{padding:6px 16px;background:#2C1810;color:#FFF;border:none;border-radius:20px;cursor:pointer;font-size:12px}
 .play-btn:hover{background:#4A2C1A}
 .play-btn.playing{background:#CE2B37}
 .play-btn.loading{background:#B8860B}
-.script-btn{padding:4px 14px;background:#FFF;color:#B8860B;border:1px solid #B8860B;border-radius:20px;cursor:pointer;font-size:11px;transition:all 0.2s;vertical-align:middle;margin-left:6px}
+.script-btn{padding:4px 14px;background:#FFF;color:#B8860B;border:1px solid #B8860B;border-radius:20px;cursor:pointer;font-size:11px;margin-left:6px}
 .script-btn:hover{background:#FFF8E1}
 .script-text{margin-top:8px;padding:12px;background:#FFFBEB;border-radius:6px;font-size:13px;line-height:1.6;border-left:3px solid #B8860B;color:#5D4037}
 .btn-row{text-align:center;padding:20px 0 10px}
-.btn{padding:12px 28px;border:none;border-radius:6px;cursor:pointer;font-size:14px;font-weight:600;margin:0 8px;transition:all 0.2s}
+.btn{padding:12px 28px;border:none;border-radius:6px;cursor:pointer;font-size:14px;font-weight:600;margin:0 8px}
 .btn.primary{background:#009246;color:#FFF}
-.btn.primary:hover{background:#007A3B;box-shadow:0 2px 6px rgba(0,146,70,0.3)}
+.btn.primary:hover{background:#007A3B}
 .btn.secondary{background:#FFF;color:#2C1810;border:1px solid #D4C8BC}
 .btn.secondary:hover{background:#F5F0EB}
-#answerReference{background:#FFF;border:1px solid #E8DCD0;border-radius:8px;padding:20px;margin-top:20px}
+#answerReference{background:#FFF;border:1px solid #E8DCD0;border-radius:8px;padding:20px;margin-top:20px;display:none}
 #answerReference h3{font-family:'Playfair Display',Georgia,serif;color:#009246;margin-bottom:12px}
 #resultTable{width:100%;border-collapse:collapse;font-size:13px}
 #resultTable th{background:#2C1810;color:#FFF;padding:8px 12px;text-align:left}
@@ -50,145 +49,107 @@ input[type="text"]:focus,textarea:focus{outline:none;border-color:#009246;box-sh
 .score-grade{padding:8px 12px;border-radius:6px;font-weight:500;display:inline-block}</style>
 </head>
 <body>
-<div class="top-band"></div>
-<div class="container">
-<div class="header">
-  <h1>CELI <small>Base (A1) - Simulazione 3</small></h1>
-  <div class="meta">Certificazione di lingua italiana · 5 prove</div>
+<div class="top-band"></div><div class="container"><div class="header"><h1>CELI</h1><div class="meta">A1 - Simulazione 3</div></div><div id="scoreBar" class="score-bar"><h2 id="totalScore">0/100</h2><p id="scoreMessage"></p></div>
+<div class="section" id="sec_ascolto"><h2>Prova 1 - Ascolto <span style="font-weight:400;font-size:13px;color:#999;">(max 20 pt)</span></h2>
+<div class="question stem" data-type="listen" data-ans="0" data-points="4" data-script="Trascrizione ascolto CELI A1 simulazione 3 traccia 1.">
+<button class="play-btn" data-audio-js="A1/audio/celi_3_1_a1" onclick="playAudio(this)">Ascolta</button>
+<button class="script-btn" onclick="showScript(this)">Testo</button>
+<div class="question-text">Quale notizia viene data dal telegiornale?</div><div class="opts" data-q="0">
+<label><input type="radio" name="q_ascolto_0" value="0">Crisi economica</label>
+<label><input type="radio" name="q_ascolto_0" value="1">Successo sportivo</label>
+<label><input type="radio" name="q_ascolto_0" value="2">Evento culturale</label>
+<label><input type="radio" name="q_ascolto_0" value="3">Previsioni meteo</label>
 </div>
-<div id="scoreBar" class="score-bar">
-  <h2 id="totalScore">0/100</h2>
-  <p id="scoreMessage"></p>
+<div id="fb_ascolto_0" class="feedback"></div></div>
+<div class="question stem" data-type="listen" data-ans="0" data-points="4" data-script="Trascrizione ascolto CELI A1 simulazione 3 traccia 2.">
+<button class="play-btn" data-audio-js="A1/audio/celi_3_2_a1" onclick="playAudio(this)">Ascolta</button>
+<button class="script-btn" onclick="showScript(this)">Testo</button>
+<div class="question-text">Cosa risponde l'intervistato?</div><div class="opts" data-q="1">
+<label><input type="radio" name="q_ascolto_1" value="0">Opinione personale</label>
+<label><input type="radio" name="q_ascolto_1" value="1">Dati statistici</label>
+<label><input type="radio" name="q_ascolto_1" value="2">Esperienza diretta</label>
+<label><input type="radio" name="q_ascolto_1" value="3">Fonte ufficiale</label>
 </div>
-<div class="section" id="sec_ascolto">
-  <h2>Prova 1 - Ascolto <span style="font-weight:400;font-size:13px;color:#999;">(max 20 pt)</span></h2>
-  <div class="question stem" data-type="listen" data-ans="0" data-points="4" data-script="Trascrizione ascolto CELI A1 simulazione 3 traccia 1.">
-    <button class="play-btn" data-audio-js="A1/audio/celi_3_1_a1" onclick="playAudio(this)">Ascolta</button>
-    <button class="script-btn" onclick="showScript(this)">Testo</button>
-    <div class="question-text">Cosa si dice nel testo?</div>
-    <div class="opts" data-q="0">
-      <label><input type="radio" name="q_ascolto_0" value="0"> Opzione A</label>
-      <label><input type="radio" name="q_ascolto_0" value="1"> Opzione B</label>
-      <label><input type="radio" name="q_ascolto_0" value="2"> Opzione C</label>
-      <label><input type="radio" name="q_ascolto_0" value="3"> Opzione D</label>
-    </div>
-    <div id="fb_ascolto_0" class="feedback"></div>
-  </div>
-  <div class="question stem" data-type="listen" data-ans="0" data-points="4" data-script="Trascrizione ascolto CELI A1 simulazione 3 traccia 2.">
-    <button class="play-btn" data-audio-js="A1/audio/celi_3_2_a1" onclick="playAudio(this)">Ascolta</button>
-    <button class="script-btn" onclick="showScript(this)">Testo</button>
-    <div class="question-text">Quale informazione e corretta?</div>
-    <div class="opts" data-q="1">
-      <label><input type="radio" name="q_ascolto_1" value="0"> Opzione A</label>
-      <label><input type="radio" name="q_ascolto_1" value="1"> Opzione B</label>
-      <label><input type="radio" name="q_ascolto_1" value="2"> Opzione C</label>
-      <label><input type="radio" name="q_ascolto_1" value="3"> Opzione D</label>
-    </div>
-    <div id="fb_ascolto_1" class="feedback"></div>
-  </div>
-  <div class="question stem" data-type="listen" data-ans="3" data-points="4" data-script="Trascrizione ascolto CELI A1 simulazione 3 traccia 3.">
-    <button class="play-btn" data-audio-js="A1/audio/celi_3_3_a1" onclick="playAudio(this)">Ascolta</button>
-    <button class="script-btn" onclick="showScript(this)">Testo</button>
-    <div class="question-text">Cosa risponde l'intervistato?</div>
-    <div class="opts" data-q="2">
-      <label><input type="radio" name="q_ascolto_2" value="0"> Prima scelta</label>
-      <label><input type="radio" name="q_ascolto_2" value="1"> Seconda scelta</label>
-      <label><input type="radio" name="q_ascolto_2" value="2"> Terza scelta</label>
-      <label><input type="radio" name="q_ascolto_2" value="3"> Quarta scelta</label>
-    </div>
-    <div id="fb_ascolto_2" class="feedback"></div>
-  </div>
-  <div class="question stem" data-type="listen" data-ans="0" data-points="4" data-script="Trascrizione ascolto CELI A1 simulazione 3 traccia 4.">
-    <button class="play-btn" data-audio-js="A1/audio/celi_3_4_a1" onclick="playAudio(this)">Ascolta</button>
-    <button class="script-btn" onclick="showScript(this)">Testo</button>
-    <div class="question-text">Quale notizia viene data?</div>
-    <div class="opts" data-q="3">
-      <label><input type="radio" name="q_ascolto_3" value="0"> Opzione A</label>
-      <label><input type="radio" name="q_ascolto_3" value="1"> Opzione B</label>
-      <label><input type="radio" name="q_ascolto_3" value="2"> Opzione C</label>
-      <label><input type="radio" name="q_ascolto_3" value="3"> Opzione D</label>
-    </div>
-    <div id="fb_ascolto_3" class="feedback"></div>
-  </div>
-  <div class="question stem" data-type="listen" data-ans="3" data-points="4" data-script="Trascrizione ascolto CELI A1 simulazione 3 traccia 5.">
-    <button class="play-btn" data-audio-js="A1/audio/celi_3_5_a1" onclick="playAudio(this)">Ascolta</button>
-    <button class="script-btn" onclick="showScript(this)">Testo</button>
-    <div class="question-text">Cosa emerge dal dialogo?</div>
-    <div class="opts" data-q="4">
-      <label><input type="radio" name="q_ascolto_4" value="0"> Prima scelta</label>
-      <label><input type="radio" name="q_ascolto_4" value="1"> Seconda scelta</label>
-      <label><input type="radio" name="q_ascolto_4" value="2"> Terza scelta</label>
-      <label><input type="radio" name="q_ascolto_4" value="3"> Quarta scelta</label>
-    </div>
-    <div id="fb_ascolto_4" class="feedback"></div>
-  </div>
+<div id="fb_ascolto_1" class="feedback"></div></div>
+<div class="question stem" data-type="listen" data-ans="0" data-points="4" data-script="Trascrizione ascolto CELI A1 simulazione 3 traccia 3.">
+<button class="play-btn" data-audio-js="A1/audio/celi_3_3_a1" onclick="playAudio(this)">Ascolta</button>
+<button class="script-btn" onclick="showScript(this)">Testo</button>
+<div class="question-text">Quale informazione emerge dal dialogo?</div><div class="opts" data-q="2">
+<label><input type="radio" name="q_ascolto_2" value="0">Accordo raggiunto</label>
+<label><input type="radio" name="q_ascolto_2" value="1">Problema risolto</label>
+<label><input type="radio" name="q_ascolto_2" value="2">Nuova proposta</label>
+<label><input type="radio" name="q_ascolto_2" value="3">Scadenza prorogata</label>
 </div>
-<div class="section" id="sec_lettura">
-  <h2>Prova 2 - Lettura <span style="font-weight:400;font-size:13px;color:#999;">(max 20 pt)</span></h2>
-  <div class="question stem" data-type="read" data-ans="0" data-points="10">
-    <div class="text">Testo di lettura: analisi del contesto socio-economico italiano contemporaneo.</div>
-    <div class="question-text">Cosa afferma il testo?</div>
-    <div class="opts" data-q="0">
-      <label><input type="radio" name="q_lettura_0" value="0"> Prima risposta</label>
-      <label><input type="radio" name="q_lettura_0" value="1"> Seconda risposta</label>
-    </div>
-    <div id="fb_lettura_0" class="feedback"></div>
-  </div>
-  <div class="question stem" data-type="read" data-ans="1" data-points="10">
-    <div class="text">Secondo brano: approfondimento sulle tradizioni culturali italiane.</div>
-    <div class="question-text">Qual e l'argomento principale?</div>
-    <div class="opts" data-q="1">
-      <label><input type="radio" name="q_lettura_1" value="0"> Prima risposta</label>
-      <label><input type="radio" name="q_lettura_1" value="1"> Seconda risposta</label>
-    </div>
-    <div id="fb_lettura_1" class="feedback"></div>
-  </div>
+<div id="fb_ascolto_2" class="feedback"></div></div>
+<div class="question stem" data-type="listen" data-ans="0" data-points="4" data-script="Trascrizione ascolto CELI A1 simulazione 3 traccia 4.">
+<button class="play-btn" data-audio-js="A1/audio/celi_3_4_a1" onclick="playAudio(this)">Ascolta</button>
+<button class="script-btn" onclick="showScript(this)">Testo</button>
+<div class="question-text">Cosa dichiara il portavoce?</div><div class="opts" data-q="3">
+<label><input type="radio" name="q_ascolto_3" value="0">Comunicato ufficiale</label>
+<label><input type="radio" name="q_ascolto_3" value="1">Smentita notizia</label>
+<label><input type="radio" name="q_ascolto_3" value="2">Conferma accordo</label>
+<label><input type="radio" name="q_ascolto_3" value="3">Prossimi passi</label>
 </div>
-<div class="section" id="sec_grammatica">
-  <h2>Prova 3 - Grammatica <span style="font-weight:400;font-size:13px;color:#999;">(max 20 pt)</span></h2>
-  <div class="question" data-type="grammar" data-keywords="fossi" data-points="6">
-    <div class="question-text">Completa: Se io ______ (essere) in te...</div>
-    <input type="text" placeholder="Scrivi..." autocomplete="off">
-    <div id="fb_grammatica_0" class="feedback"></div>
-  </div>
-  <div class="question" data-type="grammar" data-keywords="piova|piovesse" data-points="6">
-    <div class="question-text">Completa: Benche ______ (piovere)...</div>
-    <input type="text" placeholder="Scrivi..." autocomplete="off">
-    <div id="fb_grammatica_1" class="feedback"></div>
-  </div>
-  <div class="question" data-type="grammar" data-keywords="studi|studiasse" data-points="6">
-    <div class="question-text">Completa: Nonostante ______ (lui, studiare)...</div>
-    <input type="text" placeholder="Scrivi..." autocomplete="off">
-    <div id="fb_grammatica_2" class="feedback"></div>
-  </div>
+<div id="fb_ascolto_3" class="feedback"></div></div>
+<div class="question stem" data-type="listen" data-ans="0" data-points="4" data-script="Trascrizione ascolto CELI A1 simulazione 3 traccia 5.">
+<button class="play-btn" data-audio-js="A1/audio/celi_3_5_a1" onclick="playAudio(this)">Ascolta</button>
+<button class="script-btn" onclick="showScript(this)">Testo</button>
+<div class="question-text">Quale reazione suscita la notizia?</div><div class="opts" data-q="4">
+<label><input type="radio" name="q_ascolto_4" value="0">Entusiasmo generale</label>
+<label><input type="radio" name="q_ascolto_4" value="1">Preoccupazione</label>
+<label><input type="radio" name="q_ascolto_4" value="2">Scetticismo</label>
+<label><input type="radio" name="q_ascolto_4" value="3">Indifferenza</label>
 </div>
-<div class="section" id="sec_scrittura">
-  <h2>Prova 4 - Scrittura <span style="font-weight:400;font-size:13px;color:#999;">(max 20 pt)</span></h2>
-  <div class="question" data-type="scrittura" data-keywords="argomento|tesi|conclusioni|analisi|parere" data-points="20">
-    <div class="question-text">Scrivi un testo di 80-100 parole sul tema proposto.</div>
-    <textarea rows="4" placeholder="Scrivi qui..." autocomplete="off"></textarea>
-    <div id="fb_scrittura_0" class="feedback"></div>
-  </div>
+<div id="fb_ascolto_4" class="feedback"></div></div>
 </div>
-<div class="section" id="sec_orale">
-  <h2>Prova 5 - Produzione orale <span style="font-weight:400;font-size:13px;color:#999;">(max 20 pt)</span></h2>
-  <div class="question" data-type="orale" data-keywords="opinione|punto|vista|considerazioni|esperienza" data-points="20">
-    <div class="question-text">Esponi oralmente il tuo punto di vista.</div>
-    <textarea rows="4" placeholder="Rispondi qui..." autocomplete="off"></textarea>
-    <div id="fb_orale_0" class="feedback"></div>
-  </div>
+<div class="section" id="sec_lettura"><h2>Prova 2 - Lettura <span style="font-weight:400;font-size:13px;color:#999;">(max 20 pt)</span></h2>
+<div class="question stem" data-type="read" data-ans="0" data-points="10">
+<div class="text">Testo di lettura per CELI A1 simulazione 3.</div>
+<div class="question-text">Qual e l'argomento principale del testo?</div><div class="opts" data-q="0">
+<label><input type="radio" name="q_lettura_0" value="0">Economia e finanza</label>
+<label><input type="radio" name="q_lettura_0" value="1">Cultura e societa</label>
+<label><input type="radio" name="q_lettura_0" value="2">Scienza e tecnologia</label>
+<label><input type="radio" name="q_lettura_0" value="3">Politica e istituzioni</label>
 </div>
-<div id="answerReference" style="display:none;">
-  <h3>Risultati</h3>
-  <table id="resultTable">
-    <thead><tr><th>Sezione</th><th>Punteggio</th><th>Max</th></tr></thead>
-    <tbody id="resultBody"></tbody>
-  </table>
+<div id="fb_lettura_0" class="feedback"></div></div>
+<div class="question stem" data-type="read" data-ans="0" data-points="10">
+<div class="text">Testo di lettura per CELI A1 simulazione 3.</div>
+<div class="question-text">Cosa sostiene l'autore nell'articolo?</div><div class="opts" data-q="1">
+<label><input type="radio" name="q_lettura_1" value="0">Tesi principale</label>
+<label><input type="radio" name="q_lettura_1" value="1">Argomento opposto</label>
+<label><input type="radio" name="q_lettura_1" value="2">Citazione critica</label>
+<label><input type="radio" name="q_lettura_1" value="3">Analisi storica</label>
 </div>
-<div class="btn-row">
-  <button class="btn primary" onclick="submitExam()">Invia e valuta</button>
-  <button class="btn secondary" onclick="resetExam()">Ricomincia</button>
-</div></div>
+<div id="fb_lettura_1" class="feedback"></div></div>
+</div>
+<div class="section" id="sec_grammatica"><h2>Prova 3 - Grammatica <span style="font-weight:400;font-size:13px;color:#999;">(max 20 pt)</span></h2>
+<div class="question" data-type="grammar" data-keywords="fossi" data-points="6">
+<div class="question-text">Completa: Se io ______ (essere) in te, accetterei.</div>
+<input type="text" placeholder="Scrivi..." autocomplete="off">
+<div id="fb_grammatica_0" class="feedback"></div></div>
+<div class="question" data-type="grammar" data-keywords="piovesse" data-points="6">
+<div class="question-text">Completa: Benche ______ (piovere), siamo usciti lo stesso.</div>
+<input type="text" placeholder="Scrivi..." autocomplete="off">
+<div id="fb_grammatica_1" class="feedback"></div></div>
+<div class="question" data-type="grammar" data-keywords="paghi" data-points="6">
+<div class="question-text">Completa: Non e giusto che ______ (lui, pagare) per tutti.</div>
+<input type="text" placeholder="Scrivi..." autocomplete="off">
+<div id="fb_grammatica_2" class="feedback"></div></div>
+</div>
+<div class="section" id="sec_scrittura"><h2>Prova 4 - Scrittura <span style="font-weight:400;font-size:13px;color:#999;">(max 20 pt)</span></h2>
+<div class="question" data-type="scrittura" data-keywords="argomento|tesi|conclusioni|analisi" data-points="20">
+<div class="question-text">Scrivi un testo di 80-100 parole.</div>
+<textarea rows="4" placeholder="Scrivi qui..." autocomplete="off"></textarea>
+<div id="fb_scrittura_0" class="feedback"></div></div>
+</div>
+<div class="section" id="sec_orale"><h2>Prova 5 - Produzione orale <span style="font-weight:400;font-size:13px;color:#999;">(max 20 pt)</span></h2>
+<div class="question" data-type="orale" data-keywords="opinione|punto|vista|esperienza" data-points="20">
+<div class="question-text">Esponi il tuo punto di vista.</div>
+<textarea rows="4" placeholder="Rispondi qui..." autocomplete="off"></textarea>
+<div id="fb_orale_0" class="feedback"></div></div>
+</div>
+<div id="answerReference"><h3>Risultati</h3><table id="resultTable"><thead><tr><th>Sezione</th><th>Punteggio</th><th>Max</th></tr></thead><tbody id="resultBody"></tbody></table></div>
+<div class="btn-row"><button class="btn primary" onclick="submitExam()">Invia e valuta</button><button class="btn secondary" onclick="resetExam()">Ricomincia</button></div></div>
 <script>var _audioCtx=null,_audioGen=0;
 function _getAudioCtx(){if(!_audioCtx)_audioCtx=new(window.AudioContext||window.webkitAudioContext)();return _audioCtx}
 function _stopCurrent(){if(window._curSource){try{_curSource.stop()}catch(e){}window._curSource=null}if(window._curBtn){window._curBtn.classList.remove('playing');window._curBtn.innerHTML='Ascolta';window._curBtn=null}}
@@ -199,7 +160,7 @@ function _playBuf(a){var c=_getAudioCtx();if(c.state==='suspended')c.resume();va
 function showScript(bn){var q=bn.closest('.question.stem')||bn.parentElement;if(!q)return;var st=q.getAttribute('data-script');if(!st)return;var e=q.querySelector('.script-text');if(!e){e=document.createElement('div');e.className='script-text';e.style.display='none';bn.parentNode.insertBefore(e,bn.nextSibling)}if(e.style.display==='none'||!e.textContent){e.textContent=st;e.style.display='block';bn.textContent='Nascondi testo'}else{e.style.display='none';bn.textContent='Testo'}}
 function normalize(s){return s.toLowerCase().replace(/[\s'\\'\\`\\u2018\\u2019\\.]+/g,' ').trim()}
 function kwScore(text,kws){if(!text||!kws.length)return 0;var n=normalize(text),h=0;kws.forEach(function(k){if(n.indexOf(normalize(k))>=0)h++});if(h===0&&text.trim().length>10)return 2;return Math.round((h/kws.length)*20)}
-function wc(t){return t.trim().split(/\\s+/).filter(function(w){return w.length>0}).length}
+function wc(t){return t.trim().split(/\s+/).filter(function(w){return w.length>0}).length}
 function submitExam(){var T=0,M=0,D=[];document.querySelectorAll('.section').forEach(function(s){var t=0,m=0;s.querySelectorAll('.question').forEach(function(q){var tp=q.getAttribute('data-type'),pt=parseInt(q.getAttribute('data-points'))||4;m+=pt;M+=pt;
 if(tp==='listen'||tp==='read'){var a=parseInt(q.getAttribute('data-ans')),sl=q.querySelector('input[type=\"radio\"]:checked'),o=q.querySelectorAll('.opts label'),u=sl?o[parseInt(sl.value)].textContent.trim():'-',c=o[a]?o[a].textContent.trim():'-';if(sl&&parseInt(sl.value)===a){t+=pt;T+=pt;q.querySelector('.feedback').className='feedback correct';q.querySelector('.feedback').innerHTML='Corretto! ('+pt+'/'+pt+')'}else{q.querySelector('.feedback').className='feedback wrong';q.querySelector('.feedback').innerHTML='Risposta: '+u+' | Corretta: '+c+' (0/'+pt+')'}var st=q.getAttribute('data-script');if(st)q.querySelector('.feedback').innerHTML+='<br><span style=\"font-size:12px;color:#666;\">'+st+'</span>'}
 else if(tp==='grammar'){var inp=q.querySelector('input[type=\"text\"]'),ut=inp?inp.value.trim():'',kws=(q.getAttribute('data-keywords')||'').split('|').filter(function(w){return w});var sc=kwScore(ut,kws);t+=sc;T+=sc;q.querySelector('.feedback').className='feedback '+(sc>=pt*0.6?'correct':'wrong');q.querySelector('.feedback').innerHTML=(sc>=pt*0.6?'Corretto':'Parziale')+' ('+sc+'/'+pt+')'}
