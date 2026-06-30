@@ -1,0 +1,160 @@
+<!DOCTYPE html><html lang="it"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>CELI A1 — Simulazione 5</title>
+<style>
+*{box-sizing:border-box;}body{font-family:system-ui,sans-serif;max-width:960px;margin:0 auto;padding:20px;background:#f8f9fa;color:#222;}
+.hd{background:linear-gradient(135deg,#6B2D2D,#CE2B37);color:white;padding:20px 24px;border-radius:10px;margin-bottom:20px;}
+.hd h1{margin:0;font-size:20px;}
+.sec{background:white;border-radius:10px;padding:18px 20px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.08);}
+.sec h2{font-size:16px;color:#6B2D2D;margin:0 0 12px;padding-bottom:6px;border-bottom:2px solid #CE2B37;}
+.prova{margin:10px 0;padding:12px;background:#f8fbff;border-radius:6px;}
+.prova h3{font-size:14px;color:#6B2D2D;margin:0 0 8px;}
+.ab{display:flex;align-items:center;gap:8px;margin:8px 0;padding:8px 12px;background:#eef2f7;border-radius:6px;flex-wrap:wrap;}
+.pb{padding:5px 14px;background:#2C1810;color:white;border:none;border-radius:16px;cursor:pointer;font-size:12px;}
+.pb:hover{background:#4A2C1A;}.pb.playing{background:#CE2B37;}
+.pb.bs{background:#555;font-size:11px;}
+.dur{font-size:11px;color:#888;}
+.db{display:inline-block;font-size:10px;padding:1px 5px;border-radius:3px;}
+.db-A1{background:#e8f5e9;color:#2e7d32;}.db-A1p{background:#fff3cd;color:#856404;}
+.sb{display:none;margin:6px 0;padding:10px;background:#f5f5f5;border-radius:6px;font-size:13px;line-height:1.6;white-space:pre-wrap;}
+.q{margin:10px 0;padding:10px;border-radius:6px;background:#f8fbff;}
+.q.tf{background:#f0f8ff;}.q.fill{background:#fff8e1;}
+.qt{font-weight:500;margin-bottom:4px;font-size:14px;}
+.opts{margin:4px 0;}.opts label{display:block;padding:3px 8px;border-radius:4px;cursor:pointer;}
+.opts label:hover{background:#e8f0fe;}
+.fi{padding:4px 8px;border:1px solid #ccc;border-radius:4px;font-size:13px;width:160px;margin:4px 0;}
+.rt{background:#f5f5f5;padding:14px;border-radius:6px;margin:10px 0;font-size:14px;line-height:1.7;}
+.wp{background:#f8f4ff;padding:12px;border-left:4px solid #7b1fa2;border-radius:4px;margin:10px 0;}
+.ta{width:100%;min-height:80px;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:14px;font-family:inherit;}
+.bsu{padding:10px 30px;background:linear-gradient(135deg,#6B2D2D,#CE2B37);color:white;border:none;border-radius:8px;font-size:15px;cursor:pointer;margin-top:10px;}
+.fb{display:none;margin-top:4px;padding:4px 8px;border-radius:4px;font-size:12px;}
+.cr{background:#e8f5e9;color:#2e7d32;display:block;}
+.wr{background:#ffebee;color:#c62828;display:block;}
+.sbr{display:none;background:linear-gradient(135deg,#27ae60,#2ecc71);color:white;padding:20px;border-radius:10px;text-align:center;margin-bottom:20px;}
+</style></head><body>
+<div class="hd"><h1>CELI A1 — Simulazione 5</h1><p>Esame completo: Ascolto + Lettura + Grammatica + Scrittura</p></div>
+<div class="sbr" id="sbr"><h2 id="ts">0/15</h2><p id="sm"></p></div>
+<div class="sec"><h2>Prova di Ascolto</h2><div class="prova"><h3>Prova 1 &mdash; Scelta Multipla</h3>
+<div class="audio-bar"><button class="play-btn" onclick="pa(this,510)">▶ Ascolta</button>
+<span class="dur">30s</span>
+<span class="diff-badge diff-A1">A1</span>
+<button class="play-btn bs" onclick="ts('sc_ca1_5_1a')">📄 Testo</button></div>
+<div id="sc_ca1_5_1a" class="script-box">Persona A: Buongiorno, vorrei un pacco, per favore.
+Persona B: Ecco, 2 euro.
+Persona A: Grazie.
+Persona B: Prego, buona giornata!</div>
+<div class="q" data-q="q5100" data-a="0"><div class="qt">1. Cosa vuole la persona?</div>
+<div class="opts">
+<label><input type="radio" name="q5100" value="0"> Un pacco</label>
+<label><input type="radio" name="q5100" value="1"> Un gelato</label>
+<label><input type="radio" name="q5100" value="2"> Un giornale</label>
+<label><input type="radio" name="q5100" value="3"> Una penna</label>
+</div><div id="fq5100" class="fb"></div></div>
+<div class="audio-bar"><button class="play-btn" onclick="pa(this,511)">▶ Ascolta</button>
+<span class="dur">30s</span>
+<span class="diff-badge diff-A1">A1</span>
+<button class="play-btn bs" onclick="ts('sc_ca1_5_1b')">📄 Testo</button></div>
+<div id="sc_ca1_5_1b" class="script-box">A: Come ti chiami?
+B: Mi chiamo Luca.
+A: Quanti anni hai?
+B: Ho 30 anni.
+A: Di dove sei?
+B: Sono di Napoli.</div>
+<div class="q" data-q="q5110" data-a="1"><div class="qt">1. Come si chiama la persona?</div>
+<div class="opts">
+<label><input type="radio" name="q5110" value="0"> Marco</label>
+<label><input type="radio" name="q5110" value="1"> Luca</label>
+<label><input type="radio" name="q5110" value="2"> Paolo</label>
+<label><input type="radio" name="q5110" value="3"> Andrea</label>
+</div><div id="fq5110" class="fb"></div></div>
+<div class="q" data-q="q5111" data-a="1"><div class="qt">2. Quanti anni ha?</div>
+<div class="opts">
+<label><input type="radio" name="q5111" value="0"> 28</label>
+<label><input type="radio" name="q5111" value="1"> 30</label>
+<label><input type="radio" name="q5111" value="2"> 32</label>
+<label><input type="radio" name="q5111" value="3"> 35</label>
+</div><div id="fq5111" class="fb"></div></div>
+</div>
+<div class="prova"><h3>Prova 2 &mdash; Vero/Falso</h3>
+<div class="audio-bar"><button class="play-btn" onclick="pa(this,520)">▶ Ascolta</button>
+<span class="dur">35s</span>
+<span class="diff-badge diff-A1">A1</span>
+<button class="play-btn bs" onclick="ts('sc_ca1_5_2')">📄 Testo</button></div>
+<div id="sc_ca1_5_2" class="script-box">Oggi è una bella giornata. Il sole splende. La temperatura è di 25 gradi. Marco e Lucia vanno al mare. Portano un ombrellone e un telo.</div>
+<div class="q tf" data-q="q5200" data-a="true"><div class="qt">1. Oggi il tempo è bello.</div>
+<div class="opts">
+<label><input type="radio" name="q5200" value="true"> Vero</label>
+<label><input type="radio" name="q5200" value="false"> Falso</label>
+</div><div id="fq5200" class="fb"></div></div>
+<div class="q tf" data-q="q5201" data-a="false"><div class="qt">2. La temperatura è di 20 gradi.</div>
+<div class="opts">
+<label><input type="radio" name="q5201" value="true"> Vero</label>
+<label><input type="radio" name="q5201" value="false"> Falso</label>
+</div><div id="fq5201" class="fb"></div></div>
+<div class="q tf" data-q="q5202" data-a="false"><div class="qt">3. Marco e Lucia vanno in montagna.</div>
+<div class="opts">
+<label><input type="radio" name="q5202" value="true"> Vero</label>
+<label><input type="radio" name="q5202" value="false"> Falso</label>
+</div><div id="fq5202" class="fb"></div></div>
+<div class="q tf" data-q="q5203" data-a="true"><div class="qt">4. Portano un ombrellone.</div>
+<div class="opts">
+<label><input type="radio" name="q5203" value="true"> Vero</label>
+<label><input type="radio" name="q5203" value="false"> Falso</label>
+</div><div id="fq5203" class="fb"></div></div>
+</div>
+</div>
+<div class="sec"><h2>Comprensione della Lettura</h2><div class="rt">Maria abita a Napoli, in via Roma 25. La sua casa e piccola ma accogliente. C'e una camera da letto, un soggiorno, una cucina e un bagno. Dal balcone si vede il mare.</div>
+<div class="q" data-q="r5_0" data-a="0"><div class="qt">1. Maria abita a ___.</div>
+<div class="opts">
+<label><input type="radio" name="r5_0" value="0"> Napoli</label>
+<label><input type="radio" name="r5_0" value="1"> Roma</label>
+<label><input type="radio" name="r5_0" value="2"> Milano</label>
+<label><input type="radio" name="r5_0" value="3"> Bari</label>
+</div><div id="fr5_0" class="fb"></div></div>
+<div class="q" data-q="r5_1" data-a="0"><div class="qt">2. La casa ha un ___ da cui si vede il mare.</div>
+<div class="opts">
+<label><input type="radio" name="r5_1" value="0"> balcone</label>
+<label><input type="radio" name="r5_1" value="1"> terrazzo</label>
+<label><input type="radio" name="r5_1" value="2"> giardino</label>
+<label><input type="radio" name="r5_1" value="3"> cortile</label>
+</div><div id="fr5_1" class="fb"></div></div>
+<div class="q" data-q="r5_2" data-a="0"><div class="qt">3. La casa ha una camera, un soggiorno, una cucina e un ___.</div>
+<div class="opts">
+<label><input type="radio" name="r5_2" value="0"> bagno</label>
+<label><input type="radio" name="r5_2" value="1"> studio</label>
+<label><input type="radio" name="r5_2" value="2"> ripostiglio</label>
+<label><input type="radio" name="r5_2" value="3"> balcone</label>
+</div><div id="fr5_2" class="fb"></div></div>
+</div>
+<div class="sec"><h2>Analisi delle Strutture</h2><div class="q" data-q="g5_0" data-a="va" data-ac="va"><div class="qt">1. Marco ___ (andare) a casa.</div>
+<input type="text" class="fi"><div id="fg5_0" class="fb"></div></div>
+<div class="q" data-q="g5_1" data-a="mangio" data-ac="mangio"><div class="qt">2. Io ___ (mangiare) la pizza.</div>
+<input type="text" class="fi"><div id="fg5_1" class="fb"></div></div>
+<div class="q" data-q="g5_2" data-a="dormono" data-ac="dormono"><div class="qt">3. Loro ___ (dormire) fino a tardi.</div>
+<input type="text" class="fi"><div id="fg5_2" class="fb"></div></div>
+<div class="q" data-q="g5_3" data-a="bevi" data-ac="bevi"><div class="qt">4. Tu ___ (bere) il caffe?</div>
+<input type="text" class="fi"><div id="fg5_3" class="fb"></div></div>
+<div class="q" data-q="g5_4" data-a="parliamo" data-ac="parliamo"><div class="qt">5. Noi ___ (parlare) italiano.</div>
+<input type="text" class="fi"><div id="fg5_4" class="fb"></div></div>
+</div>
+<div class="sec"><h2>Produzione Scritta</h2><div class="wp">Parla del tuo cibo preferito. Quando lo mangi? Perche ti piace? (4-5 frasi) (max 80 parole)</div>
+<textarea class="ta"></textarea>
+<div style="font-size:12px;color:#888;margin-top:4px;">Questa sezione non viene valutata automaticamente.</div></div>
+<div style="text-align:center;margin:20px 0;"><button class="bsu" onclick="se()">📝 Verifica</button></div>
+<script>
+var A=[];
+
+var _ca=null,_cb=null;
+function pa(b,i){if(_ca&&_ca!==A[i]){_ca.pause();_ca.currentTime=0;if(_cb){_cb.classList.remove('playing');_cb.textContent='▶';}}
+if(A[i].paused){A[i].play();b.classList.add('playing');b.textContent='⏹';_ca=A[i];_cb=b;A[i].onended=function(){b.classList.remove('playing');b.textContent='▶';_ca=null;_cb=null;};}else{A[i].pause();A[i].currentTime=0;b.classList.remove('playing');b.textContent='▶';if(_ca===A[i]){_ca=null;_cb=null;}}}
+function ts(id){var b=document.getElementById(id);if(b)b.style.display=b.style.display==='none'||b.style.display===''?'block':'none';}
+function n(s){return s.toLowerCase().replace(/[\s'\x60\u2018\u2019\.\-\[\]\/]+/g,' ').trim();}
+function se(){var c=0,t=15;
+document.querySelectorAll('[data-q]').forEach(function(el){t++;var qid=el.getAttribute('data-q');var a=el.getAttribute('data-a');var fb=document.getElementById('f'+qid);if(!fb)return;
+if(el.type==='text'){var v=n(el.value);var ok=(el.getAttribute('data-ac')||a).split('|').some(function(x){return v===n(x)});
+if(ok){c++;fb.textContent='✓';fb.className='fb cr';}else{fb.textContent='✗ '+a;fb.className='fb wr';}
+}else if(el.type==='radio'){var s=document.querySelector('input[name="'+el.name+'"]:checked');
+if(s){if(s.value===a){c++;fb.textContent='✓';fb.className='fb cr';}else{fb.textContent='✗ '+a;fb.className='fb wr';}}
+else{fb.textContent='❓ '+a;fb.className='fb wr';}
+}});
+document.getElementById('sbr').style.display='block';document.getElementById('ts').textContent=c+'/'+t;
+var p=Math.round(c/t*100);document.getElementById('sm').textContent=p+'% - '+(p>=85?'Eccellente!':p>=70?'Buono':p>=60?'Discreto':p>=40?'Insufficiente':'Grave');window.scrollTo(0,0);
+}</script></body></html>

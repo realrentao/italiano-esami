@@ -1,0 +1,213 @@
+<!DOCTYPE html><html lang="it"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>CILS B1 — Simulazione 4</title>
+<style>
+*{box-sizing:border-box;}body{font-family:system-ui,sans-serif;max-width:960px;margin:0 auto;padding:20px;background:#f8f9fa;color:#222;}
+.hd{background:linear-gradient(135deg,#1a5276,#2e86c1);color:white;padding:20px 24px;border-radius:10px;margin-bottom:20px;}
+.hd h1{margin:0;font-size:20px;}
+.sec{background:white;border-radius:10px;padding:18px 20px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.08);}
+.sec h2{font-size:16px;color:#1a5276;margin:0 0 12px;padding-bottom:6px;border-bottom:2px solid #2e86c1;}
+.prova{margin:10px 0;padding:12px;background:#f8fbff;border-radius:6px;}
+.prova h3{font-size:14px;color:#1a5276;margin:0 0 8px;}
+.ab{display:flex;align-items:center;gap:8px;margin:8px 0;padding:8px 12px;background:#eef2f7;border-radius:6px;flex-wrap:wrap;}
+.pb{padding:5px 14px;background:#2C1810;color:white;border:none;border-radius:16px;cursor:pointer;font-size:12px;}
+.pb:hover{background:#4A2C1A;}.pb.playing{background:#2e86c1;}
+.pb.bs{background:#555;font-size:11px;}
+.dur{font-size:11px;color:#888;}
+.db{display:inline-block;font-size:10px;padding:1px 5px;border-radius:3px;}
+.db-B1{background:#e8f5e9;color:#2e7d32;}.db-B1p{background:#fff3cd;color:#856404;}
+.sb{display:none;margin:6px 0;padding:10px;background:#f5f5f5;border-radius:6px;font-size:13px;line-height:1.6;white-space:pre-wrap;}
+.q{margin:10px 0;padding:10px;border-radius:6px;background:#f8fbff;}
+.q.tf{background:#f0f8ff;}.q.fill{background:#fff8e1;}
+.qt{font-weight:500;margin-bottom:4px;font-size:14px;}
+.opts{margin:4px 0;}.opts label{display:block;padding:3px 8px;border-radius:4px;cursor:pointer;}
+.opts label:hover{background:#e8f0fe;}
+.fi{padding:4px 8px;border:1px solid #ccc;border-radius:4px;font-size:13px;width:160px;margin:4px 0;}
+.rt{background:#f5f5f5;padding:14px;border-radius:6px;margin:10px 0;font-size:14px;line-height:1.7;}
+.wp{background:#f8f4ff;padding:12px;border-left:4px solid #7b1fa2;border-radius:4px;margin:10px 0;}
+.ta{width:100%;min-height:80px;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:14px;font-family:inherit;}
+.bsu{padding:10px 30px;background:linear-gradient(135deg,#1a5276,#2e86c1);color:white;border:none;border-radius:8px;font-size:15px;cursor:pointer;margin-top:10px;}
+.fb{display:none;margin-top:4px;padding:4px 8px;border-radius:4px;font-size:12px;}
+.cr{background:#e8f5e9;color:#2e7d32;display:block;}
+.wr{background:#ffebee;color:#c62828;display:block;}
+.sbr{display:none;background:linear-gradient(135deg,#27ae60,#2ecc71);color:white;padding:20px;border-radius:10px;text-align:center;margin-bottom:20px;}
+</style></head><body>
+<div class="hd"><h1>CILS B1 — Simulazione 4</h1><p>Esame completo: Ascolto + Lettura + Grammatica + Scrittura</p></div>
+<div class="sbr" id="sbr"><h2 id="ts">0/24</h2><p id="sm"></p></div>
+<div class="sec"><h2>Prova di Ascolto</h2><div class="prova"><h3>Prova 1 &mdash; Scelta Multipla</h3>
+<div class="audio-bar"><button class="play-btn" onclick="pa(this,410)">▶ Ascolta</button>
+<span class="dur">60s</span>
+<span class="diff-badge diff-B1">B1</span>
+<button class="play-btn bs" onclick="ts('sc_b1_4_1a')">📄 Testo</button></div>
+<div id="sc_b1_4_1a" class="script-box">Professoressa: Buongiorno ragazzi, oggi correggiamo i compiti. Marco, hai fatto l'esercizio di grammatica?
+Marco: S矛, professoressa. L'ho fatto, ma ho avuto qualche dubbio sui verbi riflessivi.
+Professoressa: Vediamo. Alzati alla lavagna e scrivi la frase: 'Io mi sveglio alle sette'.
+Marco: (Scrive alla lavagna) Ecco fatto.
+Professoressa: Bravo, 猫 corretto. Hai visto? Non era cos矛 difficile. Per la prossima lezione, ripassate anche i verbi modali: dovere, potere e volere.
+Marco: Quanti esercizi dobbiamo fare?
+Professoressa: Almeno cinque, come compito per casa. Li correggeremo venerd矛.</div>
+<div class="q" data-q="q4100" data-a="1"><div class="qt">1. L'esercizio che Marco ha fatto era di:</div>
+<div class="opts">
+<label><input type="radio" name="q4100" value="0"> Lessico</label>
+<label><input type="radio" name="q4100" value="1"> Grammatica</label>
+<label><input type="radio" name="q4100" value="2"> Lettura</label>
+<label><input type="radio" name="q4100" value="3"> Scrittura</label>
+</div><div id="fq4100" class="fb"></div></div>
+<div class="q" data-q="q4101" data-a="1"><div class="qt">2. Marco aveva dubbi su:</div>
+<div class="opts">
+<label><input type="radio" name="q4101" value="0"> Verbi modali</label>
+<label><input type="radio" name="q4101" value="1"> Verbi riflessivi</label>
+<label><input type="radio" name="q4101" value="2"> Verbi irregolari</label>
+<label><input type="radio" name="q4101" value="3"> Participi passati</label>
+</div><div id="fq4101" class="fb"></div></div>
+<div class="q" data-q="q4102" data-a="2"><div class="qt">3. La correzione dei compiti 猫 prevista per:</div>
+<div class="opts">
+<label><input type="radio" name="q4102" value="0"> Mercoled矛</label>
+<label><input type="radio" name="q4102" value="1"> Gioved矛</label>
+<label><input type="radio" name="q4102" value="2"> Venerd矛</label>
+<label><input type="radio" name="q4102" value="3"> Luned矛</label>
+</div><div id="fq4102" class="fb"></div></div>
+<div class="audio-bar"><button class="play-btn" onclick="pa(this,411)">▶ Ascolta</button>
+<span class="dur">45s</span>
+<span class="diff-badge diff-B1">B1</span>
+<button class="play-btn bs" onclick="ts('sc_b1_4_1b')">📄 Testo</button></div>
+<div id="sc_b1_4_1b" class="script-box">Viaggiatore: Buongiorno, vorrei un biglietto del treno per Bologna, andata e ritorno.
+Bigliettaio: Per quando? C'猫 l'Intercity o l'alta velocit脿.
+Viaggiatore: Per oggi, il primo treno disponibile dopo le 10.
+Bigliettaio: L'alta velocit脿 parte alle 10 e 15, arriva a Bologna alle 11 e 20. Costa 48 euro.
+Viaggiatore: E l'Intercity?
+Bigliettaio: L'Intercity parte un'ora dopo, costa 25 euro e arriva alle 12 e 45.</div>
+<div class="q" data-q="q4110" data-a="2"><div class="qt">1. Il viaggiatore vuole un biglietto per:</div>
+<div class="opts">
+<label><input type="radio" name="q4110" value="0"> Roma</label>
+<label><input type="radio" name="q4110" value="1"> Milano</label>
+<label><input type="radio" name="q4110" value="2"> Bologna</label>
+<label><input type="radio" name="q4110" value="3"> Firenze</label>
+</div><div id="fq4110" class="fb"></div></div>
+<div class="q" data-q="q4111" data-a="2"><div class="qt">2. L'alta velocit脿 costa:</div>
+<div class="opts">
+<label><input type="radio" name="q4111" value="0"> 25 euro</label>
+<label><input type="radio" name="q4111" value="1"> 35 euro</label>
+<label><input type="radio" name="q4111" value="2"> 48 euro</label>
+<label><input type="radio" name="q4111" value="3"> 55 euro</label>
+</div><div id="fq4111" class="fb"></div></div>
+</div>
+<div class="prova"><h3>Prova 2 &mdash; Vero/Falso</h3>
+<div class="audio-bar"><button class="play-btn" onclick="pa(this,420)">▶ Ascolta</button>
+<span class="dur">140s</span>
+<span class="diff-badge diff-B1p">B1+</span>
+<button class="play-btn bs" onclick="ts('sc_b1_4_2')">📄 Testo</button></div>
+<div id="sc_b1_4_2" class="script-box">Giornalista: Siamo in diretta da Palazzo Chigi dove il ministro dell'Istruzione ha appena presentato la nuova riforma della scuola. Ministro, quali sono i punti principali?
+Ministro: Buongiorno. La riforma si basa su tre pilastri: primo, l'introduzione dell'educazione finanziaria come materia obbligatoria dalle scuole medie; secondo, il potenziamento delle ore di laboratorio scientifico; terzo, l'aumento del numero di insegnanti di sostegno del 20%.
+Giornalista: C'猫 gi脿 una reazione dai sindacati?
+Ministro: I sindacati hanno accolto positivamente l'aumento dei fondi per il sostegno, ma hanno criticato l'introduzione dell'educazione finanziaria, sostenendo che il programma 猫 gi脿 troppo carico. Noi riteniamo invece che sia una competenza fondamentale per i giovani.
+Giornalista: Quando entrer脿 in vigore la riforma?
+Ministro: Le nuove materie partiranno dal prossimo anno scolastico, a settembre. Per gli insegnanti di sostegno, le assunzioni inizieranno gi脿 da giugno.
+Giornalista: E per quanto riguarda gli stipendi degli insegnanti?
+Ministro: 脠 previsto un aumento progressivo del 5% all'anno per i prossimi tre anni, a partire dal bilancio del 2027.</div>
+<div class="q tf" data-q="q4200" data-a="true"><div class="qt">1. La riforma introduce l'educazione finanziaria come materia obbligatoria.</div>
+<div class="opts">
+<label><input type="radio" name="q4200" value="true"> Vero</label>
+<label><input type="radio" name="q4200" value="false"> Falso</label>
+</div><div id="fq4200" class="fb"></div></div>
+<div class="q tf" data-q="q4201" data-a="false"><div class="qt">2. Il numero di insegnanti di sostegno aumenter脿 del 30%.</div>
+<div class="opts">
+<label><input type="radio" name="q4201" value="true"> Vero</label>
+<label><input type="radio" name="q4201" value="false"> Falso</label>
+</div><div id="fq4201" class="fb"></div></div>
+<div class="q tf" data-q="q4202" data-a="false"><div class="qt">3. I sindacati hanno accolto positivamente tutti gli aspetti della riforma.</div>
+<div class="opts">
+<label><input type="radio" name="q4202" value="true"> Vero</label>
+<label><input type="radio" name="q4202" value="false"> Falso</label>
+</div><div id="fq4202" class="fb"></div></div>
+<div class="q tf" data-q="q4203" data-a="true"><div class="qt">4. Le nuove materie partiranno a settembre.</div>
+<div class="opts">
+<label><input type="radio" name="q4203" value="true"> Vero</label>
+<label><input type="radio" name="q4203" value="false"> Falso</label>
+</div><div id="fq4203" class="fb"></div></div>
+<div class="q tf" data-q="q4204" data-a="true"><div class="qt">5. L'aumento degli stipendi degli insegnanti sar脿 del 5% all'anno per tre anni.</div>
+<div class="opts">
+<label><input type="radio" name="q4204" value="true"> Vero</label>
+<label><input type="radio" name="q4204" value="false"> Falso</label>
+</div><div id="fq4204" class="fb"></div></div>
+</div>
+<div class="prova"><h3>Prova 3 &mdash; Completamento</h3>
+<div class="audio-bar"><button class="play-btn" onclick="pa(this,430)">▶ Ascolta</button>
+<span class="dur">100s</span>
+<span class="diff-badge diff-B1p">B1+</span>
+<button class="play-btn bs" onclick="ts('sc_b1_4_3')">📄 Testo</button></div>
+<div id="sc_b1_4_3" class="script-box">Salve a tutti, sono Sara e lavoro come organizzatrice di eventi. Oggi vi parler貌 di come organizzare una festa di compleanno senza stress. La prima cosa da fare 猫 scegliere la data con almeno tre settimane di anticipo, in modo da avere tempo per organizzare tutto. Poi bisogna decidere il numero degli invitati: per una festa in casa, il massimo consigliato 猫 20 persone. Per quanto riguarda il cibo, 猫 meglio preparare piatti che si possono mangiare in piedi, come stuzzichini e tartine. Per le bevande, calcolate almeno due bicchieri a persona nelle prime due ore. Se la festa 猫 a tema, comunicatelo agli invitati con almeno una settimana di anticipo, cos矛 hanno tempo per prepararsi. Un'idea carina 猫 creare una playlist musicale con le canzoni preferite del festeggiato. Infine, non dimenticate una macchina fotografica per i ricordi!</div>
+<div class="q fill" data-q="q4300" data-a="tre" data-ac="tre|3"><div class="qt">1. Bisogna scegliere la data con almeno ___ settimane di anticipo.</div>
+<input type="text" class="fi"><div id="fq4300" class="fb"></div></div>
+<div class="q fill" data-q="q4301" data-a="20" data-ac="20|venti"><div class="qt">2. Per una festa in casa, il massimo consigliato 猫 ___ persone.</div>
+<input type="text" class="fi"><div id="fq4301" class="fb"></div></div>
+<div class="q fill" data-q="q4302" data-a="due" data-ac="due|2"><div class="qt">3. Calcolate almeno ___ bicchieri a persona nelle prime due ore.</div>
+<input type="text" class="fi"><div id="fq4302" class="fb"></div></div>
+<div class="q fill" data-q="q4303" data-a="settimana" data-ac="settimana"><div class="qt">4. Il tema della festa va comunicato con almeno una ___ di anticipo.</div>
+<input type="text" class="fi"><div id="fq4303" class="fb"></div></div>
+<div class="q fill" data-q="q4304" data-a="playlist" data-ac="playlist"><div class="qt">5. 脠 consigliato creare una ___ musicale con le canzoni preferite.</div>
+<input type="text" class="fi"><div id="fq4304" class="fb"></div></div>
+</div>
+</div>
+<div class="sec"><h2>Comprensione della Lettura</h2><div class="rt">La cucina italiana è famosa in tutto il mondo, ma non tutti sanno che è molto diversa da regione a regione. Al Nord si usano più burro e formaggi, mentre al Sud prevale l'olio d'oliva e la verdura. Ogni regione ha i suoi piatti tipici: la pizza è napoletana, il pesto è ligure, la carbonara è romana e il risotto è milanese. Questa varietà è il risultato della storia italiana: prima dell'Unità d'Italia nel 1861, ogni regione era indipendente e ha sviluppato una propria tradizione culinaria.</div>
+<div class="q" data-q="r4_0" data-a="0"><div class="qt">1. Al Nord si usano più burro e ___.</div>
+<div class="opts">
+<label><input type="radio" name="r4_0" value="0"> formaggi</label>
+<label><input type="radio" name="r4_0" value="1"> olio</label>
+<label><input type="radio" name="r4_0" value="2"> pasta</label>
+<label><input type="radio" name="r4_0" value="3"> riso</label>
+</div><div id="fr4_0" class="fb"></div></div>
+<div class="q" data-q="r4_1" data-a="1"><div class="qt">2. La carbonara è un piatto ___.</div>
+<div class="opts">
+<label><input type="radio" name="r4_1" value="0"> napoletano</label>
+<label><input type="radio" name="r4_1" value="1"> romano</label>
+<label><input type="radio" name="r4_1" value="2"> milanese</label>
+<label><input type="radio" name="r4_1" value="3"> genovese</label>
+</div><div id="fr4_1" class="fb"></div></div>
+<div class="q" data-q="r4_2" data-a="1"><div class="qt">3. Prima del 1861 ogni regione era ___.</div>
+<div class="opts">
+<label><input type="radio" name="r4_2" value="0"> unita</label>
+<label><input type="radio" name="r4_2" value="1"> indipendente</label>
+<label><input type="radio" name="r4_2" value="2"> sotto dominio</label>
+<label><input type="radio" name="r4_2" value="3"> divisa</label>
+</div><div id="fr4_2" class="fb"></div></div>
+<div class="q" data-q="r4_3" data-a="1"><div class="qt">4. La varietà culinaria è il risultato della ___ italiana.</div>
+<div class="opts">
+<label><input type="radio" name="r4_3" value="0"> geografia</label>
+<label><input type="radio" name="r4_3" value="1"> storia</label>
+<label><input type="radio" name="r4_3" value="2"> economia</label>
+<label><input type="radio" name="r4_3" value="3"> politica</label>
+</div><div id="fr4_3" class="fb"></div></div>
+</div>
+<div class="sec"><h2>Analisi delle Strutture</h2><div class="q" data-q="g4_0" data-a="avresti passato" data-ac="avresti passato"><div class="qt">1. Se avessi studiato, ___ (passare) l'esame.</div>
+<input type="text" class="fi"><div id="fg4_0" class="fb"></div></div>
+<div class="q" data-q="g4_1" data-a="avrei comprato" data-ac="avrei comprato"><div class="qt">2. Se fossi stato ricco, ___ (comprare) una villa.</div>
+<input type="text" class="fi"><div id="fg4_1" class="fb"></div></div>
+<div class="q" data-q="g4_2" data-a="sarei venuto" data-ac="sarei venuto"><div class="qt">3. Se avessi saputo, non ___ (venire).</div>
+<input type="text" class="fi"><div id="fg4_2" class="fb"></div></div>
+<div class="q" data-q="g4_3" data-a="sarebbe arrivato" data-ac="sarebbe arrivato"><div class="qt">4. Se fosse partito prima, ___ (arrivare) in tempo.</div>
+<input type="text" class="fi"><div id="fg4_3" class="fb"></div></div>
+<div class="q" data-q="g4_4" data-a="saresti stato" data-ac="saresti stato"><div class="qt">5. Se avessi fatto sport, ___ (essere) più in forma.</div>
+<input type="text" class="fi"><div id="fg4_4" class="fb"></div></div>
+</div>
+<div class="sec"><h2>Produzione Scritta</h2><div class="wp">Qual è il tuo piatto italiano preferito? Descrivilo e spiega perché ti piace. (120-150 parole) (max 150 parole)</div>
+<textarea class="ta"></textarea>
+<div style="font-size:12px;color:#888;margin-top:4px;">Questa sezione non viene valutata automaticamente.</div></div>
+<div style="text-align:center;margin:20px 0;"><button class="bsu" onclick="se()">📝 Verifica</button></div>
+<script>
+var A=[];
+
+var _ca=null,_cb=null;
+function pa(b,i){if(_ca&&_ca!==A[i]){_ca.pause();_ca.currentTime=0;if(_cb){_cb.classList.remove('playing');_cb.textContent='▶';}}
+if(A[i].paused){A[i].play();b.classList.add('playing');b.textContent='⏹';_ca=A[i];_cb=b;A[i].onended=function(){b.classList.remove('playing');b.textContent='▶';_ca=null;_cb=null;};}else{A[i].pause();A[i].currentTime=0;b.classList.remove('playing');b.textContent='▶';if(_ca===A[i]){_ca=null;_cb=null;}}}
+function ts(id){var b=document.getElementById(id);if(b)b.style.display=b.style.display==='none'||b.style.display===''?'block':'none';}
+function n(s){return s.toLowerCase().replace(/[\s'\x60\u2018\u2019\.\-\[\]\/]+/g,' ').trim();}
+function se(){var c=0,t=24;
+document.querySelectorAll('[data-q]').forEach(function(el){t++;var qid=el.getAttribute('data-q');var a=el.getAttribute('data-a');var fb=document.getElementById('f'+qid);if(!fb)return;
+if(el.type==='text'){var v=n(el.value);var ok=(el.getAttribute('data-ac')||a).split('|').some(function(x){return v===n(x)});
+if(ok){c++;fb.textContent='✓';fb.className='fb cr';}else{fb.textContent='✗ '+a;fb.className='fb wr';}
+}else if(el.type==='radio'){var s=document.querySelector('input[name="'+el.name+'"]:checked');
+if(s){if(s.value===a){c++;fb.textContent='✓';fb.className='fb cr';}else{fb.textContent='✗ '+a;fb.className='fb wr';}}
+else{fb.textContent='❓ '+a;fb.className='fb wr';}
+}});
+document.getElementById('sbr').style.display='block';document.getElementById('ts').textContent=c+'/'+t;
+var p=Math.round(c/t*100);document.getElementById('sm').textContent=p+'% - '+(p>=85?'Eccellente!':p>=70?'Buono':p>=60?'Discreto':p>=40?'Insufficiente':'Grave');window.scrollTo(0,0);
+}</script></body></html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html><html lang="it"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>CELI B2 — Simulazione 3</title>
+<style>
+*{box-sizing:border-box;}body{font-family:system-ui,sans-serif;max-width:960px;margin:0 auto;padding:20px;background:#f8f9fa;color:#222;}
+.hd{background:linear-gradient(135deg,#6B2D2D,#CE2B37);color:white;padding:20px 24px;border-radius:10px;margin-bottom:20px;}
+.hd h1{margin:0;font-size:20px;}
+.sec{background:white;border-radius:10px;padding:18px 20px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.08);}
+.sec h2{font-size:16px;color:#6B2D2D;margin:0 0 12px;padding-bottom:6px;border-bottom:2px solid #CE2B37;}
+.prova{margin:10px 0;padding:12px;background:#f8fbff;border-radius:6px;}
+.prova h3{font-size:14px;color:#6B2D2D;margin:0 0 8px;}
+.ab{display:flex;align-items:center;gap:8px;margin:8px 0;padding:8px 12px;background:#eef2f7;border-radius:6px;flex-wrap:wrap;}
+.pb{padding:5px 14px;background:#2C1810;color:white;border:none;border-radius:16px;cursor:pointer;font-size:12px;}
+.pb:hover{background:#4A2C1A;}.pb.playing{background:#CE2B37;}
+.pb.bs{background:#555;font-size:11px;}
+.dur{font-size:11px;color:#888;}
+.db{display:inline-block;font-size:10px;padding:1px 5px;border-radius:3px;}
+.db-B2{background:#e8f5e9;color:#2e7d32;}.db-B2p{background:#fff3cd;color:#856404;}
+.sb{display:none;margin:6px 0;padding:10px;background:#f5f5f5;border-radius:6px;font-size:13px;line-height:1.6;white-space:pre-wrap;}
+.q{margin:10px 0;padding:10px;border-radius:6px;background:#f8fbff;}
+.q.tf{background:#f0f8ff;}.q.fill{background:#fff8e1;}
+.qt{font-weight:500;margin-bottom:4px;font-size:14px;}
+.opts{margin:4px 0;}.opts label{display:block;padding:3px 8px;border-radius:4px;cursor:pointer;}
+.opts label:hover{background:#e8f0fe;}
+.fi{padding:4px 8px;border:1px solid #ccc;border-radius:4px;font-size:13px;width:160px;margin:4px 0;}
+.rt{background:#f5f5f5;padding:14px;border-radius:6px;margin:10px 0;font-size:14px;line-height:1.7;}
+.wp{background:#f8f4ff;padding:12px;border-left:4px solid #7b1fa2;border-radius:4px;margin:10px 0;}
+.ta{width:100%;min-height:80px;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:14px;font-family:inherit;}
+.bsu{padding:10px 30px;background:linear-gradient(135deg,#6B2D2D,#CE2B37);color:white;border:none;border-radius:8px;font-size:15px;cursor:pointer;margin-top:10px;}
+.fb{display:none;margin-top:4px;padding:4px 8px;border-radius:4px;font-size:12px;}
+.cr{background:#e8f5e9;color:#2e7d32;display:block;}
+.wr{background:#ffebee;color:#c62828;display:block;}
+.sbr{display:none;background:linear-gradient(135deg,#27ae60,#2ecc71);color:white;padding:20px;border-radius:10px;text-align:center;margin-bottom:20px;}
+</style></head><body>
+<div class="hd"><h1>CELI B2 — Simulazione 3</h1><p>Esame completo: Ascolto + Lettura + Grammatica + Scrittura</p></div>
+<div class="sbr" id="sbr"><h2 id="ts">0/22</h2><p id="sm"></p></div>
+<div class="sec"><h2>Prova di Ascolto</h2><div class="prova"><h3>Prova 1 &mdash; Scelta Multipla</h3>
+<div class="audio-bar"><button class="play-btn" onclick="pa(this,310)">▶ Ascolta</button>
+<span class="dur">65s</span>
+<span class="diff-badge diff-B2">B2</span>
+<button class="play-btn bs" onclick="ts('sc_cb2_3_1a')">📄 Testo</button></div>
+<div id="sc_cb2_3_1a" class="script-box">Titolare: Allora, come va il nuovo dipendente?
+Responsabile: Bene, si sta ambientando. Ha già imparato il funzionamento del gestionale. L'unica difficoltà è la lingua: non parla ancora benissimo l'italiano.
+Titolare: Possiamo organizzare un corso. Ci sono fondi per la formazione.
+Responsabile: Ottima idea. Potrebbe seguire il corso serale due volte a settimana.</div>
+<div class="q" data-q="q3100" data-a="1"><div class="qt">1. Il nuovo dipendente ha imparato:</div>
+<div class="opts">
+<label><input type="radio" name="q3100" value="0"> La lingua</label>
+<label><input type="radio" name="q3100" value="1"> Il gestionale</label>
+<label><input type="radio" name="q3100" value="2"> Le procedure</label>
+<label><input type="radio" name="q3100" value="3"> I clienti</label>
+</div><div id="fq3100" class="fb"></div></div>
+<div class="q" data-q="q3101" data-a="0"><div class="qt">2. La difficoltà del dipendente è:</div>
+<div class="opts">
+<label><input type="radio" name="q3101" value="0"> La lingua</label>
+<label><input type="radio" name="q3101" value="1"> L'orario</label>
+<label><input type="radio" name="q3101" value="2"> Lo stipendio</label>
+<label><input type="radio" name="q3101" value="3"> La distanza</label>
+</div><div id="fq3101" class="fb"></div></div>
+<div class="q" data-q="q3102" data-a="2"><div class="qt">3. Il corso si terrà:</div>
+<div class="opts">
+<label><input type="radio" name="q3102" value="0"> Al mattino</label>
+<label><input type="radio" name="q3102" value="1"> Di pomeriggio</label>
+<label><input type="radio" name="q3102" value="2"> La sera</label>
+<label><input type="radio" name="q3102" value="3"> Il sabato</label>
+</div><div id="fq3102" class="fb"></div></div>
+<div class="audio-bar"><button class="play-btn" onclick="pa(this,311)">▶ Ascolta</button>
+<span class="dur">55s</span>
+<span class="diff-badge diff-B2">B2</span>
+<button class="play-btn bs" onclick="ts('sc_cb2_3_1b')">📄 Testo</button></div>
+<div id="sc_cb2_3_1b" class="script-box">Cliente: Vorrei aprire un conto corrente. Quali documenti servono?
+Impiegato: Deve portare un documento d'identità, il codice fiscale e una busta paga o dichiarazione dei redditi.
+Cliente: Ci sono spese di gestione?
+Impiegato: Il conto base ha un canone annuo di 30 euro, ma per i primi 12 mesi è gratuito.</div>
+<div class="q" data-q="q3110" data-a="2"><div class="qt">1. Per aprire un conto serve:</div>
+<div class="opts">
+<label><input type="radio" name="q3110" value="0"> Solo documento</label>
+<label><input type="radio" name="q3110" value="1"> Documento e codice fiscale</label>
+<label><input type="radio" name="q3110" value="2"> Documento+codice+busta paga</label>
+<label><input type="radio" name="q3110" value="3"> Solo busta paga</label>
+</div><div id="fq3110" class="fb"></div></div>
+<div class="q" data-q="q3111" data-a="2"><div class="qt">2. Il conto base costa all'anno:</div>
+<div class="opts">
+<label><input type="radio" name="q3111" value="0"> Gratuito</label>
+<label><input type="radio" name="q3111" value="1"> 20 euro</label>
+<label><input type="radio" name="q3111" value="2"> 30 euro</label>
+<label><input type="radio" name="q3111" value="3"> 50 euro</label>
+</div><div id="fq3111" class="fb"></div></div>
+</div>
+<div class="prova"><h3>Prova 2 &mdash; Vero/Falso</h3>
+<div class="audio-bar"><button class="play-btn" onclick="pa(this,320)">▶ Ascolta</button>
+<span class="dur">130s</span>
+<span class="diff-badge diff-B2">B2</span>
+<button class="play-btn bs" onclick="ts('sc_cb2_3_2')">📄 Testo</button></div>
+<div id="sc_cb2_3_2" class="script-box">Intervistatore: Oggi parliamo del fenomeno dello smart working con la professoressa Rinaldi, esperta di organizzazione aziendale.
+Prof.ssa Rinaldi: Il lavoro da remoto è cresciuto in modo esponenziale dopo la pandemia. Oggi circa il 18% dei lavoratori italiani lavora da casa almeno un giorno a settimana.
+Intervistatore: Quali sono i vantaggi?
+Prof.ssa Rinaldi: I benefici principali sono la flessibilità oraria, il risparmio sui trasporti e una migliore conciliazione tra vita familiare e lavoro. Tuttavia, ci sono anche svantaggi: l'isolamento sociale e la difficoltà di separare vita professionale e privata.
+Intervistatore: E per le aziende?
+Prof.ssa Rinaldi: Le aziende risparmiano sugli spazi, ma devono investire in tecnologie e formazione dei manager per gestire team a distanza. La sfida più grande è mantenere la coesione del gruppo.</div>
+<div class="q tf" data-q="q3200" data-a="true"><div class="qt">1. Il 18% dei lavoratori italiani lavora da casa.</div>
+<div class="opts">
+<label><input type="radio" name="q3200" value="true"> Vero</label>
+<label><input type="radio" name="q3200" value="false"> Falso</label>
+</div><div id="fq3200" class="fb"></div></div>
+<div class="q tf" data-q="q3201" data-a="false"><div class="qt">2. Secondo la professoressa, lo smart working ha solo vantaggi.</div>
+<div class="opts">
+<label><input type="radio" name="q3201" value="true"> Vero</label>
+<label><input type="radio" name="q3201" value="false"> Falso</label>
+</div><div id="fq3201" class="fb"></div></div>
+<div class="q tf" data-q="q3202" data-a="true"><div class="qt">3. L'isolamento sociale è uno svantaggio dello smart working.</div>
+<div class="opts">
+<label><input type="radio" name="q3202" value="true"> Vero</label>
+<label><input type="radio" name="q3202" value="false"> Falso</label>
+</div><div id="fq3202" class="fb"></div></div>
+<div class="q tf" data-q="q3203" data-a="false"><div class="qt">4. Le aziende risparmiano solo sugli spazi.</div>
+<div class="opts">
+<label><input type="radio" name="q3203" value="true"> Vero</label>
+<label><input type="radio" name="q3203" value="false"> Falso</label>
+</div><div id="fq3203" class="fb"></div></div>
+<div class="q tf" data-q="q3204" data-a="true"><div class="qt">5. La sfida più grande è mantenere la coesione del gruppo.</div>
+<div class="opts">
+<label><input type="radio" name="q3204" value="true"> Vero</label>
+<label><input type="radio" name="q3204" value="false"> Falso</label>
+</div><div id="fq3204" class="fb"></div></div>
+</div>
+<div class="prova"><h3>Prova 3 &mdash; Completamento</h3>
+<div class="audio-bar"><button class="play-btn" onclick="pa(this,330)">▶ Ascolta</button>
+<span class="dur">100s</span>
+<span class="diff-badge diff-B2">B2</span>
+<button class="play-btn bs" onclick="ts('sc_cb2_3_3')">📄 Testo</button></div>
+<div id="sc_cb2_3_3" class="script-box">Buongiorno, sono il professor Marchetti e oggi vi parlerò del turismo sostenibile. Il turismo è uno dei settori economici più importanti in Italia, ma ha un impatto ambientale significativo. Si stima che il turismo sia responsabile dell'8% delle emissioni globali di CO2. Per questo motivo, sta nascendo una nuova consapevolezza: i turisti cercano esperienze autentiche e rispettose dell'ambiente. Le strutture ricettive che adottano pratiche sostenibili, come l'uso di energie rinnovabili e la riduzione dei rifiuti, sono sempre più richieste. Anche i viaggiatori possono fare la loro parte: scegliere mezzi di trasporto a basso impatto, rispettare la cultura locale e non lasciare rifiuti.</div>
+<div class="q fill" data-q="q3300" data-a="8" data-ac="8|otto"><div class="qt">1. Il turismo è responsabile dell'___% delle emissioni globali.</div>
+<input type="text" class="fi"><div id="fq3300" class="fb"></div></div>
+<div class="q fill" data-q="q3301" data-a="ambiente" data-ac="ambiente"><div class="qt">2. I turisti cercano esperienze autentiche e rispettose dell'___.</div>
+<input type="text" class="fi"><div id="fq3301" class="fb"></div></div>
+<div class="q fill" data-q="q3302" data-a="rinnovabili" data-ac="rinnovabili"><div class="qt">3. Le strutture ricettive usano energie ___.</div>
+<input type="text" class="fi"><div id="fq3302" class="fb"></div></div>
+<div class="q fill" data-q="q3303" data-a="basso" data-ac="basso"><div class="qt">4. I viaggiatori dovrebbero scegliere mezzi di trasporto a ___ impatto.</div>
+<input type="text" class="fi"><div id="fq3303" class="fb"></div></div>
+</div>
+</div>
+<div class="sec"><h2>Comprensione della Lettura</h2><div class="rt">La mobilita elettrica sta rivoluzionando il settore automobilistico italiano. Le vendite di auto elettriche sono cresciute del 130% rispetto all'anno precedente. Attualmente circolano in Italia circa 300.000 veicoli elettrici, contro i 38 milioni di auto tradizionali. Le colonnine di ricarica pubbliche sono 45.000, ma secondo gli esperti ne servirebbero almeno 200.000 per soddisfare la domanda futura.</div>
+<div class="q" data-q="r3_0" data-a="2"><div class="qt">1. Le vendite di auto elettriche sono cresciute del ___%.</div>
+<div class="opts">
+<label><input type="radio" name="r3_0" value="0"> 80</label>
+<label><input type="radio" name="r3_0" value="1"> 100</label>
+<label><input type="radio" name="r3_0" value="2"> 130</label>
+<label><input type="radio" name="r3_0" value="3"> 150</label>
+</div><div id="fr3_0" class="fb"></div></div>
+<div class="q" data-q="r3_1" data-a="2"><div class="qt">2. In Italia circolano circa ___ veicoli elettrici.</div>
+<div class="opts">
+<label><input type="radio" name="r3_1" value="0"> 200.000</label>
+<label><input type="radio" name="r3_1" value="1"> 250.000</label>
+<label><input type="radio" name="r3_1" value="2"> 300.000</label>
+<label><input type="radio" name="r3_1" value="3"> 400.000</label>
+</div><div id="fr3_1" class="fb"></div></div>
+<div class="q" data-q="r3_2" data-a="2"><div class="qt">3. Servirebbero almeno ___ colonnine di ricarica.</div>
+<div class="opts">
+<label><input type="radio" name="r3_2" value="0"> 100.000</label>
+<label><input type="radio" name="r3_2" value="1"> 150.000</label>
+<label><input type="radio" name="r3_2" value="2"> 200.000</label>
+<label><input type="radio" name="r3_2" value="3"> 250.000</label>
+</div><div id="fr3_2" class="fb"></div></div>
+</div>
+<div class="sec"><h2>Analisi delle Strutture</h2><div class="q" data-q="g3_0" data-a="investire" data-ac="investire"><div class="qt">1. Bisognerebbe ___ (investire) di piu nella ricerca.</div>
+<input type="text" class="fi"><div id="fg3_0" class="fb"></div></div>
+<div class="q" data-q="g3_1" data-a="migliorare" data-ac="migliorare"><div class="qt">2. Si potrebbe ___ (migliorare) la situazione.</div>
+<input type="text" class="fi"><div id="fg3_1" class="fb"></div></div>
+<div class="q" data-q="g3_2" data-a="ridurre" data-ac="ridurre"><div class="qt">3. Occorre ___ (ridurre) i costi.</div>
+<input type="text" class="fi"><div id="fg3_2" class="fb"></div></div>
+<div class="q" data-q="g3_3" data-a="aumentare" data-ac="aumentare"><div class="qt">4. E necessario ___ (aumentare) la produzione.</div>
+<input type="text" class="fi"><div id="fg3_3" class="fb"></div></div>
+<div class="q" data-q="g3_4" data-a="trovare" data-ac="trovare"><div class="qt">5. Si deve ___ (trovare) una soluzione.</div>
+<input type="text" class="fi"><div id="fg3_4" class="fb"></div></div>
+</div>
+<div class="sec"><h2>Produzione Scritta</h2><div class="wp">La mobilita elettrica in Italia: progressi, limiti e prospettive. (150-180 parole) (max 180 parole)</div>
+<textarea class="ta"></textarea>
+<div style="font-size:12px;color:#888;margin-top:4px;">Questa sezione non viene valutata automaticamente.</div></div>
+<div style="text-align:center;margin:20px 0;"><button class="bsu" onclick="se()">📝 Verifica</button></div>
+<script>
+var A=[];
+
+var _ca=null,_cb=null;
+function pa(b,i){if(_ca&&_ca!==A[i]){_ca.pause();_ca.currentTime=0;if(_cb){_cb.classList.remove('playing');_cb.textContent='▶';}}
+if(A[i].paused){A[i].play();b.classList.add('playing');b.textContent='⏹';_ca=A[i];_cb=b;A[i].onended=function(){b.classList.remove('playing');b.textContent='▶';_ca=null;_cb=null;};}else{A[i].pause();A[i].currentTime=0;b.classList.remove('playing');b.textContent='▶';if(_ca===A[i]){_ca=null;_cb=null;}}}
+function ts(id){var b=document.getElementById(id);if(b)b.style.display=b.style.display==='none'||b.style.display===''?'block':'none';}
+function n(s){return s.toLowerCase().replace(/[\s'\x60\u2018\u2019\.\-\[\]\/]+/g,' ').trim();}
+function se(){var c=0,t=22;
+document.querySelectorAll('[data-q]').forEach(function(el){t++;var qid=el.getAttribute('data-q');var a=el.getAttribute('data-a');var fb=document.getElementById('f'+qid);if(!fb)return;
+if(el.type==='text'){var v=n(el.value);var ok=(el.getAttribute('data-ac')||a).split('|').some(function(x){return v===n(x)});
+if(ok){c++;fb.textContent='✓';fb.className='fb cr';}else{fb.textContent='✗ '+a;fb.className='fb wr';}
+}else if(el.type==='radio'){var s=document.querySelector('input[name="'+el.name+'"]:checked');
+if(s){if(s.value===a){c++;fb.textContent='✓';fb.className='fb cr';}else{fb.textContent='✗ '+a;fb.className='fb wr';}}
+else{fb.textContent='❓ '+a;fb.className='fb wr';}
+}});
+document.getElementById('sbr').style.display='block';document.getElementById('ts').textContent=c+'/'+t;
+var p=Math.round(c/t*100);document.getElementById('sm').textContent=p+'% - '+(p>=85?'Eccellente!':p>=70?'Buono':p>=60?'Discreto':p>=40?'Insufficiente':'Grave');window.scrollTo(0,0);
+}</script></body></html>

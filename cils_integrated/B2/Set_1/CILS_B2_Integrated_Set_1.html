@@ -1,0 +1,199 @@
+<!DOCTYPE html><html lang="it"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>CILS B2 — Simulazione 1</title>
+<style>
+*{box-sizing:border-box;}body{font-family:system-ui,sans-serif;max-width:960px;margin:0 auto;padding:20px;background:#f8f9fa;color:#222;}
+.hd{background:linear-gradient(135deg,#1a5276,#2e86c1);color:white;padding:20px 24px;border-radius:10px;margin-bottom:20px;}
+.hd h1{margin:0;font-size:20px;}
+.sec{background:white;border-radius:10px;padding:18px 20px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.08);}
+.sec h2{font-size:16px;color:#1a5276;margin:0 0 12px;padding-bottom:6px;border-bottom:2px solid #2e86c1;}
+.prova{margin:10px 0;padding:12px;background:#f8fbff;border-radius:6px;}
+.prova h3{font-size:14px;color:#1a5276;margin:0 0 8px;}
+.ab{display:flex;align-items:center;gap:8px;margin:8px 0;padding:8px 12px;background:#eef2f7;border-radius:6px;flex-wrap:wrap;}
+.pb{padding:5px 14px;background:#2C1810;color:white;border:none;border-radius:16px;cursor:pointer;font-size:12px;}
+.pb:hover{background:#4A2C1A;}.pb.playing{background:#2e86c1;}
+.pb.bs{background:#555;font-size:11px;}
+.dur{font-size:11px;color:#888;}
+.db{display:inline-block;font-size:10px;padding:1px 5px;border-radius:3px;}
+.db-B2{background:#e8f5e9;color:#2e7d32;}.db-B2p{background:#fff3cd;color:#856404;}
+.sb{display:none;margin:6px 0;padding:10px;background:#f5f5f5;border-radius:6px;font-size:13px;line-height:1.6;white-space:pre-wrap;}
+.q{margin:10px 0;padding:10px;border-radius:6px;background:#f8fbff;}
+.q.tf{background:#f0f8ff;}.q.fill{background:#fff8e1;}
+.qt{font-weight:500;margin-bottom:4px;font-size:14px;}
+.opts{margin:4px 0;}.opts label{display:block;padding:3px 8px;border-radius:4px;cursor:pointer;}
+.opts label:hover{background:#e8f0fe;}
+.fi{padding:4px 8px;border:1px solid #ccc;border-radius:4px;font-size:13px;width:160px;margin:4px 0;}
+.rt{background:#f5f5f5;padding:14px;border-radius:6px;margin:10px 0;font-size:14px;line-height:1.7;}
+.wp{background:#f8f4ff;padding:12px;border-left:4px solid #7b1fa2;border-radius:4px;margin:10px 0;}
+.ta{width:100%;min-height:80px;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:14px;font-family:inherit;}
+.bsu{padding:10px 30px;background:linear-gradient(135deg,#1a5276,#2e86c1);color:white;border:none;border-radius:8px;font-size:15px;cursor:pointer;margin-top:10px;}
+.fb{display:none;margin-top:4px;padding:4px 8px;border-radius:4px;font-size:12px;}
+.cr{background:#e8f5e9;color:#2e7d32;display:block;}
+.wr{background:#ffebee;color:#c62828;display:block;}
+.sbr{display:none;background:linear-gradient(135deg,#27ae60,#2ecc71);color:white;padding:20px;border-radius:10px;text-align:center;margin-bottom:20px;}
+</style></head><body>
+<div class="hd"><h1>CILS B2 — Simulazione 1</h1><p>Esame completo: Ascolto + Lettura + Grammatica + Scrittura</p></div>
+<div class="sbr" id="sbr"><h2 id="ts">0/22</h2><p id="sm"></p></div>
+<div class="sec"><h2>Prova di Ascolto</h2><div class="prova"><h3>Prova 1 &mdash; Scelta Multipla</h3>
+<div class="audio-bar"><button class="play-btn" onclick="pa(this,110)">▶ Ascolta</button>
+<span class="dur">70s</span>
+<span class="diff-badge diff-B2">B2</span>
+<button class="play-btn bs" onclick="ts('sc_b2_1_1a')">📄 Testo</button></div>
+<div id="sc_b2_1_1a" class="script-box">Responsabile: Allora, come procede il progetto?
+Collega: Abbiamo completato la prima fase. I dati mostrano un miglioramento del 15% nell'efficienza.
+Responsabile: Bene, quando possiamo passare alla seconda fase?
+Collega: Direi la prossima settimana, ma avremmo bisogno di due persone in più.
+Responsabile: Ne parlerò con la direzione. Preparate una relazione dettagliata per venerdì.
+Collega: D'accordo. La preparo entro giovedì pomeriggio.</div>
+<div class="q" data-q="q1100" data-a="2"><div class="qt">1. Quale miglioramento mostrano i dati?</div>
+<div class="opts">
+<label><input type="radio" name="q1100" value="0"> 5%</label>
+<label><input type="radio" name="q1100" value="1"> 10%</label>
+<label><input type="radio" name="q1100" value="2"> 15%</label>
+<label><input type="radio" name="q1100" value="3"> 20%</label>
+</div><div id="fq1100" class="fb"></div></div>
+<div class="q" data-q="q1101" data-a="1"><div class="qt">2. Cosa serve per la seconda fase?</div>
+<div class="opts">
+<label><input type="radio" name="q1101" value="0"> Più tempo</label>
+<label><input type="radio" name="q1101" value="1"> Due persone in più</label>
+<label><input type="radio" name="q1101" value="2"> Un nuovo ufficio</label>
+<label><input type="radio" name="q1101" value="3"> Più soldi</label>
+</div><div id="fq1101" class="fb"></div></div>
+<div class="q" data-q="q1102" data-a="1"><div class="qt">3. Quando va preparata la relazione?</div>
+<div class="opts">
+<label><input type="radio" name="q1102" value="0"> Mercoledì</label>
+<label><input type="radio" name="q1102" value="1"> Giovedì</label>
+<label><input type="radio" name="q1102" value="2"> Venerdì</label>
+<label><input type="radio" name="q1102" value="3"> Lunedì</label>
+</div><div id="fq1102" class="fb"></div></div>
+<div class="audio-bar"><button class="play-btn" onclick="pa(this,111)">▶ Ascolta</button>
+<span class="dur">55s</span>
+<span class="diff-badge diff-B2">B2</span>
+<button class="play-btn bs" onclick="ts('sc_b2_1_1b')">📄 Testo</button></div>
+<div id="sc_b2_1_1b" class="script-box">Giornalista: Professore, quali sono le cause dell'inflazione attuale?
+Economista: Principalmente l'aumento dei prezzi delle materie prime e le difficoltà nelle catene di approvvigionamento.
+Giornalista: Quanto durerà secondo lei?
+Economista: Prevedo una stabilizzazione entro i prossimi sei mesi, ma molto dipenderà dalle decisioni delle banche centrali.</div>
+<div class="q" data-q="q1110" data-a="0"><div class="qt">1. Quali sono le cause dell'inflazione?</div>
+<div class="opts">
+<label><input type="radio" name="q1110" value="0"> Materie prime e catene approvvigionamento</label>
+<label><input type="radio" name="q1110" value="1"> Tasse alte</label>
+<label><input type="radio" name="q1110" value="2"> Salari bassi</label>
+<label><input type="radio" name="q1110" value="3"> Poca produzione</label>
+</div><div id="fq1110" class="fb"></div></div>
+<div class="q" data-q="q1111" data-a="1"><div class="qt">2. Quando potrebbe stabilizzarsi?</div>
+<div class="opts">
+<label><input type="radio" name="q1111" value="0"> Tra 3 mesi</label>
+<label><input type="radio" name="q1111" value="1"> Tra 6 mesi</label>
+<label><input type="radio" name="q1111" value="2"> Tra 1 anno</label>
+<label><input type="radio" name="q1111" value="3"> Tra 2 anni</label>
+</div><div id="fq1111" class="fb"></div></div>
+</div>
+<div class="prova"><h3>Prova 2 &mdash; Vero/Falso</h3>
+<div class="audio-bar"><button class="play-btn" onclick="pa(this,120)">▶ Ascolta</button>
+<span class="dur">120s</span>
+<span class="diff-badge diff-B2">B2</span>
+<button class="play-btn bs" onclick="ts('sc_b2_1_2')">📄 Testo</button></div>
+<div id="sc_b2_1_2" class="script-box">Intervistatore: Dottoressa Marini, lei è una delle massime esperte di politiche culturali in Italia. Qual è lo stato della cultura nel nostro paese?
+Esperta: Il settore culturale italiano vale circa il 6% del PIL, ma riceve solo l'1% della spesa pubblica. Sottofinanziamento cronico, soprattutto al Sud, dove mancano infrastrutture adeguate.
+Intervistatore: E il pubblico? La gente frequenta i musei?
+Esperta: Sì, negli ultimi anni c'è stato un aumento significativo. I visitatori dei musei statali sono cresciuti del 25% dal 2019. I giovani tra i 18 e i 30 anni sono la fascia in maggiore crescita.
+Intervistatore: Cosa propone per migliorare la situazione?
+Esperta: Tre cose: aumentare i fondi al 2% del PIL, incentivare la lettura con progetti nelle scuole e digitalizzare gli archivi per renderli accessibili online. Abbiamo un patrimonio immenso ma poco valorizzato.</div>
+<div class="q tf" data-q="q1200" data-a="true"><div class="qt">1. Il settore culturale italiano vale circa il 6% del PIL.</div>
+<div class="opts">
+<label><input type="radio" name="q1200" value="true"> Vero</label>
+<label><input type="radio" name="q1200" value="false"> Falso</label>
+</div><div id="fq1200" class="fb"></div></div>
+<div class="q tf" data-q="q1201" data-a="false"><div class="qt">2. La spesa pubblica per la cultura è superiore al 2%.</div>
+<div class="opts">
+<label><input type="radio" name="q1201" value="true"> Vero</label>
+<label><input type="radio" name="q1201" value="false"> Falso</label>
+</div><div id="fq1201" class="fb"></div></div>
+<div class="q tf" data-q="q1202" data-a="false"><div class="qt">3. I visitatori dei musei sono diminuiti dal 2019.</div>
+<div class="opts">
+<label><input type="radio" name="q1202" value="true"> Vero</label>
+<label><input type="radio" name="q1202" value="false"> Falso</label>
+</div><div id="fq1202" class="fb"></div></div>
+<div class="q tf" data-q="q1203" data-a="true"><div class="qt">4. I giovani tra 18 e 30 anni frequentano di più i musei.</div>
+<div class="opts">
+<label><input type="radio" name="q1203" value="true"> Vero</label>
+<label><input type="radio" name="q1203" value="false"> Falso</label>
+</div><div id="fq1203" class="fb"></div></div>
+<div class="q tf" data-q="q1204" data-a="true"><div class="qt">5. L'esperta propone di digitalizzare gli archivi.</div>
+<div class="opts">
+<label><input type="radio" name="q1204" value="true"> Vero</label>
+<label><input type="radio" name="q1204" value="false"> Falso</label>
+</div><div id="fq1204" class="fb"></div></div>
+</div>
+<div class="prova"><h3>Prova 3 &mdash; Completamento</h3>
+<div class="audio-bar"><button class="play-btn" onclick="pa(this,130)">▶ Ascolta</button>
+<span class="dur">100s</span>
+<span class="diff-badge diff-B2">B2</span>
+<button class="play-btn bs" onclick="ts('sc_b2_1_3')">📄 Testo</button></div>
+<div id="sc_b2_1_3" class="script-box">Buongiorno a tutti, sono il dottor Bianchi e oggi parlerò dell'importanza della prevenzione sanitaria. Molte malattie si possono evitare con controlli regolari. Per esempio, la pressione alta non dà sintomi iniziali, ma se trascurata può causare problemi gravi. Si consiglia di fare un controllo della pressione almeno una volta all'anno dopo i 40 anni. Anche l'esame del sangue è fondamentale: permette di individuare carenze vitaminiche, problemi al fegato o ai reni. La prevenzione non è solo visite mediche: significa anche alimentazione equilibrata, attività fisica moderata ma costante e riduzione dello stress. Ricordate: investire nella prevenzione oggi significa vivere meglio domani.</div>
+<div class="q fill" data-q="q1300" data-a="40" data-ac="40|quaranta"><div class="qt">1. Si consiglia un controllo della pressione dopo i ___ anni.</div>
+<input type="text" class="fi"><div id="fq1300" class="fb"></div></div>
+<div class="q fill" data-q="q1301" data-a="esame" data-ac="esame|analisi"><div class="qt">2. L'___ del sangue permette di individuare carenze e problemi.</div>
+<input type="text" class="fi"><div id="fq1301" class="fb"></div></div>
+<div class="q fill" data-q="q1302" data-a="fisica" data-ac="fisica"><div class="qt">3. La prevenzione include anche attività ___ moderata.</div>
+<input type="text" class="fi"><div id="fq1302" class="fb"></div></div>
+<div class="q fill" data-q="q1303" data-a="stress" data-ac="stress"><div class="qt">4. Bisogna ridurre lo ___ per una vita sana.</div>
+<input type="text" class="fi"><div id="fq1303" class="fb"></div></div>
+</div>
+</div>
+<div class="sec"><h2>Comprensione della Lettura</h2><div class="rt">L'intelligenza artificiale sta rivoluzionando il mondo del lavoro. Secondo un rapporto del World Economic Forum, entro il 2030 l'IA creerà 97 milioni di nuovi posti di lavoro, ma ne eliminerà altrettanti. I settori più colpiti saranno la manifattura, i trasporti e i servizi amministrativi. Tuttavia, emergeranno nuove professioni legate alla gestione e allo sviluppo dell'IA. Gli esperti sottolineano l'importanza della formazione continua e dell'aggiornamento professionale per affrontare questa transizione.</div>
+<div class="q" data-q="r1_0" data-a="2"><div class="qt">1. L'IA creerà 97 milioni di nuovi posti di lavoro entro il ___.</div>
+<div class="opts">
+<label><input type="radio" name="r1_0" value="0"> 2025</label>
+<label><input type="radio" name="r1_0" value="1"> 2027</label>
+<label><input type="radio" name="r1_0" value="2"> 2030</label>
+<label><input type="radio" name="r1_0" value="3"> 2035</label>
+</div><div id="fr1_0" class="fb"></div></div>
+<div class="q" data-q="r1_1" data-a="1"><div class="qt">2. I settori più colpiti: manifattura, trasporti e ___.</div>
+<div class="opts">
+<label><input type="radio" name="r1_1" value="0"> servizi finanziari</label>
+<label><input type="radio" name="r1_1" value="1"> servizi amministrativi</label>
+<label><input type="radio" name="r1_1" value="2"> sanità</label>
+<label><input type="radio" name="r1_1" value="3"> istruzione</label>
+</div><div id="fr1_1" class="fb"></div></div>
+<div class="q" data-q="r1_2" data-a="0"><div class="qt">3. Gli esperti sottolineano l'importanza della formazione ___.</div>
+<div class="opts">
+<label><input type="radio" name="r1_2" value="0"> continua</label>
+<label><input type="radio" name="r1_2" value="1"> universitaria</label>
+<label><input type="radio" name="r1_2" value="2"> professionale</label>
+<label><input type="radio" name="r1_2" value="3"> tecnica</label>
+</div><div id="fr1_2" class="fb"></div></div>
+</div>
+<div class="sec"><h2>Analisi delle Strutture</h2><div class="q" data-q="g1_0" data-a="Nonostante" data-ac="Nonostante"><div class="qt">1. ___ (nonostante/benché) la pioggia, siamo usciti.</div>
+<input type="text" class="fi"><div id="fg1_0" class="fb"></div></div>
+<div class="q" data-q="g1_1" data-a="Affinché" data-ac="Affinché"><div class="qt">2. ___ (affinché/per) tu possa capire, te lo spiego.</div>
+<input type="text" class="fi"><div id="fg1_1" class="fb"></div></div>
+<div class="q" data-q="g1_2" data-a="che" data-ac="che"><div class="qt">3. L'uomo, ___ (il quale/che) ho incontrato, era gentile.</div>
+<input type="text" class="fi"><div id="fg1_2" class="fb"></div></div>
+<div class="q" data-q="g1_3" data-a="Qualora" data-ac="Qualora"><div class="qt">4. ___ (qualora/se) tu decidessi di venire, avvisami.</div>
+<input type="text" class="fi"><div id="fg1_3" class="fb"></div></div>
+<div class="q" data-q="g1_4" data-a="Benché" data-ac="Benché"><div class="qt">5. ___ (benché/sebbene) fosse stanco, continuò a lavorare.</div>
+<input type="text" class="fi"><div id="fg1_4" class="fb"></div></div>
+</div>
+<div class="sec"><h2>Produzione Scritta</h2><div class="wp">Pensa all'impatto dell'intelligenza artificiale sul lavoro. Quali professioni potrebbero scomparire e quali nuove potrebbero nascere? (150-180 parole) (max 180 parole)</div>
+<textarea class="ta"></textarea>
+<div style="font-size:12px;color:#888;margin-top:4px;">Questa sezione non viene valutata automaticamente.</div></div>
+<div style="text-align:center;margin:20px 0;"><button class="bsu" onclick="se()">📝 Verifica</button></div>
+<script>
+var A=[];
+
+var _ca=null,_cb=null;
+function pa(b,i){if(_ca&&_ca!==A[i]){_ca.pause();_ca.currentTime=0;if(_cb){_cb.classList.remove('playing');_cb.textContent='▶';}}
+if(A[i].paused){A[i].play();b.classList.add('playing');b.textContent='⏹';_ca=A[i];_cb=b;A[i].onended=function(){b.classList.remove('playing');b.textContent='▶';_ca=null;_cb=null;};}else{A[i].pause();A[i].currentTime=0;b.classList.remove('playing');b.textContent='▶';if(_ca===A[i]){_ca=null;_cb=null;}}}
+function ts(id){var b=document.getElementById(id);if(b)b.style.display=b.style.display==='none'||b.style.display===''?'block':'none';}
+function n(s){return s.toLowerCase().replace(/[\s'\x60\u2018\u2019\.\-\[\]\/]+/g,' ').trim();}
+function se(){var c=0,t=22;
+document.querySelectorAll('[data-q]').forEach(function(el){t++;var qid=el.getAttribute('data-q');var a=el.getAttribute('data-a');var fb=document.getElementById('f'+qid);if(!fb)return;
+if(el.type==='text'){var v=n(el.value);var ok=(el.getAttribute('data-ac')||a).split('|').some(function(x){return v===n(x)});
+if(ok){c++;fb.textContent='✓';fb.className='fb cr';}else{fb.textContent='✗ '+a;fb.className='fb wr';}
+}else if(el.type==='radio'){var s=document.querySelector('input[name="'+el.name+'"]:checked');
+if(s){if(s.value===a){c++;fb.textContent='✓';fb.className='fb cr';}else{fb.textContent='✗ '+a;fb.className='fb wr';}}
+else{fb.textContent='❓ '+a;fb.className='fb wr';}
+}});
+document.getElementById('sbr').style.display='block';document.getElementById('ts').textContent=c+'/'+t;
+var p=Math.round(c/t*100);document.getElementById('sm').textContent=p+'% - '+(p>=85?'Eccellente!':p>=70?'Buono':p>=60?'Discreto':p>=40?'Insufficiente':'Grave');window.scrollTo(0,0);
+}</script></body></html>

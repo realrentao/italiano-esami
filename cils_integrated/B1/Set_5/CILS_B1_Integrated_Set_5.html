@@ -1,0 +1,214 @@
+<!DOCTYPE html><html lang="it"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>CILS B1 — Simulazione 5</title>
+<style>
+*{box-sizing:border-box;}body{font-family:system-ui,sans-serif;max-width:960px;margin:0 auto;padding:20px;background:#f8f9fa;color:#222;}
+.hd{background:linear-gradient(135deg,#1a5276,#2e86c1);color:white;padding:20px 24px;border-radius:10px;margin-bottom:20px;}
+.hd h1{margin:0;font-size:20px;}
+.sec{background:white;border-radius:10px;padding:18px 20px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.08);}
+.sec h2{font-size:16px;color:#1a5276;margin:0 0 12px;padding-bottom:6px;border-bottom:2px solid #2e86c1;}
+.prova{margin:10px 0;padding:12px;background:#f8fbff;border-radius:6px;}
+.prova h3{font-size:14px;color:#1a5276;margin:0 0 8px;}
+.ab{display:flex;align-items:center;gap:8px;margin:8px 0;padding:8px 12px;background:#eef2f7;border-radius:6px;flex-wrap:wrap;}
+.pb{padding:5px 14px;background:#2C1810;color:white;border:none;border-radius:16px;cursor:pointer;font-size:12px;}
+.pb:hover{background:#4A2C1A;}.pb.playing{background:#2e86c1;}
+.pb.bs{background:#555;font-size:11px;}
+.dur{font-size:11px;color:#888;}
+.db{display:inline-block;font-size:10px;padding:1px 5px;border-radius:3px;}
+.db-B1{background:#e8f5e9;color:#2e7d32;}.db-B1p{background:#fff3cd;color:#856404;}
+.sb{display:none;margin:6px 0;padding:10px;background:#f5f5f5;border-radius:6px;font-size:13px;line-height:1.6;white-space:pre-wrap;}
+.q{margin:10px 0;padding:10px;border-radius:6px;background:#f8fbff;}
+.q.tf{background:#f0f8ff;}.q.fill{background:#fff8e1;}
+.qt{font-weight:500;margin-bottom:4px;font-size:14px;}
+.opts{margin:4px 0;}.opts label{display:block;padding:3px 8px;border-radius:4px;cursor:pointer;}
+.opts label:hover{background:#e8f0fe;}
+.fi{padding:4px 8px;border:1px solid #ccc;border-radius:4px;font-size:13px;width:160px;margin:4px 0;}
+.rt{background:#f5f5f5;padding:14px;border-radius:6px;margin:10px 0;font-size:14px;line-height:1.7;}
+.wp{background:#f8f4ff;padding:12px;border-left:4px solid #7b1fa2;border-radius:4px;margin:10px 0;}
+.ta{width:100%;min-height:80px;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:14px;font-family:inherit;}
+.bsu{padding:10px 30px;background:linear-gradient(135deg,#1a5276,#2e86c1);color:white;border:none;border-radius:8px;font-size:15px;cursor:pointer;margin-top:10px;}
+.fb{display:none;margin-top:4px;padding:4px 8px;border-radius:4px;font-size:12px;}
+.cr{background:#e8f5e9;color:#2e7d32;display:block;}
+.wr{background:#ffebee;color:#c62828;display:block;}
+.sbr{display:none;background:linear-gradient(135deg,#27ae60,#2ecc71);color:white;padding:20px;border-radius:10px;text-align:center;margin-bottom:20px;}
+</style></head><body>
+<div class="hd"><h1>CILS B1 — Simulazione 5</h1><p>Esame completo: Ascolto + Lettura + Grammatica + Scrittura</p></div>
+<div class="sbr" id="sbr"><h2 id="ts">0/24</h2><p id="sm"></p></div>
+<div class="sec"><h2>Prova di Ascolto</h2><div class="prova"><h3>Prova 1 &mdash; Scelta Multipla</h3>
+<div class="audio-bar"><button class="play-btn" onclick="pa(this,510)">▶ Ascolta</button>
+<span class="dur">65s</span>
+<span class="diff-badge diff-B1">B1</span>
+<button class="play-btn bs" onclick="ts('sc_b1_5_1a')">📄 Testo</button></div>
+<div id="sc_b1_5_1a" class="script-box">Impiegato: Pronto, signor Gori? La chiamo dall'ufficio postale. Il suo pacco 猫 arrivato.
+Signor Gori: Finalmente! Lo aspettavo da due settimane. Dove posso ritirarlo?
+Impiegato: Pu貌 venire a ritirarlo qui in ufficio postale, in via Dante 15. Siamo aperti dal luned矛 al sabato, dalle 8:30 alle 19:00.
+Signor Gori: Devo portare qualche documento?
+Impiegato: S矛, deve portare un documento d'identit脿 valido e il codice di tracciamento che le abbiamo inviato via email. Se non pu貌 venire personalmente, pu貌 delegare un'altra persona con una delega scritta.
+Signor Gori: Va bene, passo domani mattina. Grazie e arrivederci.</div>
+<div class="q" data-q="q5100" data-a="1"><div class="qt">1. Il pacco del signor Gori era atteso da:</div>
+<div class="opts">
+<label><input type="radio" name="q5100" value="0"> Una settimana</label>
+<label><input type="radio" name="q5100" value="1"> Due settimane</label>
+<label><input type="radio" name="q5100" value="2"> Tre giorni</label>
+<label><input type="radio" name="q5100" value="3"> Un mese</label>
+</div><div id="fq5100" class="fb"></div></div>
+<div class="q" data-q="q5101" data-a="2"><div class="qt">2. L'ufficio postale in via Dante 猫 aperto:</div>
+<div class="opts">
+<label><input type="radio" name="q5101" value="0"> Solo la mattina</label>
+<label><input type="radio" name="q5101" value="1"> Tutti i giorni</label>
+<label><input type="radio" name="q5101" value="2"> Dal luned矛 al sabato</label>
+<label><input type="radio" name="q5101" value="3"> Solo il sabato</label>
+</div><div id="fq5101" class="fb"></div></div>
+<div class="q" data-q="q5102" data-a="1"><div class="qt">3. Per ritirare il pacco, il signor Gori deve portare:</div>
+<div class="opts">
+<label><input type="radio" name="q5102" value="0"> Solo il documento</label>
+<label><input type="radio" name="q5102" value="1"> Documento e codice di tracciamento</label>
+<label><input type="radio" name="q5102" value="2"> Solo la delega</label>
+<label><input type="radio" name="q5102" value="3"> Documento e delega</label>
+</div><div id="fq5102" class="fb"></div></div>
+<div class="audio-bar"><button class="play-btn" onclick="pa(this,511)">▶ Ascolta</button>
+<span class="dur">60s</span>
+<span class="diff-badge diff-B1">B1</span>
+<button class="play-btn bs" onclick="ts('sc_b1_5_1b')">📄 Testo</button></div>
+<div id="sc_b1_5_1b" class="script-box">Turista: Scusi, sto cercando la Galleria degli Uffizi. 脠 lontano da qui?
+Passante: No, sono circa dieci minuti a piedi. Vada sempre dritto fino a Piazza della Signoria, poi giri a sinistra. La galleria 猫 l'edificio grande con il porticato.
+Turista: Ho sentito che c'猫 una lunga fila per entrare. 脠 vero?
+Passante: S矛, purtroppo s矛. Se non ha prenotato, potrebbe aspettare anche due ore. Le consiglio di prenotare online per il giorno successivo.
+Turista: Grazie del consiglio. E per mangiare, c'猫 un buon ristorante tipico qui vicino?
+Passante: Certo, in via dei Neri trover脿 tante trattorie con cucina toscana autentica.</div>
+<div class="q" data-q="q5110" data-a="1"><div class="qt">1. La Galleria degli Uffizi si trova a:</div>
+<div class="opts">
+<label><input type="radio" name="q5110" value="0"> Roma</label>
+<label><input type="radio" name="q5110" value="1"> Firenze</label>
+<label><input type="radio" name="q5110" value="2"> Venezia</label>
+<label><input type="radio" name="q5110" value="3"> Milano</label>
+</div><div id="fq5110" class="fb"></div></div>
+<div class="q" data-q="q5111" data-a="2"><div class="qt">2. Senza prenotazione, l'attesa pu貌 essere di:</div>
+<div class="opts">
+<label><input type="radio" name="q5111" value="0"> 30 minuti</label>
+<label><input type="radio" name="q5111" value="1"> Un'ora</label>
+<label><input type="radio" name="q5111" value="2"> Due ore</label>
+<label><input type="radio" name="q5111" value="3"> Tre ore</label>
+</div><div id="fq5111" class="fb"></div></div>
+</div>
+<div class="prova"><h3>Prova 2 &mdash; Vero/Falso</h3>
+<div class="audio-bar"><button class="play-btn" onclick="pa(this,520)">▶ Ascolta</button>
+<span class="dur">115s</span>
+<span class="diff-badge diff-B1p">B1+</span>
+<button class="play-btn bs" onclick="ts('sc_b1_5_2')">📄 Testo</button></div>
+<div id="sc_b1_5_2" class="script-box">Amica 1: Allora, come sta procedendo la ricerca della casa?
+Amica 2: Mah, 猫 pi霉 difficile del previsto. Ho visto quattro appartamenti finora, ma nessuno mi ha convinto del tutto.
+Amica 1: Cosa cerchi esattamente?
+Amica 2: Un trilocale in zona centrale, con riscaldamento autonomo e balcone. Il mio budget massimo 猫 800 euro al mese, spese incluse.
+Amica 1: Con quel budget in zona centrale 猫 dura. Hai pensato a zone un po' pi霉 periferiche?
+Amica 2: S矛, ma avrei problemi con i trasporti. Ho visto un appartamento carino a Centocelle, ma ci metterei 50 minuti per andare al lavoro.
+Amica 1: Capisco. Forse potresti valutare un bilocale invece di un trilocale, cos矛 rientri nel budget e resti in zona centrale.
+Amica 2: In effetti non ci avevo pensato. Potrei utilizzare la seconda camera come studio.
+Amica 1: Esatto. E poi, hai provato a cercare su quei siti specializzati per affitti?
+Amica 2: S矛, ma molti annunci sono falsi o gi脿 scaduti. 脠 frustrante.</div>
+<div class="q tf" data-q="q5200" data-a="true"><div class="qt">1. L'amica ha visto quattro appartamenti finora.</div>
+<div class="opts">
+<label><input type="radio" name="q5200" value="true"> Vero</label>
+<label><input type="radio" name="q5200" value="false"> Falso</label>
+</div><div id="fq5200" class="fb"></div></div>
+<div class="q tf" data-q="q5201" data-a="true"><div class="qt">2. Cerca un trilocale con budget massimo di 800 euro.</div>
+<div class="opts">
+<label><input type="radio" name="q5201" value="true"> Vero</label>
+<label><input type="radio" name="q5201" value="false"> Falso</label>
+</div><div id="fq5201" class="fb"></div></div>
+<div class="q tf" data-q="q5202" data-a="false"><div class="qt">3. A Centocelle ci metterebbe 30 minuti per andare al lavoro.</div>
+<div class="opts">
+<label><input type="radio" name="q5202" value="true"> Vero</label>
+<label><input type="radio" name="q5202" value="false"> Falso</label>
+</div><div id="fq5202" class="fb"></div></div>
+<div class="q tf" data-q="q5203" data-a="true"><div class="qt">4. L'amica 1 suggerisce di cercare un bilocale.</div>
+<div class="opts">
+<label><input type="radio" name="q5203" value="true"> Vero</label>
+<label><input type="radio" name="q5203" value="false"> Falso</label>
+</div><div id="fq5203" class="fb"></div></div>
+<div class="q tf" data-q="q5204" data-a="false"><div class="qt">5. Tutti gli annunci online sono affidabili.</div>
+<div class="opts">
+<label><input type="radio" name="q5204" value="true"> Vero</label>
+<label><input type="radio" name="q5204" value="false"> Falso</label>
+</div><div id="fq5204" class="fb"></div></div>
+</div>
+<div class="prova"><h3>Prova 3 &mdash; Completamento</h3>
+<div class="audio-bar"><button class="play-btn" onclick="pa(this,530)">▶ Ascolta</button>
+<span class="dur">115s</span>
+<span class="diff-badge diff-B1p">B1+</span>
+<button class="play-btn bs" onclick="ts('sc_b1_5_3')">📄 Testo</button></div>
+<div id="sc_b1_5_3" class="script-box">Ciao, sono Luca e lavoro come istruttore di nuoto da ormai otto anni. Oggi voglio darvi alcuni consigli per chi vuole imparare a nuotare bene. La prima regola 猫 la costanza: 猫 meglio andare in piscina due volte a settimana per un'ora piuttosto che una volta sola per tre ore. Il corpo ha bisogno di abituarsi gradualmente all'acqua. La seconda regola riguarda la respirazione: molti principianti trattengono il respiro sott'acqua, ma 猫 sbagliato. Bisogna espirare lentamente mentre si 猫 in acqua e inspirare rapidamente quando si gira la testa per respirare. La terza regola 猫 non avere fretta. Imparare uno stile completo come lo stile libero richiede in media tre mesi di pratica regolare. Non scoraggiatevi se all'inizio fate fatica. Infine, investite in un buon paio di occhialini: quelli di scarsa qualit脿 si appannano e rovinano l'esperienza. Un buon paio costa circa 20-30 euro.</div>
+<div class="q fill" data-q="q5300" data-a="otto" data-ac="otto|8"><div class="qt">1. Luca fa l'istruttore di nuoto da ___ anni.</div>
+<input type="text" class="fi"><div id="fq5300" class="fb"></div></div>
+<div class="q fill" data-q="q5301" data-a="un'ora" data-ac="un'ora|1 ora|60 minuti"><div class="qt">2. 脠 meglio andare in piscina due volte a settimana per ___ .</div>
+<input type="text" class="fi"><div id="fq5301" class="fb"></div></div>
+<div class="q fill" data-q="q5302" data-a="espirare" data-ac="espirare"><div class="qt">3. Bisogna ___ lentamente mentre si 猫 in acqua.</div>
+<input type="text" class="fi"><div id="fq5302" class="fb"></div></div>
+<div class="q fill" data-q="q5303" data-a="tre" data-ac="tre|3"><div class="qt">4. Imparare lo stile libero richiede in media ___ mesi.</div>
+<input type="text" class="fi"><div id="fq5303" class="fb"></div></div>
+<div class="q fill" data-q="q5304" data-a="euro" data-ac="euro"><div class="qt">5. Un buon paio di occhialini costa circa 20-30 ___ .</div>
+<input type="text" class="fi"><div id="fq5304" class="fb"></div></div>
+</div>
+</div>
+<div class="sec"><h2>Comprensione della Lettura</h2><div class="rt">La mobilità sostenibile è un tema sempre più discusso nelle città italiane. Molti comuni stanno investendo in piste ciclabili, zone a traffico limitato e trasporto pubblico elettrico. Milano ha una delle reti di bike sharing più grandi d'Italia, con oltre 5.000 biciclette a disposizione dei cittadini. Bologna ha introdotto un sistema di sconti per chi va al lavoro in bici o con i mezzi pubblici. Tuttavia, secondo un rapporto, l'Italia è ancora indietro rispetto ad altri paesi europei per quanto riguarda la mobilità sostenibile.</div>
+<div class="q" data-q="r5_0" data-a="2"><div class="qt">1. Bike sharing a Milano: oltre ___ biciclette.</div>
+<div class="opts">
+<label><input type="radio" name="r5_0" value="0"> 2.000</label>
+<label><input type="radio" name="r5_0" value="1"> 3.000</label>
+<label><input type="radio" name="r5_0" value="2"> 5.000</label>
+<label><input type="radio" name="r5_0" value="3"> 7.000</label>
+</div><div id="fr5_0" class="fb"></div></div>
+<div class="q" data-q="r5_1" data-a="0"><div class="qt">2. Bologna dà sconti per chi va al lavoro in ___.</div>
+<div class="opts">
+<label><input type="radio" name="r5_1" value="0"> bici</label>
+<label><input type="radio" name="r5_1" value="1"> macchina</label>
+<label><input type="radio" name="r5_1" value="2"> taxi</label>
+<label><input type="radio" name="r5_1" value="3"> treno</label>
+</div><div id="fr5_1" class="fb"></div></div>
+<div class="q" data-q="r5_2" data-a="0"><div class="qt">3. L'Italia è indietro rispetto ad altri paesi ___.</div>
+<div class="opts">
+<label><input type="radio" name="r5_2" value="0"> europei</label>
+<label><input type="radio" name="r5_2" value="1"> occidentali</label>
+<label><input type="radio" name="r5_2" value="2"> mediterranei</label>
+<label><input type="radio" name="r5_2" value="3"> sviluppati</label>
+</div><div id="fr5_2" class="fb"></div></div>
+<div class="q" data-q="r5_3" data-a="1"><div class="qt">4. I comuni investono in piste ciclabili e zone a traffico ___.</div>
+<div class="opts">
+<label><input type="radio" name="r5_3" value="0"> libero</label>
+<label><input type="radio" name="r5_3" value="1"> limitato</label>
+<label><input type="radio" name="r5_3" value="2"> intenso</label>
+<label><input type="radio" name="r5_3" value="3"> bloccato</label>
+</div><div id="fr5_3" class="fb"></div></div>
+</div>
+<div class="sec"><h2>Analisi delle Strutture</h2><div class="q" data-q="g5_0" data-a="mio" data-ac="mio"><div class="qt">1. Questo libro è ___ (mio/tuo) .</div>
+<input type="text" class="fi"><div id="fg5_0" class="fb"></div></div>
+<div class="q" data-q="g5_1" data-a="mia" data-ac="mia"><div class="qt">2. Questa è la ___ (mia/tua) casa.</div>
+<input type="text" class="fi"><div id="fg5_1" class="fb"></div></div>
+<div class="q" data-q="g5_2" data-a="nostre" data-ac="nostre"><div class="qt">3. Queste sono le ___ (nostre/vostre) chiavi.</div>
+<input type="text" class="fi"><div id="fg5_2" class="fb"></div></div>
+<div class="q" data-q="g5_3" data-a="suo" data-ac="suo"><div class="qt">4. Quello è il ___ (suo/loro) cane.</div>
+<input type="text" class="fi"><div id="fg5_3" class="fb"></div></div>
+<div class="q" data-q="g5_4" data-a="tua" data-ac="tua"><div class="qt">5. Questa penna è la ___ (tua/sua) .</div>
+<input type="text" class="fi"><div id="fg5_4" class="fb"></div></div>
+</div>
+<div class="sec"><h2>Produzione Scritta</h2><div class="wp">Cosa pensi della mobilità sostenibile? Cosa fai per l'ambiente? (120-150 parole) (max 150 parole)</div>
+<textarea class="ta"></textarea>
+<div style="font-size:12px;color:#888;margin-top:4px;">Questa sezione non viene valutata automaticamente.</div></div>
+<div style="text-align:center;margin:20px 0;"><button class="bsu" onclick="se()">📝 Verifica</button></div>
+<script>
+var A=[];
+
+var _ca=null,_cb=null;
+function pa(b,i){if(_ca&&_ca!==A[i]){_ca.pause();_ca.currentTime=0;if(_cb){_cb.classList.remove('playing');_cb.textContent='▶';}}
+if(A[i].paused){A[i].play();b.classList.add('playing');b.textContent='⏹';_ca=A[i];_cb=b;A[i].onended=function(){b.classList.remove('playing');b.textContent='▶';_ca=null;_cb=null;};}else{A[i].pause();A[i].currentTime=0;b.classList.remove('playing');b.textContent='▶';if(_ca===A[i]){_ca=null;_cb=null;}}}
+function ts(id){var b=document.getElementById(id);if(b)b.style.display=b.style.display==='none'||b.style.display===''?'block':'none';}
+function n(s){return s.toLowerCase().replace(/[\s'\x60\u2018\u2019\.\-\[\]\/]+/g,' ').trim();}
+function se(){var c=0,t=24;
+document.querySelectorAll('[data-q]').forEach(function(el){t++;var qid=el.getAttribute('data-q');var a=el.getAttribute('data-a');var fb=document.getElementById('f'+qid);if(!fb)return;
+if(el.type==='text'){var v=n(el.value);var ok=(el.getAttribute('data-ac')||a).split('|').some(function(x){return v===n(x)});
+if(ok){c++;fb.textContent='✓';fb.className='fb cr';}else{fb.textContent='✗ '+a;fb.className='fb wr';}
+}else if(el.type==='radio'){var s=document.querySelector('input[name="'+el.name+'"]:checked');
+if(s){if(s.value===a){c++;fb.textContent='✓';fb.className='fb cr';}else{fb.textContent='✗ '+a;fb.className='fb wr';}}
+else{fb.textContent='❓ '+a;fb.className='fb wr';}
+}});
+document.getElementById('sbr').style.display='block';document.getElementById('ts').textContent=c+'/'+t;
+var p=Math.round(c/t*100);document.getElementById('sm').textContent=p+'% - '+(p>=85?'Eccellente!':p>=70?'Buono':p>=60?'Discreto':p>=40?'Insufficiente':'Grave');window.scrollTo(0,0);
+}</script></body></html>

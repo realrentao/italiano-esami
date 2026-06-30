@@ -1,0 +1,197 @@
+<!DOCTYPE html><html lang="it"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>CELI B1 — Simulazione 1</title>
+<style>
+*{box-sizing:border-box;}body{font-family:system-ui,sans-serif;max-width:960px;margin:0 auto;padding:20px;background:#f8f9fa;color:#222;}
+.hd{background:linear-gradient(135deg,#6B2D2D,#CE2B37);color:white;padding:20px 24px;border-radius:10px;margin-bottom:20px;}
+.hd h1{margin:0;font-size:20px;}
+.sec{background:white;border-radius:10px;padding:18px 20px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.08);}
+.sec h2{font-size:16px;color:#6B2D2D;margin:0 0 12px;padding-bottom:6px;border-bottom:2px solid #CE2B37;}
+.prova{margin:10px 0;padding:12px;background:#f8fbff;border-radius:6px;}
+.prova h3{font-size:14px;color:#6B2D2D;margin:0 0 8px;}
+.ab{display:flex;align-items:center;gap:8px;margin:8px 0;padding:8px 12px;background:#eef2f7;border-radius:6px;flex-wrap:wrap;}
+.pb{padding:5px 14px;background:#2C1810;color:white;border:none;border-radius:16px;cursor:pointer;font-size:12px;}
+.pb:hover{background:#4A2C1A;}.pb.playing{background:#CE2B37;}
+.pb.bs{background:#555;font-size:11px;}
+.dur{font-size:11px;color:#888;}
+.db{display:inline-block;font-size:10px;padding:1px 5px;border-radius:3px;}
+.db-B1{background:#e8f5e9;color:#2e7d32;}.db-B1p{background:#fff3cd;color:#856404;}
+.sb{display:none;margin:6px 0;padding:10px;background:#f5f5f5;border-radius:6px;font-size:13px;line-height:1.6;white-space:pre-wrap;}
+.q{margin:10px 0;padding:10px;border-radius:6px;background:#f8fbff;}
+.q.tf{background:#f0f8ff;}.q.fill{background:#fff8e1;}
+.qt{font-weight:500;margin-bottom:4px;font-size:14px;}
+.opts{margin:4px 0;}.opts label{display:block;padding:3px 8px;border-radius:4px;cursor:pointer;}
+.opts label:hover{background:#e8f0fe;}
+.fi{padding:4px 8px;border:1px solid #ccc;border-radius:4px;font-size:13px;width:160px;margin:4px 0;}
+.rt{background:#f5f5f5;padding:14px;border-radius:6px;margin:10px 0;font-size:14px;line-height:1.7;}
+.wp{background:#f8f4ff;padding:12px;border-left:4px solid #7b1fa2;border-radius:4px;margin:10px 0;}
+.ta{width:100%;min-height:80px;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:14px;font-family:inherit;}
+.bsu{padding:10px 30px;background:linear-gradient(135deg,#6B2D2D,#CE2B37);color:white;border:none;border-radius:8px;font-size:15px;cursor:pointer;margin-top:10px;}
+.fb{display:none;margin-top:4px;padding:4px 8px;border-radius:4px;font-size:12px;}
+.cr{background:#e8f5e9;color:#2e7d32;display:block;}
+.wr{background:#ffebee;color:#c62828;display:block;}
+.sbr{display:none;background:linear-gradient(135deg,#27ae60,#2ecc71);color:white;padding:20px;border-radius:10px;text-align:center;margin-bottom:20px;}
+</style></head><body>
+<div class="hd"><h1>CELI B1 — Simulazione 1</h1><p>Esame completo: Ascolto + Lettura + Grammatica + Scrittura</p></div>
+<div class="sbr" id="sbr"><h2 id="ts">0/22</h2><p id="sm"></p></div>
+<div class="sec"><h2>Prova di Ascolto</h2><div class="prova"><h3>Prova 1 &mdash; Scelta Multipla</h3>
+<div class="audio-bar"><button class="play-btn" onclick="pa(this,110)">▶ Ascolta</button>
+<span class="dur">55s</span>
+<span class="diff-badge diff-B1">B1</span>
+<button class="play-btn bs" onclick="ts('sc_cb1_1_1a')">📄 Testo</button></div>
+<div id="sc_cb1_1_1a" class="script-box">Impiegato: Buongiorno, Ufficio Informazioni. Mi dica.
+Cliente: Vorrei informazioni sul passaporto. Devo rinnovarlo perché è scaduto.
+Impiegato: Deve prenotare un appuntamento sul sito della questura. I tempi d'attesa sono circa 15 giorni.
+Cliente: E quanto costa il rinnovo?
+Impiegato: 42 euro per il passaporto ordinario, più 22 euro per la marca da bollo.</div>
+<div class="q" data-q="q1100" data-a="1"><div class="qt">1. Perché il cliente deve rinnovare il passaporto?</div>
+<div class="opts">
+<label><input type="radio" name="q1100" value="0"> L'ha perso</label>
+<label><input type="radio" name="q1100" value="1"> È scaduto</label>
+<label><input type="radio" name="q1100" value="2"> È rovinato</label>
+<label><input type="radio" name="q1100" value="3"> Cambia nome</label>
+</div><div id="fq1100" class="fb"></div></div>
+<div class="q" data-q="q1101" data-a="1"><div class="qt">2. L'appuntamento si prenota:</div>
+<div class="opts">
+<label><input type="radio" name="q1101" value="0"> In questura</label>
+<label><input type="radio" name="q1101" value="1"> Sul sito della questura</label>
+<label><input type="radio" name="q1101" value="2"> Per telefono</label>
+<label><input type="radio" name="q1101" value="3"> In posta</label>
+</div><div id="fq1101" class="fb"></div></div>
+<div class="q" data-q="q1102" data-a="2"><div class="qt">3. Il costo totale del rinnovo è:</div>
+<div class="opts">
+<label><input type="radio" name="q1102" value="0"> 42 euro</label>
+<label><input type="radio" name="q1102" value="1"> 22 euro</label>
+<label><input type="radio" name="q1102" value="2"> 64 euro</label>
+<label><input type="radio" name="q1102" value="3"> 54 euro</label>
+</div><div id="fq1102" class="fb"></div></div>
+<div class="audio-bar"><button class="play-btn" onclick="pa(this,111)">▶ Ascolta</button>
+<span class="dur">50s</span>
+<span class="diff-badge diff-B1">B1</span>
+<button class="play-btn bs" onclick="ts('sc_cb1_1_1b')">📄 Testo</button></div>
+<div id="sc_cb1_1_1b" class="script-box">Insegnante: Allora, per la prossima lezione dovete leggere il capitolo 5 del libro di storia. Poi preparate un riassunto di 200 parole.
+Studente: Professoressa, quando c'è la verifica?
+Insegnante: La prossima settimana, giovedì. Studiate bene gli ultimi tre capitoli.</div>
+<div class="q" data-q="q1110" data-a="1"><div class="qt">1. Gli studenti devono preparare:</div>
+<div class="opts">
+<label><input type="radio" name="q1110" value="0"> Un tema</label>
+<label><input type="radio" name="q1110" value="1"> Un riassunto</label>
+<label><input type="radio" name="q1110" value="2"> Un esame</label>
+<label><input type="radio" name="q1110" value="3"> Una ricerca</label>
+</div><div id="fq1110" class="fb"></div></div>
+<div class="q" data-q="q1111" data-a="2"><div class="qt">2. La verifica è:</div>
+<div class="opts">
+<label><input type="radio" name="q1111" value="0"> Venerdì</label>
+<label><input type="radio" name="q1111" value="1"> Lunedì</label>
+<label><input type="radio" name="q1111" value="2"> Giovedì</label>
+<label><input type="radio" name="q1111" value="3"> Martedì</label>
+</div><div id="fq1111" class="fb"></div></div>
+</div>
+<div class="prova"><h3>Prova 2 &mdash; Vero/Falso</h3>
+<div class="audio-bar"><button class="play-btn" onclick="pa(this,120)">▶ Ascolta</button>
+<span class="dur">110s</span>
+<span class="diff-badge diff-B1p">B1+</span>
+<button class="play-btn bs" onclick="ts('sc_cb1_1_2')">📄 Testo</button></div>
+<div id="sc_cb1_1_2" class="script-box">Giornalista: Oggi parliamo del volontariato in Italia con la signora Bianchi, che coordina un'associazione a Roma.
+Signora Bianchi: La nostra associazione conta circa 200 volontari. Offriamo sostegno scolastico gratuito a bambini di famiglie in difficoltà. Ogni pomeriggio, dalle 15 alle 18, i nostri volontari aiutano i bambini a fare i compiti.
+Giornalista: Quanti bambini aiutate?
+Signora Bianchi: Attualmente seguiamo 80 bambini, dai 6 ai 14 anni. Abbiamo anche un servizio di consegna pacchi alimentari per le famiglie, una volta alla settimana.
+Giornalista: Come si può diventare volontari?
+Signora Bianchi: Basta contattarci via email o passare di persona nella nostra sede in via Roma 45, il martedì o il giovedì dalle 16 alle 19.</div>
+<div class="q tf" data-q="q1200" data-a="true"><div class="qt">1. L'associazione conta circa 200 volontari.</div>
+<div class="opts">
+<label><input type="radio" name="q1200" value="true"> Vero</label>
+<label><input type="radio" name="q1200" value="false"> Falso</label>
+</div><div id="fq1200" class="fb"></div></div>
+<div class="q tf" data-q="q1201" data-a="false"><div class="qt">2. Il sostegno scolastico è a pagamento.</div>
+<div class="opts">
+<label><input type="radio" name="q1201" value="true"> Vero</label>
+<label><input type="radio" name="q1201" value="false"> Falso</label>
+</div><div id="fq1201" class="fb"></div></div>
+<div class="q tf" data-q="q1202" data-a="false"><div class="qt">3. I volontari aiutano i bambini al mattino.</div>
+<div class="opts">
+<label><input type="radio" name="q1202" value="true"> Vero</label>
+<label><input type="radio" name="q1202" value="false"> Falso</label>
+</div><div id="fq1202" class="fb"></div></div>
+<div class="q tf" data-q="q1203" data-a="true"><div class="qt">4. L'associazione segue 80 bambini.</div>
+<div class="opts">
+<label><input type="radio" name="q1203" value="true"> Vero</label>
+<label><input type="radio" name="q1203" value="false"> Falso</label>
+</div><div id="fq1203" class="fb"></div></div>
+<div class="q tf" data-q="q1204" data-a="false"><div class="qt">5. Si può diventare volontario chiamando per telefono.</div>
+<div class="opts">
+<label><input type="radio" name="q1204" value="true"> Vero</label>
+<label><input type="radio" name="q1204" value="false"> Falso</label>
+</div><div id="fq1204" class="fb"></div></div>
+</div>
+<div class="prova"><h3>Prova 3 &mdash; Completamento</h3>
+<div class="audio-bar"><button class="play-btn" onclick="pa(this,130)">▶ Ascolta</button>
+<span class="dur">100s</span>
+<span class="diff-badge diff-B1p">B1+</span>
+<button class="play-btn bs" onclick="ts('sc_cb1_1_3')">📄 Testo</button></div>
+<div id="sc_cb1_1_3" class="script-box">Ciao a tutti, sono la dottoressa Galli e oggi vi parlerò dell'importanza del sonno. Dormire bene è fondamentale per la salute. Un adulto dovrebbe dormire tra le 7 e le 9 ore a notte. Molte persone però dormono meno di 6 ore, e questo può causare problemi di concentrazione e irritabilità. Per dormire meglio, evitate di usare il telefono prima di andare a letto, perché la luce blu interferisce con il sonno. Anche la cena leggera aiuta: evitate cibi pesanti la sera. La temperatura ideale della camera da letto è intorno ai 18 gradi. Infine, cercate di andare a dormire sempre alla stessa ora, anche nei fine settimana.</div>
+<div class="q fill" data-q="q1300" data-a="9" data-ac="9|nove"><div class="qt">1. Un adulto dovrebbe dormire tra 7 e ___ ore.</div>
+<input type="text" class="fi"><div id="fq1300" class="fb"></div></div>
+<div class="q fill" data-q="q1301" data-a="telefono" data-ac="telefono"><div class="qt">2. Bisogna evitare di usare il ___ prima di dormire.</div>
+<input type="text" class="fi"><div id="fq1301" class="fb"></div></div>
+<div class="q fill" data-q="q1302" data-a="18" data-ac="18"><div class="qt">3. La temperatura ideale è di ___ gradi.</div>
+<input type="text" class="fi"><div id="fq1302" class="fb"></div></div>
+<div class="q fill" data-q="q1303" data-a="ora" data-ac="ora"><div class="qt">4. Bisogna andare a dormire sempre alla stessa ___.</div>
+<input type="text" class="fi"><div id="fq1303" class="fb"></div></div>
+</div>
+</div>
+<div class="sec"><h2>Comprensione della Lettura</h2><div class="rt">Il Comune di Firenze ha annunciato un nuovo progetto per il centro storico. L'iniziativa prevede la pedonalizzazione di piazza della Signoria e di via Tornabuoni. I lavori inizieranno a settembre e dureranno circa sei mesi. Il progetto costa 2 milioni di euro. Il sindaco ha dichiarato che l'obiettivo e ridurre il traffico e l'inquinamento nel centro.</div>
+<div class="q" data-q="r1_0" data-a="0"><div class="qt">1. Il progetto prevede la pedonalizzazione di piazza della Signoria e via ___.</div>
+<div class="opts">
+<label><input type="radio" name="r1_0" value="0"> Tornabuoni</label>
+<label><input type="radio" name="r1_0" value="1"> Cavour</label>
+<label><input type="radio" name="r1_0" value="2"> Roma</label>
+<label><input type="radio" name="r1_0" value="3"> Nazionale</label>
+</div><div id="fr1_0" class="fb"></div></div>
+<div class="q" data-q="r1_1" data-a="1"><div class="qt">2. Il progetto costa ___ milioni di euro.</div>
+<div class="opts">
+<label><input type="radio" name="r1_1" value="0"> 1</label>
+<label><input type="radio" name="r1_1" value="1"> 2</label>
+<label><input type="radio" name="r1_1" value="2"> 3</label>
+<label><input type="radio" name="r1_1" value="3"> 4</label>
+</div><div id="fr1_1" class="fb"></div></div>
+<div class="q" data-q="r1_2" data-a="0"><div class="qt">3. L'obiettivo e ridurre traffico e ___.</div>
+<div class="opts">
+<label><input type="radio" name="r1_2" value="0"> inquinamento</label>
+<label><input type="radio" name="r1_2" value="1"> rumore</label>
+<label><input type="radio" name="r1_2" value="2"> costo</label>
+<label><input type="radio" name="r1_2" value="3"> criminalita</label>
+</div><div id="fr1_2" class="fb"></div></div>
+</div>
+<div class="sec"><h2>Analisi delle Strutture</h2><div class="q" data-q="g1_0" data-a="[avessi]" data-ac="[avessi]"><div class="qt">1. Se ___ (io - avere) tempo, verrei.</div>
+<input type="text" class="fi"><div id="fg1_0" class="fb"></div></div>
+<div class="q" data-q="g1_1" data-a="[siano]" data-ac="[siano]"><div class="qt">2. Penso che loro ___ (essere) gia partiti.</div>
+<input type="text" class="fi"><div id="fg1_1" class="fb"></div></div>
+<div class="q" data-q="g1_2" data-a="[tu faccia]" data-ac="[tu faccia]"><div class="qt">3. Bisogna che ___ (tu - fare) i compiti.</div>
+<input type="text" class="fi"><div id="fg1_2" class="fb"></div></div>
+<div class="q" data-q="g1_3" data-a="[sappia]" data-ac="[sappia]"><div class="qt">4. Credo che ___ (lui - sapere) la verita.</div>
+<input type="text" class="fi"><div id="fg1_3" class="fb"></div></div>
+<div class="q" data-q="g1_4" data-a="[andiamo]" data-ac="[andiamo]"><div class="qt">5. E meglio che ___ (noi - andare).</div>
+<input type="text" class="fi"><div id="fg1_4" class="fb"></div></div>
+</div>
+<div class="sec"><h2>Produzione Scritta</h2><div class="wp">Secondo te, quali sono i vantaggi della pedonalizzazione del centro storico? (120-150 parole) (max 150 parole)</div>
+<textarea class="ta"></textarea>
+<div style="font-size:12px;color:#888;margin-top:4px;">Questa sezione non viene valutata automaticamente.</div></div>
+<div style="text-align:center;margin:20px 0;"><button class="bsu" onclick="se()">📝 Verifica</button></div>
+<script>
+var A=[];
+
+var _ca=null,_cb=null;
+function pa(b,i){if(_ca&&_ca!==A[i]){_ca.pause();_ca.currentTime=0;if(_cb){_cb.classList.remove('playing');_cb.textContent='▶';}}
+if(A[i].paused){A[i].play();b.classList.add('playing');b.textContent='⏹';_ca=A[i];_cb=b;A[i].onended=function(){b.classList.remove('playing');b.textContent='▶';_ca=null;_cb=null;};}else{A[i].pause();A[i].currentTime=0;b.classList.remove('playing');b.textContent='▶';if(_ca===A[i]){_ca=null;_cb=null;}}}
+function ts(id){var b=document.getElementById(id);if(b)b.style.display=b.style.display==='none'||b.style.display===''?'block':'none';}
+function n(s){return s.toLowerCase().replace(/[\s'\x60\u2018\u2019\.\-\[\]\/]+/g,' ').trim();}
+function se(){var c=0,t=22;
+document.querySelectorAll('[data-q]').forEach(function(el){t++;var qid=el.getAttribute('data-q');var a=el.getAttribute('data-a');var fb=document.getElementById('f'+qid);if(!fb)return;
+if(el.type==='text'){var v=n(el.value);var ok=(el.getAttribute('data-ac')||a).split('|').some(function(x){return v===n(x)});
+if(ok){c++;fb.textContent='✓';fb.className='fb cr';}else{fb.textContent='✗ '+a;fb.className='fb wr';}
+}else if(el.type==='radio'){var s=document.querySelector('input[name="'+el.name+'"]:checked');
+if(s){if(s.value===a){c++;fb.textContent='✓';fb.className='fb cr';}else{fb.textContent='✗ '+a;fb.className='fb wr';}}
+else{fb.textContent='❓ '+a;fb.className='fb wr';}
+}});
+document.getElementById('sbr').style.display='block';document.getElementById('ts').textContent=c+'/'+t;
+var p=Math.round(c/t*100);document.getElementById('sm').textContent=p+'% - '+(p>=85?'Eccellente!':p>=70?'Buono':p>=60?'Discreto':p>=40?'Insufficiente':'Grave');window.scrollTo(0,0);
+}</script></body></html>

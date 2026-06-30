@@ -1,0 +1,185 @@
+<!DOCTYPE html><html lang="it"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>CILS C2 — Simulazione 2</title>
+<style>
+*{box-sizing:border-box;}body{font-family:system-ui,sans-serif;max-width:960px;margin:0 auto;padding:20px;background:#f8f9fa;color:#222;}
+.hd{background:linear-gradient(135deg,#1a5276,#2e86c1);color:white;padding:20px 24px;border-radius:10px;margin-bottom:20px;}
+.hd h1{margin:0;font-size:20px;}
+.sec{background:white;border-radius:10px;padding:18px 20px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.08);}
+.sec h2{font-size:16px;color:#1a5276;margin:0 0 12px;padding-bottom:6px;border-bottom:2px solid #2e86c1;}
+.prova{margin:10px 0;padding:12px;background:#f8fbff;border-radius:6px;}
+.prova h3{font-size:14px;color:#1a5276;margin:0 0 8px;}
+.ab{display:flex;align-items:center;gap:8px;margin:8px 0;padding:8px 12px;background:#eef2f7;border-radius:6px;flex-wrap:wrap;}
+.pb{padding:5px 14px;background:#2C1810;color:white;border:none;border-radius:16px;cursor:pointer;font-size:12px;}
+.pb:hover{background:#4A2C1A;}.pb.playing{background:#2e86c1;}
+.pb.bs{background:#555;font-size:11px;}
+.dur{font-size:11px;color:#888;}
+.db{display:inline-block;font-size:10px;padding:1px 5px;border-radius:3px;}
+.db-C2{background:#e8f5e9;color:#2e7d32;}.db-C2p{background:#fff3cd;color:#856404;}
+.sb{display:none;margin:6px 0;padding:10px;background:#f5f5f5;border-radius:6px;font-size:13px;line-height:1.6;white-space:pre-wrap;}
+.q{margin:10px 0;padding:10px;border-radius:6px;background:#f8fbff;}
+.q.tf{background:#f0f8ff;}.q.fill{background:#fff8e1;}
+.qt{font-weight:500;margin-bottom:4px;font-size:14px;}
+.opts{margin:4px 0;}.opts label{display:block;padding:3px 8px;border-radius:4px;cursor:pointer;}
+.opts label:hover{background:#e8f0fe;}
+.fi{padding:4px 8px;border:1px solid #ccc;border-radius:4px;font-size:13px;width:160px;margin:4px 0;}
+.rt{background:#f5f5f5;padding:14px;border-radius:6px;margin:10px 0;font-size:14px;line-height:1.7;}
+.wp{background:#f8f4ff;padding:12px;border-left:4px solid #7b1fa2;border-radius:4px;margin:10px 0;}
+.ta{width:100%;min-height:80px;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:14px;font-family:inherit;}
+.bsu{padding:10px 30px;background:linear-gradient(135deg,#1a5276,#2e86c1);color:white;border:none;border-radius:8px;font-size:15px;cursor:pointer;margin-top:10px;}
+.fb{display:none;margin-top:4px;padding:4px 8px;border-radius:4px;font-size:12px;}
+.cr{background:#e8f5e9;color:#2e7d32;display:block;}
+.wr{background:#ffebee;color:#c62828;display:block;}
+.sbr{display:none;background:linear-gradient(135deg,#27ae60,#2ecc71);color:white;padding:20px;border-radius:10px;text-align:center;margin-bottom:20px;}
+</style></head><body>
+<div class="hd"><h1>CILS C2 — Simulazione 2</h1><p>Esame completo: Ascolto + Lettura + Grammatica + Scrittura</p></div>
+<div class="sbr" id="sbr"><h2 id="ts">0/21</h2><p id="sm"></p></div>
+<div class="sec"><h2>Prova di Ascolto</h2><div class="prova"><h3>Prova 1 &mdash; Scelta Multipla</h3>
+<div class="audio-bar"><button class="play-btn" onclick="pa(this,210)">▶ Ascolta</button>
+<span class="dur">110s</span>
+<span class="diff-badge diff-C2">C2</span>
+<button class="play-btn bs" onclick="ts('sc_c2_2_1a')">📄 Testo</button></div>
+<div id="sc_c2_2_1a" class="script-box">Relatore: La filosofia del linguaggio del Novecento ha segnato una svolta epocale nel modo di concepire la relazione tra pensiero e realtà. Wittgenstein, nelle sue 'Ricerche filosofiche', ha demolito l'idea che il linguaggio sia semplicemente una rappresentazione del mondo, proponendo invece una concezione basata sugli usi linguistici e sui giochi linguistici.
+Uditorio: Ma questo non porta a una forma di relativismo?
+Relatore: Non necessariamente. Il contesto d'uso non implica assenza di verità, ma piuttosto una verità situata, che dipende dalle pratiche sociali e dalle forme di vita condivise da una comunità linguistica.</div>
+<div class="q" data-q="q2100" data-a="1"><div class="qt">1. Secondo Wittgenstein, il linguaggio è:</div>
+<div class="opts">
+<label><input type="radio" name="q2100" value="0"> Una rappresentazione del mondo</label>
+<label><input type="radio" name="q2100" value="1"> Basato sugli usi linguistici</label>
+<label><input type="radio" name="q2100" value="2"> Un sistema logico formale</label>
+<label><input type="radio" name="q2100" value="3"> Una struttura innata</label>
+</div><div id="fq2100" class="fb"></div></div>
+<div class="q" data-q="q2101" data-a="1"><div class="qt">2. Il relatore sostiene che la verità è:</div>
+<div class="opts">
+<label><input type="radio" name="q2101" value="0"> Assoluta</label>
+<label><input type="radio" name="q2101" value="1"> Situata</label>
+<label><input type="radio" name="q2101" value="2"> Inesistente</label>
+<label><input type="radio" name="q2101" value="3"> Trascendentale</label>
+</div><div id="fq2101" class="fb"></div></div>
+<div class="audio-bar"><button class="play-btn" onclick="pa(this,211)">▶ Ascolta</button>
+<span class="dur">90s</span>
+<span class="diff-badge diff-C2">C2</span>
+<button class="play-btn bs" onclick="ts('sc_c2_2_1b')">📄 Testo</button></div>
+<div id="sc_c2_2_1b" class="script-box">Critico letterario: Il romanzo contemporaneo italiano sta attraversando una fase di straordinario fermento. Autori come Elena Ferrante hanno portato la nostra letteratura a un pubblico globale, affrontando temi universali come l'identità femminile e il rapporto tra memoria e narrazione. Ma c'è un aspetto preoccupante: la crescente omologazione delle storie dettata dalle logiche di mercato, che privilegiano narrazioni facilmente esportabili.</div>
+<div class="q" data-q="q2110" data-a="1"><div class="qt">1. Elena Ferrante ha portato la letteratura italiana:</div>
+<div class="opts">
+<label><input type="radio" name="q2110" value="0"> In Europa</label>
+<label><input type="radio" name="q2110" value="1"> A un pubblico globale</label>
+<label><input type="radio" name="q2110" value="2"> Solo in Italia</label>
+<label><input type="radio" name="q2110" value="3"> In America</label>
+</div><div id="fq2110" class="fb"></div></div>
+<div class="q" data-q="q2111" data-a="1"><div class="qt">2. Il critico nota un aspetto preoccupante:</div>
+<div class="opts">
+<label><input type="radio" name="q2111" value="0"> Scarsa qualità</label>
+<label><input type="radio" name="q2111" value="1"> Omologazione delle storie</label>
+<label><input type="radio" name="q2111" value="2"> Pochi lettori</label>
+<label><input type="radio" name="q2111" value="3"> Costi elevati</label>
+</div><div id="fq2111" class="fb"></div></div>
+</div>
+<div class="prova"><h3>Prova 2 &mdash; Vero/Falso</h3>
+<div class="audio-bar"><button class="play-btn" onclick="pa(this,220)">▶ Ascolta</button>
+<span class="dur">170s</span>
+<span class="diff-badge diff-C2">C2</span>
+<button class="play-btn bs" onclick="ts('sc_c2_2_2')">📄 Testo</button></div>
+<div id="sc_c2_2_2" class="script-box">Tavola rotonda: 'Democrazia e populismo nell'era digitale'
+Relatore 1: Il populismo contemporaneo sfrutta le piattaforme digitali per cortocircuitare i tradizionali canali di mediazione democratica. I social media permettono ai leader populisti di comunicare direttamente con i cittadini, saltando il filtro dei giornalisti e degli esperti.
+Relatore 2: Ma non è solo questione di tecnologia. Il populismo nasce da una crisi di rappresentanza più profonda. I partiti tradizionali hanno smesso di rappresentare le classi popolari, e questo vuoto è stato riempito da movimenti che promettono soluzioni semplici a problemi complessi.
+Relatore 1: D'accordo, ma la semplificazione estrema del discorso politico è pericolosa. La complessità delle sfide contemporanee - cambiamento climatico, migrazioni, disuguaglianze - richiede risposte articolate, non slogan.
+Relatore 2: Eppure, dobbiamo riconoscere che il populismo ha anche il merito di aver riportato al centro del dibattito temi che erano stati trascurati, come la sovranità nazionale e l'identità culturale. Il problema non è il populismo in sé, ma la sua deriva autoritaria.</div>
+<div class="q tf" data-q="q2200" data-a="true"><div class="qt">1. Il primo relatore sostiene che i social media eliminano la mediazione giornalistica.</div>
+<div class="opts">
+<label><input type="radio" name="q2200" value="true"> Vero</label>
+<label><input type="radio" name="q2200" value="false"> Falso</label>
+</div><div id="fq2200" class="fb"></div></div>
+<div class="q tf" data-q="q2201" data-a="false"><div class="qt">2. Secondo entrambi i relatori, il populismo nasce solo dalla tecnologia.</div>
+<div class="opts">
+<label><input type="radio" name="q2201" value="true"> Vero</label>
+<label><input type="radio" name="q2201" value="false"> Falso</label>
+</div><div id="fq2201" class="fb"></div></div>
+<div class="q tf" data-q="q2202" data-a="true"><div class="qt">3. Il secondo relatore afferma che i partiti tradizionali non rappresentano più le classi popolari.</div>
+<div class="opts">
+<label><input type="radio" name="q2202" value="true"> Vero</label>
+<label><input type="radio" name="q2202" value="false"> Falso</label>
+</div><div id="fq2202" class="fb"></div></div>
+<div class="q tf" data-q="q2203" data-a="false"><div class="qt">4. Il primo relatore ritiene che la semplificazione politica sia positiva.</div>
+<div class="opts">
+<label><input type="radio" name="q2203" value="true"> Vero</label>
+<label><input type="radio" name="q2203" value="false"> Falso</label>
+</div><div id="fq2203" class="fb"></div></div>
+<div class="q tf" data-q="q2204" data-a="true"><div class="qt">5. Il secondo relatore riconosce al populismo il merito di aver riportato temi trascurati nel dibattito.</div>
+<div class="opts">
+<label><input type="radio" name="q2204" value="true"> Vero</label>
+<label><input type="radio" name="q2204" value="false"> Falso</label>
+</div><div id="fq2204" class="fb"></div></div>
+</div>
+<div class="prova"><h3>Prova 3 &mdash; Completamento</h3>
+<div class="audio-bar"><button class="play-btn" onclick="pa(this,230)">▶ Ascolta</button>
+<span class="dur">150s</span>
+<span class="diff-badge diff-C2">C2</span>
+<button class="play-btn bs" onclick="ts('sc_c2_2_3')">📄 Testo</button></div>
+<div id="sc_c2_2_3" class="script-box">Signore e signori, illustri colleghi, è per me un onore tenere questa lectio magistralis sul tema della bioetica nel terzo millennio. La domanda centrale che dobbiamo porci è: fino a che punto è lecito spingere l'intervento umano sulla natura? Le biotecnologie ci offrono strumenti potenti: dalla modificazione genetica alla clonazione terapeutica, dalla procreazione assistita all'incremento delle capacità cognitive. Il principio di precauzione ci impone di valutare attentamente le conseguenze a lungo termine delle nostre azioni. Non tutto ciò che è tecnicamente possibile è eticamente accettabile. D'altro canto, il principio di beneficenza ci richiede di alleviare la sofferenza quando possiamo farlo. Il bilanciamento tra questi due principi - precauzione e beneficenza - è al cuore del dibattito bioetico contemporaneo. La società nel suo insieme deve partecipare a questa riflessione, perché le scelte che faremo nei prossimi decenni determineranno il futuro della specie umana.</div>
+<div class="q fill" data-q="q2300" data-a="natura" data-ac="natura"><div class="qt">1. La domanda centrale della bioetica riguarda l'intervento umano sulla ___.</div>
+<input type="text" class="fi"><div id="fq2300" class="fb"></div></div>
+<div class="q fill" data-q="q2301" data-a="precauzione" data-ac="precauzione"><div class="qt">2. Il principio di ___ impone di valutare le conseguenze a lungo termine.</div>
+<input type="text" class="fi"><div id="fq2301" class="fb"></div></div>
+<div class="q fill" data-q="q2302" data-a="beneficenza" data-ac="beneficenza"><div class="qt">3. Il principio di ___ richiede di alleviare la sofferenza.</div>
+<input type="text" class="fi"><div id="fq2302" class="fb"></div></div>
+<div class="q fill" data-q="q2303" data-a="umana" data-ac="umana"><div class="qt">4. Le scelte dei prossimi decenni determineranno il futuro della specie ___.</div>
+<input type="text" class="fi"><div id="fq2303" class="fb"></div></div>
+</div>
+</div>
+<div class="sec"><h2>Comprensione della Lettura</h2><div class="rt">La teoria della 'società del rischio' sviluppata dal sociologo Ulrich Beck descrive una fase della modernità in cui i rischi prodotti dalla società stessa (cambiamento climatico, contaminazione nucleare, crisi finanziarie globali) diventano i principali agenti di cambiamento sociale. A differenza dei pericoli del passato, questi rischi sono globali, invisibili e democratici: colpiscono ricchi e poveri, Nord e Sud del mondo. La consapevolezza del rischio globale sta ridefinendo i confini tradizionali tra politica, economia e scienza.</div>
+<div class="q" data-q="r2_0" data-a="0"><div class="qt">1. Lo studioso Ulrich Beck ha sviluppato la teoria della 'società del ___.'</div>
+<div class="opts">
+<label><input type="radio" name="r2_0" value="0"> rischio</label>
+<label><input type="radio" name="r2_0" value="1"> consumo</label>
+<label><input type="radio" name="r2_0" value="2"> lavoro</label>
+<label><input type="radio" name="r2_0" value="3"> capitale</label>
+</div><div id="fr2_0" class="fb"></div></div>
+<div class="q" data-q="r2_1" data-a="0"><div class="qt">2. I rischi della modernità sono globali, invisibili e ___.</div>
+<div class="opts">
+<label><input type="radio" name="r2_1" value="0"> democratici</label>
+<label><input type="radio" name="r2_1" value="1"> pericolosi</label>
+<label><input type="radio" name="r2_1" value="2"> inevitabili</label>
+<label><input type="radio" name="r2_1" value="3"> controllabili</label>
+</div><div id="fr2_1" class="fb"></div></div>
+<div class="q" data-q="r2_2" data-a="0"><div class="qt">3. Il rischio globale ridefinisce i confini tra politica, economia e ___.</div>
+<div class="opts">
+<label><input type="radio" name="r2_2" value="0"> scienza</label>
+<label><input type="radio" name="r2_2" value="1"> cultura</label>
+<label><input type="radio" name="r2_2" value="2"> religione</label>
+<label><input type="radio" name="r2_2" value="3"> etica</label>
+</div><div id="fr2_2" class="fb"></div></div>
+</div>
+<div class="sec"><h2>Analisi delle Strutture</h2><div class="q" data-q="g2_0" data-a="In virtu" data-ac="In virtu"><div class="qt">1. ___ (in virtu di/grazie a) della sua esperienza, e stato scelto.</div>
+<input type="text" class="fi"><div id="fg2_0" class="fb"></div></div>
+<div class="q" data-q="g2_1" data-a="A fronte di" data-ac="A fronte di"><div class="qt">2. ___ (a fronte di/di fronte a) queste sfide, reagiamo.</div>
+<input type="text" class="fi"><div id="fg2_1" class="fb"></div></div>
+<div class="q" data-q="g2_2" data-a="Nel quadro di" data-ac="Nel quadro di"><div class="qt">3. ___ (nel quadro di/ai sensi di) del progetto, abbiamo completato.</div>
+<input type="text" class="fi"><div id="fg2_2" class="fb"></div></div>
+<div class="q" data-q="g2_3" data-a="In linea con" data-ac="In linea con"><div class="qt">4. ___ (in linea con/secondo) le direttive europee.</div>
+<input type="text" class="fi"><div id="fg2_3" class="fb"></div></div>
+<div class="q" data-q="g2_4" data-a="Per il tramite di" data-ac="Per il tramite di"><div class="qt">5. ___ (per il tramite di/attraverso) del nostro ufficio.</div>
+<input type="text" class="fi"><div id="fg2_4" class="fb"></div></div>
+</div>
+<div class="sec"><h2>Produzione Scritta</h2><div class="wp">La società del rischio di Beck: quali conseguenze per la politica contemporanea? (200-250 parole) (max 250 parole)</div>
+<textarea class="ta"></textarea>
+<div style="font-size:12px;color:#888;margin-top:4px;">Questa sezione non viene valutata automaticamente.</div></div>
+<div style="text-align:center;margin:20px 0;"><button class="bsu" onclick="se()">📝 Verifica</button></div>
+<script>
+var A=[];
+
+var _ca=null,_cb=null;
+function pa(b,i){if(_ca&&_ca!==A[i]){_ca.pause();_ca.currentTime=0;if(_cb){_cb.classList.remove('playing');_cb.textContent='▶';}}
+if(A[i].paused){A[i].play();b.classList.add('playing');b.textContent='⏹';_ca=A[i];_cb=b;A[i].onended=function(){b.classList.remove('playing');b.textContent='▶';_ca=null;_cb=null;};}else{A[i].pause();A[i].currentTime=0;b.classList.remove('playing');b.textContent='▶';if(_ca===A[i]){_ca=null;_cb=null;}}}
+function ts(id){var b=document.getElementById(id);if(b)b.style.display=b.style.display==='none'||b.style.display===''?'block':'none';}
+function n(s){return s.toLowerCase().replace(/[\s'\x60\u2018\u2019\.\-\[\]\/]+/g,' ').trim();}
+function se(){var c=0,t=21;
+document.querySelectorAll('[data-q]').forEach(function(el){t++;var qid=el.getAttribute('data-q');var a=el.getAttribute('data-a');var fb=document.getElementById('f'+qid);if(!fb)return;
+if(el.type==='text'){var v=n(el.value);var ok=(el.getAttribute('data-ac')||a).split('|').some(function(x){return v===n(x)});
+if(ok){c++;fb.textContent='✓';fb.className='fb cr';}else{fb.textContent='✗ '+a;fb.className='fb wr';}
+}else if(el.type==='radio'){var s=document.querySelector('input[name="'+el.name+'"]:checked');
+if(s){if(s.value===a){c++;fb.textContent='✓';fb.className='fb cr';}else{fb.textContent='✗ '+a;fb.className='fb wr';}}
+else{fb.textContent='❓ '+a;fb.className='fb wr';}
+}});
+document.getElementById('sbr').style.display='block';document.getElementById('ts').textContent=c+'/'+t;
+var p=Math.round(c/t*100);document.getElementById('sm').textContent=p+'% - '+(p>=85?'Eccellente!':p>=70?'Buono':p>=60?'Discreto':p>=40?'Insufficiente':'Grave');window.scrollTo(0,0);
+}</script></body></html>

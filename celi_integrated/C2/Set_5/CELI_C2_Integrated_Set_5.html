@@ -1,0 +1,184 @@
+<!DOCTYPE html><html lang="it"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>CELI C2 — Simulazione 5</title>
+<style>
+*{box-sizing:border-box;}body{font-family:system-ui,sans-serif;max-width:960px;margin:0 auto;padding:20px;background:#f8f9fa;color:#222;}
+.hd{background:linear-gradient(135deg,#6B2D2D,#CE2B37);color:white;padding:20px 24px;border-radius:10px;margin-bottom:20px;}
+.hd h1{margin:0;font-size:20px;}
+.sec{background:white;border-radius:10px;padding:18px 20px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.08);}
+.sec h2{font-size:16px;color:#6B2D2D;margin:0 0 12px;padding-bottom:6px;border-bottom:2px solid #CE2B37;}
+.prova{margin:10px 0;padding:12px;background:#f8fbff;border-radius:6px;}
+.prova h3{font-size:14px;color:#6B2D2D;margin:0 0 8px;}
+.ab{display:flex;align-items:center;gap:8px;margin:8px 0;padding:8px 12px;background:#eef2f7;border-radius:6px;flex-wrap:wrap;}
+.pb{padding:5px 14px;background:#2C1810;color:white;border:none;border-radius:16px;cursor:pointer;font-size:12px;}
+.pb:hover{background:#4A2C1A;}.pb.playing{background:#CE2B37;}
+.pb.bs{background:#555;font-size:11px;}
+.dur{font-size:11px;color:#888;}
+.db{display:inline-block;font-size:10px;padding:1px 5px;border-radius:3px;}
+.db-C2{background:#e8f5e9;color:#2e7d32;}.db-C2p{background:#fff3cd;color:#856404;}
+.sb{display:none;margin:6px 0;padding:10px;background:#f5f5f5;border-radius:6px;font-size:13px;line-height:1.6;white-space:pre-wrap;}
+.q{margin:10px 0;padding:10px;border-radius:6px;background:#f8fbff;}
+.q.tf{background:#f0f8ff;}.q.fill{background:#fff8e1;}
+.qt{font-weight:500;margin-bottom:4px;font-size:14px;}
+.opts{margin:4px 0;}.opts label{display:block;padding:3px 8px;border-radius:4px;cursor:pointer;}
+.opts label:hover{background:#e8f0fe;}
+.fi{padding:4px 8px;border:1px solid #ccc;border-radius:4px;font-size:13px;width:160px;margin:4px 0;}
+.rt{background:#f5f5f5;padding:14px;border-radius:6px;margin:10px 0;font-size:14px;line-height:1.7;}
+.wp{background:#f8f4ff;padding:12px;border-left:4px solid #7b1fa2;border-radius:4px;margin:10px 0;}
+.ta{width:100%;min-height:80px;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:14px;font-family:inherit;}
+.bsu{padding:10px 30px;background:linear-gradient(135deg,#6B2D2D,#CE2B37);color:white;border:none;border-radius:8px;font-size:15px;cursor:pointer;margin-top:10px;}
+.fb{display:none;margin-top:4px;padding:4px 8px;border-radius:4px;font-size:12px;}
+.cr{background:#e8f5e9;color:#2e7d32;display:block;}
+.wr{background:#ffebee;color:#c62828;display:block;}
+.sbr{display:none;background:linear-gradient(135deg,#27ae60,#2ecc71);color:white;padding:20px;border-radius:10px;text-align:center;margin-bottom:20px;}
+</style></head><body>
+<div class="hd"><h1>CELI C2 — Simulazione 5</h1><p>Esame completo: Ascolto + Lettura + Grammatica + Scrittura</p></div>
+<div class="sbr" id="sbr"><h2 id="ts">0/21</h2><p id="sm"></p></div>
+<div class="sec"><h2>Prova di Ascolto</h2><div class="prova"><h3>Prova 1 &mdash; Scelta Multipla</h3>
+<div class="audio-bar"><button class="play-btn" onclick="pa(this,510)">▶ Ascolta</button>
+<span class="dur">100s</span>
+<span class="diff-badge diff-C2">C2</span>
+<button class="play-btn bs" onclick="ts('sc_cc2_5_1a')">📄 Testo</button></div>
+<div id="sc_cc2_5_1a" class="script-box">Conferenza: 'I limiti della crescita nel XXI secolo'
+Relatore: Il rapporto del Club di Roma del 1972 aveva previsto con sorprendente accuratezza molte delle crisi che stiamo vivendo oggi. La crescita economica illimitata in un pianeta dalle risorse finite è una contraddizione in termini. Tuttavia, il concetto di decrescita, proposto da Serge Latouche, non significa recessione o povertà, ma una transizione verso un'economia basata sulla sobrietà e sulla cooperazione.</div>
+<div class="q" data-q="q5100" data-a="1"><div class="qt">1. Il rapporto del Club di Roma è del:</div>
+<div class="opts">
+<label><input type="radio" name="q5100" value="0"> 1968</label>
+<label><input type="radio" name="q5100" value="1"> 1972</label>
+<label><input type="radio" name="q5100" value="2"> 1980</label>
+<label><input type="radio" name="q5100" value="3"> 1995</label>
+</div><div id="fq5100" class="fb"></div></div>
+<div class="q" data-q="q5101" data-a="2"><div class="qt">2. La decrescita per Latouche significa:</div>
+<div class="opts">
+<label><input type="radio" name="q5101" value="0"> Recessione</label>
+<label><input type="radio" name="q5101" value="1"> Povertà</label>
+<label><input type="radio" name="q5101" value="2"> Transizione verso sobrietà</label>
+<label><input type="radio" name="q5101" value="3"> Stagnazione</label>
+</div><div id="fq5101" class="fb"></div></div>
+<div class="audio-bar"><button class="play-btn" onclick="pa(this,511)">▶ Ascolta</button>
+<span class="dur">85s</span>
+<span class="diff-badge diff-C2">C2</span>
+<button class="play-btn bs" onclick="ts('sc_cc2_5_1b')">📄 Testo</button></div>
+<div id="sc_cc2_5_1b" class="script-box">Critico letterario: La narrativa italiana contemporanea si distingue per una forte attenzione ai temi sociali. Autori come Gomarra, Saviano e la Ferrante hanno creato un nuovo realismo che mescola impegno civile e sperimentazione formale. Il successo internazionale di questi scrittori testimonia la vitalità della nostra letteratura.</div>
+<div class="q" data-q="q5110" data-a="0"><div class="qt">1. La narrativa italiana contemporanea si concentra su:</div>
+<div class="opts">
+<label><input type="radio" name="q5110" value="0"> Temi sociali</label>
+<label><input type="radio" name="q5110" value="1"> Fantascienza</label>
+<label><input type="radio" name="q5110" value="2"> Romanzo storico</label>
+<label><input type="radio" name="q5110" value="3"> Gialli</label>
+</div><div id="fq5110" class="fb"></div></div>
+<div class="q" data-q="q5111" data-a="1"><div class="qt">2. Il critico parla di:</div>
+<div class="opts">
+<label><input type="radio" name="q5111" value="0"> Declino della letteratura</label>
+<label><input type="radio" name="q5111" value="1"> Vitalità della letteratura</label>
+<label><input type="radio" name="q5111" value="2"> Crisi dell'editoria</label>
+<label><input type="radio" name="q5111" value="3"> Nuovi generi</label>
+</div><div id="fq5111" class="fb"></div></div>
+</div>
+<div class="prova"><h3>Prova 2 &mdash; Vero/Falso</h3>
+<div class="audio-bar"><button class="play-btn" onclick="pa(this,520)">▶ Ascolta</button>
+<span class="dur">160s</span>
+<span class="diff-badge diff-C2">C2</span>
+<button class="play-btn bs" onclick="ts('sc_cc2_5_2')">📄 Testo</button></div>
+<div id="sc_cc2_5_2" class="script-box">Tavola rotonda: 'Migrazioni e integrazione nell'Europa contemporanea'
+Relatore 1: Le migrazioni sono un fenomeno strutturale, non emergenziale. I dati mostrano che senza immigrazione, la popolazione europea diminuirebbe del 15% entro il 2050. L'integrazione rimane la sfida più grande, e le politiche attuali sono insufficienti.
+Relatore 2: Sono d'accordo sui dati demografici. Tuttavia, il dibattito pubblico è polarizzato tra posizioni ideologiche che impediscono una discussione seria. Da un lato c'è chi nega qualsiasi problema, dall'altro chi strumentalizza la paura. Servirebbe un patto sociale condiviso.
+Relatore 1: Esatto. Propongo tre pilastri per una politica migratoria efficace: canali di ingresso legali, percorsi di integrazione linguistica e lavorativa, e una campagna di comunicazione che racconti i benefici dell'immigrazione per il sistema produttivo e previdenziale.
+Relatore 2: Aggiungo un quarto pilastro: il coinvolgimento attivo delle comunità immigrate nella progettazione delle politiche. Non si può parlare di integrazione senza ascoltare chi deve integrarsi.</div>
+<div class="q tf" data-q="q5200" data-a="true"><div class="qt">1. Senza immigrazione, la popolazione UE diminuirebbe del 15% entro il 2050.</div>
+<div class="opts">
+<label><input type="radio" name="q5200" value="true"> Vero</label>
+<label><input type="radio" name="q5200" value="false"> Falso</label>
+</div><div id="fq5200" class="fb"></div></div>
+<div class="q tf" data-q="q5201" data-a="false"><div class="qt">2. Il primo relatore propone quattro pilastri per la politica migratoria.</div>
+<div class="opts">
+<label><input type="radio" name="q5201" value="true"> Vero</label>
+<label><input type="radio" name="q5201" value="false"> Falso</label>
+</div><div id="fq5201" class="fb"></div></div>
+<div class="q tf" data-q="q5202" data-a="false"><div class="qt">3. Il secondo relatore ritiene che il dibattito pubblico sia equilibrato.</div>
+<div class="opts">
+<label><input type="radio" name="q5202" value="true"> Vero</label>
+<label><input type="radio" name="q5202" value="false"> Falso</label>
+</div><div id="fq5202" class="fb"></div></div>
+<div class="q tf" data-q="q5203" data-a="true"><div class="qt">4. Il primo relatore propone canali di ingresso legali.</div>
+<div class="opts">
+<label><input type="radio" name="q5203" value="true"> Vero</label>
+<label><input type="radio" name="q5203" value="false"> Falso</label>
+</div><div id="fq5203" class="fb"></div></div>
+<div class="q tf" data-q="q5204" data-a="true"><div class="qt">5. Il secondo relatore propone di coinvolgere le comunità immigrate.</div>
+<div class="opts">
+<label><input type="radio" name="q5204" value="true"> Vero</label>
+<label><input type="radio" name="q5204" value="false"> Falso</label>
+</div><div id="fq5204" class="fb"></div></div>
+</div>
+<div class="prova"><h3>Prova 3 &mdash; Completamento</h3>
+<div class="audio-bar"><button class="play-btn" onclick="pa(this,530)">▶ Ascolta</button>
+<span class="dur">150s</span>
+<span class="diff-badge diff-C2">C2</span>
+<button class="play-btn bs" onclick="ts('sc_cc2_5_3')">📄 Testo</button></div>
+<div id="sc_cc2_5_3" class="script-box">Buongiorno a tutti. Oggi affronterò il tema della responsabilità sociale d'impresa, un concetto che ha profondamente trasformato il mondo del business negli ultimi decenni. Non si tratta più soltanto di generare profitto, ma di creare valore condiviso per tutti gli stakeholder: dipendenti, comunità locali, ambiente. L'Unione Europea ha recentemente approvato la direttiva sulla rendicontazione di sostenibilità, che obbliga le grandi imprese a pubblicare report dettagliati sul loro impatto ambientale e sociale. Si stima che questo riguarderà circa 50.000 aziende in Europa. Tuttavia, il rischio del cosiddetto 'greenwashing' è concreto: alcune aziende dichiarano di essere sostenibili senza modificare sostanzialmente le loro pratiche. Per questo motivo, stanno nascendo certificazioni indipendenti e standard volontari sempre più rigorosi. La sfida del futuro è integrare la sostenibilità nel DNA stesso delle imprese, non trattarla come un'aggiunta di facciata.</div>
+<div class="q fill" data-q="q5300" data-a="50.000" data-ac="50.000|cinquantamila"><div class="qt">1. La direttiva sulla rendicontazione di sostenibilità riguarda circa ___ aziende.</div>
+<input type="text" class="fi"><div id="fq5300" class="fb"></div></div>
+<div class="q fill" data-q="q5301" data-a="greenwashing" data-ac="greenwashing"><div class="qt">2. Il '___' è il rischio di dichiararsi sostenibili senza esserlo.</div>
+<input type="text" class="fi"><div id="fq5301" class="fb"></div></div>
+<div class="q fill" data-q="q5302" data-a="volontari" data-ac="volontari"><div class="qt">3. Servono certificazioni indipendenti e standard ___ .</div>
+<input type="text" class="fi"><div id="fq5302" class="fb"></div></div>
+<div class="q fill" data-q="q5303" data-a="DNA" data-ac="DNA"><div class="qt">4. La sostenibilità va integrata nel ___ delle imprese.</div>
+<input type="text" class="fi"><div id="fq5303" class="fb"></div></div>
+</div>
+</div>
+<div class="sec"><h2>Comprensione della Lettura</h2><div class="rt">Il futuro del lavoro nell'era dell'automazione e dell'intelligenza artificiale e un tema cruciale del dibattito contemporaneo. Secondo uno studio di McKinsey, entro il 2030 fino a 800 milioni di posti di lavoro potrebbero essere automatizzati a livello globale. Tuttavia, emergeranno nuove professioni legate alla gestione dell'IA, alla sostenibilita e all'economia circolare. La sfida principale e la riqualificazione della forza lavoro, che richiede investimenti massicci nell'istruzione e nella formazione continua.</div>
+<div class="q" data-q="r5_0" data-a="2"><div class="qt">1. Entro il 2030 fino a ___ milioni di posti potrebbero essere automatizzati.</div>
+<div class="opts">
+<label><input type="radio" name="r5_0" value="0"> 500</label>
+<label><input type="radio" name="r5_0" value="1"> 600</label>
+<label><input type="radio" name="r5_0" value="2"> 800</label>
+<label><input type="radio" name="r5_0" value="3"> 1000</label>
+</div><div id="fr5_0" class="fb"></div></div>
+<div class="q" data-q="r5_1" data-a="0"><div class="qt">2. Secondo lo studio di ___.</div>
+<div class="opts">
+<label><input type="radio" name="r5_1" value="0"> McKinsey</label>
+<label><input type="radio" name="r5_1" value="1"> Oxford</label>
+<label><input type="radio" name="r5_1" value="2"> MIT</label>
+<label><input type="radio" name="r5_1" value="3"> World Bank</label>
+</div><div id="fr5_1" class="fb"></div></div>
+<div class="q" data-q="r5_2" data-a="0"><div class="qt">3. La sfida principale e la ___ della forza lavoro.</div>
+<div class="opts">
+<label><input type="radio" name="r5_2" value="0"> riqualificazione</label>
+<label><input type="radio" name="r5_2" value="1"> riduzione</label>
+<label><input type="radio" name="r5_2" value="2"> stabilizzazione</label>
+<label><input type="radio" name="r5_2" value="3"> innovazione</label>
+</div><div id="fr5_2" class="fb"></div></div>
+</div>
+<div class="sec"><h2>Analisi delle Strutture</h2><div class="q" data-q="g5_0" data-a="sviluppato" data-ac="sviluppato"><div class="qt">1. Il concetto di 'societa liquida' e stato ___ (sviluppo/sviluppato) da Bauman.</div>
+<input type="text" class="fi"><div id="fg5_0" class="fb"></div></div>
+<div class="q" data-q="g5_1" data-a="economiche" data-ac="economiche"><div class="qt">2. Le decisioni ___ (economiche/economici) sono spesso irrazionali.</div>
+<input type="text" class="fi"><div id="fg5_1" class="fb"></div></div>
+<div class="q" data-q="g5_2" data-a="filosofiche" data-ac="filosofiche"><div class="qt">3. Le teorie ___ (filosofiche/filosofici) contemporanee sono complesse.</div>
+<input type="text" class="fi"><div id="fg5_2" class="fb"></div></div>
+<div class="q" data-q="g5_3" data-a="pratiche" data-ac="pratiche"><div class="qt">4. Le implicazioni ___ (pratiche/pratici) sono significative.</div>
+<input type="text" class="fi"><div id="fg5_3" class="fb"></div></div>
+<div class="q" data-q="g5_4" data-a="individuali" data-ac="individuali"><div class="qt">5. Le scelte ___ (individuali/individuale) influenzano la societa.</div>
+<input type="text" class="fi"><div id="fg5_4" class="fb"></div></div>
+</div>
+<div class="sec"><h2>Produzione Scritta</h2><div class="wp">L'automazione e l'IA trasformeranno il mondo del lavoro. Quali sfide e opportunita? (200-250 parole) (max 250 parole)</div>
+<textarea class="ta"></textarea>
+<div style="font-size:12px;color:#888;margin-top:4px;">Questa sezione non viene valutata automaticamente.</div></div>
+<div style="text-align:center;margin:20px 0;"><button class="bsu" onclick="se()">📝 Verifica</button></div>
+<script>
+var A=[];
+
+var _ca=null,_cb=null;
+function pa(b,i){if(_ca&&_ca!==A[i]){_ca.pause();_ca.currentTime=0;if(_cb){_cb.classList.remove('playing');_cb.textContent='▶';}}
+if(A[i].paused){A[i].play();b.classList.add('playing');b.textContent='⏹';_ca=A[i];_cb=b;A[i].onended=function(){b.classList.remove('playing');b.textContent='▶';_ca=null;_cb=null;};}else{A[i].pause();A[i].currentTime=0;b.classList.remove('playing');b.textContent='▶';if(_ca===A[i]){_ca=null;_cb=null;}}}
+function ts(id){var b=document.getElementById(id);if(b)b.style.display=b.style.display==='none'||b.style.display===''?'block':'none';}
+function n(s){return s.toLowerCase().replace(/[\s'\x60\u2018\u2019\.\-\[\]\/]+/g,' ').trim();}
+function se(){var c=0,t=21;
+document.querySelectorAll('[data-q]').forEach(function(el){t++;var qid=el.getAttribute('data-q');var a=el.getAttribute('data-a');var fb=document.getElementById('f'+qid);if(!fb)return;
+if(el.type==='text'){var v=n(el.value);var ok=(el.getAttribute('data-ac')||a).split('|').some(function(x){return v===n(x)});
+if(ok){c++;fb.textContent='✓';fb.className='fb cr';}else{fb.textContent='✗ '+a;fb.className='fb wr';}
+}else if(el.type==='radio'){var s=document.querySelector('input[name="'+el.name+'"]:checked');
+if(s){if(s.value===a){c++;fb.textContent='✓';fb.className='fb cr';}else{fb.textContent='✗ '+a;fb.className='fb wr';}}
+else{fb.textContent='❓ '+a;fb.className='fb wr';}
+}});
+document.getElementById('sbr').style.display='block';document.getElementById('ts').textContent=c+'/'+t;
+var p=Math.round(c/t*100);document.getElementById('sm').textContent=p+'% - '+(p>=85?'Eccellente!':p>=70?'Buono':p>=60?'Discreto':p>=40?'Insufficiente':'Grave');window.scrollTo(0,0);
+}</script></body></html>

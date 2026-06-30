@@ -1,0 +1,218 @@
+<!DOCTYPE html><html lang="it"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>CILS B1 — Simulazione 1</title>
+<style>
+*{box-sizing:border-box;}body{font-family:system-ui,sans-serif;max-width:960px;margin:0 auto;padding:20px;background:#f8f9fa;color:#222;}
+.hd{background:linear-gradient(135deg,#1a5276,#2e86c1);color:white;padding:20px 24px;border-radius:10px;margin-bottom:20px;}
+.hd h1{margin:0;font-size:20px;}
+.sec{background:white;border-radius:10px;padding:18px 20px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.08);}
+.sec h2{font-size:16px;color:#1a5276;margin:0 0 12px;padding-bottom:6px;border-bottom:2px solid #2e86c1;}
+.prova{margin:10px 0;padding:12px;background:#f8fbff;border-radius:6px;}
+.prova h3{font-size:14px;color:#1a5276;margin:0 0 8px;}
+.ab{display:flex;align-items:center;gap:8px;margin:8px 0;padding:8px 12px;background:#eef2f7;border-radius:6px;flex-wrap:wrap;}
+.pb{padding:5px 14px;background:#2C1810;color:white;border:none;border-radius:16px;cursor:pointer;font-size:12px;}
+.pb:hover{background:#4A2C1A;}.pb.playing{background:#2e86c1;}
+.pb.bs{background:#555;font-size:11px;}
+.dur{font-size:11px;color:#888;}
+.db{display:inline-block;font-size:10px;padding:1px 5px;border-radius:3px;}
+.db-B1{background:#e8f5e9;color:#2e7d32;}.db-B1p{background:#fff3cd;color:#856404;}
+.sb{display:none;margin:6px 0;padding:10px;background:#f5f5f5;border-radius:6px;font-size:13px;line-height:1.6;white-space:pre-wrap;}
+.q{margin:10px 0;padding:10px;border-radius:6px;background:#f8fbff;}
+.q.tf{background:#f0f8ff;}.q.fill{background:#fff8e1;}
+.qt{font-weight:500;margin-bottom:4px;font-size:14px;}
+.opts{margin:4px 0;}.opts label{display:block;padding:3px 8px;border-radius:4px;cursor:pointer;}
+.opts label:hover{background:#e8f0fe;}
+.fi{padding:4px 8px;border:1px solid #ccc;border-radius:4px;font-size:13px;width:160px;margin:4px 0;}
+.rt{background:#f5f5f5;padding:14px;border-radius:6px;margin:10px 0;font-size:14px;line-height:1.7;}
+.wp{background:#f8f4ff;padding:12px;border-left:4px solid #7b1fa2;border-radius:4px;margin:10px 0;}
+.ta{width:100%;min-height:80px;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:14px;font-family:inherit;}
+.bsu{padding:10px 30px;background:linear-gradient(135deg,#1a5276,#2e86c1);color:white;border:none;border-radius:8px;font-size:15px;cursor:pointer;margin-top:10px;}
+.fb{display:none;margin-top:4px;padding:4px 8px;border-radius:4px;font-size:12px;}
+.cr{background:#e8f5e9;color:#2e7d32;display:block;}
+.wr{background:#ffebee;color:#c62828;display:block;}
+.sbr{display:none;background:linear-gradient(135deg,#27ae60,#2ecc71);color:white;padding:20px;border-radius:10px;text-align:center;margin-bottom:20px;}
+</style></head><body>
+<div class="hd"><h1>CILS B1 — Simulazione 1</h1><p>Esame completo: Ascolto + Lettura + Grammatica + Scrittura</p></div>
+<div class="sbr" id="sbr"><h2 id="ts">0/24</h2><p id="sm"></p></div>
+<div class="sec"><h2>Prova di Ascolto</h2><div class="prova"><h3>Prova 1 &mdash; Scelta Multipla</h3>
+<div class="audio-bar"><button class="play-btn" onclick="pa(this,110)">▶ Ascolta</button>
+<span class="dur">75s</span>
+<span class="diff-badge diff-B1">B1</span>
+<button class="play-btn bs" onclick="ts('sc_b1_1_1a')">📄 Testo</button></div>
+<div id="sc_b1_1_1a" class="script-box">Cameriere: Buonasera, ha prenotato?
+Cliente: S矛, ho prenotato per le otto, tavolo per due, nome Verdi.
+Cameriere: Ah, certo, signor Verdi. Il suo tavolo 猫 vicino alla finestra. Le va bene?
+Cliente: Perfetto. Potrei vedere il men霉?
+Cameriere: Ecco a lei. Il nostro chef oggi propone come antipasto una selezione di salumi toscani, come primo gli spaghetti alla carbonara e come secondo l'osso buco con verdure grigliate.
+Cliente: Sembra tutto molto buono. Per me, prendo l'antipasto e come primo gli spaghetti.
+Cameriere: Ottima scelta, signore. Desidera anche del vino?
+Cliente: S矛, un bicchiere di Chianti, grazie.</div>
+<div class="q" data-q="q1100" data-a="1"><div class="qt">1. Il cliente ha prenotato per quante persone?</div>
+<div class="opts">
+<label><input type="radio" name="q1100" value="0"> Una</label>
+<label><input type="radio" name="q1100" value="1"> Due</label>
+<label><input type="radio" name="q1100" value="2"> Tre</label>
+<label><input type="radio" name="q1100" value="3"> Quattro</label>
+</div><div id="fq1100" class="fb"></div></div>
+<div class="q" data-q="q1101" data-a="1"><div class="qt">2. Dov'猫 situato il tavolo del cliente?</div>
+<div class="opts">
+<label><input type="radio" name="q1101" value="0"> Vicino alla porta</label>
+<label><input type="radio" name="q1101" value="1"> Vicino alla finestra</label>
+<label><input type="radio" name="q1101" value="2"> Al centro della sala</label>
+<label><input type="radio" name="q1101" value="3"> All'esterno</label>
+</div><div id="fq1101" class="fb"></div></div>
+<div class="q" data-q="q1102" data-a="3"><div class="qt">3. Cosa ordina il cliente come secondo piatto?</div>
+<div class="opts">
+<label><input type="radio" name="q1102" value="0"> L'osso buco</label>
+<label><input type="radio" name="q1102" value="1"> La carbonara</label>
+<label><input type="radio" name="q1102" value="2"> Il salume</label>
+<label><input type="radio" name="q1102" value="3"> Non ordina un secondo</label>
+</div><div id="fq1102" class="fb"></div></div>
+<div class="audio-bar"><button class="play-btn" onclick="pa(this,111)">▶ Ascolta</button>
+<span class="dur">65s</span>
+<span class="diff-badge diff-B1">B1</span>
+<button class="play-btn bs" onclick="ts('sc_b1_1_1b')">📄 Testo</button></div>
+<div id="sc_b1_1_1b" class="script-box">Signora: Buongiorno, vorrei informazioni sui corsi di italiano per stranieri.
+Segretaria: Certamente. Abbiamo corsi di diversi livelli, dall'A1 al C1. I corsi iniziano a ottobre e a febbraio, durano tre mesi con due lezioni a settimana.
+Signora: Quanto costa un corso?
+Segretaria: Il corso base di 60 ore costa 450 euro, mentre quello intensivo di 90 ore costa 600 euro.
+Signora: E per l'iscrizione, cosa devo portare?
+Segretaria: Deve compilare il modulo online, allegare una copia del documento d'identit脿 e versare un acconto del 30%.</div>
+<div class="q" data-q="q1110" data-a="1"><div class="qt">1. Quando iniziano i corsi di italiano?</div>
+<div class="opts">
+<label><input type="radio" name="q1110" value="0"> Solo a ottobre</label>
+<label><input type="radio" name="q1110" value="1"> A ottobre e a febbraio</label>
+<label><input type="radio" name="q1110" value="2"> Tutti i mesi</label>
+<label><input type="radio" name="q1110" value="3"> Solo a febbraio</label>
+</div><div id="fq1110" class="fb"></div></div>
+<div class="q" data-q="q1111" data-a="2"><div class="qt">2. Quanto costa il corso intensivo?</div>
+<div class="opts">
+<label><input type="radio" name="q1111" value="0"> 450 euro</label>
+<label><input type="radio" name="q1111" value="1"> 500 euro</label>
+<label><input type="radio" name="q1111" value="2"> 600 euro</label>
+<label><input type="radio" name="q1111" value="3"> 700 euro</label>
+</div><div id="fq1111" class="fb"></div></div>
+</div>
+<div class="prova"><h3>Prova 2 &mdash; Vero/Falso</h3>
+<div class="audio-bar"><button class="play-btn" onclick="pa(this,120)">▶ Ascolta</button>
+<span class="dur">120s</span>
+<span class="diff-badge diff-B1p">B1+</span>
+<button class="play-btn bs" onclick="ts('sc_b1_1_2')">📄 Testo</button></div>
+<div id="sc_b1_1_2" class="script-box">Marco: Ciao Anna, come mai hai quella faccia? 脠 successo qualcosa?
+Anna: Eh, Marco, ho appena saputo che l'azienda dove lavoro chiuder脿 il prossimo mese.
+Marco: Cosa? Ma non era uno studio di architettura molto noto?
+Anna: S矛, lo era, ma con la crisi del settore edile gli ultimi anni sono stati difficilissimi.
+Marco: Mi dispiace tanto. Ma tu avevi un contratto a tempo indeterminato, no?
+Anna: Purtroppo no, avevo un contratto a progetto che scadeva a giugno. Non l'hanno rinnovato.
+Marco: Hai gi脿 cominciato a cercare altro?
+Anna: S矛, ho gi脿 mandato una decina di curriculum. C'猫 uno studio a Milano che sembra interessato.
+Marco: Milano? Ma non 猫 lontano? Abiti qui a Firenze.
+Anna: Lo so, ma in questo momento non posso permettermi di scegliere. Farei il pendolare.
+Marco: Capisco. Se hai bisogno di un aiuto per il curriculum, io ho qualche contatto nel settore.
+Anna: Grazie Marco, sei molto gentile. Potrebbe essermi utile.</div>
+<div class="q tf" data-q="q1200" data-a="true"><div class="qt">1. Anna lavora in uno studio di architettura.</div>
+<div class="opts">
+<label><input type="radio" name="q1200" value="true"> Vero</label>
+<label><input type="radio" name="q1200" value="false"> Falso</label>
+</div><div id="fq1200" class="fb"></div></div>
+<div class="q tf" data-q="q1201" data-a="false"><div class="qt">2. La chiusura dell'azienda 猫 prevista tra due mesi.</div>
+<div class="opts">
+<label><input type="radio" name="q1201" value="true"> Vero</label>
+<label><input type="radio" name="q1201" value="false"> Falso</label>
+</div><div id="fq1201" class="fb"></div></div>
+<div class="q tf" data-q="q1202" data-a="false"><div class="qt">3. Anna aveva un contratto a tempo indeterminato.</div>
+<div class="opts">
+<label><input type="radio" name="q1202" value="true"> Vero</label>
+<label><input type="radio" name="q1202" value="false"> Falso</label>
+</div><div id="fq1202" class="fb"></div></div>
+<div class="q tf" data-q="q1203" data-a="true"><div class="qt">4. Anna ha gi脿 inviato circa dieci curriculum.</div>
+<div class="opts">
+<label><input type="radio" name="q1203" value="true"> Vero</label>
+<label><input type="radio" name="q1203" value="false"> Falso</label>
+</div><div id="fq1203" class="fb"></div></div>
+<div class="q tf" data-q="q1204" data-a="false"><div class="qt">5. Marco offre aiuto per trovare lavoro a Milano.</div>
+<div class="opts">
+<label><input type="radio" name="q1204" value="true"> Vero</label>
+<label><input type="radio" name="q1204" value="false"> Falso</label>
+</div><div id="fq1204" class="fb"></div></div>
+</div>
+<div class="prova"><h3>Prova 3 &mdash; Completamento</h3>
+<div class="audio-bar"><button class="play-btn" onclick="pa(this,130)">▶ Ascolta</button>
+<span class="dur">110s</span>
+<span class="diff-badge diff-B1p">B1+</span>
+<button class="play-btn bs" onclick="ts('sc_b1_1_3')">📄 Testo</button></div>
+<div id="sc_b1_1_3" class="script-box">Buongiorno a tutti, mi chiamo Laura e lavoro come guida turistica a Roma ormai da dieci anni. Oggi vorrei parlarvi di un luogo poco conosciuto ma affascinante: il quartiere Copped猫. Si tratta di un angolo di Roma situato tra via Tagliamento e via Dora, famoso per i suoi edifici in stile liberty con decorazioni floreali e sculture fantastiche. Il quartiere fu progettato dall'architetto Gino Copped猫 all'inizio del Novecento e conta circa quaranta palazzi. La cosa pi霉 sorprendente 猫 la Fontana delle Rane, al centro della piazza principale, circondata da palazzi decorati con mosaici e affreschi. Il quartiere 猫 aperto al pubblico gratuitamente ed 猫 raggiungibile con la metropolitana, fermata Bologna. Vi consiglio di visitarlo la domenica mattina, quando c'猫 meno traffico e si respira un'atmosfera magica. La visita completa richiede circa un'ora.</div>
+<div class="q fill" data-q="q1300" data-a="dieci" data-ac="dieci|10"><div class="qt">1. Laura fa la guida turistica a Roma da ___ anni.</div>
+<input type="text" class="fi"><div id="fq1300" class="fb"></div></div>
+<div class="q fill" data-q="q1301" data-a="Dora" data-ac="Dora"><div class="qt">2. Il quartiere Copped猫 si trova tra via Tagliamento e via ___.</div>
+<input type="text" class="fi"><div id="fq1301" class="fb"></div></div>
+<div class="q fill" data-q="q1302" data-a="Novecento" data-ac="Novecento|900|ventesimo secolo"><div class="qt">3. Il quartiere 猫 stato progettato all'inizio del ___ .</div>
+<input type="text" class="fi"><div id="fq1302" class="fb"></div></div>
+<div class="q fill" data-q="q1303" data-a="Rane" data-ac="Rane"><div class="qt">4. Al centro della piazza principale si trova la Fontana delle ___.</div>
+<input type="text" class="fi"><div id="fq1303" class="fb"></div></div>
+<div class="q fill" data-q="q1304" data-a="un'ora" data-ac="un'ora|1 ora|60 minuti"><div class="qt">5. La visita completa richiede circa ___ .</div>
+<input type="text" class="fi"><div id="fq1304" class="fb"></div></div>
+</div>
+</div>
+<div class="sec"><h2>Comprensione della Lettura</h2><div class="rt">L'Italia è un paese ricco di storia e cultura. Ogni anno milioni di turisti visitano città come Roma, Firenze e Venezia. Il turismo è uno dei settori più importanti dell'economia italiana, rappresentando circa il 13% del PIL nazionale. Tuttavia, negli ultimi anni si è parlato molto di overtourism, cioè di un eccesso di turisti che crea problemi ai residenti e all'ambiente. Alcune città come Venezia hanno introdotto misure per limitare il numero di visitatori, come il ticket d'ingresso per i turisti giornalieri. Secondo gli esperti, il futuro del turismo sarà più sostenibile e rispettoso dei luoghi visitati.</div>
+<div class="q" data-q="r1_0" data-a="1"><div class="qt">1. Il turismo rappresenta circa il ___% del PIL italiano.</div>
+<div class="opts">
+<label><input type="radio" name="r1_0" value="0"> 10</label>
+<label><input type="radio" name="r1_0" value="1"> 13</label>
+<label><input type="radio" name="r1_0" value="2"> 15</label>
+<label><input type="radio" name="r1_0" value="3"> 18</label>
+</div><div id="fr1_0" class="fb"></div></div>
+<div class="q" data-q="r1_1" data-a="1"><div class="qt">2. L'overtourism crea problemi ai ___ e all'ambiente.</div>
+<div class="opts">
+<label><input type="radio" name="r1_1" value="0"> turisti</label>
+<label><input type="radio" name="r1_1" value="1"> residenti</label>
+<label><input type="radio" name="r1_1" value="2"> commercianti</label>
+<label><input type="radio" name="r1_1" value="3"> politici</label>
+</div><div id="fr1_1" class="fb"></div></div>
+<div class="q" data-q="r1_2" data-a="0"><div class="qt">3. Venezia ha introdotto il ___ per i turisti giornalieri.</div>
+<div class="opts">
+<label><input type="radio" name="r1_2" value="0"> ticket d'ingresso</label>
+<label><input type="radio" name="r1_2" value="1"> coperto</label>
+<label><input type="radio" name="r1_2" value="2"> pedaggio</label>
+<label><input type="radio" name="r1_2" value="3"> biglietto</label>
+</div><div id="fr1_2" class="fb"></div></div>
+<div class="q" data-q="r1_3" data-a="1"><div class="qt">4. Il futuro del turismo sarà più ___.</div>
+<div class="opts">
+<label><input type="radio" name="r1_3" value="0"> economico</label>
+<label><input type="radio" name="r1_3" value="1"> sostenibile</label>
+<label><input type="radio" name="r1_3" value="2"> esclusivo</label>
+<label><input type="radio" name="r1_3" value="3"> digitale</label>
+</div><div id="fr1_3" class="fb"></div></div>
+</div>
+<div class="sec"><h2>Analisi delle Strutture</h2><div class="q" data-q="g1_0" data-a="avessi" data-ac="avessi"><div class="qt">1. Se ___ (io - avere) tempo, verrei con te.</div>
+<input type="text" class="fi"><div id="fg1_0" class="fb"></div></div>
+<div class="q" data-q="g1_1" data-a="Parli" data-ac="Parli"><div class="qt">2. ___ (congiuntivo: tu - parlare) italiano molto bene.</div>
+<input type="text" class="fi"><div id="fg1_1" class="fb"></div></div>
+<div class="q" data-q="g1_2" data-a="siano" data-ac="siano"><div class="qt">3. Penso che loro ___ (essere) già arrivati.</div>
+<input type="text" class="fi"><div id="fg1_2" class="fb"></div></div>
+<div class="q" data-q="g1_3" data-a="partiamo" data-ac="partiamo"><div class="qt">4. Bisogna che ___ (noi - partire) subito.</div>
+<input type="text" class="fi"><div id="fg1_3" class="fb"></div></div>
+<div class="q" data-q="g1_4" data-a="sappia" data-ac="sappia"><div class="qt">5. Credo che ___ (lui - sapere) la verità.</div>
+<input type="text" class="fi"><div id="fg1_4" class="fb"></div></div>
+</div>
+<div class="sec"><h2>Produzione Scritta</h2><div class="wp">Secondo te, quali sono i vantaggi e gli svantaggi del turismo per una città? (120-150 parole) (max 150 parole)</div>
+<textarea class="ta"></textarea>
+<div style="font-size:12px;color:#888;margin-top:4px;">Questa sezione non viene valutata automaticamente.</div></div>
+<div style="text-align:center;margin:20px 0;"><button class="bsu" onclick="se()">📝 Verifica</button></div>
+<script>
+var A=[];
+
+var _ca=null,_cb=null;
+function pa(b,i){if(_ca&&_ca!==A[i]){_ca.pause();_ca.currentTime=0;if(_cb){_cb.classList.remove('playing');_cb.textContent='▶';}}
+if(A[i].paused){A[i].play();b.classList.add('playing');b.textContent='⏹';_ca=A[i];_cb=b;A[i].onended=function(){b.classList.remove('playing');b.textContent='▶';_ca=null;_cb=null;};}else{A[i].pause();A[i].currentTime=0;b.classList.remove('playing');b.textContent='▶';if(_ca===A[i]){_ca=null;_cb=null;}}}
+function ts(id){var b=document.getElementById(id);if(b)b.style.display=b.style.display==='none'||b.style.display===''?'block':'none';}
+function n(s){return s.toLowerCase().replace(/[\s'\x60\u2018\u2019\.\-\[\]\/]+/g,' ').trim();}
+function se(){var c=0,t=24;
+document.querySelectorAll('[data-q]').forEach(function(el){t++;var qid=el.getAttribute('data-q');var a=el.getAttribute('data-a');var fb=document.getElementById('f'+qid);if(!fb)return;
+if(el.type==='text'){var v=n(el.value);var ok=(el.getAttribute('data-ac')||a).split('|').some(function(x){return v===n(x)});
+if(ok){c++;fb.textContent='✓';fb.className='fb cr';}else{fb.textContent='✗ '+a;fb.className='fb wr';}
+}else if(el.type==='radio'){var s=document.querySelector('input[name="'+el.name+'"]:checked');
+if(s){if(s.value===a){c++;fb.textContent='✓';fb.className='fb cr';}else{fb.textContent='✗ '+a;fb.className='fb wr';}}
+else{fb.textContent='❓ '+a;fb.className='fb wr';}
+}});
+document.getElementById('sbr').style.display='block';document.getElementById('ts').textContent=c+'/'+t;
+var p=Math.round(c/t*100);document.getElementById('sm').textContent=p+'% - '+(p>=85?'Eccellente!':p>=70?'Buono':p>=60?'Discreto':p>=40?'Insufficiente':'Grave');window.scrollTo(0,0);
+}</script></body></html>

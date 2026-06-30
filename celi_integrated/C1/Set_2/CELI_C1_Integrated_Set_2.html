@@ -1,0 +1,192 @@
+<!DOCTYPE html><html lang="it"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>CELI C1 — Simulazione 2</title>
+<style>
+*{box-sizing:border-box;}body{font-family:system-ui,sans-serif;max-width:960px;margin:0 auto;padding:20px;background:#f8f9fa;color:#222;}
+.hd{background:linear-gradient(135deg,#6B2D2D,#CE2B37);color:white;padding:20px 24px;border-radius:10px;margin-bottom:20px;}
+.hd h1{margin:0;font-size:20px;}
+.sec{background:white;border-radius:10px;padding:18px 20px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.08);}
+.sec h2{font-size:16px;color:#6B2D2D;margin:0 0 12px;padding-bottom:6px;border-bottom:2px solid #CE2B37;}
+.prova{margin:10px 0;padding:12px;background:#f8fbff;border-radius:6px;}
+.prova h3{font-size:14px;color:#6B2D2D;margin:0 0 8px;}
+.ab{display:flex;align-items:center;gap:8px;margin:8px 0;padding:8px 12px;background:#eef2f7;border-radius:6px;flex-wrap:wrap;}
+.pb{padding:5px 14px;background:#2C1810;color:white;border:none;border-radius:16px;cursor:pointer;font-size:12px;}
+.pb:hover{background:#4A2C1A;}.pb.playing{background:#CE2B37;}
+.pb.bs{background:#555;font-size:11px;}
+.dur{font-size:11px;color:#888;}
+.db{display:inline-block;font-size:10px;padding:1px 5px;border-radius:3px;}
+.db-C1{background:#e8f5e9;color:#2e7d32;}.db-C1p{background:#fff3cd;color:#856404;}
+.sb{display:none;margin:6px 0;padding:10px;background:#f5f5f5;border-radius:6px;font-size:13px;line-height:1.6;white-space:pre-wrap;}
+.q{margin:10px 0;padding:10px;border-radius:6px;background:#f8fbff;}
+.q.tf{background:#f0f8ff;}.q.fill{background:#fff8e1;}
+.qt{font-weight:500;margin-bottom:4px;font-size:14px;}
+.opts{margin:4px 0;}.opts label{display:block;padding:3px 8px;border-radius:4px;cursor:pointer;}
+.opts label:hover{background:#e8f0fe;}
+.fi{padding:4px 8px;border:1px solid #ccc;border-radius:4px;font-size:13px;width:160px;margin:4px 0;}
+.rt{background:#f5f5f5;padding:14px;border-radius:6px;margin:10px 0;font-size:14px;line-height:1.7;}
+.wp{background:#f8f4ff;padding:12px;border-left:4px solid #7b1fa2;border-radius:4px;margin:10px 0;}
+.ta{width:100%;min-height:80px;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:14px;font-family:inherit;}
+.bsu{padding:10px 30px;background:linear-gradient(135deg,#6B2D2D,#CE2B37);color:white;border:none;border-radius:8px;font-size:15px;cursor:pointer;margin-top:10px;}
+.fb{display:none;margin-top:4px;padding:4px 8px;border-radius:4px;font-size:12px;}
+.cr{background:#e8f5e9;color:#2e7d32;display:block;}
+.wr{background:#ffebee;color:#c62828;display:block;}
+.sbr{display:none;background:linear-gradient(135deg,#27ae60,#2ecc71);color:white;padding:20px;border-radius:10px;text-align:center;margin-bottom:20px;}
+</style></head><body>
+<div class="hd"><h1>CELI C1 — Simulazione 2</h1><p>Esame completo: Ascolto + Lettura + Grammatica + Scrittura</p></div>
+<div class="sbr" id="sbr"><h2 id="ts">0/22</h2><p id="sm"></p></div>
+<div class="sec"><h2>Prova di Ascolto</h2><div class="prova"><h3>Prova 1 &mdash; Scelta Multipla</h3>
+<div class="audio-bar"><button class="play-btn" onclick="pa(this,210)">▶ Ascolta</button>
+<span class="dur">85s</span>
+<span class="diff-badge diff-C1">C1</span>
+<button class="play-btn bs" onclick="ts('sc_cc1_2_1a')">📄 Testo</button></div>
+<div id="sc_cc1_2_1a" class="script-box">Relatore: La digitalizzazione della pubblica amministrazione italiana ha fatto passi da gigante negli ultimi cinque anni, ma resta molto da fare. Attualmente, circa il 65% dei servizi pubblici è disponibile online, ma solo il 40% dei cittadini li utilizza regolarmente. Il problema principale è il digital divide: molte persone anziane non hanno le competenze necessarie.
+Giornalista: Cosa si sta facendo per colmare questo divario?
+Relatore: Sono stati stanziati fondi per i punti di facilitazione digitale, presenti in 2000 comuni. Offrono corsi gratuiti di alfabetizzazione digitale per over 65.</div>
+<div class="q" data-q="q2100" data-a="2"><div class="qt">1. Quale percentuale di servizi pubblici è online?</div>
+<div class="opts">
+<label><input type="radio" name="q2100" value="0"> 40%</label>
+<label><input type="radio" name="q2100" value="1"> 50%</label>
+<label><input type="radio" name="q2100" value="2"> 65%</label>
+<label><input type="radio" name="q2100" value="3"> 80%</label>
+</div><div id="fq2100" class="fb"></div></div>
+<div class="q" data-q="q2101" data-a="1"><div class="qt">2. Il problema principale è:</div>
+<div class="opts">
+<label><input type="radio" name="q2101" value="0"> Costi elevati</label>
+<label><input type="radio" name="q2101" value="1"> Digital divide</label>
+<label><input type="radio" name="q2101" value="2"> Scarsa qualità</label>
+<label><input type="radio" name="q2101" value="3"> Poca sicurezza</label>
+</div><div id="fq2101" class="fb"></div></div>
+<div class="q" data-q="q2102" data-a="1"><div class="qt">3. I corsi di alfabetizzazione digitale sono per:</div>
+<div class="opts">
+<label><input type="radio" name="q2102" value="0"> Giovani</label>
+<label><input type="radio" name="q2102" value="1"> Over 65</label>
+<label><input type="radio" name="q2102" value="2"> Disoccupati</label>
+<label><input type="radio" name="q2102" value="3"> Studenti</label>
+</div><div id="fq2102" class="fb"></div></div>
+<div class="audio-bar"><button class="play-btn" onclick="pa(this,211)">▶ Ascolta</button>
+<span class="dur">65s</span>
+<span class="diff-badge diff-C1">C1</span>
+<button class="play-btn bs" onclick="ts('sc_cc1_2_1b')">📄 Testo</button></div>
+<div id="sc_cc1_2_1b" class="script-box">Critico: La mostra 'Arte e Identità' alla Galleria Nazionale è una delle più interessanti di questa stagione. Riunisce 45 artisti contemporanei italiani e internazionali, con installazioni che esplorano il tema dell'identità culturale nell'era della globalizzazione. La mostra rimarrà aperta fino al 15 marzo.</div>
+<div class="q" data-q="q2110" data-a="2"><div class="qt">1. La mostra presenta quanti artisti?</div>
+<div class="opts">
+<label><input type="radio" name="q2110" value="0"> 25</label>
+<label><input type="radio" name="q2110" value="1"> 35</label>
+<label><input type="radio" name="q2110" value="2"> 45</label>
+<label><input type="radio" name="q2110" value="3"> 55</label>
+</div><div id="fq2110" class="fb"></div></div>
+<div class="q" data-q="q2111" data-a="0"><div class="qt">2. Il tema della mostra è:</div>
+<div class="opts">
+<label><input type="radio" name="q2111" value="0"> L'identità culturale</label>
+<label><input type="radio" name="q2111" value="1"> La natura</label>
+<label><input type="radio" name="q2111" value="2"> La tecnologia</label>
+<label><input type="radio" name="q2111" value="3"> La storia</label>
+</div><div id="fq2111" class="fb"></div></div>
+</div>
+<div class="prova"><h3>Prova 2 &mdash; Vero/Falso</h3>
+<div class="audio-bar"><button class="play-btn" onclick="pa(this,220)">▶ Ascolta</button>
+<span class="dur">140s</span>
+<span class="diff-badge diff-C1">C1</span>
+<button class="play-btn bs" onclick="ts('sc_cc1_2_2')">📄 Testo</button></div>
+<div id="sc_cc1_2_2" class="script-box">Dibattito: 'Il futuro dell'Università'
+Relatore 1: L'università italiana deve riformarsi radicalmente. I tassi di abbandono sono allarmanti: il 40% degli studenti non completa il primo anno. Servono percorsi più flessibili e un maggiore collegamento con il mondo del lavoro.
+Relatore 2: Non condivido del tutto. Il problema non è la flessibilità, ma il sottofinanziamento cronico. L'Italia spende per l'istruzione superiore l'0,8% del PIL, contro una media europea dell'1,5%. Senza risorse adeguate, qualsiasi riforma è destinata a fallire.
+Relatore 1: Le risorse sono importanti, ma serve anche un cambio culturale. Dobbiamo superare la lezione frontale tradizionale e puntare su metodologie interattive, laboratori e tirocini.
+Relatore 2: Su questo siamo d'accordo. Servono sia più fondi sia un rinnovamento didattico. Le due cose vanno insieme.</div>
+<div class="q tf" data-q="q2200" data-a="true"><div class="qt">1. Il 40% degli studenti non completa il primo anno.</div>
+<div class="opts">
+<label><input type="radio" name="q2200" value="true"> Vero</label>
+<label><input type="radio" name="q2200" value="false"> Falso</label>
+</div><div id="fq2200" class="fb"></div></div>
+<div class="q tf" data-q="q2201" data-a="false"><div class="qt">2. L'Italia spende per l'università l'1,5% del PIL.</div>
+<div class="opts">
+<label><input type="radio" name="q2201" value="true"> Vero</label>
+<label><input type="radio" name="q2201" value="false"> Falso</label>
+</div><div id="fq2201" class="fb"></div></div>
+<div class="q tf" data-q="q2202" data-a="false"><div class="qt">3. Il secondo relatore ritiene che il problema principale sia culturale.</div>
+<div class="opts">
+<label><input type="radio" name="q2202" value="true"> Vero</label>
+<label><input type="radio" name="q2202" value="false"> Falso</label>
+</div><div id="fq2202" class="fb"></div></div>
+<div class="q tf" data-q="q2203" data-a="true"><div class="qt">4. Entrambi i relatori concordano sulla necessità di cambiamento.</div>
+<div class="opts">
+<label><input type="radio" name="q2203" value="true"> Vero</label>
+<label><input type="radio" name="q2203" value="false"> Falso</label>
+</div><div id="fq2203" class="fb"></div></div>
+<div class="q tf" data-q="q2204" data-a="false"><div class="qt">5. Il primo relatore propone più lezioni frontali.</div>
+<div class="opts">
+<label><input type="radio" name="q2204" value="true"> Vero</label>
+<label><input type="radio" name="q2204" value="false"> Falso</label>
+</div><div id="fq2204" class="fb"></div></div>
+</div>
+<div class="prova"><h3>Prova 3 &mdash; Completamento</h3>
+<div class="audio-bar"><button class="play-btn" onclick="pa(this,230)">▶ Ascolta</button>
+<span class="dur">120s</span>
+<span class="diff-badge diff-C1">C1</span>
+<button class="play-btn bs" onclick="ts('sc_cc1_2_3')">📄 Testo</button></div>
+<div id="sc_cc1_2_3" class="script-box">Buonasera a tutti. Oggi parlerò del fenomeno delle 'città intelligenti', o smart cities. L'idea di base è utilizzare la tecnologia per migliorare la qualità della vita dei cittadini e l'efficienza dei servizi urbani. Barcellona è considerata un modello: ha installato sensori per l'illuminazione pubblica che si regolano automaticamente in base alla presenza di persone, riducendo i consumi del 30%. Anche Amsterdam ha un progetto innovativo: piattaforme digitali che permettono ai cittadini di segnalare in tempo reale problemi come buche stradali o lampioni spenti. In Italia, Milano sta investendo molto in questo settore, con iniziative per la mobilità sostenibile e il monitoraggio della qualità dell'aria. Tuttavia, permangono criticità legate alla privacy e alla protezione dei dati personali.</div>
+<div class="q fill" data-q="q2300" data-a="30" data-ac="30|trenta"><div class="qt">1. Barcellona ha ridotto i consumi del ___%.</div>
+<input type="text" class="fi"><div id="fq2300" class="fb"></div></div>
+<div class="q fill" data-q="q2301" data-a="piattaforme" data-ac="piattaforme"><div class="qt">2. Amsterdam ha ___ digitali per segnalare problemi.</div>
+<input type="text" class="fi"><div id="fq2301" class="fb"></div></div>
+<div class="q fill" data-q="q2302" data-a="Milano" data-ac="Milano"><div class="qt">3. In Italia, ___ sta investendo nelle smart city.</div>
+<input type="text" class="fi"><div id="fq2302" class="fb"></div></div>
+<div class="q fill" data-q="q2303" data-a="dati" data-ac="dati"><div class="qt">4. Le criticità riguardano la privacy e la protezione dei ___.</div>
+<input type="text" class="fi"><div id="fq2303" class="fb"></div></div>
+</div>
+</div>
+<div class="sec"><h2>Comprensione della Lettura</h2><div class="rt">La riforma della giustizia in Italia e un tema complesso e dibattuto. I tempi della giustizia civile italiana sono tra i piu lunghi d'Europa: in media 531 giorni per un primo grado di giudizio. La riforma Cartabia del 2022 ha introdotto misure per accelerare i processi, tra cui la digitalizzazione degli atti e la specializzazione dei tribunali. I risultati preliminari mostrano una riduzione del 15% dei tempi medi.</div>
+<div class="q" data-q="r2_0" data-a="2"><div class="qt">1. In media, un primo grado di giudizio dura ___ giorni.</div>
+<div class="opts">
+<label><input type="radio" name="r2_0" value="0"> 420</label>
+<label><input type="radio" name="r2_0" value="1"> 480</label>
+<label><input type="radio" name="r2_0" value="2"> 531</label>
+<label><input type="radio" name="r2_0" value="3"> 580</label>
+</div><div id="fr2_0" class="fb"></div></div>
+<div class="q" data-q="r2_1" data-a="2"><div class="qt">2. La riforma Cartabia e del ___.</div>
+<div class="opts">
+<label><input type="radio" name="r2_1" value="0"> 2020</label>
+<label><input type="radio" name="r2_1" value="1"> 2021</label>
+<label><input type="radio" name="r2_1" value="2"> 2022</label>
+<label><input type="radio" name="r2_1" value="3"> 2023</label>
+</div><div id="fr2_1" class="fb"></div></div>
+<div class="q" data-q="r2_2" data-a="2"><div class="qt">3. I tempi medi si sono ridotti del ___%.</div>
+<div class="opts">
+<label><input type="radio" name="r2_2" value="0"> 10</label>
+<label><input type="radio" name="r2_2" value="1"> 12</label>
+<label><input type="radio" name="r2_2" value="2"> 15</label>
+<label><input type="radio" name="r2_2" value="3"> 20</label>
+</div><div id="fr2_2" class="fb"></div></div>
+</div>
+<div class="sec"><h2>Analisi delle Strutture</h2><div class="q" data-q="g2_0" data-a="in modo che" data-ac="in modo che"><div class="qt">1. Ha agito ___ (in modo che/tale che) nessuno ha capito.</div>
+<input type="text" class="fi"><div id="fg2_0" class="fb"></div></div>
+<div class="q" data-q="g2_1" data-a="Non solo... ma anche" data-ac="Non solo... ma anche"><div class="qt">2. ___ (Non solo... ma anche/Sia... sia) e intelligente e simpatico.</div>
+<input type="text" class="fi"><div id="fg2_1" class="fb"></div></div>
+<div class="q" data-q="g2_2" data-a="Tanto... quanto" data-ac="Tanto... quanto"><div class="qt">3. ___ (Tanto... quanto/Sia... sia) il prezzo che la qualita contano.</div>
+<input type="text" class="fi"><div id="fg2_2" class="fb"></div></div>
+<div class="q" data-q="g2_3" data-a="Anziche" data-ac="Anziche"><div class="qt">4. ___ (Anziche/Invece di) lamentarti, agisci.</div>
+<input type="text" class="fi"><div id="fg2_3" class="fb"></div></div>
+<div class="q" data-q="g2_4" data-a="Oltre a" data-ac="Oltre a"><div class="qt">5. ___ (Oltre a/Tranne che) essere costoso, e inefficace.</div>
+<input type="text" class="fi"><div id="fg2_4" class="fb"></div></div>
+</div>
+<div class="sec"><h2>Produzione Scritta</h2><div class="wp">La lentezza della giustizia italiana: cause e possibili rimedi. (180-200 parole) (max 200 parole)</div>
+<textarea class="ta"></textarea>
+<div style="font-size:12px;color:#888;margin-top:4px;">Questa sezione non viene valutata automaticamente.</div></div>
+<div style="text-align:center;margin:20px 0;"><button class="bsu" onclick="se()">📝 Verifica</button></div>
+<script>
+var A=[];
+
+var _ca=null,_cb=null;
+function pa(b,i){if(_ca&&_ca!==A[i]){_ca.pause();_ca.currentTime=0;if(_cb){_cb.classList.remove('playing');_cb.textContent='▶';}}
+if(A[i].paused){A[i].play();b.classList.add('playing');b.textContent='⏹';_ca=A[i];_cb=b;A[i].onended=function(){b.classList.remove('playing');b.textContent='▶';_ca=null;_cb=null;};}else{A[i].pause();A[i].currentTime=0;b.classList.remove('playing');b.textContent='▶';if(_ca===A[i]){_ca=null;_cb=null;}}}
+function ts(id){var b=document.getElementById(id);if(b)b.style.display=b.style.display==='none'||b.style.display===''?'block':'none';}
+function n(s){return s.toLowerCase().replace(/[\s'\x60\u2018\u2019\.\-\[\]\/]+/g,' ').trim();}
+function se(){var c=0,t=22;
+document.querySelectorAll('[data-q]').forEach(function(el){t++;var qid=el.getAttribute('data-q');var a=el.getAttribute('data-a');var fb=document.getElementById('f'+qid);if(!fb)return;
+if(el.type==='text'){var v=n(el.value);var ok=(el.getAttribute('data-ac')||a).split('|').some(function(x){return v===n(x)});
+if(ok){c++;fb.textContent='✓';fb.className='fb cr';}else{fb.textContent='✗ '+a;fb.className='fb wr';}
+}else if(el.type==='radio'){var s=document.querySelector('input[name="'+el.name+'"]:checked');
+if(s){if(s.value===a){c++;fb.textContent='✓';fb.className='fb cr';}else{fb.textContent='✗ '+a;fb.className='fb wr';}}
+else{fb.textContent='❓ '+a;fb.className='fb wr';}
+}});
+document.getElementById('sbr').style.display='block';document.getElementById('ts').textContent=c+'/'+t;
+var p=Math.round(c/t*100);document.getElementById('sm').textContent=p+'% - '+(p>=85?'Eccellente!':p>=70?'Buono':p>=60?'Discreto':p>=40?'Insufficiente':'Grave');window.scrollTo(0,0);
+}</script></body></html>

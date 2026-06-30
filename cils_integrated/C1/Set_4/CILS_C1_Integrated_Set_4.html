@@ -1,0 +1,198 @@
+<!DOCTYPE html><html lang="it"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>CILS C1 — Simulazione 4</title>
+<style>
+*{box-sizing:border-box;}body{font-family:system-ui,sans-serif;max-width:960px;margin:0 auto;padding:20px;background:#f8f9fa;color:#222;}
+.hd{background:linear-gradient(135deg,#1a5276,#2e86c1);color:white;padding:20px 24px;border-radius:10px;margin-bottom:20px;}
+.hd h1{margin:0;font-size:20px;}
+.sec{background:white;border-radius:10px;padding:18px 20px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.08);}
+.sec h2{font-size:16px;color:#1a5276;margin:0 0 12px;padding-bottom:6px;border-bottom:2px solid #2e86c1;}
+.prova{margin:10px 0;padding:12px;background:#f8fbff;border-radius:6px;}
+.prova h3{font-size:14px;color:#1a5276;margin:0 0 8px;}
+.ab{display:flex;align-items:center;gap:8px;margin:8px 0;padding:8px 12px;background:#eef2f7;border-radius:6px;flex-wrap:wrap;}
+.pb{padding:5px 14px;background:#2C1810;color:white;border:none;border-radius:16px;cursor:pointer;font-size:12px;}
+.pb:hover{background:#4A2C1A;}.pb.playing{background:#2e86c1;}
+.pb.bs{background:#555;font-size:11px;}
+.dur{font-size:11px;color:#888;}
+.db{display:inline-block;font-size:10px;padding:1px 5px;border-radius:3px;}
+.db-C1{background:#e8f5e9;color:#2e7d32;}.db-C1p{background:#fff3cd;color:#856404;}
+.sb{display:none;margin:6px 0;padding:10px;background:#f5f5f5;border-radius:6px;font-size:13px;line-height:1.6;white-space:pre-wrap;}
+.q{margin:10px 0;padding:10px;border-radius:6px;background:#f8fbff;}
+.q.tf{background:#f0f8ff;}.q.fill{background:#fff8e1;}
+.qt{font-weight:500;margin-bottom:4px;font-size:14px;}
+.opts{margin:4px 0;}.opts label{display:block;padding:3px 8px;border-radius:4px;cursor:pointer;}
+.opts label:hover{background:#e8f0fe;}
+.fi{padding:4px 8px;border:1px solid #ccc;border-radius:4px;font-size:13px;width:160px;margin:4px 0;}
+.rt{background:#f5f5f5;padding:14px;border-radius:6px;margin:10px 0;font-size:14px;line-height:1.7;}
+.wp{background:#f8f4ff;padding:12px;border-left:4px solid #7b1fa2;border-radius:4px;margin:10px 0;}
+.ta{width:100%;min-height:80px;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:14px;font-family:inherit;}
+.bsu{padding:10px 30px;background:linear-gradient(135deg,#1a5276,#2e86c1);color:white;border:none;border-radius:8px;font-size:15px;cursor:pointer;margin-top:10px;}
+.fb{display:none;margin-top:4px;padding:4px 8px;border-radius:4px;font-size:12px;}
+.cr{background:#e8f5e9;color:#2e7d32;display:block;}
+.wr{background:#ffebee;color:#c62828;display:block;}
+.sbr{display:none;background:linear-gradient(135deg,#27ae60,#2ecc71);color:white;padding:20px;border-radius:10px;text-align:center;margin-bottom:20px;}
+</style></head><body>
+<div class="hd"><h1>CILS C1 — Simulazione 4</h1><p>Esame completo: Ascolto + Lettura + Grammatica + Scrittura</p></div>
+<div class="sbr" id="sbr"><h2 id="ts">0/22</h2><p id="sm"></p></div>
+<div class="sec"><h2>Prova di Ascolto</h2><div class="prova"><h3>Prova 1 &mdash; Scelta Multipla</h3>
+<div class="audio-bar"><button class="play-btn" onclick="pa(this,410)">▶ Ascolta</button>
+<span class="dur">90s</span>
+<span class="diff-badge diff-C1">C1</span>
+<button class="play-btn bs" onclick="ts('sc_c1_4_1a')">📄 Testo</button></div>
+<div id="sc_c1_4_1a" class="script-box">Professoressa: Oggi analizzeremo l'impatto della globalizzazione sulle economie emergenti. Come sapete, negli ultimi decenni paesi come India e Brasile hanno conosciuto una crescita straordinaria.
+Studente: Professoressa, ma questa crescita non ha anche aspetti negativi?
+Professoressa: Certamente. La globalizzazione ha aumentato le disuguaglianze interne a questi paesi. Il divario tra città e campagna si è ampliato, e i benefici non sono stati distribuiti equamente.
+Studente: Quale potrebbe essere una soluzione?
+Professoressa: Politiche di redistribuzione più efficaci e investimenti nell'istruzione pubblica, che rimane il principale strumento di mobilità sociale.</div>
+<div class="q" data-q="q4100" data-a="0"><div class="qt">1. Qual è l'effetto negativo della globalizzazione menzionato?</div>
+<div class="opts">
+<label><input type="radio" name="q4100" value="0"> Aumento delle disuguaglianze</label>
+<label><input type="radio" name="q4100" value="1"> Crescita lenta</label>
+<label><input type="radio" name="q4100" value="2"> Inflazione</label>
+<label><input type="radio" name="q4100" value="3"> Disoccupazione</label>
+</div><div id="fq4100" class="fb"></div></div>
+<div class="q" data-q="q4101" data-a="1"><div class="qt">2. Il divario si è ampliato tra:</div>
+<div class="opts">
+<label><input type="radio" name="q4101" value="0"> Nord e Sud</label>
+<label><input type="radio" name="q4101" value="1"> Città e campagna</label>
+<label><input type="radio" name="q4101" value="2"> Giovani e anziani</label>
+<label><input type="radio" name="q4101" value="3"> Uomini e donne</label>
+</div><div id="fq4101" class="fb"></div></div>
+<div class="q" data-q="q4102" data-a="1"><div class="qt">3. La professoressa suggerisce investimenti in:</div>
+<div class="opts">
+<label><input type="radio" name="q4102" value="0"> Sanità</label>
+<label><input type="radio" name="q4102" value="1"> Istruzione pubblica</label>
+<label><input type="radio" name="q4102" value="2"> Infrastrutture</label>
+<label><input type="radio" name="q4102" value="3"> Tecnologia</label>
+</div><div id="fq4102" class="fb"></div></div>
+<div class="audio-bar"><button class="play-btn" onclick="pa(this,411)">▶ Ascolta</button>
+<span class="dur">70s</span>
+<span class="diff-badge diff-C1">C1</span>
+<button class="play-btn bs" onclick="ts('sc_c1_4_1b')">📄 Testo</button></div>
+<div id="sc_c1_4_1b" class="script-box">Ricercatore: Il nostro studio sull'inquinamento atmosferico nelle città italiane ha dato risultati preoccupanti. Milano e Torino superano regolarmente i limiti di PM10.
+Giornalista: Quali sono le conseguenze per la salute?
+Ricercatore: L'esposizione prolungata aumenta il rischio di malattie respiratorie del 30% e l'incidenza di tumori polmonari. Le fasce più vulnerabili sono bambini e anziani.</div>
+<div class="q" data-q="q4110" data-a="1"><div class="qt">1. Quali città superano i limiti di PM10?</div>
+<div class="opts">
+<label><input type="radio" name="q4110" value="0"> Roma e Napoli</label>
+<label><input type="radio" name="q4110" value="1"> Milano e Torino</label>
+<label><input type="radio" name="q4110" value="2"> Firenze e Bologna</label>
+<label><input type="radio" name="q4110" value="3"> Venezia e Verona</label>
+</div><div id="fq4110" class="fb"></div></div>
+<div class="q" data-q="q4111" data-a="2"><div class="qt">2. L'esposizione aumenta il rischio di malattie respiratorie del:</div>
+<div class="opts">
+<label><input type="radio" name="q4111" value="0"> 20%</label>
+<label><input type="radio" name="q4111" value="1"> 25%</label>
+<label><input type="radio" name="q4111" value="2"> 30%</label>
+<label><input type="radio" name="q4111" value="3"> 40%</label>
+</div><div id="fq4111" class="fb"></div></div>
+</div>
+<div class="prova"><h3>Prova 2 &mdash; Vero/Falso</h3>
+<div class="audio-bar"><button class="play-btn" onclick="pa(this,420)">▶ Ascolta</button>
+<span class="dur">150s</span>
+<span class="diff-badge diff-C1">C1</span>
+<button class="play-btn bs" onclick="ts('sc_c1_4_2')">📄 Testo</button></div>
+<div id="sc_c1_4_2" class="script-box">Moderatore: Benvenuti a questo dibattito sull'intelligenza artificiale. Professore Alberti, quali sono i rischi principali?
+Prof. Alberti: Il rischio maggiore riguarda la perdita di posti di lavoro in settori come la traduzione, la contabilità e persino la medicina diagnostica. Secondo uno studio di Oxford, il 47% dei lavori potrebbe essere automatizzato entro vent'anni.
+Moderatore: Dottoressa Fabbri, lei è più ottimista?
+Dott.ssa Fabbri: Non si tratta di ottimismo, ma di realismo. L'AI creerà nuovi posti di lavoro che oggi non esistono, esattamente come è successo con la rivoluzione industriale. Il problema è la transizione: servono programmi di riqualificazione professionale massicci.
+Moderatore: E per quanto riguarda l'etica?
+Prof. Alberti: L'etica è forse l'aspetto più critico. Gli algoritmi decisionali possono riprodurre e amplificare pregiudizi esistenti. Servono regolamentazioni chiare a livello europeo per garantire trasparenza e responsabilità.
+Dott.ssa Fabbri: Sono d'accordo, ma aggiungo che non dobbiamo frenare l'innovazione. Il giusto equilibrio tra regolamentazione e sviluppo è la chiave.</div>
+<div class="q tf" data-q="q4200" data-a="true"><div class="qt">1. Secondo il professor Alberti, il 47% dei lavori potrebbe essere automatizzato.</div>
+<div class="opts">
+<label><input type="radio" name="q4200" value="true"> Vero</label>
+<label><input type="radio" name="q4200" value="false"> Falso</label>
+</div><div id="fq4200" class="fb"></div></div>
+<div class="q tf" data-q="q4201" data-a="false"><div class="qt">2. La dottoressa Fabbri sostiene che l'AI distruggerà più posti di quanti ne creerà.</div>
+<div class="opts">
+<label><input type="radio" name="q4201" value="true"> Vero</label>
+<label><input type="radio" name="q4201" value="false"> Falso</label>
+</div><div id="fq4201" class="fb"></div></div>
+<div class="q tf" data-q="q4202" data-a="false"><div class="qt">3. Il professore paragona la transizione dell'AI alla rivoluzione industriale.</div>
+<div class="opts">
+<label><input type="radio" name="q4202" value="true"> Vero</label>
+<label><input type="radio" name="q4202" value="false"> Falso</label>
+</div><div id="fq4202" class="fb"></div></div>
+<div class="q tf" data-q="q4203" data-a="true"><div class="qt">4. Il professore sottolinea il rischio che gli algoritmi amplifichino pregiudizi.</div>
+<div class="opts">
+<label><input type="radio" name="q4203" value="true"> Vero</label>
+<label><input type="radio" name="q4203" value="false"> Falso</label>
+</div><div id="fq4203" class="fb"></div></div>
+<div class="q tf" data-q="q4204" data-a="true"><div class="qt">5. Entrambi gli esperti concordano sulla necessità di regolamentazione.</div>
+<div class="opts">
+<label><input type="radio" name="q4204" value="true"> Vero</label>
+<label><input type="radio" name="q4204" value="false"> Falso</label>
+</div><div id="fq4204" class="fb"></div></div>
+</div>
+<div class="prova"><h3>Prova 3 &mdash; Completamento</h3>
+<div class="audio-bar"><button class="play-btn" onclick="pa(this,430)">▶ Ascolta</button>
+<span class="dur">120s</span>
+<span class="diff-badge diff-C1">C1</span>
+<button class="play-btn bs" onclick="ts('sc_c1_4_3')">📄 Testo</button></div>
+<div id="sc_c1_4_3" class="script-box">Buonasera a tutti. Oggi vorrei affrontare un tema di grande attualità: la crisi climatica e le sue implicazioni geopolitiche. Mentre i paesi occidentali stanno accelerando la transizione energetica, molte nazioni in via di sviluppo si trovano intrappolate tra la necessità di crescere economicamente e l'urgenza di ridurre le emissioni. La Cina, per esempio, rimane il maggior produttore mondiale di carbone, nonostante sia anche il leader mondiale nella produzione di pannelli solari. L'Unione Europea ha fissato l'obiettivo di raggiungere la neutralità climatica entro il 2050, ma per farlo dovrebbe triplicare gli investimenti annuali in energie rinnovabili, portandoli a circa 500 miliardi di euro. La sfida non è solo tecnologica ma anche sociale: la transizione energetica deve essere giusta, ovvero non deve penalizzare le fasce più deboli della popolazione. Il concetto di 'giusta transizione' è centrale nel dibattito contemporaneo e richiede politiche pubbliche lungimiranti.</div>
+<div class="q fill" data-q="q4300" data-a="2050" data-ac="2050"><div class="qt">1. L'UE vuole raggiungere la neutralità climatica entro il ___.</div>
+<input type="text" class="fi"><div id="fq4300" class="fb"></div></div>
+<div class="q fill" data-q="q4301" data-a="500" data-ac="500"><div class="qt">2. Servono circa ___ miliardi di euro all'anno in rinnovabili.</div>
+<input type="text" class="fi"><div id="fq4301" class="fb"></div></div>
+<div class="q fill" data-q="q4302" data-a="carbone" data-ac="carbone"><div class="qt">3. La Cina è il maggior produttore mondiale di ___.</div>
+<input type="text" class="fi"><div id="fq4302" class="fb"></div></div>
+<div class="q fill" data-q="q4303" data-a="giusta" data-ac="giusta"><div class="qt">4. Il concetto di '___ transizione' è centrale nel dibattito.</div>
+<input type="text" class="fi"><div id="fq4303" class="fb"></div></div>
+</div>
+</div>
+<div class="sec"><h2>Comprensione della Lettura</h2><div class="rt">La biodiversità è in declino a livello globale a un ritmo allarmante. Secondo il rapporto IPBES, circa un milione di specie animali e vegetali sono a rischio di estinzione. Le cause principali sono la perdita di habitat, l'inquinamento, il cambiamento climatico e lo sfruttamento eccessivo delle risorse naturali. L'Unione Europea ha adottato la strategia 'Biodiversità 2030', che prevede la protezione del 30% del territorio europeo e il ripristino degli ecosistemi degradati. In Italia, sono state create nuove aree marine protette per salvaguardare la fauna marina.</div>
+<div class="q" data-q="r4_0" data-a="0"><div class="qt">1. Un milione di specie sono a rischio di ___.</div>
+<div class="opts">
+<label><input type="radio" name="r4_0" value="0"> estinzione</label>
+<label><input type="radio" name="r4_0" value="1"> migrazione</label>
+<label><input type="radio" name="r4_0" value="2"> crescita</label>
+<label><input type="radio" name="r4_0" value="3"> evoluzione</label>
+</div><div id="fr4_0" class="fb"></div></div>
+<div class="q" data-q="r4_1" data-a="2"><div class="qt">2. La strategia UE prevede la protezione del ___% del territorio.</div>
+<div class="opts">
+<label><input type="radio" name="r4_1" value="0"> 20</label>
+<label><input type="radio" name="r4_1" value="1"> 25</label>
+<label><input type="radio" name="r4_1" value="2"> 30</label>
+<label><input type="radio" name="r4_1" value="3"> 35</label>
+</div><div id="fr4_1" class="fb"></div></div>
+<div class="q" data-q="r4_2" data-a="0"><div class="qt">3. In Italia sono state create nuove aree marine ___.</div>
+<div class="opts">
+<label><input type="radio" name="r4_2" value="0"> protette</label>
+<label><input type="radio" name="r4_2" value="1"> turistiche</label>
+<label><input type="radio" name="r4_2" value="2"> industriali</label>
+<label><input type="radio" name="r4_2" value="3"> pesca</label>
+</div><div id="fr4_2" class="fb"></div></div>
+</div>
+<div class="sec"><h2>Analisi delle Strutture</h2><div class="q" data-q="g4_0" data-a="che" data-ac="che"><div class="qt">1. Il governo ha varato una legge ___ (la quale/che) riguarda l'ambiente.</div>
+<input type="text" class="fi"><div id="fg4_0" class="fb"></div></div>
+<div class="q" data-q="g4_1" data-a="con cui" data-ac="con cui"><div class="qt">2. Le misure ___ (con cui/attraverso cui) si affronta la crisi sono inadeguate.</div>
+<input type="text" class="fi"><div id="fg4_1" class="fb"></div></div>
+<div class="q" data-q="g4_2" data-a="di cui" data-ac="di cui"><div class="qt">3. I fondi, ___ (i quali/di cui) abbiamo bisogno, non sono ancora arrivati.</div>
+<input type="text" class="fi"><div id="fg4_2" class="fb"></div></div>
+<div class="q" data-q="g4_3" data-a="in cui" data-ac="in cui"><div class="qt">4. La situazione ___ (alla quale/in cui) ci troviamo è critica.</div>
+<input type="text" class="fi"><div id="fg4_3" class="fb"></div></div>
+<div class="q" data-q="g4_4" data-a="sul quale" data-ac="sul quale"><div class="qt">5. L'accordo, ___ (sul quale/del quale) si discute, è importante.</div>
+<input type="text" class="fi"><div id="fg4_4" class="fb"></div></div>
+</div>
+<div class="sec"><h2>Produzione Scritta</h2><div class="wp">La protezione della biodiversità: responsabilità dei governi o impegno individuale? (180-200 parole) (max 200 parole)</div>
+<textarea class="ta"></textarea>
+<div style="font-size:12px;color:#888;margin-top:4px;">Questa sezione non viene valutata automaticamente.</div></div>
+<div style="text-align:center;margin:20px 0;"><button class="bsu" onclick="se()">📝 Verifica</button></div>
+<script>
+var A=[];
+
+var _ca=null,_cb=null;
+function pa(b,i){if(_ca&&_ca!==A[i]){_ca.pause();_ca.currentTime=0;if(_cb){_cb.classList.remove('playing');_cb.textContent='▶';}}
+if(A[i].paused){A[i].play();b.classList.add('playing');b.textContent='⏹';_ca=A[i];_cb=b;A[i].onended=function(){b.classList.remove('playing');b.textContent='▶';_ca=null;_cb=null;};}else{A[i].pause();A[i].currentTime=0;b.classList.remove('playing');b.textContent='▶';if(_ca===A[i]){_ca=null;_cb=null;}}}
+function ts(id){var b=document.getElementById(id);if(b)b.style.display=b.style.display==='none'||b.style.display===''?'block':'none';}
+function n(s){return s.toLowerCase().replace(/[\s'\x60\u2018\u2019\.\-\[\]\/]+/g,' ').trim();}
+function se(){var c=0,t=22;
+document.querySelectorAll('[data-q]').forEach(function(el){t++;var qid=el.getAttribute('data-q');var a=el.getAttribute('data-a');var fb=document.getElementById('f'+qid);if(!fb)return;
+if(el.type==='text'){var v=n(el.value);var ok=(el.getAttribute('data-ac')||a).split('|').some(function(x){return v===n(x)});
+if(ok){c++;fb.textContent='✓';fb.className='fb cr';}else{fb.textContent='✗ '+a;fb.className='fb wr';}
+}else if(el.type==='radio'){var s=document.querySelector('input[name="'+el.name+'"]:checked');
+if(s){if(s.value===a){c++;fb.textContent='✓';fb.className='fb cr';}else{fb.textContent='✗ '+a;fb.className='fb wr';}}
+else{fb.textContent='❓ '+a;fb.className='fb wr';}
+}});
+document.getElementById('sbr').style.display='block';document.getElementById('ts').textContent=c+'/'+t;
+var p=Math.round(c/t*100);document.getElementById('sm').textContent=p+'% - '+(p>=85?'Eccellente!':p>=70?'Buono':p>=60?'Discreto':p>=40?'Insufficiente':'Grave');window.scrollTo(0,0);
+}</script></body></html>

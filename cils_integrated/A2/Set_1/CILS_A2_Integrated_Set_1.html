@@ -1,0 +1,196 @@
+<!DOCTYPE html><html lang="it"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>CILS A2 — Simulazione 1</title>
+<style>
+*{box-sizing:border-box;}body{font-family:system-ui,sans-serif;max-width:960px;margin:0 auto;padding:20px;background:#f8f9fa;color:#222;}
+.hd{background:linear-gradient(135deg,#1a5276,#2e86c1);color:white;padding:20px 24px;border-radius:10px;margin-bottom:20px;}
+.hd h1{margin:0;font-size:20px;}
+.sec{background:white;border-radius:10px;padding:18px 20px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.08);}
+.sec h2{font-size:16px;color:#1a5276;margin:0 0 12px;padding-bottom:6px;border-bottom:2px solid #2e86c1;}
+.prova{margin:10px 0;padding:12px;background:#f8fbff;border-radius:6px;}
+.prova h3{font-size:14px;color:#1a5276;margin:0 0 8px;}
+.ab{display:flex;align-items:center;gap:8px;margin:8px 0;padding:8px 12px;background:#eef2f7;border-radius:6px;flex-wrap:wrap;}
+.pb{padding:5px 14px;background:#2C1810;color:white;border:none;border-radius:16px;cursor:pointer;font-size:12px;}
+.pb:hover{background:#4A2C1A;}.pb.playing{background:#2e86c1;}
+.pb.bs{background:#555;font-size:11px;}
+.dur{font-size:11px;color:#888;}
+.db{display:inline-block;font-size:10px;padding:1px 5px;border-radius:3px;}
+.db-A2{background:#e8f5e9;color:#2e7d32;}.db-A2p{background:#fff3cd;color:#856404;}
+.sb{display:none;margin:6px 0;padding:10px;background:#f5f5f5;border-radius:6px;font-size:13px;line-height:1.6;white-space:pre-wrap;}
+.q{margin:10px 0;padding:10px;border-radius:6px;background:#f8fbff;}
+.q.tf{background:#f0f8ff;}.q.fill{background:#fff8e1;}
+.qt{font-weight:500;margin-bottom:4px;font-size:14px;}
+.opts{margin:4px 0;}.opts label{display:block;padding:3px 8px;border-radius:4px;cursor:pointer;}
+.opts label:hover{background:#e8f0fe;}
+.fi{padding:4px 8px;border:1px solid #ccc;border-radius:4px;font-size:13px;width:160px;margin:4px 0;}
+.rt{background:#f5f5f5;padding:14px;border-radius:6px;margin:10px 0;font-size:14px;line-height:1.7;}
+.wp{background:#f8f4ff;padding:12px;border-left:4px solid #7b1fa2;border-radius:4px;margin:10px 0;}
+.ta{width:100%;min-height:80px;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:14px;font-family:inherit;}
+.bsu{padding:10px 30px;background:linear-gradient(135deg,#1a5276,#2e86c1);color:white;border:none;border-radius:8px;font-size:15px;cursor:pointer;margin-top:10px;}
+.fb{display:none;margin-top:4px;padding:4px 8px;border-radius:4px;font-size:12px;}
+.cr{background:#e8f5e9;color:#2e7d32;display:block;}
+.wr{background:#ffebee;color:#c62828;display:block;}
+.sbr{display:none;background:linear-gradient(135deg,#27ae60,#2ecc71);color:white;padding:20px;border-radius:10px;text-align:center;margin-bottom:20px;}
+</style></head><body>
+<div class="hd"><h1>CILS A2 — Simulazione 1</h1><p>Esame completo: Ascolto + Lettura + Grammatica + Scrittura</p></div>
+<div class="sbr" id="sbr"><h2 id="ts">0/23</h2><p id="sm"></p></div>
+<div class="sec"><h2>Prova di Ascolto</h2><div class="prova"><h3>Prova 1 &mdash; Scelta Multipla</h3>
+<div class="audio-bar"><button class="play-btn" onclick="pa(this,110)">▶ Ascolta</button>
+<span class="dur">50s</span>
+<span class="diff-badge diff-A2">A2</span>
+<button class="play-btn bs" onclick="ts('sc_a2_1_1a')">📄 Testo</button></div>
+<div id="sc_a2_1_1a" class="script-box">Cliente: Buongiorno, vorrei pizza margherita.
+Commesso: Ecco, 9 euro. Desidera altro?
+Cliente: No, grazie. Pago con la carta.
+Commesso: Va bene, faccia pure.</div>
+<div class="q" data-q="q1100" data-a="0"><div class="qt">1. Cosa vuole il cliente?</div>
+<div class="opts">
+<label><input type="radio" name="q1100" value="0"> Pizza margherita</label>
+<label><input type="radio" name="q1100" value="1"> Un giornale</label>
+<label><input type="radio" name="q1100" value="2"> Una penna</label>
+<label><input type="radio" name="q1100" value="3"> Un biglietto</label>
+</div><div id="fq1100" class="fb"></div></div>
+<div class="q" data-q="q1101" data-a="1"><div class="qt">2. Quanto costa?</div>
+<div class="opts">
+<label><input type="radio" name="q1101" value="0"> 5 euro</label>
+<label><input type="radio" name="q1101" value="1"> 9 euro</label>
+<label><input type="radio" name="q1101" value="2"> 15 euro</label>
+<label><input type="radio" name="q1101" value="3"> 20 euro</label>
+</div><div id="fq1101" class="fb"></div></div>
+<div class="audio-bar"><button class="play-btn" onclick="pa(this,111)">▶ Ascolta</button>
+<span class="dur">45s</span>
+<span class="diff-badge diff-A2">A2</span>
+<button class="play-btn bs" onclick="ts('sc_a2_1_1b')">📄 Testo</button></div>
+<div id="sc_a2_1_1b" class="script-box">Oggi è sabato. Marco e Lucia vanno al cinema. Il film comincia alle 18:00. I biglietti costano 8 euro. Dopo il cinema vanno a cena in pizzeria.</div>
+<div class="q" data-q="q1110" data-a="1"><div class="qt">1. Che giorno è?</div>
+<div class="opts">
+<label><input type="radio" name="q1110" value="0"> Venerdì</label>
+<label><input type="radio" name="q1110" value="1"> Sabato</label>
+<label><input type="radio" name="q1110" value="2"> Domenica</label>
+<label><input type="radio" name="q1110" value="3"> Lunedì</label>
+</div><div id="fq1110" class="fb"></div></div>
+<div class="q" data-q="q1111" data-a="2"><div class="qt">2. I biglietti del cinema costano:</div>
+<div class="opts">
+<label><input type="radio" name="q1111" value="0"> 6 euro</label>
+<label><input type="radio" name="q1111" value="1"> 7 euro</label>
+<label><input type="radio" name="q1111" value="2"> 8 euro</label>
+<label><input type="radio" name="q1111" value="3"> 10 euro</label>
+</div><div id="fq1111" class="fb"></div></div>
+<div class="q" data-q="q1112" data-a="1"><div class="qt">3. Dopo il cinema vanno:</div>
+<div class="opts">
+<label><input type="radio" name="q1112" value="0"> A casa</label>
+<label><input type="radio" name="q1112" value="1"> In pizzeria</label>
+<label><input type="radio" name="q1112" value="2"> Al bar</label>
+<label><input type="radio" name="q1112" value="3"> Al parco</label>
+</div><div id="fq1112" class="fb"></div></div>
+</div>
+<div class="prova"><h3>Prova 2 &mdash; Vero/Falso</h3>
+<div class="audio-bar"><button class="play-btn" onclick="pa(this,120)">▶ Ascolta</button>
+<span class="dur">55s</span>
+<span class="diff-badge diff-A2">A2</span>
+<button class="play-btn bs" onclick="ts('sc_a2_1_2')">📄 Testo</button></div>
+<div id="sc_a2_1_2" class="script-box">La settimana scorsa sono andato a Firenze con la mia ragazza. Siamo partiti la mattina presto con il treno. Abbiamo visitato il Duomo e il Ponte Vecchio. Abbiamo mangiato una buona bistecca alla fiorentina. Siamo tornati a casa la sera tardi. È stata una bella giornata.</div>
+<div class="q tf" data-q="q1200" data-a="true"><div class="qt">1. Sono andato a Firenze con la mia ragazza.</div>
+<div class="opts">
+<label><input type="radio" name="q1200" value="true"> Vero</label>
+<label><input type="radio" name="q1200" value="false"> Falso</label>
+</div><div id="fq1200" class="fb"></div></div>
+<div class="q tf" data-q="q1201" data-a="false"><div class="qt">2. Siamo partiti con l'aereo.</div>
+<div class="opts">
+<label><input type="radio" name="q1201" value="true"> Vero</label>
+<label><input type="radio" name="q1201" value="false"> Falso</label>
+</div><div id="fq1201" class="fb"></div></div>
+<div class="q tf" data-q="q1202" data-a="true"><div class="qt">3. Abbiamo visitato il Duomo e il Ponte Vecchio.</div>
+<div class="opts">
+<label><input type="radio" name="q1202" value="true"> Vero</label>
+<label><input type="radio" name="q1202" value="false"> Falso</label>
+</div><div id="fq1202" class="fb"></div></div>
+<div class="q tf" data-q="q1203" data-a="false"><div class="qt">4. Abbiamo mangiato una pizza.</div>
+<div class="opts">
+<label><input type="radio" name="q1203" value="true"> Vero</label>
+<label><input type="radio" name="q1203" value="false"> Falso</label>
+</div><div id="fq1203" class="fb"></div></div>
+<div class="q tf" data-q="q1204" data-a="true"><div class="qt">5. Siamo tornati a casa la sera.</div>
+<div class="opts">
+<label><input type="radio" name="q1204" value="true"> Vero</label>
+<label><input type="radio" name="q1204" value="false"> Falso</label>
+</div><div id="fq1204" class="fb"></div></div>
+</div>
+<div class="prova"><h3>Prova 3 &mdash; Completamento</h3>
+<div class="audio-bar"><button class="play-btn" onclick="pa(this,130)">▶ Ascolta</button>
+<span class="dur">50s</span>
+<span class="diff-badge diff-A2">A2</span>
+<button class="play-btn bs" onclick="ts('sc_a2_1_3')">📄 Testo</button></div>
+<div id="sc_a2_1_3" class="script-box">Buongiorno, sono la signora Rossi. Ho perso il mio cane. Si chiama Boby ed è un cane piccolo, marrone. L'ho perso ieri al parco. Se lo vedete, chiamate il numero 345-6789. Grazie.</div>
+<div class="q fill" data-q="q1300" data-a="cane" data-ac="cane"><div class="qt">1. La signora Rossi ha perso il suo ___.</div>
+<input type="text" class="fi"><div id="fq1300" class="fb"></div></div>
+<div class="q fill" data-q="q1301" data-a="marrone" data-ac="marrone"><div class="qt">2. Il cane è di colore ___.</div>
+<input type="text" class="fi"><div id="fq1301" class="fb"></div></div>
+<div class="q fill" data-q="q1302" data-a="parco" data-ac="parco"><div class="qt">3. Il cane è stato perso al ___.</div>
+<input type="text" class="fi"><div id="fq1302" class="fb"></div></div>
+<div class="q fill" data-q="q1303" data-a="345-6789" data-ac="345-6789|3456789"><div class="qt">4. Il numero da chiamare è ___.</div>
+<input type="text" class="fi"><div id="fq1303" class="fb"></div></div>
+</div>
+</div>
+<div class="sec"><h2>Comprensione della Lettura</h2><div class="rt">La settimana scorsa Marco è andato in vacanza al mare con la sua ragazza. Sono partiti il sabato mattina in macchina. Hanno viaggiato per tre ore. Hanno soggiornato in un hotel vicino alla spiaggia. Ogni giorno facevano il bagno e mangiavano pesce fresco. La sera facevano una passeggiata sul lungomare. È stata una vacanza bellissima.</div>
+<div class="q" data-q="r1_0" data-a="0"><div class="qt">1. Marco è andato in vacanza al ___.</div>
+<div class="opts">
+<label><input type="radio" name="r1_0" value="0"> mare</label>
+<label><input type="radio" name="r1_0" value="1"> montagna</label>
+<label><input type="radio" name="r1_0" value="2"> campagna</label>
+<label><input type="radio" name="r1_0" value="3"> lago</label>
+</div><div id="fr1_0" class="fb"></div></div>
+<div class="q" data-q="r1_1" data-a="1"><div class="qt">2. Hanno viaggiato per ___ ore.</div>
+<div class="opts">
+<label><input type="radio" name="r1_1" value="0"> 2</label>
+<label><input type="radio" name="r1_1" value="1"> 3</label>
+<label><input type="radio" name="r1_1" value="2"> 4</label>
+<label><input type="radio" name="r1_1" value="3"> 5</label>
+</div><div id="fr1_1" class="fb"></div></div>
+<div class="q" data-q="r1_2" data-a="1"><div class="qt">3. L'hotel era vicino alla ___.</div>
+<div class="opts">
+<label><input type="radio" name="r1_2" value="0"> stazione</label>
+<label><input type="radio" name="r1_2" value="1"> spiaggia</label>
+<label><input type="radio" name="r1_2" value="2"> piazza</label>
+<label><input type="radio" name="r1_2" value="3"> chiesa</label>
+</div><div id="fr1_2" class="fb"></div></div>
+<div class="q" data-q="r1_3" data-a="1"><div class="qt">4. La sera facevano una ___.</div>
+<div class="opts">
+<label><input type="radio" name="r1_3" value="0"> cena</label>
+<label><input type="radio" name="r1_3" value="1"> passeggiata</label>
+<label><input type="radio" name="r1_3" value="2"> doccia</label>
+<label><input type="radio" name="r1_3" value="3"> gita</label>
+</div><div id="fr1_3" class="fb"></div></div>
+</div>
+<div class="sec"><h2>Analisi delle Strutture</h2><div class="q" data-q="g1_0" data-a="ho mangiato" data-ac="ho mangiato"><div class="qt">1. Ieri ___ (io - mangiare) la pizza.</div>
+<input type="text" class="fi"><div id="fg1_0" class="fb"></div></div>
+<div class="q" data-q="g1_1" data-a="siamo andati" data-ac="siamo andati"><div class="qt">2. L'anno scorso ___ (noi - andare) in Sicilia.</div>
+<input type="text" class="fi"><div id="fg1_1" class="fb"></div></div>
+<div class="q" data-q="g1_2" data-a="Hai visto" data-ac="Hai visto"><div class="qt">3. ___ (tu - vedere) quel film?</div>
+<input type="text" class="fi"><div id="fg1_2" class="fb"></div></div>
+<div class="q" data-q="g1_3" data-a="è nato" data-ac="è nato"><div class="qt">4. Marco ___ (nascere) nel 1990.</div>
+<input type="text" class="fi"><div id="fg1_3" class="fb"></div></div>
+<div class="q" data-q="g1_4" data-a="Sono partiti" data-ac="Sono partiti"><div class="qt">5. ___ (loro - partire) per Roma.</div>
+<input type="text" class="fi"><div id="fg1_4" class="fb"></div></div>
+</div>
+<div class="sec"><h2>Produzione Scritta</h2><div class="wp">Racconta cosa hai fatto lo scorso fine settimana. Dove sei andato? Con chi? Cosa hai fatto? (80-100 parole) (max 100 parole)</div>
+<textarea class="ta"></textarea>
+<div style="font-size:12px;color:#888;margin-top:4px;">Questa sezione non viene valutata automaticamente.</div></div>
+<div style="text-align:center;margin:20px 0;"><button class="bsu" onclick="se()">📝 Verifica</button></div>
+<script>
+var A=[];
+
+var _ca=null,_cb=null;
+function pa(b,i){if(_ca&&_ca!==A[i]){_ca.pause();_ca.currentTime=0;if(_cb){_cb.classList.remove('playing');_cb.textContent='▶';}}
+if(A[i].paused){A[i].play();b.classList.add('playing');b.textContent='⏹';_ca=A[i];_cb=b;A[i].onended=function(){b.classList.remove('playing');b.textContent='▶';_ca=null;_cb=null;};}else{A[i].pause();A[i].currentTime=0;b.classList.remove('playing');b.textContent='▶';if(_ca===A[i]){_ca=null;_cb=null;}}}
+function ts(id){var b=document.getElementById(id);if(b)b.style.display=b.style.display==='none'||b.style.display===''?'block':'none';}
+function n(s){return s.toLowerCase().replace(/[\s'\x60\u2018\u2019\.\-\[\]\/]+/g,' ').trim();}
+function se(){var c=0,t=23;
+document.querySelectorAll('[data-q]').forEach(function(el){t++;var qid=el.getAttribute('data-q');var a=el.getAttribute('data-a');var fb=document.getElementById('f'+qid);if(!fb)return;
+if(el.type==='text'){var v=n(el.value);var ok=(el.getAttribute('data-ac')||a).split('|').some(function(x){return v===n(x)});
+if(ok){c++;fb.textContent='✓';fb.className='fb cr';}else{fb.textContent='✗ '+a;fb.className='fb wr';}
+}else if(el.type==='radio'){var s=document.querySelector('input[name="'+el.name+'"]:checked');
+if(s){if(s.value===a){c++;fb.textContent='✓';fb.className='fb cr';}else{fb.textContent='✗ '+a;fb.className='fb wr';}}
+else{fb.textContent='❓ '+a;fb.className='fb wr';}
+}});
+document.getElementById('sbr').style.display='block';document.getElementById('ts').textContent=c+'/'+t;
+var p=Math.round(c/t*100);document.getElementById('sm').textContent=p+'% - '+(p>=85?'Eccellente!':p>=70?'Buono':p>=60?'Discreto':p>=40?'Insufficiente':'Grave');window.scrollTo(0,0);
+}</script></body></html>

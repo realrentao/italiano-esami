@@ -1,0 +1,213 @@
+<!DOCTYPE html><html lang="it"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>CILS B1 — Simulazione 2</title>
+<style>
+*{box-sizing:border-box;}body{font-family:system-ui,sans-serif;max-width:960px;margin:0 auto;padding:20px;background:#f8f9fa;color:#222;}
+.hd{background:linear-gradient(135deg,#1a5276,#2e86c1);color:white;padding:20px 24px;border-radius:10px;margin-bottom:20px;}
+.hd h1{margin:0;font-size:20px;}
+.sec{background:white;border-radius:10px;padding:18px 20px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.08);}
+.sec h2{font-size:16px;color:#1a5276;margin:0 0 12px;padding-bottom:6px;border-bottom:2px solid #2e86c1;}
+.prova{margin:10px 0;padding:12px;background:#f8fbff;border-radius:6px;}
+.prova h3{font-size:14px;color:#1a5276;margin:0 0 8px;}
+.ab{display:flex;align-items:center;gap:8px;margin:8px 0;padding:8px 12px;background:#eef2f7;border-radius:6px;flex-wrap:wrap;}
+.pb{padding:5px 14px;background:#2C1810;color:white;border:none;border-radius:16px;cursor:pointer;font-size:12px;}
+.pb:hover{background:#4A2C1A;}.pb.playing{background:#2e86c1;}
+.pb.bs{background:#555;font-size:11px;}
+.dur{font-size:11px;color:#888;}
+.db{display:inline-block;font-size:10px;padding:1px 5px;border-radius:3px;}
+.db-B1{background:#e8f5e9;color:#2e7d32;}.db-B1p{background:#fff3cd;color:#856404;}
+.sb{display:none;margin:6px 0;padding:10px;background:#f5f5f5;border-radius:6px;font-size:13px;line-height:1.6;white-space:pre-wrap;}
+.q{margin:10px 0;padding:10px;border-radius:6px;background:#f8fbff;}
+.q.tf{background:#f0f8ff;}.q.fill{background:#fff8e1;}
+.qt{font-weight:500;margin-bottom:4px;font-size:14px;}
+.opts{margin:4px 0;}.opts label{display:block;padding:3px 8px;border-radius:4px;cursor:pointer;}
+.opts label:hover{background:#e8f0fe;}
+.fi{padding:4px 8px;border:1px solid #ccc;border-radius:4px;font-size:13px;width:160px;margin:4px 0;}
+.rt{background:#f5f5f5;padding:14px;border-radius:6px;margin:10px 0;font-size:14px;line-height:1.7;}
+.wp{background:#f8f4ff;padding:12px;border-left:4px solid #7b1fa2;border-radius:4px;margin:10px 0;}
+.ta{width:100%;min-height:80px;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:14px;font-family:inherit;}
+.bsu{padding:10px 30px;background:linear-gradient(135deg,#1a5276,#2e86c1);color:white;border:none;border-radius:8px;font-size:15px;cursor:pointer;margin-top:10px;}
+.fb{display:none;margin-top:4px;padding:4px 8px;border-radius:4px;font-size:12px;}
+.cr{background:#e8f5e9;color:#2e7d32;display:block;}
+.wr{background:#ffebee;color:#c62828;display:block;}
+.sbr{display:none;background:linear-gradient(135deg,#27ae60,#2ecc71);color:white;padding:20px;border-radius:10px;text-align:center;margin-bottom:20px;}
+</style></head><body>
+<div class="hd"><h1>CILS B1 — Simulazione 2</h1><p>Esame completo: Ascolto + Lettura + Grammatica + Scrittura</p></div>
+<div class="sbr" id="sbr"><h2 id="ts">0/24</h2><p id="sm"></p></div>
+<div class="sec"><h2>Prova di Ascolto</h2><div class="prova"><h3>Prova 1 &mdash; Scelta Multipla</h3>
+<div class="audio-bar"><button class="play-btn" onclick="pa(this,210)">▶ Ascolta</button>
+<span class="dur">80s</span>
+<span class="diff-badge diff-B1">B1</span>
+<button class="play-btn bs" onclick="ts('sc_b1_2_1a')">📄 Testo</button></div>
+<div id="sc_b1_2_1a" class="script-box">Dottore: Buongiorno, signor Bianchi. Cosa la porta oggi?
+Paziente: Buongiorno dottore. Da qualche settimana ho un forte mal di testa e a volte mi gira la testa quando mi alzo velocemente.
+Dottore: Capisco. Ha misurato la pressione ultimamente?
+Paziente: S矛, ieri l'ho misurata in farmacia e risultava un po' alta: 140 e 90.
+Dottore: Non 猫 un valore allarmante, ma 猫 meglio controllarla. Lei fa sport?
+Paziente: Purtroppo no. Passo molte ore seduto alla scrivania per lavoro.
+Dottore: Allora le prescrivo un esame del sangue e le consiglio di fare una passeggiata di trenta minuti al giorno. Torner脿 tra una settimana con i risultati degli esami.</div>
+<div class="q" data-q="q2100" data-a="1"><div class="qt">1. Da quanto tempo il paziente ha mal di testa?</div>
+<div class="opts">
+<label><input type="radio" name="q2100" value="0"> Da qualche giorno</label>
+<label><input type="radio" name="q2100" value="1"> Da qualche settimana</label>
+<label><input type="radio" name="q2100" value="2"> Da un mese</label>
+<label><input type="radio" name="q2100" value="3"> Da ieri</label>
+</div><div id="fq2100" class="fb"></div></div>
+<div class="q" data-q="q2101" data-a="1"><div class="qt">2. Qual era il valore della pressione del paziente?</div>
+<div class="opts">
+<label><input type="radio" name="q2101" value="0"> 130 e 80</label>
+<label><input type="radio" name="q2101" value="1"> 140 e 90</label>
+<label><input type="radio" name="q2101" value="2"> 150 e 95</label>
+<label><input type="radio" name="q2101" value="3"> 120 e 80</label>
+</div><div id="fq2101" class="fb"></div></div>
+<div class="q" data-q="q2102" data-a="1"><div class="qt">3. Cosa prescrive il dottore?</div>
+<div class="opts">
+<label><input type="radio" name="q2102" value="0"> Farmaci per la pressione</label>
+<label><input type="radio" name="q2102" value="1"> Un esame del sangue</label>
+<label><input type="radio" name="q2102" value="2"> Una visita specialistica</label>
+<label><input type="radio" name="q2102" value="3"> Una radiografia</label>
+</div><div id="fq2102" class="fb"></div></div>
+<div class="audio-bar"><button class="play-btn" onclick="pa(this,211)">▶ Ascolta</button>
+<span class="dur">55s</span>
+<span class="diff-badge diff-B1">B1</span>
+<button class="play-btn bs" onclick="ts('sc_b1_2_1b')">📄 Testo</button></div>
+<div id="sc_b1_2_1b" class="script-box">Cliente: Buongiorno, vorrei noleggiare un'auto per il fine settimana.
+Impiegato: Certamente. Che tipo di auto desidera?
+Cliente: Una macchina piccola, possibilmente automatica. La user貌 per andare in Toscana.
+Impiegato: Abbiamo una Fiat 500 automatica a 45 euro al giorno, assicurazione inclusa. Le serve anche il navigatore?
+Cliente: No, grazie, uso il telefono. Per貌 vorrei aggiungere il seggiolino per bambini.
+Impiegato: Nessun problema. Il supplemento 猫 di 10 euro al giorno. In totale fanno 55 euro al giorno.</div>
+<div class="q" data-q="q2110" data-a="1"><div class="qt">1. Per quanto tempo il cliente vuole noleggiare l'auto?</div>
+<div class="opts">
+<label><input type="radio" name="q2110" value="0"> Un giorno</label>
+<label><input type="radio" name="q2110" value="1"> Il fine settimana</label>
+<label><input type="radio" name="q2110" value="2"> Una settimana</label>
+<label><input type="radio" name="q2110" value="3"> Un mese</label>
+</div><div id="fq2110" class="fb"></div></div>
+<div class="q" data-q="q2111" data-a="1"><div class="qt">2. Il cliente aggiunge un costo extra per:</div>
+<div class="opts">
+<label><input type="radio" name="q2111" value="0"> Il navigatore</label>
+<label><input type="radio" name="q2111" value="1"> Il seggiolino</label>
+<label><input type="radio" name="q2111" value="2"> L'assicurazione</label>
+<label><input type="radio" name="q2111" value="3"> Il pieno di benzina</label>
+</div><div id="fq2111" class="fb"></div></div>
+</div>
+<div class="prova"><h3>Prova 2 &mdash; Vero/Falso</h3>
+<div class="audio-bar"><button class="play-btn" onclick="pa(this,220)">▶ Ascolta</button>
+<span class="dur">150s</span>
+<span class="diff-badge diff-B1p">B1+</span>
+<button class="play-btn bs" onclick="ts('sc_b1_2_2')">📄 Testo</button></div>
+<div id="sc_b1_2_2" class="script-box">Giornalista: Siamo qui con il professor Rossi, esperto di politiche ambientali. Professore, il governo ha appena approvato il nuovo piano per la mobilit脿 sostenibile. Cosa ne pensa?
+Prof. Rossi: 脠 un passo nella giusta direzione, ma secondo me non abbastanza ambizioso. Il piano prevede l'installazione di colonnine per la ricarica elettrica in tutte le citt脿 con pi霉 di 50.000 abitanti, ma i tempi sono troppo lunghi: si parla di cinque anni.
+Giornalista: Cosa suggerisce?
+Prof. Rossi: Bisognerebbe accelerare i tempi e dare incentivi pi霉 consistenti per l'acquisto di veicoli elettrici. Attualmente il bonus massimo 猫 di 6.000 euro, ma in altri paesi europei arriva fino a 10.000. Inoltre, manca una rete ciclabile adeguata.
+Giornalista: Quali citt脿 sono pi霉 avanti secondo lei?
+Prof. Rossi: Bologna e Milano hanno gi脿 fatto molto, ma la vera eccellenza 猫 Trento, che ha il 40% di spostamenti in bicicletta. L矛 hanno investito molto nelle piste ciclabili e nel trasporto pubblico locale.
+Giornalista: E per il futuro, quali sono le priorit脿?
+Prof. Rossi: La priorit脿 assoluta 猫 ridurre il traffico privato nei centri storici. Servono pi霉 zone a traffico limitato e parcheggi di scambio fuori citt脿.</div>
+<div class="q tf" data-q="q2200" data-a="false"><div class="qt">1. Il professor Rossi 猫 completamente soddisfatto del nuovo piano.</div>
+<div class="opts">
+<label><input type="radio" name="q2200" value="true"> Vero</label>
+<label><input type="radio" name="q2200" value="false"> Falso</label>
+</div><div id="fq2200" class="fb"></div></div>
+<div class="q tf" data-q="q2201" data-a="true"><div class="qt">2. Le colonnine per la ricarica saranno installate in citt脿 con pi霉 di 50.000 abitanti.</div>
+<div class="opts">
+<label><input type="radio" name="q2201" value="true"> Vero</label>
+<label><input type="radio" name="q2201" value="false"> Falso</label>
+</div><div id="fq2201" class="fb"></div></div>
+<div class="q tf" data-q="q2202" data-a="false"><div class="qt">3. Il bonus massimo per l'acquisto di veicoli elettrici in Italia 猫 di 10.000 euro.</div>
+<div class="opts">
+<label><input type="radio" name="q2202" value="true"> Vero</label>
+<label><input type="radio" name="q2202" value="false"> Falso</label>
+</div><div id="fq2202" class="fb"></div></div>
+<div class="q tf" data-q="q2203" data-a="true"><div class="qt">4. Trento ha il 40% di spostamenti in bicicletta.</div>
+<div class="opts">
+<label><input type="radio" name="q2203" value="true"> Vero</label>
+<label><input type="radio" name="q2203" value="false"> Falso</label>
+</div><div id="fq2203" class="fb"></div></div>
+<div class="q tf" data-q="q2204" data-a="false"><div class="qt">5. Il professor Rossi propone di eliminare completamente il traffico dai centri storici.</div>
+<div class="opts">
+<label><input type="radio" name="q2204" value="true"> Vero</label>
+<label><input type="radio" name="q2204" value="false"> Falso</label>
+</div><div id="fq2204" class="fb"></div></div>
+</div>
+<div class="prova"><h3>Prova 3 &mdash; Completamento</h3>
+<div class="audio-bar"><button class="play-btn" onclick="pa(this,230)">▶ Ascolta</button>
+<span class="dur">120s</span>
+<span class="diff-badge diff-B1p">B1+</span>
+<button class="play-btn bs" onclick="ts('sc_b1_2_3')">📄 Testo</button></div>
+<div id="sc_b1_2_3" class="script-box">Buon pomeriggio, sono il dottor Moretti dell'ufficio turistico di Firenze. Oggi vi dar貌 alcuni consigli per visitare la citt脿 in modo intelligente. Prima di tutto, evitate di visitare il centro storico nelle ore di punta, cio猫 tra le 10 e le 16, quando c'猫 il massimo afflusso di turisti. Il periodo migliore per visitare Firenze 猫 la primavera, in particolare aprile e maggio, o l'autunno, tra settembre e ottobre. In questi mesi le temperature sono miti e le code ai musei sono pi霉 brevi. Per quanto riguarda i musei, vi consiglio di prenotare i biglietti online con almeno tre giorni di anticipo, soprattutto per la Galleria degli Uffizi e l'Accademia, dove potreste aspettare fino a tre ore senza prenotazione. Infine, un consiglio: non limitatevi al centro storico. I quartieri come Oltrarno e San Frediano offrono un'esperienza pi霉 autentica della vita fiorentina, con botteghe artigiane, ristoranti tipici e un'atmosfera meno turistica.</div>
+<div class="q fill" data-q="q2300" data-a="10" data-ac="10|dieci"><div class="qt">1. Bisogna evitare il centro tra le ___ e le 16.</div>
+<input type="text" class="fi"><div id="fq2300" class="fb"></div></div>
+<div class="q fill" data-q="q2301" data-a="settembre" data-ac="settembre"><div class="qt">2. I mesi migliori per visitare Firenze sono aprile, maggio e tra ___ e ottobre.</div>
+<input type="text" class="fi"><div id="fq2301" class="fb"></div></div>
+<div class="q fill" data-q="q2302" data-a="tre" data-ac="tre|3"><div class="qt">3. Per i musei, si consiglia di prenotare i biglietti con almeno ___ giorni di anticipo.</div>
+<input type="text" class="fi"><div id="fq2302" class="fb"></div></div>
+<div class="q fill" data-q="q2303" data-a="tre" data-ac="tre|3"><div class="qt">4. Senza prenotazione, si pu貌 aspettare fino a ___ ore all'Accademia.</div>
+<input type="text" class="fi"><div id="fq2303" class="fb"></div></div>
+<div class="q fill" data-q="q2304" data-a="autentica" data-ac="autentica"><div class="qt">5. Il quartiere di Oltrarno offre un'esperienza pi霉 ___ della vita fiorentina.</div>
+<input type="text" class="fi"><div id="fq2304" class="fb"></div></div>
+</div>
+</div>
+<div class="sec"><h2>Comprensione della Lettura</h2><div class="rt">La dieta mediterranea è riconosciuta dall'UNESCO come patrimonio immateriale dell'umanità. Si basa su alimenti come pasta, olio d'oliva, frutta, verdura e pesce. Studi scientifici hanno dimostrato che seguire questo tipo di alimentazione riduce il rischio di malattie cardiovascolari e aumenta l'aspettativa di vita. In Italia, però, le nuove generazioni stanno abbandonando gradualmente la dieta tradizionale per preferire il cibo veloce. I nutrizionisti lanciano l'allarme: l'obesità infantile è in aumento e riguarda ormai il 20% dei bambini italiani.</div>
+<div class="q" data-q="r2_0" data-a="0"><div class="qt">1. La dieta mediterranea è patrimonio immateriale dell'___.</div>
+<div class="opts">
+<label><input type="radio" name="r2_0" value="0"> UNESCO</label>
+<label><input type="radio" name="r2_0" value="1"> UE</label>
+<label><input type="radio" name="r2_0" value="2"> OMS</label>
+<label><input type="radio" name="r2_0" value="3"> FAO</label>
+</div><div id="fr2_0" class="fb"></div></div>
+<div class="q" data-q="r2_1" data-a="1"><div class="qt">2. Riduce il rischio di malattie ___.</div>
+<div class="opts">
+<label><input type="radio" name="r2_1" value="0"> respiratorie</label>
+<label><input type="radio" name="r2_1" value="1"> cardiovascolari</label>
+<label><input type="radio" name="r2_1" value="2"> intestinali</label>
+<label><input type="radio" name="r2_1" value="3"> ossee</label>
+</div><div id="fr2_1" class="fb"></div></div>
+<div class="q" data-q="r2_2" data-a="2"><div class="qt">3. L'obesità infantile riguarda il ___% dei bambini.</div>
+<div class="opts">
+<label><input type="radio" name="r2_2" value="0"> 10</label>
+<label><input type="radio" name="r2_2" value="1"> 15</label>
+<label><input type="radio" name="r2_2" value="2"> 20</label>
+<label><input type="radio" name="r2_2" value="3"> 25</label>
+</div><div id="fr2_2" class="fb"></div></div>
+<div class="q" data-q="r2_3" data-a="0"><div class="qt">4. I nutrizionisti lanciano ___.</div>
+<div class="opts">
+<label><input type="radio" name="r2_3" value="0"> l'allarme</label>
+<label><input type="radio" name="r2_3" value="1"> un corso</label>
+<label><input type="radio" name="r2_3" value="2"> una festa</label>
+<label><input type="radio" name="r2_3" value="3"> un appello</label>
+</div><div id="fr2_3" class="fb"></div></div>
+</div>
+<div class="sec"><h2>Analisi delle Strutture</h2><div class="q" data-q="g2_0" data-a="hai prestato" data-ac="hai prestato"><div class="qt">1. Il libro che mi ___ (prestare) era molto bello.</div>
+<input type="text" class="fi"><div id="fg2_0" class="fb"></div></div>
+<div class="q" data-q="g2_1" data-a="che" data-ac="che"><div class="qt">2. La ragazza ___ (che/cui) ho conosciuto è simpatica.</div>
+<input type="text" class="fi"><div id="fg2_1" class="fb"></div></div>
+<div class="q" data-q="g2_2" data-a="di cui" data-ac="di cui"><div class="qt">3. L'uomo ___ (di cui/del quale) parli è mio cugino.</div>
+<input type="text" class="fi"><div id="fg2_2" class="fb"></div></div>
+<div class="q" data-q="g2_3" data-a="dove" data-ac="dove"><div class="qt">4. Il paese ___ (dove/che) sono nato è piccolo.</div>
+<input type="text" class="fi"><div id="fg2_3" class="fb"></div></div>
+<div class="q" data-q="g2_4" data-a="con cui" data-ac="con cui"><div class="qt">5. La persona ___ (con cui/con chi) lavoro è gentile.</div>
+<input type="text" class="fi"><div id="fg2_4" class="fb"></div></div>
+</div>
+<div class="sec"><h2>Produzione Scritta</h2><div class="wp">Parla dell'importanza di una dieta sana. Cosa mangi di solito? (120-150 parole) (max 150 parole)</div>
+<textarea class="ta"></textarea>
+<div style="font-size:12px;color:#888;margin-top:4px;">Questa sezione non viene valutata automaticamente.</div></div>
+<div style="text-align:center;margin:20px 0;"><button class="bsu" onclick="se()">📝 Verifica</button></div>
+<script>
+var A=[];
+
+var _ca=null,_cb=null;
+function pa(b,i){if(_ca&&_ca!==A[i]){_ca.pause();_ca.currentTime=0;if(_cb){_cb.classList.remove('playing');_cb.textContent='▶';}}
+if(A[i].paused){A[i].play();b.classList.add('playing');b.textContent='⏹';_ca=A[i];_cb=b;A[i].onended=function(){b.classList.remove('playing');b.textContent='▶';_ca=null;_cb=null;};}else{A[i].pause();A[i].currentTime=0;b.classList.remove('playing');b.textContent='▶';if(_ca===A[i]){_ca=null;_cb=null;}}}
+function ts(id){var b=document.getElementById(id);if(b)b.style.display=b.style.display==='none'||b.style.display===''?'block':'none';}
+function n(s){return s.toLowerCase().replace(/[\s'\x60\u2018\u2019\.\-\[\]\/]+/g,' ').trim();}
+function se(){var c=0,t=24;
+document.querySelectorAll('[data-q]').forEach(function(el){t++;var qid=el.getAttribute('data-q');var a=el.getAttribute('data-a');var fb=document.getElementById('f'+qid);if(!fb)return;
+if(el.type==='text'){var v=n(el.value);var ok=(el.getAttribute('data-ac')||a).split('|').some(function(x){return v===n(x)});
+if(ok){c++;fb.textContent='✓';fb.className='fb cr';}else{fb.textContent='✗ '+a;fb.className='fb wr';}
+}else if(el.type==='radio'){var s=document.querySelector('input[name="'+el.name+'"]:checked');
+if(s){if(s.value===a){c++;fb.textContent='✓';fb.className='fb cr';}else{fb.textContent='✗ '+a;fb.className='fb wr';}}
+else{fb.textContent='❓ '+a;fb.className='fb wr';}
+}});
+document.getElementById('sbr').style.display='block';document.getElementById('ts').textContent=c+'/'+t;
+var p=Math.round(c/t*100);document.getElementById('sm').textContent=p+'% - '+(p>=85?'Eccellente!':p>=70?'Buono':p>=60?'Discreto':p>=40?'Insufficiente':'Grave');window.scrollTo(0,0);
+}</script></body></html>
