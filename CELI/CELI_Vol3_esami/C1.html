@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CELI C1 — CELI 4</title>
+<style>
+:root{--wine:#7b1e2b;--wine2:#a83246;--ink:#23211f;--paper:#fbf8f4;--line:#e4ddd2;--ok:#1b7a3d;--no:#c0392b;}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);background:var(--paper);line-height:1.65}
+header.top{background:linear-gradient(135deg,var(--wine),var(--wine2));color:#fff;padding:26px 20px;box-shadow:0 2px 10px rgba(0,0,0,.15)}
+header.top .back{color:#ffd9df;text-decoration:none;font-size:14px}
+header.top .ttl{font-size:26px;font-weight:800;margin-top:6px}
+header.top .ttl .lvl{display:inline-block;background:#fff;color:var(--wine);border-radius:8px;padding:2px 10px;margin-right:10px;font-size:20px}
+header.top .sub{opacity:.9;margin-top:4px;font-size:15px}
+main{max-width:880px;margin:0 auto;padding:24px 18px 120px}
+section.module{margin:30px 0;background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+section.module h2{margin:0 0 14px;color:var(--wine);font-size:20px;border-bottom:2px solid var(--line);padding-bottom:8px}
+section.module h3{color:#444;font-size:16px;margin:22px 0 10px}
+.text{background:#f6f1e9;border-left:4px solid var(--wine);border-radius:8px;padding:12px 14px;margin:12px 0}
+.text h4{margin:0 0 6px;font-size:14px;color:var(--wine)}
+pre{white-space:pre-wrap;margin:0;font-family:"Courier New",monospace;font-size:14px}
+.items{margin-top:14px}
+.q-item{margin:14px 0;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fffdf9}
+.q-item.correct{border-color:var(--ok);background:#f1faf3}
+.q-item.wrong{border-color:var(--no);background:#fdf1f0}
+.q-stem{margin:0 0 8px;font-weight:600}
+.opts{display:flex;flex-direction:column;gap:6px}
+.opt{display:flex;align-items:center;gap:8px;cursor:pointer;padding:4px 6px;border-radius:6px}
+.opt:hover{background:#f3ede3}
+.match-sel{font-size:15px;padding:5px 8px;border-radius:6px;border:1px solid #bbb;margin-top:4px}
+.blank{font-size:15px;padding:3px 6px;border:1px solid #bbb;border-radius:6px;margin:0 4px}
+.blank.correct{border-color:var(--ok);background:#eafaf0}
+.blank.wrong{border-color:var(--no);background:#fdeceb}
+.anshint{color:var(--no);font-size:13px;margin-left:6px}
+textarea.ans{width:100%;font-size:15px;padding:10px;border:1px solid #ccc;border-radius:8px;font-family:inherit;resize:vertical}
+.q-subj .ref{margin-top:10px;padding:10px 12px;background:#eef6fb;border-left:4px solid #2a7fb8;border-radius:8px;font-size:14px}
+.q-note{margin-top:8px;font-weight:700;font-size:14px}
+.q-note.ok{color:var(--ok)} .q-note.no{color:var(--no)}
+.audio-block{background:#f0f4f7;border:1px solid #cfe0ea;border-radius:10px;padding:12px 14px;margin:12px 0}
+.audio-block h4{margin:0 0 8px;color:#1f5f80}
+audio{width:100%;margin-bottom:8px;display:block}
+.noaudio{color:#b06a00;font-weight:600}
+/* ---- 口语题评分系统 ---- */
+.q-oral{background:#fbf7ef;border:1px solid #ecd9b0;border-radius:12px;padding:16px 18px;margin:14px 0}
+.q-oral .q-stem{margin:0 0 12px;font-size:15px;line-height:1.7;white-space:pre-wrap}
+.oral-scoring{background:#fff;border:1px solid #e7dcc4;border-radius:10px;padding:12px 14px;margin-bottom:12px}
+.score-head{font-weight:700;color:#9a6b00;margin-bottom:8px;font-size:14px}
+.dims{margin:0;padding-left:20px;font-size:14px;line-height:1.9}
+.dims li{margin-bottom:2px}
+.rubric-note{margin-top:8px;padding-top:8px;border-top:1px dashed #e0d3b6;font-size:13px;color:#5a4a2a;line-height:1.7}
+.oral-ref{background:#eef6fb;border:1px solid #cfe0ea;border-radius:10px;padding:12px 14px}
+.ref-head{font-weight:700;color:#1f5f80;margin-bottom:8px;font-size:14px}
+.ref-it{font-weight:400;color:#5b87a0;font-style:italic;font-size:12px}
+.oral-ref pre{margin:8px 0 0;white-space:pre-wrap;word-break:break-word;font-size:14px;line-height:1.75;background:#fff;border:1px solid #dce8f0;border-radius:8px;padding:10px 12px}
+/* 口语参考答案原文折叠 */
+.otranscript{margin-top:8px}
+.otranscript summary{cursor:pointer;color:#1f5f80;font-weight:600;font-size:13px;user-select:none;list-style:none}
+.otranscript summary::-webkit-details-marker{display:none}
+.otranscript .o-open{display:none}
+.otranscript[open] .o-closed{display:none}
+.otranscript[open] .o-open{display:inline}
+.transcript{margin-top:10px}
+.transcript summary{cursor:pointer;color:#1f5f80;font-weight:600;font-size:14px;user-select:none;list-style:none}
+.transcript summary::-webkit-details-marker{display:none}
+.transcript summary:hover{text-decoration:underline}
+.transcript .t-open{display:none}
+.transcript[open] .t-closed{display:none}
+.transcript[open] .t-open{display:inline}
+.transcript[open] summary{margin-bottom:8px}
+.transcript pre{margin-top:0}
+#btn-check{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--wine);color:#fff;border:none;font-size:17px;font-weight:700;padding:13px 30px;border-radius:30px;cursor:pointer;box-shadow:0 4px 14px rgba(123,30,43,.4);z-index:10}
+#btn-check:hover{background:var(--wine2)}
+#btn-reset{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);margin-left:170px;background:#555;color:#fff;border:none;font-size:15px;padding:13px 22px;border-radius:30px;cursor:pointer;z-index:10}
+#result{margin-top:20px;padding:18px 20px;border-radius:12px;background:#fff;border:2px solid var(--wine);text-align:center}
+.res-score{font-size:18px;margin-bottom:10px}
+.res-grade{display:inline-block;color:#fff;font-weight:800;font-size:22px;padding:6px 22px;border-radius:10px;margin-bottom:8px}
+.res-note{font-size:14px;color:#555;margin-top:8px}
+.index-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-top:20px}
+.card{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:0 1px 4px rgba(0,0,0,.05);transition:.15s}
+.card:hover{transform:translateY(-3px);border-color:var(--wine)}
+.card .lvl{display:inline-block;background:var(--wine);color:#fff;border-radius:8px;padding:3px 12px;font-weight:800;font-size:18px}
+.card .nm{font-weight:700;margin:8px 0 4px;font-size:16px}
+.card .sb{font-size:13px;color:#666}
+.intro{max-width:880px;margin:24px auto;padding:0 18px;color:#555}
+</style>
+</head>
+<body>
+<header class="top">
+  <a href="index.html" class="back">← Indice CELI Vol.1</a>
+  <div class="ttl"><span class="lvl">C1</span> CELI 4</div>
+  <div class="sub">il futuro del lavoro / diritti dei lavoratori · 💼 Lavoro, occupazione e carriera</div>
+</header>
+<main>
+<p class="intro">本卷主题：Lavoro, occupazione e carriera。听力为模拟音频文本（由考官/录音播放），本页已用真人意大利语发音（edge-tts）生成音频，点击 ▶ 即可播放自测。提交后客观题自动判分，写作/口语/改写/开放题展开参考答案与评分要点供自评。</p>
+<section class="module"><h2>1. Comprensione di testi scritti（阅读）</h2><div class="text"><h4>Testo 1 — Articolo accademico（il futuro del lavoro）</h4><pre>Le previsioni dell&#x27;ILO indicano che entro il 2030 l&#x27;automazione sostituirà circa il 9% dei posti di lavoro nei paesi OCSE, ma ne creerà altrettanti in settori oggi inesistenti. La transizione, tuttavia, non sarà indolore: colpirà soprattutto mansioni ripetitive e lavoratori a bassa qualifica. Il vero nodo non è la quantità di posti, ma la qualità e la distribuzione. Senza politiche attive, il divario tra chi possiede le competenze digitali e chi ne è escluso rischia di diventare un abisso.</pre></div><div class="text"><h4>Testo 2 — Intervento opinionista（diritti dei lavoratori）</h4><pre>Mentre i tecnocrati celebrano la &quot;fine del lavoro&quot;, resta un silenzio imbarazzante sui diritti. L&#x27;automazione non libera l&#x27;umanità: semplicemente sposta il valore verso chi possiede gli algoritmi. I lavoratori della gig economy, già oggi, producono ricchezza senza tutele. Invocare il futuro per giustificare la precarietà presente è una retorica comoda. Se vogliamo un futuro davvero umano, i diritti non possono essere un optional della transizione.</pre></div><div class="items"><div class="q-item" data-type="mc" data-correct="1" data-ctext="B) sostituisce il 9%, ma ne crea altrettanti"><p class="q-stem">1. Secondo l&#x27;ILO, entro il 2030 l&#x27;automazione：</p><div class="opts"><label class="opt"><input type="radio" name="r0" value="0"> C) non cambia nulla</label><label class="opt"><input type="radio" name="r0" value="1"> B) sostituisce il 9%, ma ne crea altrettanti</label><label class="opt"><input type="radio" name="r0" value="2"> A) elimina tutti i posti</label></div></div><div class="q-item" data-type="mc" data-correct="0" data-ctext="B) mansioni ripetitive e bassa qualifica"><p class="q-stem">2. La transizione colpirà soprattutto：</p><div class="opts"><label class="opt"><input type="radio" name="r1" value="0"> B) mansioni ripetitive e bassa qualifica</label><label class="opt"><input type="radio" name="r1" value="1"> C) gli artisti</label><label class="opt"><input type="radio" name="r1" value="2"> A) i manager</label></div></div><div class="q-item" data-type="mc" data-correct="0" data-ctext="B) qualità e distribuzione"><p class="q-stem">3. Il &quot;vero nodo&quot; citato è：</p><div class="opts"><label class="opt"><input type="radio" name="r2" value="0"> B) qualità e distribuzione</label><label class="opt"><input type="radio" name="r2" value="1"> C) il clima</label><label class="opt"><input type="radio" name="r2" value="2"> A) il numero di posti</label></div></div><div class="q-item" data-type="mc" data-correct="2" data-ctext="B) critico / polemico"><p class="q-stem">4. Il tono del Testo 2 è：</p><div class="opts"><label class="opt"><input type="radio" name="r3" value="0"> A) neutrale</label><label class="opt"><input type="radio" name="r3" value="1"> C) pubblicitario</label><label class="opt"><input type="radio" name="r3" value="2"> B) critico / polemico</label></div></div><div class="q-item" data-type="mc" data-correct="2" data-ctext="B) giustificare la precarietà col futuro"><p class="q-stem">5. L&#x27;opinionista definisce &quot;rettorica comoda&quot;：</p><div class="opts"><label class="opt"><input type="radio" name="r4" value="0"> C) il sindacato</label><label class="opt"><input type="radio" name="r4" value="1"> A) la formazione</label><label class="opt"><input type="radio" name="r4" value="2"> B) giustificare la precarietà col futuro</label></div></div><div class="q-item" data-type="mc" data-correct="0" data-ctext="B) servono politiche / tutele"><p class="q-stem">6. Entrambi i testi concordano sul fatto che：</p><div class="opts"><label class="opt"><input type="radio" name="r5" value="0"> B) servono politiche / tutele</label><label class="opt"><input type="radio" name="r5" value="1"> C) il lavoro finirà</label><label class="opt"><input type="radio" name="r5" value="2"> A) il futuro è roseo</label></div></div><div class="q-item" data-type="tf" data-correct="0" data-ctext="Falso"><p class="q-stem">7. L&#x27;automazione creerà solo posti peggiori.</p><div class="opts"><label class="opt"><input type="radio" name="r6" value="0"> Falso</label><label class="opt"><input type="radio" name="r6" value="1"> Vero</label></div></div><div class="q-item" data-type="tf" data-correct="1" data-ctext="Vero"><p class="q-stem">8. Il divario digitale è una preoccupazione del Testo 1.</p><div class="opts"><label class="opt"><input type="radio" name="r7" value="0"> Falso</label><label class="opt"><input type="radio" name="r7" value="1"> Vero</label></div></div><div class="q-item" data-type="tf" data-correct="0" data-ctext="Falso"><p class="q-stem">9. Il Testo 2 sostiene che l&#x27;automazione libera l&#x27;umanità.</p><div class="opts"><label class="opt"><input type="radio" name="r8" value="0"> Falso</label><label class="opt"><input type="radio" name="r8" value="1"> Vero</label></div></div><div class="q-item" data-type="tf" data-correct="0" data-ctext="Vero"><p class="q-stem">10. I gig worker producono ricchezza senza tutele, per il Testo 2.</p><div class="opts"><label class="opt"><input type="radio" name="r9" value="0"> Vero</label><label class="opt"><input type="radio" name="r9" value="1"> Falso</label></div></div><div class="q-item" data-type="tf" data-correct="1" data-ctext="Falso"><p class="q-stem">11. I due testi hanno posizioni identiche su tutto.</p><div class="opts"><label class="opt"><input type="radio" name="r10" value="0"> Vero</label><label class="opt"><input type="radio" name="r10" value="1"> Falso</label></div></div><div class="q-item" data-type="tf" data-correct="0" data-ctext="Vero"><p class="q-stem">12. Per l&#x27;opinionista, i diritti devono essere centrali nella transizione.</p><div class="opts"><label class="opt"><input type="radio" name="r11" value="0"> Vero</label><label class="opt"><input type="radio" name="r11" value="1"> Falso</label></div></div></div></section><section class="module"><h2>2. Produzione di testi scritti（写作）</h2><div class="items"><div class="q-item q-subj" data-type="write"><p class="q-stem"><b>Compito (a) — Riassunto（摘要，80–100 词）</b><br>Sintetizza le due posizioni dei testi letti in italiano corretto (tono accademico vs polemico, automazione e diritti).<br><i>字数：80–100 词</i></p><textarea class="ans" rows="9" placeholder="La tua risposta..."></textarea><div class="ref" hidden><b>写作范例：</b><br>Il Testo 1, di tono accademico, prevede che entro il 2030 l&#x27;automazione sostituirà il 9% dei posti nei paesi OCSE ma ne creerà altrettanti; il rischio reale è la qualità e la distribuzione, con un divario digitale crescente. Il Testo 2, polemico, denuncia che l&#x27;entusiasmo per il &quot;fine del lavoro&quot; ignora i diritti: la ricchezza migra verso chi possiede gli algoritmi, mentre i gig worker restano senza tutele. Entrambi convengono che servono politiche attive e tutele, pena una transizione ingiusta.</div></div><div class="q-item q-subj" data-type="write"><p class="q-stem"><b>Compito (b) — Saggio / articolo（议论文，150–180 词）</b><br>&quot;Il futuro del lavoro sarà giusto solo se i diritti accompagnano l&#x27;automazione.&quot; Sviluppa la tua tesi con argomenti e un esempio.<br><i>字数：150–180 词</i></p><textarea class="ans" rows="9" placeholder="La tua risposta..."></textarea><div class="ref" hidden><b>写作范例：</b><br>Il futuro del lavoro sarà giusto solo se i diritti accompagnano l&#x27;automazione. Non basta celebrare l&#x27;efficienza delle macchine: occorre garantire che nessuno resti indietro. Come osserva il Testo 1, il problema non è il numero di posti, ma la loro qualità e distribuzione. Se la transizione è lasciata al mercato, il divario tra chi possiede le competenze digitali e chi ne è escluso diventerà un abisso. A mio avviso, i diritti — contratto, formazione, rappresentanza — devono precedere il profitto, non seguirlo. Un esempio concreto: riconoscere ai rider lo status di lavoratori subordinati, con tutele e sindacato, eviterebbe sfruttamento mascherato da &quot;libertà&quot;. In conclusione, l&#x27;automazione può essere un&#x27;opportunità solo se incatenata al rispetto della persona.</div></div></div></section><section class="module"><h2>3. Competenza linguistica（语言能力）</h2><h3>C.1 — Cloze senza opzioni（无选项完形，共 23 空）</h3><div class="q-item" data-type="cloze"><div class="cloze-text"><span>La transizione digitale</span><input class="blank" type="text" size="9" data-correct="richiede"><span>nuove competenze che</span><input class="blank" type="text" size="9" data-correct="i"><span>lavoratori devono acquisire. Chi non</span><input class="blank" type="text" size="9" data-correct="si"><span>adatta rischia l&#x27;esclusione dal mercato. È</span><input class="blank" type="text" size="9" data-correct="necessaria"><span>una rete di sicurezza che tuteli i diritti. I diritti</span><input class="blank" type="text" size="9" data-correct="devono"><span>essere garantiti per legge e</span><input class="blank" type="text" size="9" data-correct="e"><span>welfare adeguato</span><input class="blank" type="text" size="9" data-correct="può"><span>ridurre le disuguaglianze. Tuttavia,</span><input class="blank" type="text" size="9" data-correct="benché"><span>i corsi siano utili, non</span><input class="blank" type="text" size="9" data-correct="sono"><span>sufficienti da soli. Serve</span><input class="blank" type="text" size="9" data-correct="un"><span>patto sociale tra Stato e imprese. Se lo Stato non</span><input class="blank" type="text" size="9" data-correct="interverrà"><span>interverrà, il divario</span><input class="blank" type="text" size="9" data-correct="si"><span>allargherà.
+
+L&#x27;automazione</span><input class="blank" type="text" size="9" data-correct="sostituisce"><span>i posti di lavoro in settori ripetitivi,</span><input class="blank" type="text" size="9" data-correct="crea"><span>nuove professioni legate al digitale. Il vero problema non</span><input class="blank" type="text" size="9" data-correct="è"><span>la quantità, ma la qualità e</span><input class="blank" type="text" size="9" data-correct="la"><span>distribuzione. Senza politiche attive, il divario tra chi</span><input class="blank" type="text" size="9" data-correct="possiede"><span>le competenze digitali e chi ne</span><input class="blank" type="text" size="9" data-correct="è"><span>escluso rischia</span><input class="blank" type="text" size="9" data-correct="di"><span>diventare un abisso. I sindacati chiedono</span><input class="blank" type="text" size="9" data-correct="che"><span>i lavoratori siano rappresentati negli algoritmi. È giusto che</span><input class="blank" type="text" size="9" data-correct="i"><span>diritti precedano il profitto, non</span><input class="blank" type="text" size="9" data-correct="lo"><span>seguano. Solo</span><input class="blank" type="text" size="9" data-correct="a"><span>questa condizione la transizione sarà giusta.</span></div></div><h3>C.2 — Ristrutturazione / riscrittura di frasi（句子重组/改写）</h3><div class="items"><div class="q-item q-subj" data-type="rewrite"><p class="q-stem">1. L&#x27;automazione sostituisce i posti ripetitivi. Crea nuove professioni digitali. Il mercato cambia.</p><textarea class="ans" rows="3" placeholder="La tua risposta..."></textarea><div class="ref" hidden><b>参考答案：</b><br>L&#x27;automazione, sostituendo i posti ripetitivi e creando nuove professioni digitali, sta cambiando il mercato.</div></div><div class="q-item q-subj" data-type="rewrite"><p class="q-stem">2. I diritti sono limitati. I gig worker protestano. Lo Stato deve intervenire.</p><textarea class="ans" rows="3" placeholder="La tua risposta..."></textarea><div class="ref" hidden><b>参考答案：</b><br>Poiché i diritti sono limitati e i gig worker protestano, lo Stato deve intervenire.</div></div><div class="q-item q-subj" data-type="rewrite"><p class="q-stem">3. Il corso è gratuito. È online. Mi iscrivo subito.</p><textarea class="ans" rows="3" placeholder="La tua risposta..."></textarea><div class="ref" hidden><b>参考答案：</b><br>Siccome il corso è gratuito e online, mi iscrivo subito.</div></div><div class="q-item q-subj" data-type="rewrite"><p class="q-stem">4. Lei ha figli. Lavora da casa. Concilia meglio vita e lavoro.</p><textarea class="ans" rows="3" placeholder="La tua risposta..."></textarea><div class="ref" hidden><b>参考答案：</b><br>Lei, avendo figli e lavorando da casa, concilia meglio vita e lavoro.</div></div><div class="q-item q-subj" data-type="rewrite"><p class="q-stem">5. L&#x27;azienda offre formazione. I dipendenti sono felici. La produttività sale.</p><textarea class="ans" rows="3" placeholder="La tua risposta..."></textarea><div class="ref" hidden><b>参考答案：</b><br>L&#x27;azienda offre formazione, perciò i dipendenti sono felici e la produttività sale.</div></div><div class="q-item q-subj" data-type="rewrite"><p class="q-stem">6. Il lavoro è precario. I giovani soffrono. Occorre una rete di sicurezza.</p><textarea class="ans" rows="3" placeholder="La tua risposta..."></textarea><div class="ref" hidden><b>参考答案：</b><br>Poiché il lavoro è precario e i giovani soffrono, occorre una rete di sicurezza.</div></div><div class="q-item q-subj" data-type="rewrite"><p class="q-stem">7. Tu impari a programmare. Io ti aiuto. Riuscirai a trovare lavoro.</p><textarea class="ans" rows="3" placeholder="La tua risposta..."></textarea><div class="ref" hidden><b>参考答案：</b><br>Se tu impari a programmare, io ti aiuterò e riuscirai a trovare lavoro.</div></div></div><h3>C.3 — Forma della parola / modo verbale（词形/语式填空）</h3><div class="items"><div class="q-item" data-type="cloze"><span>1. Sarebbe giusto che tutti </span><input class="blank" type="text" size="11" data-correct="potessero"><span> (potere) formarsi.</span></div><div class="q-item" data-type="cloze"><span>2. Senza intervento pubblico, la precarietà </span><input class="blank" type="text" size="11" data-correct="aumenterebbe"><span> (aumentare, condizionale).</span></div><div class="q-item" data-type="cloze"><span>3. I diritti </span><input class="blank" type="text" size="11" data-correct="sono riconosciuti"><span> (riconoscere, passivo) dalla legge.</span></div><div class="q-item" data-type="cloze"><span>4. È il sindacato </span><input class="blank" type="text" size="11" data-correct="che"><span> (che / cui / a cui) difende i lavoratori.</span></div><div class="q-item" data-type="cloze"><span>5. </span><input class="blank" type="text" size="11" data-correct="Malgrado"><span> (Malgrado / Malgrado che) le difficoltà, lottiamo.</span></div><div class="q-item" data-type="cloze"><span>6. Preferisco che tu </span><input class="blank" type="text" size="11" data-correct="venga"><span> (venire) al corso.</span></div><div class="q-item" data-type="cloze"><span>7. Se io </span><input class="blank" type="text" size="11" data-correct="avessi"><span> (avere) più tempo, studierei una nuova professione.</span></div></div></section><section class="module"><h2>4. Comprensione di testi orali（听力）</h2><div class="audio-block"><h4>🎧 Intervista — Sociologa del lavoro</h4><audio controls preload="none" src="audio/C1_0.mp3" type="audio/mpeg"></audio><details class="transcript"><summary><span class="t-closed">📝 显示听力原文</span><span class="t-open">📝 隐藏听力原文</span></summary><pre>Il futuro del lavoro non è una questione tecnica, ma politica. L&#x27;automazione porterà benefici solo se accompagnata da diritti. Oggi il 23% dei lavoratori europei è in una forma di precarietà. Servono tre cose: formazione permanente, un reddito ponte durante la transizione, e rappresentanza sindacale negli algoritmi. Altrimenti, rischiamo una società a due velocità. La mia proposta: un&#x27;ora di lavoro su cinque dovrebbe essere dedicata all&#x27;apprendimento. Non è utopia, è sopravvivenza.</pre></details></div><div class="items"><div class="q-item" data-type="cloze"><span>Tabella 1. Il </span><input class="blank" type="text" size="11" data-correct="23%"><span> % dei lavoratori europei è in una forma di precarietà.</span></div><div class="q-item" data-type="cloze"><span>Tabella 2. Prima cosa necessaria: la </span><input class="blank" type="text" size="11" data-correct="formazione permanente"><span>.</span></div><div class="q-item" data-type="cloze"><span>Tabella 3. Terza cosa: la </span><input class="blank" type="text" size="11" data-correct="rappresentanza sindacale"><span> negli algoritmi.</span></div><div class="q-item" data-type="cloze"><span>Tabella 4. Un&#x27;ora di lavoro su cinque dovrebbe essere dedicata all&#x27;</span><input class="blank" type="text" size="11" data-correct="apprendimento"><span>.</span></div><div class="q-item" data-type="tf" data-correct="1" data-ctext="Falso"><p class="q-stem">5. La sociologa dice che il futuro è solo tecnico.</p><div class="opts"><label class="opt"><input type="radio" name="l4" value="0"> Vero</label><label class="opt"><input type="radio" name="l4" value="1"> Falso</label></div></div><div class="q-item" data-type="tf" data-correct="1" data-ctext="Vero"><p class="q-stem">6. L&#x27;algoritmo va rappresentato sindacalmente.</p><div class="opts"><label class="opt"><input type="radio" name="l5" value="0"> Falso</label><label class="opt"><input type="radio" name="l5" value="1"> Vero</label></div></div><div class="q-item" data-type="tf" data-correct="0" data-ctext="Falso"><p class="q-stem">7. La proposta di 1 ora su 5 è definita utopia.</p><div class="opts"><label class="opt"><input type="radio" name="l6" value="0"> Falso</label><label class="opt"><input type="radio" name="l6" value="1"> Vero</label></div></div><div class="q-item" data-type="tf" data-correct="0" data-ctext="Vero"><p class="q-stem">8. Il rischio è una società a due velocità.</p><div class="opts"><label class="opt"><input type="radio" name="l7" value="0"> Vero</label><label class="opt"><input type="radio" name="l7" value="1"> Falso</label></div></div></div></section><section class="module"><h2>5. Prova orale（口语）</h2><div class="items"><div class="q-item q-oral" data-type="oral"><p class="q-stem">带材料面试（长篇论述 + 深度讨论）。
+Materiale: breve testo sull&#x27;automazione e i diritti (vedi Testo 2)。
+Task：① Esponi la tua posizione in 2–3 minuti: &quot;L&#x27;automazione deve essere subordinata ai diritti umani. Sei d&#x27;accordo?&quot;；② Discussione con l&#x27;esaminatore: rispondi a obiezioni (es. &quot;Ma l&#x27;automazione crea ricchezza&quot;) e proponi una misura concreta。</p><div class="oral-scoring"><div class="score-head">📋 评分维度 · Criteri di valutazione（满分 50 分）</div><ul class="dims"><li><b>Pronuncia 发音</b> — 发音精准，语调节奏自如</li><li><b>Fluenza 流利度</b> — 长篇论述流畅，衔接自然</li><li><b>Grammatica 语法</b> — 虚拟 / 条件 / 被动准确，句式丰富</li><li><b>Contenuto 内容</b> — 立场明确，词汇丰富（transizione, precarietà, tutela）</li><li><b>Interazione 互动</b> — 深度讨论中回应质疑，逻辑自洽</li></ul><div class="rubric-note"><b>评分说明：</b>① 论述结构清晰（tesi → argomenti → esempio），语域 formal / argomentativo；② 熟练使用 congiuntivo, condizionale, passivo, relativo；词汇精准（transizione, precarietà, tutela）；③ 讨论中回应质疑并给具体措施；④ 发音流利。</div></div><div class="oral-ref"><div class="ref-head">🗣️ 参考答案 <span class="ref-it">Risposta di riferimento</span></div><audio controls preload="none" src="audio/C1_oral_0.mp3" type="audio/mpeg"></audio><details class="otranscript"><summary><span class="o-closed">📝 显示参考答案原文</span><span class="o-open">📝 隐藏参考答案原文</span></summary><pre>La mia posizione è che l&#x27;automazione deve essere subordinata ai diritti umani. Non basta celebrare l&#x27;efficienza delle macchine: se la transizione è lasciata al mercato, il divario tra chi possiede le competenze digitali e chi ne è escluso diventerà un abisso. Come osserva il Testo 1, il problema non è il numero di posti, ma la loro qualità e distribuzione. I diritti — contratto, formazione, rappresentanza — devono precedere il profitto, non seguirlo. A chi obietta che l&#x27;automazione crea ricchezza, rispondo: sì, ma quella ricchezza migra verso chi possiede gli algoritmi, mentre i gig worker restano senza tutele. Una misura concreta? Riconoscere ai rider lo status di lavoratori subordinati e istituire un reddito ponte durante la transizione, così nessuno resta indietro. Solo incatenando l&#x27;automazione al rispetto della persona, la transizione sarà davvero giusta.</pre></details></div></div></div></section>
+<button id="btn-check" onclick="verifica()">Verifica le risposte（提交判分）</button>
+<button id="btn-reset" hidden onclick="resetta()">Ricomincia（重做）</button>
+<div id="result" hidden></div>
+</main>
+<script>var SUBJMAX=50;
+
+function norm(s){return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]/g,'');}
+function gradeOf(p){if(p>=85)return['Eccellente','#1b7a3d'];if(p>=70)return['Buono','#2e7d32'];if(p>=55)return['Discreto','#b8860b'];if(p>=40)return['Insufficiente','#c0392b'];return['Grave','#7b1e2b'];}
+function verifica(){
+  var items=document.querySelectorAll('.q-item');
+  var score=0,total=0;
+  items.forEach(function(el){
+    var t=el.dataset.type;
+    if(t==='mc'||t==='tf'||t==='match'){
+      total++;
+      var ok=false,corr=el.dataset.correct;
+      if(t==='match'){var sel=el.querySelector('select');if(sel&&sel.value===corr)ok=true;}
+      else{var inp=el.querySelector('input:checked');if(inp&&inp.value===corr)ok=true;}
+      el.classList.add(ok?'correct':'wrong');
+      var n=document.createElement('div');n.className='q-note '+(ok?'ok':'no');
+      n.textContent=ok?'✅ Corretto':'❌ Risposta corretta: '+el.dataset.ctext;
+      el.appendChild(n);
+      el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;});
+    } else if(t==='cloze'){
+      el.querySelectorAll('input.blank').forEach(function(inp){
+        total++;
+        var v=norm(inp.value);
+        var ok2=v.length>0 && v.indexOf(norm(inp.dataset.correct))>=0;
+        if(ok2)score++;
+        inp.classList.add(ok2?'correct':'wrong');
+        if(!ok2){var s=document.createElement('span');s.className='anshint';s.textContent=' ✓ '+inp.dataset.correct;inp.insertAdjacentElement('afterend',s);}
+        inp.disabled=true;
+      });
+    }
+  });
+  document.querySelectorAll('.q-subj').forEach(function(el){var r=el.querySelector('.ref');if(r)r.hidden=false;});
+  var pct= total? Math.round(score/total*100):0;
+  var g=gradeOf(pct);
+  var box=document.getElementById('result');
+  box.hidden=false;
+  box.innerHTML='<div class="res-score">客观题正确率：<b>'+score+' / '+total+'</b> （'+pct+'%）</div>'+
+    '<div class="res-grade" style="background:'+g[1]+'">'+g[0]+'</div>'+
+    '<div class="res-note">写作 / 口语 / 改写 / 开放题请对照上方参考答案与评分要点自评（本卷主观题满分 '+SUBJMAX+' 分）。</div>';
+  box.scrollIntoView({behavior:'smooth'});
+  document.getElementById('btn-check').hidden=true;
+  document.getElementById('btn-reset').hidden=false;
+}
+function resetta(){location.reload();}
+// 单一播放：播放任意音频时自动打断其他正在播放的音频，避免重叠
+document.addEventListener('play', function(e){
+  if(e.target && e.target.tagName === 'AUDIO'){
+    document.querySelectorAll('audio').forEach(function(a){ if(a!==e.target) a.pause(); });
+  }
+}, true);
+</script>
+</body>
+</html>

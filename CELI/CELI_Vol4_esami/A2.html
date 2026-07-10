@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CELI A2 — CELI 1</title>
+<style>
+:root{--wine:#7b1e2b;--wine2:#a83246;--ink:#23211f;--paper:#fbf8f4;--line:#e4ddd2;--ok:#1b7a3d;--no:#c0392b;}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);background:var(--paper);line-height:1.65}
+header.top{background:linear-gradient(135deg,var(--wine),var(--wine2));color:#fff;padding:26px 20px;box-shadow:0 2px 10px rgba(0,0,0,.15)}
+header.top .back{color:#ffd9df;text-decoration:none;font-size:14px}
+header.top .ttl{font-size:26px;font-weight:800;margin-top:6px}
+header.top .ttl .lvl{display:inline-block;background:#fff;color:var(--wine);border-radius:8px;padding:2px 10px;margin-right:10px;font-size:20px}
+header.top .sub{opacity:.9;margin-top:4px;font-size:15px}
+main{max-width:880px;margin:0 auto;padding:24px 18px 120px}
+section.module{margin:30px 0;background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+section.module h2{margin:0 0 14px;color:var(--wine);font-size:20px;border-bottom:2px solid var(--line);padding-bottom:8px}
+section.module h3{color:#444;font-size:16px;margin:22px 0 10px}
+.text{background:#f6f1e9;border-left:4px solid var(--wine);border-radius:8px;padding:12px 14px;margin:12px 0}
+.text h4{margin:0 0 6px;font-size:14px;color:var(--wine)}
+pre{white-space:pre-wrap;margin:0;font-family:"Courier New",monospace;font-size:14px}
+.items{margin-top:14px}
+.q-item{margin:14px 0;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fffdf9}
+.q-item.correct{border-color:var(--ok);background:#f1faf3}
+.q-item.wrong{border-color:var(--no);background:#fdf1f0}
+.q-stem{margin:0 0 8px;font-weight:600}
+.opts{display:flex;flex-direction:column;gap:6px}
+.opt{display:flex;align-items:center;gap:8px;cursor:pointer;padding:4px 6px;border-radius:6px}
+.opt:hover{background:#f3ede3}
+.match-sel{font-size:15px;padding:5px 8px;border-radius:6px;border:1px solid #bbb;margin-top:4px}
+.blank{font-size:15px;padding:3px 6px;border:1px solid #bbb;border-radius:6px;margin:0 4px}
+.blank.correct{border-color:var(--ok);background:#eafaf0}
+.blank.wrong{border-color:var(--no);background:#fdeceb}
+.anshint{color:var(--no);font-size:13px;margin-left:6px}
+textarea.ans{width:100%;font-size:15px;padding:10px;border:1px solid #ccc;border-radius:8px;font-family:inherit;resize:vertical}
+.q-subj .ref{margin-top:10px;padding:10px 12px;background:#eef6fb;border-left:4px solid #2a7fb8;border-radius:8px;font-size:14px}
+.q-note{margin-top:8px;font-weight:700;font-size:14px}
+.q-note.ok{color:var(--ok)} .q-note.no{color:var(--no)}
+.audio-block{background:#f0f4f7;border:1px solid #cfe0ea;border-radius:10px;padding:12px 14px;margin:12px 0}
+.audio-block h4{margin:0 0 8px;color:#1f5f80}
+audio{width:100%;margin-bottom:8px;display:block}
+.noaudio{color:#b06a00;font-weight:600}
+/* ---- 口语题评分系统 ---- */
+.q-oral{background:#fbf7ef;border:1px solid #ecd9b0;border-radius:12px;padding:16px 18px;margin:14px 0}
+.q-oral .q-stem{margin:0 0 12px;font-size:15px;line-height:1.7;white-space:pre-wrap}
+.oral-scoring{background:#fff;border:1px solid #e7dcc4;border-radius:10px;padding:12px 14px;margin-bottom:12px}
+.score-head{font-weight:700;color:#9a6b00;margin-bottom:8px;font-size:14px}
+.dims{margin:0;padding-left:20px;font-size:14px;line-height:1.9}
+.dims li{margin-bottom:2px}
+.rubric-note{margin-top:8px;padding-top:8px;border-top:1px dashed #e0d3b6;font-size:13px;color:#5a4a2a;line-height:1.7}
+.oral-ref{background:#eef6fb;border:1px solid #cfe0ea;border-radius:10px;padding:12px 14px}
+.ref-head{font-weight:700;color:#1f5f80;margin-bottom:8px;font-size:14px}
+.ref-it{font-weight:400;color:#5b87a0;font-style:italic;font-size:12px}
+.oral-ref pre{margin:8px 0 0;white-space:pre-wrap;word-break:break-word;font-size:14px;line-height:1.75;background:#fff;border:1px solid #dce8f0;border-radius:8px;padding:10px 12px}
+/* 口语参考答案原文折叠 */
+.otranscript{margin-top:8px}
+.otranscript summary{cursor:pointer;color:#1f5f80;font-weight:600;font-size:13px;user-select:none;list-style:none}
+.otranscript summary::-webkit-details-marker{display:none}
+.otranscript .o-open{display:none}
+.otranscript[open] .o-closed{display:none}
+.otranscript[open] .o-open{display:inline}
+.transcript{margin-top:10px}
+.transcript summary{cursor:pointer;color:#1f5f80;font-weight:600;font-size:14px;user-select:none;list-style:none}
+.transcript summary::-webkit-details-marker{display:none}
+.transcript summary:hover{text-decoration:underline}
+.transcript .t-open{display:none}
+.transcript[open] .t-closed{display:none}
+.transcript[open] .t-open{display:inline}
+.transcript[open] summary{margin-bottom:8px}
+.transcript pre{margin-top:0}
+#btn-check{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--wine);color:#fff;border:none;font-size:17px;font-weight:700;padding:13px 30px;border-radius:30px;cursor:pointer;box-shadow:0 4px 14px rgba(123,30,43,.4);z-index:10}
+#btn-check:hover{background:var(--wine2)}
+#btn-reset{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);margin-left:170px;background:#555;color:#fff;border:none;font-size:15px;padding:13px 22px;border-radius:30px;cursor:pointer;z-index:10}
+#result{margin-top:20px;padding:18px 20px;border-radius:12px;background:#fff;border:2px solid var(--wine);text-align:center}
+.res-score{font-size:18px;margin-bottom:10px}
+.res-grade{display:inline-block;color:#fff;font-weight:800;font-size:22px;padding:6px 22px;border-radius:10px;margin-bottom:8px}
+.res-note{font-size:14px;color:#555;margin-top:8px}
+.index-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-top:20px}
+.card{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:0 1px 4px rgba(0,0,0,.05);transition:.15s}
+.card:hover{transform:translateY(-3px);border-color:var(--wine)}
+.card .lvl{display:inline-block;background:var(--wine);color:#fff;border-radius:8px;padding:3px 12px;font-weight:800;font-size:18px}
+.card .nm{font-weight:700;margin:8px 0 4px;font-size:16px}
+.card .sb{font-size:13px;color:#666}
+.intro{max-width:880px;margin:24px auto;padding:0 18px;color:#555}
+</style>
+</head>
+<body>
+<header class="top">
+  <a href="index.html" class="back">← Indice CELI Vol.1</a>
+  <div class="ttl"><span class="lvl">A2</span> CELI 1</div>
+  <div class="sub">una dieta equilibrata / andare dal medico · 🥗 Salute, alimentazione e benessere</div>
+</header>
+<main>
+<p class="intro">本卷主题：Salute, alimentazione e benessere。听力为模拟音频文本（由考官/录音播放），本页已用真人意大利语发音（edge-tts）生成音频，点击 ▶ 即可播放自测。提交后客观题自动判分，写作/口语/改写/开放题展开参考答案与评分要点供自评。</p>
+<section class="module"><h2>1. Comprensione di testi scritti（阅读，权重 25%）</h2><div class="text"><h4>Testo A — Consigli（均衡饮食建议，博客短文）</h4><pre>UNA DIETA EQUILIBRATA
+Per stare bene, ho cambiato alimentazione. La mattina mangio cereali e frutta. A pranzo mangio pasta, verdure e un po&#x27; di carne o pesce. La sera mangio un&#x27;insalata. Bevo due litri di acqua al giorno e non mangio molti dolci. Il medico mi ha detto: &quot;Mangia di tutto, ma con moderazione&quot;. Ora mi sento meglio e ho più energia.</pre></div><div class="text"><h4>Testo B — Appuntamento（看医生，诊所便条）</h4><pre>APPUNTAMENTO DAL MEDICO
+La signora Rossi ha chiamato il dottor Bianchi perché aveva mal di gola e febbre. La segreteria ha dato un appuntamento per martedì alle 10.30. Il medico visita in via Roma 12. Portare la tessera sanitaria. Se non può venire, chiamare il 06 123456.</pre></div><div class="items"><div class="q-item" data-type="match" data-correct="A" data-ctext="A"><p class="q-stem">1. Per stare bene, la persona ha cambiato alimentazione. →</p><select class="match-sel"><option value="">— scegli —</option><option value="B">B</option><option value="A">A</option></select></div><div class="q-item" data-type="match" data-correct="B" data-ctext="B"><p class="q-stem">2. Una donna ha mal di gola e febbre. →</p><select class="match-sel"><option value="">— scegli —</option><option value="A">A</option><option value="B">B</option></select></div><div class="q-item" data-type="match" data-correct="B" data-ctext="B"><p class="q-stem">3. L&#x27;appuntamento è di martedì alle 10.30. →</p><select class="match-sel"><option value="">— scegli —</option><option value="B">B</option><option value="A">A</option></select></div><div class="q-item" data-type="mc" data-correct="0" data-ctext="B) cereali e frutta"><p class="q-stem">4. La mattina l&#x27;autore mangia：</p><div class="opts"><label class="opt"><input type="radio" name="r3" value="0"> B) cereali e frutta</label><label class="opt"><input type="radio" name="r3" value="1"> A) pizza</label><label class="opt"><input type="radio" name="r3" value="2"> C) solo carne</label></div></div><div class="q-item" data-type="mc" data-correct="2" data-ctext="A) un&#x27;insalata"><p class="q-stem">5. La sera mangia：</p><div class="opts"><label class="opt"><input type="radio" name="r4" value="0"> B) pasta e carne</label><label class="opt"><input type="radio" name="r4" value="1"> C) dolci</label><label class="opt"><input type="radio" name="r4" value="2"> A) un&#x27;insalata</label></div></div><div class="q-item" data-type="mc" data-correct="1" data-ctext="A) mal di gola e febbre"><p class="q-stem">6. La signora Rossi ha：</p><div class="opts"><label class="opt"><input type="radio" name="r5" value="0"> B) solo fame</label><label class="opt"><input type="radio" name="r5" value="1"> A) mal di gola e febbre</label><label class="opt"><input type="radio" name="r5" value="2"> C) sonno</label></div></div></div></section><section class="module"><h2>2. Produzione di testi scritti（写作，权重 15%）</h2><div class="items"><div class="q-item q-subj" data-type="write"><p class="q-stem"><b>Compito 1 — Completamenti（补全短文，5 空）</b><br>La settimana scorsa ho deciso di ________ (1) una dieta più sana. Ho ________ (2) di mangiare più frutta e ho ________ (3) a fare due pasti leggeri la sera. Quando ho avuto mal di testa, sono ________ (4) dal medico. Ora sto meglio e ho più ________ (5).<br><i>字数：填空</i></p><textarea class="ans" rows="9" placeholder="La tua risposta..."></textarea><div class="ref" hidden><b>写作范例：</b><br>(1) seguire / iniziare；(2) decisio / cercato；(3) cominciato；(4) andato；(5) energia</div></div><div class="q-item q-subj" data-type="write"><p class="q-stem"><b>Compito 2 — Espansione（扩写，50–80 词）</b><br>Espandi il biglietto seguente in un breve messaggio a un amico（50–80 parole）：&quot;Ciao Sara, non sto bene. Sono andata dal medico ieri. Scrivimi presto!&quot;<br><i>字数：50–80 词</i></p><textarea class="ans" rows="9" placeholder="La tua risposta..."></textarea><div class="ref" hidden><b>写作范例：</b><br>Ciao Sara, non sto bene. Ieri sono andata dal medico perché avevo mal di gola e un po&#x27; di febbre. Il dottore mi ha detto di riposare, bere molta acqua e prendere una medicina due volte al giorno. Ora sto un po&#x27; meglio, ma resto a casa. Mangio più frutta e verdura per guarire presto. Scrivimi presto! Un bacio, Lucia.</div></div></div></section><section class="module"><h2>3. Comprensione di testi orali（听力，权重 30%）</h2><div class="audio-block"><h4>🎧 Testo 1 — Dialogo（andare dal medico）</h4><audio controls preload="none" src="audio/A2_0.mp3" type="audio/mpeg"></audio><details class="transcript"><summary><span class="t-closed">📝 显示听力原文</span><span class="t-open">📝 隐藏听力原文</span></summary><pre>Dottore: Buongiorno, che cosa ha?
+Paziente: Ho mal di testa e un po&#x27; di febbre.
+Dottore: Da quanto tempo?
+Paziente: Da due giorni.
+Dottore: Prenda questa medicina due volte al giorno e riposi. Beva molta acqua.</pre></details></div><div class="audio-block"><h4>🎧 Testo 2 — Annuncio（cibo sano）</h4><audio controls preload="none" src="audio/A2_1.mp3" type="audio/mpeg"></audio><details class="transcript"><summary><span class="t-closed">📝 显示听力原文</span><span class="t-open">📝 隐藏听力原文</span></summary><pre>Vuoi mangiare sano? Da &quot;Cucina Verde&quot; prepariamo pasti equilibrati con verdure fresche. Consegna a domicilio il lunedì e il giovedì. Un pasto costa 8 euro. Chiama il 345 678 9012!</pre></details></div><div class="items"><div class="q-item" data-type="match" data-correct="A) mal di testa e febbre" data-ctext="A) mal di testa e febbre"><p class="q-stem">1. Nel Testo 1, il paziente ha：</p><select class="match-sel"><option value="">— scegli —</option><option value="C) sonno">C) sonno</option><option value="A) mal di testa e febbre">A) mal di testa e febbre</option><option value="B) fame">B) fame</option></select></div><div class="q-item" data-type="match" data-correct="A) lunedì e giovedì" data-ctext="A) lunedì e giovedì"><p class="q-stem">2. Nel Testo 2, la consegna è：</p><select class="match-sel"><option value="">— scegli —</option><option value="C) solo sabato">C) solo sabato</option><option value="A) lunedì e giovedì">A) lunedì e giovedì</option><option value="B) ogni giorno">B) ogni giorno</option></select></div><div class="q-item" data-type="match" data-correct="B) 345 678 9012" data-ctext="B) 345 678 9012"><p class="q-stem">3. Nel Testo 2, il numero di telefono è：</p><select class="match-sel"><option value="">— scegli —</option><option value="A) 06 123456">A) 06 123456</option><option value="B) 345 678 9012">B) 345 678 9012</option><option value="C) 347 987 6543">C) 347 987 6543</option></select></div><div class="q-item" data-type="mc" data-correct="1" data-ctext="B) due volte al giorno"><p class="q-stem">4. Il medico dice di prendere la medicina：</p><div class="opts"><label class="opt"><input type="radio" name="l3" value="0"> A) una volta</label><label class="opt"><input type="radio" name="l3" value="1"> B) due volte al giorno</label><label class="opt"><input type="radio" name="l3" value="2"> C) mai</label></div></div><div class="q-item" data-type="mc" data-correct="1" data-ctext="B) riposare e bere acqua"><p class="q-stem">5. Il medico consiglia di：</p><div class="opts"><label class="opt"><input type="radio" name="l4" value="0"> A) correre</label><label class="opt"><input type="radio" name="l4" value="1"> B) riposare e bere acqua</label><label class="opt"><input type="radio" name="l4" value="2"> C) mangiare dolci</label></div></div><div class="q-item" data-type="mc" data-correct="2" data-ctext="B) 8 euro"><p class="q-stem">6. Un pasto da &quot;Cucina Verde&quot; costa：</p><div class="opts"><label class="opt"><input type="radio" name="l5" value="0"> A) 5 euro</label><label class="opt"><input type="radio" name="l5" value="1"> C) 12 euro</label><label class="opt"><input type="radio" name="l5" value="2"> B) 8 euro</label></div></div></div></section><section class="module"><h2>4. Prova orale（口语，10min）</h2><div class="items"><div class="q-item q-oral" data-type="oral"><p class="q-stem">① 自我介绍 + 习惯爱好；② 描述图片；③ 角色扮演。
+任务：① 介绍自己并说一种健康食物或喜欢的运动；② 描述图片：一家人在市场买果蔬，有苹果、胡萝卜、橙子；③ 角色扮演：你是病人，向考官（医生）说明：喉咙痛 / 发烧 / 睡不好。</p><div class="oral-scoring"><div class="score-head">📋 评分维度 · Criteri di valutazione（满分 30 分）</div><ul class="dims"><li><b>Pronuncia 发音</b> — 发音清晰，重音基本正确</li><li><b>Fluenza 流利度</b> — 自我介绍流畅，含个人习惯</li><li><b>Grammatica 语法</b> — 现在时 / 近过去时使用基本正确</li><li><b>Contenuto 内容</b> — 涵盖自我介绍、图片描述、角色扮演三项任务</li><li><b>Interazione 互动</b> — 角色扮演用语得体，完成信息询问</li></ul><div class="rubric-note"><b>评分说明：</b>① 自我介绍含 1–2 个习惯 / 爱好（cibo sano, sport），presente 与 passato prossimo 基本正确；② 图片描述能点出人物、食物、动作（compra, ci sono）；③ 角色扮演能用 &quot;Ho mal di…&quot;, &quot;Non sto bene&quot; 等基础就医表达；④ 发音清晰、交流自然。</div></div><div class="oral-ref"><div class="ref-head">🗣️ 参考答案 <span class="ref-it">Risposta di riferimento</span></div><audio controls preload="none" src="audio/A2_oral_0.mp3" type="audio/mpeg"></audio><details class="otranscript"><summary><span class="o-closed">📝 显示参考答案原文</span><span class="o-open">📝 隐藏参考答案原文</span></summary><pre>Buongiorno, mi chiamo Lucia, ho vent&#x27;anni e studio a Firenze. Per stare in salute mangio tanta frutta e verdura ogni giorno e faccio yoga due volte a settimana. Nella foto vedo una famiglia al mercato: la mamma compra mele, carote e arance fresche. Ci sono tante verdure buone! Buongiorno dottore, non sto bene: ho mal di gola, un po&#x27; di febbre e ho dormito poco questa notte. Può darmi un consiglio? Grazie.</pre></details></div></div></div></section>
+<button id="btn-check" onclick="verifica()">Verifica le risposte（提交判分）</button>
+<button id="btn-reset" hidden onclick="resetta()">Ricomincia（重做）</button>
+<div id="result" hidden></div>
+</main>
+<script>var SUBJMAX=30;
+
+function norm(s){return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]/g,'');}
+function gradeOf(p){if(p>=85)return['Eccellente','#1b7a3d'];if(p>=70)return['Buono','#2e7d32'];if(p>=55)return['Discreto','#b8860b'];if(p>=40)return['Insufficiente','#c0392b'];return['Grave','#7b1e2b'];}
+function verifica(){
+  var items=document.querySelectorAll('.q-item');
+  var score=0,total=0;
+  items.forEach(function(el){
+    var t=el.dataset.type;
+    if(t==='mc'||t==='tf'||t==='match'){
+      total++;
+      var ok=false,corr=el.dataset.correct;
+      if(t==='match'){var sel=el.querySelector('select');if(sel&&sel.value===corr)ok=true;}
+      else{var inp=el.querySelector('input:checked');if(inp&&inp.value===corr)ok=true;}
+      el.classList.add(ok?'correct':'wrong');
+      var n=document.createElement('div');n.className='q-note '+(ok?'ok':'no');
+      n.textContent=ok?'✅ Corretto':'❌ Risposta corretta: '+el.dataset.ctext;
+      el.appendChild(n);
+      el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;});
+    } else if(t==='cloze'){
+      el.querySelectorAll('input.blank').forEach(function(inp){
+        total++;
+        var v=norm(inp.value);
+        var ok2=v.length>0 && v.indexOf(norm(inp.dataset.correct))>=0;
+        if(ok2)score++;
+        inp.classList.add(ok2?'correct':'wrong');
+        if(!ok2){var s=document.createElement('span');s.className='anshint';s.textContent=' ✓ '+inp.dataset.correct;inp.insertAdjacentElement('afterend',s);}
+        inp.disabled=true;
+      });
+    }
+  });
+  document.querySelectorAll('.q-subj').forEach(function(el){var r=el.querySelector('.ref');if(r)r.hidden=false;});
+  var pct= total? Math.round(score/total*100):0;
+  var g=gradeOf(pct);
+  var box=document.getElementById('result');
+  box.hidden=false;
+  box.innerHTML='<div class="res-score">客观题正确率：<b>'+score+' / '+total+'</b> （'+pct+'%）</div>'+
+    '<div class="res-grade" style="background:'+g[1]+'">'+g[0]+'</div>'+
+    '<div class="res-note">写作 / 口语 / 改写 / 开放题请对照上方参考答案与评分要点自评（本卷主观题满分 '+SUBJMAX+' 分）。</div>';
+  box.scrollIntoView({behavior:'smooth'});
+  document.getElementById('btn-check').hidden=true;
+  document.getElementById('btn-reset').hidden=false;
+}
+function resetta(){location.reload();}
+// 单一播放：播放任意音频时自动打断其他正在播放的音频，避免重叠
+document.addEventListener('play', function(e){
+  if(e.target && e.target.tagName === 'AUDIO'){
+    document.querySelectorAll('audio').forEach(function(a){ if(a!==e.target) a.pause(); });
+  }
+}, true);
+</script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CELI C2 — CELI 5</title>
+<style>
+:root{--wine:#7b1e2b;--wine2:#a83246;--ink:#23211f;--paper:#fbf8f4;--line:#e4ddd2;--ok:#1b7a3d;--no:#c0392b;}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);background:var(--paper);line-height:1.65}
+header.top{background:linear-gradient(135deg,var(--wine),var(--wine2));color:#fff;padding:26px 20px;box-shadow:0 2px 10px rgba(0,0,0,.15)}
+header.top .back{color:#ffd9df;text-decoration:none;font-size:14px}
+header.top .ttl{font-size:26px;font-weight:800;margin-top:6px}
+header.top .ttl .lvl{display:inline-block;background:#fff;color:var(--wine);border-radius:8px;padding:2px 10px;margin-right:10px;font-size:20px}
+header.top .sub{opacity:.9;margin-top:4px;font-size:15px}
+main{max-width:880px;margin:0 auto;padding:24px 18px 120px}
+section.module{margin:30px 0;background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+section.module h2{margin:0 0 14px;color:var(--wine);font-size:20px;border-bottom:2px solid var(--line);padding-bottom:8px}
+section.module h3{color:#444;font-size:16px;margin:22px 0 10px}
+.text{background:#f6f1e9;border-left:4px solid var(--wine);border-radius:8px;padding:12px 14px;margin:12px 0}
+.text h4{margin:0 0 6px;font-size:14px;color:var(--wine)}
+pre{white-space:pre-wrap;margin:0;font-family:"Courier New",monospace;font-size:14px}
+.items{margin-top:14px}
+.q-item{margin:14px 0;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fffdf9}
+.q-item.correct{border-color:var(--ok);background:#f1faf3}
+.q-item.wrong{border-color:var(--no);background:#fdf1f0}
+.q-stem{margin:0 0 8px;font-weight:600}
+.opts{display:flex;flex-direction:column;gap:6px}
+.opt{display:flex;align-items:center;gap:8px;cursor:pointer;padding:4px 6px;border-radius:6px}
+.opt:hover{background:#f3ede3}
+.match-sel{font-size:15px;padding:5px 8px;border-radius:6px;border:1px solid #bbb;margin-top:4px}
+.blank{font-size:15px;padding:3px 6px;border:1px solid #bbb;border-radius:6px;margin:0 4px}
+.blank.correct{border-color:var(--ok);background:#eafaf0}
+.blank.wrong{border-color:var(--no);background:#fdeceb}
+.anshint{color:var(--no);font-size:13px;margin-left:6px}
+textarea.ans{width:100%;font-size:15px;padding:10px;border:1px solid #ccc;border-radius:8px;font-family:inherit;resize:vertical}
+.q-subj .ref{margin-top:10px;padding:10px 12px;background:#eef6fb;border-left:4px solid #2a7fb8;border-radius:8px;font-size:14px}
+.q-note{margin-top:8px;font-weight:700;font-size:14px}
+.q-note.ok{color:var(--ok)} .q-note.no{color:var(--no)}
+.audio-block{background:#f0f4f7;border:1px solid #cfe0ea;border-radius:10px;padding:12px 14px;margin:12px 0}
+.audio-block h4{margin:0 0 8px;color:#1f5f80}
+audio{width:100%;margin-bottom:8px;display:block}
+.noaudio{color:#b06a00;font-weight:600}
+/* ---- 口语题评分系统 ---- */
+.q-oral{background:#fbf7ef;border:1px solid #ecd9b0;border-radius:12px;padding:16px 18px;margin:14px 0}
+.q-oral .q-stem{margin:0 0 12px;font-size:15px;line-height:1.7;white-space:pre-wrap}
+.oral-scoring{background:#fff;border:1px solid #e7dcc4;border-radius:10px;padding:12px 14px;margin-bottom:12px}
+.score-head{font-weight:700;color:#9a6b00;margin-bottom:8px;font-size:14px}
+.dims{margin:0;padding-left:20px;font-size:14px;line-height:1.9}
+.dims li{margin-bottom:2px}
+.rubric-note{margin-top:8px;padding-top:8px;border-top:1px dashed #e0d3b6;font-size:13px;color:#5a4a2a;line-height:1.7}
+.oral-ref{background:#eef6fb;border:1px solid #cfe0ea;border-radius:10px;padding:12px 14px}
+.ref-head{font-weight:700;color:#1f5f80;margin-bottom:8px;font-size:14px}
+.ref-it{font-weight:400;color:#5b87a0;font-style:italic;font-size:12px}
+.oral-ref pre{margin:8px 0 0;white-space:pre-wrap;word-break:break-word;font-size:14px;line-height:1.75;background:#fff;border:1px solid #dce8f0;border-radius:8px;padding:10px 12px}
+/* 口语参考答案原文折叠 */
+.otranscript{margin-top:8px}
+.otranscript summary{cursor:pointer;color:#1f5f80;font-weight:600;font-size:13px;user-select:none;list-style:none}
+.otranscript summary::-webkit-details-marker{display:none}
+.otranscript .o-open{display:none}
+.otranscript[open] .o-closed{display:none}
+.otranscript[open] .o-open{display:inline}
+.transcript{margin-top:10px}
+.transcript summary{cursor:pointer;color:#1f5f80;font-weight:600;font-size:14px;user-select:none;list-style:none}
+.transcript summary::-webkit-details-marker{display:none}
+.transcript summary:hover{text-decoration:underline}
+.transcript .t-open{display:none}
+.transcript[open] .t-closed{display:none}
+.transcript[open] .t-open{display:inline}
+.transcript[open] summary{margin-bottom:8px}
+.transcript pre{margin-top:0}
+#btn-check{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--wine);color:#fff;border:none;font-size:17px;font-weight:700;padding:13px 30px;border-radius:30px;cursor:pointer;box-shadow:0 4px 14px rgba(123,30,43,.4);z-index:10}
+#btn-check:hover{background:var(--wine2)}
+#btn-reset{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);margin-left:170px;background:#555;color:#fff;border:none;font-size:15px;padding:13px 22px;border-radius:30px;cursor:pointer;z-index:10}
+#result{margin-top:20px;padding:18px 20px;border-radius:12px;background:#fff;border:2px solid var(--wine);text-align:center}
+.res-score{font-size:18px;margin-bottom:10px}
+.res-grade{display:inline-block;color:#fff;font-weight:800;font-size:22px;padding:6px 22px;border-radius:10px;margin-bottom:8px}
+.res-note{font-size:14px;color:#555;margin-top:8px}
+.index-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-top:20px}
+.card{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:0 1px 4px rgba(0,0,0,.05);transition:.15s}
+.card:hover{transform:translateY(-3px);border-color:var(--wine)}
+.card .lvl{display:inline-block;background:var(--wine);color:#fff;border-radius:8px;padding:3px 12px;font-weight:800;font-size:18px}
+.card .nm{font-weight:700;margin:8px 0 4px;font-size:16px}
+.card .sb{font-size:13px;color:#666}
+.intro{max-width:880px;margin:24px auto;padding:0 18px;color:#555}
+</style>
+</head>
+<body>
+<header class="top">
+  <a href="index.html" class="back">← Indice CELI Vol.1</a>
+  <div class="ttl"><span class="lvl">C2</span> CELI 5</div>
+  <div class="sub">antropocene / etica del rapporto uomo-natura · 🌱 Ambiente, clima e sostenibilità</div>
+</header>
+<main>
+<p class="intro">本卷主题：环境、气候与可持续发展。听力为模拟音频文本（由考官/录音播放），本页已用真人意大利语发音（edge-tts）生成音频，点击 ▶ 即可播放自测。提交后客观题自动判分，写作/口语/改写/开放题展开参考答案与评分要点供自评。</p>
+<section class="module"><h2>1. Comprensione di testi scritti（阅读，权重 20%）</h2><div class="text"><h4>Testo — Saggio sull&#x27;Antropocene</h4><pre>Non viviamo più in un mondo che ci ospita; abitiamo una costruzione della quale siamo, insieme, architetti e detriti. L&#x27;Antropocene — questa etichetta geologica che suona come un epitaffio — segna il momento in cui l&#x27;umanità è diventata forza tellurica, capace di riplasmare atmosfere e fondali. E tuttavia, proprio mentre celebrano il trionfo della tecnica, le nostre società scoprono di essere ostaggi del proprio successo. L&#x27;etica del rapporto uomo-natura non può più essere un accessorio della coscienza: è la grammatica stessa della sopravvivenza. Negare tale dipendenza è la forma più raffinata di antropocentrismo, quello che confonde il dominio con la libertà.</pre></div><div class="items"><div class="q-item" data-type="mc" data-correct="3" data-ctext="il momento in cui l&#x27;uomo è forza tellurica"><p class="q-stem">1. (dettaglio) L&#x27;Antropocene è definito come…</p><div class="opts"><label class="opt"><input type="radio" name="r0" value="0"> una religione</label><label class="opt"><input type="radio" name="r0" value="1"> un errore</label><label class="opt"><input type="radio" name="r0" value="2"> un&#x27;era glaciale</label><label class="opt"><input type="radio" name="r0" value="3"> il momento in cui l&#x27;uomo è forza tellurica</label></div></div><div class="q-item" data-type="mc" data-correct="3" data-ctext="creatore e rifiuto di ciò che crea"><p class="q-stem">2. (metafora) «architetti e detriti» suggerisce che l&#x27;uomo è…</p><div class="opts"><label class="opt"><input type="radio" name="r1" value="0"> antico</label><label class="opt"><input type="radio" name="r1" value="1"> solo creatore</label><label class="opt"><input type="radio" name="r1" value="2"> innocente</label><label class="opt"><input type="radio" name="r1" value="3"> creatore e rifiuto di ciò che crea</label></div></div><div class="q-item" data-type="mc" data-correct="3" data-ctext="ironico e ammonitore"><p class="q-stem">3. (ironia/tono) «epitaffio» e «trionfo della tecnica» rivelano un tono…</p><div class="opts"><label class="opt"><input type="radio" name="r2" value="0"> comico</label><label class="opt"><input type="radio" name="r2" value="1"> celebrativo</label><label class="opt"><input type="radio" name="r2" value="2"> ingenuo</label><label class="opt"><input type="radio" name="r2" value="3"> ironico e ammonitore</label></div></div><div class="q-item" data-type="mc" data-correct="2" data-ctext="un errore che confonde dominio e libertà"><p class="q-stem">4. (posizione autore) L&#x27;autore ritiene l&#x27;antropocentrismo…</p><div class="opts"><label class="opt"><input type="radio" name="r3" value="0"> una liberazione</label><label class="opt"><input type="radio" name="r3" value="1"> irrilevante</label><label class="opt"><input type="radio" name="r3" value="2"> un errore che confonde dominio e libertà</label><label class="opt"><input type="radio" name="r3" value="3"> una soluzione</label></div></div><div class="q-item" data-type="mc" data-correct="3" data-ctext="strutturale e necessaria"><p class="q-stem">5. (inferenza) «grammatica della sopravvivenza» significa che l&#x27;etica è…</p><div class="opts"><label class="opt"><input type="radio" name="r4" value="0"> opzionale</label><label class="opt"><input type="radio" name="r4" value="1"> ornamentale</label><label class="opt"><input type="radio" name="r4" value="2"> superflua</label><label class="opt"><input type="radio" name="r4" value="3"> strutturale e necessaria</label></div></div></div></section><section class="module"><h2>2. Produzione di testi scritti（写作，权重 30%）</h2><div class="items"><div class="q-item q-subj" data-type="write"><p class="q-stem"><b>Compito 1 — Saggio / articolo（二选一，约 250 词）</b><br>a) &quot;L&#x27;Antropocene ci obbliga a ripensare l&#x27;etica del rapporto uomo-natura&quot;: sviluppa una tesi argomentata. b) Redigi un &quot;policy brief&quot; per un ente pubblico: tre raccomandazioni etiche per le politiche ambientali.<br><i>字数：约 250 词</i></p><textarea class="ans" rows="9" placeholder="La tua risposta..."></textarea><div class="ref" hidden><b>写作范例：</b><br>L&#x27;Antropocene ci obbliga a ripensare l&#x27;etica del rapporto uomo-natura
+L&#x27;ingresso nell&#x27;Antropocene segna la fine di un&#x27;illusione: quella di un mondo esterno, silente e disponibile, su cui l&#x27;umano potesse esercitare un dominio senza conseguenze. Oggi sappiamo che non abitiamo la natura dal di fuori, ma ne siamo tessuto. Questa consapevolezza impone un ribaltamento etico: non più padroni, ma custodi provvisori. Un&#x27;etica rinnovata deve innanzitutto riconoscere i limiti planetari come vincolo, non come ostacolo allo sviluppo. In secondo luogo, deve ampliare la comunità morale oltre l&#x27;umano, includendo ecosistemi e generazioni future cui non possiamo parlare, ma cui dobbiamo giustizia. Infine, richiede coerenza tra sapere e agire: denunciare il disastro senza mutare stili di vita è la forma più seducente di ipocrisia. La sostenibilità, dunque, non è tecnica applicata all&#x27;etica, ma etica divenuta condizione della tecnica. Solo accettando la nostra fragilità potremo abitare con misura il pianeta che ci ospita.</div></div><div class="q-item q-subj" data-type="write"><p class="q-stem"><b>Compito 2 — Seconda prova（评论，80–100 词）</b><br>Scrivi una breve recensione critica del testo in lettura, giudicandone efficacia retorica e posizione etica.<br><i>字数：80–100 词</i></p><textarea class="ans" rows="9" placeholder="La tua risposta..."></textarea><div class="ref" hidden><b>写作范例：</b><br>Il saggio in lettura colpisce per la densità metaforica: &quot;architetti e detriti&quot; riduce in immagine la contraddizione dell&#x27;umano contemporaneo. Il tono, tra ironia e ammonimento, evita il facile catastrofismo e costruisce invece un argomento fermo: l&#x27;antropocentrismo confonde dominio e libertà. La posizione etica — l&#x27;etica come grammatica della sopravvivenza — è convincente, benché il testo resti sul piano filosofico e poco tradotto in policy. Nel complesso, un testo retoricamente efficace e provocatorio.</div></div></div></section><section class="module"><h2>3. Competenza linguistica（语言能力，权重 10%）</h2><h3>C.1 — Cloze senza opzioni（无选项完形，共 23 空）</h3><div class="q-item" data-type="cloze"><div class="cloze-text"><span>Non viviamo più in un mondo che</span><input class="blank" type="text" size="9" data-correct="ci"><span>ospita; abitiamo una costruzione della</span><input class="blank" type="text" size="9" data-correct="quale"><span>siamo, insieme, architetti e detriti. L&#x27;Antropocene — etichetta</span><input class="blank" type="text" size="9" data-correct="che"><span>suona come un epitaffio — segna il momento in cui l&#x27;umanità è diventata forza tellurica, capace</span><input class="blank" type="text" size="9" data-correct="di"><span>riplasmare atmosfere e fondali. E tuttavia, proprio</span><input class="blank" type="text" size="9" data-correct="mentre"><span>celebrano il trionfo della tecnica, le nostre società scoprono di essere ostaggi del proprio successo. L&#x27;etica del rapporto uomo-natura non può più essere un accessorio della coscienza: è la grammatica</span><input class="blank" type="text" size="9" data-correct="stessa"><span>della sopravvivenza. Negare tale dipendenza è la forma</span><input class="blank" type="text" size="9" data-correct="più"><span>raffinata di antropocentrismo,</span><input class="blank" type="text" size="9" data-correct="che"><span>confonde il dominio con la libertà.</span><input class="blank" type="text" size="9" data-correct="Se"><span>l&#x27;umanità non ripensi tale rapporto, il pianeta continuerà a soffrire. È auspicabile che ciascuno</span><input class="blank" type="text" size="9" data-correct="riconosca"><span>(riconoscere) i propri limiti planetari. Chi</span><input class="blank" type="text" size="9" data-correct="istruisce"><span>(istruire) le nuove generazioni dovrà valorizzare la cura</span><input class="blank" type="text" size="9" data-correct="anziché"><span>la sopraffazione. Pur</span><input class="blank" type="text" size="9" data-correct="essendo"><span>(essere) fragili, non siamo impotenti. Un&#x27;etica rinnovata deve</span><input class="blank" type="text" size="9" data-correct="riconoscere"><span>(riconoscere) i vincoli come condizione, non</span><input class="blank" type="text" size="9" data-correct="come"><span>un ostacolo.</span><input class="blank" type="text" size="9" data-correct="Con"><span>più misura abitiamo il pianeta, tanto più ne preserviamo la fecondità. La tecnica,</span><input class="blank" type="text" size="9" data-correct="applicata"><span>(applicare) senza saggezza, rischia di tradirci.</span><input class="blank" type="text" size="9" data-correct="Oltre"><span>la retorica, occorre coerenza tra sapere e agire.</span><input class="blank" type="text" size="9" data-correct="Denunciare"><span>il disastro senza mutare stili di vita è la forma più seducente di ipocrisia. Accettando</span><input class="blank" type="text" size="9" data-correct="la"><span>nostra fragilità potremo abitare con misura il pianeta che ci ospita. Tale consapevolezza</span><input class="blank" type="text" size="9" data-correct="deve"><span>(dovere) tradursi in policy concrete.</span><input class="blank" type="text" size="9" data-correct="Da"><span>essa dipende la credibilità delle istituzioni.</span><input class="blank" type="text" size="9" data-correct="Per"><span>realizzare ciò servono passi audaci e lungimiranti.</span></div></div><h3>C.2 — Ristrutturazione / riscrittura di frasi（句子重组/改写）</h3><div class="items"><div class="q-item q-subj" data-type="rewrite"><p class="q-stem">1. Trasforma in forma passiva con agente: «L&#x27;Antropocene ha posto fine all&#x27;illusione del dominio.»</p><textarea class="ans" rows="3" placeholder="La tua risposta..."></textarea><div class="ref" hidden><b>参考答案：</b><br>L&#x27;illusione del dominio è stata posta fine dall&#x27;Antropocene.</div></div><div class="q-item q-subj" data-type="rewrite"><p class="q-stem">2. Riscrivi con «al punto che»: «L&#x27;uomo domina la natura. La natura ne soffre.»</p><textarea class="ans" rows="3" placeholder="La tua risposta..."></textarea><div class="ref" hidden><b>参考答案：</b><br>L&#x27;uomo domina la natura al punto che questa ne soffre.</div></div><div class="q-item q-subj" data-type="rewrite"><p class="q-stem">3. Unisci con un participio presente: «L&#x27;autore denuncia l&#x27;antropocentrismo. Egli confonde dominio e libertà.»</p><textarea class="ans" rows="3" placeholder="La tua risposta..."></textarea><div class="ref" hidden><b>参考答案：</b><br>Denunciando l&#x27;antropocentrismo, l&#x27;autore confonde dominio e libertà.</div></div><div class="q-item q-subj" data-type="rewrite"><p class="q-stem">4. Esprimi con il periodo ipotetico (II tipo): «Cambiamo stili di vita, dunque il pianeta respira.»</p><textarea class="ans" rows="3" placeholder="La tua risposta..."></textarea><div class="ref" hidden><b>参考答案：</b><br>Se cambiassimo stili di vita, il pianeta respirerebbe.</div></div><div class="q-item q-subj" data-type="rewrite"><p class="q-stem">5. Riscrivi con «a meno che»: «Cambiamo subito. Perdiamo tutto.»</p><textarea class="ans" rows="3" placeholder="La tua risposta..."></textarea><div class="ref" hidden><b>参考答案：</b><br>A meno che non cambiamo subito, perderemo tutto.</div></div><div class="q-item q-subj" data-type="rewrite"><p class="q-stem">6. Trasforma in forma passiva: «Non dobbiamo negare la dipendenza.»</p><textarea class="ans" rows="3" placeholder="La tua risposta..."></textarea><div class="ref" hidden><b>参考答案：</b><br>La dipendenza non deve essere negata.</div></div><div class="q-item q-subj" data-type="rewrite"><p class="q-stem">7. Riscrivi con «in quanto»: «L&#x27;etica è necessaria. L&#x27;etica fonda la sopravvivenza.»</p><textarea class="ans" rows="3" placeholder="La tua risposta..."></textarea><div class="ref" hidden><b>参考答案：</b><br>L&#x27;etica è necessaria, in quanto fonda la sopravvivenza.</div></div></div><h3>C.3 — Forma della parola / modo verbale（词形/语式填空）</h3><div class="items"><div class="q-item" data-type="cloze"><span>1. Sostantivo da «dipendere»: la </span><input class="blank" type="text" size="11" data-correct="dipendenza"><span> (dipendenza).</span></div><div class="q-item" data-type="cloze"><span>2. Aggettivo da «etica»: un approccio </span><input class="blank" type="text" size="11" data-correct="etico"><span> (etico).</span></div><div class="q-item" data-type="cloze"><span>3. Avverbio da «rapido»: agire </span><input class="blank" type="text" size="11" data-correct="rapidamente"><span> (rapidamente).</span></div><div class="q-item" data-type="cloze"><span>4. Opposto concettuale di «antropocentrismo»: </span><input class="blank" type="text" size="11" data-correct="ecocentrismo"><span> (ecocentrismo).</span></div><div class="q-item" data-type="cloze"><span>5. È necessario che l&#x27;umanità </span><input class="blank" type="text" size="11" data-correct="riconosca"><span> (riconoscere) i propri limiti planetari.</span></div><div class="q-item" data-type="cloze"><span>6. Se avessimo agito prima, oggi </span><input class="blank" type="text" size="11" data-correct="ci sarebbero"><span> (esserci) meno disastri.</span></div><div class="q-item" data-type="cloze"><span>7. La tecnica, </span><input class="blank" type="text" size="11" data-correct="applicata"><span> (applicare) senza saggezza, rischia di tradirci.</span></div><div class="q-item" data-type="cloze"><span>8. Non </span><input class="blank" type="text" size="11" data-correct="ostante"><span> (ostante / ostante che) i progressi, il declino continua.</span></div></div></section><section class="module"><h2>4. Comprensione di testi orali（听力，权重 15%）</h2><div class="audio-block"><h4>🎧 Dibattito — Antropocene ed etica</h4><audio controls preload="none" src="audio/C2_0.mp3" type="audio/mpeg"></audio><details class="transcript"><summary><span class="t-closed">📝 显示听力原文</span><span class="t-open">📝 隐藏听力原文</span></summary><pre>Relatore: L&#x27;Antropocene non è una scoperta, è una resa di conti. Abbiamo trattato il pianeta come un magazzino infinito, e ora la fattura arriva. Chi invoca il dominio della natura confonde il potere con la saggezza. La vera etica non chiede di tornare indietro, ma di abitare con misura. L&#x27;audience deve capire: non siamo padroni, siamo ospiti provvisori.</pre></details></div><div class="items"><div class="q-item" data-type="mc" data-correct="1" data-ctext="una resa di conti"><p class="q-stem">1. (tema) Il relatore definisce l&#x27;Antropocene…</p><div class="opts"><label class="opt"><input type="radio" name="l0" value="0"> un errore giovane</label><label class="opt"><input type="radio" name="l0" value="1"> una resa di conti</label><label class="opt"><input type="radio" name="l0" value="2"> una scoperta</label><label class="opt"><input type="radio" name="l0" value="3"> un successo</label></div></div><div class="q-item" data-type="mc" data-correct="1" data-ctext="critico"><p class="q-stem">2. (atteggiamento) Verso il &quot;dominio della natura&quot; è…</p><div class="opts"><label class="opt"><input type="radio" name="l1" value="0"> indifferente</label><label class="opt"><input type="radio" name="l1" value="1"> critico</label><label class="opt"><input type="radio" name="l1" value="2"> favorevole</label><label class="opt"><input type="radio" name="l1" value="3"> entusiasta</label></div></div><div class="q-item" data-type="mc" data-correct="3" data-ctext="paghiamo le conseguenze"><p class="q-stem">3. (inferenza) «fattura arriva» significa…</p><div class="opts"><label class="opt"><input type="radio" name="l2" value="0"> guadagniamo</label><label class="opt"><input type="radio" name="l2" value="1"> vendiamo</label><label class="opt"><input type="radio" name="l2" value="2"> nulla</label><label class="opt"><input type="radio" name="l2" value="3"> paghiamo le conseguenze</label></div></div><div class="q-item q-subj" data-type="open"><p class="q-stem">4. (open) Secondo il relatore, chi siamo rispetto al pianeta?</p><textarea class="ans" rows="2" placeholder="La tua risposta..."></textarea><div class="ref" hidden><b>Risposta di riferimento：</b><br>Non siamo padroni, siamo ospiti provvisori.</div></div></div></section><section class="module"><h2>5. Prova orale（口语，权重 25%）</h2><div class="items"><div class="q-item q-oral" data-type="oral"><p class="q-stem">抽象话题（哲学 / 艺术 / 社会伦理）演讲 + 批判性质疑回应。
+Task：① 准备 3 分钟演讲：&quot;L&#x27;Antropocene ha concluso l&#x27;era dell&#x27;antropocentrismo?&quot;；② 考官提出质疑（es. &quot;Ma senza tecnica non sopravviviamo: è davvero finita l&#x27;idea di dominio?&quot;），你需批判性地回应并捍卫立场。</p><div class="oral-scoring"><div class="score-head">📋 评分维度 · Criteri di valutazione（满分 50 分）</div><ul class="dims"><li><b>Pronuncia 发音</b> — 发音精准，学术语域自如</li><li><b>Fluenza 流利度</b> — 演讲连贯，抽象概念流转自然</li><li><b>Grammatica 语法</b> — 复杂句法准确（虚拟 / 条件 / 被动 / 关系）</li><li><b>Contenuto 内容</b> — 抽象概念清晰，词汇精准（tellurico, provvisorio, misura）</li><li><b>Pensiero critico 思辨</b> — 批判性回应质疑，逻辑自洽有深度</li></ul><div class="rubric-note"><b>评分说明：</b>① 演讲结构严谨、抽象概念清晰；② 语域学术、词汇精准（tellurico, provvisorio, misura）；③ 批判性回应质疑、逻辑自洽；④ 语法复杂且准确（虚拟 / 条件 / 被动 / 关系）；⑤ 流利度与思辨深度。</div></div><div class="oral-ref"><div class="ref-head">🗣️ 参考答案 <span class="ref-it">Risposta di riferimento</span></div><audio controls preload="none" src="audio/C2_oral_0.mp3" type="audio/mpeg"></audio><details class="otranscript"><summary><span class="o-closed">📝 显示参考答案原文</span><span class="o-open">📝 隐藏参考答案原文</span></summary><pre>L&#x27;Antropocene non ha concluso l&#x27;era dell&#x27;antropocentrismo: ne ha soltanto rivelato, con violenza, la crisi. Siamo diventati una forza tellurica, capaci di riplasmare atmosfere e fondali, eppure continuiamo a confondere il dominio con la libertà. L&#x27;idea che la natura sia un magazzino infinito a nostra disposizione non è morta; si è solo tradotta in una gestione più tecnica, più efficiente, ma non più umile.
+
+A chi obietta che senza tecnica non sopravviviamo, rispondo: la tecnica senza saggezza ci tradisce. Non serve tornare indietro né rinnegare la conoscenza; serve abitare con misura. L&#x27;etica non è un accessorio della coscienza, è la grammatica stessa della sopravvivenza. Negare la nostra dipendenza dal vivente è la forma più raffinata di antropocentrismo.
+
+Dunque l&#x27;Antropocene ci consegna un paradosso: proprio mentre celebrano il trionfo della tecnica, le nostre società scoprono di essere ostaggi del proprio successo. La risposta non è il dominio, ma la custodia provvisoria. Non siamo padroni del pianeta; siamo ospiti, e ospiti consapevoli. Fino a che non accetteremo la nostra fragilità — ontologica prima che materiale — l&#x27;idea di dominio resterà, pericolosamente, intatta. Solo misurando le nostre pretese potremo preservare la fecondità di ciò che ci ospita.</pre></details></div></div></div></section>
+<button id="btn-check" onclick="verifica()">Verifica le risposte（提交判分）</button>
+<button id="btn-reset" hidden onclick="resetta()">Ricomincia（重做）</button>
+<div id="result" hidden></div>
+</main>
+<script>var SUBJMAX=50;
+
+function norm(s){return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]/g,'');}
+function gradeOf(p){if(p>=85)return['Eccellente','#1b7a3d'];if(p>=70)return['Buono','#2e7d32'];if(p>=55)return['Discreto','#b8860b'];if(p>=40)return['Insufficiente','#c0392b'];return['Grave','#7b1e2b'];}
+function verifica(){
+  var items=document.querySelectorAll('.q-item');
+  var score=0,total=0;
+  items.forEach(function(el){
+    var t=el.dataset.type;
+    if(t==='mc'||t==='tf'||t==='match'){
+      total++;
+      var ok=false,corr=el.dataset.correct;
+      if(t==='match'){var sel=el.querySelector('select');if(sel&&sel.value===corr)ok=true;}
+      else{var inp=el.querySelector('input:checked');if(inp&&inp.value===corr)ok=true;}
+      el.classList.add(ok?'correct':'wrong');
+      var n=document.createElement('div');n.className='q-note '+(ok?'ok':'no');
+      n.textContent=ok?'✅ Corretto':'❌ Risposta corretta: '+el.dataset.ctext;
+      el.appendChild(n);
+      el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;});
+    } else if(t==='cloze'){
+      el.querySelectorAll('input.blank').forEach(function(inp){
+        total++;
+        var v=norm(inp.value);
+        var ok2=v.length>0 && v.indexOf(norm(inp.dataset.correct))>=0;
+        if(ok2)score++;
+        inp.classList.add(ok2?'correct':'wrong');
+        if(!ok2){var s=document.createElement('span');s.className='anshint';s.textContent=' ✓ '+inp.dataset.correct;inp.insertAdjacentElement('afterend',s);}
+        inp.disabled=true;
+      });
+    }
+  });
+  document.querySelectorAll('.q-subj').forEach(function(el){var r=el.querySelector('.ref');if(r)r.hidden=false;});
+  var pct= total? Math.round(score/total*100):0;
+  var g=gradeOf(pct);
+  var box=document.getElementById('result');
+  box.hidden=false;
+  box.innerHTML='<div class="res-score">客观题正确率：<b>'+score+' / '+total+'</b> （'+pct+'%）</div>'+
+    '<div class="res-grade" style="background:'+g[1]+'">'+g[0]+'</div>'+
+    '<div class="res-note">写作 / 口语 / 改写 / 开放题请对照上方参考答案与评分要点自评（本卷主观题满分 '+SUBJMAX+' 分）。</div>';
+  box.scrollIntoView({behavior:'smooth'});
+  document.getElementById('btn-check').hidden=true;
+  document.getElementById('btn-reset').hidden=false;
+}
+function resetta(){location.reload();}
+// 单一播放：播放任意音频时自动打断其他正在播放的音频，避免重叠
+document.addEventListener('play', function(e){
+  if(e.target && e.target.tagName === 'AUDIO'){
+    document.querySelectorAll('audio').forEach(function(a){ if(a!==e.target) a.pause(); });
+  }
+}, true);
+</script>
+</body>
+</html>

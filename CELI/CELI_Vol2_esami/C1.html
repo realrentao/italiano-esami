@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CELI C1 — CELI 4</title>
+<style>
+:root{--wine:#7b1e2b;--wine2:#a83246;--ink:#23211f;--paper:#fbf8f4;--line:#e4ddd2;--ok:#1b7a3d;--no:#c0392b;}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);background:var(--paper);line-height:1.65}
+header.top{background:linear-gradient(135deg,var(--wine),var(--wine2));color:#fff;padding:26px 20px;box-shadow:0 2px 10px rgba(0,0,0,.15)}
+header.top .back{color:#ffd9df;text-decoration:none;font-size:14px}
+header.top .ttl{font-size:26px;font-weight:800;margin-top:6px}
+header.top .ttl .lvl{display:inline-block;background:#fff;color:var(--wine);border-radius:8px;padding:2px 10px;margin-right:10px;font-size:20px}
+header.top .sub{opacity:.9;margin-top:4px;font-size:15px}
+main{max-width:880px;margin:0 auto;padding:24px 18px 120px}
+section.module{margin:30px 0;background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+section.module h2{margin:0 0 14px;color:var(--wine);font-size:20px;border-bottom:2px solid var(--line);padding-bottom:8px}
+section.module h3{color:#444;font-size:16px;margin:22px 0 10px}
+.text{background:#f6f1e9;border-left:4px solid var(--wine);border-radius:8px;padding:12px 14px;margin:12px 0}
+.text h4{margin:0 0 6px;font-size:14px;color:var(--wine)}
+pre{white-space:pre-wrap;margin:0;font-family:"Courier New",monospace;font-size:14px}
+.items{margin-top:14px}
+.q-item{margin:14px 0;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fffdf9}
+.q-item.correct{border-color:var(--ok);background:#f1faf3}
+.q-item.wrong{border-color:var(--no);background:#fdf1f0}
+.q-stem{margin:0 0 8px;font-weight:600}
+.opts{display:flex;flex-direction:column;gap:6px}
+.opt{display:flex;align-items:center;gap:8px;cursor:pointer;padding:4px 6px;border-radius:6px}
+.opt:hover{background:#f3ede3}
+.match-sel{font-size:15px;padding:5px 8px;border-radius:6px;border:1px solid #bbb;margin-top:4px}
+.blank{font-size:15px;padding:3px 6px;border:1px solid #bbb;border-radius:6px;margin:0 4px}
+.blank.correct{border-color:var(--ok);background:#eafaf0}
+.blank.wrong{border-color:var(--no);background:#fdeceb}
+.anshint{color:var(--no);font-size:13px;margin-left:6px}
+textarea.ans{width:100%;font-size:15px;padding:10px;border:1px solid #ccc;border-radius:8px;font-family:inherit;resize:vertical}
+.q-subj .ref{margin-top:10px;padding:10px 12px;background:#eef6fb;border-left:4px solid #2a7fb8;border-radius:8px;font-size:14px}
+.q-note{margin-top:8px;font-weight:700;font-size:14px}
+.q-note.ok{color:var(--ok)} .q-note.no{color:var(--no)}
+.audio-block{background:#f0f4f7;border:1px solid #cfe0ea;border-radius:10px;padding:12px 14px;margin:12px 0}
+.audio-block h4{margin:0 0 8px;color:#1f5f80}
+audio{width:100%;margin-bottom:8px;display:block}
+.noaudio{color:#b06a00;font-weight:600}
+/* ---- 口语题评分系统 ---- */
+.q-oral{background:#fbf7ef;border:1px solid #ecd9b0;border-radius:12px;padding:16px 18px;margin:14px 0}
+.q-oral .q-stem{margin:0 0 12px;font-size:15px;line-height:1.7;white-space:pre-wrap}
+.oral-scoring{background:#fff;border:1px solid #e7dcc4;border-radius:10px;padding:12px 14px;margin-bottom:12px}
+.score-head{font-weight:700;color:#9a6b00;margin-bottom:8px;font-size:14px}
+.dims{margin:0;padding-left:20px;font-size:14px;line-height:1.9}
+.dims li{margin-bottom:2px}
+.rubric-note{margin-top:8px;padding-top:8px;border-top:1px dashed #e0d3b6;font-size:13px;color:#5a4a2a;line-height:1.7}
+.oral-ref{background:#eef6fb;border:1px solid #cfe0ea;border-radius:10px;padding:12px 14px}
+.ref-head{font-weight:700;color:#1f5f80;margin-bottom:8px;font-size:14px}
+.ref-it{font-weight:400;color:#5b87a0;font-style:italic;font-size:12px}
+.oral-ref pre{margin:8px 0 0;white-space:pre-wrap;word-break:break-word;font-size:14px;line-height:1.75;background:#fff;border:1px solid #dce8f0;border-radius:8px;padding:10px 12px}
+/* 口语参考答案原文折叠 */
+.otranscript{margin-top:8px}
+.otranscript summary{cursor:pointer;color:#1f5f80;font-weight:600;font-size:13px;user-select:none;list-style:none}
+.otranscript summary::-webkit-details-marker{display:none}
+.otranscript .o-open{display:none}
+.otranscript[open] .o-closed{display:none}
+.otranscript[open] .o-open{display:inline}
+.transcript{margin-top:10px}
+.transcript summary{cursor:pointer;color:#1f5f80;font-weight:600;font-size:14px;user-select:none;list-style:none}
+.transcript summary::-webkit-details-marker{display:none}
+.transcript summary:hover{text-decoration:underline}
+.transcript .t-open{display:none}
+.transcript[open] .t-closed{display:none}
+.transcript[open] .t-open{display:inline}
+.transcript[open] summary{margin-bottom:8px}
+.transcript pre{margin-top:0}
+#btn-check{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--wine);color:#fff;border:none;font-size:17px;font-weight:700;padding:13px 30px;border-radius:30px;cursor:pointer;box-shadow:0 4px 14px rgba(123,30,43,.4);z-index:10}
+#btn-check:hover{background:var(--wine2)}
+#btn-reset{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);margin-left:170px;background:#555;color:#fff;border:none;font-size:15px;padding:13px 22px;border-radius:30px;cursor:pointer;z-index:10}
+#result{margin-top:20px;padding:18px 20px;border-radius:12px;background:#fff;border:2px solid var(--wine);text-align:center}
+.res-score{font-size:18px;margin-bottom:10px}
+.res-grade{display:inline-block;color:#fff;font-weight:800;font-size:22px;padding:6px 22px;border-radius:10px;margin-bottom:8px}
+.res-note{font-size:14px;color:#555;margin-top:8px}
+.index-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-top:20px}
+.card{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:0 1px 4px rgba(0,0,0,.05);transition:.15s}
+.card:hover{transform:translateY(-3px);border-color:var(--wine)}
+.card .lvl{display:inline-block;background:var(--wine);color:#fff;border-radius:8px;padding:3px 12px;font-weight:800;font-size:18px}
+.card .nm{font-weight:700;margin:8px 0 4px;font-size:16px}
+.card .sb{font-size:13px;color:#666}
+.intro{max-width:880px;margin:24px auto;padding:0 18px;color:#555}
+</style>
+</head>
+<body>
+<header class="top">
+  <a href="index.html" class="back">← Indice CELI Vol.1</a>
+  <div class="ttl"><span class="lvl">C1</span> CELI 4</div>
+  <div class="sub">algoritmi e democrazia / identità digitale · 📱 数字时代、社交媒体与人工智能</div>
+</header>
+<main>
+<p class="intro">本卷主题：数字时代、社交媒体与人工智能。听力为模拟音频文本（由考官/录音播放），本页已用真人意大利语发音（edge-tts）生成音频，点击 ▶ 即可播放自测。提交后客观题自动判分，写作/口语/改写/开放题展开参考答案与评分要点供自评。</p>
+<section class="module"><h2>1. Comprensione di testi scritti（阅读）</h2><div class="text"><h4>Testo A — Saggio (registro formale)</h4><pre>Gli algoritmi che governano le nostre bacheche non sono neutri: incorporano scelte politiche e interessi economici. Quando una piattaforma decide cosa mostrarci, esercita una forma di potere invisibile. La democrazia presuppone cittadini informati; se l&#x27;informazione è filtrata da logiche di profitto, il dibattito pubblico si impoverisce. Non si tratta di censura esplicita, ma di una &quot;visibilità diseguale&quot; che favorisce ciò che genera click.</pre></div><div class="text"><h4>Testo B — Controargomento (tono polemico)</h4><pre>Chi grida all&#x27;algoritmo tiranno esagera. L&#x27;utente medio non è una vittima passiva: sceglie, ignora, disiscrive. La colpa non è del codice, ma della nostra pigrizia cognitiva. Restringere gli algoritmi per legge suona come paternalismo: meglio l&#x27;educazione critica che il controllo statale.</pre></div><div class="items"><div class="q-item" data-type="mc" data-correct="2" data-ctext="B. portatori di scelte e interessi"><p class="q-stem">1. Secondo il Testo A, gli algoritmi sono…</p><div class="opts"><label class="opt"><input type="radio" name="r0" value="0"> C. democratici</label><label class="opt"><input type="radio" name="r0" value="1"> A. neutri</label><label class="opt"><input type="radio" name="r0" value="2"> B. portatori di scelte e interessi</label><label class="opt"><input type="radio" name="r0" value="3"> D. gratuiti</label></div></div><div class="q-item" data-type="mc" data-correct="0" data-ctext="B. il profitto favorisce certi contenuti"><p class="q-stem">2. La &quot;visibilità diseguale&quot; significa che…</p><div class="opts"><label class="opt"><input type="radio" name="r1" value="0"> B. il profitto favorisce certi contenuti</label><label class="opt"><input type="radio" name="r1" value="1"> C. non c&#x27;è censura</label><label class="opt"><input type="radio" name="r1" value="2"> D. lo Stato controlla</label><label class="opt"><input type="radio" name="r1" value="3"> A. tutti vedono tutto</label></div></div><div class="q-item" data-type="mc" data-correct="2" data-ctext="B. polemico/ironico"><p class="q-stem">3. Il tono del Testo B è…</p><div class="opts"><label class="opt"><input type="radio" name="r2" value="0"> D. narrativo</label><label class="opt"><input type="radio" name="r2" value="1"> C. poetico</label><label class="opt"><input type="radio" name="r2" value="2"> B. polemico/ironico</label><label class="opt"><input type="radio" name="r2" value="3"> A. accademico neutrale</label></div></div><div class="q-item" data-type="mc" data-correct="2" data-ctext="B. la pigrizia dell&#x27;utente"><p class="q-stem">4. Chi, per il Testo B, è responsabile?</p><div class="opts"><label class="opt"><input type="radio" name="r3" value="0"> D. le aziende</label><label class="opt"><input type="radio" name="r3" value="1"> A. il codice</label><label class="opt"><input type="radio" name="r3" value="2"> B. la pigrizia dell&#x27;utente</label><label class="opt"><input type="radio" name="r3" value="3"> C. lo Stato</label></div></div><div class="q-item" data-type="tf" data-correct="0" data-ctext="Falso"><p class="q-stem">5. Il Testo A parla di censura esplicita.</p><div class="opts"><label class="opt"><input type="radio" name="r4" value="0"> Falso</label><label class="opt"><input type="radio" name="r4" value="1"> Vero</label></div></div><div class="q-item" data-type="tf" data-correct="1" data-ctext="Falso"><p class="q-stem">6. Il Testo B propone il controllo statale sugli algoritmi.</p><div class="opts"><label class="opt"><input type="radio" name="r5" value="0"> Vero</label><label class="opt"><input type="radio" name="r5" value="1"> Falso</label></div></div><div class="q-item" data-type="tf" data-correct="0" data-ctext="Vero"><p class="q-stem">7. Entrambi i testi parlano di democrazia e informazione.</p><div class="opts"><label class="opt"><input type="radio" name="r6" value="0"> Vero</label><label class="opt"><input type="radio" name="r6" value="1"> Falso</label></div></div><div class="q-item" data-type="tf" data-correct="1" data-ctext="Vero"><p class="q-stem">8. Il Testo A suggerisce che il dibattito pubblico soffre.</p><div class="opts"><label class="opt"><input type="radio" name="r7" value="0"> Falso</label><label class="opt"><input type="radio" name="r7" value="1"> Vero</label></div></div></div></section><section class="module"><h2>2. Produzione di testi scritti（写作）</h2><div class="items"><div class="q-item q-subj" data-type="write"><p class="q-stem"><b>Compito (a) — Riassunto（摘要，60–80 词）</b><br>Sintetizza le due posizioni dei testi letti in italiano corretto (tono accademico vs polemico, algoritmi e democrazia).<br><i>字数：60–80 词</i></p><textarea class="ans" rows="9" placeholder="La tua risposta..."></textarea><div class="ref" hidden><b>写作范例：</b><br>Il Testo A sostiene che gli algoritmi esercitano un potere invisibile e impoveriscono il dibattito pubblico filtrando l&#x27;informazione per profitto. Il Testo B obietta che l&#x27;utente è attivo e responsabile; auspica educazione critica anziché controllo statale. Le due posizioni divergono su causa (codice vs utente) e rimedio (regola vs formazione).</div></div><div class="q-item q-subj" data-type="write"><p class="q-stem"><b>Compito (b) — Saggio / articolo（议论文，140–170 词）</b><br>&quot;L&#x27;algoritmo minaccia o rafforza la democrazia?&quot; Sviluppa la tua tesi con argomenti e una riflessione sull&#x27;identità digitale.<br><i>字数：140–170 词</i></p><textarea class="ans" rows="9" placeholder="La tua risposta..."></textarea><div class="ref" hidden><b>写作范例：</b><br>L&#x27;algoritmo non è un giudice neutrale: decide, silenziosamente, cosa merita attenzione. In una democrazia, questo potere privato mina l&#x27;autodeterminazione dei cittadini. Tuttavia, il rimedio non è lo Stato che sostituisce il padrone, ma la trasparenza e l&#x27;alfabetizzazione digitale. L&#x27;identità digitale, poi, rischia di escludere chi resta analfabeta tecnologico: un diritto sulla carta, una barriera nella pratica. Serve portabilità dei dati e diritto all&#x27;oblio, perché la cittadinanza non si misura in clic.</div></div></div></section><section class="module"><h2>3. Competenza linguistica（语言能力）</h2><h3>C.1 — Cloze senza opzioni（无选项完形，共 23 空）</h3><div class="q-item" data-type="cloze"><div class="cloze-text"><span>Gli algoritmi</span><input class="blank" type="text" size="9" data-correct="che"><span>governano le nostre bacheche non</span><input class="blank" type="text" size="9" data-correct="sono"><span>affatto neutri: incorporano scelte</span><input class="blank" type="text" size="9" data-correct="a"><span>cui non possiamo sottrarci. Se</span><input class="blank" type="text" size="9" data-correct="le"><span>piattaforme decidessero in modo opaco,</span><input class="blank" type="text" size="9" data-correct="il"><span>dibattito pubblico si impoverirebbe. È necessario</span><input class="blank" type="text" size="9" data-correct="che"><span>i cittadini siano informati</span><input class="blank" type="text" size="9" data-correct="affinché"><span>l&#x27;informazione non venga filtrata</span><input class="blank" type="text" size="9" data-correct="da"><span>logiche di profitto.</span><input class="blank" type="text" size="9" data-correct="Si"><span>si tratta di una «visibilità diseguale»</span><input class="blank" type="text" size="9" data-correct="che"><span>favorisce ciò</span><input class="blank" type="text" size="9" data-correct="che"><span>genera clic,</span><input class="blank" type="text" size="9" data-correct="perciò"><span>serve maggiore trasparenza.
+
+L&#x27;identità digitale</span><input class="blank" type="text" size="9" data-correct="è"><span>un nuovo certificato</span><input class="blank" type="text" size="9" data-correct="di"><span>cittadinanza: senza SPID o CIE non</span><input class="blank" type="text" size="9" data-correct="si"><span>accede</span><input class="blank" type="text" size="9" data-correct="a"><span>sanità, fisco e voto.</span><input class="blank" type="text" size="9" data-correct="Il"><span>rischio è l&#x27;esclusione</span><input class="blank" type="text" size="9" data-correct="di"><span>chi non ha competenze resta fuori</span><input class="blank" type="text" size="9" data-correct="dalla"><span>democrazia.</span><input class="blank" type="text" size="9" data-correct="Tuttavia"><span>è necessario fare attenzione: centralizzare i dati crea</span><input class="blank" type="text" size="9" data-correct="un"><span>punto debole. Serve</span><input class="blank" type="text" size="9" data-correct="la"><span>portabilità dei dati</span><input class="blank" type="text" size="9" data-correct="e"><span>diritto all&#x27;oblio.</span></div></div><h3>C.2 — Ristrutturazione / riscrittura di frasi（句子重组/改写）</h3><div class="items"><div class="q-item q-subj" data-type="rewrite"><p class="q-stem">1. L&#x27;algoritmo filtra le notizie. L&#x27;utente non se ne accorge. Il dibattito si impoverisce.</p><textarea class="ans" rows="3" placeholder="La tua risposta..."></textarea><div class="ref" hidden><b>参考答案：</b><br>L&#x27;algoritmo filtra le notizie senza che l&#x27;utente se ne accorga, così il dibattito si impoverisce.</div></div><div class="q-item q-subj" data-type="rewrite"><p class="q-stem">2. La piattaforma decide cosa mostrare. Noi non possiamo intervenire. Serve una legge.</p><textarea class="ans" rows="3" placeholder="La tua risposta..."></textarea><div class="ref" hidden><b>参考答案：</b><br>Poiché la piattaforma decide cosa mostrare e noi non possiamo intervenire, serve una legge.</div></div><div class="q-item q-subj" data-type="rewrite"><p class="q-stem">3. L&#x27;utente è attivo. Sceglie e disiscrive. Il codice non è colpevole.</p><textarea class="ans" rows="3" placeholder="La tua risposta..."></textarea><div class="ref" hidden><b>参考答案：</b><br>Sebbene l&#x27;utente sia attivo, scelga e disiscriva, il codice non è colpevole.</div></div><div class="q-item q-subj" data-type="rewrite"><p class="q-stem">4. Centralizziamo i dati. Creiamo un punto debole. La sicurezza diminuisce.</p><textarea class="ans" rows="3" placeholder="La tua risposta..."></textarea><div class="ref" hidden><b>参考答案：</b><br>Centralizzando i dati creiamo un punto debole, per cui la sicurezza diminuisce.</div></div><div class="q-item q-subj" data-type="rewrite"><p class="q-stem">5. Il cittadino è informato. Difende i suoi diritti. La democrazia funziona.</p><textarea class="ans" rows="3" placeholder="La tua risposta..."></textarea><div class="ref" hidden><b>参考答案：</b><br>Se il cittadino è informato, difende i suoi diritti e la democrazia funziona.</div></div><div class="q-item q-subj" data-type="rewrite"><p class="q-stem">6. L&#x27;identità digitale esclude i deboli. Lo Stato deve garantire l&#x27;accesso. È una questione di giustizia.</p><textarea class="ans" rows="3" placeholder="La tua risposta..."></textarea><div class="ref" hidden><b>参考答案：</b><br>Poiché l&#x27;identità digitale esclude i deboli, lo Stato deve garantire l&#x27;accesso: è una questione di giustizia.</div></div><div class="q-item q-subj" data-type="rewrite"><p class="q-stem">7. L&#x27;IA automatizza i processi. I posti di lavoro cambiano. Dobbiamo formarci.</p><textarea class="ans" rows="3" placeholder="La tua risposta..."></textarea><div class="ref" hidden><b>参考答案：</b><br>Siccome l&#x27;IA automatizza i processi e i posti di lavoro cambiano, dobbiamo formarci.</div></div></div><h3>C.3 — Forma della parola / modo verbale（词形/语式填空）</h3><div class="items"><div class="q-item" data-type="cloze"><span>1. Se gli algoritmi </span><input class="blank" type="text" size="11" data-correct="fossero"><span> (essere, cong. imperf.) trasparenti, capiremmo le scelte.</span></div><div class="q-item" data-type="cloze"><span>2. È urgente che il cittadino </span><input class="blank" type="text" size="11" data-correct="sia"><span> (essere, cong.) informato.</span></div><div class="q-item" data-type="cloze"><span>3. La legge </span><input class="blank" type="text" size="11" data-correct="è stata approvata"><span> (approvare, passivo) dal Parlamento.</span></div><div class="q-item" data-type="cloze"><span>4. Chi difende la libertà, </span><input class="blank" type="text" size="11" data-correct="lotta"><span> (lottare) per tutti.</span></div><div class="q-item" data-type="cloze"><span>5. Non solo filtrano, </span><input class="blank" type="text" size="11" data-correct="ma anche"><span> (ma anche / e anche) nascondono.</span></div><div class="q-item" data-type="cloze"><span>6. esercitare </span><input class="blank" type="text" size="11" data-correct="un potere"><span> (un potere / una potenza).</span></div><div class="q-item" data-type="cloze"><span>7. </span><input class="blank" type="text" size="11" data-correct="Nonostante"><span> (Nonostante / Malgrado di) il rischio, serve formazione.</span></div></div></section><section class="module"><h2>4. Comprensione di testi orali（听力）</h2><div class="audio-block"><h4>🎧 Intervista — Costituzionalista</h4><audio controls preload="none" src="audio/C1_0.mp3" type="audio/mpeg"></audio><details class="transcript"><summary><span class="t-closed">📝 显示听力原文</span><span class="t-open">📝 隐藏听力原文</span></summary><pre>L&#x27;identità digitale è il nuovo certificato di cittadinanza. Senza SPID o CIE, oggi non accedi a sanità, fisco, voto online. Il rischio è l&#x27;esclusione: chi non ha competenze resta fuori dalla democrazia. Ma attenzione: centralizzare i dati crea un punto debole. Serve portabilità dei dati e diritto all&#x27;oblio. La democrazia digitale non è automatizzare il voto, è garantire che ognuno conti davvero.</pre></details></div><div class="items"><div class="q-item" data-type="cloze"><span>1. L&#x27;identità digitale è il nuovo certificato di </span><input class="blank" type="text" size="11" data-correct="cittadinanza"><span>.</span></div><div class="q-item" data-type="cloze"><span>2. Senza SPID o CIE non si accede a sanità, fisco e </span><input class="blank" type="text" size="11" data-correct="voto"><span> online.</span></div><div class="q-item" data-type="cloze"><span>3. Il rischio è l&#x27;</span><input class="blank" type="text" size="11" data-correct="esclusione"><span>: chi non ha competenze resta fuori.</span></div><div class="q-item" data-type="cloze"><span>4. Servono </span><input class="blank" type="text" size="11" data-correct="portabilità"><span> dei dati e diritto all&#x27;oblio.</span></div><div class="q-item" data-type="tf" data-correct="0" data-ctext="Vero"><p class="q-stem">5. L&#x27;identità digitale è paragonata a un certificato di cittadinanza.</p><div class="opts"><label class="opt"><input type="radio" name="l4" value="0"> Vero</label><label class="opt"><input type="radio" name="l4" value="1"> Falso</label></div></div><div class="q-item" data-type="tf" data-correct="0" data-ctext="Falso"><p class="q-stem">6. Il voto online esiste già ovunque.</p><div class="opts"><label class="opt"><input type="radio" name="l5" value="0"> Falso</label><label class="opt"><input type="radio" name="l5" value="1"> Vero</label></div></div><div class="q-item" data-type="tf" data-correct="0" data-ctext="Falso"><p class="q-stem">7. Centralizzare i dati è sicuro secondo l&#x27;esperta.</p><div class="opts"><label class="opt"><input type="radio" name="l6" value="0"> Falso</label><label class="opt"><input type="radio" name="l6" value="1"> Vero</label></div></div></div></section><section class="module"><h2>5. Prova orale（口语）</h2><div class="items"><div class="q-item q-oral" data-type="oral"><p class="q-stem">带材料面试（长篇论述 + 深度讨论）。
+Materiale: breve articolo su &quot;algoritmi e polarizzazione politica&quot;（120 词）。
+Task：① 概述材料（2 分钟）；② 长篇论述：«L&#x27;IA minaccia o rafforza la democrazia?»（4 分钟）；③ 与考官深度讨论 identità digitale e diritti。</p><div class="oral-scoring"><div class="score-head">📋 评分维度 · Criteri di valutazione（满分 25 分）</div><ul class="dims"><li><b>Pronuncia 发音</b> — 发音精准，语调节奏自如</li><li><b>Fluenza 流利度</b> — 长篇论述流畅，衔接自然</li><li><b>Grammatica 语法</b> — 虚拟 / 条件 / 被动准确，句式丰富</li><li><b>Contenuto 内容</b> — 立场明确，词汇丰富（transizione, precarietà, tutela）</li><li><b>Interazione 互动</b> — 深度讨论中回应质疑，逻辑自洽</li></ul><div class="rubric-note"><b>评分说明：</b>C1 要求抽象论述、语域学术/正式、虚拟/条件娴熟、能应对质疑。满分 25，按 连贯/精确/深度/互动 评定。</div></div><div class="oral-ref"><div class="ref-head">🗣️ 参考答案 <span class="ref-it">Risposta di riferimento</span></div><audio controls preload="none" src="audio/C1_oral_0.mp3" type="audio/mpeg"></audio><details class="otranscript"><summary><span class="o-closed">📝 显示参考答案原文</span><span class="o-open">📝 隐藏参考答案原文</span></summary><pre>La mia tesi è che l&#x27;algoritmo non è uno strumento neutrale, ma esercita un potere invisibile sul dibattito democratico. Come sostiene il Testo A, filtra l&#x27;informazione per profitto e impoverisce la discussione pubblica; il Testo B obietta che l&#x27;utente è attivo e responsabile, e auspica educazione critica anziché controllo statale. A mio avviso, tuttavia, la libertà individuale non basta se l&#x27;architettura stessa è manipolatoria. L&#x27;identità digitale rischia poi di escludere chi non ha competenze. Propongo trasparenza degli algoritmi, portabilità dei dati e diritto all&#x27;oblio, perché la cittadinanza non si misura in clic.</pre></details></div></div></div></section>
+<button id="btn-check" onclick="verifica()">Verifica le risposte（提交判分）</button>
+<button id="btn-reset" hidden onclick="resetta()">Ricomincia（重做）</button>
+<div id="result" hidden></div>
+</main>
+<script>var SUBJMAX=50;
+
+function norm(s){return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]/g,'');}
+function gradeOf(p){if(p>=85)return['Eccellente','#1b7a3d'];if(p>=70)return['Buono','#2e7d32'];if(p>=55)return['Discreto','#b8860b'];if(p>=40)return['Insufficiente','#c0392b'];return['Grave','#7b1e2b'];}
+function verifica(){
+  var items=document.querySelectorAll('.q-item');
+  var score=0,total=0;
+  items.forEach(function(el){
+    var t=el.dataset.type;
+    if(t==='mc'||t==='tf'||t==='match'){
+      total++;
+      var ok=false,corr=el.dataset.correct;
+      if(t==='match'){var sel=el.querySelector('select');if(sel&&sel.value===corr)ok=true;}
+      else{var inp=el.querySelector('input:checked');if(inp&&inp.value===corr)ok=true;}
+      el.classList.add(ok?'correct':'wrong');
+      var n=document.createElement('div');n.className='q-note '+(ok?'ok':'no');
+      n.textContent=ok?'✅ Corretto':'❌ Risposta corretta: '+el.dataset.ctext;
+      el.appendChild(n);
+      el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;});
+    } else if(t==='cloze'){
+      el.querySelectorAll('input.blank').forEach(function(inp){
+        total++;
+        var v=norm(inp.value);
+        var ok2=v.length>0 && v.indexOf(norm(inp.dataset.correct))>=0;
+        if(ok2)score++;
+        inp.classList.add(ok2?'correct':'wrong');
+        if(!ok2){var s=document.createElement('span');s.className='anshint';s.textContent=' ✓ '+inp.dataset.correct;inp.insertAdjacentElement('afterend',s);}
+        inp.disabled=true;
+      });
+    }
+  });
+  document.querySelectorAll('.q-subj').forEach(function(el){var r=el.querySelector('.ref');if(r)r.hidden=false;});
+  var pct= total? Math.round(score/total*100):0;
+  var g=gradeOf(pct);
+  var box=document.getElementById('result');
+  box.hidden=false;
+  box.innerHTML='<div class="res-score">客观题正确率：<b>'+score+' / '+total+'</b> （'+pct+'%）</div>'+
+    '<div class="res-grade" style="background:'+g[1]+'">'+g[0]+'</div>'+
+    '<div class="res-note">写作 / 口语 / 改写 / 开放题请对照上方参考答案与评分要点自评（本卷主观题满分 '+SUBJMAX+' 分）。</div>';
+  box.scrollIntoView({behavior:'smooth'});
+  document.getElementById('btn-check').hidden=true;
+  document.getElementById('btn-reset').hidden=false;
+}
+function resetta(){location.reload();}
+// 单一播放：播放任意音频时自动打断其他正在播放的音频，避免重叠
+document.addEventListener('play', function(e){
+  if(e.target && e.target.tagName === 'AUDIO'){
+    document.querySelectorAll('audio').forEach(function(a){ if(a!==e.target) a.pause(); });
+  }
+}, true);
+</script>
+</body>
+</html>
