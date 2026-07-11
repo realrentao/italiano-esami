@@ -14,7 +14,7 @@ section.module h3{color:#444;font-size:16px;margin:22px 0 10px}
 /* ====== 模块题目说明气泡（每个板块开头一段说明） ====== */
 .mod-instr{margin:14px 0;padding:14px 18px;background:linear-gradient(135deg,#0f766e,#14b8a6);color:#fff;border-radius:14px;box-shadow:0 3px 12px rgba(15,118,110,.18)}
 .mod-instr-h{font-weight:800;font-size:16px;margin-bottom:6px;display:flex;align-items:center;gap:8px;letter-spacing:.2px}
-.mod-instr-h::before{content:"F4CB";font-size:18px}
+.mod-instr-h::before{content:"📋";font-size:18px}
 .mod-instr-b{font-size:14px;line-height:1.75;opacity:.96;white-space:pre-wrap}
 .text{background:#f6f1e9;border-left:4px solid var(--wine);border-radius:8px;padding:12px 14px;margin:12px 0}
 .text h4{margin:0 0 6px;font-size:14px;color:var(--wine)}
@@ -289,9 +289,7 @@ textarea.ans{width:100%;font-size:15px;padding:10px;border:1px solid #ccc;border
 1.Il　2.la　3.in　4.più　5.con　6.Quale　7.questo　8.i loro　9.di　10.ci　11.un　12.Quel　13.applaude　14.la　15.con　16.Troppo　17.da　18.Lo　19.giovani　20.un&#x27;　21.sono andato　22.avessi　23.suonavo　24.vengano　25.Finito　26.sarebbe annullato　27.organizzano　28.cantassi　29.Erano　30.siamo partiti　31.faranno　32.mangiavamo　33.è salito　34.potessi　35.sia　36.apriremo　37.piovesse　38.non sia venuto　39.ha scritto　40.arriveranno　41.A　42.B　43.B　44.A　45.A　46.A　47.A　48.A　49.A　50.A　51.A　52.A　53.A　54.A　55.A　56.c　57.a　58.b　59.f　60.e　61.d　62.g　63.h　64.i　65.j
 
 【Orale 口语】
-见上方评分要点。
-
-***</pre></section><button id="btn-check" onclick="verifica()">Verifica le risposte（提交判分）</button><button id="btn-reset" hidden onclick="resetta()">Ricomincia（重做）</button><div id="result" hidden></div></main><script>var SUBJMAX=20;
+见上方评分要点。</pre></section><button id="btn-check" onclick="verifica()">Verifica le risposte（提交判分）</button><button id="btn-reset" hidden onclick="resetta()">Ricomincia（重做）</button><div id="result" hidden></div></main><script>var SUBJMAX=20;
 function norm(s){return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]/g,'');}
 function gradeOf(p){if(p>=85)return['Eccellente','#1b7a3d'];if(p>=70)return['Buono','#2e7d32'];if(p>=55)return['Discreto','#b8860b'];if(p>=40)return['Insufficiente','#c0392b'];return['Grave','#7b1e2b'];}
 function verifica(){

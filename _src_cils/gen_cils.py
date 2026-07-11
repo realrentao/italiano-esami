@@ -31,7 +31,7 @@ section.module h3{color:#444;font-size:16px;margin:22px 0 10px}
 /* ====== 模块题目说明气泡（每个板块开头一段说明） ====== */
 .mod-instr{margin:14px 0;padding:14px 18px;background:linear-gradient(135deg,#0f766e,#14b8a6);color:#fff;border-radius:14px;box-shadow:0 3px 12px rgba(15,118,110,.18)}
 .mod-instr-h{font-weight:800;font-size:16px;margin-bottom:6px;display:flex;align-items:center;gap:8px;letter-spacing:.2px}
-.mod-instr-h::before{content:"\1F4CB";font-size:18px}
+.mod-instr-h::before{content:"📋";font-size:18px}
 .mod-instr-b{font-size:14px;line-height:1.75;opacity:.96;white-space:pre-wrap}
 .text{background:#f6f1e9;border-left:4px solid var(--wine);border-radius:8px;padding:12px 14px;margin:12px 0}
 .text h4{margin:0 0 6px;font-size:14px;color:var(--wine)}
@@ -214,6 +214,9 @@ def parse_key(key_text):
         mod = mod_from_label(label)
         if mod is None:
             continue
+        # 去掉 markdown 分隔线（*** / --- / ___），避免渲染成多余的乱码
+        content = '\n'.join(ln for ln in content.split('\n')
+                            if ln.strip() not in ('***', '---', '___', '* * *', '- - -'))
         raw[mod] += content.strip() + '\n'
         # 按 P1:/P2:/P3: 切分（CILS 语法模块常把若干子部分答案写在同一段，避免题号互相覆盖）
         segs = re.split(r'P([1-4])\s*[:：]', content)

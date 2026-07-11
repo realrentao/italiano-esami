@@ -14,7 +14,7 @@ section.module h3{color:#444;font-size:16px;margin:22px 0 10px}
 /* ====== 模块题目说明气泡（每个板块开头一段说明） ====== */
 .mod-instr{margin:14px 0;padding:14px 18px;background:linear-gradient(135deg,#0f766e,#14b8a6);color:#fff;border-radius:14px;box-shadow:0 3px 12px rgba(15,118,110,.18)}
 .mod-instr-h{font-weight:800;font-size:16px;margin-bottom:6px;display:flex;align-items:center;gap:8px;letter-spacing:.2px}
-.mod-instr-h::before{content:"F4CB";font-size:18px}
+.mod-instr-h::before{content:"📋";font-size:18px}
 .mod-instr-b{font-size:14px;line-height:1.75;opacity:.96;white-space:pre-wrap}
 .text{background:#f6f1e9;border-left:4px solid var(--wine);border-radius:8px;padding:12px 14px;margin:12px 0}
 .text h4{margin:0 0 6px;font-size:14px;color:var(--wine)}
@@ -220,9 +220,7 @@ Relatrice A: È onnivoro ma selettivo per esposizione.</pre></details></div></se
 1.che　2.cui　3.perché　4.da cui　5.il quale　6.che　7.mentre　8.dove　9.di cui　10.il quale　11.da cui　12.se　13.in cui　14.che　15.Benché　16.che　17.su cui　18.che　19.con cui　20.su cui　21.A　22.A　23.A　24.A　25.A　26.A　27.A　28.A　29.A　30.A　31.A　32.A　33.A　34.B　35.A　36.B　37.B　38.A　39.B　40.A　41.omologa　42.elevata　43.veicola　44.appiattisce　45.seleziona　46.diffonde　47.premia　48.mercifica　49.nomina　50.esclude　51.interpreta　52.omologa　53.resiste　54.consuma　55.veicola　56.che　57.è ordinato　58.nomini　59.Sebhene　60.sono omologati　61.che　62.sono filtrati　63.scelga　64.Benché　65.è tutelato
 
 【Orale 口语】
-见上方评分要点。
-
-***</pre></section><button id="btn-check" onclick="verifica()">Verifica le risposte（提交判分）</button><button id="btn-reset" hidden onclick="resetta()">Ricomincia（重做）</button><div id="result" hidden></div></main><script>var SUBJMAX=20;
+见上方评分要点。</pre></section><button id="btn-check" onclick="verifica()">Verifica le risposte（提交判分）</button><button id="btn-reset" hidden onclick="resetta()">Ricomincia（重做）</button><div id="result" hidden></div></main><script>var SUBJMAX=20;
 function norm(s){return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]/g,'');}
 function gradeOf(p){if(p>=85)return['Eccellente','#1b7a3d'];if(p>=70)return['Buono','#2e7d32'];if(p>=55)return['Discreto','#b8860b'];if(p>=40)return['Insufficiente','#c0392b'];return['Grave','#7b1e2b'];}
 function verifica(){
