@@ -21,16 +21,18 @@ PLAYER_ID = "ascolto-audio-player"
 
 PLAYER_JS = (
     '<script id="%s">(function(){\n' % PLAYER_ID
-    + '  var cur=null, curBtn=null;\n'
-    + '  function stop(){ if(cur){try{cur.pause();}catch(e){}} if(curBtn){curBtn.textContent=\'\\u{1F50A}\';curBtn.classList.remove(\'playing\',\'err\');} cur=null; curBtn=null; }\n'
+    + '  var cur=null, curBtn=null, curDlg=null;\n'
+    + '  function clearDlg(){ if(curDlg){ curDlg.classList.remove(\'playing\'); curDlg=null; } }\n'
+    + '  function stop(){ if(cur){try{cur.pause();}catch(e){}} if(curBtn){curBtn.textContent=\'\\u{1F50A}\';curBtn.classList.remove(\'playing\',\'err\');} clearDlg(); cur=null; curBtn=null; }\n'
     + '  function play(b){\n'
     + '    var src=b.getAttribute(\'data-src\'); if(!src) return;\n'
     + '    if(curBtn===b && cur && !cur.paused){ stop(); return; }\n'
     + '    stop();\n'
     + '    b.textContent=\'\\u{1F507}\'; b.classList.add(\'playing\');\n'
+    + '    var dlg=b.closest(\'.asc-dlg\'); if(dlg){ dlg.classList.add(\'playing\'); curDlg=dlg; }\n'
     + '    var a=new Audio(src);\n'
-    + '    a.addEventListener(\'ended\', function(){ b.textContent=\'\\u{1F50A}\'; b.classList.remove(\'playing\'); curBtn=null; cur=null; });\n'
-    + '    a.addEventListener(\'error\', function(){ b.textContent=\'\\u{1F507}\'; b.classList.add(\'err\'); b.title=\'Audio non disponibile\'; });\n'
+    + '    a.addEventListener(\'ended\', function(){ b.textContent=\'\\u{1F50A}\'; b.classList.remove(\'playing\'); clearDlg(); curBtn=null; cur=null; });\n'
+    + '    a.addEventListener(\'error\', function(){ b.textContent=\'\\u{1F507}\'; b.classList.add(\'err\'); b.title=\'Audio non disponibile\'; clearDlg(); });\n'
     + '    var p=a.play();\n'
     + '    if(p && p.then){ p.then(function(){ b.textContent=\'\\u{1F508}\'; b.classList.add(\'playing\'); })\n'
     + '      .catch(function(){ b.textContent=\'\\u{1F507}\'; b.classList.add(\'err\'); b.title=\'Riproduzione fallita\'; }); }\n'
@@ -124,7 +126,7 @@ def process_volume(vol):
         if not os.path.exists(fp):
             continue
         h = open(fp, encoding='utf-8').read()
-        for m in re.finditer(r'<details class="text ascolto-text">(.*?)</details>', h, re.S):
+        for m in re.finditer(r'<details class="[^"]*ascolto-text[^"]*">(.*?)</details>', h, re.S):
             block = m.group(1)
             pm = re.search(r'<pre>(.*?)</pre>', block, re.S)
             if not pm:
@@ -148,24 +150,23 @@ def process_volume(vol):
         h = open(fp, encoding='utf-8').read()
         if 'ascolto-audio-player' in h:
             continue  # 已注入，跳过整页
-        if '<details class="text ascolto-text">' not in h:
+        if 'class="text ascolto-text' not in h:
             continue
 
         def repl(m):
-            block = m.group(1)
+            block = m.group(0)
             pm = re.search(r'<pre>(.*?)</pre>', block, re.S)
             if not pm:
-                return m.group(0)
+                return block
             nt = norm_fn(pm.group(1))
             fn = results.get(pm.group(1)) or results.get(nt)
             if not fn:
-                return m.group(0)
+                return block
             btn = ('<button class="spk" type="button" data-src="audio/%s" '
                    'title="Ascolta la pronuncia">\U0001F50A</button>' % fn)
-            return '<details class="text ascolto-text">' + block.replace(
-                '<span class="aspk-slot"></span>', btn, 1) + '</details>'
+            return block.replace('<span class="aspk-slot"></span>', btn, 1)
 
-        h2 = re.sub(r'<details class="text ascolto-text">(.*?)</details>', repl, h, flags=re.S)
+        h2 = re.sub(r'<details class="[^"]*ascolto-text[^"]*">(.*?)</details>', repl, h, flags=re.S)
         if '.spk{' not in h2:
             h2 = h2.replace('</style>', SPK_CSS + '</style>', 1)
         if 'ascolto-audio-player' not in h2:
@@ -187,7 +188,7 @@ def validate_volume(vol):
             continue
         h = open(fp, encoding='utf-8').read()
         # ascolto 块
-        blocks = re.findall(r'<details class="text ascolto-text">(.*?)</details>', h, re.S)
+        blocks = re.findall(r'<details class="[^"]*ascolto-text[^"]*">(.*?)</details>', h, re.S)
         for b in blocks:
             total_blocks += 1
             if 'class="spk"' in b and 'data-src=' in b:
@@ -204,7 +205,7 @@ def validate_volume(vol):
         # 检查整页里是否有不在 ascolto-text 内的 .spk
         for m in re.finditer(r'class="spk"[^>]*data-src="([^"]+)"', h):
             # 该 button 必须位于某个 ascolto-text 块内
-            if '<details class="text ascolto-text">' not in h[:h.find('data-src="%s"' % m.group(1))]:
+            if 'ascolto-text' not in h[:h.find('data-src="%s"' % m.group(1))]:
                 stray_spk += 1
     print('Vol.%d  听力块=%d  按钮OK=%d  缺文件=%d  无效=%d  越界按钮=%d'
           % (vol, total_blocks, btn_ok, missing_file, invalid_file, stray_spk))

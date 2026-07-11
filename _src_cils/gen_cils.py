@@ -15,7 +15,7 @@ LEVEL_NAMES = {
 MODULE_ORDER = ['Ascolto', 'Lettura', 'Analisi', 'Scritta', 'Orale']
 MODULE_ZH = {'Ascolto': '听力', 'Lettura': '阅读', 'Analisi': '语法分析', 'Scritta': '写作', 'Orale': '口语'}
 
-CILS_CSS = """:root{--wine:#7b1e2b;--wine2:#a83246;--ink:#23211f;--paper:#fbf8f4;--line:#e4ddd2;--ok:#1b7a3d;--no:#c0392b;}
+CILS_CSS = """:root{--wine:#0f766e;--wine2:#14b8a6;--ink:#23211f;--paper:#fbf8f4;--line:#e4ddd2;--ok:#1b7a3d;--no:#c0392b;}
 *{box-sizing:border-box}
 body{margin:0;font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);background:var(--paper);line-height:1.65}
 header.top{background:linear-gradient(135deg,var(--wine),var(--wine2));color:#fff;padding:26px 20px;box-shadow:0 2px 10px rgba(0,0,0,.15)}
@@ -31,16 +31,42 @@ section.module h3{color:#444;font-size:16px;margin:22px 0 10px}
 .text{background:#f6f1e9;border-left:4px solid var(--wine);border-radius:8px;padding:12px 14px;margin:12px 0}
 .text h4{margin:0 0 6px;font-size:14px;color:var(--wine)}
 pre{white-space:pre-wrap;margin:0;font-family:"Courier New",monospace;font-size:14px}
-.text.ascolto-text{border-left-color:#2a7fb8;background:#eef6fb}
-.text.ascolto-text summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;font-weight:600;color:#1f5f80;padding:2px 0;user-select:none}
-.text.ascolto-text summary::-webkit-details-marker{display:none}
-.text.ascolto-text summary:hover{text-decoration:underline}
-.text.ascolto-text[open] summary{margin-bottom:8px}
-.text.ascolto-text .asum{font-size:14px}
-.spk{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:none;background:rgba(42,127,184,.14);color:#1f5f80;border-radius:50%;font-size:16px;cursor:pointer;line-height:1;transition:.15s;flex:0 0 auto}
-.spk:hover{background:#1f5f80;color:#fff}
-.spk.playing{background:#1f5f80;color:#fff}
-.spk.err{background:#c0392b;color:#fff}
+/* ====== Ascolto 听力播放器（独立于 CELI 的现代化界面） ====== */
+.text.ascolto-text{border:none;background:transparent;padding:0;margin:14px 0}
+.asc-dlg{position:relative;border:1px solid #cfe3ec;border-left:5px solid #0369a1;border-radius:16px;background:linear-gradient(180deg,#f4fafe,#e9f3fb);padding:14px 16px;box-shadow:0 2px 10px rgba(3,105,161,.08);overflow:hidden}
+.asc-dlg::after{content:"";position:absolute;right:-26px;top:-26px;width:110px;height:110px;border-radius:50%;background:radial-gradient(circle,rgba(3,105,161,.10),transparent 70%);pointer-events:none}
+.asc-sum{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:4px 2px;user-select:none;position:relative;z-index:1;border-radius:12px}
+.asc-sum::-webkit-details-marker{display:none}
+.asc-sum:hover{background:rgba(3,105,161,.06)}
+.asc-sum .asum{font-size:13.5px;color:#075985;font-weight:600;flex:1 1 auto;line-height:1.45}
+.asc-ico{flex:0 0 auto;width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,#0369a1,#0c4a6e);display:inline-flex;align-items:center;justify-content:center;box-shadow:0 4px 10px rgba(3,105,161,.3)}
+.asc-ico::before{content:"🎧";font-size:20px;filter:brightness(0) invert(1)}
+.text.ascolto-text .spk{width:50px;height:50px;font-size:22px;background:linear-gradient(135deg,#0369a1,#0c4a6e);color:#fff;border-radius:50%;box-shadow:0 6px 16px rgba(3,105,161,.4);flex:0 0 auto;transition:transform .15s,background .15s}
+.text.ascolto-text .spk:hover,.text.ascolto-text .spk.playing{transform:scale(1.07);background:linear-gradient(135deg,#0c4a6e,#0369a1)}
+.text.ascolto-text .spk.err{background:#c0392b}
+.asc-wave{flex:0 0 auto;display:flex;align-items:center;gap:3px;height:30px}
+.asc-wave i{display:block;width:3px;height:7px;background:#9cc4dd;border-radius:2px}
+.asc-dlg.playing .asc-wave i{background:#0369a1;animation:ascbar .9s ease-in-out infinite}
+.asc-dlg.playing .asc-wave i:nth-child(2){animation-delay:.12s}
+.asc-dlg.playing .asc-wave i:nth-child(3){animation-delay:.24s}
+.asc-dlg.playing .asc-wave i:nth-child(4){animation-delay:.10s}
+.asc-dlg.playing .asc-wave i:nth-child(5){animation-delay:.20s}
+.asc-dlg.playing .asc-wave i:nth-child(6){animation-delay:.28s}
+.asc-dlg.playing .asc-wave i:nth-child(7){animation-delay:.16s}
+@keyframes ascbar{0%,100%{height:7px}50%{height:24px}}
+.text.ascolto-text > pre{margin:10px 0 0;background:#fff;border:1px solid #dbeaf3;border-radius:10px;padding:12px 14px;color:#243b4a;font-size:14px;line-height:1.7}
+/* ====== Ascolto 听力题（独立编号卡片） ====== */
+.asc-q{display:flex;gap:12px;align-items:flex-start;background:linear-gradient(180deg,#fff,#f6fbfd);border:1px solid #d7e8f0;border-left:4px solid #0369a1;border-radius:12px}
+.asc-q__no{flex:0 0 auto;width:30px;height:30px;border-radius:50%;background:#0369a1;color:#fff;font-weight:800;display:inline-flex;align-items:center;justify-content:center;font-size:14px;margin-top:2px}
+.asc-q__main{flex:1 1 auto;min-width:0}
+.asc-q .q-stem{margin:0 0 10px;font-size:15.5px;line-height:1.5}
+.asc-opts{display:flex;flex-direction:column;gap:8px}
+.asc-opt{align-items:center;gap:10px;padding:9px 12px;border:1px solid #dce8ef;border-radius:10px;background:#fff;transition:.15s}
+.asc-opt:hover{background:#eef6fb;border-color:#9cc4dd}
+.asc-opt__k{flex:0 0 auto;width:26px;height:26px;border-radius:7px;background:#e3f0f7;color:#0369a1;font-weight:800;display:inline-flex;align-items:center;justify-content:center;font-size:13px}
+.asc-opt__v{flex:1 1 auto;font-size:15px}
+.asc-opt:has(input:checked){border-color:#0369a1;background:#e8f4fb;box-shadow:0 0 0 2px rgba(3,105,161,.15)}
+.asc-opt:has(input:checked) .asc-opt__k{background:#0369a1;color:#fff}
 .items{margin-top:14px}
 .q-item{margin:14px 0;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fffdf9}
 .q-item.correct{border-color:var(--ok);background:#f1faf3}
@@ -91,7 +117,7 @@ audio{width:100%;margin-bottom:8px;display:block}
 .soluzioni{margin:28px 0;background:#fff;border:2px dashed var(--wine);border-radius:14px;padding:18px 20px}
 .soluzioni h2{margin:0 0 12px;color:var(--wine);font-size:18px}
 .soluzioni pre{white-space:pre-wrap;font-size:13.5px;line-height:1.8;background:#fbf6f0;border-radius:8px;padding:12px;font-family:"Courier New",monospace}
-#btn-check{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--wine);color:#fff;border:none;font-size:17px;font-weight:700;padding:13px 30px;border-radius:30px;cursor:pointer;box-shadow:0 4px 14px rgba(123,30,43,.4);z-index:10}
+#btn-check{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--wine);color:#fff;border:none;font-size:17px;font-weight:700;padding:13px 30px;border-radius:30px;cursor:pointer;box-shadow:0 4px 14px rgba(15,118,110,.4);z-index:10}
 #btn-check:hover{background:var(--wine2)}
 #btn-reset{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);margin-left:170px;background:#555;color:#fff;border:none;font-size:15px;padding:13px 22px;border-radius:30px;cursor:pointer;z-index:10}
 #result{margin-top:20px;padding:18px 20px;border-radius:12px;background:#fff;border:2px solid var(--wine);text-align:center}
@@ -240,7 +266,7 @@ def split_options(s):
 
 
 # ---------- 单题渲染 ----------
-def render_mc(num, stem, options, ans_letter):
+def render_mc(num, stem, options, ans_letter, variant=''):
     if ans_letter and len(ans_letter) == 1 and ans_letter.isalpha():
         ans_letter = ans_letter.upper()
     try:
@@ -249,6 +275,15 @@ def render_mc(num, stem, options, ans_letter):
         idx = -1
     if idx < 0:
         return None
+    if variant == 'asc':
+        opts_html = ''.join(
+            '<label class="opt asc-opt"><input type="radio" name="r%d" value="%d">'
+            '<span class="asc-opt__k">%s</span><span class="asc-opt__v">%s</span></label>' % (
+                num, i, esc(o[0]), esc(o[1])) for i, o in enumerate(options))
+        return ('<div class="q-item asc-q" data-type="mc" data-correct="%d" data-ctext="%s">'
+                '<span class="asc-q__no">%d</span><div class="asc-q__main">'
+                '<p class="q-stem">%s</p><div class="opts asc-opts">%s</div></div></div>' % (
+                    idx, esc(options[idx][1]), num, esc(stem), opts_html))
     opts_html = ''.join(
         '<label class="opt"><input type="radio" name="r%d" value="%d"> %s) %s</label>' % (
             num, i, esc(o[0]), esc(o[1])) for i, o in enumerate(options))
@@ -256,19 +291,33 @@ def render_mc(num, stem, options, ans_letter):
             '<p class="q-stem">%d. %s</p><div class="opts">%s</div></div>' % (
                 idx, esc(options[idx][1]), num, esc(stem), opts_html))
 
-def render_tf(num, stem, ans_vf):
+def render_tf(num, stem, ans_vf, variant=''):
     val = '0' if ans_vf == 'V' else ('1' if ans_vf == 'F' else '')
     if not val:
         return None
     ctxt = 'Vero' if ans_vf == 'V' else 'Falso'
+    if variant == 'asc':
+        opts_html = ('<label class="opt asc-opt"><input type="radio" name="r%d" value="0">'
+                     '<span class="asc-opt__k">V</span><span class="asc-opt__v">Vero</span></label>'
+                     '<label class="opt asc-opt"><input type="radio" name="r%d" value="1">'
+                     '<span class="asc-opt__k">F</span><span class="asc-opt__v">Falso</span></label>' % (num, num))
+        return ('<div class="q-item asc-q" data-type="tf" data-correct="%s" data-ctext="%s">'
+                '<span class="asc-q__no">%d</span><div class="asc-q__main">'
+                '<p class="q-stem">%s</p><div class="opts asc-opts">%s</div></div></div>' % (
+                    val, esc(ctxt), num, esc(stem), opts_html))
     opts_html = ('<label class="opt"><input type="radio" name="r%d" value="0"> Vero</label>'
                  '<label class="opt"><input type="radio" name="r%d" value="1"> Falso</label>' % (num, num))
     return ('<div class="q-item" data-type="tf" data-correct="%s" data-ctext="%s">'
             '<p class="q-stem">%d. %s</p><div class="opts">%s</div></div>' % (
                 val, esc(ctxt), num, esc(stem), opts_html))
 
-def render_cloze_item(num, pre, hint, post, answer):
+def render_cloze_item(num, pre, hint, post, answer, variant=''):
     dc = esc(answer) if answer else ''
+    if variant == 'asc':
+        return ('<div class="q-item asc-q" data-type="cloze">'
+                '<span class="asc-q__no">%d</span><div class="asc-q__main">'
+                '<p class="q-stem">%s<input class="blank" data-correct="%s"> %s %s</p></div></div>' % (
+                    num, esc(pre), dc, esc(hint), esc(post)))
     return ('<div class="q-item" data-type="cloze"><p class="q-stem">%d. %s'
             '<input class="blank" data-correct="%s"> %s %s</p></div>' % (
                 num, esc(pre), dc, esc(hint), esc(post)))
@@ -369,6 +418,7 @@ def render_module(mod_name, body, ans_mod, level_code, vol_num):
     cur_transcript = []
     in_transcript = False
     cur_subpart = None
+    variant = 'asc' if mod_name == 'Ascolto' else ''
     CIRCLED = '①②③④'
 
     def flush_transcript():
@@ -377,9 +427,11 @@ def render_module(mod_name, body, ans_mod, level_code, vol_num):
             txt = '\n'.join(cur_transcript).strip()
             if txt:
                 # 听力原文：默认折叠隐藏，summary 内含 🔊 占位（由音频脚本注入真人发音按钮）
-                out.append('<details class="text ascolto-text"><summary>'
+                out.append('<details class="text ascolto-text asc-dlg"><summary class="asc-sum">'
+                           '<span class="asc-ico" aria-hidden="true"></span>'
                            '<span class="aspk-slot"></span>'
                            '<span class="asum">📝 Testo / Dialogo (simulato) — clicca 🔊 per ascoltare, o sul testo per mostrarlo</span>'
+                           '<span class="asc-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>'
                            '</summary><pre>%s</pre></details>' % esc(txt))
         cur_transcript.clear()
         in_transcript = False
@@ -462,7 +514,7 @@ def render_module(mod_name, body, ans_mod, level_code, vol_num):
                        '<div class="rubric-note">%s</div></div></div>' % esc(t))
             continue
         # 题目
-        q = parse_question_line(s, ans_mod, cur_subpart)
+        q = parse_question_line(s, ans_mod, cur_subpart, variant)
         if q:
             flush_transcript()
             out.append(q)
@@ -478,7 +530,7 @@ def render_module(mod_name, body, ans_mod, level_code, vol_num):
     return '\n'.join(out)
 
 
-def parse_question_line(line, ans_mod, subpart):
+def parse_question_line(line, ans_mod, subpart, variant=''):
     work = line
     dm = re.search(r'Domanda:\s*(.*?)(?=）)', line)
     if dm:
@@ -491,7 +543,7 @@ def parse_question_line(line, ans_mod, subpart):
         stem = re.sub(r'^\s*\d+\s*[\.\)]\s*', '', work)
         stem = re.sub(r'\((?:Vero\s*/\s*Falso|V/F|[VF])\)\s*$', '', stem).strip()
         an = parse_key_lookup(ans_mod, subpart, num) or 'V'
-        return render_tf(num, stem, an)
+        return render_tf(num, stem, an, variant)
     # MC
     if re.search(r'[A-Da-d]\)', work):
         opts = split_options(work)
@@ -504,7 +556,7 @@ def parse_question_line(line, ans_mod, subpart):
                 stem = re.sub(r'^\s*\d+\s*[\.\)]\s*', '', stem)
                 stem = re.sub(r'Domanda:\s*', '', stem).strip()
                 an = parse_key_lookup(ans_mod, subpart, num)
-                return render_mc(num, stem, opts, an)
+                return render_mc(num, stem, opts, an, variant)
     # Cloze 项：支持 "N. 文本 ______ (提示) 文本" 与 "N. ______ (提示) 文本"
     clm = re.search(r'(\d+)\s*[\.\)]\s*(.*?)(_{2,})\s*\(([^)]*)\)\s*(.*)$', line)
     if clm:
@@ -513,7 +565,7 @@ def parse_question_line(line, ans_mod, subpart):
         hint = clm.group(4)
         post = clm.group(5).strip()
         an = parse_key_lookup(ans_mod, subpart, num)
-        return render_cloze_item(num, pre, '(' + hint + ')', post, an)
+        return render_cloze_item(num, pre, '(' + hint + ')', post, an, variant)
     return None
 
 

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>CILS A2 — CILS</title><style>:root{--wine:#7b1e2b;--wine2:#a83246;--ink:#23211f;--paper:#fbf8f4;--line:#e4ddd2;--ok:#1b7a3d;--no:#c0392b;}
+<!DOCTYPE html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>CILS A2 — CILS</title><style>:root{--wine:#0f766e;--wine2:#14b8a6;--ink:#23211f;--paper:#fbf8f4;--line:#e4ddd2;--ok:#1b7a3d;--no:#c0392b;}
 *{box-sizing:border-box}
 body{margin:0;font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);background:var(--paper);line-height:1.65}
 header.top{background:linear-gradient(135deg,var(--wine),var(--wine2));color:#fff;padding:26px 20px;box-shadow:0 2px 10px rgba(0,0,0,.15)}
@@ -14,16 +14,42 @@ section.module h3{color:#444;font-size:16px;margin:22px 0 10px}
 .text{background:#f6f1e9;border-left:4px solid var(--wine);border-radius:8px;padding:12px 14px;margin:12px 0}
 .text h4{margin:0 0 6px;font-size:14px;color:var(--wine)}
 pre{white-space:pre-wrap;margin:0;font-family:"Courier New",monospace;font-size:14px}
-.text.ascolto-text{border-left-color:#2a7fb8;background:#eef6fb}
-.text.ascolto-text summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;font-weight:600;color:#1f5f80;padding:2px 0;user-select:none}
-.text.ascolto-text summary::-webkit-details-marker{display:none}
-.text.ascolto-text summary:hover{text-decoration:underline}
-.text.ascolto-text[open] summary{margin-bottom:8px}
-.text.ascolto-text .asum{font-size:14px}
-.spk{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:none;background:rgba(42,127,184,.14);color:#1f5f80;border-radius:50%;font-size:16px;cursor:pointer;line-height:1;transition:.15s;flex:0 0 auto}
-.spk:hover{background:#1f5f80;color:#fff}
-.spk.playing{background:#1f5f80;color:#fff}
-.spk.err{background:#c0392b;color:#fff}
+/* ====== Ascolto 听力播放器（独立于 CELI 的现代化界面） ====== */
+.text.ascolto-text{border:none;background:transparent;padding:0;margin:14px 0}
+.asc-dlg{position:relative;border:1px solid #cfe3ec;border-left:5px solid #0369a1;border-radius:16px;background:linear-gradient(180deg,#f4fafe,#e9f3fb);padding:14px 16px;box-shadow:0 2px 10px rgba(3,105,161,.08);overflow:hidden}
+.asc-dlg::after{content:"";position:absolute;right:-26px;top:-26px;width:110px;height:110px;border-radius:50%;background:radial-gradient(circle,rgba(3,105,161,.10),transparent 70%);pointer-events:none}
+.asc-sum{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:4px 2px;user-select:none;position:relative;z-index:1;border-radius:12px}
+.asc-sum::-webkit-details-marker{display:none}
+.asc-sum:hover{background:rgba(3,105,161,.06)}
+.asc-sum .asum{font-size:13.5px;color:#075985;font-weight:600;flex:1 1 auto;line-height:1.45}
+.asc-ico{flex:0 0 auto;width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,#0369a1,#0c4a6e);display:inline-flex;align-items:center;justify-content:center;box-shadow:0 4px 10px rgba(3,105,161,.3)}
+.asc-ico::before{content:"🎧";font-size:20px;filter:brightness(0) invert(1)}
+.text.ascolto-text .spk{width:50px;height:50px;font-size:22px;background:linear-gradient(135deg,#0369a1,#0c4a6e);color:#fff;border-radius:50%;box-shadow:0 6px 16px rgba(3,105,161,.4);flex:0 0 auto;transition:transform .15s,background .15s}
+.text.ascolto-text .spk:hover,.text.ascolto-text .spk.playing{transform:scale(1.07);background:linear-gradient(135deg,#0c4a6e,#0369a1)}
+.text.ascolto-text .spk.err{background:#c0392b}
+.asc-wave{flex:0 0 auto;display:flex;align-items:center;gap:3px;height:30px}
+.asc-wave i{display:block;width:3px;height:7px;background:#9cc4dd;border-radius:2px}
+.asc-dlg.playing .asc-wave i{background:#0369a1;animation:ascbar .9s ease-in-out infinite}
+.asc-dlg.playing .asc-wave i:nth-child(2){animation-delay:.12s}
+.asc-dlg.playing .asc-wave i:nth-child(3){animation-delay:.24s}
+.asc-dlg.playing .asc-wave i:nth-child(4){animation-delay:.10s}
+.asc-dlg.playing .asc-wave i:nth-child(5){animation-delay:.20s}
+.asc-dlg.playing .asc-wave i:nth-child(6){animation-delay:.28s}
+.asc-dlg.playing .asc-wave i:nth-child(7){animation-delay:.16s}
+@keyframes ascbar{0%,100%{height:7px}50%{height:24px}}
+.text.ascolto-text > pre{margin:10px 0 0;background:#fff;border:1px solid #dbeaf3;border-radius:10px;padding:12px 14px;color:#243b4a;font-size:14px;line-height:1.7}
+/* ====== Ascolto 听力题（独立编号卡片） ====== */
+.asc-q{display:flex;gap:12px;align-items:flex-start;background:linear-gradient(180deg,#fff,#f6fbfd);border:1px solid #d7e8f0;border-left:4px solid #0369a1;border-radius:12px}
+.asc-q__no{flex:0 0 auto;width:30px;height:30px;border-radius:50%;background:#0369a1;color:#fff;font-weight:800;display:inline-flex;align-items:center;justify-content:center;font-size:14px;margin-top:2px}
+.asc-q__main{flex:1 1 auto;min-width:0}
+.asc-q .q-stem{margin:0 0 10px;font-size:15.5px;line-height:1.5}
+.asc-opts{display:flex;flex-direction:column;gap:8px}
+.asc-opt{align-items:center;gap:10px;padding:9px 12px;border:1px solid #dce8ef;border-radius:10px;background:#fff;transition:.15s}
+.asc-opt:hover{background:#eef6fb;border-color:#9cc4dd}
+.asc-opt__k{flex:0 0 auto;width:26px;height:26px;border-radius:7px;background:#e3f0f7;color:#0369a1;font-weight:800;display:inline-flex;align-items:center;justify-content:center;font-size:13px}
+.asc-opt__v{flex:1 1 auto;font-size:15px}
+.asc-opt:has(input:checked){border-color:#0369a1;background:#e8f4fb;box-shadow:0 0 0 2px rgba(3,105,161,.15)}
+.asc-opt:has(input:checked) .asc-opt__k{background:#0369a1;color:#fff}
 .items{margin-top:14px}
 .q-item{margin:14px 0;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fffdf9}
 .q-item.correct{border-color:var(--ok);background:#f1faf3}
@@ -74,7 +100,7 @@ audio{width:100%;margin-bottom:8px;display:block}
 .soluzioni{margin:28px 0;background:#fff;border:2px dashed var(--wine);border-radius:14px;padding:18px 20px}
 .soluzioni h2{margin:0 0 12px;color:var(--wine);font-size:18px}
 .soluzioni pre{white-space:pre-wrap;font-size:13.5px;line-height:1.8;background:#fbf6f0;border-radius:8px;padding:12px;font-family:"Courier New",monospace}
-#btn-check{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--wine);color:#fff;border:none;font-size:17px;font-weight:700;padding:13px 30px;border-radius:30px;cursor:pointer;box-shadow:0 4px 14px rgba(123,30,43,.4);z-index:10}
+#btn-check{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--wine);color:#fff;border:none;font-size:17px;font-weight:700;padding:13px 30px;border-radius:30px;cursor:pointer;box-shadow:0 4px 14px rgba(15,118,110,.4);z-index:10}
 #btn-check:hover{background:var(--wine2)}
 #btn-reset{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);margin-left:170px;background:#555;color:#fff;border:none;font-size:15px;padding:13px 22px;border-radius:30px;cursor:pointer;z-index:10}
 #result{margin-top:20px;padding:18px 20px;border-radius:12px;background:#fff;border:2px solid var(--wine);text-align:center}
@@ -103,7 +129,7 @@ audio{width:100%;margin-bottom:8px;display:block}
 <div class="mnote">D5. A: Il sabato che fai? B: Vado in pizzeria con i compagni di scuola.</div>
 <div class="mnote">D6. A: Tuo padre lavora molto? B: Sì, è impiegato e parte presto la mattina.</div>
 <div class="mnote">_Prova 2 — 长对话（La domenica in famiglia）_&amp;#x4D;adre: Allora, domenica viene anche la zia Giulia con i cugini.</div>
-<details class="text ascolto-text"><summary><button class="spk" type="button" data-src="audio/9fa3d468b09fbe5b.mp3" title="Ascolta la pronuncia">🔊</button><span class="asum">📝 Testo / Dialogo (simulato) — clicca 🔊 per ascoltare, o sul testo per mostrarlo</span></summary><pre>Figlia: Che bello! Giochiamo in giardino?
+<details class="text ascolto-text asc-dlg"><summary class="asc-sum"><span class="asc-ico" aria-hidden="true"></span><button class="spk" type="button" data-src="audio/9fa3d468b09fbe5b.mp3" title="Ascolta la pronuncia">🔊</button><span class="asum">📝 Testo / Dialogo (simulato) — clicca 🔊 per ascoltare, o sul testo per mostrarlo</span><span class="asc-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></summary><pre>Figlia: Che bello! Giochiamo in giardino?
 
 Madre: Sì, e tuo padre fa il barbecue. Poi guardiamo la partita in televisione.
 
@@ -116,18 +142,18 @@ Figlia: Bene. Invito anche Sara e Luca, i miei amici?
 Madre: Sì, ma digli di portare una cosa da bere.
 
 Figlia: Ok, mando un messaggio subito.</pre></details>
-<div class="q-item" data-type="mc" data-correct="1" data-ctext="4"><p class="q-stem">1. La famiglia di B (D1) è composta da ______ persone.</p><div class="opts"><label class="opt"><input type="radio" name="r1" value="0"> A) 3</label><label class="opt"><input type="radio" name="r1" value="1"> B) 4</label><label class="opt"><input type="radio" name="r1" value="2"> C) 5</label></div></div>
-<div class="q-item" data-type="mc" data-correct="1" data-ctext="al cinema"><p class="q-stem">2. Stasera B (D2) va ______.</p><div class="opts"><label class="opt"><input type="radio" name="r2" value="0"> A) a teatro</label><label class="opt"><input type="radio" name="r2" value="1"> B) al cinema</label><label class="opt"><input type="radio" name="r2" value="2"> C) a cena</label></div></div>
-<div class="q-item" data-type="mc" data-correct="1" data-ctext="tutti i giorni"><p class="q-stem">3. La madre di B (D3) prepara la pasta ______.</p><div class="opts"><label class="opt"><input type="radio" name="r3" value="0"> A) ogni domenica</label><label class="opt"><input type="radio" name="r3" value="1"> B) tutti i giorni</label><label class="opt"><input type="radio" name="r3" value="2"> C) mai</label></div></div>
-<div class="q-item" data-type="mc" data-correct="1" data-ctext="in periferia"><p class="q-stem">4. Lo zio di B (D4) abita ______.</p><div class="opts"><label class="opt"><input type="radio" name="r4" value="0"> A) in centro</label><label class="opt"><input type="radio" name="r4" value="1"> B) in periferia</label><label class="opt"><input type="radio" name="r4" value="2"> C) in montagna</label></div></div>
-<div class="q-item" data-type="mc" data-correct="1" data-ctext="i compagni"><p class="q-stem">5. Il sabato B (D5) va in pizzeria con ______.</p><div class="opts"><label class="opt"><input type="radio" name="r5" value="0"> A) i genitori</label><label class="opt"><input type="radio" name="r5" value="1"> B) i compagni</label><label class="opt"><input type="radio" name="r5" value="2"> C) i nonni</label></div></div>
-<div class="q-item" data-type="mc" data-correct="1" data-ctext="impiegato"><p class="q-stem">6. Il padre di B (D6) è ______.</p><div class="opts"><label class="opt"><input type="radio" name="r6" value="0"> A) operario</label><label class="opt"><input type="radio" name="r6" value="1"> B) impiegato</label><label class="opt"><input type="radio" name="r6" value="2"> C) professore</label></div></div>
-<div class="q-item" data-type="mc" data-correct="1" data-ctext="i cugini"><p class="q-stem">7. La domenica viene la zia Giulia con ______.</p><div class="opts"><label class="opt"><input type="radio" name="r7" value="0"> A) i nonni</label><label class="opt"><input type="radio" name="r7" value="1"> B) i cugini</label><label class="opt"><input type="radio" name="r7" value="2"> C) i vicini</label></div></div>
-<div class="q-item" data-type="mc" data-correct="1" data-ctext="il padre"><p class="q-stem">8. Chi fa il barbecue?</p><div class="opts"><label class="opt"><input type="radio" name="r8" value="0"> A) la madre</label><label class="opt"><input type="radio" name="r8" value="1"> B) il padre</label><label class="opt"><input type="radio" name="r8" value="2"> C) la figlia</label></div></div>
-<div class="q-item" data-type="mc" data-correct="1" data-ctext="12:30"><p class="q-stem">9. I nonni arrivano alle ______.</p><div class="opts"><label class="opt"><input type="radio" name="r9" value="0"> A) 12:00</label><label class="opt"><input type="radio" name="r9" value="1"> B) 12:30</label><label class="opt"><input type="radio" name="r9" value="2"> C) 13:00</label></div></div>
-<div class="q-item" data-type="mc" data-correct="1" data-ctext="il dolce"><p class="q-stem">10. I nonni portano ______.</p><div class="opts"><label class="opt"><input type="radio" name="r10" value="0"> A) da bere</label><label class="opt"><input type="radio" name="r10" value="1"> B) il dolce</label><label class="opt"><input type="radio" name="r10" value="2"> C) la pizza</label></div></div>
-<div class="q-item" data-type="mc" data-correct="0" data-ctext="Sara e Luca"><p class="q-stem">11. La figlia invita anche ______.</p><div class="opts"><label class="opt"><input type="radio" name="r11" value="0"> A) Sara e Luca</label><label class="opt"><input type="radio" name="r11" value="1"> B) i cugini</label><label class="opt"><input type="radio" name="r11" value="2"> C) i nonni</label></div></div>
-<div class="q-item" data-type="mc" data-correct="1" data-ctext="una cosa da bere"><p class="q-stem">12. Gli amici devono portare ______.</p><div class="opts"><label class="opt"><input type="radio" name="r12" value="0"> A) il dolce</label><label class="opt"><input type="radio" name="r12" value="1"> B) una cosa da bere</label><label class="opt"><input type="radio" name="r12" value="2"> C) il giornale</label></div></div></section>
+<div class="q-item asc-q" data-type="mc" data-correct="1" data-ctext="4"><span class="asc-q__no">1</span><div class="asc-q__main"><p class="q-stem">La famiglia di B (D1) è composta da ______ persone.</p><div class="opts asc-opts"><label class="opt asc-opt"><input type="radio" name="r1" value="0"><span class="asc-opt__k">A</span><span class="asc-opt__v">3</span></label><label class="opt asc-opt"><input type="radio" name="r1" value="1"><span class="asc-opt__k">B</span><span class="asc-opt__v">4</span></label><label class="opt asc-opt"><input type="radio" name="r1" value="2"><span class="asc-opt__k">C</span><span class="asc-opt__v">5</span></label></div></div></div>
+<div class="q-item asc-q" data-type="mc" data-correct="1" data-ctext="al cinema"><span class="asc-q__no">2</span><div class="asc-q__main"><p class="q-stem">Stasera B (D2) va ______.</p><div class="opts asc-opts"><label class="opt asc-opt"><input type="radio" name="r2" value="0"><span class="asc-opt__k">A</span><span class="asc-opt__v">a teatro</span></label><label class="opt asc-opt"><input type="radio" name="r2" value="1"><span class="asc-opt__k">B</span><span class="asc-opt__v">al cinema</span></label><label class="opt asc-opt"><input type="radio" name="r2" value="2"><span class="asc-opt__k">C</span><span class="asc-opt__v">a cena</span></label></div></div></div>
+<div class="q-item asc-q" data-type="mc" data-correct="1" data-ctext="tutti i giorni"><span class="asc-q__no">3</span><div class="asc-q__main"><p class="q-stem">La madre di B (D3) prepara la pasta ______.</p><div class="opts asc-opts"><label class="opt asc-opt"><input type="radio" name="r3" value="0"><span class="asc-opt__k">A</span><span class="asc-opt__v">ogni domenica</span></label><label class="opt asc-opt"><input type="radio" name="r3" value="1"><span class="asc-opt__k">B</span><span class="asc-opt__v">tutti i giorni</span></label><label class="opt asc-opt"><input type="radio" name="r3" value="2"><span class="asc-opt__k">C</span><span class="asc-opt__v">mai</span></label></div></div></div>
+<div class="q-item asc-q" data-type="mc" data-correct="1" data-ctext="in periferia"><span class="asc-q__no">4</span><div class="asc-q__main"><p class="q-stem">Lo zio di B (D4) abita ______.</p><div class="opts asc-opts"><label class="opt asc-opt"><input type="radio" name="r4" value="0"><span class="asc-opt__k">A</span><span class="asc-opt__v">in centro</span></label><label class="opt asc-opt"><input type="radio" name="r4" value="1"><span class="asc-opt__k">B</span><span class="asc-opt__v">in periferia</span></label><label class="opt asc-opt"><input type="radio" name="r4" value="2"><span class="asc-opt__k">C</span><span class="asc-opt__v">in montagna</span></label></div></div></div>
+<div class="q-item asc-q" data-type="mc" data-correct="1" data-ctext="i compagni"><span class="asc-q__no">5</span><div class="asc-q__main"><p class="q-stem">Il sabato B (D5) va in pizzeria con ______.</p><div class="opts asc-opts"><label class="opt asc-opt"><input type="radio" name="r5" value="0"><span class="asc-opt__k">A</span><span class="asc-opt__v">i genitori</span></label><label class="opt asc-opt"><input type="radio" name="r5" value="1"><span class="asc-opt__k">B</span><span class="asc-opt__v">i compagni</span></label><label class="opt asc-opt"><input type="radio" name="r5" value="2"><span class="asc-opt__k">C</span><span class="asc-opt__v">i nonni</span></label></div></div></div>
+<div class="q-item asc-q" data-type="mc" data-correct="1" data-ctext="impiegato"><span class="asc-q__no">6</span><div class="asc-q__main"><p class="q-stem">Il padre di B (D6) è ______.</p><div class="opts asc-opts"><label class="opt asc-opt"><input type="radio" name="r6" value="0"><span class="asc-opt__k">A</span><span class="asc-opt__v">operario</span></label><label class="opt asc-opt"><input type="radio" name="r6" value="1"><span class="asc-opt__k">B</span><span class="asc-opt__v">impiegato</span></label><label class="opt asc-opt"><input type="radio" name="r6" value="2"><span class="asc-opt__k">C</span><span class="asc-opt__v">professore</span></label></div></div></div>
+<div class="q-item asc-q" data-type="mc" data-correct="1" data-ctext="i cugini"><span class="asc-q__no">7</span><div class="asc-q__main"><p class="q-stem">La domenica viene la zia Giulia con ______.</p><div class="opts asc-opts"><label class="opt asc-opt"><input type="radio" name="r7" value="0"><span class="asc-opt__k">A</span><span class="asc-opt__v">i nonni</span></label><label class="opt asc-opt"><input type="radio" name="r7" value="1"><span class="asc-opt__k">B</span><span class="asc-opt__v">i cugini</span></label><label class="opt asc-opt"><input type="radio" name="r7" value="2"><span class="asc-opt__k">C</span><span class="asc-opt__v">i vicini</span></label></div></div></div>
+<div class="q-item asc-q" data-type="mc" data-correct="1" data-ctext="il padre"><span class="asc-q__no">8</span><div class="asc-q__main"><p class="q-stem">Chi fa il barbecue?</p><div class="opts asc-opts"><label class="opt asc-opt"><input type="radio" name="r8" value="0"><span class="asc-opt__k">A</span><span class="asc-opt__v">la madre</span></label><label class="opt asc-opt"><input type="radio" name="r8" value="1"><span class="asc-opt__k">B</span><span class="asc-opt__v">il padre</span></label><label class="opt asc-opt"><input type="radio" name="r8" value="2"><span class="asc-opt__k">C</span><span class="asc-opt__v">la figlia</span></label></div></div></div>
+<div class="q-item asc-q" data-type="mc" data-correct="1" data-ctext="12:30"><span class="asc-q__no">9</span><div class="asc-q__main"><p class="q-stem">I nonni arrivano alle ______.</p><div class="opts asc-opts"><label class="opt asc-opt"><input type="radio" name="r9" value="0"><span class="asc-opt__k">A</span><span class="asc-opt__v">12:00</span></label><label class="opt asc-opt"><input type="radio" name="r9" value="1"><span class="asc-opt__k">B</span><span class="asc-opt__v">12:30</span></label><label class="opt asc-opt"><input type="radio" name="r9" value="2"><span class="asc-opt__k">C</span><span class="asc-opt__v">13:00</span></label></div></div></div>
+<div class="q-item asc-q" data-type="mc" data-correct="1" data-ctext="il dolce"><span class="asc-q__no">10</span><div class="asc-q__main"><p class="q-stem">I nonni portano ______.</p><div class="opts asc-opts"><label class="opt asc-opt"><input type="radio" name="r10" value="0"><span class="asc-opt__k">A</span><span class="asc-opt__v">da bere</span></label><label class="opt asc-opt"><input type="radio" name="r10" value="1"><span class="asc-opt__k">B</span><span class="asc-opt__v">il dolce</span></label><label class="opt asc-opt"><input type="radio" name="r10" value="2"><span class="asc-opt__k">C</span><span class="asc-opt__v">la pizza</span></label></div></div></div>
+<div class="q-item asc-q" data-type="mc" data-correct="0" data-ctext="Sara e Luca"><span class="asc-q__no">11</span><div class="asc-q__main"><p class="q-stem">La figlia invita anche ______.</p><div class="opts asc-opts"><label class="opt asc-opt"><input type="radio" name="r11" value="0"><span class="asc-opt__k">A</span><span class="asc-opt__v">Sara e Luca</span></label><label class="opt asc-opt"><input type="radio" name="r11" value="1"><span class="asc-opt__k">B</span><span class="asc-opt__v">i cugini</span></label><label class="opt asc-opt"><input type="radio" name="r11" value="2"><span class="asc-opt__k">C</span><span class="asc-opt__v">i nonni</span></label></div></div></div>
+<div class="q-item asc-q" data-type="mc" data-correct="1" data-ctext="una cosa da bere"><span class="asc-q__no">12</span><div class="asc-q__main"><p class="q-stem">Gli amici devono portare ______.</p><div class="opts asc-opts"><label class="opt asc-opt"><input type="radio" name="r12" value="0"><span class="asc-opt__k">A</span><span class="asc-opt__v">il dolce</span></label><label class="opt asc-opt"><input type="radio" name="r12" value="1"><span class="asc-opt__k">B</span><span class="asc-opt__v">una cosa da bere</span></label><label class="opt asc-opt"><input type="radio" name="r12" value="2"><span class="asc-opt__k">C</span><span class="asc-opt__v">il giornale</span></label></div></div></div></section>
 <section class="module"><h2>2. Lettura（阅读）</h2><div class="mnote">Lettura（阅读）</div>
 <div class="mnote">40 分钟。Prova 1（\~150 词 + 4 单选）；Prova 2（4 微文本各 3 句判断 = 12 V/F）；Prova 3（4 短文 + 8 描述配对）。</div>
 <div class="mnote">_Prova 1 — Testo: Una famiglia italian&amp;#x61;_&amp;#x4C;a famiglia Bianchi abita a Bologna, in un appartamento nel centro storico. Ci sono papà Franco, mamma Laura, il figlio Matteo (14 anni) e la figlia Chiara (11 anni). La domenica la famiglia si riunisce a pranzo dalla nonna, che abita fuori città. Franco lavora in banca, Laura è insegnante. La sera, dopo cena, i ragazzi fanno i compiti e i genitori guardano un film. D&#x27;estate vanno al mare tutti insieme. (147 词)</div>
@@ -224,16 +250,18 @@ document.addEventListener('play', function(e){
     document.querySelectorAll('audio').forEach(function(a){ if(a!==e.target) a.pause(); });
   }
 }, true);</script><script id="ascolto-audio-player">(function(){
-  var cur=null, curBtn=null;
-  function stop(){ if(cur){try{cur.pause();}catch(e){}} if(curBtn){curBtn.textContent='\u{1F50A}';curBtn.classList.remove('playing','err');} cur=null; curBtn=null; }
+  var cur=null, curBtn=null, curDlg=null;
+  function clearDlg(){ if(curDlg){ curDlg.classList.remove('playing'); curDlg=null; } }
+  function stop(){ if(cur){try{cur.pause();}catch(e){}} if(curBtn){curBtn.textContent='\u{1F50A}';curBtn.classList.remove('playing','err');} clearDlg(); cur=null; curBtn=null; }
   function play(b){
     var src=b.getAttribute('data-src'); if(!src) return;
     if(curBtn===b && cur && !cur.paused){ stop(); return; }
     stop();
     b.textContent='\u{1F507}'; b.classList.add('playing');
+    var dlg=b.closest('.asc-dlg'); if(dlg){ dlg.classList.add('playing'); curDlg=dlg; }
     var a=new Audio(src);
-    a.addEventListener('ended', function(){ b.textContent='\u{1F50A}'; b.classList.remove('playing'); curBtn=null; cur=null; });
-    a.addEventListener('error', function(){ b.textContent='\u{1F507}'; b.classList.add('err'); b.title='Audio non disponibile'; });
+    a.addEventListener('ended', function(){ b.textContent='\u{1F50A}'; b.classList.remove('playing'); clearDlg(); curBtn=null; cur=null; });
+    a.addEventListener('error', function(){ b.textContent='\u{1F507}'; b.classList.add('err'); b.title='Audio non disponibile'; clearDlg(); });
     var p=a.play();
     if(p && p.then){ p.then(function(){ b.textContent='\u{1F508}'; b.classList.add('playing'); })
       .catch(function(){ b.textContent='\u{1F507}'; b.classList.add('err'); b.title='Riproduzione fallita'; }); }

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>CILS B2 — CILS DUE</title><style>:root{--wine:#7b1e2b;--wine2:#a83246;--ink:#23211f;--paper:#fbf8f4;--line:#e4ddd2;--ok:#1b7a3d;--no:#c0392b;}
+<!DOCTYPE html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>CILS B2 — CILS DUE</title><style>:root{--wine:#0f766e;--wine2:#14b8a6;--ink:#23211f;--paper:#fbf8f4;--line:#e4ddd2;--ok:#1b7a3d;--no:#c0392b;}
 *{box-sizing:border-box}
 body{margin:0;font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);background:var(--paper);line-height:1.65}
 header.top{background:linear-gradient(135deg,var(--wine),var(--wine2));color:#fff;padding:26px 20px;box-shadow:0 2px 10px rgba(0,0,0,.15)}
@@ -14,16 +14,42 @@ section.module h3{color:#444;font-size:16px;margin:22px 0 10px}
 .text{background:#f6f1e9;border-left:4px solid var(--wine);border-radius:8px;padding:12px 14px;margin:12px 0}
 .text h4{margin:0 0 6px;font-size:14px;color:var(--wine)}
 pre{white-space:pre-wrap;margin:0;font-family:"Courier New",monospace;font-size:14px}
-.text.ascolto-text{border-left-color:#2a7fb8;background:#eef6fb}
-.text.ascolto-text summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;font-weight:600;color:#1f5f80;padding:2px 0;user-select:none}
-.text.ascolto-text summary::-webkit-details-marker{display:none}
-.text.ascolto-text summary:hover{text-decoration:underline}
-.text.ascolto-text[open] summary{margin-bottom:8px}
-.text.ascolto-text .asum{font-size:14px}
-.spk{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:none;background:rgba(42,127,184,.14);color:#1f5f80;border-radius:50%;font-size:16px;cursor:pointer;line-height:1;transition:.15s;flex:0 0 auto}
-.spk:hover{background:#1f5f80;color:#fff}
-.spk.playing{background:#1f5f80;color:#fff}
-.spk.err{background:#c0392b;color:#fff}
+/* ====== Ascolto 听力播放器（独立于 CELI 的现代化界面） ====== */
+.text.ascolto-text{border:none;background:transparent;padding:0;margin:14px 0}
+.asc-dlg{position:relative;border:1px solid #cfe3ec;border-left:5px solid #0369a1;border-radius:16px;background:linear-gradient(180deg,#f4fafe,#e9f3fb);padding:14px 16px;box-shadow:0 2px 10px rgba(3,105,161,.08);overflow:hidden}
+.asc-dlg::after{content:"";position:absolute;right:-26px;top:-26px;width:110px;height:110px;border-radius:50%;background:radial-gradient(circle,rgba(3,105,161,.10),transparent 70%);pointer-events:none}
+.asc-sum{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:4px 2px;user-select:none;position:relative;z-index:1;border-radius:12px}
+.asc-sum::-webkit-details-marker{display:none}
+.asc-sum:hover{background:rgba(3,105,161,.06)}
+.asc-sum .asum{font-size:13.5px;color:#075985;font-weight:600;flex:1 1 auto;line-height:1.45}
+.asc-ico{flex:0 0 auto;width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,#0369a1,#0c4a6e);display:inline-flex;align-items:center;justify-content:center;box-shadow:0 4px 10px rgba(3,105,161,.3)}
+.asc-ico::before{content:"🎧";font-size:20px;filter:brightness(0) invert(1)}
+.text.ascolto-text .spk{width:50px;height:50px;font-size:22px;background:linear-gradient(135deg,#0369a1,#0c4a6e);color:#fff;border-radius:50%;box-shadow:0 6px 16px rgba(3,105,161,.4);flex:0 0 auto;transition:transform .15s,background .15s}
+.text.ascolto-text .spk:hover,.text.ascolto-text .spk.playing{transform:scale(1.07);background:linear-gradient(135deg,#0c4a6e,#0369a1)}
+.text.ascolto-text .spk.err{background:#c0392b}
+.asc-wave{flex:0 0 auto;display:flex;align-items:center;gap:3px;height:30px}
+.asc-wave i{display:block;width:3px;height:7px;background:#9cc4dd;border-radius:2px}
+.asc-dlg.playing .asc-wave i{background:#0369a1;animation:ascbar .9s ease-in-out infinite}
+.asc-dlg.playing .asc-wave i:nth-child(2){animation-delay:.12s}
+.asc-dlg.playing .asc-wave i:nth-child(3){animation-delay:.24s}
+.asc-dlg.playing .asc-wave i:nth-child(4){animation-delay:.10s}
+.asc-dlg.playing .asc-wave i:nth-child(5){animation-delay:.20s}
+.asc-dlg.playing .asc-wave i:nth-child(6){animation-delay:.28s}
+.asc-dlg.playing .asc-wave i:nth-child(7){animation-delay:.16s}
+@keyframes ascbar{0%,100%{height:7px}50%{height:24px}}
+.text.ascolto-text > pre{margin:10px 0 0;background:#fff;border:1px solid #dbeaf3;border-radius:10px;padding:12px 14px;color:#243b4a;font-size:14px;line-height:1.7}
+/* ====== Ascolto 听力题（独立编号卡片） ====== */
+.asc-q{display:flex;gap:12px;align-items:flex-start;background:linear-gradient(180deg,#fff,#f6fbfd);border:1px solid #d7e8f0;border-left:4px solid #0369a1;border-radius:12px}
+.asc-q__no{flex:0 0 auto;width:30px;height:30px;border-radius:50%;background:#0369a1;color:#fff;font-weight:800;display:inline-flex;align-items:center;justify-content:center;font-size:14px;margin-top:2px}
+.asc-q__main{flex:1 1 auto;min-width:0}
+.asc-q .q-stem{margin:0 0 10px;font-size:15.5px;line-height:1.5}
+.asc-opts{display:flex;flex-direction:column;gap:8px}
+.asc-opt{align-items:center;gap:10px;padding:9px 12px;border:1px solid #dce8ef;border-radius:10px;background:#fff;transition:.15s}
+.asc-opt:hover{background:#eef6fb;border-color:#9cc4dd}
+.asc-opt__k{flex:0 0 auto;width:26px;height:26px;border-radius:7px;background:#e3f0f7;color:#0369a1;font-weight:800;display:inline-flex;align-items:center;justify-content:center;font-size:13px}
+.asc-opt__v{flex:1 1 auto;font-size:15px}
+.asc-opt:has(input:checked){border-color:#0369a1;background:#e8f4fb;box-shadow:0 0 0 2px rgba(3,105,161,.15)}
+.asc-opt:has(input:checked) .asc-opt__k{background:#0369a1;color:#fff}
 .items{margin-top:14px}
 .q-item{margin:14px 0;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fffdf9}
 .q-item.correct{border-color:var(--ok);background:#f1faf3}
@@ -74,7 +100,7 @@ audio{width:100%;margin-bottom:8px;display:block}
 .soluzioni{margin:28px 0;background:#fff;border:2px dashed var(--wine);border-radius:14px;padding:18px 20px}
 .soluzioni h2{margin:0 0 12px;color:var(--wine);font-size:18px}
 .soluzioni pre{white-space:pre-wrap;font-size:13.5px;line-height:1.8;background:#fbf6f0;border-radius:8px;padding:12px;font-family:"Courier New",monospace}
-#btn-check{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--wine);color:#fff;border:none;font-size:17px;font-weight:700;padding:13px 30px;border-radius:30px;cursor:pointer;box-shadow:0 4px 14px rgba(123,30,43,.4);z-index:10}
+#btn-check{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--wine);color:#fff;border:none;font-size:17px;font-weight:700;padding:13px 30px;border-radius:30px;cursor:pointer;box-shadow:0 4px 14px rgba(15,118,110,.4);z-index:10}
 #btn-check:hover{background:var(--wine2)}
 #btn-reset{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);margin-left:170px;background:#555;color:#fff;border:none;font-size:15px;padding:13px 22px;border-radius:30px;cursor:pointer;z-index:10}
 #result{margin-top:20px;padding:18px 20px;border-radius:12px;background:#fff;border:2px solid var(--wine);text-align:center}
@@ -105,7 +131,7 @@ audio{width:100%;margin-bottom:8px;display:block}
 <div class="mnote">D7. A: Il divorzio è un fallimento? B: No, a volte è una scelta di libertà.</div>
 <div class="mnote">_Prova 2 — 长对话/访谈（Il gap generazionale）_&amp;#x47;iornalista: Professoressa, esiste davvero un gap generazionale oggi?</div>
 <div class="mnote">_Prova 3 — 独白（Nuovi modelli di famiglia，判断正误 12 题）_&amp;#x4C;a famiglia italiana non è più solo quella tradizionale. Accanto al modello coniugale sono emersi nuclei monogenitoriali, coppie omogenitoriali e famiglie ricomposte dopo il divorzio. Questi modelli non indeboliscono il legame, lo ridefiniscono. I figli di coppie dello stesso sesso mostrano equilibrio psicologico nella media. La legge ha riconosciuto alcune tutele, ma non tutte. I nonni restano figure centrali, spesso protagonisti della cura. La convivenza è scelta dalla maggioranza dei giovani. Tuttavia, la solitudine colpisce chi vive da solo. Lo Stato dovrebbe sostenere le nuove forme con politiche adeguate. La diversità familiare è una ricchezza, non un problema. Insomma, la famiglia cambia forma, non funzione.（独白）</div>
-<details class="text ascolto-text"><summary><button class="spk" type="button" data-src="audio/65323998adf4a24f.mp3" title="Ascolta la pronuncia">🔊</button><span class="asum">📝 Testo / Dialogo (simulato) — clicca 🔊 per ascoltare, o sul testo per mostrarlo</span></summary><pre>Sociologa: Certo, ma è meno netto che negli anni Sessanta. I valori cambiano, non si scontrano sempre.
+<details class="text ascolto-text asc-dlg"><summary class="asc-sum"><span class="asc-ico" aria-hidden="true"></span><button class="spk" type="button" data-src="audio/65323998adf4a24f.mp3" title="Ascolta la pronuncia">🔊</button><span class="asum">📝 Testo / Dialogo (simulato) — clicca 🔊 per ascoltare, o sul testo per mostrarlo</span><span class="asc-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></summary><pre>Sociologa: Certo, ma è meno netto che negli anni Sessanta. I valori cambiano, non si scontrano sempre.
 
 Giornalista: Quali sono i punti di attrito?
 
@@ -124,18 +150,18 @@ Giornalista: Che consiglio dà alle famiglie?
 Sociologa: Ascoltarsi senza pregiudizi. Il dialogo riduce il divario.
 
 Giornalista: Grazie, Professoressa.</pre></details>
-<div class="q-item" data-type="mc" data-correct="1" data-ctext="di più"><p class="q-stem">1. Oggi tra genitori e figli si parla ______.</p><div class="opts"><label class="opt"><input type="radio" name="r1" value="0"> A) meno</label><label class="opt"><input type="radio" name="r1" value="1"> B) di più</label><label class="opt"><input type="radio" name="r1" value="2"> C) mai</label></div></div>
-<div class="q-item" data-type="mc" data-correct="1" data-ctext="legittime"><p class="q-stem">2. Le famiglie arcobaleno sono ritenute ______.</p><div class="opts"><label class="opt"><input type="radio" name="r2" value="0"> A) illegittime</label><label class="opt"><input type="radio" name="r2" value="1"> B) legittime</label><label class="opt"><input type="radio" name="r2" value="2"> C) rare</label></div></div>
-<div class="q-item" data-type="mc" data-correct="1" data-ctext="pilastri"><p class="q-stem">3. I nonni sono ______ affettivi.</p><div class="opts"><label class="opt"><input type="radio" name="r3" value="0"> A) pesi</label><label class="opt"><input type="radio" name="r3" value="1"> B) pilastri</label><label class="opt"><input type="radio" name="r3" value="2"> C) estranei</label></div></div>
-<div class="q-item" data-type="mc" data-correct="1" data-ctext="a modo loro"><p class="q-stem">4. I giovani rispettano le regole ______.</p><div class="opts"><label class="opt"><input type="radio" name="r4" value="0"> A) come prima</label><label class="opt"><input type="radio" name="r4" value="1"> B) a modo loro</label><label class="opt"><input type="radio" name="r4" value="2"> C) mai</label></div></div>
-<div class="q-item" data-type="mc" data-correct="1" data-ctext="dipende dai valori"><p class="q-stem">5. Sposarsi o convivere ______.</p><div class="opts"><label class="opt"><input type="radio" name="r5" value="0"> A) è obbligatorio</label><label class="opt"><input type="radio" name="r5" value="1"> B) dipende dai valori</label><label class="opt"><input type="radio" name="r5" value="2"> C) è uguale</label></div></div>
-<div class="q-item" data-type="mc" data-correct="2" data-ctext="aiutano e distanziano"><p class="q-stem">6. I social ______ le generazioni.</p><div class="opts"><label class="opt"><input type="radio" name="r6" value="0"> A) uniscono solo</label><label class="opt"><input type="radio" name="r6" value="1"> B) creano solo distanza</label><label class="opt"><input type="radio" name="r6" value="2"> C) aiutano e distanziano</label></div></div>
-<div class="q-item" data-type="mc" data-correct="1" data-ctext="una scelta di libertà"><p class="q-stem">7. Il divorzio a volte è ______.</p><div class="opts"><label class="opt"><input type="radio" name="r7" value="0"> A) un fallimento</label><label class="opt"><input type="radio" name="r7" value="1"> B) una scelta di libertà</label><label class="opt"><input type="radio" name="r7" value="2"> C) un errore</label></div></div>
-<div class="q-item" data-type="mc" data-correct="1" data-ctext="meno netto"><p class="q-stem">8. Il gap oggi è ______ che negli anni Sessanta.</p><div class="opts"><label class="opt"><input type="radio" name="r8" value="0"> A) più netto</label><label class="opt"><input type="radio" name="r8" value="1"> B) meno netto</label><label class="opt"><input type="radio" name="r8" value="2"> C) uguale</label></div></div>
-<div class="q-item" data-type="mc" data-correct="1" data-ctext="uso del tempo"><p class="q-stem">9. I punti di attrito riguardano lavoro, autonomia e ______.</p><div class="opts"><label class="opt"><input type="radio" name="r9" value="0"> A) cibo</label><label class="opt"><input type="radio" name="r9" value="1"> B) uso del tempo</label><label class="opt"><input type="radio" name="r9" value="2"> C) musica</label></div></div>
-<div class="q-item" data-type="mc" data-correct="1" data-ctext="flessibilità"><p class="q-stem">10. I giovani vogliono ______.</p><div class="opts"><label class="opt"><input type="radio" name="r10" value="0"> A) stabilità</label><label class="opt"><input type="radio" name="r10" value="1"> B) flessibilità</label><label class="opt"><input type="radio" name="r10" value="2"> C) routine</label></div></div>
-<div class="q-item" data-type="mc" data-correct="1" data-ctext="monogenitoriali/arcobaleno/ricomposte"><p class="q-stem">11. Crescono le famiglie ______.</p><div class="opts"><label class="opt"><input type="radio" name="r11" value="0"> A) solo coniugali</label><label class="opt"><input type="radio" name="r11" value="1"> B) monogenitoriali/arcobaleno/ricomposte</label><label class="opt"><input type="radio" name="r11" value="2"> C) senza figli</label></div></div>
-<div class="q-item" data-type="mc" data-correct="1" data-ctext="ascoltarsi"><p class="q-stem">12. Il consiglio della sociologa è ______.</p><div class="opts"><label class="opt"><input type="radio" name="r12" value="0"> A) litigare</label><label class="opt"><input type="radio" name="r12" value="1"> B) ascoltarsi</label><label class="opt"><input type="radio" name="r12" value="2"> C) separarsi</label></div></div>
+<div class="q-item asc-q" data-type="mc" data-correct="1" data-ctext="di più"><span class="asc-q__no">1</span><div class="asc-q__main"><p class="q-stem">Oggi tra genitori e figli si parla ______.</p><div class="opts asc-opts"><label class="opt asc-opt"><input type="radio" name="r1" value="0"><span class="asc-opt__k">A</span><span class="asc-opt__v">meno</span></label><label class="opt asc-opt"><input type="radio" name="r1" value="1"><span class="asc-opt__k">B</span><span class="asc-opt__v">di più</span></label><label class="opt asc-opt"><input type="radio" name="r1" value="2"><span class="asc-opt__k">C</span><span class="asc-opt__v">mai</span></label></div></div></div>
+<div class="q-item asc-q" data-type="mc" data-correct="1" data-ctext="legittime"><span class="asc-q__no">2</span><div class="asc-q__main"><p class="q-stem">Le famiglie arcobaleno sono ritenute ______.</p><div class="opts asc-opts"><label class="opt asc-opt"><input type="radio" name="r2" value="0"><span class="asc-opt__k">A</span><span class="asc-opt__v">illegittime</span></label><label class="opt asc-opt"><input type="radio" name="r2" value="1"><span class="asc-opt__k">B</span><span class="asc-opt__v">legittime</span></label><label class="opt asc-opt"><input type="radio" name="r2" value="2"><span class="asc-opt__k">C</span><span class="asc-opt__v">rare</span></label></div></div></div>
+<div class="q-item asc-q" data-type="mc" data-correct="1" data-ctext="pilastri"><span class="asc-q__no">3</span><div class="asc-q__main"><p class="q-stem">I nonni sono ______ affettivi.</p><div class="opts asc-opts"><label class="opt asc-opt"><input type="radio" name="r3" value="0"><span class="asc-opt__k">A</span><span class="asc-opt__v">pesi</span></label><label class="opt asc-opt"><input type="radio" name="r3" value="1"><span class="asc-opt__k">B</span><span class="asc-opt__v">pilastri</span></label><label class="opt asc-opt"><input type="radio" name="r3" value="2"><span class="asc-opt__k">C</span><span class="asc-opt__v">estranei</span></label></div></div></div>
+<div class="q-item asc-q" data-type="mc" data-correct="1" data-ctext="a modo loro"><span class="asc-q__no">4</span><div class="asc-q__main"><p class="q-stem">I giovani rispettano le regole ______.</p><div class="opts asc-opts"><label class="opt asc-opt"><input type="radio" name="r4" value="0"><span class="asc-opt__k">A</span><span class="asc-opt__v">come prima</span></label><label class="opt asc-opt"><input type="radio" name="r4" value="1"><span class="asc-opt__k">B</span><span class="asc-opt__v">a modo loro</span></label><label class="opt asc-opt"><input type="radio" name="r4" value="2"><span class="asc-opt__k">C</span><span class="asc-opt__v">mai</span></label></div></div></div>
+<div class="q-item asc-q" data-type="mc" data-correct="1" data-ctext="dipende dai valori"><span class="asc-q__no">5</span><div class="asc-q__main"><p class="q-stem">Sposarsi o convivere ______.</p><div class="opts asc-opts"><label class="opt asc-opt"><input type="radio" name="r5" value="0"><span class="asc-opt__k">A</span><span class="asc-opt__v">è obbligatorio</span></label><label class="opt asc-opt"><input type="radio" name="r5" value="1"><span class="asc-opt__k">B</span><span class="asc-opt__v">dipende dai valori</span></label><label class="opt asc-opt"><input type="radio" name="r5" value="2"><span class="asc-opt__k">C</span><span class="asc-opt__v">è uguale</span></label></div></div></div>
+<div class="q-item asc-q" data-type="mc" data-correct="2" data-ctext="aiutano e distanziano"><span class="asc-q__no">6</span><div class="asc-q__main"><p class="q-stem">I social ______ le generazioni.</p><div class="opts asc-opts"><label class="opt asc-opt"><input type="radio" name="r6" value="0"><span class="asc-opt__k">A</span><span class="asc-opt__v">uniscono solo</span></label><label class="opt asc-opt"><input type="radio" name="r6" value="1"><span class="asc-opt__k">B</span><span class="asc-opt__v">creano solo distanza</span></label><label class="opt asc-opt"><input type="radio" name="r6" value="2"><span class="asc-opt__k">C</span><span class="asc-opt__v">aiutano e distanziano</span></label></div></div></div>
+<div class="q-item asc-q" data-type="mc" data-correct="1" data-ctext="una scelta di libertà"><span class="asc-q__no">7</span><div class="asc-q__main"><p class="q-stem">Il divorzio a volte è ______.</p><div class="opts asc-opts"><label class="opt asc-opt"><input type="radio" name="r7" value="0"><span class="asc-opt__k">A</span><span class="asc-opt__v">un fallimento</span></label><label class="opt asc-opt"><input type="radio" name="r7" value="1"><span class="asc-opt__k">B</span><span class="asc-opt__v">una scelta di libertà</span></label><label class="opt asc-opt"><input type="radio" name="r7" value="2"><span class="asc-opt__k">C</span><span class="asc-opt__v">un errore</span></label></div></div></div>
+<div class="q-item asc-q" data-type="mc" data-correct="1" data-ctext="meno netto"><span class="asc-q__no">8</span><div class="asc-q__main"><p class="q-stem">Il gap oggi è ______ che negli anni Sessanta.</p><div class="opts asc-opts"><label class="opt asc-opt"><input type="radio" name="r8" value="0"><span class="asc-opt__k">A</span><span class="asc-opt__v">più netto</span></label><label class="opt asc-opt"><input type="radio" name="r8" value="1"><span class="asc-opt__k">B</span><span class="asc-opt__v">meno netto</span></label><label class="opt asc-opt"><input type="radio" name="r8" value="2"><span class="asc-opt__k">C</span><span class="asc-opt__v">uguale</span></label></div></div></div>
+<div class="q-item asc-q" data-type="mc" data-correct="1" data-ctext="uso del tempo"><span class="asc-q__no">9</span><div class="asc-q__main"><p class="q-stem">I punti di attrito riguardano lavoro, autonomia e ______.</p><div class="opts asc-opts"><label class="opt asc-opt"><input type="radio" name="r9" value="0"><span class="asc-opt__k">A</span><span class="asc-opt__v">cibo</span></label><label class="opt asc-opt"><input type="radio" name="r9" value="1"><span class="asc-opt__k">B</span><span class="asc-opt__v">uso del tempo</span></label><label class="opt asc-opt"><input type="radio" name="r9" value="2"><span class="asc-opt__k">C</span><span class="asc-opt__v">musica</span></label></div></div></div>
+<div class="q-item asc-q" data-type="mc" data-correct="1" data-ctext="flessibilità"><span class="asc-q__no">10</span><div class="asc-q__main"><p class="q-stem">I giovani vogliono ______.</p><div class="opts asc-opts"><label class="opt asc-opt"><input type="radio" name="r10" value="0"><span class="asc-opt__k">A</span><span class="asc-opt__v">stabilità</span></label><label class="opt asc-opt"><input type="radio" name="r10" value="1"><span class="asc-opt__k">B</span><span class="asc-opt__v">flessibilità</span></label><label class="opt asc-opt"><input type="radio" name="r10" value="2"><span class="asc-opt__k">C</span><span class="asc-opt__v">routine</span></label></div></div></div>
+<div class="q-item asc-q" data-type="mc" data-correct="1" data-ctext="monogenitoriali/arcobaleno/ricomposte"><span class="asc-q__no">11</span><div class="asc-q__main"><p class="q-stem">Crescono le famiglie ______.</p><div class="opts asc-opts"><label class="opt asc-opt"><input type="radio" name="r11" value="0"><span class="asc-opt__k">A</span><span class="asc-opt__v">solo coniugali</span></label><label class="opt asc-opt"><input type="radio" name="r11" value="1"><span class="asc-opt__k">B</span><span class="asc-opt__v">monogenitoriali/arcobaleno/ricomposte</span></label><label class="opt asc-opt"><input type="radio" name="r11" value="2"><span class="asc-opt__k">C</span><span class="asc-opt__v">senza figli</span></label></div></div></div>
+<div class="q-item asc-q" data-type="mc" data-correct="1" data-ctext="ascoltarsi"><span class="asc-q__no">12</span><div class="asc-q__main"><p class="q-stem">Il consiglio della sociologa è ______.</p><div class="opts asc-opts"><label class="opt asc-opt"><input type="radio" name="r12" value="0"><span class="asc-opt__k">A</span><span class="asc-opt__v">litigare</span></label><label class="opt asc-opt"><input type="radio" name="r12" value="1"><span class="asc-opt__k">B</span><span class="asc-opt__v">ascoltarsi</span></label><label class="opt asc-opt"><input type="radio" name="r12" value="2"><span class="asc-opt__k">C</span><span class="asc-opt__v">separarsi</span></label></div></div></div>
 <div class="mnote">13–24. Prova 3 Vero/Falso（12 题）见「答案与评分」。</div></section>
 <section class="module"><h2>2. Lettura（阅读）</h2><div class="mnote">Lettura（阅读）</div>
 <div class="mnote">50 分钟。Prova 1（300–400 词 7 单选）；Prova 2（实用文本 判断正误 14 题，近年改革：阅读第2题为 Vero/Falso）；Prova 3（11 句排序）。</div>
@@ -276,16 +302,18 @@ document.addEventListener('play', function(e){
     document.querySelectorAll('audio').forEach(function(a){ if(a!==e.target) a.pause(); });
   }
 }, true);</script><script id="ascolto-audio-player">(function(){
-  var cur=null, curBtn=null;
-  function stop(){ if(cur){try{cur.pause();}catch(e){}} if(curBtn){curBtn.textContent='\u{1F50A}';curBtn.classList.remove('playing','err');} cur=null; curBtn=null; }
+  var cur=null, curBtn=null, curDlg=null;
+  function clearDlg(){ if(curDlg){ curDlg.classList.remove('playing'); curDlg=null; } }
+  function stop(){ if(cur){try{cur.pause();}catch(e){}} if(curBtn){curBtn.textContent='\u{1F50A}';curBtn.classList.remove('playing','err');} clearDlg(); cur=null; curBtn=null; }
   function play(b){
     var src=b.getAttribute('data-src'); if(!src) return;
     if(curBtn===b && cur && !cur.paused){ stop(); return; }
     stop();
     b.textContent='\u{1F507}'; b.classList.add('playing');
+    var dlg=b.closest('.asc-dlg'); if(dlg){ dlg.classList.add('playing'); curDlg=dlg; }
     var a=new Audio(src);
-    a.addEventListener('ended', function(){ b.textContent='\u{1F50A}'; b.classList.remove('playing'); curBtn=null; cur=null; });
-    a.addEventListener('error', function(){ b.textContent='\u{1F507}'; b.classList.add('err'); b.title='Audio non disponibile'; });
+    a.addEventListener('ended', function(){ b.textContent='\u{1F50A}'; b.classList.remove('playing'); clearDlg(); curBtn=null; cur=null; });
+    a.addEventListener('error', function(){ b.textContent='\u{1F507}'; b.classList.add('err'); b.title='Audio non disponibile'; clearDlg(); });
     var p=a.play();
     if(p && p.then){ p.then(function(){ b.textContent='\u{1F508}'; b.classList.add('playing'); })
       .catch(function(){ b.textContent='\u{1F507}'; b.classList.add('err'); b.title='Riproduzione fallita'; }); }

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>CILS C1 — CILS TRE</title><style>:root{--wine:#7b1e2b;--wine2:#a83246;--ink:#23211f;--paper:#fbf8f4;--line:#e4ddd2;--ok:#1b7a3d;--no:#c0392b;}
+<!DOCTYPE html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>CILS C1 — CILS TRE</title><style>:root{--wine:#0f766e;--wine2:#14b8a6;--ink:#23211f;--paper:#fbf8f4;--line:#e4ddd2;--ok:#1b7a3d;--no:#c0392b;}
 *{box-sizing:border-box}
 body{margin:0;font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);background:var(--paper);line-height:1.65}
 header.top{background:linear-gradient(135deg,var(--wine),var(--wine2));color:#fff;padding:26px 20px;box-shadow:0 2px 10px rgba(0,0,0,.15)}
@@ -14,16 +14,42 @@ section.module h3{color:#444;font-size:16px;margin:22px 0 10px}
 .text{background:#f6f1e9;border-left:4px solid var(--wine);border-radius:8px;padding:12px 14px;margin:12px 0}
 .text h4{margin:0 0 6px;font-size:14px;color:var(--wine)}
 pre{white-space:pre-wrap;margin:0;font-family:"Courier New",monospace;font-size:14px}
-.text.ascolto-text{border-left-color:#2a7fb8;background:#eef6fb}
-.text.ascolto-text summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;font-weight:600;color:#1f5f80;padding:2px 0;user-select:none}
-.text.ascolto-text summary::-webkit-details-marker{display:none}
-.text.ascolto-text summary:hover{text-decoration:underline}
-.text.ascolto-text[open] summary{margin-bottom:8px}
-.text.ascolto-text .asum{font-size:14px}
-.spk{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:none;background:rgba(42,127,184,.14);color:#1f5f80;border-radius:50%;font-size:16px;cursor:pointer;line-height:1;transition:.15s;flex:0 0 auto}
-.spk:hover{background:#1f5f80;color:#fff}
-.spk.playing{background:#1f5f80;color:#fff}
-.spk.err{background:#c0392b;color:#fff}
+/* ====== Ascolto 听力播放器（独立于 CELI 的现代化界面） ====== */
+.text.ascolto-text{border:none;background:transparent;padding:0;margin:14px 0}
+.asc-dlg{position:relative;border:1px solid #cfe3ec;border-left:5px solid #0369a1;border-radius:16px;background:linear-gradient(180deg,#f4fafe,#e9f3fb);padding:14px 16px;box-shadow:0 2px 10px rgba(3,105,161,.08);overflow:hidden}
+.asc-dlg::after{content:"";position:absolute;right:-26px;top:-26px;width:110px;height:110px;border-radius:50%;background:radial-gradient(circle,rgba(3,105,161,.10),transparent 70%);pointer-events:none}
+.asc-sum{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:4px 2px;user-select:none;position:relative;z-index:1;border-radius:12px}
+.asc-sum::-webkit-details-marker{display:none}
+.asc-sum:hover{background:rgba(3,105,161,.06)}
+.asc-sum .asum{font-size:13.5px;color:#075985;font-weight:600;flex:1 1 auto;line-height:1.45}
+.asc-ico{flex:0 0 auto;width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,#0369a1,#0c4a6e);display:inline-flex;align-items:center;justify-content:center;box-shadow:0 4px 10px rgba(3,105,161,.3)}
+.asc-ico::before{content:"🎧";font-size:20px;filter:brightness(0) invert(1)}
+.text.ascolto-text .spk{width:50px;height:50px;font-size:22px;background:linear-gradient(135deg,#0369a1,#0c4a6e);color:#fff;border-radius:50%;box-shadow:0 6px 16px rgba(3,105,161,.4);flex:0 0 auto;transition:transform .15s,background .15s}
+.text.ascolto-text .spk:hover,.text.ascolto-text .spk.playing{transform:scale(1.07);background:linear-gradient(135deg,#0c4a6e,#0369a1)}
+.text.ascolto-text .spk.err{background:#c0392b}
+.asc-wave{flex:0 0 auto;display:flex;align-items:center;gap:3px;height:30px}
+.asc-wave i{display:block;width:3px;height:7px;background:#9cc4dd;border-radius:2px}
+.asc-dlg.playing .asc-wave i{background:#0369a1;animation:ascbar .9s ease-in-out infinite}
+.asc-dlg.playing .asc-wave i:nth-child(2){animation-delay:.12s}
+.asc-dlg.playing .asc-wave i:nth-child(3){animation-delay:.24s}
+.asc-dlg.playing .asc-wave i:nth-child(4){animation-delay:.10s}
+.asc-dlg.playing .asc-wave i:nth-child(5){animation-delay:.20s}
+.asc-dlg.playing .asc-wave i:nth-child(6){animation-delay:.28s}
+.asc-dlg.playing .asc-wave i:nth-child(7){animation-delay:.16s}
+@keyframes ascbar{0%,100%{height:7px}50%{height:24px}}
+.text.ascolto-text > pre{margin:10px 0 0;background:#fff;border:1px solid #dbeaf3;border-radius:10px;padding:12px 14px;color:#243b4a;font-size:14px;line-height:1.7}
+/* ====== Ascolto 听力题（独立编号卡片） ====== */
+.asc-q{display:flex;gap:12px;align-items:flex-start;background:linear-gradient(180deg,#fff,#f6fbfd);border:1px solid #d7e8f0;border-left:4px solid #0369a1;border-radius:12px}
+.asc-q__no{flex:0 0 auto;width:30px;height:30px;border-radius:50%;background:#0369a1;color:#fff;font-weight:800;display:inline-flex;align-items:center;justify-content:center;font-size:14px;margin-top:2px}
+.asc-q__main{flex:1 1 auto;min-width:0}
+.asc-q .q-stem{margin:0 0 10px;font-size:15.5px;line-height:1.5}
+.asc-opts{display:flex;flex-direction:column;gap:8px}
+.asc-opt{align-items:center;gap:10px;padding:9px 12px;border:1px solid #dce8ef;border-radius:10px;background:#fff;transition:.15s}
+.asc-opt:hover{background:#eef6fb;border-color:#9cc4dd}
+.asc-opt__k{flex:0 0 auto;width:26px;height:26px;border-radius:7px;background:#e3f0f7;color:#0369a1;font-weight:800;display:inline-flex;align-items:center;justify-content:center;font-size:13px}
+.asc-opt__v{flex:1 1 auto;font-size:15px}
+.asc-opt:has(input:checked){border-color:#0369a1;background:#e8f4fb;box-shadow:0 0 0 2px rgba(3,105,161,.15)}
+.asc-opt:has(input:checked) .asc-opt__k{background:#0369a1;color:#fff}
 .items{margin-top:14px}
 .q-item{margin:14px 0;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fffdf9}
 .q-item.correct{border-color:var(--ok);background:#f1faf3}
@@ -74,7 +100,7 @@ audio{width:100%;margin-bottom:8px;display:block}
 .soluzioni{margin:28px 0;background:#fff;border:2px dashed var(--wine);border-radius:14px;padding:18px 20px}
 .soluzioni h2{margin:0 0 12px;color:var(--wine);font-size:18px}
 .soluzioni pre{white-space:pre-wrap;font-size:13.5px;line-height:1.8;background:#fbf6f0;border-radius:8px;padding:12px;font-family:"Courier New",monospace}
-#btn-check{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--wine);color:#fff;border:none;font-size:17px;font-weight:700;padding:13px 30px;border-radius:30px;cursor:pointer;box-shadow:0 4px 14px rgba(123,30,43,.4);z-index:10}
+#btn-check{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--wine);color:#fff;border:none;font-size:17px;font-weight:700;padding:13px 30px;border-radius:30px;cursor:pointer;box-shadow:0 4px 14px rgba(15,118,110,.4);z-index:10}
 #btn-check:hover{background:var(--wine2)}
 #btn-reset{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);margin-left:170px;background:#555;color:#fff;border:none;font-size:15px;padding:13px 22px;border-radius:30px;cursor:pointer;z-index:10}
 #result{margin-top:20px;padding:18px 20px;border-radius:12px;background:#fff;border:2px solid var(--wine);text-align:center}
@@ -99,14 +125,14 @@ audio{width:100%;margin-bottom:8px;display:block}
 <div class="mnote">_Parte 1 — Intervista a una sociologa (il ruolo della famiglia)_«La famiglia oggi non è più un&#x27;istituzione chiusa, ma una rete affettiva aperta. Il suo ruolo non è scomparso: si è spostato. Non garantisce più la sopravvivenza economica, ma resta la fonte primaria di cura e senso. I legami si scelgono, non si subiscono. Tuttavia, lo Stato delega ancora troppo alla famiglia, senza sostegni adeguati.»</div>
 <div class="mnote">_Parte 2 — Conferenza (natalità)_«L&#x27;Italia ha uno dei tassi di natalità più bassi al mondo. Le cause? Precarietà, costo delle case, assenza di servizi. Le politiche familiari sono insufficienti. Senza un investimento serio, il calo demografico diventa irreversibile. Servono asili nido, congedi parentali equi, case accessibili.»</div>
 <div class="mnote">_Parte 3 — Dibattito (giovani e genitori)_«Giovane: Voglio figli, ma non ora. Genitore: Noi li facemmo a 25 anni. Giovane: Il lavoro non ce lo permette. Moderatore: Il punto è strutturale, non culturale.»</div>
-<div class="q-item" data-type="mc" data-correct="1" data-ctext="una rete aperta"><p class="q-stem">1. La famiglia oggi è per la sociologa ______.</p><div class="opts"><label class="opt"><input type="radio" name="r1" value="0"> A) un&#x27;istituzione chiusa</label><label class="opt"><input type="radio" name="r1" value="1"> B) una rete aperta</label><label class="opt"><input type="radio" name="r1" value="2"> C) scomparsa</label></div></div>
-<div class="q-item" data-type="mc" data-correct="1" data-ctext="spostato"><p class="q-stem">2. Il suo ruolo si è ______.</p><div class="opts"><label class="opt"><input type="radio" name="r2" value="0"> A) azzerato</label><label class="opt"><input type="radio" name="r2" value="1"> B) spostato</label><label class="opt"><input type="radio" name="r2" value="2"> C) rafforzato</label></div></div>
-<div class="q-item" data-type="mc" data-correct="0" data-ctext="delega troppo"><p class="q-stem">3. Lo Stato ______ alla famiglia.</p><div class="opts"><label class="opt"><input type="radio" name="r3" value="0"> A) delega troppo</label><label class="opt"><input type="radio" name="r3" value="1"> B) non delega nulla</label><label class="opt"><input type="radio" name="r3" value="2"> C) sostiene</label></div></div>
-<div class="q-item" data-type="mc" data-correct="1" data-ctext="tra le più basse"><p class="q-stem">4. L&#x27;Italia ha natalità ______.</p><div class="opts"><label class="opt"><input type="radio" name="r4" value="0"> A) alta</label><label class="opt"><input type="radio" name="r4" value="1"> B) tra le più basse</label><label class="opt"><input type="radio" name="r4" value="2"> C) media</label></div></div>
-<div class="q-item" data-type="mc" data-correct="1" data-ctext="precarietà e costo case"><p class="q-stem">5. Tra le cause il relatore cita ______.</p><div class="opts"><label class="opt"><input type="radio" name="r5" value="0"> A) la religione</label><label class="opt"><input type="radio" name="r5" value="1"> B) precarietà e costo case</label><label class="opt"><input type="radio" name="r5" value="2"> C) l&#x27;istruzione</label></div></div>
-<div class="q-item" data-type="mc" data-correct="1" data-ctext="insufficienti"><p class="q-stem">6. Le politiche familiari sono ______.</p><div class="opts"><label class="opt"><input type="radio" name="r6" value="0"> A) generose</label><label class="opt"><input type="radio" name="r6" value="1"> B) insufficienti</label><label class="opt"><input type="radio" name="r6" value="2"> C) perfette</label></div></div>
-<div class="q-item" data-type="mc" data-correct="1" data-ctext="asili e case accessibili"><p class="q-stem">7. Servono ______ per invertire il trend.</p><div class="opts"><label class="opt"><input type="radio" name="r7" value="0"> A) meno tasse</label><label class="opt"><input type="radio" name="r7" value="1"> B) asili e case accessibili</label><label class="opt"><input type="radio" name="r7" value="2"> C) meno immigrati</label></div></div>
-<div class="q-item" data-type="mc" data-correct="1" data-ctext="strutturale"><p class="q-stem">8. Per il giovane, il problema è ______.</p><div class="opts"><label class="opt"><input type="radio" name="r8" value="0"> A) culturale</label><label class="opt"><input type="radio" name="r8" value="1"> B) strutturale</label><label class="opt"><input type="radio" name="r8" value="2"> C) religioso</label></div></div></section>
+<div class="q-item asc-q" data-type="mc" data-correct="1" data-ctext="una rete aperta"><span class="asc-q__no">1</span><div class="asc-q__main"><p class="q-stem">La famiglia oggi è per la sociologa ______.</p><div class="opts asc-opts"><label class="opt asc-opt"><input type="radio" name="r1" value="0"><span class="asc-opt__k">A</span><span class="asc-opt__v">un&#x27;istituzione chiusa</span></label><label class="opt asc-opt"><input type="radio" name="r1" value="1"><span class="asc-opt__k">B</span><span class="asc-opt__v">una rete aperta</span></label><label class="opt asc-opt"><input type="radio" name="r1" value="2"><span class="asc-opt__k">C</span><span class="asc-opt__v">scomparsa</span></label></div></div></div>
+<div class="q-item asc-q" data-type="mc" data-correct="1" data-ctext="spostato"><span class="asc-q__no">2</span><div class="asc-q__main"><p class="q-stem">Il suo ruolo si è ______.</p><div class="opts asc-opts"><label class="opt asc-opt"><input type="radio" name="r2" value="0"><span class="asc-opt__k">A</span><span class="asc-opt__v">azzerato</span></label><label class="opt asc-opt"><input type="radio" name="r2" value="1"><span class="asc-opt__k">B</span><span class="asc-opt__v">spostato</span></label><label class="opt asc-opt"><input type="radio" name="r2" value="2"><span class="asc-opt__k">C</span><span class="asc-opt__v">rafforzato</span></label></div></div></div>
+<div class="q-item asc-q" data-type="mc" data-correct="0" data-ctext="delega troppo"><span class="asc-q__no">3</span><div class="asc-q__main"><p class="q-stem">Lo Stato ______ alla famiglia.</p><div class="opts asc-opts"><label class="opt asc-opt"><input type="radio" name="r3" value="0"><span class="asc-opt__k">A</span><span class="asc-opt__v">delega troppo</span></label><label class="opt asc-opt"><input type="radio" name="r3" value="1"><span class="asc-opt__k">B</span><span class="asc-opt__v">non delega nulla</span></label><label class="opt asc-opt"><input type="radio" name="r3" value="2"><span class="asc-opt__k">C</span><span class="asc-opt__v">sostiene</span></label></div></div></div>
+<div class="q-item asc-q" data-type="mc" data-correct="1" data-ctext="tra le più basse"><span class="asc-q__no">4</span><div class="asc-q__main"><p class="q-stem">L&#x27;Italia ha natalità ______.</p><div class="opts asc-opts"><label class="opt asc-opt"><input type="radio" name="r4" value="0"><span class="asc-opt__k">A</span><span class="asc-opt__v">alta</span></label><label class="opt asc-opt"><input type="radio" name="r4" value="1"><span class="asc-opt__k">B</span><span class="asc-opt__v">tra le più basse</span></label><label class="opt asc-opt"><input type="radio" name="r4" value="2"><span class="asc-opt__k">C</span><span class="asc-opt__v">media</span></label></div></div></div>
+<div class="q-item asc-q" data-type="mc" data-correct="1" data-ctext="precarietà e costo case"><span class="asc-q__no">5</span><div class="asc-q__main"><p class="q-stem">Tra le cause il relatore cita ______.</p><div class="opts asc-opts"><label class="opt asc-opt"><input type="radio" name="r5" value="0"><span class="asc-opt__k">A</span><span class="asc-opt__v">la religione</span></label><label class="opt asc-opt"><input type="radio" name="r5" value="1"><span class="asc-opt__k">B</span><span class="asc-opt__v">precarietà e costo case</span></label><label class="opt asc-opt"><input type="radio" name="r5" value="2"><span class="asc-opt__k">C</span><span class="asc-opt__v">l&#x27;istruzione</span></label></div></div></div>
+<div class="q-item asc-q" data-type="mc" data-correct="1" data-ctext="insufficienti"><span class="asc-q__no">6</span><div class="asc-q__main"><p class="q-stem">Le politiche familiari sono ______.</p><div class="opts asc-opts"><label class="opt asc-opt"><input type="radio" name="r6" value="0"><span class="asc-opt__k">A</span><span class="asc-opt__v">generose</span></label><label class="opt asc-opt"><input type="radio" name="r6" value="1"><span class="asc-opt__k">B</span><span class="asc-opt__v">insufficienti</span></label><label class="opt asc-opt"><input type="radio" name="r6" value="2"><span class="asc-opt__k">C</span><span class="asc-opt__v">perfette</span></label></div></div></div>
+<div class="q-item asc-q" data-type="mc" data-correct="1" data-ctext="asili e case accessibili"><span class="asc-q__no">7</span><div class="asc-q__main"><p class="q-stem">Servono ______ per invertire il trend.</p><div class="opts asc-opts"><label class="opt asc-opt"><input type="radio" name="r7" value="0"><span class="asc-opt__k">A</span><span class="asc-opt__v">meno tasse</span></label><label class="opt asc-opt"><input type="radio" name="r7" value="1"><span class="asc-opt__k">B</span><span class="asc-opt__v">asili e case accessibili</span></label><label class="opt asc-opt"><input type="radio" name="r7" value="2"><span class="asc-opt__k">C</span><span class="asc-opt__v">meno immigrati</span></label></div></div></div>
+<div class="q-item asc-q" data-type="mc" data-correct="1" data-ctext="strutturale"><span class="asc-q__no">8</span><div class="asc-q__main"><p class="q-stem">Per il giovane, il problema è ______.</p><div class="opts asc-opts"><label class="opt asc-opt"><input type="radio" name="r8" value="0"><span class="asc-opt__k">A</span><span class="asc-opt__v">culturale</span></label><label class="opt asc-opt"><input type="radio" name="r8" value="1"><span class="asc-opt__k">B</span><span class="asc-opt__v">strutturale</span></label><label class="opt asc-opt"><input type="radio" name="r8" value="2"><span class="asc-opt__k">C</span><span class="asc-opt__v">religioso</span></label></div></div></div></section>
 <section class="module"><h2>2. Lettura（阅读）</h2><div class="mnote">Lettura（阅读）</div>
 <div class="mnote">70 分钟，3 部分含句子排序；文学节选/专业期刊/评论。</div>
 <div class="mnote">_Parte 1 — Saggio sociologico (il ruolo della famiglia oggi)_&amp;#x4C;a famiglia contemporanea ha perso il monopolio dell&#x27;assistenza, ma ne ha conservato il cuore affettivo. Non è più l&#x27;unità produttiva di un tempo; è diventata il luogo elettivo della cura. Questo spostamento ha conseguenze: i legami si costruiscono, non si ereditano. La libertà cresce, ma cresce anche la solitudine di chi resta senza rete. Lo Stato deve integrare, non sostituire.（148 词）</div>

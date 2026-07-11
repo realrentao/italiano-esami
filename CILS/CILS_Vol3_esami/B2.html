@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>CILS B2 — CILS DUE</title><style>:root{--wine:#7b1e2b;--wine2:#a83246;--ink:#23211f;--paper:#fbf8f4;--line:#e4ddd2;--ok:#1b7a3d;--no:#c0392b;}
+<!DOCTYPE html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>CILS B2 — CILS DUE</title><style>:root{--wine:#0f766e;--wine2:#14b8a6;--ink:#23211f;--paper:#fbf8f4;--line:#e4ddd2;--ok:#1b7a3d;--no:#c0392b;}
 *{box-sizing:border-box}
 body{margin:0;font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);background:var(--paper);line-height:1.65}
 header.top{background:linear-gradient(135deg,var(--wine),var(--wine2));color:#fff;padding:26px 20px;box-shadow:0 2px 10px rgba(0,0,0,.15)}
@@ -14,16 +14,42 @@ section.module h3{color:#444;font-size:16px;margin:22px 0 10px}
 .text{background:#f6f1e9;border-left:4px solid var(--wine);border-radius:8px;padding:12px 14px;margin:12px 0}
 .text h4{margin:0 0 6px;font-size:14px;color:var(--wine)}
 pre{white-space:pre-wrap;margin:0;font-family:"Courier New",monospace;font-size:14px}
-.text.ascolto-text{border-left-color:#2a7fb8;background:#eef6fb}
-.text.ascolto-text summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;font-weight:600;color:#1f5f80;padding:2px 0;user-select:none}
-.text.ascolto-text summary::-webkit-details-marker{display:none}
-.text.ascolto-text summary:hover{text-decoration:underline}
-.text.ascolto-text[open] summary{margin-bottom:8px}
-.text.ascolto-text .asum{font-size:14px}
-.spk{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:none;background:rgba(42,127,184,.14);color:#1f5f80;border-radius:50%;font-size:16px;cursor:pointer;line-height:1;transition:.15s;flex:0 0 auto}
-.spk:hover{background:#1f5f80;color:#fff}
-.spk.playing{background:#1f5f80;color:#fff}
-.spk.err{background:#c0392b;color:#fff}
+/* ====== Ascolto 听力播放器（独立于 CELI 的现代化界面） ====== */
+.text.ascolto-text{border:none;background:transparent;padding:0;margin:14px 0}
+.asc-dlg{position:relative;border:1px solid #cfe3ec;border-left:5px solid #0369a1;border-radius:16px;background:linear-gradient(180deg,#f4fafe,#e9f3fb);padding:14px 16px;box-shadow:0 2px 10px rgba(3,105,161,.08);overflow:hidden}
+.asc-dlg::after{content:"";position:absolute;right:-26px;top:-26px;width:110px;height:110px;border-radius:50%;background:radial-gradient(circle,rgba(3,105,161,.10),transparent 70%);pointer-events:none}
+.asc-sum{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:4px 2px;user-select:none;position:relative;z-index:1;border-radius:12px}
+.asc-sum::-webkit-details-marker{display:none}
+.asc-sum:hover{background:rgba(3,105,161,.06)}
+.asc-sum .asum{font-size:13.5px;color:#075985;font-weight:600;flex:1 1 auto;line-height:1.45}
+.asc-ico{flex:0 0 auto;width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,#0369a1,#0c4a6e);display:inline-flex;align-items:center;justify-content:center;box-shadow:0 4px 10px rgba(3,105,161,.3)}
+.asc-ico::before{content:"🎧";font-size:20px;filter:brightness(0) invert(1)}
+.text.ascolto-text .spk{width:50px;height:50px;font-size:22px;background:linear-gradient(135deg,#0369a1,#0c4a6e);color:#fff;border-radius:50%;box-shadow:0 6px 16px rgba(3,105,161,.4);flex:0 0 auto;transition:transform .15s,background .15s}
+.text.ascolto-text .spk:hover,.text.ascolto-text .spk.playing{transform:scale(1.07);background:linear-gradient(135deg,#0c4a6e,#0369a1)}
+.text.ascolto-text .spk.err{background:#c0392b}
+.asc-wave{flex:0 0 auto;display:flex;align-items:center;gap:3px;height:30px}
+.asc-wave i{display:block;width:3px;height:7px;background:#9cc4dd;border-radius:2px}
+.asc-dlg.playing .asc-wave i{background:#0369a1;animation:ascbar .9s ease-in-out infinite}
+.asc-dlg.playing .asc-wave i:nth-child(2){animation-delay:.12s}
+.asc-dlg.playing .asc-wave i:nth-child(3){animation-delay:.24s}
+.asc-dlg.playing .asc-wave i:nth-child(4){animation-delay:.10s}
+.asc-dlg.playing .asc-wave i:nth-child(5){animation-delay:.20s}
+.asc-dlg.playing .asc-wave i:nth-child(6){animation-delay:.28s}
+.asc-dlg.playing .asc-wave i:nth-child(7){animation-delay:.16s}
+@keyframes ascbar{0%,100%{height:7px}50%{height:24px}}
+.text.ascolto-text > pre{margin:10px 0 0;background:#fff;border:1px solid #dbeaf3;border-radius:10px;padding:12px 14px;color:#243b4a;font-size:14px;line-height:1.7}
+/* ====== Ascolto 听力题（独立编号卡片） ====== */
+.asc-q{display:flex;gap:12px;align-items:flex-start;background:linear-gradient(180deg,#fff,#f6fbfd);border:1px solid #d7e8f0;border-left:4px solid #0369a1;border-radius:12px}
+.asc-q__no{flex:0 0 auto;width:30px;height:30px;border-radius:50%;background:#0369a1;color:#fff;font-weight:800;display:inline-flex;align-items:center;justify-content:center;font-size:14px;margin-top:2px}
+.asc-q__main{flex:1 1 auto;min-width:0}
+.asc-q .q-stem{margin:0 0 10px;font-size:15.5px;line-height:1.5}
+.asc-opts{display:flex;flex-direction:column;gap:8px}
+.asc-opt{align-items:center;gap:10px;padding:9px 12px;border:1px solid #dce8ef;border-radius:10px;background:#fff;transition:.15s}
+.asc-opt:hover{background:#eef6fb;border-color:#9cc4dd}
+.asc-opt__k{flex:0 0 auto;width:26px;height:26px;border-radius:7px;background:#e3f0f7;color:#0369a1;font-weight:800;display:inline-flex;align-items:center;justify-content:center;font-size:13px}
+.asc-opt__v{flex:1 1 auto;font-size:15px}
+.asc-opt:has(input:checked){border-color:#0369a1;background:#e8f4fb;box-shadow:0 0 0 2px rgba(3,105,161,.15)}
+.asc-opt:has(input:checked) .asc-opt__k{background:#0369a1;color:#fff}
 .items{margin-top:14px}
 .q-item{margin:14px 0;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fffdf9}
 .q-item.correct{border-color:var(--ok);background:#f1faf3}
@@ -74,7 +100,7 @@ audio{width:100%;margin-bottom:8px;display:block}
 .soluzioni{margin:28px 0;background:#fff;border:2px dashed var(--wine);border-radius:14px;padding:18px 20px}
 .soluzioni h2{margin:0 0 12px;color:var(--wine);font-size:18px}
 .soluzioni pre{white-space:pre-wrap;font-size:13.5px;line-height:1.8;background:#fbf6f0;border-radius:8px;padding:12px;font-family:"Courier New",monospace}
-#btn-check{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--wine);color:#fff;border:none;font-size:17px;font-weight:700;padding:13px 30px;border-radius:30px;cursor:pointer;box-shadow:0 4px 14px rgba(123,30,43,.4);z-index:10}
+#btn-check{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--wine);color:#fff;border:none;font-size:17px;font-weight:700;padding:13px 30px;border-radius:30px;cursor:pointer;box-shadow:0 4px 14px rgba(15,118,110,.4);z-index:10}
 #btn-check:hover{background:var(--wine2)}
 #btn-reset{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);margin-left:170px;background:#555;color:#fff;border:none;font-size:15px;padding:13px 22px;border-radius:30px;cursor:pointer;z-index:10}
 #result{margin-top:20px;padding:18px 20px;border-radius:12px;background:#fff;border:2px solid var(--wine);text-align:center}
@@ -109,7 +135,7 @@ audio{width:100%;margin-bottom:8px;display:block}
 <div class="mnote">Prof. Villa: Sì, la sorveglianza dei dati e la disuguaglianza digitale. Per questo l&#x27;urbanistica deve rimanere umana.</div>
 <div class="mnote">Prof. Villa: Milano, con il controllo del traffico, e Bologna, con i dati sui rifiuti.</div>
 <div class="mnote">Domande (8–14): 8. Definizione di smart city… 9. Secondo il prof. serve anche… 10. Il rischio principale… 11. La disuguaglianza… 12. L&#x27;urbanistica deve… 13. Milano è citata per… 14. Bologna per…</div>
-<details class="text ascolto-text"><summary><button class="spk" type="button" data-src="audio/360a7b529d37dc51.mp3" title="Ascolta la pronuncia">🔊</button><span class="asum">📝 Testo / Dialogo (simulato) — clicca 🔊 per ascoltare, o sul testo per mostrarlo</span></summary><pre>&amp;#x47;iornalista: Professore, cos&#x27;è esattamente una smart city?
+<details class="text ascolto-text asc-dlg"><summary class="asc-sum"><span class="asc-ico" aria-hidden="true"></span><button class="spk" type="button" data-src="audio/360a7b529d37dc51.mp3" title="Ascolta la pronuncia">🔊</button><span class="asum">📝 Testo / Dialogo (simulato) — clicca 🔊 per ascoltare, o sul testo per mostrarlo</span><span class="asc-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></summary><pre>&amp;#x47;iornalista: Professore, cos&#x27;è esattamente una smart city?
 
 
 Giornalista: Ci sono rischi?
@@ -120,19 +146,19 @@ Giornalista: Un esempio italiano?</pre></details>
 <div class="mnote">「听力原文（模拟音频文本）」于各 prova 前给出。</div>
 <h3>Testo Prova 3 — Conferenza sulle smart city</h3>
 <div class="mnote">Domande Vero/Falso (1–12):</div>
-<details class="text ascolto-text"><summary><button class="spk" type="button" data-src="audio/c4ec41729779e89a.mp3" title="Ascolta la pronuncia">🔊</button><span class="asum">📝 Testo / Dialogo (simulato) — clicca 🔊 per ascoltare, o sul testo per mostrarlo</span></summary><pre>«Una città intelligente usa i dati per migliorare la vita. A Barcellona i semafori si regolano da soli e il traffico è calato del 20%. I sensori controllano l&#x27;inquinamento e l&#x27;illuminazione pubblica si accende solo quando serve. Ma l&#x27;urbanistica non è solo tecnologia: serve anche verde e spazi per le persone. Alcuni criticano il controllo dei dati personali. Il futuro dell&#x27;urbanistica unisce efficienza e benessere sociale.»</pre></details>
-<div class="q-item" data-type="tf" data-correct="0" data-ctext="Vero"><p class="q-stem">1. Una città intelligente usa i dati per migliorare la vita.</p><div class="opts"><label class="opt"><input type="radio" name="r1" value="0"> Vero</label><label class="opt"><input type="radio" name="r1" value="1"> Falso</label></div></div>
-<div class="q-item" data-type="tf" data-correct="0" data-ctext="Vero"><p class="q-stem">2. A Barcellona il traffico è aumentato del 20%.</p><div class="opts"><label class="opt"><input type="radio" name="r2" value="0"> Vero</label><label class="opt"><input type="radio" name="r2" value="1"> Falso</label></div></div>
-<div class="q-item" data-type="tf" data-correct="0" data-ctext="Vero"><p class="q-stem">3. I sensori controllano l&#x27;inquinamento.</p><div class="opts"><label class="opt"><input type="radio" name="r3" value="0"> Vero</label><label class="opt"><input type="radio" name="r3" value="1"> Falso</label></div></div>
-<div class="q-item" data-type="tf" data-correct="0" data-ctext="Vero"><p class="q-stem">4. L&#x27;illuminazione pubblica si accende sempre, giorno e notte.</p><div class="opts"><label class="opt"><input type="radio" name="r4" value="0"> Vero</label><label class="opt"><input type="radio" name="r4" value="1"> Falso</label></div></div>
-<div class="q-item" data-type="tf" data-correct="0" data-ctext="Vero"><p class="q-stem">5. L&#x27;urbanistica è solo tecnologia, secondo il testo.</p><div class="opts"><label class="opt"><input type="radio" name="r5" value="0"> Vero</label><label class="opt"><input type="radio" name="r5" value="1"> Falso</label></div></div>
-<div class="q-item" data-type="tf" data-correct="0" data-ctext="Vero"><p class="q-stem">6. Servono anche verde e spazi per le persone.</p><div class="opts"><label class="opt"><input type="radio" name="r6" value="0"> Vero</label><label class="opt"><input type="radio" name="r6" value="1"> Falso</label></div></div>
-<div class="q-item" data-type="tf" data-correct="0" data-ctext="Vero"><p class="q-stem">7. Nessuno critica il controllo dei dati personali.</p><div class="opts"><label class="opt"><input type="radio" name="r7" value="0"> Vero</label><label class="opt"><input type="radio" name="r7" value="1"> Falso</label></div></div>
-<div class="q-item" data-type="tf" data-correct="0" data-ctext="Vero"><p class="q-stem">8. Il futuro unisce efficienza e benessere sociale.</p><div class="opts"><label class="opt"><input type="radio" name="r8" value="0"> Vero</label><label class="opt"><input type="radio" name="r8" value="1"> Falso</label></div></div>
-<div class="q-item" data-type="tf" data-correct="0" data-ctext="Vero"><p class="q-stem">9. I semafori a Barcellona si regolano automaticamente.</p><div class="opts"><label class="opt"><input type="radio" name="r9" value="0"> Vero</label><label class="opt"><input type="radio" name="r9" value="1"> Falso</label></div></div>
-<div class="q-item" data-type="tf" data-correct="0" data-ctext="Vero"><p class="q-stem">10. Le smart city non hanno costi.</p><div class="opts"><label class="opt"><input type="radio" name="r10" value="0"> Vero</label><label class="opt"><input type="radio" name="r10" value="1"> Falso</label></div></div>
-<div class="q-item" data-type="tf" data-correct="0" data-ctext="Vero"><p class="q-stem">11. Il traffico a Barcellona è calato del 20%.</p><div class="opts"><label class="opt"><input type="radio" name="r11" value="0"> Vero</label><label class="opt"><input type="radio" name="r11" value="1"> Falso</label></div></div>
-<div class="q-item" data-type="tf" data-correct="0" data-ctext="Vero"><p class="q-stem">12. La tecnologia sostituisce del tutto le persone.</p><div class="opts"><label class="opt"><input type="radio" name="r12" value="0"> Vero</label><label class="opt"><input type="radio" name="r12" value="1"> Falso</label></div></div></section>
+<details class="text ascolto-text asc-dlg"><summary class="asc-sum"><span class="asc-ico" aria-hidden="true"></span><button class="spk" type="button" data-src="audio/c4ec41729779e89a.mp3" title="Ascolta la pronuncia">🔊</button><span class="asum">📝 Testo / Dialogo (simulato) — clicca 🔊 per ascoltare, o sul testo per mostrarlo</span><span class="asc-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></summary><pre>«Una città intelligente usa i dati per migliorare la vita. A Barcellona i semafori si regolano da soli e il traffico è calato del 20%. I sensori controllano l&#x27;inquinamento e l&#x27;illuminazione pubblica si accende solo quando serve. Ma l&#x27;urbanistica non è solo tecnologia: serve anche verde e spazi per le persone. Alcuni criticano il controllo dei dati personali. Il futuro dell&#x27;urbanistica unisce efficienza e benessere sociale.»</pre></details>
+<div class="q-item asc-q" data-type="tf" data-correct="0" data-ctext="Vero"><span class="asc-q__no">1</span><div class="asc-q__main"><p class="q-stem">Una città intelligente usa i dati per migliorare la vita.</p><div class="opts asc-opts"><label class="opt asc-opt"><input type="radio" name="r1" value="0"><span class="asc-opt__k">V</span><span class="asc-opt__v">Vero</span></label><label class="opt asc-opt"><input type="radio" name="r1" value="1"><span class="asc-opt__k">F</span><span class="asc-opt__v">Falso</span></label></div></div></div>
+<div class="q-item asc-q" data-type="tf" data-correct="0" data-ctext="Vero"><span class="asc-q__no">2</span><div class="asc-q__main"><p class="q-stem">A Barcellona il traffico è aumentato del 20%.</p><div class="opts asc-opts"><label class="opt asc-opt"><input type="radio" name="r2" value="0"><span class="asc-opt__k">V</span><span class="asc-opt__v">Vero</span></label><label class="opt asc-opt"><input type="radio" name="r2" value="1"><span class="asc-opt__k">F</span><span class="asc-opt__v">Falso</span></label></div></div></div>
+<div class="q-item asc-q" data-type="tf" data-correct="0" data-ctext="Vero"><span class="asc-q__no">3</span><div class="asc-q__main"><p class="q-stem">I sensori controllano l&#x27;inquinamento.</p><div class="opts asc-opts"><label class="opt asc-opt"><input type="radio" name="r3" value="0"><span class="asc-opt__k">V</span><span class="asc-opt__v">Vero</span></label><label class="opt asc-opt"><input type="radio" name="r3" value="1"><span class="asc-opt__k">F</span><span class="asc-opt__v">Falso</span></label></div></div></div>
+<div class="q-item asc-q" data-type="tf" data-correct="0" data-ctext="Vero"><span class="asc-q__no">4</span><div class="asc-q__main"><p class="q-stem">L&#x27;illuminazione pubblica si accende sempre, giorno e notte.</p><div class="opts asc-opts"><label class="opt asc-opt"><input type="radio" name="r4" value="0"><span class="asc-opt__k">V</span><span class="asc-opt__v">Vero</span></label><label class="opt asc-opt"><input type="radio" name="r4" value="1"><span class="asc-opt__k">F</span><span class="asc-opt__v">Falso</span></label></div></div></div>
+<div class="q-item asc-q" data-type="tf" data-correct="0" data-ctext="Vero"><span class="asc-q__no">5</span><div class="asc-q__main"><p class="q-stem">L&#x27;urbanistica è solo tecnologia, secondo il testo.</p><div class="opts asc-opts"><label class="opt asc-opt"><input type="radio" name="r5" value="0"><span class="asc-opt__k">V</span><span class="asc-opt__v">Vero</span></label><label class="opt asc-opt"><input type="radio" name="r5" value="1"><span class="asc-opt__k">F</span><span class="asc-opt__v">Falso</span></label></div></div></div>
+<div class="q-item asc-q" data-type="tf" data-correct="0" data-ctext="Vero"><span class="asc-q__no">6</span><div class="asc-q__main"><p class="q-stem">Servono anche verde e spazi per le persone.</p><div class="opts asc-opts"><label class="opt asc-opt"><input type="radio" name="r6" value="0"><span class="asc-opt__k">V</span><span class="asc-opt__v">Vero</span></label><label class="opt asc-opt"><input type="radio" name="r6" value="1"><span class="asc-opt__k">F</span><span class="asc-opt__v">Falso</span></label></div></div></div>
+<div class="q-item asc-q" data-type="tf" data-correct="0" data-ctext="Vero"><span class="asc-q__no">7</span><div class="asc-q__main"><p class="q-stem">Nessuno critica il controllo dei dati personali.</p><div class="opts asc-opts"><label class="opt asc-opt"><input type="radio" name="r7" value="0"><span class="asc-opt__k">V</span><span class="asc-opt__v">Vero</span></label><label class="opt asc-opt"><input type="radio" name="r7" value="1"><span class="asc-opt__k">F</span><span class="asc-opt__v">Falso</span></label></div></div></div>
+<div class="q-item asc-q" data-type="tf" data-correct="0" data-ctext="Vero"><span class="asc-q__no">8</span><div class="asc-q__main"><p class="q-stem">Il futuro unisce efficienza e benessere sociale.</p><div class="opts asc-opts"><label class="opt asc-opt"><input type="radio" name="r8" value="0"><span class="asc-opt__k">V</span><span class="asc-opt__v">Vero</span></label><label class="opt asc-opt"><input type="radio" name="r8" value="1"><span class="asc-opt__k">F</span><span class="asc-opt__v">Falso</span></label></div></div></div>
+<div class="q-item asc-q" data-type="tf" data-correct="0" data-ctext="Vero"><span class="asc-q__no">9</span><div class="asc-q__main"><p class="q-stem">I semafori a Barcellona si regolano automaticamente.</p><div class="opts asc-opts"><label class="opt asc-opt"><input type="radio" name="r9" value="0"><span class="asc-opt__k">V</span><span class="asc-opt__v">Vero</span></label><label class="opt asc-opt"><input type="radio" name="r9" value="1"><span class="asc-opt__k">F</span><span class="asc-opt__v">Falso</span></label></div></div></div>
+<div class="q-item asc-q" data-type="tf" data-correct="0" data-ctext="Vero"><span class="asc-q__no">10</span><div class="asc-q__main"><p class="q-stem">Le smart city non hanno costi.</p><div class="opts asc-opts"><label class="opt asc-opt"><input type="radio" name="r10" value="0"><span class="asc-opt__k">V</span><span class="asc-opt__v">Vero</span></label><label class="opt asc-opt"><input type="radio" name="r10" value="1"><span class="asc-opt__k">F</span><span class="asc-opt__v">Falso</span></label></div></div></div>
+<div class="q-item asc-q" data-type="tf" data-correct="0" data-ctext="Vero"><span class="asc-q__no">11</span><div class="asc-q__main"><p class="q-stem">Il traffico a Barcellona è calato del 20%.</p><div class="opts asc-opts"><label class="opt asc-opt"><input type="radio" name="r11" value="0"><span class="asc-opt__k">V</span><span class="asc-opt__v">Vero</span></label><label class="opt asc-opt"><input type="radio" name="r11" value="1"><span class="asc-opt__k">F</span><span class="asc-opt__v">Falso</span></label></div></div></div>
+<div class="q-item asc-q" data-type="tf" data-correct="0" data-ctext="Vero"><span class="asc-q__no">12</span><div class="asc-q__main"><p class="q-stem">La tecnologia sostituisce del tutto le persone.</p><div class="opts asc-opts"><label class="opt asc-opt"><input type="radio" name="r12" value="0"><span class="asc-opt__k">V</span><span class="asc-opt__v">Vero</span></label><label class="opt asc-opt"><input type="radio" name="r12" value="1"><span class="asc-opt__k">F</span><span class="asc-opt__v">Falso</span></label></div></div></div></section>
 <section class="module"><h2>2. Lettura（阅读）</h2><div class="mnote">Lettura（阅读）⏱ 约 50 分钟</div>
 <h3>Prova 1 — Testo 300–400 词 + 7 单选</h3>
 <div class="mnote">_Testo_: L&#x27;urbanistica contemporanea si trova a un bivio. Da un lato, la cosiddetta &quot;città intelligente&quot; promette di ottimizzare risorse e mobilità grazie a sensori, reti e intelligenza artificiale; dall&#x27;altro, cresce la consapevolezza che una città non è soltanto un insieme di infrastrutture, ma una comunità di persone. Le amministrazioni più avanzate stanno dunque sperimentando un modello ibrido: algoritmi al servizio del bene comune, non viceversa. A Copenhagen, le piste ciclabili sono protette dal traffico grazie a dati sulle correnti di pedoni; a Singapore, il raffreddamento urbano usa il verde per combattere l&#x27;isola di calore. Tuttavia, esperti come la sociologa Anna Riboldi avvertono: senza partecipazione cittadina, la smart city rischia di diventare uno strumento di controllo. La sfida, in sintesi, non è tecnologica ma politica: decidere chi governa i dati e a chi appartengono gli spazi. Solo così l&#x27;urbanistica potrà essere davvero sostenibile.</div>
@@ -262,16 +288,18 @@ document.addEventListener('play', function(e){
     document.querySelectorAll('audio').forEach(function(a){ if(a!==e.target) a.pause(); });
   }
 }, true);</script><script id="ascolto-audio-player">(function(){
-  var cur=null, curBtn=null;
-  function stop(){ if(cur){try{cur.pause();}catch(e){}} if(curBtn){curBtn.textContent='\u{1F50A}';curBtn.classList.remove('playing','err');} cur=null; curBtn=null; }
+  var cur=null, curBtn=null, curDlg=null;
+  function clearDlg(){ if(curDlg){ curDlg.classList.remove('playing'); curDlg=null; } }
+  function stop(){ if(cur){try{cur.pause();}catch(e){}} if(curBtn){curBtn.textContent='\u{1F50A}';curBtn.classList.remove('playing','err');} clearDlg(); cur=null; curBtn=null; }
   function play(b){
     var src=b.getAttribute('data-src'); if(!src) return;
     if(curBtn===b && cur && !cur.paused){ stop(); return; }
     stop();
     b.textContent='\u{1F507}'; b.classList.add('playing');
+    var dlg=b.closest('.asc-dlg'); if(dlg){ dlg.classList.add('playing'); curDlg=dlg; }
     var a=new Audio(src);
-    a.addEventListener('ended', function(){ b.textContent='\u{1F50A}'; b.classList.remove('playing'); curBtn=null; cur=null; });
-    a.addEventListener('error', function(){ b.textContent='\u{1F507}'; b.classList.add('err'); b.title='Audio non disponibile'; });
+    a.addEventListener('ended', function(){ b.textContent='\u{1F50A}'; b.classList.remove('playing'); clearDlg(); curBtn=null; cur=null; });
+    a.addEventListener('error', function(){ b.textContent='\u{1F507}'; b.classList.add('err'); b.title='Audio non disponibile'; clearDlg(); });
     var p=a.play();
     if(p && p.then){ p.then(function(){ b.textContent='\u{1F508}'; b.classList.add('playing'); })
       .catch(function(){ b.textContent='\u{1F507}'; b.classList.add('err'); b.title='Riproduzione fallita'; }); }
