@@ -1,0 +1,311 @@
+<!DOCTYPE html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>CILS B1 — CILS UNO</title><style>:root{--wine:#7b1e2b;--wine2:#a83246;--ink:#23211f;--paper:#fbf8f4;--line:#e4ddd2;--ok:#1b7a3d;--no:#c0392b;}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);background:var(--paper);line-height:1.65}
+header.top{background:linear-gradient(135deg,var(--wine),var(--wine2));color:#fff;padding:26px 20px;box-shadow:0 2px 10px rgba(0,0,0,.15)}
+header.top .back{color:#ffd9df;text-decoration:none;font-size:14px}
+header.top .ttl{font-size:26px;font-weight:800;margin-top:6px}
+header.top .ttl .lvl{display:inline-block;background:#fff;color:var(--wine);border-radius:8px;padding:2px 10px;margin-right:10px;font-size:20px}
+header.top .sub{opacity:.9;margin-top:4px;font-size:15px}
+main{max-width:880px;margin:0 auto;padding:24px 18px 120px}
+section.module{margin:30px 0;background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+section.module h2{margin:0 0 14px;color:var(--wine);font-size:20px;border-bottom:2px solid var(--line);padding-bottom:8px}
+section.module h3{color:#444;font-size:16px;margin:22px 0 10px}
+.mnote{background:#f6f1e9;border-left:4px solid var(--wine);border-radius:8px;padding:10px 14px;margin:12px 0;font-size:13.5px;color:#6b5b4a;line-height:1.7}
+.text{background:#f6f1e9;border-left:4px solid var(--wine);border-radius:8px;padding:12px 14px;margin:12px 0}
+.text h4{margin:0 0 6px;font-size:14px;color:var(--wine)}
+pre{white-space:pre-wrap;margin:0;font-family:"Courier New",monospace;font-size:14px}
+.items{margin-top:14px}
+.q-item{margin:14px 0;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fffdf9}
+.q-item.correct{border-color:var(--ok);background:#f1faf3}
+.q-item.wrong{border-color:var(--no);background:#fdf1f0}
+.q-stem{margin:0 0 8px;font-weight:600}
+.opts{display:flex;flex-direction:column;gap:6px}
+.opt{display:flex;align-items:center;gap:8px;cursor:pointer;padding:4px 6px;border-radius:6px}
+.opt:hover{background:#f3ede3}
+.match-sel{font-size:15px;padding:5px 8px;border-radius:6px;border:1px solid #bbb;margin-top:4px}
+.blank{font-size:15px;padding:3px 6px;border:1px solid #bbb;border-radius:6px;margin:0 4px;min-width:90px}
+.blank.correct{border-color:var(--ok);background:#eafaf0}
+.blank.wrong{border-color:var(--no);background:#fdeceb}
+.anshint{color:var(--no);font-size:13px;margin-left:6px}
+textarea.ans{width:100%;font-size:15px;padding:10px;border:1px solid #ccc;border-radius:8px;font-family:inherit;resize:vertical}
+.q-subj .ref{margin-top:10px;padding:10px 12px;background:#eef6fb;border-left:4px solid #2a7fb8;border-radius:8px;font-size:14px}
+.q-note{margin-top:8px;font-weight:700;font-size:14px}
+.q-note.ok{color:var(--ok)} .q-note.no{color:var(--no)}
+.audio-block{background:#f0f4f7;border:1px solid #cfe0ea;border-radius:10px;padding:12px 14px;margin:12px 0}
+.audio-block h4{margin:0 0 8px;color:#1f5f80}
+audio{width:100%;margin-bottom:8px;display:block}
+.noaudio{color:#b06a00;font-weight:600}
+.q-oral{background:#fbf7ef;border:1px solid #ecd9b0;border-radius:12px;padding:16px 18px;margin:14px 0}
+.q-oral .q-stem{margin:0 0 12px;font-size:15px;line-height:1.7;white-space:pre-wrap}
+.oral-scoring{background:#fff;border:1px solid #e7dcc4;border-radius:10px;padding:12px 14px;margin-bottom:12px}
+.score-head{font-weight:700;color:#9a6b00;margin-bottom:8px;font-size:14px}
+.dims{margin:0;padding-left:20px;font-size:14px;line-height:1.9}
+.dims li{margin-bottom:2px}
+.rubric-note{margin-top:8px;padding-top:8px;border-top:1px dashed #e0d3b6;font-size:13px;color:#5a4a2a;line-height:1.7}
+.oral-ref{background:#eef6fb;border:1px solid #cfe0ea;border-radius:10px;padding:12px 14px}
+.ref-head{font-weight:700;color:#1f5f80;margin-bottom:8px;font-size:14px}
+.ref-it{font-weight:400;color:#5b87a0;font-style:italic;font-size:12px}
+.oral-ref pre{margin:8px 0 0;white-space:pre-wrap;word-break:break-word;font-size:14px;line-height:1.75;background:#fff;border:1px solid #dce8f0;border-radius:8px;padding:10px 12px}
+.otranscript{margin-top:8px}
+.otranscript summary{cursor:pointer;color:#1f5f80;font-weight:600;font-size:13px;user-select:none;list-style:none}
+.otranscript summary::-webkit-details-marker{display:none}
+.otranscript .o-open{display:none}
+.otranscript[open] .o-closed{display:none}
+.otranscript[open] .o-open{display:inline}
+.transcript{margin-top:10px}
+.transcript summary{cursor:pointer;color:#1f5f80;font-weight:600;font-size:14px;user-select:none;list-style:none}
+.transcript summary::-webkit-details-marker{display:none}
+.transcript summary:hover{text-decoration:underline}
+.transcript .t-open{display:none}
+.transcript[open] .t-closed{display:none}
+.transcript[open] .t-open{display:inline}
+.transcript[open] summary{margin-bottom:8px}
+.transcript pre{margin-top:0}
+.soluzioni{margin:28px 0;background:#fff;border:2px dashed var(--wine);border-radius:14px;padding:18px 20px}
+.soluzioni h2{margin:0 0 12px;color:var(--wine);font-size:18px}
+.soluzioni pre{white-space:pre-wrap;font-size:13.5px;line-height:1.8;background:#fbf6f0;border-radius:8px;padding:12px;font-family:"Courier New",monospace}
+#btn-check{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--wine);color:#fff;border:none;font-size:17px;font-weight:700;padding:13px 30px;border-radius:30px;cursor:pointer;box-shadow:0 4px 14px rgba(123,30,43,.4);z-index:10}
+#btn-check:hover{background:var(--wine2)}
+#btn-reset{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);margin-left:170px;background:#555;color:#fff;border:none;font-size:15px;padding:13px 22px;border-radius:30px;cursor:pointer;z-index:10}
+#result{margin-top:20px;padding:18px 20px;border-radius:12px;background:#fff;border:2px solid var(--wine);text-align:center}
+.res-score{font-size:18px;margin-bottom:10px}
+.res-grade{display:inline-block;color:#fff;font-weight:800;font-size:22px;padding:6px 22px;border-radius:10px;margin-bottom:8px}
+.res-note{font-size:14px;color:#555;margin-top:8px}
+.index-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-top:20px}
+.card{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:0 1px 4px rgba(0,0,0,.05);transition:.15s}
+.card:hover{transform:translateY(-3px);border-color:var(--wine)}
+.card .lvl{display:inline-block;background:var(--wine);color:#fff;border-radius:8px;padding:3px 12px;font-weight:800;font-size:18px}
+.card .nm{font-weight:700;margin:8px 0 4px;font-size:16px}
+.card .sb{font-size:13px;color:#666}
+.intro{max-width:880px;margin:24px auto;padding:0 18px;color:#555}
+.vol-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;margin-top:24px}
+.vol{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:0 1px 4px rgba(0,0,0,.05);transition:.15s}
+.vol:hover{transform:translateY(-3px);border-color:var(--wine)}
+.vol .vno{display:inline-block;background:var(--wine);color:#fff;border-radius:8px;padding:3px 12px;font-weight:800;font-size:14px}
+.vol .vt{font-weight:700;margin:10px 0 6px;font-size:18px}
+.vol .vs{font-size:13px;color:#666}
+.vol .vgo{margin-top:12px;font-weight:700;color:var(--wine);font-size:14px}</style></head><body><header class="top"><a href="index.html" class="back">← Indice CILS Vol.4</a><div class="ttl"><span class="lvl">B1</span> CILS UNO</div><div class="sub"></div></header><main><p class="intro">本级主题：Istruzione e apprendimento permanente。CILS 五大模块（Ascolto / Lettura / Analisi delle strutture / Produzione scritta / Produzione orale）。听力为模拟音频文本（由考官/录音播放），本页以文本呈现听力原文，点击展开即可自测。提交后客观题自动判分；写作/口语/开放题请展开下方「✅ Soluzioni」参考答案与评分要点自评。</p><section class="module"><h2>1. Ascolto（听力）</h2><div class="mnote">Ascolto（听力）— 30 分钟</div>
+<h3>题型说明（近年改革）</h3>
+<h3>听力原文（模拟音频文本）</h3>
+<h3>Prova 1 — 7 brevi dialoghi (università e lavoro)</h3>
+<div class="mnote">_D1._ A: Hai trovato lavoro dopo la laurea? B: Sì, lavoro in una banca da giugno.</div>
+<div class="mnote">_D2._ A: Fai lo stage? B: Sì, in un ufficio marketing, è non retribuito.</div>
+<div class="mnote">_D3._ A: Che facoltà hai scelto? B: Economia, mi piace il mondo del lavoro.</div>
+<div class="mnote">_D4._ A: Sei stanco? B: Sì, studio e lavoro insieme, è faticoso.</div>
+<div class="mnote">_D5._ A: Vuoi studiare all&#x27;estero? B: Sì, farò l&#x27;Erasmus in Spagna l&#x27;anno prossimo.</div>
+<div class="mnote">_D6._ A: Il tuo capo è severo? B: No, è comprensivo e flessibile.</div>
+<div class="mnote">_D7._ A: Che CV hai? B: Ho la laurea e due lingue, cerco un impiego internazionale.</div>
+<h3>Prova 2 — Dialogo lungo (colloquio di lavoro)</h3>
+<div class="mnote">B: Piacere, abbiamo ricevuto il Suo CV. Parla lingue straniere?</div>
+<div class="mnote">A: Sì, inglese e tedesco. Ho fatto sei mesi di Erasmus in Germania.</div>
+<div class="mnote">B: Ottimo. La posizione è a Milano, full-time.</div>
+<div class="mnote">A: Va bene. Posso lavorare in smart working?</div>
+<div class="mnote">B: Sì, due giorni a settimana da casa.</div>
+<div class="mnote">A: Perfetto, accetto volentieri l&#x27;offerta!</div>
+<div class="text"><h4>📝 Testo / Dialogo (simulato)</h4><pre>&amp;#x41;: Buongiorno, sono Luca, mi sono laureato in ingegneria.</pre></div>
+<h3>Prova 3 — Testo lungo (conferenza breve: studiare all&#x27;estero)</h3>
+<h3>理解题</h3>
+<div class="text"><h4>📝 Testo / Dialogo (simulato)</h4><pre>&amp;#x4C;o studio all&#x27;estero è un&#x27;opportunità che cambia la vita. Prima di partire, bisogna scegliere la destinazione e preparare i documenti. Durante il soggiorno si impara una lingua e si conoscono culture diverse. Gli studenti tornano più indipendenti e con un CV migliore. Tuttavia, il costo della vita può essere alto e la lontananza dalla famiglia è difficile. Le borse di studio aiutano chi non ha soldi. Alla fine, l&#x27;esperienza vale sempre la pena.</pre></div>
+<h3>Prova 1（7 题）</h3>
+<div class="mnote">1. Dove lavora B in D1?  A) In banca  B) A scuola  C) In ospedale</div>
+<div class="mnote">2. Lo stage di D2 è pagato?  A) Sì  B) No  C) Non si sa</div>
+<div class="mnote">3. Che facoltà sceglie B in D3?  A) Medicina  B) Economia  C) Legge</div>
+<div class="mnote">4. Perché è stanco in D4?  A) Non dorme  B) Studia e lavora  C) Fa sport</div>
+<div class="mnote">5. Dove va con l&#x27;Erasmus in D5?  A) Francia  B) Spagna  C) Germania</div>
+<div class="mnote">6. Com&#x27;è il capo in D6?  A) Severo  B) Comprensivo  C) Assente</div>
+<div class="mnote">7. Cosa cerca B in D7?  A) Un impiego internazionale  B) Una borsa  C) Un corso</div>
+<h3>Prova 2（7 题）</h3>
+<div class="mnote">9\. Quante lingue parla?  A) Una  B) Due  C) Tre</div>
+<div class="mnote">10\. Dove ha fatto l&#x27;Erasmus?  A) Germania  B) Spagna  C) Inghilterra</div>
+<div class="mnote">11\. Il lavoro è a…  A) Roma  B) Milano  C) Torino</div>
+<div class="mnote">12\. Smart working?  A) No  B) Sì, 2 giorni  C) Solo da casa</div>
+<div class="mnote">13\. Luca accetta?  A) Sì  B) No  C) Ci pensa</div>
+<div class="mnote">14\. La posizione è…  A) Part-time  B) Full-time  C) Stage</div>
+<div class="text"><h4>📝 Testo / Dialogo (simulato)</h4><pre>&amp;#x38;. Luca si è laureato in…  A) Economia  B) Ingegneria  C) Lingue</pre></div>
+<h3>Prova 3 — Vero / Falso (12 题)</h3>
+<div class="mnote">&amp;#x31;5. Lo studio all&#x27;estero cambia la vita.  ☐ Vero ☐ Falso</div>
+<div class="mnote">16\. Prima di partire non serve preparare documenti.  ☐ Vero ☐ Falso</div>
+<div class="mnote">17\. Durante il soggiorno si impara una lingua.  ☐ Vero ☐ Falso</div>
+<div class="mnote">18\. Gli studenti tornano meno indipendenti.  ☐ Vero ☐ Falso</div>
+<div class="mnote">19\. Il CV migliora dopo l&#x27;esperienza.  ☐ Vero ☐ Falso</div>
+<div class="mnote">20\. La vita all&#x27;estero è sempre a buon mercato.  ☐ Vero ☐ Falso</div>
+<div class="mnote">21\. La lontananza dalla famiglia è facile.  ☐ Vero ☐ Falso</div>
+<div class="mnote">22\. Le borse di studio aiutano chi è povero.  ☐ Vero ☐ Falso</div>
+<div class="mnote">23\. Serve solo la laurea, non le lingue.  ☐ Vero ☐ Falso</div>
+<div class="mnote">24\. L&#x27;esperienza non vale la pena.  ☐ Vero ☐ Falso</div>
+<div class="mnote">25\. Conoscere culture diverse è parte dell&#x27;esperienza.  ☐ Vero ☐ Falso</div>
+<div class="mnote">26\. Bisogna scegliere la destinazione prima di partire.  ☐ Vero ☐ Falso</div></section>
+<section class="module"><h2>2. Lettura（阅读）</h2><div class="mnote">Lettura（阅读）— 50 分钟</div>
+<h3>题型说明（近年改革）</h3>
+<h3>Prova 1 — Testo + 7 单选</h3>
+<div class="text"><pre>**Università e mondo del lavoro**Oggi la laurea non basta: le aziende cercano competenze pratiche. Molti studenti fanno stage durante gli studi per capire il mestiere. Chi studia all&#x27;estero migliora le lingue e diventa più flessibile. Tuttavia, trovare il primo impiego richiede tempo e pazienza. Il CV europeo aiuta a farsi conoscere. Le soft skill, come lavorare in team, sono sempre più importanti. Alla fine, chi unisce studio e esperienza ha più opportunità.</pre></div>
+<div class="mnote">27. Cosa cercano le aziende oggi?  A) Solo laureati  B) Competenze pratiche  C) Persone anziane</div>
+<div class="mnote">28. Perché fare uno stage?  A) Per guadagnare tanto  B) Per capire il mestiere  C) Per laurearsi prima</div>
+<div class="mnote">29. Cosa migliora chi studia all&#x27;estero?  A) Solo le lingue  B) Lingue e flessibilità  C) La paga</div>
+<div class="mnote">30. Il primo impiego…  A) arriva subito  B) richiede tempo  C) non serve</div>
+<div class="mnote">31. Il CV europeo serve a…  A) farsi conoscere  B) pagare le tasse  C) viaggiare</div>
+<div class="mnote">32. Le soft skill…  A) non contano  B) sono importanti  C) sono pericolose</div>
+<div class="mnote">33. Chi ha più opportunità?  A) Chi studia solo  B) Chi unisce studio ed esperienza  C) Chi non lavora</div>
+<h3>Prova 2 — Vero / Falso (14 题) · testi pratici</h3>
+<div class="mnote">_T. Avviso placement:_ &quot;La nostra università organizza un career day il 15 maggio. Le aziende incontrano gli studenti. Iscrizione gratuita sul sito.&quot;</div>
+<div class="mnote">34\. Il career day è a maggio.  ☐ Vero ☐ Falso</div>
+<div class="mnote">35\. Le aziende non partecipano.  ☐ Vero ☐ Falso</div>
+<div class="mnote">36\. L&#x27;iscrizione costa.  ☐ Vero ☐ Falso</div>
+<div class="mnote">37\. Ci si iscrive in segreteria.  ☐ Vero ☐ Falso</div>
+<div class="mnote">_T. Email:_ &quot;Cara Giulia, ho fatto domanda per l&#x27;Erasmus in Portogallo. Devo inviare il CV entro venerdì. Sono emozionato!&quot;</div>
+<div class="mnote">38\. La destinazione è il Portogallo.  ☐ Vero ☐ Falso</div>
+<div class="mnote">39\. Il CV va inviato entro venerdì.  ☐ Vero ☐ Falso</div>
+<div class="mnote">40\. Lo studente è triste.  ☐ Vero ☐ Falso</div>
+<div class="mnote">_T. Articolo:_ &quot;Lo smart working cresce in Italia. Molti neolaureati lo preferiscono per conciliare vita e lavoro.&quot;</div>
+<div class="mnote">41\. Lo smart working diminuisce.  ☐ Vero ☐ Falso</div>
+<div class="mnote">42\. I neolaureati lo apprezzano.  ☐ Vero ☐ Falso</div>
+<div class="mnote">43\. Aiuta a conciliare vita e lavoro.  ☐ Vero ☐ Falso</div>
+<div class="mnote">_T. Annuncio:_ &quot;Cerchiamo stagista in comunicazione. Inglese obbligatorio, tedesco utile. Invia CV e lettera.&quot;</div>
+<div class="mnote">44\. La posizione è per un manager.  ☐ Vero ☐ Falso</div>
+<div class="mnote">45\. L&#x27;inglese è obbligatorio.  ☐ Vero ☐ Falso</div>
+<div class="mnote">46\. La lettera non serve.  ☐ Vero ☐ Falso</div>
+<div class="mnote">47\. Il tedesco è obbligatorio.  ☐ Vero ☐ Falso</div>
+<h3>Prova 3 — Ordina 11 frasi (testo coerente)</h3>
+<div class="mnote">Frasi (da riordinare): a)Dopo la laurea, Marco cercava lavoro. b)Ha inviato il CV a dieci aziende. c)Una banca lo ha chiamato per un colloquio. d)Si è preparato bene sulle domande. e)Il colloquio è andato bene. f)Gli hanno offerto un contratto. g)Ha accettato con gioia. h)Ora lavora a Milano. i)Ogni giorno impara cose nuove. j)È contento della sua scelta. k)Consiglia a tutti di fare stage.</div>
+<div class="mnote">→ Ordine: ______ → ______ → ______ → ______ → ______ → ______ → ______ → ______ → ______ → ______ → ______</div></section>
+<section class="module"><h2>3. Analisi（语法分析）</h2><div class="mnote">Analisi delle strutture（语法）— 60 分钟 · 4 部分</div>
+<h3>题型说明（真题全量）</h3>
+<h3>Prova 1 — Articoli / Preposizioni / Pronomi / Aggettivi (20 题)</h3>
+<div class="q-item" data-type="cloze"><p class="q-stem">1. Ho inviato<input class="blank" data-correct=""> (il / lo) CV ieri. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">2. Studio<input class="blank" data-correct=""> (da / di) tre anni all&#x27;università. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">3. Marco ne parla<input class="blank" data-correct=""> (con / da) il capo. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">4. Questo lavoro è<input class="blank" data-correct=""> (migliore / migliori) del precedente. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">5. Non ho<input class="blank" data-correct=""> (nessun / alcun) dubbio sull&#x27;Erasmus. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">6. Lei<input class="blank" data-correct=""> (ci / vi) va in Erasmus in Spagna. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">7. Penso<input class="blank" data-correct=""> (a / in) trovare un impiego. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">8. Il colloquio<input class="blank" data-correct=""> (di / da) Marco è andato bene. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">9. Preferisco<input class="blank" data-correct=""> (questo / questa) stage qui. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">10. Lavoriamo<input class="blank" data-correct=""> (insieme / insieme a) loro. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">11. Ho bisogno<input class="blank" data-correct=""> (di / a) un buon tutor. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">12. Studio<input class="blank" data-correct=""> (a / in) una città universitaria. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">13. Chi<input class="blank" data-correct=""> (mi / ti) ha consigliato questo corso? → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">14. Il mio relatore è<input class="blank" data-correct=""> (un / uno) professore gentile. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">15. Penso<input class="blank" data-correct=""> (che / cui) tu abbia ragione. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">16. Non<input class="blank" data-correct=""> (ne / ci) so molto di economia. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">17. Preferisco<input class="blank" data-correct=""> (questi / queste) esami al test. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">18. Lavoro<input class="blank" data-correct=""> (per / da) una multinazionale. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">19. Ho parlato<input class="blank" data-correct=""> (con / fra) i recruiter. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">20. È<input class="blank" data-correct=""> (il / lo) stage più utile che abbia fatto. → ____</p></div>
+<h3>Prova 2 — Tempi verbali (20 题)</h3>
+<div class="q-item" data-type="cloze"><p class="q-stem">21. Quando mi sono laureato,<input class="blank" data-correct=""> (cercare) lavoro. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">22. Domani<input class="blank" data-correct=""> (andare) a un colloquio. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">23. Se<input class="blank" data-correct=""> (studiare) bene, passi l&#x27;esame. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">24. Ieri<input class="blank" data-correct=""> (inviare) il CV a dieci aziende. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">25. Da mesi<input class="blank" data-correct=""> (lavorare) in quella banca. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">26. Spero che tu<input class="blank" data-correct=""> (trovare) presto un posto. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">27. Mentre<input class="blank" data-correct=""> (leggere) , il telefono ha suonato. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">28. Avrei accettato se<input class="blank" data-correct=""> (offrire) di più. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">29. <input class="blank" data-correct=""> (Fare) lo stage mi ha aiutato. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">30. Non<input class="blank" data-correct=""> (potere) venire alla riunione. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">31. L&#x27;anno prossimo<input class="blank" data-correct=""> (laurearsi) in economia. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">32. Finché non<input class="blank" data-correct=""> (conseguire) la laurea, non lavoro. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">33. Credo che loro<input class="blank" data-correct=""> (essere) bravi colleghi. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">34. Dopo<input class="blank" data-correct=""> (finire) l&#x27;università, ho viaggiato. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">35. Se avessi studiato,<input class="blank" data-correct=""> (superare) l&#x27;esame. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">36. Ogni mattina<input class="blank" data-correct=""> (prendere) il treno per l&#x27;università. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">37. Vorrei che tu mi<input class="blank" data-correct=""> (aiutare) con la tesi. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">38. <input class="blank" data-correct=""> (Partire) per l&#x27;Erasmus è stata un&#x27;esperienza unica. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">39. Stavano<input class="blank" data-correct=""> (scrivere) la domanda di ammissione. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">40. Quando<input class="blank" data-correct=""> (chiamare) mi trovi in biblioteca. → ____</p></div>
+<h3>Prova 3 — Cloze (scelta multipla, 15 题)</h3>
+<div class="mnote">_Testo:_ &quot;Dopo la laurea, molti giovani (41)______ di trovare lavoro. Le aziende (42)______ persone motivate. Uno stage (43)______ utile per il CV. Chi studia all&#x27;estero (44)______ più opportunità. Tuttavia, la burocrazia (45)______ lenta. Le lingue (46)______ importanti. Il networking (47)______ aiuta a trovare contatti. Alla fine, la pazienza (48)**. Molti (49)** di fare esperienza prima di stabilizzarsi. Le università (50)______ sempre più corsi in inglese. Chi parte in Erasmus (51)______ una mentalità aperta. Il curriculum (52)______ il biglietto da visita. Le competenze digitali (53)______ richieste ovunque. Un buon piano di studi (54)______ la differenza. Alla fine, chi (55)______ non si arrende trova il suo posto.&quot;</div>
+<div class="mnote">41\. A) cerca B) cercano C) cerchi D) cercare</div>
+<div class="mnote">42\. A) vuole B) vogliono C) vuoi D) voglia</div>
+<div class="mnote">43\. A) è B) sono C) eri D) essendo</div>
+<div class="mnote">44\. A) ha B) hanno C) hai D) abbia</div>
+<div class="mnote">45\. A) è B) sono C) era D) essere</div>
+<div class="mnote">46\. A) è B) sono C) sei D) essendo</div>
+<div class="mnote">47\. A) ci B) ti C) si D) vi</div>
+<div class="mnote">48\. A) paga B) paghi C) pagano D) pagato</div>
+<div class="mnote">49\. A) cerca B) cercano C) cerchi D) cercasse</div>
+<div class="mnote">50\. A) offrono B) offre C) offri D) offerto</div>
+<div class="mnote">51\. A) torna B) tornano C) torni D) tornerebbe</div>
+<div class="mnote">52\. A) è B) sono C) era D) siano</div>
+<div class="mnote">53\. A) è B) sono C) sei D) siano</div>
+<div class="mnote">54\. A) fa B) fanno C) fai D) fare</div>
+<div class="mnote">55\. A) prova B) provano C) provi D) proverebbe</div>
+<h3>Prova 4 — Comunicazione situazionale (abbinamenti, 10 coppie)</h3>
+<div class="mnote">Colonna A (frasi) → Colonna B (risposte):</div>
+<div class="mnote">A1) &quot;Sono stato ammesso all&#x27;Erasmus!&quot;  A2) &quot;Ho un colloquio domani.&quot;  A3) &quot;Non trovo lavoro.&quot;</div>
+<div class="mnote">A4) &quot;Congratulazioni per la laurea!&quot;  A5) &quot;Posso inviare il CV?&quot;  A6) &quot;Che facoltà fai?&quot;</div>
+<div class="mnote">A7) &quot;Ho superato l&#x27;esame!&quot;  A8) &quot;Devo scrivere la tesi.&quot;  A9) &quot;Parto per l&#x27;estero.&quot;  A10) &quot;Sono stanco di studiare.&quot;</div>
+<div class="mnote">B1) &quot;Certo, eccolo in allegato.&quot;  B2) &quot;Economia, mi piace.&quot;  B3) &quot;In bocca al lupo!&quot;</div>
+<div class="mnote">B4) &quot;Grazie mille!&quot;  B5) &quot;Dai, vedrai che prima o poi va bene.&quot;  B6) &quot;Complimenti, magnifico!&quot;</div>
+<div class="mnote">B7) &quot;Bravissimo/a!&quot;  B8) &quot;Ah, buona fortuna con il relatore!&quot;  B9) &quot;Che bella avventura!&quot;  B10) &quot;Anche noi a volte, ma poi passa!&quot;</div>
+<div class="mnote">→ A1=__ A2=__ A3=__ A4=__ A5=__ A6=__ A7=__ A8=__ A9=__ A10=__</div></section>
+<section class="module"><h2>4. Scritta（写作）</h2><div class="mnote">Produzione scritta（写作）— 70 分钟</div>
+<h3>题型说明</h3>
+<h3>Prova 1 — Racconto (100–120 parole)</h3>
+<div class="mnote">Racconta la tua esperienza (o una ipotetica) di studio all&#x27;estero o del primo lavoro dopo la laurea.</div>
+<h3>Prova 2 — Email a un amico (80–100 parole, informale)</h3>
+<div class="mnote">Scrivi a un amico che ti chiede consigli su come conciliare università e lavoro.</div></section>
+<section class="module"><h2>5. Orale（口语）</h2><div class="mnote">Produzione orale（口语）— \~10 分钟</div>
+<h3>题型说明（近年框架）</h3>
+<div class="mnote">：① 对话（4 选 1）2–3 min；② 独白（4 选 1，含 2 看图）\~1.5 min。</div>
+<h3>Prova 1 — Conversazione (4 scelte, sceglierne 1)</h3>
+<div class="mnote">A) Parla della tua facoltà e dei tuoi obiettivi lavorativi.</div>
+<div class="mnote">B) Descrivi un colloquio di lavoro che hai fatto o immagini.</div>
+<div class="mnote">C) Parla di come concili studio e tempo libero.</div>
+<div class="mnote">D) Discuti con il docente: meglio studiare in Italia o all&#x27;estero?</div>
+<h3>Prova 2 — Monologo (4 scelte, sceglierne 1, 2 con immagine)</h3>
+<div class="mnote">A) (🌃 immagine: studente che parte con valigia) Descrivi l&#x27;emozione di partire per l&#x27;Erasmus.</div>
+<div class="mnote">B) (📋 immagine: annuncio di stage) Presenta un annuncio di lavoro/stage e commentalo.</div>
+<div class="mnote">C) Spiega perché le lingue straniere servono nel lavoro.</div>
+<div class="mnote">D) Parla dei pro e contro del lavorare mentre si studia.</div>
+<h3>✅ B1 答案与评分</h3>
+<div class="q-item q-oral" data-type="oral"><div class="oral-scoring"><div class="score-head">📋 Criteri di valutazione（口语评分要点）</div><div class="rubric-note">**Orale 评分要点**：① 对话（4选1）能展开 2–3 分钟连贯交流，用 presente/passato prossimo + congiuntivo 基础；② 独白（4选1）看图能描述并表达 opinione personale con _perché/pro e contro_；词汇 B1 准确，语法错误不阻碍沟通。</div></div></div></section><button id="btn-check" onclick="verifica()">Verifica le risposte（提交判分）</button><button id="btn-reset" hidden onclick="resetta()">Ricomincia（重做）</button><div id="result" hidden></div></main><script>var SUBJMAX=20;
+function norm(s){return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]/g,'');}
+function gradeOf(p){if(p>=85)return['Eccellente','#1b7a3d'];if(p>=70)return['Buono','#2e7d32'];if(p>=55)return['Discreto','#b8860b'];if(p>=40)return['Insufficiente','#c0392b'];return['Grave','#7b1e2b'];}
+function verifica(){
+  var items=document.querySelectorAll('.q-item');
+  var score=0,total=0;
+  items.forEach(function(el){
+    var t=el.dataset.type;
+    var corr=el.dataset.correct;
+    if(!corr){ el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;}); return; }
+    if(t==='mc'||t==='tf'||t==='match'){
+      total++;
+      var ok=false;
+      if(t==='match'){var sel=el.querySelector('select');if(sel&&sel.value===corr)ok=true;}
+      else{var inp=el.querySelector('input:checked');if(inp&&inp.value===corr)ok=true;}
+      el.classList.add(ok?'correct':'wrong');
+      var n=document.createElement('div');n.className='q-note '+(ok?'ok':'no');
+      n.textContent=ok?'✅ Corretto':'❌ Risposta corretta: '+el.dataset.ctext;
+      el.appendChild(n);
+      el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;});
+    } else if(t==='cloze'){
+      el.querySelectorAll('input.blank').forEach(function(inp){
+        if(!inp.dataset.correct){inp.disabled=true;return;}
+        total++;
+        var v=norm(inp.value);
+        var ok2=v.length>0 && v.indexOf(norm(inp.dataset.correct))>=0;
+        if(ok2)score++;
+        inp.classList.add(ok2?'correct':'wrong');
+        if(!ok2){var s=document.createElement('span');s.className='anshint';s.textContent=' ✓ '+inp.dataset.correct;inp.insertAdjacentElement('afterend',s);}
+        inp.disabled=true;
+      });
+    }
+  });
+  document.querySelectorAll('.q-subj').forEach(function(el){var r=el.querySelector('.ref');if(r)r.hidden=false;});
+  var pct= total? Math.round(score/total*100):0;
+  var g=gradeOf(pct);
+  var box=document.getElementById('result');
+  box.hidden=false;
+  box.innerHTML='<div class="res-score">客观题正确率：<b>'+score+' / '+total+'</b> （'+pct+'%）</div>'+
+    '<div class="res-grade" style="background:'+g[1]+'">'+g[0]+'</div>'+
+    '<div class="res-note">写作 / 口语 / 改写 / 开放题请对照下方「✅ Soluzioni」参考答案与评分要点自评（本卷主观题满分 '+SUBJMAX+' 分）。</div>';
+  box.scrollIntoView({behavior:'smooth'});
+  document.getElementById('btn-check').hidden=true;
+  document.getElementById('btn-reset').hidden=false;
+}
+function resetta(){location.reload();}
+document.addEventListener('play', function(e){
+  if(e.target && e.target.tagName === 'AUDIO'){
+    document.querySelectorAll('audio').forEach(function(a){ if(a!==e.target) a.pause(); });
+  }
+}, true);</script></body></html>

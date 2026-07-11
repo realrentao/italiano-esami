@@ -1,0 +1,221 @@
+<!DOCTYPE html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>CILS A2 — CILS</title><style>:root{--wine:#7b1e2b;--wine2:#a83246;--ink:#23211f;--paper:#fbf8f4;--line:#e4ddd2;--ok:#1b7a3d;--no:#c0392b;}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);background:var(--paper);line-height:1.65}
+header.top{background:linear-gradient(135deg,var(--wine),var(--wine2));color:#fff;padding:26px 20px;box-shadow:0 2px 10px rgba(0,0,0,.15)}
+header.top .back{color:#ffd9df;text-decoration:none;font-size:14px}
+header.top .ttl{font-size:26px;font-weight:800;margin-top:6px}
+header.top .ttl .lvl{display:inline-block;background:#fff;color:var(--wine);border-radius:8px;padding:2px 10px;margin-right:10px;font-size:20px}
+header.top .sub{opacity:.9;margin-top:4px;font-size:15px}
+main{max-width:880px;margin:0 auto;padding:24px 18px 120px}
+section.module{margin:30px 0;background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+section.module h2{margin:0 0 14px;color:var(--wine);font-size:20px;border-bottom:2px solid var(--line);padding-bottom:8px}
+section.module h3{color:#444;font-size:16px;margin:22px 0 10px}
+.mnote{background:#f6f1e9;border-left:4px solid var(--wine);border-radius:8px;padding:10px 14px;margin:12px 0;font-size:13.5px;color:#6b5b4a;line-height:1.7}
+.text{background:#f6f1e9;border-left:4px solid var(--wine);border-radius:8px;padding:12px 14px;margin:12px 0}
+.text h4{margin:0 0 6px;font-size:14px;color:var(--wine)}
+pre{white-space:pre-wrap;margin:0;font-family:"Courier New",monospace;font-size:14px}
+.items{margin-top:14px}
+.q-item{margin:14px 0;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fffdf9}
+.q-item.correct{border-color:var(--ok);background:#f1faf3}
+.q-item.wrong{border-color:var(--no);background:#fdf1f0}
+.q-stem{margin:0 0 8px;font-weight:600}
+.opts{display:flex;flex-direction:column;gap:6px}
+.opt{display:flex;align-items:center;gap:8px;cursor:pointer;padding:4px 6px;border-radius:6px}
+.opt:hover{background:#f3ede3}
+.match-sel{font-size:15px;padding:5px 8px;border-radius:6px;border:1px solid #bbb;margin-top:4px}
+.blank{font-size:15px;padding:3px 6px;border:1px solid #bbb;border-radius:6px;margin:0 4px;min-width:90px}
+.blank.correct{border-color:var(--ok);background:#eafaf0}
+.blank.wrong{border-color:var(--no);background:#fdeceb}
+.anshint{color:var(--no);font-size:13px;margin-left:6px}
+textarea.ans{width:100%;font-size:15px;padding:10px;border:1px solid #ccc;border-radius:8px;font-family:inherit;resize:vertical}
+.q-subj .ref{margin-top:10px;padding:10px 12px;background:#eef6fb;border-left:4px solid #2a7fb8;border-radius:8px;font-size:14px}
+.q-note{margin-top:8px;font-weight:700;font-size:14px}
+.q-note.ok{color:var(--ok)} .q-note.no{color:var(--no)}
+.audio-block{background:#f0f4f7;border:1px solid #cfe0ea;border-radius:10px;padding:12px 14px;margin:12px 0}
+.audio-block h4{margin:0 0 8px;color:#1f5f80}
+audio{width:100%;margin-bottom:8px;display:block}
+.noaudio{color:#b06a00;font-weight:600}
+.q-oral{background:#fbf7ef;border:1px solid #ecd9b0;border-radius:12px;padding:16px 18px;margin:14px 0}
+.q-oral .q-stem{margin:0 0 12px;font-size:15px;line-height:1.7;white-space:pre-wrap}
+.oral-scoring{background:#fff;border:1px solid #e7dcc4;border-radius:10px;padding:12px 14px;margin-bottom:12px}
+.score-head{font-weight:700;color:#9a6b00;margin-bottom:8px;font-size:14px}
+.dims{margin:0;padding-left:20px;font-size:14px;line-height:1.9}
+.dims li{margin-bottom:2px}
+.rubric-note{margin-top:8px;padding-top:8px;border-top:1px dashed #e0d3b6;font-size:13px;color:#5a4a2a;line-height:1.7}
+.oral-ref{background:#eef6fb;border:1px solid #cfe0ea;border-radius:10px;padding:12px 14px}
+.ref-head{font-weight:700;color:#1f5f80;margin-bottom:8px;font-size:14px}
+.ref-it{font-weight:400;color:#5b87a0;font-style:italic;font-size:12px}
+.oral-ref pre{margin:8px 0 0;white-space:pre-wrap;word-break:break-word;font-size:14px;line-height:1.75;background:#fff;border:1px solid #dce8f0;border-radius:8px;padding:10px 12px}
+.otranscript{margin-top:8px}
+.otranscript summary{cursor:pointer;color:#1f5f80;font-weight:600;font-size:13px;user-select:none;list-style:none}
+.otranscript summary::-webkit-details-marker{display:none}
+.otranscript .o-open{display:none}
+.otranscript[open] .o-closed{display:none}
+.otranscript[open] .o-open{display:inline}
+.transcript{margin-top:10px}
+.transcript summary{cursor:pointer;color:#1f5f80;font-weight:600;font-size:14px;user-select:none;list-style:none}
+.transcript summary::-webkit-details-marker{display:none}
+.transcript summary:hover{text-decoration:underline}
+.transcript .t-open{display:none}
+.transcript[open] .t-closed{display:none}
+.transcript[open] .t-open{display:inline}
+.transcript[open] summary{margin-bottom:8px}
+.transcript pre{margin-top:0}
+.soluzioni{margin:28px 0;background:#fff;border:2px dashed var(--wine);border-radius:14px;padding:18px 20px}
+.soluzioni h2{margin:0 0 12px;color:var(--wine);font-size:18px}
+.soluzioni pre{white-space:pre-wrap;font-size:13.5px;line-height:1.8;background:#fbf6f0;border-radius:8px;padding:12px;font-family:"Courier New",monospace}
+#btn-check{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--wine);color:#fff;border:none;font-size:17px;font-weight:700;padding:13px 30px;border-radius:30px;cursor:pointer;box-shadow:0 4px 14px rgba(123,30,43,.4);z-index:10}
+#btn-check:hover{background:var(--wine2)}
+#btn-reset{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);margin-left:170px;background:#555;color:#fff;border:none;font-size:15px;padding:13px 22px;border-radius:30px;cursor:pointer;z-index:10}
+#result{margin-top:20px;padding:18px 20px;border-radius:12px;background:#fff;border:2px solid var(--wine);text-align:center}
+.res-score{font-size:18px;margin-bottom:10px}
+.res-grade{display:inline-block;color:#fff;font-weight:800;font-size:22px;padding:6px 22px;border-radius:10px;margin-bottom:8px}
+.res-note{font-size:14px;color:#555;margin-top:8px}
+.index-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-top:20px}
+.card{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:0 1px 4px rgba(0,0,0,.05);transition:.15s}
+.card:hover{transform:translateY(-3px);border-color:var(--wine)}
+.card .lvl{display:inline-block;background:var(--wine);color:#fff;border-radius:8px;padding:3px 12px;font-weight:800;font-size:18px}
+.card .nm{font-weight:700;margin:8px 0 4px;font-size:16px}
+.card .sb{font-size:13px;color:#666}
+.intro{max-width:880px;margin:24px auto;padding:0 18px;color:#555}
+.vol-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;margin-top:24px}
+.vol{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:0 1px 4px rgba(0,0,0,.05);transition:.15s}
+.vol:hover{transform:translateY(-3px);border-color:var(--wine)}
+.vol .vno{display:inline-block;background:var(--wine);color:#fff;border-radius:8px;padding:3px 12px;font-weight:800;font-size:14px}
+.vol .vt{font-weight:700;margin:10px 0 6px;font-size:18px}
+.vol .vs{font-size:13px;color:#666}
+.vol .vgo{margin-top:12px;font-weight:700;color:var(--wine);font-size:14px}</style></head><body><header class="top"><a href="index.html" class="back">← Indice CILS Vol.1</a><div class="ttl"><span class="lvl">A2</span> CILS</div><div class="sub">una festa multiculturale / conoscere un nuovo vicino · 多元文化节 / 认识新邻居</div></header><main><p class="intro">本级主题：Migrazioni, multiculturalismo e cittadinanza。CILS 五大模块（Ascolto / Lettura / Analisi delle strutture / Produzione scritta / Produzione orale）。听力为模拟音频文本（由考官/录音播放），本页以文本呈现听力原文，点击展开即可自测。提交后客观题自动判分；写作/口语/开放题请展开下方「✅ Soluzioni」参考答案与评分要点自评。</p><section class="module"><h2>1. Ascolto（听力）</h2><div class="mnote">Ascolto（听力，约 20–30 分钟，共 12 题）</div>
+<div class="mnote">考试时由录音播放。Prova 1 为 6 段短对话三选一；Prova 2 为 1 段长对话三选一（6 题）。以下为「听力原文（模拟音频文本）」。</div>
+<h3>Prova 1 — 6 短对话</h3>
+<div class="mnote">1. — Ciao! Vieni alla festa multiculturale di sabato? — Sì, porto il riso alla cantonese. （Domanda: Cosa porta? A) pizza B) riso cinese C) torta）</div>
+<div class="q-item" data-type="mc" data-correct="0" data-ctext="Perù"><p class="q-stem">2. — Il nuovo vicino è arrivato ieri. — Di dove è? — Del Perù. （D: Il vicino viene dal…</p><div class="opts"><label class="opt"><input type="radio" name="r2" value="0"> A) Perù</label><label class="opt"><input type="radio" name="r2" value="1"> B) Perù→Cile</label><label class="opt"><input type="radio" name="r2" value="2"> C) Brasile）</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="tabla"><p class="q-stem">3. — Suoni uno strumento? — Sì, la tabla, della musica indiana. （D: Che strumento suona?</p><div class="opts"><label class="opt"><input type="radio" name="r3" value="0"> A) chitarra</label><label class="opt"><input type="radio" name="r3" value="1"> B) tabla</label><label class="opt"><input type="radio" name="r3" value="2"> C) pianoforte）</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="in piazza"><p class="q-stem">4. — A che ora è la cena di quartiere? — Alle 20:00, in piazza. （D: Dove è la cena?</p><div class="opts"><label class="opt"><input type="radio" name="r4" value="0"> A) a casa</label><label class="opt"><input type="radio" name="r4" value="1"> B) in piazza</label><label class="opt"><input type="radio" name="r4" value="2"> C) al ristorante）</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="francese"><p class="q-stem">5. — Parli arabo con tuo nonno? — No, solo francese. （D: Che lingua parla con il nonno?</p><div class="opts"><label class="opt"><input type="radio" name="r5" value="0"> A) arabo</label><label class="opt"><input type="radio" name="r5" value="1"> B) francese</label><label class="opt"><input type="radio" name="r5" value="2"> C) italiano）</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="tre"><p class="q-stem">6. — Quanti vicini nuovi ci sono? — Tre: uno spagnolo, uno egiziano e uno cinese. （D: Quanti vicini nuovi?</p><div class="opts"><label class="opt"><input type="radio" name="r6" value="0"> A) due</label><label class="opt"><input type="radio" name="r6" value="1"> B) tre</label><label class="opt"><input type="radio" name="r6" value="2"> C) quattro）</label></div></div>
+<h3>Prova 2 — 长对话（Conoscere un nuovo vicino）</h3>
+<div class="text"><h4>📝 Testo / Dialogo (simulato)</h4><pre>Marco: Ciao, bentornato! Allora, hai conosciuto il nuovo vicino?
+Giulia: Sì! Si chiama Hassan, viene dalla Tunisia e abita al secondo piano.
+Marco: Che lavoro fa?
+Giulia: È cuoco in un ristorante marocchino qui vicino.
+Marco: Magnifico! Parla italiano?
+Giulia: Sì, abbastanza bene, e sta imparando il dialetto milanese.
+Marco: E la sua famiglia?
+Giulia: La moglie si chiama Leila e ha due bambini, Amin e Yasmin.
+Marco: Che bella famiglia multiculturale! Invitali alla nostra festa.
+Giulia: Ottima idea, lo faccio subito.</pre></div>
+<h3>题（三选一）</h3>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="Hassan"><p class="q-stem">1. Il nuovo vicino si chiama…</p><div class="opts"><label class="opt"><input type="radio" name="r1" value="0"> A) Hamed</label><label class="opt"><input type="radio" name="r1" value="1"> B) Hassan</label><label class="opt"><input type="radio" name="r1" value="2"> C) Husam</label></div></div>
+<div class="q-item" data-type="mc" data-correct="0" data-ctext="Tunisia"><p class="q-stem">2. Viene da…</p><div class="opts"><label class="opt"><input type="radio" name="r2" value="0"> A) Tunisia</label><label class="opt"><input type="radio" name="r2" value="1"> B) Marocco</label><label class="opt"><input type="radio" name="r2" value="2"> C) Egitto</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="secondo piano"><p class="q-stem">3. Abita al…</p><div class="opts"><label class="opt"><input type="radio" name="r3" value="0"> A) primo piano</label><label class="opt"><input type="radio" name="r3" value="1"> B) secondo piano</label><label class="opt"><input type="radio" name="r3" value="2"> C) terzo piano</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="cuoco"><p class="q-stem">4. Il suo lavoro è…</p><div class="opts"><label class="opt"><input type="radio" name="r4" value="0"> A) insegnante</label><label class="opt"><input type="radio" name="r4" value="1"> B) cuoco</label><label class="opt"><input type="radio" name="r4" value="2"> C) medico</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="italiano e dialetto"><p class="q-stem">5. Hassan parla…</p><div class="opts"><label class="opt"><input type="radio" name="r5" value="0"> A) solo arabo</label><label class="opt"><input type="radio" name="r5" value="1"> B) italiano e dialetto</label><label class="opt"><input type="radio" name="r5" value="2"> C) francese</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="due bambini"><p class="q-stem">6. Ha…</p><div class="opts"><label class="opt"><input type="radio" name="r6" value="0"> A) un bambino</label><label class="opt"><input type="radio" name="r6" value="1"> B) due bambini</label><label class="opt"><input type="radio" name="r6" value="2"> C) tre bambini</label></div></div></section>
+<section class="module"><h2>2. Lettura（阅读）</h2><div class="mnote">Lettura（阅读，约 40 分钟）</div>
+<h3>Prova 1 — Testo unico（约 150 词）+ 4 单选</h3>
+<div class="text"><pre>La festa multiculturale del nostro quartiere</pre></div>
+<div class="text"><pre>Ogni anno, in primavera, il nostro quartiere organizza una festa multiculturale. Quest&#x27;anno l&#x27;evento è nella palestra della scuola, dalle 16:00 alle 22:00 di sabato 25 maggio. Ci sono stand con cibi di tutto il mondo: dolma dalla Turchia, samosa dall&#x27;India, tajine dal Marocco e pizza italiana. I bambini possono dipingere bandiere e ascoltare fiabe in diverse lingue. Un gruppo di ragazzi suona musica dal vivo. L&#x27;entrata è libera e tutti sono benvenuti. Porta la tua specialità!</pre></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="in primavera"><p class="q-stem">1. La festa è…</p><div class="opts"><label class="opt"><input type="radio" name="r1" value="0"> A) in inverno</label><label class="opt"><input type="radio" name="r1" value="1"> B) in primavera</label><label class="opt"><input type="radio" name="r1" value="2"> C) in autunno</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="nella palestra"><p class="q-stem">2. Dove si svolge?</p><div class="opts"><label class="opt"><input type="radio" name="r2" value="0"> A) in piazza</label><label class="opt"><input type="radio" name="r2" value="1"> B) nella palestra</label><label class="opt"><input type="radio" name="r2" value="2"> C) al parco</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="Marocco"><p class="q-stem">3. Il tajine è di…</p><div class="opts"><label class="opt"><input type="radio" name="r3" value="0"> A) India</label><label class="opt"><input type="radio" name="r3" value="1"> B) Marocco</label><label class="opt"><input type="radio" name="r3" value="2"> C) Turchia</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="libera"><p class="q-stem">4. L&#x27;entrata è…</p><div class="opts"><label class="opt"><input type="radio" name="r4" value="0"> A) a pagamento</label><label class="opt"><input type="radio" name="r4" value="1"> B) libera</label><label class="opt"><input type="radio" name="r4" value="2"> C) solo su invito</label></div></div>
+<h3>Prova 2 — 4 微文本，各 3 句判断（Vero/Falso）</h3>
+<div class="mnote">（共 12 判断，示例：①Il vicino egiziano si chiama Omar. V/F ②Abita al primo piano. V/F ③La festa è domenica. V/F …）</div>
+<h3>Prova 3 — 4 短文 + 8 描述配对（abbinamenti）</h3>
+<div class="text"><pre>A. Una famiglia peruviana apre un ristorante di ceviche.</pre></div>
+<div class="text"><pre>B. Una ragazza cinese insegna calligrafia ai bambini.</pre></div>
+<div class="text"><pre>C. Un coro multilingue canta canzoni del mondo.</pre></div>
+<div class="text"><pre>D. Un vicino indiano organizza lezioni di yoga.</pre></div>
+<div class="text"><pre>Descrizioni (8): 1-cucina, 2-scrittura, 3-musica, 4-sport, 5-cibo peruviano, 6-pittura, 7-canto, 8-corpo e respiro → abbina A-B-C-D.</pre></div></section>
+<section class="module"><h2>3. Analisi（语法分析）</h2><div class="mnote">Analisi delle strutture di accoglienza（语法，约 40 分钟）</div>
+<div class="mnote">真题全量（共 28 题）：Prova 1 性数配合 10；Prova 2 动词变位（近过去/未完成）10；Prova 3 完形（搭配）8。</div>
+<h3>Prova 1 — Concordanza（10 空）</h3>
+<div class="q-item" data-type="cloze"><p class="q-stem">1. I miei<input class="blank" data-correct=""> (vicino) nuovi sono simpatici.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">2. La<input class="blank" data-correct=""> (festa) multiculturale è bella.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">3. Queste<input class="blank" data-correct=""> (donna) parlano arabo.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">4. Un<input class="blank" data-correct=""> (amico) egiziano e due ______ (amica) cinesi.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">5. Le<input class="blank" data-correct=""> (bandiera) di tutto il mondo.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">6. Il<input class="blank" data-correct=""> (piatto) tipico della sua terra.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">7. Le nostre<input class="blank" data-correct=""> (tradizione) diverse.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">8. Uno<input class="blank" data-correct=""> (stand) con cibi strani.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">9. Le<input class="blank" data-correct=""> (musica) dal vivo.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">10. I<input class="blank" data-correct=""> (bambino) giocano insieme.</p></div>
+<h3>Prova 2 — Passato prossimo / Imperfetto（10 空）</h3>
+<div class="q-item" data-type="cloze"><p class="q-stem">1. Ieri<input class="blank" data-correct="è arrivato"> (arrivare, lui) il nuovo vicino.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">2. Quando ero piccolo,<input class="blank" data-correct="abitavo"> (abitare, io) in Egitto.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">3. Noi<input class="blank" data-correct="abbiamo organizzato"> (organizzare) una festa l&#x27;anno scorso.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">4. Lei<input class="blank" data-correct="è venuta"> (venire) dalla Tunisia.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">5. Loro<input class="blank" data-correct="parlavano"> (parlare) sempre arabo a casa.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">6. Tu<input class="blank" data-correct="hai conosciuto"> (conoscere) Hassan al mercato?</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">7. La festa<input class="blank" data-correct="era"> (essere) molto allegra.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">8. Io<input class="blank" data-correct="ho imparato"> (imparare) qualche parola di cinese.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">9. Voi<input class="blank" data-correct="avete portato"> (portare) un dolce buonissimo.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">10. Lui<input class="blank" data-correct="ha suonato"> (suonare) la chitarra tutta la sera.</p></div>
+<h3>Prova 3 — Cloze（8 空，搭配）</h3>
+<div class="q-item" data-type="cloze"><p class="q-stem">Sabato ho <input class="blank" data-correct="conosciuto"> il nuovo vicino. Abita <input class="blank" data-correct="con"> noi e parla bene <input class="blank" data-correct="in"> italiano. La sua cucina è <input class="blank" data-correct="aperta"> per tutti. Ci siamo <input class="blank" data-correct="trovati"> subito. La festa è <input class="blank" data-correct="a"> porta <input class="blank" data-correct="a"> tutti. È un <input class="blank" data-correct="segno"> di amicizia.</p></div>
+<div class="text"><pre>(opzioni: conosciuto / con / di / aperta / trovati / aperta / a / segno …)</pre></div></section>
+<section class="module"><h2>4. Scritta（写作）</h2><div class="mnote">Produzione scritta（写作，约 40 分钟）</div>
+<h3>Prova 1 — Tema（话题作文，40–60 词）</h3>
+<div class="text"><pre>Scrivi del tuo vicino o di un&#x27;amica di un&#x27;altra cultura. Che cosa fate insieme?</pre></div>
+<h3>Prova 2 — Email / lettera di richiesta（请求信/邮件，25–40 词）</h3>
+<div class="text"><pre>Scrivi al tuo vicino per invitarlo alla festa multiculturale del quartiere.</pre></div></section>
+<section class="module"><h2>5. Orale（口语）</h2><div class="mnote">Produzione orale（口语，约 10 分钟）</div>
+<h3>Prova 1 — Dialogo（2–3 分钟）</h3>
+<h3>Prova 2 — Monologo（约 1.5 分钟，含看图）</h3></section><section class="soluzioni"><h2>✅ Soluzioni e criteri di valutazione（参考答案与评分）</h2><pre>【Ascolto 听力】
+1-B, 2-A, 3-B, 4-B, 5-B, 6-B；**P2**: 1-B, 2-A, 3-B, 4-B, 5-B, 6-B
+
+【Lettura 阅读】
+1-B, 2-B, 3-B, 4-B；**P2 示例**: T1①V②F(è piano terra, non primo)③V；**P3**: A-1,5 / B-2,6 / C-3,7 / D-4,8
+
+【Analisi 语法分析】
+1-vicini, 2-festa, 3-donne, 4-amico/amiche, 5-bandiere, 6-piatto, 7-tradizioni, 8-stand, 9-musiche, 10-bambini；P2: 1-è arrivato, 2-abitavo, 3-abbiamo organizzato, 4-è venuta, 5-parlavano, 6-hai conosciuto, 7-era, 8-ho imparato, 9-avete portato, 10-ha suonato；P3: 1-conosciuto, 2-con, 3-in, 4-aperta, 5-trovati, 6-a, 7-a, 8-segno</pre></section><button id="btn-check" onclick="verifica()">Verifica le risposte（提交判分）</button><button id="btn-reset" hidden onclick="resetta()">Ricomincia（重做）</button><div id="result" hidden></div></main><script>var SUBJMAX=20;
+function norm(s){return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]/g,'');}
+function gradeOf(p){if(p>=85)return['Eccellente','#1b7a3d'];if(p>=70)return['Buono','#2e7d32'];if(p>=55)return['Discreto','#b8860b'];if(p>=40)return['Insufficiente','#c0392b'];return['Grave','#7b1e2b'];}
+function verifica(){
+  var items=document.querySelectorAll('.q-item');
+  var score=0,total=0;
+  items.forEach(function(el){
+    var t=el.dataset.type;
+    var corr=el.dataset.correct;
+    if(!corr){ el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;}); return; }
+    if(t==='mc'||t==='tf'||t==='match'){
+      total++;
+      var ok=false;
+      if(t==='match'){var sel=el.querySelector('select');if(sel&&sel.value===corr)ok=true;}
+      else{var inp=el.querySelector('input:checked');if(inp&&inp.value===corr)ok=true;}
+      el.classList.add(ok?'correct':'wrong');
+      var n=document.createElement('div');n.className='q-note '+(ok?'ok':'no');
+      n.textContent=ok?'✅ Corretto':'❌ Risposta corretta: '+el.dataset.ctext;
+      el.appendChild(n);
+      el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;});
+    } else if(t==='cloze'){
+      el.querySelectorAll('input.blank').forEach(function(inp){
+        if(!inp.dataset.correct){inp.disabled=true;return;}
+        total++;
+        var v=norm(inp.value);
+        var ok2=v.length>0 && v.indexOf(norm(inp.dataset.correct))>=0;
+        if(ok2)score++;
+        inp.classList.add(ok2?'correct':'wrong');
+        if(!ok2){var s=document.createElement('span');s.className='anshint';s.textContent=' ✓ '+inp.dataset.correct;inp.insertAdjacentElement('afterend',s);}
+        inp.disabled=true;
+      });
+    }
+  });
+  document.querySelectorAll('.q-subj').forEach(function(el){var r=el.querySelector('.ref');if(r)r.hidden=false;});
+  var pct= total? Math.round(score/total*100):0;
+  var g=gradeOf(pct);
+  var box=document.getElementById('result');
+  box.hidden=false;
+  box.innerHTML='<div class="res-score">客观题正确率：<b>'+score+' / '+total+'</b> （'+pct+'%）</div>'+
+    '<div class="res-grade" style="background:'+g[1]+'">'+g[0]+'</div>'+
+    '<div class="res-note">写作 / 口语 / 改写 / 开放题请对照下方「✅ Soluzioni」参考答案与评分要点自评（本卷主观题满分 '+SUBJMAX+' 分）。</div>';
+  box.scrollIntoView({behavior:'smooth'});
+  document.getElementById('btn-check').hidden=true;
+  document.getElementById('btn-reset').hidden=false;
+}
+function resetta(){location.reload();}
+document.addEventListener('play', function(e){
+  if(e.target && e.target.tagName === 'AUDIO'){
+    document.querySelectorAll('audio').forEach(function(a){ if(a!==e.target) a.pause(); });
+  }
+}, true);</script></body></html>

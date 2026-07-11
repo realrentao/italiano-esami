@@ -1,0 +1,244 @@
+<!DOCTYPE html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>CILS A2 — CILS</title><style>:root{--wine:#7b1e2b;--wine2:#a83246;--ink:#23211f;--paper:#fbf8f4;--line:#e4ddd2;--ok:#1b7a3d;--no:#c0392b;}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);background:var(--paper);line-height:1.65}
+header.top{background:linear-gradient(135deg,var(--wine),var(--wine2));color:#fff;padding:26px 20px;box-shadow:0 2px 10px rgba(0,0,0,.15)}
+header.top .back{color:#ffd9df;text-decoration:none;font-size:14px}
+header.top .ttl{font-size:26px;font-weight:800;margin-top:6px}
+header.top .ttl .lvl{display:inline-block;background:#fff;color:var(--wine);border-radius:8px;padding:2px 10px;margin-right:10px;font-size:20px}
+header.top .sub{opacity:.9;margin-top:4px;font-size:15px}
+main{max-width:880px;margin:0 auto;padding:24px 18px 120px}
+section.module{margin:30px 0;background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+section.module h2{margin:0 0 14px;color:var(--wine);font-size:20px;border-bottom:2px solid var(--line);padding-bottom:8px}
+section.module h3{color:#444;font-size:16px;margin:22px 0 10px}
+.mnote{background:#f6f1e9;border-left:4px solid var(--wine);border-radius:8px;padding:10px 14px;margin:12px 0;font-size:13.5px;color:#6b5b4a;line-height:1.7}
+.text{background:#f6f1e9;border-left:4px solid var(--wine);border-radius:8px;padding:12px 14px;margin:12px 0}
+.text h4{margin:0 0 6px;font-size:14px;color:var(--wine)}
+pre{white-space:pre-wrap;margin:0;font-family:"Courier New",monospace;font-size:14px}
+.items{margin-top:14px}
+.q-item{margin:14px 0;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fffdf9}
+.q-item.correct{border-color:var(--ok);background:#f1faf3}
+.q-item.wrong{border-color:var(--no);background:#fdf1f0}
+.q-stem{margin:0 0 8px;font-weight:600}
+.opts{display:flex;flex-direction:column;gap:6px}
+.opt{display:flex;align-items:center;gap:8px;cursor:pointer;padding:4px 6px;border-radius:6px}
+.opt:hover{background:#f3ede3}
+.match-sel{font-size:15px;padding:5px 8px;border-radius:6px;border:1px solid #bbb;margin-top:4px}
+.blank{font-size:15px;padding:3px 6px;border:1px solid #bbb;border-radius:6px;margin:0 4px;min-width:90px}
+.blank.correct{border-color:var(--ok);background:#eafaf0}
+.blank.wrong{border-color:var(--no);background:#fdeceb}
+.anshint{color:var(--no);font-size:13px;margin-left:6px}
+textarea.ans{width:100%;font-size:15px;padding:10px;border:1px solid #ccc;border-radius:8px;font-family:inherit;resize:vertical}
+.q-subj .ref{margin-top:10px;padding:10px 12px;background:#eef6fb;border-left:4px solid #2a7fb8;border-radius:8px;font-size:14px}
+.q-note{margin-top:8px;font-weight:700;font-size:14px}
+.q-note.ok{color:var(--ok)} .q-note.no{color:var(--no)}
+.audio-block{background:#f0f4f7;border:1px solid #cfe0ea;border-radius:10px;padding:12px 14px;margin:12px 0}
+.audio-block h4{margin:0 0 8px;color:#1f5f80}
+audio{width:100%;margin-bottom:8px;display:block}
+.noaudio{color:#b06a00;font-weight:600}
+.q-oral{background:#fbf7ef;border:1px solid #ecd9b0;border-radius:12px;padding:16px 18px;margin:14px 0}
+.q-oral .q-stem{margin:0 0 12px;font-size:15px;line-height:1.7;white-space:pre-wrap}
+.oral-scoring{background:#fff;border:1px solid #e7dcc4;border-radius:10px;padding:12px 14px;margin-bottom:12px}
+.score-head{font-weight:700;color:#9a6b00;margin-bottom:8px;font-size:14px}
+.dims{margin:0;padding-left:20px;font-size:14px;line-height:1.9}
+.dims li{margin-bottom:2px}
+.rubric-note{margin-top:8px;padding-top:8px;border-top:1px dashed #e0d3b6;font-size:13px;color:#5a4a2a;line-height:1.7}
+.oral-ref{background:#eef6fb;border:1px solid #cfe0ea;border-radius:10px;padding:12px 14px}
+.ref-head{font-weight:700;color:#1f5f80;margin-bottom:8px;font-size:14px}
+.ref-it{font-weight:400;color:#5b87a0;font-style:italic;font-size:12px}
+.oral-ref pre{margin:8px 0 0;white-space:pre-wrap;word-break:break-word;font-size:14px;line-height:1.75;background:#fff;border:1px solid #dce8f0;border-radius:8px;padding:10px 12px}
+.otranscript{margin-top:8px}
+.otranscript summary{cursor:pointer;color:#1f5f80;font-weight:600;font-size:13px;user-select:none;list-style:none}
+.otranscript summary::-webkit-details-marker{display:none}
+.otranscript .o-open{display:none}
+.otranscript[open] .o-closed{display:none}
+.otranscript[open] .o-open{display:inline}
+.transcript{margin-top:10px}
+.transcript summary{cursor:pointer;color:#1f5f80;font-weight:600;font-size:14px;user-select:none;list-style:none}
+.transcript summary::-webkit-details-marker{display:none}
+.transcript summary:hover{text-decoration:underline}
+.transcript .t-open{display:none}
+.transcript[open] .t-closed{display:none}
+.transcript[open] .t-open{display:inline}
+.transcript[open] summary{margin-bottom:8px}
+.transcript pre{margin-top:0}
+.soluzioni{margin:28px 0;background:#fff;border:2px dashed var(--wine);border-radius:14px;padding:18px 20px}
+.soluzioni h2{margin:0 0 12px;color:var(--wine);font-size:18px}
+.soluzioni pre{white-space:pre-wrap;font-size:13.5px;line-height:1.8;background:#fbf6f0;border-radius:8px;padding:12px;font-family:"Courier New",monospace}
+#btn-check{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--wine);color:#fff;border:none;font-size:17px;font-weight:700;padding:13px 30px;border-radius:30px;cursor:pointer;box-shadow:0 4px 14px rgba(123,30,43,.4);z-index:10}
+#btn-check:hover{background:var(--wine2)}
+#btn-reset{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);margin-left:170px;background:#555;color:#fff;border:none;font-size:15px;padding:13px 22px;border-radius:30px;cursor:pointer;z-index:10}
+#result{margin-top:20px;padding:18px 20px;border-radius:12px;background:#fff;border:2px solid var(--wine);text-align:center}
+.res-score{font-size:18px;margin-bottom:10px}
+.res-grade{display:inline-block;color:#fff;font-weight:800;font-size:22px;padding:6px 22px;border-radius:10px;margin-bottom:8px}
+.res-note{font-size:14px;color:#555;margin-top:8px}
+.index-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-top:20px}
+.card{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:0 1px 4px rgba(0,0,0,.05);transition:.15s}
+.card:hover{transform:translateY(-3px);border-color:var(--wine)}
+.card .lvl{display:inline-block;background:var(--wine);color:#fff;border-radius:8px;padding:3px 12px;font-weight:800;font-size:18px}
+.card .nm{font-weight:700;margin:8px 0 4px;font-size:16px}
+.card .sb{font-size:13px;color:#666}
+.intro{max-width:880px;margin:24px auto;padding:0 18px;color:#555}
+.vol-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;margin-top:24px}
+.vol{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:0 1px 4px rgba(0,0,0,.05);transition:.15s}
+.vol:hover{transform:translateY(-3px);border-color:var(--wine)}
+.vol .vno{display:inline-block;background:var(--wine);color:#fff;border-radius:8px;padding:3px 12px;font-weight:800;font-size:14px}
+.vol .vt{font-weight:700;margin:10px 0 6px;font-size:18px}
+.vol .vs{font-size:13px;color:#666}
+.vol .vgo{margin-top:12px;font-weight:700;color:var(--wine);font-size:14px}</style></head><body><header class="top"><a href="index.html" class="back">← Indice CILS Vol.4</a><div class="ttl"><span class="lvl">A2</span> CILS</div><div class="sub"></div></header><main><p class="intro">本级主题：Istruzione e apprendimento permanente。CILS 五大模块（Ascolto / Lettura / Analisi delle strutture / Produzione scritta / Produzione orale）。听力为模拟音频文本（由考官/录音播放），本页以文本呈现听力原文，点击展开即可自测。提交后客观题自动判分；写作/口语/开放题请展开下方「✅ Soluzioni」参考答案与评分要点自评。</p><section class="module"><h2>1. Ascolto（听力）</h2><div class="mnote">Ascolto（听力）— \~20–30 分钟 · 12 题</div>
+<h3>题型说明</h3>
+<h3>听力原文（模拟音频文本）</h3>
+<h3>Prova 1 — 6 brevi dialoghi</h3>
+<div class="mnote">_D1._ A: Vuoi imparare l&#x27;italiano? B: Sì, comincio un corso lunedì.</div>
+<div class="mnote">_D2._ A: Dove studi? B: Alla scuola serale, vicino a casa.</div>
+<div class="mnote">_D3._ A: Quante volte vai al corso? B: Due volte alla settimana.</div>
+<div class="mnote">_D4._ A: Il corso è difficile? B: No, è facile e divertente.</div>
+<div class="mnote">_D5._ A: Chi è il tuo insegnante? B: Il professore Rossi, è molto paziente.</div>
+<div class="mnote">_D6._ A: Studi anche a casa? B: Sì, leggo e ascolto canzoni in italiano.</div>
+<h3>Prova 2 — Dialogo lungo (al corso serale)</h3>
+<div class="mnote">B: Benvenuto! Io sono la segretaria. Il corso inizia domani alle 19:00.</div>
+<div class="mnote">A: Quanto dura ogni lezione?</div>
+<div class="mnote">B: Due ore, dalle 19:00 alle 21:00, tre sere a settimana.</div>
+<div class="mnote">A: Devo comprare i libri?</div>
+<div class="mnote">B: Sì, il libro costa 25 euro e si compra in segreteria.</div>
+<div class="mnote">A: C&#x27;è un esame alla fine?</div>
+<div class="mnote">B: Sì, a giugno. Se passi, ricevi un attestato.</div>
+<div class="mnote">A: Grazie, non vedo l&#x27;ora di cominciare!</div>
+<h3>理解题</h3>
+<div class="text"><h4>📝 Testo / Dialogo (simulato)</h4><pre>&amp;#x41;: Buonasera, sono Marco. Mi sono iscritto al corso serale di italiano.</pre></div>
+<h3>Prova 1（6 题）</h3>
+<div class="mnote">1. Quando comincia il corso di D1?  A) Lunedì  B) Martedì  C) Subito</div>
+<div class="mnote">2. Dove studia B in D2?  A) A scuola la mattina  B) Al corso serale  C) A casa</div>
+<div class="mnote">3. Quante volte va al corso in D3?  A) Una  B) Due  C) Tre</div>
+<div class="mnote">4. Com&#x27;è il corso in D4?  A) Difficile  B) Facile e divertente  C) Noioso</div>
+<div class="mnote">5. Chi è l&#x27;insegnante in D5?  A) Professoressa Bianchi  B) Professore Rossi  C) Un amico</div>
+<div class="mnote">6. Cosa fa a casa in D6?  A) Guarda la TV  B) Legge e ascolta canzoni  C) Dorme</div>
+<h3>Prova 2（6 题）</h3>
+<div class="mnote">8\. Quante sere a settimana?  A) Due  B) Tre  C) Quattro</div>
+<div class="mnote">9\. Quanto dura la lezione?  A) Un&#x27;ora  B) Due ore  C) Tre ore</div>
+<div class="mnote">10\. Quanto costa il libro?  A) 15 euro  B) 25 euro  C) 35 euro</div>
+<div class="mnote">11\. C&#x27;è un esame?  A) Sì, a giugno  B) No  C) Solo a dicembre</div>
+<div class="mnote">12\. Cosa riceve chi passa l&#x27;esame?  A) Un premio  B) Un attestato  C) Soldi</div>
+<div class="text"><h4>📝 Testo / Dialogo (simulato)</h4><pre>&amp;#x37;. A che ora inizia il corso?  A) 18:00  B) 19:00  C) 21:00</pre></div></section>
+<section class="module"><h2>2. Lettura（阅读）</h2><div class="mnote">Lettura（阅读）— 40 分钟</div>
+<h3>题型说明</h3>
+<h3>Prova 1 — Testo (≈150 parole) + 4 单选</h3>
+<div class="text"><pre>**Imparare l&#x27;italiano da adulti**Mi chiamo Yuki e ho 35 anni. L&#x27;anno scorso ho iniziato a frequentare un corso serale di italiano nella mia città. Lavoro di giorno in un ufficio, quindi la sera è il momento migliore per studiare. La classe è piccola: siamo solo otto studenti, tutti di nazionalità diverse. La nostra insegnante, Sara, usa giochi e canzoni per renderci la lingua più facile. Ogni settimana facciamo un piccolo compito a casa. Dopo sei mesi riesco a fare la spesa e a parlare con i vicini in italiano. Il mese prossimo farò un viaggio a Roma e sono felice di provare la lingua dal vivo!</pre></div>
+<div class="mnote">13. Perché Yuki studia la sera?  A) Perché non lavora  B) Perché lavora di giorno  C) Perché la sera è gratis</div>
+<div class="mnote">14. Quanti studenti ci sono in classe?  A) Otto  B) Dieci  C) Cinque</div>
+<div class="mnote">15. Come insegna Sara?  A) Con giochi e canzoni  B) Solo con la grammatica  C) Con film lunghi</div>
+<div class="mnote">16. Cosa farà Yuki il mese prossimo?  A) Un esame  B) Un viaggio a Roma  C) Un altro corso</div>
+<h3>Prova 2 — 4 microtesti, ciascuno 3 affermazioni (Vero/Falso)</h3>
+<div class="mnote">_T1. &quot;Il corso è gratuito per i residenti.&quot;_&amp;#x31;7. Il corso costa per tutti.  ☐ Vero ☐ Falso</div>
+<div class="mnote">18\. I residenti non pagano.  ☐ Vero ☐ Falso</div>
+<div class="mnote">19\. Il corso è solo per stranieri.  ☐ Vero ☐ Falso</div>
+<div class="mnote">_T2. &quot;Le lezioni sono il lunedì e il mercoledì, dalle 20:00.&quot;_&amp;#x32;0. Si studia di lunedì.  ☐ Vero ☐ Falso</div>
+<div class="mnote">21\. Le lezioni finiscono alle 21:00.  ☐ Vero ☐ Falso</div>
+<div class="mnote">22\. Si studia anche di venerdì.  ☐ Vero ☐ Falso</div>
+<div class="mnote">_T3. &quot;Ho comprato un libro di esercizi e lo uso ogni giorno.&quot;_&amp;#x32;3. L&#x27;autore ha un libro di esercizi.  ☐ Vero ☐ Falso</div>
+<div class="mnote">24\. Usa il libro raramente.  ☐ Vero ☐ Falso</div>
+<div class="mnote">25\. Il libro è solo per la grammatica.  ☐ Vero ☐ Falso</div>
+<div class="mnote">_T4. &quot;La mia insegnante parla lentamente e ci corregge con gentilezza.&quot;_&amp;#x32;6. L&#x27;insegnante parla piano.  ☐ Vero ☐ Falso</div>
+<div class="mnote">27\. Corregge gli errori con rabbia.  ☐ Vero ☐ Falso</div>
+<div class="mnote">28\. L&#x27;insegnante è gentile.  ☐ Vero ☐ Falso</div>
+<h3>Prova 3 — 4 testi + 8 descrizioni (abbinamenti)</h3>
+<div class="mnote">_Testi_: A) Corso di cucina in italiano · B) Corso di conversazione · C) Preparazione esame CILS · D) Italiano per bambini</div>
+<div class="mnote">_Descrizioni_: 29.Impara l&#x27;italiano cucinando. 30.Parla solo con compagni. 31.Studia per certificazione. 32.Lezione per i più piccoli. 33.Ricette e vocabolario. 34.Nessuna grammatica. 35.Esame ufficiale. 36.Giochi e filastrocche.</div>
+<div class="mnote">→ Abbina: A=___ B=___ C=___ D=___</div></section>
+<section class="module"><h2>3. Analisi（语法分析）</h2><div class="mnote">Analisi（语法）— 40 分钟</div>
+<h3>题型说明（真题全量）</h3>
+<h3>Prova 1 — Genere e numero (10 空)</h3>
+<div class="q-item" data-type="cloze"><p class="q-stem">1. Le<input class="blank" data-correct=""> (studentessa) studiano l&#x27;italiano. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">2. Un<input class="blank" data-correct=""> (corso) serale interessante. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">3. Le<input class="blank" data-correct=""> (lezione) sono facili. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">4. La mia<input class="blank" data-correct=""> (insegnante) è paziente. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">5. Due<input class="blank" data-correct=""> (libro) nuovi. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">6. Le<input class="blank" data-correct=""> (parola) difficili. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">7. Un&#x27;<input class="blank" data-correct=""> (amica) italiana. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">8. I<input class="blank" data-correct=""> (compito) a casa. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">9. La<input class="blank" data-correct=""> (scuola) serale. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">10. Le<input class="blank" data-correct=""> (serata) di studio. → ____</p></div>
+<h3>Prova 2 — Passato prossimo / Imperfetto (10 空)</h3>
+<div class="q-item" data-type="cloze"><p class="q-stem">11. Ieri<input class="blank" data-correct=""> (io, andare) al corso. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">12. Quando ero bambino,<input class="blank" data-correct=""> (io, studiare) sempre. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">13. Marco<input class="blank" data-correct=""> (finire) il libro la settimana scorsa. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">14. Noi<input class="blank" data-correct=""> (frequentare) un corso serale due anni fa. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">15. La maestra<input class="blank" data-correct=""> (spiegare) bene la grammatica. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">16. Tu<input class="blank" data-correct=""> (imparare) molte parole nuove? → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">17. L&#x27;anno scorso lei<input class="blank" data-correct=""> (iniziare) l&#x27;italiano. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">18. Mentre io<input class="blank" data-correct=""> (leggere) , lui scriveva. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">19. Gli studenti<input class="blank" data-correct=""> (fare) un esercizio ieri. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">20. Noi<input class="blank" data-correct=""> (essere) felici della lezione. → ____</p></div>
+<h3>Prova 3 — Cloze (collocazioni) (8 空)</h3>
+<div class="q-item" data-type="cloze"><p class="q-stem">21. Studio<input class="blank" data-correct=""> (per / da) migliorare l&#x27;italiano. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">22. Sono iscritto<input class="blank" data-correct=""> (a / in) un corso serale. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">23. Imparo<input class="blank" data-correct=""> (molto / molti) vocaboli nuovi. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">24. Ascolto la musica<input class="blank" data-correct=""> (per / di) praticare. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">25. Ho bisogno<input class="blank" data-correct=""> (di / a) esercitarmi. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">26. Parlo<input class="blank" data-correct=""> (con / da) i vicini in italiano. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">27. Riesco a fare la spesa<input class="blank" data-correct=""> (da / con) solo. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">28. Sono contento<input class="blank" data-correct=""> (di / per) i progressi. → ____</p></div></section>
+<section class="module"><h2>4. Scritta（写作）</h2><div class="mnote">Scrittura（写作）— 40 分钟</div>
+<h3>题型说明</h3>
+<h3>Prova 1 — Temina (40–60 parole)</h3>
+<div class="mnote">Scrivi del tuo corso di italiano o di un corso serale che frequenti/frequentersti.</div>
+<h3>Prova 2 — Email di richiesta (25–40 parole)</h3>
+<div class="mnote">Scrivi all&#x27;ufficio della scuola per chiedere informazioni su un corso serale.</div></section>
+<section class="module"><h2>5. Orale（口语）</h2><div class="mnote">Produzione orale（口语）— \~10 分钟</div>
+<h3>题型说明</h3>
+<div class="mnote">：Prova 1 对话 2–3 min；Prova 2 独白 \~1.5 min（含看图）。</div>
+<h3>Prova 1 — Conversazione (2–3 min)</h3>
+<div class="mnote">Parla con il docente del tuo corso di italiano: perché studi, quando vai a lezione, chi è l&#x27;insegnante.</div>
+<h3>Prova 2 — Monologo con immagine (\~1.5 min)</h3>
+<div class="mnote">Descrivi l&#x27;immagine di una classe serale (adulti a un banco, lavagna, insegnante) e spiega perché imparare una lingua da grandi è utile.</div>
+<h3>✅ A2 答案与评分</h3>
+<div class="q-item q-oral" data-type="oral"><div class="oral-scoring"><div class="score-head">📋 Criteri di valutazione（口语评分要点）</div><div class="rubric-note">**Orale 评分要点**：① 对话能连贯说明学习动机与作息（presente + passato prossimo）；② 独白看图能描述 4–5 元素并用 _perché_ 说明成人学语言的用处；用词基本正确，偶有错误不影响理解。</div></div></div></section><button id="btn-check" onclick="verifica()">Verifica le risposte（提交判分）</button><button id="btn-reset" hidden onclick="resetta()">Ricomincia（重做）</button><div id="result" hidden></div></main><script>var SUBJMAX=20;
+function norm(s){return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]/g,'');}
+function gradeOf(p){if(p>=85)return['Eccellente','#1b7a3d'];if(p>=70)return['Buono','#2e7d32'];if(p>=55)return['Discreto','#b8860b'];if(p>=40)return['Insufficiente','#c0392b'];return['Grave','#7b1e2b'];}
+function verifica(){
+  var items=document.querySelectorAll('.q-item');
+  var score=0,total=0;
+  items.forEach(function(el){
+    var t=el.dataset.type;
+    var corr=el.dataset.correct;
+    if(!corr){ el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;}); return; }
+    if(t==='mc'||t==='tf'||t==='match'){
+      total++;
+      var ok=false;
+      if(t==='match'){var sel=el.querySelector('select');if(sel&&sel.value===corr)ok=true;}
+      else{var inp=el.querySelector('input:checked');if(inp&&inp.value===corr)ok=true;}
+      el.classList.add(ok?'correct':'wrong');
+      var n=document.createElement('div');n.className='q-note '+(ok?'ok':'no');
+      n.textContent=ok?'✅ Corretto':'❌ Risposta corretta: '+el.dataset.ctext;
+      el.appendChild(n);
+      el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;});
+    } else if(t==='cloze'){
+      el.querySelectorAll('input.blank').forEach(function(inp){
+        if(!inp.dataset.correct){inp.disabled=true;return;}
+        total++;
+        var v=norm(inp.value);
+        var ok2=v.length>0 && v.indexOf(norm(inp.dataset.correct))>=0;
+        if(ok2)score++;
+        inp.classList.add(ok2?'correct':'wrong');
+        if(!ok2){var s=document.createElement('span');s.className='anshint';s.textContent=' ✓ '+inp.dataset.correct;inp.insertAdjacentElement('afterend',s);}
+        inp.disabled=true;
+      });
+    }
+  });
+  document.querySelectorAll('.q-subj').forEach(function(el){var r=el.querySelector('.ref');if(r)r.hidden=false;});
+  var pct= total? Math.round(score/total*100):0;
+  var g=gradeOf(pct);
+  var box=document.getElementById('result');
+  box.hidden=false;
+  box.innerHTML='<div class="res-score">客观题正确率：<b>'+score+' / '+total+'</b> （'+pct+'%）</div>'+
+    '<div class="res-grade" style="background:'+g[1]+'">'+g[0]+'</div>'+
+    '<div class="res-note">写作 / 口语 / 改写 / 开放题请对照下方「✅ Soluzioni」参考答案与评分要点自评（本卷主观题满分 '+SUBJMAX+' 分）。</div>';
+  box.scrollIntoView({behavior:'smooth'});
+  document.getElementById('btn-check').hidden=true;
+  document.getElementById('btn-reset').hidden=false;
+}
+function resetta(){location.reload();}
+document.addEventListener('play', function(e){
+  if(e.target && e.target.tagName === 'AUDIO'){
+    document.querySelectorAll('audio').forEach(function(a){ if(a!==e.target) a.pause(); });
+  }
+}, true);</script></body></html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>CILS C1 — CILS TRE</title><style>:root{--wine:#7b1e2b;--wine2:#a83246;--ink:#23211f;--paper:#fbf8f4;--line:#e4ddd2;--ok:#1b7a3d;--no:#c0392b;}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);background:var(--paper);line-height:1.65}
+header.top{background:linear-gradient(135deg,var(--wine),var(--wine2));color:#fff;padding:26px 20px;box-shadow:0 2px 10px rgba(0,0,0,.15)}
+header.top .back{color:#ffd9df;text-decoration:none;font-size:14px}
+header.top .ttl{font-size:26px;font-weight:800;margin-top:6px}
+header.top .ttl .lvl{display:inline-block;background:#fff;color:var(--wine);border-radius:8px;padding:2px 10px;margin-right:10px;font-size:20px}
+header.top .sub{opacity:.9;margin-top:4px;font-size:15px}
+main{max-width:880px;margin:0 auto;padding:24px 18px 120px}
+section.module{margin:30px 0;background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+section.module h2{margin:0 0 14px;color:var(--wine);font-size:20px;border-bottom:2px solid var(--line);padding-bottom:8px}
+section.module h3{color:#444;font-size:16px;margin:22px 0 10px}
+.mnote{background:#f6f1e9;border-left:4px solid var(--wine);border-radius:8px;padding:10px 14px;margin:12px 0;font-size:13.5px;color:#6b5b4a;line-height:1.7}
+.text{background:#f6f1e9;border-left:4px solid var(--wine);border-radius:8px;padding:12px 14px;margin:12px 0}
+.text h4{margin:0 0 6px;font-size:14px;color:var(--wine)}
+pre{white-space:pre-wrap;margin:0;font-family:"Courier New",monospace;font-size:14px}
+.items{margin-top:14px}
+.q-item{margin:14px 0;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fffdf9}
+.q-item.correct{border-color:var(--ok);background:#f1faf3}
+.q-item.wrong{border-color:var(--no);background:#fdf1f0}
+.q-stem{margin:0 0 8px;font-weight:600}
+.opts{display:flex;flex-direction:column;gap:6px}
+.opt{display:flex;align-items:center;gap:8px;cursor:pointer;padding:4px 6px;border-radius:6px}
+.opt:hover{background:#f3ede3}
+.match-sel{font-size:15px;padding:5px 8px;border-radius:6px;border:1px solid #bbb;margin-top:4px}
+.blank{font-size:15px;padding:3px 6px;border:1px solid #bbb;border-radius:6px;margin:0 4px;min-width:90px}
+.blank.correct{border-color:var(--ok);background:#eafaf0}
+.blank.wrong{border-color:var(--no);background:#fdeceb}
+.anshint{color:var(--no);font-size:13px;margin-left:6px}
+textarea.ans{width:100%;font-size:15px;padding:10px;border:1px solid #ccc;border-radius:8px;font-family:inherit;resize:vertical}
+.q-subj .ref{margin-top:10px;padding:10px 12px;background:#eef6fb;border-left:4px solid #2a7fb8;border-radius:8px;font-size:14px}
+.q-note{margin-top:8px;font-weight:700;font-size:14px}
+.q-note.ok{color:var(--ok)} .q-note.no{color:var(--no)}
+.audio-block{background:#f0f4f7;border:1px solid #cfe0ea;border-radius:10px;padding:12px 14px;margin:12px 0}
+.audio-block h4{margin:0 0 8px;color:#1f5f80}
+audio{width:100%;margin-bottom:8px;display:block}
+.noaudio{color:#b06a00;font-weight:600}
+.q-oral{background:#fbf7ef;border:1px solid #ecd9b0;border-radius:12px;padding:16px 18px;margin:14px 0}
+.q-oral .q-stem{margin:0 0 12px;font-size:15px;line-height:1.7;white-space:pre-wrap}
+.oral-scoring{background:#fff;border:1px solid #e7dcc4;border-radius:10px;padding:12px 14px;margin-bottom:12px}
+.score-head{font-weight:700;color:#9a6b00;margin-bottom:8px;font-size:14px}
+.dims{margin:0;padding-left:20px;font-size:14px;line-height:1.9}
+.dims li{margin-bottom:2px}
+.rubric-note{margin-top:8px;padding-top:8px;border-top:1px dashed #e0d3b6;font-size:13px;color:#5a4a2a;line-height:1.7}
+.oral-ref{background:#eef6fb;border:1px solid #cfe0ea;border-radius:10px;padding:12px 14px}
+.ref-head{font-weight:700;color:#1f5f80;margin-bottom:8px;font-size:14px}
+.ref-it{font-weight:400;color:#5b87a0;font-style:italic;font-size:12px}
+.oral-ref pre{margin:8px 0 0;white-space:pre-wrap;word-break:break-word;font-size:14px;line-height:1.75;background:#fff;border:1px solid #dce8f0;border-radius:8px;padding:10px 12px}
+.otranscript{margin-top:8px}
+.otranscript summary{cursor:pointer;color:#1f5f80;font-weight:600;font-size:13px;user-select:none;list-style:none}
+.otranscript summary::-webkit-details-marker{display:none}
+.otranscript .o-open{display:none}
+.otranscript[open] .o-closed{display:none}
+.otranscript[open] .o-open{display:inline}
+.transcript{margin-top:10px}
+.transcript summary{cursor:pointer;color:#1f5f80;font-weight:600;font-size:14px;user-select:none;list-style:none}
+.transcript summary::-webkit-details-marker{display:none}
+.transcript summary:hover{text-decoration:underline}
+.transcript .t-open{display:none}
+.transcript[open] .t-closed{display:none}
+.transcript[open] .t-open{display:inline}
+.transcript[open] summary{margin-bottom:8px}
+.transcript pre{margin-top:0}
+.soluzioni{margin:28px 0;background:#fff;border:2px dashed var(--wine);border-radius:14px;padding:18px 20px}
+.soluzioni h2{margin:0 0 12px;color:var(--wine);font-size:18px}
+.soluzioni pre{white-space:pre-wrap;font-size:13.5px;line-height:1.8;background:#fbf6f0;border-radius:8px;padding:12px;font-family:"Courier New",monospace}
+#btn-check{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--wine);color:#fff;border:none;font-size:17px;font-weight:700;padding:13px 30px;border-radius:30px;cursor:pointer;box-shadow:0 4px 14px rgba(123,30,43,.4);z-index:10}
+#btn-check:hover{background:var(--wine2)}
+#btn-reset{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);margin-left:170px;background:#555;color:#fff;border:none;font-size:15px;padding:13px 22px;border-radius:30px;cursor:pointer;z-index:10}
+#result{margin-top:20px;padding:18px 20px;border-radius:12px;background:#fff;border:2px solid var(--wine);text-align:center}
+.res-score{font-size:18px;margin-bottom:10px}
+.res-grade{display:inline-block;color:#fff;font-weight:800;font-size:22px;padding:6px 22px;border-radius:10px;margin-bottom:8px}
+.res-note{font-size:14px;color:#555;margin-top:8px}
+.index-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-top:20px}
+.card{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:0 1px 4px rgba(0,0,0,.05);transition:.15s}
+.card:hover{transform:translateY(-3px);border-color:var(--wine)}
+.card .lvl{display:inline-block;background:var(--wine);color:#fff;border-radius:8px;padding:3px 12px;font-weight:800;font-size:18px}
+.card .nm{font-weight:700;margin:8px 0 4px;font-size:16px}
+.card .sb{font-size:13px;color:#666}
+.intro{max-width:880px;margin:24px auto;padding:0 18px;color:#555}
+.vol-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;margin-top:24px}
+.vol{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:0 1px 4px rgba(0,0,0,.05);transition:.15s}
+.vol:hover{transform:translateY(-3px);border-color:var(--wine)}
+.vol .vno{display:inline-block;background:var(--wine);color:#fff;border-radius:8px;padding:3px 12px;font-weight:800;font-size:14px}
+.vol .vt{font-weight:700;margin:10px 0 6px;font-size:18px}
+.vol .vs{font-size:13px;color:#666}
+.vol .vgo{margin-top:12px;font-weight:700;color:var(--wine);font-size:14px}</style></head><body><header class="top"><a href="index.html" class="back">← Indice CILS Vol.2</a><div class="ttl"><span class="lvl">C1</span> CILS TRE</div><div class="sub"></div></header><main><p class="intro">本级主题：Giovani, famiglia e relazioni generazionali。CILS 五大模块（Ascolto / Lettura / Analisi delle strutture / Produzione scritta / Produzione orale）。听力为模拟音频文本（由考官/录音播放），本页以文本呈现听力原文，点击展开即可自测。提交后客观题自动判分；写作/口语/开放题请展开下方「✅ Soluzioni」参考答案与评分要点自评。</p><section class="module"><h2>1. Ascolto（听力）</h2><div class="mnote">Ascolto（听力）</div>
+<div class="mnote">40 分钟，全为长对话/讲座，3 部分。提供原文 + 题。</div>
+<div class="mnote">_Parte 1 — Intervista a una sociologa (il ruolo della famiglia)_«La famiglia oggi non è più un&#x27;istituzione chiusa, ma una rete affettiva aperta. Il suo ruolo non è scomparso: si è spostato. Non garantisce più la sopravvivenza economica, ma resta la fonte primaria di cura e senso. I legami si scelgono, non si subiscono. Tuttavia, lo Stato delega ancora troppo alla famiglia, senza sostegni adeguati.»</div>
+<div class="mnote">_Parte 2 — Conferenza (natalità)_«L&#x27;Italia ha uno dei tassi di natalità più bassi al mondo. Le cause? Precarietà, costo delle case, assenza di servizi. Le politiche familiari sono insufficienti. Senza un investimento serio, il calo demografico diventa irreversibile. Servono asili nido, congedi parentali equi, case accessibili.»</div>
+<div class="mnote">_Parte 3 — Dibattito (giovani e genitori)_«Giovane: Voglio figli, ma non ora. Genitore: Noi li facemmo a 25 anni. Giovane: Il lavoro non ce lo permette. Moderatore: Il punto è strutturale, non culturale.»</div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="una rete aperta"><p class="q-stem">1. La famiglia oggi è per la sociologa ______.</p><div class="opts"><label class="opt"><input type="radio" name="r1" value="0"> A) un&#x27;istituzione chiusa</label><label class="opt"><input type="radio" name="r1" value="1"> B) una rete aperta</label><label class="opt"><input type="radio" name="r1" value="2"> C) scomparsa</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="spostato"><p class="q-stem">2. Il suo ruolo si è ______.</p><div class="opts"><label class="opt"><input type="radio" name="r2" value="0"> A) azzerato</label><label class="opt"><input type="radio" name="r2" value="1"> B) spostato</label><label class="opt"><input type="radio" name="r2" value="2"> C) rafforzato</label></div></div>
+<div class="q-item" data-type="mc" data-correct="0" data-ctext="delega troppo"><p class="q-stem">3. Lo Stato ______ alla famiglia.</p><div class="opts"><label class="opt"><input type="radio" name="r3" value="0"> A) delega troppo</label><label class="opt"><input type="radio" name="r3" value="1"> B) non delega nulla</label><label class="opt"><input type="radio" name="r3" value="2"> C) sostiene</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="tra le più basse"><p class="q-stem">4. L&#x27;Italia ha natalità ______.</p><div class="opts"><label class="opt"><input type="radio" name="r4" value="0"> A) alta</label><label class="opt"><input type="radio" name="r4" value="1"> B) tra le più basse</label><label class="opt"><input type="radio" name="r4" value="2"> C) media</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="precarietà e costo case"><p class="q-stem">5. Tra le cause il relatore cita ______.</p><div class="opts"><label class="opt"><input type="radio" name="r5" value="0"> A) la religione</label><label class="opt"><input type="radio" name="r5" value="1"> B) precarietà e costo case</label><label class="opt"><input type="radio" name="r5" value="2"> C) l&#x27;istruzione</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="insufficienti"><p class="q-stem">6. Le politiche familiari sono ______.</p><div class="opts"><label class="opt"><input type="radio" name="r6" value="0"> A) generose</label><label class="opt"><input type="radio" name="r6" value="1"> B) insufficienti</label><label class="opt"><input type="radio" name="r6" value="2"> C) perfette</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="asili e case accessibili"><p class="q-stem">7. Servono ______ per invertire il trend.</p><div class="opts"><label class="opt"><input type="radio" name="r7" value="0"> A) meno tasse</label><label class="opt"><input type="radio" name="r7" value="1"> B) asili e case accessibili</label><label class="opt"><input type="radio" name="r7" value="2"> C) meno immigrati</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="strutturale"><p class="q-stem">8. Per il giovane, il problema è ______.</p><div class="opts"><label class="opt"><input type="radio" name="r8" value="0"> A) culturale</label><label class="opt"><input type="radio" name="r8" value="1"> B) strutturale</label><label class="opt"><input type="radio" name="r8" value="2"> C) religioso</label></div></div></section>
+<section class="module"><h2>2. Lettura（阅读）</h2><div class="mnote">Lettura（阅读）</div>
+<div class="mnote">70 分钟，3 部分含句子排序；文学节选/专业期刊/评论。</div>
+<div class="mnote">_Parte 1 — Saggio sociologico (il ruolo della famiglia oggi)_&amp;#x4C;a famiglia contemporanea ha perso il monopolio dell&#x27;assistenza, ma ne ha conservato il cuore affettivo. Non è più l&#x27;unità produttiva di un tempo; è diventata il luogo elettivo della cura. Questo spostamento ha conseguenze: i legami si costruiscono, non si ereditano. La libertà cresce, ma cresce anche la solitudine di chi resta senza rete. Lo Stato deve integrare, non sostituire.（148 词）</div>
+<div class="mnote">_Parte 2 — Dati ISTAT (natalità)_&amp;#x4E;el 2024 le nascite sono scese sotto la soglia psicologica. Il numero medio di figli per donna è 1,2. Il primo figlio arriva oltre i 32 anni. Il Sud perde popolazione più del Nord. Gli esperti parlano di &quot;inverno demografico&quot;. Mancano politiche incisive. L&#x27;immigrazione attenua, non risolve.（96 词）</div>
+<div class="mnote">_Parte 3 — 11 句排序（Il declino della natalità）_&amp;#x41;. L&#x27;Italia invecchia rapidamente.</div>
+<div class="mnote">B. Le nascite calano da decenni.</div>
+<div class="mnote">C. Il primo figlio arriva tardi.</div>
+<div class="mnote">D. Le cause sono economiche e sociali.</div>
+<div class="mnote">E. La precarietà scoraggia i progetti.</div>
+<div class="mnote">F. Le case costano troppo.</div>
+<div class="mnote">G. I servizi per l&#x27;infanzia mancano.</div>
+<div class="mnote">H. Lo Stato interviene poco.</div>
+<div class="mnote">I. Alcuni propongono un reddito per i neonati.</div>
+<div class="mnote">L. L&#x27;immigrazione aiuta, ma non basta.</div>
+<div class="mnote">M. Serve un patto tra generazioni.</div>
+<div class="mnote">9. La famiglia ha perso il monopolio dell&#x27;______. a) affetto b) assistenza c) cura</div>
+<div class="mnote">10\. Non è più unità ______. a) affettiva b) produttiva c) elettiva</div>
+<div class="mnote">11\. I legami oggi si ______. a) ereditano b) costruiscono c) subiscono</div>
+<div class="mnote">12\. Chi resta senza rete conosce la ______. a) libertà b) solitudine c) ricchezza</div>
+<div class="mnote">13\. Nel 2024 i figli per donna sono ______. a) 2,1 b) 1,2 c) 1,8</div>
+<div class="mnote">14\. Il primo figlio arriva oltre i ______ anni. a) 32 b) 28 c) 25</div>
+<div class="mnote">15\. Gli esperti parlano di ______. a) primavera b) inverno demografico c) estate</div>
+<div class="mnote">16–26. Parte 3（11 排序 A-B-C-D-E-F-G-H-I-L-M）见「答案与评分」。</div></section>
+<section class="module"><h2>3. Analisi（语法分析）</h2><div class="mnote">Analisi delle strutture（语言结构）</div>
+<div class="mnote">75 分钟，4 部分，共 65 题（真题全量）。</div>
+<h3>① 关系代词/地点副词/连接词填空（20 空）</h3>
+<div class="q-item" data-type="cloze"><p class="q-stem">1. La famiglia,<input class="blank" data-correct="il cui"> (che/il cui) ruolo cambia, resta centrale.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">2. È il luogo in<input class="blank" data-correct="cui"> (cui/dove) si costruisce la cura.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">3. I giovani,<input class="blank" data-correct="i quali"> (i quali/che) faticano, chiedono aiuto.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">4. Non lavora,<input class="blank" data-correct="perciò"> (perciò/ benché) non ha soldi.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">5. La natalità cala,<input class="blank" data-correct="mentre"> (mentre/affinché) l&#x27;età media sale.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">6. È un tema<input class="blank" data-correct="su cui"> (su cui/di cui) discutere.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">7. Chi ama,<input class="blank" data-correct="ci"> (ci/ne) investe tempo.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">8. Vivo in una città<input class="blank" data-correct="dove"> (dove/come) i servizi mancano.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">9. La donna<input class="blank" data-correct="la quale"> (la quale/che) lavora cerca un asilo.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">10. È il valore<input class="blank" data-correct="senza cui"> (senza cui/per cui) nulla regge.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">11. I nonni,<input class="blank" data-correct="ai quali"> (ai quali/a cui) vogliamo bene, ci sostengono.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">12. È il Paese in<input class="blank" data-correct="cui"> (cui/dove) si nasce di meno.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">13. Chi studia,<input class="blank" data-correct="ne"> (ne/ci) trae beneficio.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">14. La riforma,<input class="blank" data-correct="che"> (che/la cui) approviamo, serve ai giovani.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">15. Vivo dove i miei<input class="blank" data-correct="dai quali"> (da cui/dai quali) sono lontani.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">16. È un problema<input class="blank" data-correct="di cui"> (di cui/su cui) parliamo poco.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">17. I figli,<input class="blank" data-correct="per i quali"> (per i quali/per cui) tutto questo conta, sono pochi.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">18. La cura è ciò<input class="blank" data-correct="che"> (che/cui) tiene uniti.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">19. Non partiamo,<input class="blank" data-correct="poiché"> (poiché/benché) piove.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">20. È l&#x27;istituzione<input class="blank" data-correct="dalla quale"> (dalla quale/di cui) dipendiamo.</p></div>
+<h3>② 综合语法填空（20 空）</h3>
+<div class="mnote">&amp;#x32;1. Se lo Stato (intervenire) ______, il declino si fermerebbe. 22. È auspicabile che le politiche (essere) ______ incisive. 23. (Noi / ritenere) ______ la famiglia essenziale. 24. Pur (essere) ______ povera, la rete affettiva regge. 25. (Loro / aver) ______ scelto di convivere. 26. Più si investe, meno (il calo / aggravarsi) ______. 27. (Io / pentirsi) ______ di non aver avuto figli? No. 28. (Si / dovere) ______ sostenere le nuove forme. 29. (Lei / potere) ______ lavorare e accudire insieme. 30. Qualora (loro / venire), ne saremmo felici. 31. (Noi / credere) ______ nel valore della cura. 32. Benché (essere) ______ stanchi, i genitori resistono. 33. (Lui / dire) sempre che la famiglia conta. 34. Se (tu / avere) ______ ascoltato, avresti capito. 35. (Lei / scrivere) ______ una proposta al ministro. 36. Affinché il sistema (funzionare) ______, serve coerenza. 37. (Io / essere) convinto che serva un piano. 38. (Loro / voler) ______ più servizi per i bambini. 39. Nel caso (noi / partire), avvisiamo i nonni. 40. (Si / potere) ______ conciliare lavoro e famiglia.</div>
+<h3>③ 四近义词选词（15 题）</h3>
+<div class="q-item" data-type="cloze"><p class="q-stem">1. La famiglia<input class="blank" data-correct="il cui"> (offre / presta / fornisce / dà) sostegno morale.</p></div>
+<div class="mnote">42\. Il calo demografico ______ (colpisce / percuote / batte / urta) tutto il Paese.</div>
+<div class="mnote">43\. Le politiche devono ______ (sostenere / reggere / tenere / mantenere) le famiglie.</div>
+<div class="mnote">44\. I nonni ______ (trasmettono / mandano / portano / spediscono) valori.</div>
+<div class="mnote">45\. Il dibattito ______ (solleva / alza / leva / tira) questioni delicate.</div>
+<div class="mnote">46\. La solitudine si ______ (allarga / estende / amplia / diffonde) tra i giovani.</div>
+<div class="mnote">47\. Lo Stato deve ______ (garantire / tenere / stare / mettere) i diritti.</div>
+<div class="mnote">48\. La natalità ______ (cala / cade / scende / sparisce) da decenni.</div>
+<div class="mnote">49\. I servizi ______ (coprono / chiudono / fermano / tengono) i bisogni.</div>
+<div class="mnote">50\. Il welfare ______ (sostiene / regge / sta / porta) le famiglie fragili.</div>
+<div class="mnote">51\. Le generazioni ______ (intrecciano / annodano / legano / attaccano) saperi.</div>
+<div class="mnote">52\. La riforma ______ (apre / dà / mette / porta) nuove possibilità.</div>
+<div class="mnote">53\. I giovani ______ (chiedono / domandano / vogliono / esigono) ascolto.</div>
+<div class="mnote">54\. Il legame ______ (regge / tiene / sta / dura) anche a distanza.</div>
+<div class="mnote">55\. La società ______ (valorizza / prezza / costa / dà) la cura.</div>
+<h3>④ 短文改写（10 题：主动↔被动 / 连接）</h3>
+<div class="mnote">&amp;#x35;6. «Lo Stato delega alla famiglia.» → La famiglia ______ dallo Stato.</div>
+<div class="mnote">57\. «I giovani chiedono aiuto. Non trovano lavoro.» → I giovani chiedono aiuto ______ non trovano lavoro.</div>
+<div class="mnote">58\. «Le cause sono economiche. La natalità cala.» → La natalità cala ______ le cause sono economiche.</div>
+<div class="mnote">59\. «Servono case. Servono asili.» → Serve ______ case ______ asili.</div>
+<div class="mnote">60\. «Non interveniamo. Il declino continua.» → Se non interveniamo, il declino ______.</div>
+<div class="mnote">61\. «La famiglia cura. Lo Stato integra.» → Mentre la famiglia cura, lo Stato ______.</div>
+<div class="mnote">62\. «Le politiche aiutano. I giovani restano.» → Le politiche aiutano, ______ i giovani restano.</div>
+<div class="mnote">63\. «Il calo preoccupa. Servono misure.» → Il calo preoccupa, ______ servono misure.</div>
+<div class="mnote">64\. «I nonni sostengono. I genitori lavorano.» → I nonni sostengono, ______ i genitori lavorano.</div>
+<div class="mnote">65\. «Lo Stato investe. Il futuro migliora.» → Se lo Stato investe, il futuro ______.</div></section>
+<section class="module"><h2>4. Scritta（写作）</h2><div class="mnote">Scrittura（写作）</div>
+<div class="mnote">90 分钟，2 题，约 250–300 词。</div></section>
+<section class="module"><h2>5. Orale（口语）</h2><div class="mnote">Produzione orale（口语）</div>
+<div class="mnote">约 15 分钟。给一段文字，表达观点/提出方案，偏抽象。</div></section><section class="soluzioni"><h2>✅ Soluzioni e criteri di valutazione（参考答案与评分）</h2><pre>【Ascolto 听力】
+1.b 2.b 3.a 4.b 5.b 6.b 7.b 8.b
+
+【Lettura 阅读】
+9.b 10.b 11.b 12.b；P2：13.b 14.a 15.b
+A-B-C-D-E-F-G-H-I-L-M
+
+【Analisi 语法分析】
+① 1.il cui 2.cui 3.i quali 4.perciò 5.mentre 6.su cui 7.ci 8.dove 9.la quale 10.senza cui 11.ai quali 12.cui 13.ne 14.che 15.dai quali 16.di cui 17.per i quali 18.che 19.poiché 20.dalla quale ② 21.intervenisse 22.siano 23.riteniamo 24.essendo 25.hanno 26.si aggrava 27.mi pento 28.si deve 29.può 30.vengano 31.crediamo 32.siano 33.dice 34.avessi 35.scrive 36.funzioni 37.sono 38.vogliono 39.partiamo 40.si può ③ 41.dà 42.colpisce 43.sostenere 44.trasmettono 45.solleva 46.diffonde 47.garantire 48.cala 49.coprono 50.sostiene 51.intrecciano 52.apre 53.chiedono 54.regge 55.valorizza ④ 56.è delegata 57.perché 58.perché 59.sia... sia 60.continuerà 61.integra 62.perciò 63.quindi 64.mentre 65.migliora</pre></section><button id="btn-check" onclick="verifica()">Verifica le risposte（提交判分）</button><button id="btn-reset" hidden onclick="resetta()">Ricomincia（重做）</button><div id="result" hidden></div></main><script>var SUBJMAX=20;
+function norm(s){return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]/g,'');}
+function gradeOf(p){if(p>=85)return['Eccellente','#1b7a3d'];if(p>=70)return['Buono','#2e7d32'];if(p>=55)return['Discreto','#b8860b'];if(p>=40)return['Insufficiente','#c0392b'];return['Grave','#7b1e2b'];}
+function verifica(){
+  var items=document.querySelectorAll('.q-item');
+  var score=0,total=0;
+  items.forEach(function(el){
+    var t=el.dataset.type;
+    var corr=el.dataset.correct;
+    if(!corr){ el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;}); return; }
+    if(t==='mc'||t==='tf'||t==='match'){
+      total++;
+      var ok=false;
+      if(t==='match'){var sel=el.querySelector('select');if(sel&&sel.value===corr)ok=true;}
+      else{var inp=el.querySelector('input:checked');if(inp&&inp.value===corr)ok=true;}
+      el.classList.add(ok?'correct':'wrong');
+      var n=document.createElement('div');n.className='q-note '+(ok?'ok':'no');
+      n.textContent=ok?'✅ Corretto':'❌ Risposta corretta: '+el.dataset.ctext;
+      el.appendChild(n);
+      el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;});
+    } else if(t==='cloze'){
+      el.querySelectorAll('input.blank').forEach(function(inp){
+        if(!inp.dataset.correct){inp.disabled=true;return;}
+        total++;
+        var v=norm(inp.value);
+        var ok2=v.length>0 && v.indexOf(norm(inp.dataset.correct))>=0;
+        if(ok2)score++;
+        inp.classList.add(ok2?'correct':'wrong');
+        if(!ok2){var s=document.createElement('span');s.className='anshint';s.textContent=' ✓ '+inp.dataset.correct;inp.insertAdjacentElement('afterend',s);}
+        inp.disabled=true;
+      });
+    }
+  });
+  document.querySelectorAll('.q-subj').forEach(function(el){var r=el.querySelector('.ref');if(r)r.hidden=false;});
+  var pct= total? Math.round(score/total*100):0;
+  var g=gradeOf(pct);
+  var box=document.getElementById('result');
+  box.hidden=false;
+  box.innerHTML='<div class="res-score">客观题正确率：<b>'+score+' / '+total+'</b> （'+pct+'%）</div>'+
+    '<div class="res-grade" style="background:'+g[1]+'">'+g[0]+'</div>'+
+    '<div class="res-note">写作 / 口语 / 改写 / 开放题请对照下方「✅ Soluzioni」参考答案与评分要点自评（本卷主观题满分 '+SUBJMAX+' 分）。</div>';
+  box.scrollIntoView({behavior:'smooth'});
+  document.getElementById('btn-check').hidden=true;
+  document.getElementById('btn-reset').hidden=false;
+}
+function resetta(){location.reload();}
+document.addEventListener('play', function(e){
+  if(e.target && e.target.tagName === 'AUDIO'){
+    document.querySelectorAll('audio').forEach(function(a){ if(a!==e.target) a.pause(); });
+  }
+}, true);</script></body></html>

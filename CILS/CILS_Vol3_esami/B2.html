@@ -1,0 +1,250 @@
+<!DOCTYPE html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>CILS B2 — CILS DUE</title><style>:root{--wine:#7b1e2b;--wine2:#a83246;--ink:#23211f;--paper:#fbf8f4;--line:#e4ddd2;--ok:#1b7a3d;--no:#c0392b;}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);background:var(--paper);line-height:1.65}
+header.top{background:linear-gradient(135deg,var(--wine),var(--wine2));color:#fff;padding:26px 20px;box-shadow:0 2px 10px rgba(0,0,0,.15)}
+header.top .back{color:#ffd9df;text-decoration:none;font-size:14px}
+header.top .ttl{font-size:26px;font-weight:800;margin-top:6px}
+header.top .ttl .lvl{display:inline-block;background:#fff;color:var(--wine);border-radius:8px;padding:2px 10px;margin-right:10px;font-size:20px}
+header.top .sub{opacity:.9;margin-top:4px;font-size:15px}
+main{max-width:880px;margin:0 auto;padding:24px 18px 120px}
+section.module{margin:30px 0;background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+section.module h2{margin:0 0 14px;color:var(--wine);font-size:20px;border-bottom:2px solid var(--line);padding-bottom:8px}
+section.module h3{color:#444;font-size:16px;margin:22px 0 10px}
+.mnote{background:#f6f1e9;border-left:4px solid var(--wine);border-radius:8px;padding:10px 14px;margin:12px 0;font-size:13.5px;color:#6b5b4a;line-height:1.7}
+.text{background:#f6f1e9;border-left:4px solid var(--wine);border-radius:8px;padding:12px 14px;margin:12px 0}
+.text h4{margin:0 0 6px;font-size:14px;color:var(--wine)}
+pre{white-space:pre-wrap;margin:0;font-family:"Courier New",monospace;font-size:14px}
+.items{margin-top:14px}
+.q-item{margin:14px 0;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fffdf9}
+.q-item.correct{border-color:var(--ok);background:#f1faf3}
+.q-item.wrong{border-color:var(--no);background:#fdf1f0}
+.q-stem{margin:0 0 8px;font-weight:600}
+.opts{display:flex;flex-direction:column;gap:6px}
+.opt{display:flex;align-items:center;gap:8px;cursor:pointer;padding:4px 6px;border-radius:6px}
+.opt:hover{background:#f3ede3}
+.match-sel{font-size:15px;padding:5px 8px;border-radius:6px;border:1px solid #bbb;margin-top:4px}
+.blank{font-size:15px;padding:3px 6px;border:1px solid #bbb;border-radius:6px;margin:0 4px;min-width:90px}
+.blank.correct{border-color:var(--ok);background:#eafaf0}
+.blank.wrong{border-color:var(--no);background:#fdeceb}
+.anshint{color:var(--no);font-size:13px;margin-left:6px}
+textarea.ans{width:100%;font-size:15px;padding:10px;border:1px solid #ccc;border-radius:8px;font-family:inherit;resize:vertical}
+.q-subj .ref{margin-top:10px;padding:10px 12px;background:#eef6fb;border-left:4px solid #2a7fb8;border-radius:8px;font-size:14px}
+.q-note{margin-top:8px;font-weight:700;font-size:14px}
+.q-note.ok{color:var(--ok)} .q-note.no{color:var(--no)}
+.audio-block{background:#f0f4f7;border:1px solid #cfe0ea;border-radius:10px;padding:12px 14px;margin:12px 0}
+.audio-block h4{margin:0 0 8px;color:#1f5f80}
+audio{width:100%;margin-bottom:8px;display:block}
+.noaudio{color:#b06a00;font-weight:600}
+.q-oral{background:#fbf7ef;border:1px solid #ecd9b0;border-radius:12px;padding:16px 18px;margin:14px 0}
+.q-oral .q-stem{margin:0 0 12px;font-size:15px;line-height:1.7;white-space:pre-wrap}
+.oral-scoring{background:#fff;border:1px solid #e7dcc4;border-radius:10px;padding:12px 14px;margin-bottom:12px}
+.score-head{font-weight:700;color:#9a6b00;margin-bottom:8px;font-size:14px}
+.dims{margin:0;padding-left:20px;font-size:14px;line-height:1.9}
+.dims li{margin-bottom:2px}
+.rubric-note{margin-top:8px;padding-top:8px;border-top:1px dashed #e0d3b6;font-size:13px;color:#5a4a2a;line-height:1.7}
+.oral-ref{background:#eef6fb;border:1px solid #cfe0ea;border-radius:10px;padding:12px 14px}
+.ref-head{font-weight:700;color:#1f5f80;margin-bottom:8px;font-size:14px}
+.ref-it{font-weight:400;color:#5b87a0;font-style:italic;font-size:12px}
+.oral-ref pre{margin:8px 0 0;white-space:pre-wrap;word-break:break-word;font-size:14px;line-height:1.75;background:#fff;border:1px solid #dce8f0;border-radius:8px;padding:10px 12px}
+.otranscript{margin-top:8px}
+.otranscript summary{cursor:pointer;color:#1f5f80;font-weight:600;font-size:13px;user-select:none;list-style:none}
+.otranscript summary::-webkit-details-marker{display:none}
+.otranscript .o-open{display:none}
+.otranscript[open] .o-closed{display:none}
+.otranscript[open] .o-open{display:inline}
+.transcript{margin-top:10px}
+.transcript summary{cursor:pointer;color:#1f5f80;font-weight:600;font-size:14px;user-select:none;list-style:none}
+.transcript summary::-webkit-details-marker{display:none}
+.transcript summary:hover{text-decoration:underline}
+.transcript .t-open{display:none}
+.transcript[open] .t-closed{display:none}
+.transcript[open] .t-open{display:inline}
+.transcript[open] summary{margin-bottom:8px}
+.transcript pre{margin-top:0}
+.soluzioni{margin:28px 0;background:#fff;border:2px dashed var(--wine);border-radius:14px;padding:18px 20px}
+.soluzioni h2{margin:0 0 12px;color:var(--wine);font-size:18px}
+.soluzioni pre{white-space:pre-wrap;font-size:13.5px;line-height:1.8;background:#fbf6f0;border-radius:8px;padding:12px;font-family:"Courier New",monospace}
+#btn-check{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--wine);color:#fff;border:none;font-size:17px;font-weight:700;padding:13px 30px;border-radius:30px;cursor:pointer;box-shadow:0 4px 14px rgba(123,30,43,.4);z-index:10}
+#btn-check:hover{background:var(--wine2)}
+#btn-reset{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);margin-left:170px;background:#555;color:#fff;border:none;font-size:15px;padding:13px 22px;border-radius:30px;cursor:pointer;z-index:10}
+#result{margin-top:20px;padding:18px 20px;border-radius:12px;background:#fff;border:2px solid var(--wine);text-align:center}
+.res-score{font-size:18px;margin-bottom:10px}
+.res-grade{display:inline-block;color:#fff;font-weight:800;font-size:22px;padding:6px 22px;border-radius:10px;margin-bottom:8px}
+.res-note{font-size:14px;color:#555;margin-top:8px}
+.index-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-top:20px}
+.card{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:0 1px 4px rgba(0,0,0,.05);transition:.15s}
+.card:hover{transform:translateY(-3px);border-color:var(--wine)}
+.card .lvl{display:inline-block;background:var(--wine);color:#fff;border-radius:8px;padding:3px 12px;font-weight:800;font-size:18px}
+.card .nm{font-weight:700;margin:8px 0 4px;font-size:16px}
+.card .sb{font-size:13px;color:#666}
+.intro{max-width:880px;margin:24px auto;padding:0 18px;color:#555}
+.vol-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;margin-top:24px}
+.vol{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:0 1px 4px rgba(0,0,0,.05);transition:.15s}
+.vol:hover{transform:translateY(-3px);border-color:var(--wine)}
+.vol .vno{display:inline-block;background:var(--wine);color:#fff;border-radius:8px;padding:3px 12px;font-weight:800;font-size:14px}
+.vol .vt{font-weight:700;margin:10px 0 6px;font-size:18px}
+.vol .vs{font-size:13px;color:#666}
+.vol .vgo{margin-top:12px;font-weight:700;color:var(--wine);font-size:14px}</style></head><body><header class="top"><a href="index.html" class="back">← Indice CILS Vol.3</a><div class="ttl"><span class="lvl">B2</span> CILS DUE</div><div class="sub"></div></header><main><p class="intro">本级主题：Città, mobilità e vita sostenibile。CILS 五大模块（Ascolto / Lettura / Analisi delle strutture / Produzione scritta / Produzione orale）。听力为模拟音频文本（由考官/录音播放），本页以文本呈现听力原文，点击展开即可自测。提交后客观题自动判分；写作/口语/开放题请展开下方「✅ Soluzioni」参考答案与评分要点自评。</p><section class="module"><h2>1. Ascolto（听力）</h2><div class="mnote">Ascolto（听力）⏱ 约 30 分钟</div>
+<h3>Prova 1 — 7 短对话，四选一（听力原文）</h3>
+<div class="mnote">&amp;#x44;1. A: Il nuovo piano urbanistico prevede più zone pedonali? B: Sì, nel centro storico. → Cosa prevede il piano?</div>
+<div class="mnote">D2. A: Quanti sensori installiamo? B: Duecento, per il traffico e l&#x27;inquinamento. → I sensori servono per…</div>
+<div class="mnote">D3. A: La smart city riduce i costi? B: Sì, soprattutto l&#x27;energia. → Cosa risparmia?</div>
+<div class="mnote">D4. A: I cittadini accettano il controllo dei dati? B: A metà, c&#x27;è chi teme la privacy. → Atteggiamento dei cittadini?</div>
+<div class="mnote">D5. A: Quando parte il progetto? B: Nel 2027, dopo la gara d&#x27;appalto. → Quando parte?</div>
+<div class="mnote">D6. A: Il verde urbano è incluso? B: Certo, venti ettari di parchi. → C&#x27;è il verde?</div>
+<div class="mnote">D7. A: Chi finanzia? B: Comune ed Europa, al 50%. → Chi paga?</div>
+<div class="mnote">Domande (1–7) su ciascun dialogo.</div>
+<h3>Prova 2 — 1 长对话/访谈，四选一（7 题，听力原文）</h3>
+<div class="mnote">Prof. Villa: È una città che usa dati e tecnologie per servizi migliori. Ma attenzione: non è solo efficienza, è anche inclusione sociale.</div>
+<div class="mnote">Giornalista: Ci sono rischi?</div>
+<div class="mnote">Prof. Villa: Sì, la sorveglianza dei dati e la disuguaglianza digitale. Per questo l&#x27;urbanistica deve rimanere umana.</div>
+<div class="mnote">Giornalista: Un esempio italiano?</div>
+<div class="mnote">Prof. Villa: Milano, con il controllo del traffico, e Bologna, con i dati sui rifiuti.</div>
+<div class="mnote">Domande (8–14): 8. Definizione di smart city… 9. Secondo il prof. serve anche… 10. Il rischio principale… 11. La disuguaglianza… 12. L&#x27;urbanistica deve… 13. Milano è citata per… 14. Bologna per…</div>
+<div class="text"><h4>📝 Testo / Dialogo (simulato)</h4><pre>&amp;#x47;iornalista: Professore, cos&#x27;è esattamente una smart city?</pre></div>
+<h3>Prova 3 — 1 独白，判断正误（Vero/Falso，12 题）</h3>
+<div class="mnote">「听力原文（模拟音频文本）」于各 prova 前给出。</div>
+<h3>Testo Prova 3 — Conferenza sulle smart city</h3>
+<div class="mnote">Domande Vero/Falso (1–12):</div>
+<div class="text"><h4>📝 Testo / Dialogo (simulato)</h4><pre>«Una città intelligente usa i dati per migliorare la vita. A Barcellona i semafori si regolano da soli e il traffico è calato del 20%. I sensori controllano l&#x27;inquinamento e l&#x27;illuminazione pubblica si accende solo quando serve. Ma l&#x27;urbanistica non è solo tecnologia: serve anche verde e spazi per le persone. Alcuni criticano il controllo dei dati personali. Il futuro dell&#x27;urbanistica unisce efficienza e benessere sociale.»</pre></div>
+<div class="q-item" data-type="tf" data-correct="0" data-ctext="Vero"><p class="q-stem">1. Una città intelligente usa i dati per migliorare la vita.</p><div class="opts"><label class="opt"><input type="radio" name="r1" value="0"> Vero</label><label class="opt"><input type="radio" name="r1" value="1"> Falso</label></div></div>
+<div class="q-item" data-type="tf" data-correct="0" data-ctext="Vero"><p class="q-stem">2. A Barcellona il traffico è aumentato del 20%.</p><div class="opts"><label class="opt"><input type="radio" name="r2" value="0"> Vero</label><label class="opt"><input type="radio" name="r2" value="1"> Falso</label></div></div>
+<div class="q-item" data-type="tf" data-correct="0" data-ctext="Vero"><p class="q-stem">3. I sensori controllano l&#x27;inquinamento.</p><div class="opts"><label class="opt"><input type="radio" name="r3" value="0"> Vero</label><label class="opt"><input type="radio" name="r3" value="1"> Falso</label></div></div>
+<div class="q-item" data-type="tf" data-correct="0" data-ctext="Vero"><p class="q-stem">4. L&#x27;illuminazione pubblica si accende sempre, giorno e notte.</p><div class="opts"><label class="opt"><input type="radio" name="r4" value="0"> Vero</label><label class="opt"><input type="radio" name="r4" value="1"> Falso</label></div></div>
+<div class="q-item" data-type="tf" data-correct="0" data-ctext="Vero"><p class="q-stem">5. L&#x27;urbanistica è solo tecnologia, secondo il testo.</p><div class="opts"><label class="opt"><input type="radio" name="r5" value="0"> Vero</label><label class="opt"><input type="radio" name="r5" value="1"> Falso</label></div></div>
+<div class="q-item" data-type="tf" data-correct="0" data-ctext="Vero"><p class="q-stem">6. Servono anche verde e spazi per le persone.</p><div class="opts"><label class="opt"><input type="radio" name="r6" value="0"> Vero</label><label class="opt"><input type="radio" name="r6" value="1"> Falso</label></div></div>
+<div class="q-item" data-type="tf" data-correct="0" data-ctext="Vero"><p class="q-stem">7. Nessuno critica il controllo dei dati personali.</p><div class="opts"><label class="opt"><input type="radio" name="r7" value="0"> Vero</label><label class="opt"><input type="radio" name="r7" value="1"> Falso</label></div></div>
+<div class="q-item" data-type="tf" data-correct="0" data-ctext="Vero"><p class="q-stem">8. Il futuro unisce efficienza e benessere sociale.</p><div class="opts"><label class="opt"><input type="radio" name="r8" value="0"> Vero</label><label class="opt"><input type="radio" name="r8" value="1"> Falso</label></div></div>
+<div class="q-item" data-type="tf" data-correct="0" data-ctext="Vero"><p class="q-stem">9. I semafori a Barcellona si regolano automaticamente.</p><div class="opts"><label class="opt"><input type="radio" name="r9" value="0"> Vero</label><label class="opt"><input type="radio" name="r9" value="1"> Falso</label></div></div>
+<div class="q-item" data-type="tf" data-correct="0" data-ctext="Vero"><p class="q-stem">10. Le smart city non hanno costi.</p><div class="opts"><label class="opt"><input type="radio" name="r10" value="0"> Vero</label><label class="opt"><input type="radio" name="r10" value="1"> Falso</label></div></div>
+<div class="q-item" data-type="tf" data-correct="0" data-ctext="Vero"><p class="q-stem">11. Il traffico a Barcellona è calato del 20%.</p><div class="opts"><label class="opt"><input type="radio" name="r11" value="0"> Vero</label><label class="opt"><input type="radio" name="r11" value="1"> Falso</label></div></div>
+<div class="q-item" data-type="tf" data-correct="0" data-ctext="Vero"><p class="q-stem">12. La tecnologia sostituisce del tutto le persone.</p><div class="opts"><label class="opt"><input type="radio" name="r12" value="0"> Vero</label><label class="opt"><input type="radio" name="r12" value="1"> Falso</label></div></div></section>
+<section class="module"><h2>2. Lettura（阅读）</h2><div class="mnote">Lettura（阅读）⏱ 约 50 分钟</div>
+<h3>Prova 1 — Testo 300–400 词 + 7 单选</h3>
+<div class="mnote">_Testo_: L&#x27;urbanistica contemporanea si trova a un bivio. Da un lato, la cosiddetta &quot;città intelligente&quot; promette di ottimizzare risorse e mobilità grazie a sensori, reti e intelligenza artificiale; dall&#x27;altro, cresce la consapevolezza che una città non è soltanto un insieme di infrastrutture, ma una comunità di persone. Le amministrazioni più avanzate stanno dunque sperimentando un modello ibrido: algoritmi al servizio del bene comune, non viceversa. A Copenhagen, le piste ciclabili sono protette dal traffico grazie a dati sulle correnti di pedoni; a Singapore, il raffreddamento urbano usa il verde per combattere l&#x27;isola di calore. Tuttavia, esperti come la sociologa Anna Riboldi avvertono: senza partecipazione cittadina, la smart city rischia di diventare uno strumento di controllo. La sfida, in sintesi, non è tecnologica ma politica: decidere chi governa i dati e a chi appartengono gli spazi. Solo così l&#x27;urbanistica potrà essere davvero sostenibile.</div>
+<div class="mnote">Domande (1–7): 1. Il bivio dell&#x27;urbanistica riguarda… 2. La &quot;città intelligente&quot; promette di… 3. Il modello ibrido mette… 4. A Copenhagen le piste ciclabili… 5. A Singapore il verde serve a… 6. Secondo Riboldi, senza partecipazione… 7. La vera sfida è…</div>
+<h3>Prova 2 — Testi pratici（avviso/notifica/email）+ 判断正误（Vero/Falso，14 题）</h3>
+<h3>Prova 3 — 11 句排序</h3></section>
+<section class="module"><h2>3. Analisi（语法分析）</h2><div class="mnote">Analisi delle strutture（语法）⏱ 约 60 分钟 ｜ 65 题（4 部分）</div>
+<div class="q-item" data-type="cloze"><p class="q-stem">1. L&#x27;urbanista ha presentato<input class="blank" data-correct=""> (il) suo progetto al consiglio.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">2. Le smart city devono essere sostenibili:<input class="blank" data-correct=""> (ciò) richiede pianificazione.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">3. Questa stazione è<input class="blank" data-correct=""> (più) moderna di quella vecchia.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">4. I cittadini<input class="blank" data-correct=""> (quale) hanno partecipato al dibattito sono soddisfatti.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">5. Il verde urbano migliora la qualità della vita<input class="blank" data-correct=""> (di) tutti.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">6. Non solo le infrastrutture, ma anche<input class="blank" data-correct=""> (il) servizi sociali contano.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">7. Preferisco<input class="blank" data-correct=""> (un) approccio partecipativo a uno tecnocratico.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">8. Le due proposte<input class="blank" data-correct=""> (essere) state discusse ieri.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">9. Ciascun quartiere ha<input class="blank" data-correct=""> (il) sue esigenze specifiche.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">10. Ne parleremo con<input class="blank" data-correct=""> (il) assessore competente.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">11. <input class="blank" data-correct=""> (lo) studio dimostra che il traffico cala.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">12. La tecnologia<input class="blank" data-correct=""> (che) usiamo deve restare umana.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">13. Dobbiamo tutelare<input class="blank" data-correct=""> (il) spazi verdi pubblici.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">14. <input class="blank" data-correct=""> (quel) semaforo intelligente regola il flusso.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">15. I dati<input class="blank" data-correct=""> (essere) raccolti dai sensori.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">16. Preferisco le piste ciclabili<input class="blank" data-correct=""> (a) quelle per auto.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">17. C&#x27;è<input class="blank" data-correct=""> (un) legame tra urbanistica e benessere.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">18. <input class="blank" data-correct=""> (il) cittadini chiedono più parchi.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">19. La conferenza<input class="blank" data-correct=""> (si) è svolta online.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">20. Contiamo<input class="blank" data-correct=""> (su) una gestione partecipativa.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">1. Se ci<input class="blank" data-correct=""> (essere) più piste ciclabili, userei meno l&#x27;auto.</p></div>
+<div class="mnote">22\. L&#x27;amministrazione ___ (volere) ridurre l&#x27;inquinamento entro il 2030.</div>
+<div class="mnote">23\. È necessario che i dati ___ (essere) protetti dai cittadini.</div>
+<div class="mnote">24\. Ieri il consiglio ___ (approvare) il piano del verde.</div>
+<div class="mnote">25\. Se vincessi le elezioni, ___ (potere) trasformare il quartiere.</div>
+<div class="mnote">26\. Molti esperti ___ (sostenere) che la tecnologia non basta.</div>
+<div class="mnote">27\. Prima che il traffico ___ (aumentare), costruiremo una metro.</div>
+<div class="mnote">28\. La conferenza ___ (tenersi) a Milano il mese scorso.</div>
+<div class="mnote">29\. Noi ___ (fare) la nostra parte se il comune collabora.</div>
+<div class="mnote">30\. Sembra che la smart city ___ (diventare) un modello inevitabile.</div>
+<div class="mnote">31\. Se avessimo più verde, la città ___ (stare) meglio.</div>
+<div class="mnote">32\. I sensori ___ (rilevare) la qualità dell&#x27;aria in tempo reale.</div>
+<div class="mnote">33\. È probabile che il progetto ___ (subire) ritardi.</div>
+<div class="mnote">34\. Domani l&#x27;assessore ___ (presentare) il nuovo piano.</div>
+<div class="mnote">35\. Speravo che tu ___ (partecipare) al dibattito.</div>
+<div class="mnote">36\. Senza i dati, l&#x27;urbanistica ___ (essere) cieca.</div>
+<div class="mnote">37\. Il comune ___ (finanziare) già tre parchi l&#x27;anno scorso.</div>
+<div class="mnote">38\. Affinché il quartiere ___ (crescere) bene, serve ascolto.</div>
+<div class="mnote">39\. Useremmo meno l&#x27;auto se il trasporto pubblico ___ (essere) efficiente.</div>
+<div class="mnote">40\. Mi auguro che questa strada ___ (diventare) pedonale.</div>
+<h3>Parte 3 — 完形近义辨析（15 题）</h3>
+<div class="mnote">&amp;#x34;1. Il traffico è ___ ridotto grazie ai sensori. A) sentitamente B) sensibilmente C) sensitivamente</div>
+<div class="mnote">42\. Una pianificazione ___ richiede ascolto. A) occhialuta B) occulta C) oculata</div>
+<div class="mnote">43\. I dati permettono una gestione ___ . A) efficiente B) effettiva C) effimera</div>
+<div class="mnote">44\. Il verde ___ il benessere dei residenti. A) accascia B) accusa C) accresce</div>
+<div class="mnote">45\. La partecipazione ___ le scelte pubbliche. A) lega B) legittima C) legifera</div>
+<div class="mnote">46\. Un&#x27;urbanistica ___ mette al centro le persone. A) inclusiva B) inclusa C) includente</div>
+<div class="mnote">47\. Il progetto è stato ___ da polemiche. A) accomunato B) accolto C) accompagnato</div>
+<div class="mnote">48\. Occorre ___ tra efficienza e privacy. A) bilanciare B) bilanciarsi C) bilanciato</div>
+<div class="mnote">49\. I semafori si regolano ___ in base al flusso. A) autenticamente B) automaticamente C) autoritariamente</div>
+<div class="mnote">50\. La smart city ___ nuove sfide alla politica. A) posa B) depone C) pone</div>
+<div class="mnote">51\. Un approccio ___ integra tecnologia e sociale. A) integro B) integrante C) integrato</div>
+<div class="mnote">52\. La mobilità ___ riduce le emissioni. A) sostenuta B) sostenibile C) sostenente</div>
+<div class="mnote">53\. I cittadini ___ il controllo dei dati. A) temono B) temprano C) tendono</div>
+<div class="mnote">54\. Il piano prevede ___ aree pedonali nel centro. A) appie B) attigue C) ampie</div>
+<div class="mnote">55\. La tecnologia deve ___ al bene comune. A) servirsi B) servire C) serrare</div>
+<div class="mnote">_Abbina A–J con 1–10._&amp;#x41;. Le dispiace se ampliamo la stazione? — 1. A patto che non taglino il parco.</div>
+<div class="mnote">B. Cosa ne pensa del controllo dei dati? — 2. È una questione di libertà, non solo tecnica.</div>
+<div class="mnote">C. Possiamo riqualificare qui? — 3. Sì, purché coinvolgiate i residenti.</div>
+<div class="mnote">D. La smart city conviene? — 4. Dipende da come si governano i dati.</div>
+<div class="mnote">E. Vuole firmare la petizione? — 5. Volentieri, è una causa giusta.</div>
+<div class="mnote">F. Quando parte il cantiere? — 6. Non prima dell&#x27;approvazione comunale.</div>
+<div class="mnote">G. Secondo lei, la tecnologia basta? — 7. No, serve anche ascolto cittadino.</div>
+<div class="mnote">H. Come riduciamo l&#x27;inquinamento? — 8. Con più verde e meno auto.</div>
+<div class="mnote">I. È giusto privatizzare gli spazi? — 9. Assolutamente no, sono beni comuni.</div>
+<div class="mnote">J. Possiamo usare i sensori? — 10. Sì, ma nel rispetto della privacy.</div></section>
+<section class="module"><h2>4. Scritta（写作）</h2><div class="mnote">Produzione scritta（写作）⏱ 约 70 分钟</div>
+<h3>Prova 1 — Saggio/articolo argomentativo o espositivo（议论文/说明文，120–140 词）</h3>
+<h3>Prova 2 — Email/lettera formale（邮件/信件，80–100 词，正式 Gentile/Egregio… Cordiali saluti）</h3></section>
+<section class="module"><h2>5. Orale（口语）</h2><div class="mnote">Produzione orale（口语）⏱ 10–15 分钟</div>
+<h3>Prova 1 — Dialogo interattivo（4 选 1，准备 3 min，5–6 min）</h3>
+<h3>Prova 2 — Monologo（4 选 1，准备 2 min，3–4 min）</h3></section><button id="btn-check" onclick="verifica()">Verifica le risposte（提交判分）</button><button id="btn-reset" hidden onclick="resetta()">Ricomincia（重做）</button><div id="result" hidden></div></main><script>var SUBJMAX=20;
+function norm(s){return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]/g,'');}
+function gradeOf(p){if(p>=85)return['Eccellente','#1b7a3d'];if(p>=70)return['Buono','#2e7d32'];if(p>=55)return['Discreto','#b8860b'];if(p>=40)return['Insufficiente','#c0392b'];return['Grave','#7b1e2b'];}
+function verifica(){
+  var items=document.querySelectorAll('.q-item');
+  var score=0,total=0;
+  items.forEach(function(el){
+    var t=el.dataset.type;
+    var corr=el.dataset.correct;
+    if(!corr){ el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;}); return; }
+    if(t==='mc'||t==='tf'||t==='match'){
+      total++;
+      var ok=false;
+      if(t==='match'){var sel=el.querySelector('select');if(sel&&sel.value===corr)ok=true;}
+      else{var inp=el.querySelector('input:checked');if(inp&&inp.value===corr)ok=true;}
+      el.classList.add(ok?'correct':'wrong');
+      var n=document.createElement('div');n.className='q-note '+(ok?'ok':'no');
+      n.textContent=ok?'✅ Corretto':'❌ Risposta corretta: '+el.dataset.ctext;
+      el.appendChild(n);
+      el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;});
+    } else if(t==='cloze'){
+      el.querySelectorAll('input.blank').forEach(function(inp){
+        if(!inp.dataset.correct){inp.disabled=true;return;}
+        total++;
+        var v=norm(inp.value);
+        var ok2=v.length>0 && v.indexOf(norm(inp.dataset.correct))>=0;
+        if(ok2)score++;
+        inp.classList.add(ok2?'correct':'wrong');
+        if(!ok2){var s=document.createElement('span');s.className='anshint';s.textContent=' ✓ '+inp.dataset.correct;inp.insertAdjacentElement('afterend',s);}
+        inp.disabled=true;
+      });
+    }
+  });
+  document.querySelectorAll('.q-subj').forEach(function(el){var r=el.querySelector('.ref');if(r)r.hidden=false;});
+  var pct= total? Math.round(score/total*100):0;
+  var g=gradeOf(pct);
+  var box=document.getElementById('result');
+  box.hidden=false;
+  box.innerHTML='<div class="res-score">客观题正确率：<b>'+score+' / '+total+'</b> （'+pct+'%）</div>'+
+    '<div class="res-grade" style="background:'+g[1]+'">'+g[0]+'</div>'+
+    '<div class="res-note">写作 / 口语 / 改写 / 开放题请对照下方「✅ Soluzioni」参考答案与评分要点自评（本卷主观题满分 '+SUBJMAX+' 分）。</div>';
+  box.scrollIntoView({behavior:'smooth'});
+  document.getElementById('btn-check').hidden=true;
+  document.getElementById('btn-reset').hidden=false;
+}
+function resetta(){location.reload();}
+document.addEventListener('play', function(e){
+  if(e.target && e.target.tagName === 'AUDIO'){
+    document.querySelectorAll('audio').forEach(function(a){ if(a!==e.target) a.pause(); });
+  }
+}, true);</script></body></html>

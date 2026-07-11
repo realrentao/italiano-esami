@@ -1,0 +1,302 @@
+<!DOCTYPE html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>CILS B2 — CILS DUE</title><style>:root{--wine:#7b1e2b;--wine2:#a83246;--ink:#23211f;--paper:#fbf8f4;--line:#e4ddd2;--ok:#1b7a3d;--no:#c0392b;}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);background:var(--paper);line-height:1.65}
+header.top{background:linear-gradient(135deg,var(--wine),var(--wine2));color:#fff;padding:26px 20px;box-shadow:0 2px 10px rgba(0,0,0,.15)}
+header.top .back{color:#ffd9df;text-decoration:none;font-size:14px}
+header.top .ttl{font-size:26px;font-weight:800;margin-top:6px}
+header.top .ttl .lvl{display:inline-block;background:#fff;color:var(--wine);border-radius:8px;padding:2px 10px;margin-right:10px;font-size:20px}
+header.top .sub{opacity:.9;margin-top:4px;font-size:15px}
+main{max-width:880px;margin:0 auto;padding:24px 18px 120px}
+section.module{margin:30px 0;background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+section.module h2{margin:0 0 14px;color:var(--wine);font-size:20px;border-bottom:2px solid var(--line);padding-bottom:8px}
+section.module h3{color:#444;font-size:16px;margin:22px 0 10px}
+.mnote{background:#f6f1e9;border-left:4px solid var(--wine);border-radius:8px;padding:10px 14px;margin:12px 0;font-size:13.5px;color:#6b5b4a;line-height:1.7}
+.text{background:#f6f1e9;border-left:4px solid var(--wine);border-radius:8px;padding:12px 14px;margin:12px 0}
+.text h4{margin:0 0 6px;font-size:14px;color:var(--wine)}
+pre{white-space:pre-wrap;margin:0;font-family:"Courier New",monospace;font-size:14px}
+.items{margin-top:14px}
+.q-item{margin:14px 0;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fffdf9}
+.q-item.correct{border-color:var(--ok);background:#f1faf3}
+.q-item.wrong{border-color:var(--no);background:#fdf1f0}
+.q-stem{margin:0 0 8px;font-weight:600}
+.opts{display:flex;flex-direction:column;gap:6px}
+.opt{display:flex;align-items:center;gap:8px;cursor:pointer;padding:4px 6px;border-radius:6px}
+.opt:hover{background:#f3ede3}
+.match-sel{font-size:15px;padding:5px 8px;border-radius:6px;border:1px solid #bbb;margin-top:4px}
+.blank{font-size:15px;padding:3px 6px;border:1px solid #bbb;border-radius:6px;margin:0 4px;min-width:90px}
+.blank.correct{border-color:var(--ok);background:#eafaf0}
+.blank.wrong{border-color:var(--no);background:#fdeceb}
+.anshint{color:var(--no);font-size:13px;margin-left:6px}
+textarea.ans{width:100%;font-size:15px;padding:10px;border:1px solid #ccc;border-radius:8px;font-family:inherit;resize:vertical}
+.q-subj .ref{margin-top:10px;padding:10px 12px;background:#eef6fb;border-left:4px solid #2a7fb8;border-radius:8px;font-size:14px}
+.q-note{margin-top:8px;font-weight:700;font-size:14px}
+.q-note.ok{color:var(--ok)} .q-note.no{color:var(--no)}
+.audio-block{background:#f0f4f7;border:1px solid #cfe0ea;border-radius:10px;padding:12px 14px;margin:12px 0}
+.audio-block h4{margin:0 0 8px;color:#1f5f80}
+audio{width:100%;margin-bottom:8px;display:block}
+.noaudio{color:#b06a00;font-weight:600}
+.q-oral{background:#fbf7ef;border:1px solid #ecd9b0;border-radius:12px;padding:16px 18px;margin:14px 0}
+.q-oral .q-stem{margin:0 0 12px;font-size:15px;line-height:1.7;white-space:pre-wrap}
+.oral-scoring{background:#fff;border:1px solid #e7dcc4;border-radius:10px;padding:12px 14px;margin-bottom:12px}
+.score-head{font-weight:700;color:#9a6b00;margin-bottom:8px;font-size:14px}
+.dims{margin:0;padding-left:20px;font-size:14px;line-height:1.9}
+.dims li{margin-bottom:2px}
+.rubric-note{margin-top:8px;padding-top:8px;border-top:1px dashed #e0d3b6;font-size:13px;color:#5a4a2a;line-height:1.7}
+.oral-ref{background:#eef6fb;border:1px solid #cfe0ea;border-radius:10px;padding:12px 14px}
+.ref-head{font-weight:700;color:#1f5f80;margin-bottom:8px;font-size:14px}
+.ref-it{font-weight:400;color:#5b87a0;font-style:italic;font-size:12px}
+.oral-ref pre{margin:8px 0 0;white-space:pre-wrap;word-break:break-word;font-size:14px;line-height:1.75;background:#fff;border:1px solid #dce8f0;border-radius:8px;padding:10px 12px}
+.otranscript{margin-top:8px}
+.otranscript summary{cursor:pointer;color:#1f5f80;font-weight:600;font-size:13px;user-select:none;list-style:none}
+.otranscript summary::-webkit-details-marker{display:none}
+.otranscript .o-open{display:none}
+.otranscript[open] .o-closed{display:none}
+.otranscript[open] .o-open{display:inline}
+.transcript{margin-top:10px}
+.transcript summary{cursor:pointer;color:#1f5f80;font-weight:600;font-size:14px;user-select:none;list-style:none}
+.transcript summary::-webkit-details-marker{display:none}
+.transcript summary:hover{text-decoration:underline}
+.transcript .t-open{display:none}
+.transcript[open] .t-closed{display:none}
+.transcript[open] .t-open{display:inline}
+.transcript[open] summary{margin-bottom:8px}
+.transcript pre{margin-top:0}
+.soluzioni{margin:28px 0;background:#fff;border:2px dashed var(--wine);border-radius:14px;padding:18px 20px}
+.soluzioni h2{margin:0 0 12px;color:var(--wine);font-size:18px}
+.soluzioni pre{white-space:pre-wrap;font-size:13.5px;line-height:1.8;background:#fbf6f0;border-radius:8px;padding:12px;font-family:"Courier New",monospace}
+#btn-check{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--wine);color:#fff;border:none;font-size:17px;font-weight:700;padding:13px 30px;border-radius:30px;cursor:pointer;box-shadow:0 4px 14px rgba(123,30,43,.4);z-index:10}
+#btn-check:hover{background:var(--wine2)}
+#btn-reset{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);margin-left:170px;background:#555;color:#fff;border:none;font-size:15px;padding:13px 22px;border-radius:30px;cursor:pointer;z-index:10}
+#result{margin-top:20px;padding:18px 20px;border-radius:12px;background:#fff;border:2px solid var(--wine);text-align:center}
+.res-score{font-size:18px;margin-bottom:10px}
+.res-grade{display:inline-block;color:#fff;font-weight:800;font-size:22px;padding:6px 22px;border-radius:10px;margin-bottom:8px}
+.res-note{font-size:14px;color:#555;margin-top:8px}
+.index-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-top:20px}
+.card{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:0 1px 4px rgba(0,0,0,.05);transition:.15s}
+.card:hover{transform:translateY(-3px);border-color:var(--wine)}
+.card .lvl{display:inline-block;background:var(--wine);color:#fff;border-radius:8px;padding:3px 12px;font-weight:800;font-size:18px}
+.card .nm{font-weight:700;margin:8px 0 4px;font-size:16px}
+.card .sb{font-size:13px;color:#666}
+.intro{max-width:880px;margin:24px auto;padding:0 18px;color:#555}
+.vol-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;margin-top:24px}
+.vol{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:0 1px 4px rgba(0,0,0,.05);transition:.15s}
+.vol:hover{transform:translateY(-3px);border-color:var(--wine)}
+.vol .vno{display:inline-block;background:var(--wine);color:#fff;border-radius:8px;padding:3px 12px;font-weight:800;font-size:14px}
+.vol .vt{font-weight:700;margin:10px 0 6px;font-size:18px}
+.vol .vs{font-size:13px;color:#666}
+.vol .vgo{margin-top:12px;font-weight:700;color:var(--wine);font-size:14px}</style></head><body><header class="top"><a href="index.html" class="back">← Indice CILS Vol.1</a><div class="ttl"><span class="lvl">B2</span> CILS DUE</div><div class="sub">pluralismo culturale / diritti di cittadinanza · 文化多元主义 / 公民权利</div></header><main><p class="intro">本级主题：Migrazioni, multiculturalismo e cittadinanza。CILS 五大模块（Ascolto / Lettura / Analisi delle strutture / Produzione scritta / Produzione orale）。听力为模拟音频文本（由考官/录音播放），本页以文本呈现听力原文，点击展开即可自测。提交后客观题自动判分；写作/口语/开放题请展开下方「✅ Soluzioni」参考答案与评分要点自评。</p><section class="module"><h2>1. Ascolto（听力）</h2><div class="mnote">Ascolto（听力，约 30 分钟）</div>
+<div class="mnote">改革要点：Prova 3（独白）使用「判断正误 Vero/Falso」。以下为「听力原文（模拟音频文本）」。</div>
+<h3>Prova 1 — 7 短对话（四选一）</h3>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="è una ricchezza"><p class="q-stem">1. — Il pluralismo culturale è una ricchezza? — Certamente, arricchisce la società. （D: Secondo l&#x27;uomo, il pluralismo…</p><div class="opts"><label class="opt"><input type="radio" name="r1" value="0"> A) è un problema</label><label class="opt"><input type="radio" name="r1" value="1"> B) è una ricchezza</label><label class="opt"><input type="radio" name="r1" value="2"> C) è inutile</label><label class="opt"><input type="radio" name="r1" value="3"> D) è pericoloso）</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="sanità/scuola/lavoro"><p class="q-stem">2. — Quali diritti ha un residente straniero? — Sanità, scuola e lavoro, come tutti. （D: Ha diritto a…</p><div class="opts"><label class="opt"><input type="radio" name="r2" value="0"> A) solo al lavoro</label><label class="opt"><input type="radio" name="r2" value="1"> B) sanità/scuola/lavoro</label><label class="opt"><input type="radio" name="r2" value="2"> C) a nulla</label><label class="opt"><input type="radio" name="r2" value="3"> D) solo alla casa）</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="i nati in Italia"><p class="q-stem">3. — Serve una legge sulla cittadinanza? — Sì, per i nati in Italia. （D: La legge dovrebbe riguardare…</p><div class="opts"><label class="opt"><input type="radio" name="r3" value="0"> A) i turisti</label><label class="opt"><input type="radio" name="r3" value="1"> B) i nati in Italia</label><label class="opt"><input type="radio" name="r3" value="2"> C) nessuno</label><label class="opt"><input type="radio" name="r3" value="3"> D) solo anziani）</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="delicato"><p class="q-stem">4. — I simboli religiosi a scuola? — Sono un tema delicato. （D: Il tema è…</p><div class="opts"><label class="opt"><input type="radio" name="r4" value="0"> A) semplice</label><label class="opt"><input type="radio" name="r4" value="1"> B) delicato</label><label class="opt"><input type="radio" name="r4" value="2"> C) chiuso</label><label class="opt"><input type="radio" name="r4" value="3"> D) risolto）</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="dipende dal quartiere"><p class="q-stem">5. — La moschea è accettata? — Dipende dal quartiere. （D: L&#x27;accettazione…</p><div class="opts"><label class="opt"><input type="radio" name="r5" value="0"> A) è totale</label><label class="opt"><input type="radio" name="r5" value="1"> B) dipende dal quartiere</label><label class="opt"><input type="radio" name="r5" value="2"> C) è vietata</label><label class="opt"><input type="radio" name="r5" value="3"> D) è obbligatoria）</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="dibattuto"><p class="q-stem">6. — Il voto agli stranieri? — È dibattuto in molti paesi. （D: Il voto agli stranieri è…</p><div class="opts"><label class="opt"><input type="radio" name="r6" value="0"> A) garantito ovunque</label><label class="opt"><input type="radio" name="r6" value="1"> B) dibattuto</label><label class="opt"><input type="radio" name="r6" value="2"> C) vietato</label><label class="opt"><input type="radio" name="r6" value="3"> D) inutile）</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="funziona con politiche giuste"><p class="q-stem">7. — L&#x27;integrazione fallisce? — No, con le politiche giuste funziona. （D: L&#x27;integrazione…</p><div class="opts"><label class="opt"><input type="radio" name="r7" value="0"> A) fallisce sempre</label><label class="opt"><input type="radio" name="r7" value="1"> B) funziona con politiche giuste</label><label class="opt"><input type="radio" name="r7" value="2"> C) è impossibile</label><label class="opt"><input type="radio" name="r7" value="3"> D) è lenta ma certa）</label></div></div>
+<h3>Prova 2 — 长访谈（Intervista su diritti di cittadinanza，四选一，7 题）</h3>
+<div class="text"><h4>📝 Testo / Dialogo (simulato)</h4><pre>Giornalista: Professoressa, che cos&#x27;è il pluralismo culturale?
+Esperta: È la convivenza di più culture in uno stesso spazio pubblico, con pari dignità.
+Giornalista: E i diritti di cittadinanza?
+Esperta: Sono diritti civili e sociali che spettano a chi risiede, indipendentemente dalla nascita.
+Giornalista: L&#x27;Italia è indietro?
+Esperta: Sì, lo ius soli è limitato; chi nasce qui spesso resta straniero.
+Giornalista: Quali rischi?
+Esperta: La marginalizzazione di giovani che si sentono esclusi.
+Giornalista: Una riforma possibile?
+Esperta: Riconoscere la cittadinanza a chi completa un ciclo scolastico.
+Giornalista: Grazie.</pre></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="convivenza pari dignità"><p class="q-stem">1. Il pluralismo è…</p><div class="opts"><label class="opt"><input type="radio" name="r1" value="0"> A) una sola cultura</label><label class="opt"><input type="radio" name="r1" value="1"> B) convivenza pari dignità</label><label class="opt"><input type="radio" name="r1" value="2"> C) separazione</label><label class="opt"><input type="radio" name="r1" value="3"> D) dominio</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="risiede"><p class="q-stem">2. I diritti spettano a chi…</p><div class="opts"><label class="opt"><input type="radio" name="r2" value="0"> A) nasce qui</label><label class="opt"><input type="radio" name="r2" value="1"> B) risiede</label><label class="opt"><input type="radio" name="r2" value="2"> C) è ricco</label><label class="opt"><input type="radio" name="r2" value="3"> D) vota</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="limitato"><p class="q-stem">3. L&#x27;Italia ha lo ius soli…</p><div class="opts"><label class="opt"><input type="radio" name="r3" value="0"> A) pieno</label><label class="opt"><input type="radio" name="r3" value="1"> B) limitato</label><label class="opt"><input type="radio" name="r3" value="2"> C) assente</label><label class="opt"><input type="radio" name="r3" value="3"> D) totale</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="straniero"><p class="q-stem">4. Chi nasce in Italia resta spesso…</p><div class="opts"><label class="opt"><input type="radio" name="r4" value="0"> A) cittadino</label><label class="opt"><input type="radio" name="r4" value="1"> B) straniero</label><label class="opt"><input type="radio" name="r4" value="2"> C) turista</label><label class="opt"><input type="radio" name="r4" value="3"> D) escluso→straniero</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="marginalizzazione"><p class="q-stem">5. Il rischio è…</p><div class="opts"><label class="opt"><input type="radio" name="r5" value="0"> A) integrazione</label><label class="opt"><input type="radio" name="r5" value="1"> B) marginalizzazione</label><label class="opt"><input type="radio" name="r5" value="2"> C) ricchezza</label><label class="opt"><input type="radio" name="r5" value="3"> D) pace</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="cittadinanza dopo la scuola"><p class="q-stem">6. La riforma proposta…</p><div class="opts"><label class="opt"><input type="radio" name="r6" value="0"> A) nessuna</label><label class="opt"><input type="radio" name="r6" value="1"> B) cittadinanza dopo la scuola</label><label class="opt"><input type="radio" name="r6" value="2"> C) solo lavoro</label><label class="opt"><input type="radio" name="r6" value="3"> D) solo voto</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="informativo"><p class="q-stem">7. Il tono dell&#x27;esperta è…</p><div class="opts"><label class="opt"><input type="radio" name="r7" value="0"> A) polemico</label><label class="opt"><input type="radio" name="r7" value="1"> B) informativo</label><label class="opt"><input type="radio" name="r7" value="2"> C) ironico</label><label class="opt"><input type="radio" name="r7" value="3"> D) aggressivo</label></div></div>
+<h3>Prova 3 — 独白（Conferenza sul pluralismo，Vero/Falso，12 判断）</h3>
+<div class="mnote">1. Il pluralismo ammette più visioni del mondo. (V)</div>
+<div class="mnote">2. La laicità è neutralità assoluta. (F)</div>
+<div class="mnote">3. I diritti includono sanità e istruzione. (V)</div>
+<div class="mnote">4. Le leggi hanno eliminato ogni discriminazione. (F)</div>
+<div class="mnote">5. Le seconde generazioni vogliono piena appartenenza. (V)</div>
+<div class="mnote">6. Le politiche inclusive aumentano la radicalizzazione. (F)</div>
+<div class="mnote">7. Il multiculturalismo &quot;forte&quot; isola le comunità. (F)</div>
+<div class="text"><h4>📝 Testo / Dialogo (simulato)</h4><pre>Testo ascoltato: «Pluralismo culturale e diritti»
+Il pluralismo culturale riconosce che convivono legittimamente più visioni del mondo. La laicità dello Stato non significa neutralità assoluta, ma equidistanza tra credenze. I diritti di cittadinanza non si esauriscono nel voto: comprendono sanità, istruzione e mobilità. La discriminazione sui luoghi di lavoro resta diffusa nonostante le leggi. Le seconde generazioni chiedono piena appartenenza. Le politiche inclusive riducono la radicalizzazione. Il multiculturalismo &quot;debole&quot; isola le comunità; quello &quot;forte&quot; le integra nel dialogo. La libertà religiosa ha limiti nel rispetto dei diritti fondamentali. La lingua comune è un collante, non un obbligo di assimilazione. La rappresentanza politica delle minoranze è ancora scarsa. L&#x27;Unione Europea fissa principi minimi condivisi.</pre></div>
+<div class="q-item" data-type="tf" data-correct="0" data-ctext="Vero"><p class="q-stem">8. La libertà religiosa ha limiti.</p><div class="opts"><label class="opt"><input type="radio" name="r8" value="0"> Vero</label><label class="opt"><input type="radio" name="r8" value="1"> Falso</label></div></div>
+<div class="q-item" data-type="tf" data-correct="1" data-ctext="Falso"><p class="q-stem">9. La lingua comune è un obbligo di assimilazione.</p><div class="opts"><label class="opt"><input type="radio" name="r9" value="0"> Vero</label><label class="opt"><input type="radio" name="r9" value="1"> Falso</label></div></div>
+<div class="q-item" data-type="tf" data-correct="1" data-ctext="Falso"><p class="q-stem">10. La rappresentanza delle minoranze è ampia.</p><div class="opts"><label class="opt"><input type="radio" name="r10" value="0"> Vero</label><label class="opt"><input type="radio" name="r10" value="1"> Falso</label></div></div>
+<div class="q-item" data-type="tf" data-correct="0" data-ctext="Vero"><p class="q-stem">11. L&#x27;UE fissa principi minimi condivisi.</p><div class="opts"><label class="opt"><input type="radio" name="r11" value="0"> Vero</label><label class="opt"><input type="radio" name="r11" value="1"> Falso</label></div></div>
+<div class="q-item" data-type="tf" data-correct="1" data-ctext="Falso"><p class="q-stem">12. I diritti si esauriscono nel voto.</p><div class="opts"><label class="opt"><input type="radio" name="r12" value="0"> Vero</label><label class="opt"><input type="radio" name="r12" value="1"> Falso</label></div></div></section>
+<section class="module"><h2>2. Lettura（阅读）</h2><div class="mnote">Lettura（阅读，约 50 分钟）</div>
+<h3>Prova 1 — Testo argomentativo（300–400 词，7 单选）</h3>
+<div class="text"><pre>Il pluralismo culturale non è un lusso, ma la condizione normale delle società contemporanee. Quando più tradizioni condividono uno spazio pubblico, nasce una tensione feconda: ciascuna viene messa alla prova, nessuna pretende il monopolio della verità. Tuttavia, il pluralismo esige istituzioni capaci di tradurre la differenza in diritti uguali. La cittadinanza non può restare un privilegio di sangue: chi contribuisce alla vita di una comunità ne condivide le responsabilità e le prerogative. Le politiche abitative, scolastiche e lavorative determinano se la diversità diventa risorsa o ghetto. La sfida non è cancellare le identità, ma coordinarle sotto una sovranità condivisa e una cittadinanza attiva.</pre></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="la condizione normale"><p class="q-stem">1. Il pluralismo è…</p><div class="opts"><label class="opt"><input type="radio" name="r1" value="0"> A) un lusso</label><label class="opt"><input type="radio" name="r1" value="1"> B) la condizione normale</label><label class="opt"><input type="radio" name="r1" value="2"> C) un errore</label><label class="opt"><input type="radio" name="r1" value="3"> D) raro</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="feconda"><p class="q-stem">2. La tensione tra tradizioni è detta…</p><div class="opts"><label class="opt"><input type="radio" name="r2" value="0"> A) distruttiva</label><label class="opt"><input type="radio" name="r2" value="1"> B) feconda</label><label class="opt"><input type="radio" name="r2" value="2"> C) inutile</label><label class="opt"><input type="radio" name="r2" value="3"> D) violenta</label></div></div>
+<div class="q-item" data-type="mc" data-correct="0" data-ctext="istituzioni"><p class="q-stem">3. Il pluralismo richiede…</p><div class="opts"><label class="opt"><input type="radio" name="r3" value="0"> A) istituzioni</label><label class="opt"><input type="radio" name="r3" value="1"> B) censura</label><label class="opt"><input type="radio" name="r3" value="2"> C) guerra</label><label class="opt"><input type="radio" name="r3" value="3"> D) isolamento</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="privilegio di sangue"><p class="q-stem">4. La cittadinanza non deve essere…</p><div class="opts"><label class="opt"><input type="radio" name="r4" value="0"> A) un diritto</label><label class="opt"><input type="radio" name="r4" value="1"> B) privilegio di sangue</label><label class="opt"><input type="radio" name="r4" value="2"> C) condivisa</label><label class="opt"><input type="radio" name="r4" value="3"> D) attiva</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="responsabilità e prerogative"><p class="q-stem">5. Chi contribuisce alla comunità ne ha…</p><div class="opts"><label class="opt"><input type="radio" name="r5" value="0"> A) solo doveri</label><label class="opt"><input type="radio" name="r5" value="1"> B) responsabilità e prerogative</label><label class="opt"><input type="radio" name="r5" value="2"> C) nulla</label><label class="opt"><input type="radio" name="r5" value="3"> D) solo voti</label></div></div>
+<div class="q-item" data-type="mc" data-correct="0" data-ctext="risorsa o ghetto"><p class="q-stem">6. Le politiche scolastiche decidono se la diversità è…</p><div class="opts"><label class="opt"><input type="radio" name="r6" value="0"> A) risorsa o ghetto</label><label class="opt"><input type="radio" name="r6" value="1"> B) inutile</label><label class="opt"><input type="radio" name="r6" value="2"> C) rara</label><label class="opt"><input type="radio" name="r6" value="3"> D) pericolosa</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="coordinarle in cittadinanza attiva"><p class="q-stem">7. La sfida è…</p><div class="opts"><label class="opt"><input type="radio" name="r7" value="0"> A) cancellare identità</label><label class="opt"><input type="radio" name="r7" value="1"> B) coordinarle in cittadinanza attiva</label><label class="opt"><input type="radio" name="r7" value="2"> C) separarle</label><label class="opt"><input type="radio" name="r7" value="3"> D) ignorarle</label></div></div>
+<h3>Prova 2 — Testo pratico（Avviso / email comunale，Vero/Falso，14 判断）</h3>
+<div class="text"><pre>Comunicazione del Comune: «Sportello dei diritti per i cittadini stranieri»</pre></div>
+<div class="text"><pre></pre></div>
+<div class="text"><pre>1. Lo sportello è aperto solo agli italiani. (F)</pre></div>
+<div class="text"><pre>2. Offre assistenza per permessi di soggiorno. (V)</pre></div>
+<div class="text"><pre>3. Si trova in via Roma 12. (V)</pre></div>
+<div class="text"><pre>4. È aperto il sabato mattina. (V)</pre></div>
+<div class="text"><pre>5. Il servizio è a pagamento. (F)</pre></div>
+<div class="text"><pre>6. Si può prenotare per telefono. (V)</pre></div>
+<div class="text"><pre>7. Ci sono mediatori linguistici. (V)</pre></div>
+<div class="text"><pre>8. Tratta anche il ricongiungimento familiare. (V)</pre></div>
+<div class="text"><pre>9. Serve la carta d&#x27;identità per accedere. (F)</pre></div>
+<div class="text"><pre>10. Le informazioni sono solo in italiano. (F)</pre></div>
+<div class="text"><pre>11. Lo sportello aiuta per l&#x27;iscrizione a scuola. (V)</pre></div>
+<div class="text"><pre>12. Le pratiche burocratiche sono seguite gratis. (V)</pre></div>
+<div class="text"><pre>13. È gestito da una associazione volontaria. (V)</pre></div>
+<div class="text"><pre>14. Chiude durante le feste comandate. (V)</pre></div>
+<h3>Prova 3 — Ordinamento（11 句排序，示例 8 句）</h3>
+<div class="text"><pre>A. Il diritto di cittadinanza ha radici storiche lontane.</pre></div>
+<div class="text"><pre>B. Nelle società moderne si è esteso a nuovi soggetti.</pre></div>
+<div class="text"><pre>C. Oggi include anche chi è nato sul territorio.</pre></div>
+<div class="text"><pre>D. Tuttavia restano esclusioni basate sulla nascita.</pre></div>
+<div class="text"><pre>E. Le Corti hanno corretto alcune disparità.</pre></div>
+<div class="text"><pre>F. Il dibattito coinvolge etica e politica.</pre></div>
+<div class="text"><pre>G. Il pluralismo richiede pari diritti.</pre></div>
+<div class="text"><pre>H. La cittadinanza resta una frontiera aperta.</pre></div>
+<div class="text"><pre>(Ordine: A → B → C → D → E → F → G → H)</pre></div></section>
+<section class="module"><h2>3. Analisi（语法分析）</h2><div class="mnote">Analisi delle strutture（语法，约 60 分钟）</div>
+<div class="mnote">真题全量（共 65 题）：① 代词/形容词/性数配合/固定搭配填空 20；② 动词变位（直陈/条件/虚拟）20；③ 完形填空近义辨析（4 选 1）15；④ 情景交际匹配 10。</div>
+<h3>① — Pronomi / aggettivi / concordanza / collocazioni（20 空）</h3>
+<div class="q-item" data-type="cloze"><p class="q-stem">1. <input class="blank" data-correct=""> (Ci/Mi) sono molte culture nel mio quartiere.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">2. Questo diritto<input class="blank" data-correct=""> (gli/le) spetta di diritto.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">3. Una società<input class="blank" data-correct=""> (più/più) giusta accoglie tutti.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">4. <input class="blank" data-correct=""> (Ne/Lo) conosco bene la legislazione.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">5. Hanno<input class="blank" data-correct=""> (si/mi) integrati senza perdere le radici.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">6. Tale politica è<input class="blank" data-correct=""> (degna/degni) di attenzione.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">7. Contribuisco<input class="blank" data-correct=""> (a/con) la vita del quartiere.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">8. <input class="blank" data-correct=""> (Qualsiasi/Qualche) cittadino ha gli stessi diritti.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">9. La diversità arricchisce<input class="blank" data-correct=""> (ci/noi) tutti.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">10. <input class="blank" data-correct=""> (Gli/Le) ho spiegato i miei diritti.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">11. <input class="blank" data-correct=""> (Le/Mi) servono pari opportunità.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">12. Rispetto<input class="blank" data-correct=""> (li/le) loro tradizioni.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">13. Un approccio<input class="blank" data-correct=""> (più/meno) aperto favorisce il dialogo.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">14. <input class="blank" data-correct=""> (Ne/Ci) siamo orgogliosi della nostra storia.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">15. Queste leggi<input class="blank" data-correct=""> (lo/li) tutelano tutti.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">16. Penso<input class="blank" data-correct=""> (a/da) una cittadinanza attiva.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">17. Hanno<input class="blank" data-correct=""> (si/mi) dimostrati solidali.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">18. Tale principio è<input class="blank" data-correct=""> (caro/cari) a molti.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">19. Parlo<input class="blank" data-correct=""> (con/a) i rappresentanti.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">20. <input class="blank" data-correct=""> (Le/Gli) auguro buona fortuna.</p></div>
+<h3>② — Tempi e modi（直陈/条件/虚拟，20 空）</h3>
+<div class="q-item" data-type="cloze"><p class="q-stem">1. Se la legge<input class="blank" data-correct="cambiasse"> (cambiare) , molti sarebbero cittadini.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">2. È importante che lo Stato<input class="blank" data-correct="garantisca"> (garantire) i diritti.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">3. Ieri il senato<input class="blank" data-correct="ha approvato"> (approvare) la riforma.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">4. Senza lingua comune, l&#x27;integrazione<input class="blank" data-correct="sarebbe"> (essere) difficile.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">5. Spero che tu<input class="blank" data-correct="ottenga"> (ottenere) la cittadinanza presto.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">6. Mentre<input class="blank" data-correct="parlava"> (parlare) ha citato la Costituzione.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">7. <input class="blank" data-correct=""> (Essere) necessario un dibattito pubblico.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">8. Avrebbero accettato se<input class="blank" data-correct="fossero"> (essere) informati.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">9. Noi<input class="blank" data-correct="chiediamo"> (chiedere) maggiori tutele.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">10. Credo che il pluralismo<input class="blank" data-correct="rappresenti"> (rappresentare) una risorsa.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">11. Se avessero votato, la legge<input class="blank" data-correct="sarebbe passata"> (passare, condizionale passato) .</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">12. È auspicabile che i diritti<input class="blank" data-correct="siano"> (essere) uguali per tutti.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">13. L&#x27;esperta<input class="blank" data-correct="sostiene"> (sostenere) che la laicità è equidistanza.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">14. Pur<input class="blank" data-correct="essendo"> (essere) difficile, il dialogo continua.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">15. <input class="blank" data-correct="Volevano"> (Volere) più diritti, hanno manifestato.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">16. Se<input class="blank" data-correct="potessi"> (potere) , cambierei la norma.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">17. La riforma<input class="blank" data-correct="è stata"> (essere) discussa per mesi.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">18. Speriamo che il comune<input class="blank" data-correct="apra"> (aprire) lo sportello.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">19. Senza queste leggi, molti<input class="blank" data-correct="rimarrebbero"> (rimanere) esclusi.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">20. Credono che la cittadinanza<input class="blank" data-correct="debba"> (dovere) essere un diritto.</p></div>
+<h3>③ — Cloze, quesiti di prossimità（15 题，4 选 1）</h3>
+<div class="items"><div class="q-item" data-type="mc" data-correct="0" data-ctext="debole"><p class="q-stem">1. </p><div class="opts"><label class="opt"><input type="radio" name="r1" value="0"> A) debole</label><label class="opt"><input type="radio" name="r1" value="1"> B) forte</label><label class="opt"><input type="radio" name="r1" value="2"> C) vuoto</label><label class="opt"><input type="radio" name="r1" value="3"> D) rapido) isola le comunità. Le politiche</label></div></div>
+<div class="q-item" data-type="mc" data-correct="0" data-ctext="inclusive"><p class="q-stem">2. </p><div class="opts"><label class="opt"><input type="radio" name="r2" value="0"> A) inclusive</label><label class="opt"><input type="radio" name="r2" value="1"> B) esclusive</label><label class="opt"><input type="radio" name="r2" value="2"> C) rapide</label><label class="opt"><input type="radio" name="r2" value="3"> D) lente) favoriscono la coesione. La cittadinanza va</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="riconosciuta"><p class="q-stem">3. </p><div class="opts"><label class="opt"><input type="radio" name="r3" value="0"> A) negata</label><label class="opt"><input type="radio" name="r3" value="1"> B) riconosciuta</label><label class="opt"><input type="radio" name="r3" value="2"> C) venduta</label><label class="opt"><input type="radio" name="r3" value="3"> D) divisa) a chi risiede. La</label></div></div>
+<div class="q-item" data-type="mc" data-correct="0" data-ctext="discriminazione"><p class="q-stem">4. </p><div class="opts"><label class="opt"><input type="radio" name="r4" value="0"> A) discriminazione</label><label class="opt"><input type="radio" name="r4" value="1"> B) integrazione</label><label class="opt"><input type="radio" name="r4" value="2"> C) pace</label><label class="opt"><input type="radio" name="r4" value="3"> D) guerra) va combattuta. Una società</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="aperta"><p class="q-stem">5. </p><div class="opts"><label class="opt"><input type="radio" name="r5" value="0"> A) chiusa</label><label class="opt"><input type="radio" name="r5" value="1"> B) aperta</label><label class="opt"><input type="radio" name="r5" value="2"> C) vuota</label><label class="opt"><input type="radio" name="r5" value="3"> D) bassa) accoglie le differenze. I diritti</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="garantiti"><p class="q-stem">6. </p><div class="opts"><label class="opt"><input type="radio" name="r6" value="0"> A) negati</label><label class="opt"><input type="radio" name="r6" value="1"> B) garantiti</label><label class="opt"><input type="radio" name="r6" value="2"> C) persi</label><label class="opt"><input type="radio" name="r6" value="3"> D) dati) riducono le disuguaglianze. Il dialogo</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="costruito"><p class="q-stem">7. </p><div class="opts"><label class="opt"><input type="radio" name="r7" value="0"> A) interrotto</label><label class="opt"><input type="radio" name="r7" value="1"> B) costruito</label><label class="opt"><input type="radio" name="r7" value="2"> C) rotto</label><label class="opt"><input type="radio" name="r7" value="3"> D) perso) crea fiducia. Le seconde generazioni</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="riconosciute"><p class="q-stem">8. </p><div class="opts"><label class="opt"><input type="radio" name="r8" value="0"> A) escluse</label><label class="opt"><input type="radio" name="r8" value="1"> B) riconosciute</label><label class="opt"><input type="radio" name="r8" value="2"> C) dimenticate</label><label class="opt"><input type="radio" name="r8" value="3"> D) nascoste) chiedono appartenenza. La laicità</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="rispettata"><p class="q-stem">9. </p><div class="opts"><label class="opt"><input type="radio" name="r9" value="0"> A) imposta</label><label class="opt"><input type="radio" name="r9" value="1"> B) rispettata</label><label class="opt"><input type="radio" name="r9" value="2"> C) violata</label><label class="opt"><input type="radio" name="r9" value="3"> D) data) tutela le credenze. Le politiche</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="strutturali"><p class="q-stem">10. </p><div class="opts"><label class="opt"><input type="radio" name="r10" value="0"> A) emergenziali</label><label class="opt"><input type="radio" name="r10" value="1"> B) strutturali</label><label class="opt"><input type="radio" name="r10" value="2"> C) vecchie</label><label class="opt"><input type="radio" name="r10" value="3"> D) nuove) durano nel tempo. L&#x27;inclusione</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="forte"><p class="q-stem">11. </p><div class="opts"><label class="opt"><input type="radio" name="r11" value="0"> A) debole</label><label class="opt"><input type="radio" name="r11" value="1"> B) forte</label><label class="opt"><input type="radio" name="r11" value="2"> C) nulla</label><label class="opt"><input type="radio" name="r11" value="3"> D) poca) rafforza la società. Il voto</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="concesso"><p class="q-stem">12. </p><div class="opts"><label class="opt"><input type="radio" name="r12" value="0"> A) negato</label><label class="opt"><input type="radio" name="r12" value="1"> B) concesso</label><label class="opt"><input type="radio" name="r12" value="2"> C) tolto</label><label class="opt"><input type="radio" name="r12" value="3"> D) dato) ai residenti è dibattuto. La diversità</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="celebrata"><p class="q-stem">13. </p><div class="opts"><label class="opt"><input type="radio" name="r13" value="0"> A) nascosta</label><label class="opt"><input type="radio" name="r13" value="1"> B) celebrata</label><label class="opt"><input type="radio" name="r13" value="2"> C) taciuta</label><label class="opt"><input type="radio" name="r13" value="3"> D) detta) arricchisce. Un quartiere</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="misto"><p class="q-stem">14. </p><div class="opts"><label class="opt"><input type="radio" name="r14" value="0"> A) segregato</label><label class="opt"><input type="radio" name="r14" value="1"> B) misto</label><label class="opt"><input type="radio" name="r14" value="2"> C) chiuso</label><label class="opt"><input type="radio" name="r14" value="3"> D) vuoto) favorisce l&#x27;incontro. Noi</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="promuoviamo"><p class="q-stem">15. </p><div class="opts"><label class="opt"><input type="radio" name="r15" value="0"> A) rifiutiamo</label><label class="opt"><input type="radio" name="r15" value="1"> B) promuoviamo</label><label class="opt"><input type="radio" name="r15" value="2"> C) evitiamo</label><label class="opt"><input type="radio" name="r15" value="3"> D) fermiamo) il pluralismo.</label></div></div></div>
+<h3>④ — Comunicazione situazionale（10 匹配）</h3>
+<div class="text"><pre>1. «Rivendico i miei diritti di cittadino.» → a) Giusto, la legge tutela tutti.</pre></div>
+<div class="text"><pre>2. «Non capisco questa procedura.» → b) Posso spiegarle i passaggi.</pre></div>
+<div class="text"><pre>3. «Vorrei iscrivere mio figlio a scuola.» → c) Serve il certificato di residenza.</pre></div>
+<div class="text"><pre>4. «C&#x27;è discriminazione sul lavoro.» → d) Segnaliamo all&#x27;ispettorato.</pre></div>
+<div class="text"><pre>5. «Parliamo di pluralismo.» → e) È un valore costituzionale.</pre></div>
+<div class="text"><pre>6. «Ho bisogno di un mediatore.» → f) Lo sportello ne ha uno.</pre></div>
+<div class="text"><pre>7. «La legge sullo ius soli è ingiusta.» → g) Molti la pensano così.</pre></div>
+<div class="text"><pre>8. «Voglio fare volontariato.» → h) Ci sono centri di integrazione.</pre></div>
+<div class="text"><pre>9. «Non conosco i miei diritti.» → i) Può consultare lo sportello.</pre></div>
+<div class="text"><pre>10. «La burocrazia è lenta.» → j) Purtroppo è vero.</pre></div></section>
+<section class="module"><h2>4. Scritta（写作）</h2><div class="mnote">Produzione scritta（写作，约 70 分钟）</div>
+<h3>Prova 1 — Saggio / testo espositivo（议论文/说明文，120–140 词）</h3>
+<div class="text"><pre>«Il pluralismo culturale è una risorsa per la società italiana». Sviluppa l&#x27;argomento con esempi concreti.</pre></div>
+<h3>Prova 2 — Email / lettera formale（邮件/信件，80–100 词，正式语气 Gentile / Egregio… Cordiali saluti）</h3>
+<div class="text"><pre>Scrivi al Comune per chiedere informazioni sullo sportello diritti per cittadini stranieri.</pre></div></section>
+<section class="module"><h2>5. Orale（口语）</h2><div class="mnote">Produzione orale（口语，10–15 分钟）</div>
+<div class="mnote">改革框架：Prova 1 互动对话（4 选 1，准备 3 分钟，5–6 分钟）；Prova 2 独白（4 选 1，准备 2 分钟，3–4 分钟）。</div></section><section class="soluzioni"><h2>✅ Soluzioni e criteri di valutazione（参考答案与评分）</h2><pre>【Ascolto 听力】
+1-B,2-B,3-B,4-B,5-B,6-B,7-B；**P2**: 1-B,2-B,3-B,4-B,5-B,6-B,7-B；**P3**: 1-V,2-F,3-V,4-F,5-V,6-F,7-F,8-V,9-F,10-F,11-V,12-F
+
+【Lettura 阅读】
+1-B,2-B,3-A,4-B,5-B,6-A,7-B；**P2**: 1-F,2-V,3-V,4-V,5-F,6-V,7-V,8-V,9-F,10-F,11-V,12-V,13-V,14-V；**P3**: A-B-C-D-E-F-G-H
+
+【Analisi 语法分析】
+1-ci, 2-gli, 3-più, 4-Ne, 5-si, 6-degna, 7-a, 8-Qualsiasi, 9-noi, 10-gli, 11-Mi, 12-le, 13-più, 14-Ne, 15-li, 16-a, 17-si, 18-caro, 19-con, 20-Gli；P2: 1-cambiasse, 2-garantisca, 3-ha approvato, 4-sarebbe, 5-ottenga, 6-parlava, 7-È, 8-fossero, 9-chiediamo, 10-rappresenti, 11-sarebbe passata, 12-siano, 13-sostiene, 14-essendo, 15-Volevano, 16-potessi, 17-è stata, 18-apra, 19-rimarrebbero, 20-debba；P3: 1-A, 2-A, 3-B, 4-A, 5-B, 6-B, 7-B, 8-B, 9-B, 10-B, 11-B, 12-B, 13-B, 14-B, 15-B；P4: 1-a, 2-b, 3-c, 4-d, 5-e, 6-f, 7-g, 8-h, 9-i, 10-j</pre></section><button id="btn-check" onclick="verifica()">Verifica le risposte（提交判分）</button><button id="btn-reset" hidden onclick="resetta()">Ricomincia（重做）</button><div id="result" hidden></div></main><script>var SUBJMAX=20;
+function norm(s){return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]/g,'');}
+function gradeOf(p){if(p>=85)return['Eccellente','#1b7a3d'];if(p>=70)return['Buono','#2e7d32'];if(p>=55)return['Discreto','#b8860b'];if(p>=40)return['Insufficiente','#c0392b'];return['Grave','#7b1e2b'];}
+function verifica(){
+  var items=document.querySelectorAll('.q-item');
+  var score=0,total=0;
+  items.forEach(function(el){
+    var t=el.dataset.type;
+    var corr=el.dataset.correct;
+    if(!corr){ el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;}); return; }
+    if(t==='mc'||t==='tf'||t==='match'){
+      total++;
+      var ok=false;
+      if(t==='match'){var sel=el.querySelector('select');if(sel&&sel.value===corr)ok=true;}
+      else{var inp=el.querySelector('input:checked');if(inp&&inp.value===corr)ok=true;}
+      el.classList.add(ok?'correct':'wrong');
+      var n=document.createElement('div');n.className='q-note '+(ok?'ok':'no');
+      n.textContent=ok?'✅ Corretto':'❌ Risposta corretta: '+el.dataset.ctext;
+      el.appendChild(n);
+      el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;});
+    } else if(t==='cloze'){
+      el.querySelectorAll('input.blank').forEach(function(inp){
+        if(!inp.dataset.correct){inp.disabled=true;return;}
+        total++;
+        var v=norm(inp.value);
+        var ok2=v.length>0 && v.indexOf(norm(inp.dataset.correct))>=0;
+        if(ok2)score++;
+        inp.classList.add(ok2?'correct':'wrong');
+        if(!ok2){var s=document.createElement('span');s.className='anshint';s.textContent=' ✓ '+inp.dataset.correct;inp.insertAdjacentElement('afterend',s);}
+        inp.disabled=true;
+      });
+    }
+  });
+  document.querySelectorAll('.q-subj').forEach(function(el){var r=el.querySelector('.ref');if(r)r.hidden=false;});
+  var pct= total? Math.round(score/total*100):0;
+  var g=gradeOf(pct);
+  var box=document.getElementById('result');
+  box.hidden=false;
+  box.innerHTML='<div class="res-score">客观题正确率：<b>'+score+' / '+total+'</b> （'+pct+'%）</div>'+
+    '<div class="res-grade" style="background:'+g[1]+'">'+g[0]+'</div>'+
+    '<div class="res-note">写作 / 口语 / 改写 / 开放题请对照下方「✅ Soluzioni」参考答案与评分要点自评（本卷主观题满分 '+SUBJMAX+' 分）。</div>';
+  box.scrollIntoView({behavior:'smooth'});
+  document.getElementById('btn-check').hidden=true;
+  document.getElementById('btn-reset').hidden=false;
+}
+function resetta(){location.reload();}
+document.addEventListener('play', function(e){
+  if(e.target && e.target.tagName === 'AUDIO'){
+    document.querySelectorAll('audio').forEach(function(a){ if(a!==e.target) a.pause(); });
+  }
+}, true);</script></body></html>

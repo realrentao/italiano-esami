@@ -1,0 +1,259 @@
+<!DOCTYPE html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>CILS B2 — CILS DUE</title><style>:root{--wine:#7b1e2b;--wine2:#a83246;--ink:#23211f;--paper:#fbf8f4;--line:#e4ddd2;--ok:#1b7a3d;--no:#c0392b;}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);background:var(--paper);line-height:1.65}
+header.top{background:linear-gradient(135deg,var(--wine),var(--wine2));color:#fff;padding:26px 20px;box-shadow:0 2px 10px rgba(0,0,0,.15)}
+header.top .back{color:#ffd9df;text-decoration:none;font-size:14px}
+header.top .ttl{font-size:26px;font-weight:800;margin-top:6px}
+header.top .ttl .lvl{display:inline-block;background:#fff;color:var(--wine);border-radius:8px;padding:2px 10px;margin-right:10px;font-size:20px}
+header.top .sub{opacity:.9;margin-top:4px;font-size:15px}
+main{max-width:880px;margin:0 auto;padding:24px 18px 120px}
+section.module{margin:30px 0;background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+section.module h2{margin:0 0 14px;color:var(--wine);font-size:20px;border-bottom:2px solid var(--line);padding-bottom:8px}
+section.module h3{color:#444;font-size:16px;margin:22px 0 10px}
+.mnote{background:#f6f1e9;border-left:4px solid var(--wine);border-radius:8px;padding:10px 14px;margin:12px 0;font-size:13.5px;color:#6b5b4a;line-height:1.7}
+.text{background:#f6f1e9;border-left:4px solid var(--wine);border-radius:8px;padding:12px 14px;margin:12px 0}
+.text h4{margin:0 0 6px;font-size:14px;color:var(--wine)}
+pre{white-space:pre-wrap;margin:0;font-family:"Courier New",monospace;font-size:14px}
+.items{margin-top:14px}
+.q-item{margin:14px 0;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fffdf9}
+.q-item.correct{border-color:var(--ok);background:#f1faf3}
+.q-item.wrong{border-color:var(--no);background:#fdf1f0}
+.q-stem{margin:0 0 8px;font-weight:600}
+.opts{display:flex;flex-direction:column;gap:6px}
+.opt{display:flex;align-items:center;gap:8px;cursor:pointer;padding:4px 6px;border-radius:6px}
+.opt:hover{background:#f3ede3}
+.match-sel{font-size:15px;padding:5px 8px;border-radius:6px;border:1px solid #bbb;margin-top:4px}
+.blank{font-size:15px;padding:3px 6px;border:1px solid #bbb;border-radius:6px;margin:0 4px;min-width:90px}
+.blank.correct{border-color:var(--ok);background:#eafaf0}
+.blank.wrong{border-color:var(--no);background:#fdeceb}
+.anshint{color:var(--no);font-size:13px;margin-left:6px}
+textarea.ans{width:100%;font-size:15px;padding:10px;border:1px solid #ccc;border-radius:8px;font-family:inherit;resize:vertical}
+.q-subj .ref{margin-top:10px;padding:10px 12px;background:#eef6fb;border-left:4px solid #2a7fb8;border-radius:8px;font-size:14px}
+.q-note{margin-top:8px;font-weight:700;font-size:14px}
+.q-note.ok{color:var(--ok)} .q-note.no{color:var(--no)}
+.audio-block{background:#f0f4f7;border:1px solid #cfe0ea;border-radius:10px;padding:12px 14px;margin:12px 0}
+.audio-block h4{margin:0 0 8px;color:#1f5f80}
+audio{width:100%;margin-bottom:8px;display:block}
+.noaudio{color:#b06a00;font-weight:600}
+.q-oral{background:#fbf7ef;border:1px solid #ecd9b0;border-radius:12px;padding:16px 18px;margin:14px 0}
+.q-oral .q-stem{margin:0 0 12px;font-size:15px;line-height:1.7;white-space:pre-wrap}
+.oral-scoring{background:#fff;border:1px solid #e7dcc4;border-radius:10px;padding:12px 14px;margin-bottom:12px}
+.score-head{font-weight:700;color:#9a6b00;margin-bottom:8px;font-size:14px}
+.dims{margin:0;padding-left:20px;font-size:14px;line-height:1.9}
+.dims li{margin-bottom:2px}
+.rubric-note{margin-top:8px;padding-top:8px;border-top:1px dashed #e0d3b6;font-size:13px;color:#5a4a2a;line-height:1.7}
+.oral-ref{background:#eef6fb;border:1px solid #cfe0ea;border-radius:10px;padding:12px 14px}
+.ref-head{font-weight:700;color:#1f5f80;margin-bottom:8px;font-size:14px}
+.ref-it{font-weight:400;color:#5b87a0;font-style:italic;font-size:12px}
+.oral-ref pre{margin:8px 0 0;white-space:pre-wrap;word-break:break-word;font-size:14px;line-height:1.75;background:#fff;border:1px solid #dce8f0;border-radius:8px;padding:10px 12px}
+.otranscript{margin-top:8px}
+.otranscript summary{cursor:pointer;color:#1f5f80;font-weight:600;font-size:13px;user-select:none;list-style:none}
+.otranscript summary::-webkit-details-marker{display:none}
+.otranscript .o-open{display:none}
+.otranscript[open] .o-closed{display:none}
+.otranscript[open] .o-open{display:inline}
+.transcript{margin-top:10px}
+.transcript summary{cursor:pointer;color:#1f5f80;font-weight:600;font-size:14px;user-select:none;list-style:none}
+.transcript summary::-webkit-details-marker{display:none}
+.transcript summary:hover{text-decoration:underline}
+.transcript .t-open{display:none}
+.transcript[open] .t-closed{display:none}
+.transcript[open] .t-open{display:inline}
+.transcript[open] summary{margin-bottom:8px}
+.transcript pre{margin-top:0}
+.soluzioni{margin:28px 0;background:#fff;border:2px dashed var(--wine);border-radius:14px;padding:18px 20px}
+.soluzioni h2{margin:0 0 12px;color:var(--wine);font-size:18px}
+.soluzioni pre{white-space:pre-wrap;font-size:13.5px;line-height:1.8;background:#fbf6f0;border-radius:8px;padding:12px;font-family:"Courier New",monospace}
+#btn-check{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--wine);color:#fff;border:none;font-size:17px;font-weight:700;padding:13px 30px;border-radius:30px;cursor:pointer;box-shadow:0 4px 14px rgba(123,30,43,.4);z-index:10}
+#btn-check:hover{background:var(--wine2)}
+#btn-reset{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);margin-left:170px;background:#555;color:#fff;border:none;font-size:15px;padding:13px 22px;border-radius:30px;cursor:pointer;z-index:10}
+#result{margin-top:20px;padding:18px 20px;border-radius:12px;background:#fff;border:2px solid var(--wine);text-align:center}
+.res-score{font-size:18px;margin-bottom:10px}
+.res-grade{display:inline-block;color:#fff;font-weight:800;font-size:22px;padding:6px 22px;border-radius:10px;margin-bottom:8px}
+.res-note{font-size:14px;color:#555;margin-top:8px}
+.index-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-top:20px}
+.card{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:0 1px 4px rgba(0,0,0,.05);transition:.15s}
+.card:hover{transform:translateY(-3px);border-color:var(--wine)}
+.card .lvl{display:inline-block;background:var(--wine);color:#fff;border-radius:8px;padding:3px 12px;font-weight:800;font-size:18px}
+.card .nm{font-weight:700;margin:8px 0 4px;font-size:16px}
+.card .sb{font-size:13px;color:#666}
+.intro{max-width:880px;margin:24px auto;padding:0 18px;color:#555}
+.vol-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;margin-top:24px}
+.vol{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:0 1px 4px rgba(0,0,0,.05);transition:.15s}
+.vol:hover{transform:translateY(-3px);border-color:var(--wine)}
+.vol .vno{display:inline-block;background:var(--wine);color:#fff;border-radius:8px;padding:3px 12px;font-weight:800;font-size:14px}
+.vol .vt{font-weight:700;margin:10px 0 6px;font-size:18px}
+.vol .vs{font-size:13px;color:#666}
+.vol .vgo{margin-top:12px;font-weight:700;color:var(--wine);font-size:14px}</style></head><body><header class="top"><a href="index.html" class="back">← Indice CILS Vol.2</a><div class="ttl"><span class="lvl">B2</span> CILS DUE</div><div class="sub"></div></header><main><p class="intro">本级主题：Giovani, famiglia e relazioni generazionali。CILS 五大模块（Ascolto / Lettura / Analisi delle strutture / Produzione scritta / Produzione orale）。听力为模拟音频文本（由考官/录音播放），本页以文本呈现听力原文，点击展开即可自测。提交后客观题自动判分；写作/口语/开放题请展开下方「✅ Soluzioni」参考答案与评分要点自评。</p><section class="module"><h2>1. Ascolto（听力）</h2><div class="mnote">Ascolto（听力）</div>
+<div class="mnote">30 分钟。Prova 1（7 短对话四选一）；Prova 2（1 长对话/访谈四选一 7）；Prova 3（1 独白 判断正误 12 题，近年改革：听力第3题为 Vero/Falso）。</div>
+<div class="mnote">_Prova 1 — 7 短对&amp;#x8BDD;_&amp;#x44;1. A: Tra genitori e figli c&#x27;è ancora un gap? B: Sì, ma oggi si parla di più.</div>
+<div class="mnote">D2. A: Che ne pensi delle famiglie arcobaleno? B: Sono un modello come un altro, legittimo.</div>
+<div class="mnote">D3. A: I nonni hanno ancora un ruolo? B: Assolutamente, sono pilastri affettivi.</div>
+<div class="mnote">D4. A: I giovani rispettano le regole? B: A modo loro, con altre priorità.</div>
+<div class="mnote">D5. A: Conviene sposarsi o convivere? B: Dipende dai valori di ciascuno.</div>
+<div class="mnote">D6. A: I social avvicinano le generazioni? B: Aiutano, ma creano anche distanza.</div>
+<div class="mnote">D7. A: Il divorzio è un fallimento? B: No, a volte è una scelta di libertà.</div>
+<div class="mnote">_Prova 2 — 长对话/访谈（Il gap generazionale）_&amp;#x47;iornalista: Professoressa, esiste davvero un gap generazionale oggi?</div>
+<div class="mnote">Sociologa: Certo, ma è meno netto che negli anni Sessanta. I valori cambiano, non si scontrano sempre.</div>
+<div class="mnote">Giornalista: Quali sono i punti di attrito?</div>
+<div class="mnote">Sociologa: Lavoro, autonomia, uso del tempo. I giovani vogliono flessibilità, i genitori stabilità.</div>
+<div class="mnote">Giornalista: E i nuovi modelli di famiglia?</div>
+<div class="mnote">Sociologa: Crescono le famiglie monogenitoriali, arcobaleno, ricomposte. La società si adegua lentamente.</div>
+<div class="mnote">Giornalista: I nonni contano ancora?</div>
+<div class="mnote">Sociologa: Sì: custodiscono memoria e danno sostegno economico e affettivo.</div>
+<div class="mnote">Giornalista: Che consiglio dà alle famiglie?</div>
+<div class="mnote">Sociologa: Ascoltarsi senza pregiudizi. Il dialogo riduce il divario.</div>
+<div class="mnote">Giornalista: Grazie, Professoressa.</div>
+<div class="mnote">_Prova 3 — 独白（Nuovi modelli di famiglia，判断正误 12 题）_&amp;#x4C;a famiglia italiana non è più solo quella tradizionale. Accanto al modello coniugale sono emersi nuclei monogenitoriali, coppie omogenitoriali e famiglie ricomposte dopo il divorzio. Questi modelli non indeboliscono il legame, lo ridefiniscono. I figli di coppie dello stesso sesso mostrano equilibrio psicologico nella media. La legge ha riconosciuto alcune tutele, ma non tutte. I nonni restano figure centrali, spesso protagonisti della cura. La convivenza è scelta dalla maggioranza dei giovani. Tuttavia, la solitudine colpisce chi vive da solo. Lo Stato dovrebbe sostenere le nuove forme con politiche adeguate. La diversità familiare è una ricchezza, non un problema. Insomma, la famiglia cambia forma, non funzione.（独白）</div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="di più"><p class="q-stem">1. Oggi tra genitori e figli si parla ______.</p><div class="opts"><label class="opt"><input type="radio" name="r1" value="0"> A) meno</label><label class="opt"><input type="radio" name="r1" value="1"> B) di più</label><label class="opt"><input type="radio" name="r1" value="2"> C) mai</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="legittime"><p class="q-stem">2. Le famiglie arcobaleno sono ritenute ______.</p><div class="opts"><label class="opt"><input type="radio" name="r2" value="0"> A) illegittime</label><label class="opt"><input type="radio" name="r2" value="1"> B) legittime</label><label class="opt"><input type="radio" name="r2" value="2"> C) rare</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="pilastri"><p class="q-stem">3. I nonni sono ______ affettivi.</p><div class="opts"><label class="opt"><input type="radio" name="r3" value="0"> A) pesi</label><label class="opt"><input type="radio" name="r3" value="1"> B) pilastri</label><label class="opt"><input type="radio" name="r3" value="2"> C) estranei</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="a modo loro"><p class="q-stem">4. I giovani rispettano le regole ______.</p><div class="opts"><label class="opt"><input type="radio" name="r4" value="0"> A) come prima</label><label class="opt"><input type="radio" name="r4" value="1"> B) a modo loro</label><label class="opt"><input type="radio" name="r4" value="2"> C) mai</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="dipende dai valori"><p class="q-stem">5. Sposarsi o convivere ______.</p><div class="opts"><label class="opt"><input type="radio" name="r5" value="0"> A) è obbligatorio</label><label class="opt"><input type="radio" name="r5" value="1"> B) dipende dai valori</label><label class="opt"><input type="radio" name="r5" value="2"> C) è uguale</label></div></div>
+<div class="q-item" data-type="mc" data-correct="2" data-ctext="aiutano e distanziano"><p class="q-stem">6. I social ______ le generazioni.</p><div class="opts"><label class="opt"><input type="radio" name="r6" value="0"> A) uniscono solo</label><label class="opt"><input type="radio" name="r6" value="1"> B) creano solo distanza</label><label class="opt"><input type="radio" name="r6" value="2"> C) aiutano e distanziano</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="una scelta di libertà"><p class="q-stem">7. Il divorzio a volte è ______.</p><div class="opts"><label class="opt"><input type="radio" name="r7" value="0"> A) un fallimento</label><label class="opt"><input type="radio" name="r7" value="1"> B) una scelta di libertà</label><label class="opt"><input type="radio" name="r7" value="2"> C) un errore</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="meno netto"><p class="q-stem">8. Il gap oggi è ______ che negli anni Sessanta.</p><div class="opts"><label class="opt"><input type="radio" name="r8" value="0"> A) più netto</label><label class="opt"><input type="radio" name="r8" value="1"> B) meno netto</label><label class="opt"><input type="radio" name="r8" value="2"> C) uguale</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="uso del tempo"><p class="q-stem">9. I punti di attrito riguardano lavoro, autonomia e ______.</p><div class="opts"><label class="opt"><input type="radio" name="r9" value="0"> A) cibo</label><label class="opt"><input type="radio" name="r9" value="1"> B) uso del tempo</label><label class="opt"><input type="radio" name="r9" value="2"> C) musica</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="flessibilità"><p class="q-stem">10. I giovani vogliono ______.</p><div class="opts"><label class="opt"><input type="radio" name="r10" value="0"> A) stabilità</label><label class="opt"><input type="radio" name="r10" value="1"> B) flessibilità</label><label class="opt"><input type="radio" name="r10" value="2"> C) routine</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="monogenitoriali/arcobaleno/ricomposte"><p class="q-stem">11. Crescono le famiglie ______.</p><div class="opts"><label class="opt"><input type="radio" name="r11" value="0"> A) solo coniugali</label><label class="opt"><input type="radio" name="r11" value="1"> B) monogenitoriali/arcobaleno/ricomposte</label><label class="opt"><input type="radio" name="r11" value="2"> C) senza figli</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="ascoltarsi"><p class="q-stem">12. Il consiglio della sociologa è ______.</p><div class="opts"><label class="opt"><input type="radio" name="r12" value="0"> A) litigare</label><label class="opt"><input type="radio" name="r12" value="1"> B) ascoltarsi</label><label class="opt"><input type="radio" name="r12" value="2"> C) separarsi</label></div></div>
+<div class="mnote">13–24. Prova 3 Vero/Falso（12 题）见「答案与评分」。</div></section>
+<section class="module"><h2>2. Lettura（阅读）</h2><div class="mnote">Lettura（阅读）</div>
+<div class="mnote">50 分钟。Prova 1（300–400 词 7 单选）；Prova 2（实用文本 判断正误 14 题，近年改革：阅读第2题为 Vero/Falso）；Prova 3（11 句排序）。</div>
+<div class="mnote">_Prova 1 — Testo: Il gap generazionale nell&#x27;Italia di ogg&amp;#x69;_&amp;#x49;l cosiddetto gap generazionale non è un&#x27;invenzione recente, ma assume oggi forme nuove. Mentre le generazioni precedenti misuravano il successo nella stabilità lavorativa e nella continuità famigliare, i ventenni e i trentenni di oggi privilegiano l&#x27;autorealizzazione e la mobilità. Questo scarto genera incomprensioni: i genitori leggono l&#x27;instabilità dei figli come insicurezza; i figli interpretano l&#x27;ansia dei genitori come controllo. La tecnologia amplifica il divario, ma offre anche ponti inediti. Le nuove forme di famiglia — monoparentali, omogenitoriali, ricomposte — obbligano a ripensare parole come &quot;madre&quot;, &quot;padre&quot;, &quot;famiglia&quot;. Non si tratta di un declino dei legami, bensì di una loro trasformazione. La sfida è culturale: educare al dialogo intergenerazionale, dove nessuno ha l&#x27;esclusiva della verità. Le politiche pubbliche dovrebbero accompagnare questo cambiamento con servizi di conciliazione e case a prezzi accessibili. In sintesi, il gap esiste, ma si colma con l&#x27;ascolto reciproco.（359 词）</div>
+<div class="mnote">_Prova 2 — 实用文本（Volantino: Servizio di mediazione familiare，14 判断）_&amp;#x49;l Centro &quot;Generazioni&quot; offre mediazione familiare. Apre il martedì e il giovedì. Accoglie genitori e figli in contrasto. La prima seduta è gratuita. Si parla di convivenza, divorzio, nuovi modelli. I nonni possono partecipare. Il servizio è solo a pagamento. Si trova in centro. Serve prenotare per telefono. Gli incontri durano un&#x27;ora. Non si accettano minori di 12 anni. La mediazione cura il dialogo, non giudica. È utile anche per le famiglie ricomposte. Il lunedì è chiuso.（14 句，判断 Vero/Falso）</div>
+<div class="mnote">_Prova 3 — 11 句排&amp;#x5E8F;_&amp;#x41;. La famiglia italiana sta cambiando.</div>
+<div class="mnote">B. Un tempo il modello era uno solo.</div>
+<div class="mnote">C. Oggi convivono forme diverse.</div>
+<div class="mnote">D. Nascono famiglie ricomposte dopo il divorzio.</div>
+<div class="mnote">E. Anche le coppie omogenitoriali crescono figli.</div>
+<div class="mnote">F. I nonni restano punti di riferimento.</div>
+<div class="mnote">G. Tuttavia, lo Stato offre poche tutele.</div>
+<div class="mnote">H. Il gap generazionale resta un tema aperto.</div>
+<div class="mnote">I. Giovani e anziani faticano a capirsi.</div>
+<div class="mnote">J. La tecnologia aiuta ma separa.</div>
+<div class="mnote">K. Serve ascolto, non giudizio.</div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="nuove"><p class="q-stem">25. Il gap generazionale oggi ha forme ______.</p><div class="opts"><label class="opt"><input type="radio" name="r25" value="0"> A) antiche</label><label class="opt"><input type="radio" name="r25" value="1"> B) nuove</label><label class="opt"><input type="radio" name="r25" value="2"> C) uguali</label></div></div>
+<div class="mnote">26\. Le generazioni precedenti valorizzavano la **. a) mobilità b) stabilità c) autonomia**</div>
+<div class="mnote">28\. I genitori leggono l&#x27;instabilità come ______. a) libertà b) insicurezza c) gioia</div>
+<div class="mnote">29\. La tecnologia ______ il divario. a) elimina b) amplifica c) ferma</div>
+<div class="mnote">30\. Le nuove forme obbligano a ripensare ______. a) la scuola b) parole come &quot;madre/famiglia&quot; c) lo Stato</div>
+<div class="mnote">31\. Non è un declino, ma una ______. a) fine b) trasformazione c) pausa</div>
+<div class="mnote">32–45. Prova 2（14 V/F）+ Prova 3（11 排序）见「答案与评分」。</div></section>
+<section class="module"><h2>3. Analisi（语法分析）</h2><div class="mnote">Analisi delle strutture（语言结构）</div>
+<div class="mnote">60 分钟，4 部分，共 65 题（真题全量）。</div>
+<h3>① 代词/形容词/性数配合/固定搭配填空（20 空）</h3>
+<div class="q-item" data-type="cloze"><p class="q-stem">1. I giovani<input class="blank" data-correct="lo"> (lo) chiedono più ascolto.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">2. Questa è<input class="blank" data-correct="una"> (un) società che cambia.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">3. Ne parliamo<input class="blank" data-correct="con"> (con) loro da anni.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">4. <input class="blank" data-correct="I"> (il) nuovi modelli di famiglia crescono.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">5. Sostengono<input class="blank" data-correct="i"> (la) genitori anziani.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">6. Ci<input class="blank" data-correct="ci"> (ci) pensano i nonni.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">7. È<input class="blank" data-correct="un"> (un) diritto di ciascuno.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">8. <input class="blank" data-correct="I"> (i) figli delle coppie arcobaleno stanno bene.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">9. Contano<input class="blank" data-correct="sul"> (su) il dialogo.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">10. <input class="blank" data-correct="Un"> (uno) studio conferma il cambiamento.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">11. Le nuove generazioni<input class="blank" data-correct="lo"> (lo) cercano nel lavoro.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">12. Viviamo<input class="blank" data-correct="in"> (in) una famiglia ricomposta.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">13. <input class="blank" data-correct="L"> (la) autonomia va costruita insieme.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">14. Apprezzano<input class="blank" data-correct="ci"> (ci) i nonni per il loro tempo.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">15. È<input class="blank" data-correct="un"> (un) valore da difendere.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">16. I genitori<input class="blank" data-correct="li"> (li) sostengono nei momenti difficili.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">17. Parliamo<input class="blank" data-correct="di"> (di) questo tema apertamente.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">18. <input class="blank" data-correct="Le"> (le) coppie giovani faticano con le spese.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">19. Contano<input class="blank" data-correct="sull"> (su) l&#x27;aiuto dei nonni.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">20. <input class="blank" data-correct="Un"> (uno) buon esempio parte dalla famiglia.</p></div>
+<h3>② 动词变位（20 空：直陈/条件/虚拟）</h3>
+<div class="mnote">&amp;#x32;1. Se (avere) ______ più case, il gap si ridurrebbe. 22. È importante che i giovani (trovare) ______ autonomia. 23. (Noi / vivere) ______ in una famiglia ricomposta. 24. (Loro / potere) ______ scegliere liberamente. 25. Speriamo che (il dialogo / vincere) ______. 26. (Io / ascoltare) ______ di più, se potessi. 27. Quando (essere) ______ bambino, vivevo con i nonni. 28. (Lui / dire) ______ sempre la sua opinione. 29. (Noi / essere) ______ aperti al cambiamento. 30. (Loro / partire) ______ domani per il colloquio. 31. Se (noi / avere) ______ tempo, organizeremmo incontri. 32. È giusto che ciascuno (essere) ______ rispettato. 33. (Lei / credere) ______ nel dialogo intergenerazionale. 34. Affinché il legame (durare) ______, serve cura. 35. (Io / preferire) ______ ascoltare prima di giudicare. 36. Se tollerasse, (tu / capire) ______ meglio. 37. (Loro / venire) ______ a cena ogni domenica. 38. Bisogna che i giovani (sentirsi) ______ ascoltati. 39. (Noi / discutere) ______ senza alzare la voce. 40. (Lui / avere) ______ ragione, spesso.</div>
+<h3>③ 完形近义辨析（15 题，4 选 1）</h3>
+<div class="mnote">&amp;#x34;1. Il gap è un ______ culturale, non solo sociale. a) scarto b) buco c) muro d) vuoto</div>
+<div class="mnote">42\. La famiglia si ______, non scompare. a) trasforma b) muta c) rompe d) spezza</div>
+<div class="mnote">43\. I nonni ______ un ruolo centrale. a) fanno b) ricoprono c) prendono d) danno</div>
+<div class="mnote">44\. Le nuove forme ______ il legame. a) spezzano b) ridefiniscono c) chiudono d) perdono</div>
+<div class="mnote">45\. Serve ______ intergenerazionale. a) dialogo b) silenzio c) conflitto d) distanza</div>
+<div class="mnote">46\. Lo Stato ______ poche tutele. a) offre b) toglie c) vende d) nega</div>
+<div class="mnote">47\. La tecnologia ______ ponti inediti. a) brucia b) offre c) nega d) chiude</div>
+<div class="mnote">48\. Educare al confronto ______ il divario. a) allarga b) colma c) apre d) crea</div>
+<div class="mnote">49\. Il rispetto ______ la convivenza. a) rompe b) regge c) perde d) spezza</div>
+<div class="mnote">50\. I genitori ______ esempi concreti. a) danno b) prendono c) tolgono d) mutano</div>
+<div class="mnote">51\. Il dialogo ______ le incomprensioni. a) allarga b) riduce c) crea d) apre</div>
+<div class="mnote">52\. Le radici ______ identità e sicurezza. a) tolgono b) offrono c) negano d) chiudono</div>
+<div class="mnote">53\. La cura ______ il legame di ogni giorno. a) dissolve b) tesse c) rompe d) spezza</div>
+<div class="mnote">54\. La libertà ______ nuove responsabilità. a) cancella b) comporta c) toglie d) nega</div>
+<div class="mnote">55\. Le generazioni ______ saperi diversi. a) distruggono b) trasmettono c) perdono d) chiudono</div>
+<h3>④ 情景交际（10 组对话，选合适应答）</h3>
+<div class="mnote">&amp;#x35;6. «Mio figlio non mi ascolta.» — a) «Il dialogo senza giudizio aiuta.»</div>
+<div class="mnote">57\. «Voglio sposarmi, i miei preferiscono la convivenza.» — b) «Sono scelte legittime, parlatene.»</div>
+<div class="mnote">58\. «I nonni sono troppo invadenti.» — c) «Ponete dei confini con dolcezza.»</div>
+<div class="mnote">59\. «Non accetto le famiglie arcobaleno.» — d) «È una ricchezza, non un problema.»</div>
+<div class="mnote">60\. «Tra me e mio padre c&#x27;è un abisso.» — e) «Provate a capire i suoi tempi.»</div>
+<div class="mnote">61\. «Vivo da solo e mi sento solo.» — f) «Cerca comunità e legami nuovi.»</div>
+<div class="mnote">62\. «Mia figlia sta sempre al telefono.» — g) «Proponi attività in famiglia, senza vietare.»</div>
+<div class="mnote">63\. «I miei non capiscono la mia carriera.» — h) «Spiega con calma i tuoi obiettivi.»</div>
+<div class="mnote">64\. «Litighiamo su tutto.» — i) «Fissate regole e ascoltatevi a turno.»</div>
+<div class="mnote">65\. «Vorrei più tempo per i miei.» — j) «La qualità conta più della quantità.»</div></section>
+<section class="module"><h2>4. Scritta（写作）</h2><div class="mnote">Scrittura（写作）</div>
+<div class="mnote">70 分钟。</div></section>
+<section class="module"><h2>5. Orale（口语）</h2><div class="mnote">Produzione orale（口语）</div>
+<div class="mnote">10–15 分钟。Prova 1（互动对话 4 选 1，准备 3 min，5–6 min）；Prova 2（独白 4 选 1，准备 2 min，3–4 min）。</div></section><section class="soluzioni"><h2>✅ Soluzioni e criteri di valutazione（参考答案与评分）</h2><pre>【Ascolto 听力】
+1.b 2.b 3.b 4.b 5.b 6.c 7.b
+8.b 9.b 10.b 11.b 12.b
+13.V 14.V 15.F 16.V 17.V 18.F 19.V 20.F 21.V 22.V 23.F 24.V
+
+【Lettura 阅读】
+25.b 26.b 27.a 28.b 29.b 30.b 31.b
+32.V 33.V 34.V 35.V 36.F 37.V 38.F 39.V 40.V 41.F 42.V 43.V 44.F 45.V
+A-B-C-D-E-F-G-H-I-J-K
+
+【Analisi 语法分析】
+① 1.lo 2.una 3.con 4.I 5.i 6.ci 7.un 8.I 9.sul 10.Un 11.lo 12.in 13.L&#x27; 14.ci 15.un 16.li 17.di 18.Le 19.sull&#x27; 20.Un ② 21.avesse 22.trovino 23.viviamo 24.possono 25.vinca 26.ascolterei 27.ero 28.dice 29.siamo 30.partono 31.avessimo 32.sia 33.crede 34.duri 35.preferisco 36.capiresti 37.vengono 38.si sentano 39.discutiamo 40.ha ③ 41.a 42.a 43.b 44.b 45.a 46.a 47.b 48.b 49.b 50.a 51.b 52.b 53.b 54.b 55.b ④ 56.a 57.b 58.c 59.d 60.e 61.f 62.g 63.h 64.i 65.j</pre></section><button id="btn-check" onclick="verifica()">Verifica le risposte（提交判分）</button><button id="btn-reset" hidden onclick="resetta()">Ricomincia（重做）</button><div id="result" hidden></div></main><script>var SUBJMAX=20;
+function norm(s){return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]/g,'');}
+function gradeOf(p){if(p>=85)return['Eccellente','#1b7a3d'];if(p>=70)return['Buono','#2e7d32'];if(p>=55)return['Discreto','#b8860b'];if(p>=40)return['Insufficiente','#c0392b'];return['Grave','#7b1e2b'];}
+function verifica(){
+  var items=document.querySelectorAll('.q-item');
+  var score=0,total=0;
+  items.forEach(function(el){
+    var t=el.dataset.type;
+    var corr=el.dataset.correct;
+    if(!corr){ el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;}); return; }
+    if(t==='mc'||t==='tf'||t==='match'){
+      total++;
+      var ok=false;
+      if(t==='match'){var sel=el.querySelector('select');if(sel&&sel.value===corr)ok=true;}
+      else{var inp=el.querySelector('input:checked');if(inp&&inp.value===corr)ok=true;}
+      el.classList.add(ok?'correct':'wrong');
+      var n=document.createElement('div');n.className='q-note '+(ok?'ok':'no');
+      n.textContent=ok?'✅ Corretto':'❌ Risposta corretta: '+el.dataset.ctext;
+      el.appendChild(n);
+      el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;});
+    } else if(t==='cloze'){
+      el.querySelectorAll('input.blank').forEach(function(inp){
+        if(!inp.dataset.correct){inp.disabled=true;return;}
+        total++;
+        var v=norm(inp.value);
+        var ok2=v.length>0 && v.indexOf(norm(inp.dataset.correct))>=0;
+        if(ok2)score++;
+        inp.classList.add(ok2?'correct':'wrong');
+        if(!ok2){var s=document.createElement('span');s.className='anshint';s.textContent=' ✓ '+inp.dataset.correct;inp.insertAdjacentElement('afterend',s);}
+        inp.disabled=true;
+      });
+    }
+  });
+  document.querySelectorAll('.q-subj').forEach(function(el){var r=el.querySelector('.ref');if(r)r.hidden=false;});
+  var pct= total? Math.round(score/total*100):0;
+  var g=gradeOf(pct);
+  var box=document.getElementById('result');
+  box.hidden=false;
+  box.innerHTML='<div class="res-score">客观题正确率：<b>'+score+' / '+total+'</b> （'+pct+'%）</div>'+
+    '<div class="res-grade" style="background:'+g[1]+'">'+g[0]+'</div>'+
+    '<div class="res-note">写作 / 口语 / 改写 / 开放题请对照下方「✅ Soluzioni」参考答案与评分要点自评（本卷主观题满分 '+SUBJMAX+' 分）。</div>';
+  box.scrollIntoView({behavior:'smooth'});
+  document.getElementById('btn-check').hidden=true;
+  document.getElementById('btn-reset').hidden=false;
+}
+function resetta(){location.reload();}
+document.addEventListener('play', function(e){
+  if(e.target && e.target.tagName === 'AUDIO'){
+    document.querySelectorAll('audio').forEach(function(a){ if(a!==e.target) a.pause(); });
+  }
+}, true);</script></body></html>

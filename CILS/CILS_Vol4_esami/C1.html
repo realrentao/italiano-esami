@@ -1,0 +1,241 @@
+<!DOCTYPE html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>CILS C1 — CILS TRE</title><style>:root{--wine:#7b1e2b;--wine2:#a83246;--ink:#23211f;--paper:#fbf8f4;--line:#e4ddd2;--ok:#1b7a3d;--no:#c0392b;}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);background:var(--paper);line-height:1.65}
+header.top{background:linear-gradient(135deg,var(--wine),var(--wine2));color:#fff;padding:26px 20px;box-shadow:0 2px 10px rgba(0,0,0,.15)}
+header.top .back{color:#ffd9df;text-decoration:none;font-size:14px}
+header.top .ttl{font-size:26px;font-weight:800;margin-top:6px}
+header.top .ttl .lvl{display:inline-block;background:#fff;color:var(--wine);border-radius:8px;padding:2px 10px;margin-right:10px;font-size:20px}
+header.top .sub{opacity:.9;margin-top:4px;font-size:15px}
+main{max-width:880px;margin:0 auto;padding:24px 18px 120px}
+section.module{margin:30px 0;background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+section.module h2{margin:0 0 14px;color:var(--wine);font-size:20px;border-bottom:2px solid var(--line);padding-bottom:8px}
+section.module h3{color:#444;font-size:16px;margin:22px 0 10px}
+.mnote{background:#f6f1e9;border-left:4px solid var(--wine);border-radius:8px;padding:10px 14px;margin:12px 0;font-size:13.5px;color:#6b5b4a;line-height:1.7}
+.text{background:#f6f1e9;border-left:4px solid var(--wine);border-radius:8px;padding:12px 14px;margin:12px 0}
+.text h4{margin:0 0 6px;font-size:14px;color:var(--wine)}
+pre{white-space:pre-wrap;margin:0;font-family:"Courier New",monospace;font-size:14px}
+.items{margin-top:14px}
+.q-item{margin:14px 0;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fffdf9}
+.q-item.correct{border-color:var(--ok);background:#f1faf3}
+.q-item.wrong{border-color:var(--no);background:#fdf1f0}
+.q-stem{margin:0 0 8px;font-weight:600}
+.opts{display:flex;flex-direction:column;gap:6px}
+.opt{display:flex;align-items:center;gap:8px;cursor:pointer;padding:4px 6px;border-radius:6px}
+.opt:hover{background:#f3ede3}
+.match-sel{font-size:15px;padding:5px 8px;border-radius:6px;border:1px solid #bbb;margin-top:4px}
+.blank{font-size:15px;padding:3px 6px;border:1px solid #bbb;border-radius:6px;margin:0 4px;min-width:90px}
+.blank.correct{border-color:var(--ok);background:#eafaf0}
+.blank.wrong{border-color:var(--no);background:#fdeceb}
+.anshint{color:var(--no);font-size:13px;margin-left:6px}
+textarea.ans{width:100%;font-size:15px;padding:10px;border:1px solid #ccc;border-radius:8px;font-family:inherit;resize:vertical}
+.q-subj .ref{margin-top:10px;padding:10px 12px;background:#eef6fb;border-left:4px solid #2a7fb8;border-radius:8px;font-size:14px}
+.q-note{margin-top:8px;font-weight:700;font-size:14px}
+.q-note.ok{color:var(--ok)} .q-note.no{color:var(--no)}
+.audio-block{background:#f0f4f7;border:1px solid #cfe0ea;border-radius:10px;padding:12px 14px;margin:12px 0}
+.audio-block h4{margin:0 0 8px;color:#1f5f80}
+audio{width:100%;margin-bottom:8px;display:block}
+.noaudio{color:#b06a00;font-weight:600}
+.q-oral{background:#fbf7ef;border:1px solid #ecd9b0;border-radius:12px;padding:16px 18px;margin:14px 0}
+.q-oral .q-stem{margin:0 0 12px;font-size:15px;line-height:1.7;white-space:pre-wrap}
+.oral-scoring{background:#fff;border:1px solid #e7dcc4;border-radius:10px;padding:12px 14px;margin-bottom:12px}
+.score-head{font-weight:700;color:#9a6b00;margin-bottom:8px;font-size:14px}
+.dims{margin:0;padding-left:20px;font-size:14px;line-height:1.9}
+.dims li{margin-bottom:2px}
+.rubric-note{margin-top:8px;padding-top:8px;border-top:1px dashed #e0d3b6;font-size:13px;color:#5a4a2a;line-height:1.7}
+.oral-ref{background:#eef6fb;border:1px solid #cfe0ea;border-radius:10px;padding:12px 14px}
+.ref-head{font-weight:700;color:#1f5f80;margin-bottom:8px;font-size:14px}
+.ref-it{font-weight:400;color:#5b87a0;font-style:italic;font-size:12px}
+.oral-ref pre{margin:8px 0 0;white-space:pre-wrap;word-break:break-word;font-size:14px;line-height:1.75;background:#fff;border:1px solid #dce8f0;border-radius:8px;padding:10px 12px}
+.otranscript{margin-top:8px}
+.otranscript summary{cursor:pointer;color:#1f5f80;font-weight:600;font-size:13px;user-select:none;list-style:none}
+.otranscript summary::-webkit-details-marker{display:none}
+.otranscript .o-open{display:none}
+.otranscript[open] .o-closed{display:none}
+.otranscript[open] .o-open{display:inline}
+.transcript{margin-top:10px}
+.transcript summary{cursor:pointer;color:#1f5f80;font-weight:600;font-size:14px;user-select:none;list-style:none}
+.transcript summary::-webkit-details-marker{display:none}
+.transcript summary:hover{text-decoration:underline}
+.transcript .t-open{display:none}
+.transcript[open] .t-closed{display:none}
+.transcript[open] .t-open{display:inline}
+.transcript[open] summary{margin-bottom:8px}
+.transcript pre{margin-top:0}
+.soluzioni{margin:28px 0;background:#fff;border:2px dashed var(--wine);border-radius:14px;padding:18px 20px}
+.soluzioni h2{margin:0 0 12px;color:var(--wine);font-size:18px}
+.soluzioni pre{white-space:pre-wrap;font-size:13.5px;line-height:1.8;background:#fbf6f0;border-radius:8px;padding:12px;font-family:"Courier New",monospace}
+#btn-check{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--wine);color:#fff;border:none;font-size:17px;font-weight:700;padding:13px 30px;border-radius:30px;cursor:pointer;box-shadow:0 4px 14px rgba(123,30,43,.4);z-index:10}
+#btn-check:hover{background:var(--wine2)}
+#btn-reset{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);margin-left:170px;background:#555;color:#fff;border:none;font-size:15px;padding:13px 22px;border-radius:30px;cursor:pointer;z-index:10}
+#result{margin-top:20px;padding:18px 20px;border-radius:12px;background:#fff;border:2px solid var(--wine);text-align:center}
+.res-score{font-size:18px;margin-bottom:10px}
+.res-grade{display:inline-block;color:#fff;font-weight:800;font-size:22px;padding:6px 22px;border-radius:10px;margin-bottom:8px}
+.res-note{font-size:14px;color:#555;margin-top:8px}
+.index-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-top:20px}
+.card{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:0 1px 4px rgba(0,0,0,.05);transition:.15s}
+.card:hover{transform:translateY(-3px);border-color:var(--wine)}
+.card .lvl{display:inline-block;background:var(--wine);color:#fff;border-radius:8px;padding:3px 12px;font-weight:800;font-size:18px}
+.card .nm{font-weight:700;margin:8px 0 4px;font-size:16px}
+.card .sb{font-size:13px;color:#666}
+.intro{max-width:880px;margin:24px auto;padding:0 18px;color:#555}
+.vol-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;margin-top:24px}
+.vol{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:0 1px 4px rgba(0,0,0,.05);transition:.15s}
+.vol:hover{transform:translateY(-3px);border-color:var(--wine)}
+.vol .vno{display:inline-block;background:var(--wine);color:#fff;border-radius:8px;padding:3px 12px;font-weight:800;font-size:14px}
+.vol .vt{font-weight:700;margin:10px 0 6px;font-size:18px}
+.vol .vs{font-size:13px;color:#666}
+.vol .vgo{margin-top:12px;font-weight:700;color:var(--wine);font-size:14px}</style></head><body><header class="top"><a href="index.html" class="back">← Indice CILS Vol.4</a><div class="ttl"><span class="lvl">C1</span> CILS TRE</div><div class="sub"></div></header><main><p class="intro">本级主题：Istruzione e apprendimento permanente。CILS 五大模块（Ascolto / Lettura / Analisi delle strutture / Produzione scritta / Produzione orale）。听力为模拟音频文本（由考官/录音播放），本页以文本呈现听力原文，点击展开即可自测。提交后客观题自动判分；写作/口语/开放题请展开下方「✅ Soluzioni」参考答案与评分要点自评。</p><section class="module"><h2>1. Ascolto（听力）</h2><div class="mnote">Ascolto（听力）— 40 分钟</div>
+<h3>题型说明</h3>
+<h3>听力原文（模拟音频文本）</h3>
+<div class="mnote">S: Dipende. La normativa è avanzata: ogni alunno con disabilità ha un piano individuale e un insegnante di sostegno. Ma la qualità varia. Dove mancano risorse, l&#x27;inclusione resta formale. Serve formazione specifica e tempo per i collegiali.</div>
+<h3>理解题</h3>
+<h3>Parte 1（4 题）</h3>
+<div class="mnote">1. Cosa introduce la riforma?  A) Meno autonomia  B) Più autonomia e cicli ridisegnati  C) Solo esami  D) Niente</div>
+<div class="mnote">2. I critici temono…  A) più libertà  B) disuguaglianze territoriali  C) meno scuole  D) più tasse</div>
+<div class="mnote">3. Il punto centrale per il relatore è…  A) selezione  B) cittadinanza  C) sport  D) viaggi</div>
+<div class="mnote">4. I curricula devono essere…  A) lontani dal lavoro  B) vicini al mondo del lavoro  C) vecchi  D) brevi</div>
+<h3>Parte 2（4 题）</h3>
+<div class="mnote">6\. Cosa ha ogni alunno con disabilità?  A) Un piano individuale  B) Niente  C) Una borsa  D) Un computer</div>
+<div class="mnote">7\. Dove l&#x27;inclusione resta formale?  A) Dovunque  B) Dove mancano risorse  C) Al nord  D) Mai</div>
+<div class="mnote">8\. Cosa serve secondo l&#x27;intervistata?  A) Meno tempo  B) Formazione specifica e tempo  C) Niente  D) Più esami</div>
+<div class="text"><h4>📝 Testo / Dialogo (simulato)</h4><pre>&amp;#x35;. La normativa sull&#x27;inclusione è…  A) arretrata  B) avanzata  C) inesistente  D) severa</pre></div>
+<h3>Parte 3（4 题）</h3>
+<div class="mnote">10\. Senza perequazione, l&#x27;autonomia diventa…  A) giusta  B) privilegio geografico  C) inutile  D) obbligatoria</div>
+<div class="mnote">11\. Cosa occorre secondo C?  A) Un&#x27;agenzia che monitori  B) Chiudere scuole  C) Niente  D) Più tasse</div>
+<div class="mnote">12\. Tema trasversale dell&#x27;ascolto:  A) calcio  B) riforma, inclusione, equità  C) cucina  D) moda</div>
+<div class="text"><h4>📝 Testo / Dialogo (simulato)</h4><pre>&amp;#x39;. Chi premia l&#x27;autonomia?  A) I deboli  B) Chi sa progettare  C) Nessuno  D) I ricchi soli</pre></div></section>
+<section class="module"><h2>2. Lettura（阅读）</h2><div class="mnote">Lettura（阅读）— 70 分钟</div>
+<h3>题型说明</h3>
+<h3>Parte 1 — Saggio breve + 5 单选</h3>
+<div class="text"><pre>**Riformare si può, includere è dovere**Le riforme dell&#x27;istruzione finiscono spesso per misurarsi su parametri di efficienza, trascurando il fine ultimo dell&#x27;istituzione scolastica. Se è vero che l&#x27;autonomia può stimolare l&#x27;innovazione, è altrettanto vero che senza un tessuto di garanzie l&#x27;effetto rischia di essere selettivo. L&#x27;inclusione non è un optional pedagogico: è il banco di prova di una democrazia. Quando un alunno con disabilità viene accolto davvero, l&#x27;intera comunità apprende la reciprocità. Dunque, riformare i cicli ha senso solo se affiancato da risorse stabili e da una cultura dell&#x27;accoglienza che non sia merce rara.</pre></div>
+<div class="mnote">13. Su cosa misurano le riforme, secondo l&#x27;autore?  A) Cultura  B) Efficienza  C) Sport  D) Arte</div>
+<div class="mnote">14. Rischio dell&#x27;autonomia senza garanzie?  A) Innovazione  B) Effetto selettivo  C) Niente  D) Unità</div>
+<div class="mnote">15. L&#x27;inclusione è…  A) un optional  B) banco di prova della democrazia  C) inutile  D) rara</div>
+<div class="mnote">16. Cosa impara la comunità?  A) La competizione  B) La reciprocità  C) Niente  D) La paura</div>
+<div class="mnote">17. Senso della riforma?  A) Da sola  B) Con risorse e cultura dell&#x27;accoglienza  C) Mai  D) Solo esami</div>
+<h3>Parte 2 — Commento + 判断/riflessione (4 题)</h3>
+<div class="mnote">_Testo:_ &quot;La &#x27;buona scuola&#x27; delle riforme recenti ha moltiplicato i documenti ma non sempre la cura educativa. L&#x27;inclusione esiste sulla carta; nella pratica, mancano gli insegnanti di sostegno e i tempi di programmazione.&quot;</div>
+<div class="mnote">18\. Le riforme hanno aumentato i documenti.  ☐ Vero ☐ Falso</div>
+<div class="mnote">19\. L&#x27;inclusione è pienamente praticata ovunque.  ☐ Vero ☐ Falso</div>
+<div class="mnote">20\. Mancano insegnanti di sostegno.  ☐ Vero ☐ Falso</div>
+<div class="mnote">21\. La cura educativa è sempre cresciuta.  ☐ Vero ☐ Falso</div>
+<h3>Parte 3 — Ordina 11 frasi (saggio coerente)</h3>
+<div class="mnote">a)La scuola è una delle istituzioni più discusse. b)Ogni decennio propone una riforma. c)Spesso si cambia la struttura, non la sostanza. d)L&#x27;inclusione resta il vero nodo. e)Gli alunni fragili pagano l&#x27;assenza di risorse. f)Servirebbe continuità, non sole annunci. g)Gli insegnanti chiedono formazione. h)Le famiglie vogliono equità. i)Il territorio decide molto. j)Senza equità, la riforma fallisce. k)La cittadinanza si costruisce in classe.</div>
+<div class="mnote">→ Ordine: ______ → ______ → ______ → ______ → ______ → ______ → ______ → ______ → ______ → ______ → ______</div></section>
+<section class="module"><h2>3. Analisi（语法分析）</h2><div class="mnote">Analisi delle strutture（语法）— 75 分钟 · 4 部分（更难）</div>
+<h3>题型说明（真题全量）</h3>
+<h3>Prova 1 — Pronomi relativi / Avverbi di luogo / Congiunzioni (20 题)</h3>
+<div class="q-item" data-type="cloze"><p class="q-stem">1. La riforma,<input class="blank" data-correct=""> (che / cui) obiettivo è l&#x27;autonomia, divide. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">2. La scuola in<input class="blank" data-correct=""> (cui / quale) insegnavo era inclusiva. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">3. È il luogo<input class="blank" data-correct=""> (dove / che) si costruisce cittadinanza. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">4. Non partirò<input class="blank" data-correct=""> (finché / quando) non sarà equa. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">5. <input class="blank" data-correct=""> (Sebbene / Benché) le risorse manchino, proviamo. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">6. L&#x27;alunno<input class="blank" data-correct=""> (al quale / il quale) è affidato il piano. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">7. È ciò<input class="blank" data-correct=""> (per cui / da cui) lottiamo. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">8. Viaggio<input class="blank" data-correct=""> (donde / donde) nasce il cambiamento. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">9. Lo fanno<input class="blank" data-correct=""> (affinché / affinché che) tutti partecipino. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">10. <input class="blank" data-correct=""> (Ove / Dove) possibile, includiamo tutti. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">11. La legge<input class="blank" data-correct=""> (con cui / cui) hanno approvato il decreto. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">12. È la scuola<input class="blank" data-correct=""> (dove / in cui) ho imparato a leggere. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">13. <input class="blank" data-correct=""> (Poiché / Benché) piove, restiamo dentro. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">14. Il docente<input class="blank" data-correct=""> (a cui / cui) ho parlato è gentile. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">15. È un diritto<input class="blank" data-correct=""> (che / cui) nessuno può negare. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">16. Vengo<input class="blank" data-correct=""> (da / di) una scuola difficile. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">17. <input class="blank" data-correct=""> (Prima che / Dopo che) finisca l&#x27;anno, facciamo il bilancio. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">18. L&#x27;alunno<input class="blank" data-correct=""> (il cui / la cui) padre è insegnante studia molto. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">19. È il motivo<input class="blank" data-correct=""> (per cui / di cui) protestiamo. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">20. <input class="blank" data-correct=""> (Qualora / Se) piovesse, rimandiamo la gita. → ____</p></div>
+<h3>Prova 2 — Cloze grammaticale complesso (20 题, 无选项)</h3>
+<div class="q-item" data-type="cloze"><p class="q-stem">21. <input class="blank" data-correct=""> (essere) ben condotta, l&#x27;inclusione (22)______ (potere) migliorare. Tuttavia, poiché le risorse (23)______ (scarseggiare), molti istituti (24)______ (rimanere) indietro. È necessario che lo Stato (25)______ (intervenire). Chi (26)______ (studiare) oggi le diseguaglianze sa che (27)______ (servire) stabilità. (28)______ (Aver) più docenti di sostegno (29)______ (significare) accoglienza reale. Noi (30)______ (credere) nel diritto allo studio. Le famiglie (31)______ (chiedere) più sostegno. Finché non (32)______ (esserci) equità, la scuola (33)______ (restare) ingiusta. (34)______ (Essere) preparati aiuta. Chi (35)______ (volere) cambiare deve agire. (36)______ (Ridurre) le disuguaglianze è urgente. Noi (37)______ (sperare) in un sistema migliore. (38)______ (Affrontare) il problema richiede coraggio. Gli studenti (39)______ (avere) diritto a pari opportunità. (40)______ (Costruire) inclusione è un dovere.&quot;</p></div>
+<div class="mnote">21.____ 22.____ 23.____ 24.____ 25.____ 26.____ 27.____ 28.____ 29.____ 30.____ 31.____ 32.____ 33.____ 34.____ 35.____ 36.____ 37.____ 38.____ 39.____ 40.____</div>
+<h3>Prova 3 — Quadrisinonimi (scelta multipla, 15 题)</h3>
+<div class="mnote">41. La riforma ______ (modifica) i cicli.  A) altera B) muta C) ridisegna D) stravolge</div>
+<div class="mnote">42. Un alunno ______ (escluso).  A) emarginato B) espulso C) estromesso D) omesso</div>
+<div class="mnote">43. La normativa è ______ (avanzata).  A) arretrata B) progressista C) obsoleta D) vetusta</div>
+<div class="mnote">44. Manca la ______ (cura) educativa.  A) trascuratezza B) sollecitudine C) premura D) attenzione</div>
+<div class="mnote">45. L&#x27;autonomia ______ (stimola) l&#x27;innovazione.  A) frena B) inibisce C) favorisce D) spegne</div>
+<div class="mnote">46. Un effetto ______ (selettivo).  A) inclusivo B) discriminatorio C) egualitario D) uniforme</div>
+<div class="mnote">47. Risorse ______ (stabili).  A) effimere B) caduche C) durevoli D) labili</div>
+<div class="mnote">48. Il ______ (banco di prova) della democrazia.  A) requisito B) termometro C) ostacolo D) premessa</div>
+<div class="mnote">49. Una scuola ______ (accogliente).  A) ospitale B) ostile C) fredda D) chiusa</div>
+<div class="mnote">50. Il diritto ______ (inviolabile).  A) negoziabile B) sacrosanto C) discutibile D) relativo</div>
+<div class="mnote">51. Una disparità ______ (ingiusta).  A) equa B) legittima C) iniqua D) giusta</div>
+<div class="mnote">52. Il piano ______ (personalizzato).  A) generico B) su misura C) uniforme D) standard</div>
+<div class="mnote">53. Un intervento ______ (tempestivo).  A) tardivo B) immediato C) lento D) inutile</div>
+<div class="mnote">54. La partecipazione ______ (attiva).  A) passiva B) coinvolta C) assente D) silente</div>
+<div class="mnote">55. Una politica ______ (efficace).  A) vana B) fruttuosa C) inefficace D) fallimentare</div>
+<h3>Prova 4 — Riscrivi (attivo→passivo / periodo) (10 题)</h3>
+<div class="q-item" data-type="cloze"><p class="q-stem">56. &quot;La riforma introduce l&#x27;autonomia.&quot; → L&#x27;autonomia<input class="blank" data-correct=""> (introdurre, passivo) . → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">57. &quot;Le risorse mancano, quindi l&#x27;inclusione resta formale.&quot; → Poiché le risorse mancano, l&#x27;inclusione<input class="blank" data-correct=""> (formale) . → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">58. &quot;Dobbiamo formare i docenti.&quot; → I docenti<input class="blank" data-correct=""> (formare, passivo) . → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">59. &quot;Se non cambiamo, falliamo.&quot; → A meno che non<input class="blank" data-correct=""> (cambiare) , ______ (fallire). → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">60. &quot;Hanno accolto l&#x27;alunno.&quot; → L&#x27;alunno<input class="blank" data-correct=""> (accogliere, passivo) . → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">61. &quot;È dovere includere.&quot; → Inclusione è un dovere che<input class="blank" data-correct=""> (dovere, relativo) . → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">62. &quot;Il decreto stabilisce le regole.&quot; → Le regole<input class="blank" data-correct=""> (stabilire, passivo) dal decreto. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">63. &quot;Se investiamo, miglioriamo.&quot; → A condizione che<input class="blank" data-correct=""> (investire) , ______ (migliorare). → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">64. &quot;Hanno sostenuto gli studenti fragili.&quot; → Gli studenti fragili<input class="blank" data-correct=""> (sostenere, passivo) . → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">65. &quot;La scuola deve accogliere tutti.&quot; → Tutti<input class="blank" data-correct=""> (dovere, essere accolti) dalla scuola. → ____</p></div></section>
+<section class="module"><h2>4. Scritta（写作）</h2><div class="mnote">Produzione scritta（写作）— 90 分钟</div>
+<h3>题型说明</h3>
+<h3>Prova 1 — Saggio / Articolo di commento (≈180–200 parole del totale)</h3>
+<div class="mnote">&quot;Autonomia scolastica ed equità: una tensione inevitabile?&quot; Sviluppa una argomentazione critica.</div>
+<h3>Prova 2 — Lettera formale (≈70–100 parole)</h3>
+<div class="mnote">Scrivi all&#x27;Ufficio Scolastico Regionale per segnalare la carenza di insegnanti di sostegno nella tua scuola e chiedere interventi.</div></section>
+<section class="module"><h2>5. Orale（口语）</h2><div class="mnote">Produzione orale（口语）— \~15 分钟</div>
+<h3>题型说明</h3>
+<h3>Materiale</h3>
+<div class="mnote">_&quot;La riforma non si misura sui documenti, ma sulla capacità di accogliere chi è più fragile. L&#x27;inclusione è il vero indice di civiltà di un sistema scolastico.&quot;_</div>
+<h3>Compito</h3>
+<div class="mnote">Esprimi la tua posizione e proponi 2–3 misure concrete perché l&#x27;inclusione passi &quot;dalla carta alla pratica&quot;.</div>
+<h3>✅ C1 答案与评分</h3>
+<div class="q-item q-oral" data-type="oral"><div class="oral-scoring"><div class="score-head">📋 Criteri di valutazione（口语评分要点）</div><div class="rubric-note">**Orale 评分要点**：能就 materiale 阐述 posizione personale 并提 2–3 misure concrete（es. formazione obbligatoria, dotazioni stabili, agenzia di monitoraggio）；使用 congiuntivo/periodo ipotetico/lessico astratto（_civiltà, indice, fragilità_）；argomentazione coerente e critica, fluency C1.</div></div></div></section><button id="btn-check" onclick="verifica()">Verifica le risposte（提交判分）</button><button id="btn-reset" hidden onclick="resetta()">Ricomincia（重做）</button><div id="result" hidden></div></main><script>var SUBJMAX=20;
+function norm(s){return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]/g,'');}
+function gradeOf(p){if(p>=85)return['Eccellente','#1b7a3d'];if(p>=70)return['Buono','#2e7d32'];if(p>=55)return['Discreto','#b8860b'];if(p>=40)return['Insufficiente','#c0392b'];return['Grave','#7b1e2b'];}
+function verifica(){
+  var items=document.querySelectorAll('.q-item');
+  var score=0,total=0;
+  items.forEach(function(el){
+    var t=el.dataset.type;
+    var corr=el.dataset.correct;
+    if(!corr){ el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;}); return; }
+    if(t==='mc'||t==='tf'||t==='match'){
+      total++;
+      var ok=false;
+      if(t==='match'){var sel=el.querySelector('select');if(sel&&sel.value===corr)ok=true;}
+      else{var inp=el.querySelector('input:checked');if(inp&&inp.value===corr)ok=true;}
+      el.classList.add(ok?'correct':'wrong');
+      var n=document.createElement('div');n.className='q-note '+(ok?'ok':'no');
+      n.textContent=ok?'✅ Corretto':'❌ Risposta corretta: '+el.dataset.ctext;
+      el.appendChild(n);
+      el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;});
+    } else if(t==='cloze'){
+      el.querySelectorAll('input.blank').forEach(function(inp){
+        if(!inp.dataset.correct){inp.disabled=true;return;}
+        total++;
+        var v=norm(inp.value);
+        var ok2=v.length>0 && v.indexOf(norm(inp.dataset.correct))>=0;
+        if(ok2)score++;
+        inp.classList.add(ok2?'correct':'wrong');
+        if(!ok2){var s=document.createElement('span');s.className='anshint';s.textContent=' ✓ '+inp.dataset.correct;inp.insertAdjacentElement('afterend',s);}
+        inp.disabled=true;
+      });
+    }
+  });
+  document.querySelectorAll('.q-subj').forEach(function(el){var r=el.querySelector('.ref');if(r)r.hidden=false;});
+  var pct= total? Math.round(score/total*100):0;
+  var g=gradeOf(pct);
+  var box=document.getElementById('result');
+  box.hidden=false;
+  box.innerHTML='<div class="res-score">客观题正确率：<b>'+score+' / '+total+'</b> （'+pct+'%）</div>'+
+    '<div class="res-grade" style="background:'+g[1]+'">'+g[0]+'</div>'+
+    '<div class="res-note">写作 / 口语 / 改写 / 开放题请对照下方「✅ Soluzioni」参考答案与评分要点自评（本卷主观题满分 '+SUBJMAX+' 分）。</div>';
+  box.scrollIntoView({behavior:'smooth'});
+  document.getElementById('btn-check').hidden=true;
+  document.getElementById('btn-reset').hidden=false;
+}
+function resetta(){location.reload();}
+document.addEventListener('play', function(e){
+  if(e.target && e.target.tagName === 'AUDIO'){
+    document.querySelectorAll('audio').forEach(function(a){ if(a!==e.target) a.pause(); });
+  }
+}, true);</script></body></html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>CILS B2 — CILS DUE</title><style>:root{--wine:#7b1e2b;--wine2:#a83246;--ink:#23211f;--paper:#fbf8f4;--line:#e4ddd2;--ok:#1b7a3d;--no:#c0392b;}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);background:var(--paper);line-height:1.65}
+header.top{background:linear-gradient(135deg,var(--wine),var(--wine2));color:#fff;padding:26px 20px;box-shadow:0 2px 10px rgba(0,0,0,.15)}
+header.top .back{color:#ffd9df;text-decoration:none;font-size:14px}
+header.top .ttl{font-size:26px;font-weight:800;margin-top:6px}
+header.top .ttl .lvl{display:inline-block;background:#fff;color:var(--wine);border-radius:8px;padding:2px 10px;margin-right:10px;font-size:20px}
+header.top .sub{opacity:.9;margin-top:4px;font-size:15px}
+main{max-width:880px;margin:0 auto;padding:24px 18px 120px}
+section.module{margin:30px 0;background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+section.module h2{margin:0 0 14px;color:var(--wine);font-size:20px;border-bottom:2px solid var(--line);padding-bottom:8px}
+section.module h3{color:#444;font-size:16px;margin:22px 0 10px}
+.mnote{background:#f6f1e9;border-left:4px solid var(--wine);border-radius:8px;padding:10px 14px;margin:12px 0;font-size:13.5px;color:#6b5b4a;line-height:1.7}
+.text{background:#f6f1e9;border-left:4px solid var(--wine);border-radius:8px;padding:12px 14px;margin:12px 0}
+.text h4{margin:0 0 6px;font-size:14px;color:var(--wine)}
+pre{white-space:pre-wrap;margin:0;font-family:"Courier New",monospace;font-size:14px}
+.items{margin-top:14px}
+.q-item{margin:14px 0;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fffdf9}
+.q-item.correct{border-color:var(--ok);background:#f1faf3}
+.q-item.wrong{border-color:var(--no);background:#fdf1f0}
+.q-stem{margin:0 0 8px;font-weight:600}
+.opts{display:flex;flex-direction:column;gap:6px}
+.opt{display:flex;align-items:center;gap:8px;cursor:pointer;padding:4px 6px;border-radius:6px}
+.opt:hover{background:#f3ede3}
+.match-sel{font-size:15px;padding:5px 8px;border-radius:6px;border:1px solid #bbb;margin-top:4px}
+.blank{font-size:15px;padding:3px 6px;border:1px solid #bbb;border-radius:6px;margin:0 4px;min-width:90px}
+.blank.correct{border-color:var(--ok);background:#eafaf0}
+.blank.wrong{border-color:var(--no);background:#fdeceb}
+.anshint{color:var(--no);font-size:13px;margin-left:6px}
+textarea.ans{width:100%;font-size:15px;padding:10px;border:1px solid #ccc;border-radius:8px;font-family:inherit;resize:vertical}
+.q-subj .ref{margin-top:10px;padding:10px 12px;background:#eef6fb;border-left:4px solid #2a7fb8;border-radius:8px;font-size:14px}
+.q-note{margin-top:8px;font-weight:700;font-size:14px}
+.q-note.ok{color:var(--ok)} .q-note.no{color:var(--no)}
+.audio-block{background:#f0f4f7;border:1px solid #cfe0ea;border-radius:10px;padding:12px 14px;margin:12px 0}
+.audio-block h4{margin:0 0 8px;color:#1f5f80}
+audio{width:100%;margin-bottom:8px;display:block}
+.noaudio{color:#b06a00;font-weight:600}
+.q-oral{background:#fbf7ef;border:1px solid #ecd9b0;border-radius:12px;padding:16px 18px;margin:14px 0}
+.q-oral .q-stem{margin:0 0 12px;font-size:15px;line-height:1.7;white-space:pre-wrap}
+.oral-scoring{background:#fff;border:1px solid #e7dcc4;border-radius:10px;padding:12px 14px;margin-bottom:12px}
+.score-head{font-weight:700;color:#9a6b00;margin-bottom:8px;font-size:14px}
+.dims{margin:0;padding-left:20px;font-size:14px;line-height:1.9}
+.dims li{margin-bottom:2px}
+.rubric-note{margin-top:8px;padding-top:8px;border-top:1px dashed #e0d3b6;font-size:13px;color:#5a4a2a;line-height:1.7}
+.oral-ref{background:#eef6fb;border:1px solid #cfe0ea;border-radius:10px;padding:12px 14px}
+.ref-head{font-weight:700;color:#1f5f80;margin-bottom:8px;font-size:14px}
+.ref-it{font-weight:400;color:#5b87a0;font-style:italic;font-size:12px}
+.oral-ref pre{margin:8px 0 0;white-space:pre-wrap;word-break:break-word;font-size:14px;line-height:1.75;background:#fff;border:1px solid #dce8f0;border-radius:8px;padding:10px 12px}
+.otranscript{margin-top:8px}
+.otranscript summary{cursor:pointer;color:#1f5f80;font-weight:600;font-size:13px;user-select:none;list-style:none}
+.otranscript summary::-webkit-details-marker{display:none}
+.otranscript .o-open{display:none}
+.otranscript[open] .o-closed{display:none}
+.otranscript[open] .o-open{display:inline}
+.transcript{margin-top:10px}
+.transcript summary{cursor:pointer;color:#1f5f80;font-weight:600;font-size:14px;user-select:none;list-style:none}
+.transcript summary::-webkit-details-marker{display:none}
+.transcript summary:hover{text-decoration:underline}
+.transcript .t-open{display:none}
+.transcript[open] .t-closed{display:none}
+.transcript[open] .t-open{display:inline}
+.transcript[open] summary{margin-bottom:8px}
+.transcript pre{margin-top:0}
+.soluzioni{margin:28px 0;background:#fff;border:2px dashed var(--wine);border-radius:14px;padding:18px 20px}
+.soluzioni h2{margin:0 0 12px;color:var(--wine);font-size:18px}
+.soluzioni pre{white-space:pre-wrap;font-size:13.5px;line-height:1.8;background:#fbf6f0;border-radius:8px;padding:12px;font-family:"Courier New",monospace}
+#btn-check{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--wine);color:#fff;border:none;font-size:17px;font-weight:700;padding:13px 30px;border-radius:30px;cursor:pointer;box-shadow:0 4px 14px rgba(123,30,43,.4);z-index:10}
+#btn-check:hover{background:var(--wine2)}
+#btn-reset{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);margin-left:170px;background:#555;color:#fff;border:none;font-size:15px;padding:13px 22px;border-radius:30px;cursor:pointer;z-index:10}
+#result{margin-top:20px;padding:18px 20px;border-radius:12px;background:#fff;border:2px solid var(--wine);text-align:center}
+.res-score{font-size:18px;margin-bottom:10px}
+.res-grade{display:inline-block;color:#fff;font-weight:800;font-size:22px;padding:6px 22px;border-radius:10px;margin-bottom:8px}
+.res-note{font-size:14px;color:#555;margin-top:8px}
+.index-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-top:20px}
+.card{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:0 1px 4px rgba(0,0,0,.05);transition:.15s}
+.card:hover{transform:translateY(-3px);border-color:var(--wine)}
+.card .lvl{display:inline-block;background:var(--wine);color:#fff;border-radius:8px;padding:3px 12px;font-weight:800;font-size:18px}
+.card .nm{font-weight:700;margin:8px 0 4px;font-size:16px}
+.card .sb{font-size:13px;color:#666}
+.intro{max-width:880px;margin:24px auto;padding:0 18px;color:#555}
+.vol-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;margin-top:24px}
+.vol{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:0 1px 4px rgba(0,0,0,.05);transition:.15s}
+.vol:hover{transform:translateY(-3px);border-color:var(--wine)}
+.vol .vno{display:inline-block;background:var(--wine);color:#fff;border-radius:8px;padding:3px 12px;font-weight:800;font-size:14px}
+.vol .vt{font-weight:700;margin:10px 0 6px;font-size:18px}
+.vol .vs{font-size:13px;color:#666}
+.vol .vgo{margin-top:12px;font-weight:700;color:var(--wine);font-size:14px}</style></head><body><header class="top"><a href="index.html" class="back">← Indice CILS Vol.4</a><div class="ttl"><span class="lvl">B2</span> CILS DUE</div><div class="sub"></div></header><main><p class="intro">本级主题：Istruzione e apprendimento permanente。CILS 五大模块（Ascolto / Lettura / Analisi delle strutture / Produzione scritta / Produzione orale）。听力为模拟音频文本（由考官/录音播放），本页以文本呈现听力原文，点击展开即可自测。提交后客观题自动判分；写作/口语/开放题请展开下方「✅ Soluzioni」参考答案与评分要点自评。</p><section class="module"><h2>1. Ascolto（听力）</h2><div class="mnote">Ascolto（听力）— 30 分钟</div>
+<h3>题型说明（近年改革）</h3>
+<h3>听力原文（模拟音频文本）</h3>
+<h3>Prova 1 — 7 brevi dialoghi (competenze del futuro)</h3>
+<div class="mnote">_D1._ A: Cosa conta di più domani? B: Il pensiero critico e la creatività, non solo il calcolo.</div>
+<div class="mnote">_D2._ A: L&#x27;IA sostituirà i lavori? B: Alcuni sì, ma creerà nuove professioni.</div>
+<div class="mnote">_D3._ A: Serve ancora la formazione tecnica? B: Sì, ma unita alle soft skill.</div>
+<div class="mnote">_D4._ A: Che figura cerca la tua azienda? B: Un data analyst che sappia comunicare.</div>
+<div class="mnote">_D5._ A: Il lifelong learning è importante? B: Assolutamente, le competenze cambiano in fretta.</div>
+<div class="mnote">_D6._ A: Meglio laurea o ITS? B: Dipende: l&#x27;ITS forma subito per il mestiere.</div>
+<div class="mnote">_D7._ A: Come restare aggiornati? B: Corsi brevi, micro-credential e progetti reali.</div>
+<h3>Prova 2 — Intervista (formazione professionale)</h3>
+<div class="mnote">S: Grazie. Il nostro istituto offre percorsi di due anni per elettricisti, cuochi e operatori turistici.</div>
+<div class="mnote">G: Quanto conta il tirocinio?</div>
+<div class="mnote">S: Moltissimo: sei mesi in azienda, dove lo studente applica davvero ciò che impara.</div>
+<div class="mnote">G: E l&#x27;inserimento nel mondo del lavoro?</div>
+<div class="mnote">S: L&#x27;80% dei nostri diplomati trova occupazione entro un anno. Le aziende ci cercano.</div>
+<div class="mnote">G: Un consiglio per i giovani?</div>
+<div class="mnote">S: Non aver paura della formazione continua: il mestiere si impara, poi si aggiorna sempre.</div>
+<div class="text"><h4>📝 Testo / Dialogo (simulato)</h4><pre>&amp;#x47;: Benvenuti. Oggi con noi c&#x27;è Sofia, direttrice di un centro di formazione professionale.</pre></div>
+<h3>Prova 3 — Monologo (le competenze del 2030)</h3>
+<h3>理解题</h3>
+<div class="text"><h4>📝 Testo / Dialogo (simulato)</h4><pre>&amp;#x4C;e previsioni indicano che entro il 2030 metà delle competenze attuali sarà obsoleta. Non spariranno solo i mestieri ripetitivi: cambierà il modo di lavorare. Resilienza e apprendimento autonomo diventeranno essenziali. La formazione professionale, se aggiornata, può colmare il divario tra scuola e impresa. Tuttavia, serve una strategia pubblica: lasciare tutto al mercato non basta. Le micro-qualifiche aiutano chi è già occupato a cambiare rotta. In conclusione, chi impara per tutta la vita avrà più sicurezza.</pre></div>
+<h3>Prova 1（7 题，四选一）</h3>
+<div class="mnote">1. Secondo D1, cosa conta di più?  A) Il calcolo  B) Critica e creatività  C) La memoria  D) L&#x27;obbedienza</div>
+<div class="mnote">2. L&#x27;IA (D2)…  A) elimina tutto  B) sostituisce alcuni e ne crea  C) non serve  D) è lenta</div>
+<div class="mnote">3. La formazione tecnica (D3)…  A) non serve  B) va unita alle soft skill  C) basta da sola  D) è inutile</div>
+<div class="mnote">4. Che figura cerca l&#x27;azienda in D4?  A) Un contabile  B) Un data analyst comunicativo  C) Un cuoco  D) Un giurista</div>
+<div class="mnote">5. Il lifelong learning (D5)…  A) è inutile  B) è importante  C) è lento  D) è obbligatorio solo a scuola</div>
+<div class="mnote">6. L&#x27;ITS (D6)…  A) è lento  B) forma subito per il mestiere  C) è solo teorico  D) dura 5 anni</div>
+<div class="mnote">7. Come aggiornarsi (D7)?  A) Solo all&#x27;università  B) Corsi brevi e progetti reali  C) Mai  D) Solo leggendo</div>
+<h3>Prova 2（7 题，四选一）</h3>
+<div class="mnote">9\. Quali mestieri?  A) Avvocati  B) Elettricisti, cuochi, turismo  C) Medici  D) Insegnanti</div>
+<div class="mnote">10\. Quanto dura il tirocinio?  A) Un mese  B) Sei mesi  C) Un anno  D) Due anni</div>
+<div class="mnote">11\. Percentuale di occupazione entro un anno?  A) 50%  B) 80%  C) 30%  D) 100%</div>
+<div class="mnote">12\. Chi cerca i diplomati?  A) Lo Stato  B) Le aziende  C) Nessuno  D) Le famiglie</div>
+<div class="mnote">13\. Il consiglio di Sofia?  A) Smettere  B) Formazione continua  C) Solo teoria  D) Andare all&#x27;estero</div>
+<div class="mnote">14\. La formazione è…  A) statica  B) da aggiornare sempre  C) breve  D) inutile</div>
+<div class="text"><h4>📝 Testo / Dialogo (simulato)</h4><pre>&amp;#x38;. Che tipo di percorsi offre l&#x27;istituto?  A) Solo lauree  B) Due anni professionali  C) Dottorati  D) Nessuno</pre></div>
+<h3>Prova 3 — Vero / Falso (12 题)</h3>
+<div class="mnote">&amp;#x31;5. Metà delle competenze attuali sarà obsoleta nel 2030.  ☐ Vero ☐ Falso</div>
+<div class="mnote">16\. Spariranno solo i mestieri ripetitivi.  ☐ Vero ☐ Falso</div>
+<div class="mnote">17\. Resilienza e apprendimento autonomo sono essenziali.  ☐ Vero ☐ Falso</div>
+<div class="mnote">18\. La formazione professionale non serve.  ☐ Vero ☐ Falso</div>
+<div class="mnote">19\. Il mercato da solo basta come strategia.  ☐ Vero ☐ Falso</div>
+<div class="mnote">20\. Le micro-qualifiche aiutano chi è già occupato.  ☐ Vero ☐ Falso</div>
+<div class="mnote">21\. Il modo di lavorare non cambierà.  ☐ Vero ☐ Falso</div>
+<div class="mnote">22\. Serve una strategia pubblica.  ☐ Vero ☐ Falso</div>
+<div class="mnote">23\. Lo studio dura solo nell&#x27;infanzia.  ☐ Vero ☐ Falso</div>
+<div class="mnote">24\. Chi impara tutta la vita ha più sicurezza.  ☐ Vero ☐ Falso</div>
+<div class="mnote">25\. Il divario scuola-impresa può essere colmato.  ☐ Vero ☐ Falso</div>
+<div class="mnote">26\. Le previsioni riguardano il 2050.  ☐ Vero ☐ Falso</div></section>
+<section class="module"><h2>2. Lettura（阅读）</h2><div class="mnote">Lettura（阅读）— 50 分钟</div>
+<h3>题型说明（近年改革）</h3>
+<h3>Prova 1 — Testo (≈350 parole) + 7 单选</h3>
+<div class="text"><pre>**Le competenze che il futuro richiede**Il mondo del lavoro sta attraversando una trasformazione silenziosa ma profonda. L&#x27;automazione e l&#x27;intelligenza artificiale ridisegnano interi settori, ma non cancellano il bisogno di competenze umane. Anzi, le cosiddette &quot;soft skill&quot; — comunicazione, pensiero critico, intelligenza emotiva — acquisiscono un valore centrale. Le imprese non cercano più solo esecutori: vogliono persone capaci di collaborare, adattarsi e imparare in continuazione.</pre></div>
+<div class="text"><pre>La formazione professionale, in questo quadro, torna protagonista. Percorsi ITS e apprendistato di alta specializzazione permettono di entrare nel mercato con competenze immediatamente spendibili. Tuttavia, il titolo di studio non è più una garanzia definitiva: occorre aggiornarsi lungo l&#x27;arco della vita. Il &quot;lifelong learning&quot; non è uno slogan, ma una necessità per non rimanere indietro.</pre></div>
+<div class="text"><pre>Resta un nodo aperto: la disuguaglianza. Chi può permettersi corsi e tempo libero apprende di più; chi lavora già a fatica rischia di essere escluso. Le politiche pubbliche devono rendere la formazione accessibile a tutti, altrimenti il divario sociale si allargherà.</pre></div>
+<div class="mnote">27. Cosa ridisegna i settori?  A) La natura  B) Automazione e IA  C) La politica  D) Le tasse</div>
+<div class="mnote">28. Quali competenze acquisiscono valore?  A) Solo tecniche  B) Soft skill  C) Nessuna  D) La forza</div>
+<div class="mnote">29. Cosa vogliono le imprese?  A) Esecutori  B) Persone adattabili e capaci di apprendere  C) Robot  D) Nessuno</div>
+<div class="mnote">30. Cosa torna protagonista?  A) La formazione professionale  B) La disoccupazione  C) Il bar  D) Lo sport</div>
+<div class="mnote">31. ITS e apprendistato servono a…  A) perdere tempo  B) entrare con competenze spendibili  C) chiudere scuole  D) viaggiare</div>
+<div class="mnote">32. Il titolo di studio è…  A) garanzia eterna  B) non più garanzia definitiva  C) inutile  D) obbligatorio</div>
+<div class="mnote">33. Il nodo aperto è…  A) la felicità  B) la disuguaglianza  C) il cibo  D) il clima</div>
+<h3>Prova 2 — Testi pratici + Vero/Falso (14 题)</h3>
+<div class="mnote">_T1. Bando corso ITS &quot;Tecnico digitale&quot; (12 mesi, 60% stage, iscrizione 500€, borse per merito)._&amp;#x33;4. Il corso dura 12 mesi.  ☐ Vero ☐ Falso</div>
+<div class="mnote">35\. Niente stage.  ☐ Vero ☐ Falso</div>
+<div class="mnote">36\. Costa 500€.  ☐ Vero ☐ Falso</div>
+<div class="mnote">37\. Ci sono borse di studio.  ☐ Vero ☐ Falso</div>
+<div class="mnote">_T2. Email HR:_ &quot;Gentile candidato, la invitiamo a un assessment il 20. Porti CV e portfolio. Smart working possibile dopo 6 mesi.&quot;</div>
+<div class="mnote">38\. L&#x27;assessment è il 20.  ☐ Vero ☐ Falso</div>
+<div class="mnote">39\. Deve portare solo il CV.  ☐ Vero ☐ Falso</div>
+<div class="mnote">40\. Lo smart working è subito.  ☐ Vero ☐ Falso</div>
+<div class="mnote">_T3. Volantino:_ &quot;Laboratorio gratuito di public speaking per neoassunti. Ogni martedì ore 18. Posti limitati.&quot;</div>
+<div class="mnote">41\. Il laboratorio è a pagamento.  ☐ Vero ☐ Falso</div>
+<div class="mnote">42\. È per neoassunti.  ☐ Vero ☐ Falso</div>
+<div class="mnote">43\. È di martedì.  ☐ Vero ☐ Falso</div>
+<div class="mnote">_T4. Nota sindacale:_ &quot;La formazione continua va retribuita. Chiediamo 40 ore/anno pagate per aggiornamento.&quot;</div>
+<div class="mnote">44\. La formazione deve essere pagata.  ☐ Vero ☐ Falso</div>
+<div class="mnote">45\. Si chiedono 40 ore annue.  ☐ Vero ☐ Falso</div>
+<div class="mnote">46\. È gratuita per l&#x27;azienda.  ☐ Vero ☐ Falso</div>
+<div class="mnote">_T5. Annuncio:_ &quot;Cerchiamo formatore in soft skill. Richevsti: laurea, 3 anni esperienza, ottimo italiano scritto.&quot;</div>
+<div class="mnote">47\. Serve la laurea.  ☐ Vero ☐ Falso</div>
+<h3>Prova 3 — Ordina 11 frasi</h3>
+<div class="mnote">a)Il mondo cambia rapidamente. b)Le competenze di ieri non bastano. c)Servono corsi di aggiornamento. d)Le aziende investono nella formazione. e)I dipendenti diventano più flessibili. f)Chi apprende resta occupabile. g)La formazione va fatta in azienda e online. h)Le soft skill contano quanto quelle tecniche. i)Lo Stato deve sostenere i costi. j)Senza formazione il divario cresce. k)Il futuro premia chi impara.</div>
+<div class="mnote">→ Ordine: ______ → ______ → ______ → ______ → ______ → ______ → ______ → ______ → ______ → ______ → ______</div></section>
+<section class="module"><h2>3. Analisi（语法分析）</h2><div class="mnote">Analisi delle strutture（语法）— 60 分钟 · 4 部分</div>
+<h3>题型说明（真题全量）</h3>
+<h3>Prova 1 — Pronomi / Aggettivi / Concordanza / Collocazioni (20 题)</h3>
+<div class="q-item" data-type="cloze"><p class="q-stem">1. <input class="blank" data-correct=""> (Le / Gli) competenze del futuro cambiano. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">2. Chi impara,<input class="blank" data-correct=""> (si / ci) aggiorna da solo. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">3. Questo corso è<input class="blank" data-correct=""> (più / più di) utile di quello. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">4. Non abbiamo<input class="blank" data-correct=""> (alcun / nessuno) dubbio sulla formazione. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">5. Ne discuteremo<input class="blank" data-correct=""> (con / tra) i colleghi. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">6. Tale competenza<input class="blank" data-correct=""> (loro / gli) serve subito. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">7. Un mestiere<input class="blank" data-correct=""> (nuovo / nuova) richiede flessibilità. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">8. Conto<input class="blank" data-correct=""> (su / in) un buon tirocinio. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">9. <input class="blank" data-correct=""> (Pochi / Poche) giovani lo sanno. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">10. Lavoriamo<input class="blank" data-correct=""> (insieme / insieme a) per progetti reali. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">11. Le<input class="blank" data-correct=""> (nuovo / nuove) tecnologie trasformano il lavoro. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">12. Credo<input class="blank" data-correct=""> (ci / vi) sia utile un corso di coding. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">13. Hanno<input class="blank" data-correct=""> (molto / molta) voglia di imparare. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">14. Parlo<input class="blank" data-correct=""> (del / della) formazione continua. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">15. <input class="blank" data-correct=""> (Quel / Quello) software è ormai obsoleto. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">16. Mi<input class="blank" data-correct=""> (mi / ti) hanno offerto un posto in un ITS. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">17. Il corso<input class="blank" data-correct=""> (di / da) data analysis inizia a ottobre. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">18. Preferisco<input class="blank" data-correct=""> (questi / queste) approcci pratici. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">19. Abbiamo bisogno<input class="blank" data-correct=""> (di / a) competenze digitali. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">20. Lavorano<input class="blank" data-correct=""> (con / fra) grande entusiasmo. → ____</p></div>
+<h3>Prova 2 — Tempi e modi (indicativo/condizionale/congiuntivo) (20 题)</h3>
+<div class="q-item" data-type="cloze"><p class="q-stem">21. Se<input class="blank" data-correct=""> (investire) nella formazione, miglioreresti. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">22. Speriamo che tu<input class="blank" data-correct=""> (ottenere) il diploma ITS. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">23. L&#x27;anno prossimo<input class="blank" data-correct=""> (fare) un corso di data analysis. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">24. Ieri<input class="blank" data-correct=""> (partecipare) a un seminario utile. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">25. Da mesi<input class="blank" data-correct=""> (cercare) un formatore. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">26. Se avessi tempo,<input class="blank" data-correct=""> (iscriversi) a quel corso. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">27. È importante che i giovani<input class="blank" data-correct=""> (formarsi) bene. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">28. Credevo che<input class="blank" data-correct=""> (essere) più facile. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">29. <input class="blank" data-correct=""> (Riuscire) a cambiare lavoro grazie al corso. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">30. Non<input class="blank" data-correct=""> (potere) immaginare il futuro senza apprendimento. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">31. Se<input class="blank" data-correct=""> (volere) , potresti specializzarti. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">32. Auguro che<input class="blank" data-correct=""> (partire) tutti per un tirocinio. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">33. Finché<input class="blank" data-correct=""> (studiare) , resti aggiornato. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">34. <input class="blank" data-correct=""> (Essere) preparati fa la differenza. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">35. Quando<input class="blank" data-correct=""> (conseguire) la certificazione, avrai più opportunità. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">36. Sarebbe meglio che<input class="blank" data-correct=""> (andare) piano con i carichi. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">37. Hanno<input class="blank" data-correct=""> (decidere) di frequentare un bootcamp. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">38. Se avessimo<input class="blank" data-correct=""> (capire) prima, avremmo agito. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">39. Mi piace che tu<input class="blank" data-correct=""> (proporre) idee nuove. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">40. <input class="blank" data-correct=""> (Continuare) a formarsi è essenziale. → ____</p></div>
+<h3>Prova 3 — Cloze (sinonimi / scelta multipla, 15 题)</h3>
+<div class="mnote">_Testo:_ &quot;La formazione continua è (41)______ necessaria. Le aziende (42)______ figure flessibili. Un corso ben fatto (43)______ le lacune. Tuttavia, i costi (44)______ un ostacolo. Le competenze (45)______ in fretta. Chi si ferma (46)______ indietro. Le politiche pubbliche (47)______ il divario. Alla fine, apprendere (48)______ la sicurezza. Oggi i lavoratori (49)______ di aggiornarsi spesso. Le soft skill (50)______ sempre più richieste. Un buon mentore (51)______ a crescere. La tecnologia (52)______ i mestieri. Chi impara (53)______ pronto al cambiamento. Investire in sé (54)______ un dovere. Alla fine, chi studia (55)______ sul mercato.&quot;</div>
+<div class="mnote">41\. A) divenuta B) diventata C) fatta D) stata</div>
+<div class="mnote">42\. A) cerca B) cerchi C) cercano D) cercasse</div>
+<div class="mnote">43\. A) colma B) colmano C) colmi D) colmare</div>
+<div class="mnote">44\. A) era B) essendo C) erano D) sono</div>
+<div class="mnote">45\. A) cambia B) cambiano C) cambi D) cambierebbero</div>
+<div class="mnote">46\. A) restano B) resti C) resterebbe D) resta</div>
+<div class="mnote">47\. A) riducono B) riduce C) riduci D) ridurrebbero</div>
+<div class="mnote">48\. A) danno B) dai C) dà D) dare</div>
+<div class="mnote">49\. A) cerca B) cerchi C) cercasse D) cercano</div>
+<div class="mnote">50\. A) è B) siano C) sono D) essere</div>
+<div class="mnote">51\. A) aiuta B) aiutano C) aiuti D) aiuterebbe</div>
+<div class="mnote">52\. A) trasformano B) trasformi C) trasformerebbe D) trasforma</div>
+<div class="mnote">53\. A) sono B) è C) siano D) sia</div>
+<div class="mnote">54\. A) sono B) è C) siano D) sia</div>
+<div class="mnote">55\. A) conta B) contano C) conti D) conterebbe</div>
+<h3>Prova 4 — Comunicazione situazionale (abbinamenti, 10 coppie)</h3>
+<div class="mnote">A1) &quot;Ho completato il corso di project management.&quot;  A2) &quot;Secondo te, l&#x27;IA sostituirà i cuochi?&quot;  A3) &quot;Non ho tempo per studiare.&quot;</div>
+<div class="mnote">A4) &quot;Che ne pensi del nostro ITS?&quot;  A5) &quot;Vorrei iscrivermi al laboratorio.&quot;  A6) &quot;Sono stato promosso!&quot;</div>
+<div class="mnote">A7) &quot;Ho fatto un errore nel codice.&quot;  A8) &quot;Mi servirebbe un mentor.&quot;  A9) &quot;Il colloquio è andato bene.&quot;  A10) &quot;Voglio cambiare lavoro.&quot;</div>
+<div class="mnote">B1) &quot;Fantastico, congratulazioni!&quot;  B2) &quot;Certo, ti mando il modulo.&quot;  B3) &quot;È pratico e i ragazzi trovano lavoro.&quot;</div>
+<div class="mnote">B4) &quot;Prova a usare micro-corsi la sera.&quot;  B5) &quot;No, servirà sempre creatività umana.&quot;  B6) &quot;Ben fatto, ora aggiorna il CV!&quot;</div>
+<div class="mnote">B7) &quot;Non preoccuparti, sbagliando s&#x27;impara.&quot;  B8) &quot;Parlane col tuo tutor, ti aiuterà.&quot;  B9) &quot;Ottimo, vedrai che ti richiamano!&quot;  B10) &quot;Allora aggiorna il CV e fai networking!&quot;</div>
+<div class="mnote">→ A1=__ A2=__ A3=__ A4=__ A5=__ A6=__ A7=__ A8=__ A9=__ A10=__</div></section>
+<section class="module"><h2>4. Scritta（写作）</h2><div class="mnote">Produzione scritta（写作）— 70 分钟</div>
+<h3>题型说明</h3>
+<h3>Prova 1 — Saggio / Testo argomentativo (120–140 parole)</h3>
+<div class="mnote">&quot;Le competenze del futuro: perché la formazione continua è indispensabile.&quot; Esprimi la tua opinione con argomenti.</div>
+<h3>Prova 2 — Email formale (80–100 parole)</h3>
+<div class="mnote">Scrivi a un ente di formazione per chiedere informazioni su un corso ITS e le borse di studio.</div></section>
+<section class="module"><h2>5. Orale（口语）</h2><div class="mnote">Produzione orale（口语）— 10–15 分钟</div>
+<h3>题型说明（近年框架）</h3>
+<h3>Prova 1 — Conversazione interattiva (4 scelte, prepara 3 min, 5–6 min)</h3>
+<div class="mnote">A) Discuti con il docente: laurea tradizionale o formazione professionale (ITS)?</div>
+<div class="mnote">B) Simula con il docente un colloquio su &quot;competenze del futuro&quot; in azienda.</div>
+<div class="mnote">C) Concorda con il docente un piano di formazione continua per un neolaureato.</div>
+<div class="mnote">D) Debatte: l&#x27;IA aiuterà o sostituirà i lavoratori?</div>
+<h3>Prova 2 — Monologo (4 scelte, prepara 2 min, 3–4 min)</h3>
+<div class="mnote">A) Spiega perché le soft skill contano quanto quelle tecniche.</div>
+<div class="mnote">B) (🌇 immagine: aula ITS con studenti al computer) Presenta un percorso di formazione professionale.</div>
+<div class="mnote">C) Argomenta: il lifelong learning è una necessità, non uno slogan.</div>
+<div class="mnote">D) (📊 immagine: grafico &quot;competenze obsolete 2030&quot;) Commenta il grafico e traine conclusioni.</div>
+<h3>✅ B2 答案与评分</h3>
+<div class="q-item q-oral" data-type="oral"><div class="oral-scoring"><div class="score-head">📋 Criteri di valutazione（口语评分要点）</div><div class="rubric-note">**Orale 评分要点**：① 对话（4选1，5–6 min）能互动、提出 e contro-argomenti，使用 condizionale/congiuntivo 表达 ipotesi；② 独白（4选1，3–4 min）结构清晰（introduzione–sviluppo–conclusione），用词 B2 精准（es. _obsolescenza, resilientza, divario_），语法稳定，发音流利。</div></div></div></section><button id="btn-check" onclick="verifica()">Verifica le risposte（提交判分）</button><button id="btn-reset" hidden onclick="resetta()">Ricomincia（重做）</button><div id="result" hidden></div></main><script>var SUBJMAX=20;
+function norm(s){return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]/g,'');}
+function gradeOf(p){if(p>=85)return['Eccellente','#1b7a3d'];if(p>=70)return['Buono','#2e7d32'];if(p>=55)return['Discreto','#b8860b'];if(p>=40)return['Insufficiente','#c0392b'];return['Grave','#7b1e2b'];}
+function verifica(){
+  var items=document.querySelectorAll('.q-item');
+  var score=0,total=0;
+  items.forEach(function(el){
+    var t=el.dataset.type;
+    var corr=el.dataset.correct;
+    if(!corr){ el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;}); return; }
+    if(t==='mc'||t==='tf'||t==='match'){
+      total++;
+      var ok=false;
+      if(t==='match'){var sel=el.querySelector('select');if(sel&&sel.value===corr)ok=true;}
+      else{var inp=el.querySelector('input:checked');if(inp&&inp.value===corr)ok=true;}
+      el.classList.add(ok?'correct':'wrong');
+      var n=document.createElement('div');n.className='q-note '+(ok?'ok':'no');
+      n.textContent=ok?'✅ Corretto':'❌ Risposta corretta: '+el.dataset.ctext;
+      el.appendChild(n);
+      el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;});
+    } else if(t==='cloze'){
+      el.querySelectorAll('input.blank').forEach(function(inp){
+        if(!inp.dataset.correct){inp.disabled=true;return;}
+        total++;
+        var v=norm(inp.value);
+        var ok2=v.length>0 && v.indexOf(norm(inp.dataset.correct))>=0;
+        if(ok2)score++;
+        inp.classList.add(ok2?'correct':'wrong');
+        if(!ok2){var s=document.createElement('span');s.className='anshint';s.textContent=' ✓ '+inp.dataset.correct;inp.insertAdjacentElement('afterend',s);}
+        inp.disabled=true;
+      });
+    }
+  });
+  document.querySelectorAll('.q-subj').forEach(function(el){var r=el.querySelector('.ref');if(r)r.hidden=false;});
+  var pct= total? Math.round(score/total*100):0;
+  var g=gradeOf(pct);
+  var box=document.getElementById('result');
+  box.hidden=false;
+  box.innerHTML='<div class="res-score">客观题正确率：<b>'+score+' / '+total+'</b> （'+pct+'%）</div>'+
+    '<div class="res-grade" style="background:'+g[1]+'">'+g[0]+'</div>'+
+    '<div class="res-note">写作 / 口语 / 改写 / 开放题请对照下方「✅ Soluzioni」参考答案与评分要点自评（本卷主观题满分 '+SUBJMAX+' 分）。</div>';
+  box.scrollIntoView({behavior:'smooth'});
+  document.getElementById('btn-check').hidden=true;
+  document.getElementById('btn-reset').hidden=false;
+}
+function resetta(){location.reload();}
+document.addEventListener('play', function(e){
+  if(e.target && e.target.tagName === 'AUDIO'){
+    document.querySelectorAll('audio').forEach(function(a){ if(a!==e.target) a.pause(); });
+  }
+}, true);</script></body></html>

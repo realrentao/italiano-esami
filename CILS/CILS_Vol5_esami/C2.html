@@ -1,0 +1,254 @@
+<!DOCTYPE html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>CILS C2 — CILS QUATTRO</title><style>:root{--wine:#7b1e2b;--wine2:#a83246;--ink:#23211f;--paper:#fbf8f4;--line:#e4ddd2;--ok:#1b7a3d;--no:#c0392b;}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);background:var(--paper);line-height:1.65}
+header.top{background:linear-gradient(135deg,var(--wine),var(--wine2));color:#fff;padding:26px 20px;box-shadow:0 2px 10px rgba(0,0,0,.15)}
+header.top .back{color:#ffd9df;text-decoration:none;font-size:14px}
+header.top .ttl{font-size:26px;font-weight:800;margin-top:6px}
+header.top .ttl .lvl{display:inline-block;background:#fff;color:var(--wine);border-radius:8px;padding:2px 10px;margin-right:10px;font-size:20px}
+header.top .sub{opacity:.9;margin-top:4px;font-size:15px}
+main{max-width:880px;margin:0 auto;padding:24px 18px 120px}
+section.module{margin:30px 0;background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+section.module h2{margin:0 0 14px;color:var(--wine);font-size:20px;border-bottom:2px solid var(--line);padding-bottom:8px}
+section.module h3{color:#444;font-size:16px;margin:22px 0 10px}
+.mnote{background:#f6f1e9;border-left:4px solid var(--wine);border-radius:8px;padding:10px 14px;margin:12px 0;font-size:13.5px;color:#6b5b4a;line-height:1.7}
+.text{background:#f6f1e9;border-left:4px solid var(--wine);border-radius:8px;padding:12px 14px;margin:12px 0}
+.text h4{margin:0 0 6px;font-size:14px;color:var(--wine)}
+pre{white-space:pre-wrap;margin:0;font-family:"Courier New",monospace;font-size:14px}
+.items{margin-top:14px}
+.q-item{margin:14px 0;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fffdf9}
+.q-item.correct{border-color:var(--ok);background:#f1faf3}
+.q-item.wrong{border-color:var(--no);background:#fdf1f0}
+.q-stem{margin:0 0 8px;font-weight:600}
+.opts{display:flex;flex-direction:column;gap:6px}
+.opt{display:flex;align-items:center;gap:8px;cursor:pointer;padding:4px 6px;border-radius:6px}
+.opt:hover{background:#f3ede3}
+.match-sel{font-size:15px;padding:5px 8px;border-radius:6px;border:1px solid #bbb;margin-top:4px}
+.blank{font-size:15px;padding:3px 6px;border:1px solid #bbb;border-radius:6px;margin:0 4px;min-width:90px}
+.blank.correct{border-color:var(--ok);background:#eafaf0}
+.blank.wrong{border-color:var(--no);background:#fdeceb}
+.anshint{color:var(--no);font-size:13px;margin-left:6px}
+textarea.ans{width:100%;font-size:15px;padding:10px;border:1px solid #ccc;border-radius:8px;font-family:inherit;resize:vertical}
+.q-subj .ref{margin-top:10px;padding:10px 12px;background:#eef6fb;border-left:4px solid #2a7fb8;border-radius:8px;font-size:14px}
+.q-note{margin-top:8px;font-weight:700;font-size:14px}
+.q-note.ok{color:var(--ok)} .q-note.no{color:var(--no)}
+.audio-block{background:#f0f4f7;border:1px solid #cfe0ea;border-radius:10px;padding:12px 14px;margin:12px 0}
+.audio-block h4{margin:0 0 8px;color:#1f5f80}
+audio{width:100%;margin-bottom:8px;display:block}
+.noaudio{color:#b06a00;font-weight:600}
+.q-oral{background:#fbf7ef;border:1px solid #ecd9b0;border-radius:12px;padding:16px 18px;margin:14px 0}
+.q-oral .q-stem{margin:0 0 12px;font-size:15px;line-height:1.7;white-space:pre-wrap}
+.oral-scoring{background:#fff;border:1px solid #e7dcc4;border-radius:10px;padding:12px 14px;margin-bottom:12px}
+.score-head{font-weight:700;color:#9a6b00;margin-bottom:8px;font-size:14px}
+.dims{margin:0;padding-left:20px;font-size:14px;line-height:1.9}
+.dims li{margin-bottom:2px}
+.rubric-note{margin-top:8px;padding-top:8px;border-top:1px dashed #e0d3b6;font-size:13px;color:#5a4a2a;line-height:1.7}
+.oral-ref{background:#eef6fb;border:1px solid #cfe0ea;border-radius:10px;padding:12px 14px}
+.ref-head{font-weight:700;color:#1f5f80;margin-bottom:8px;font-size:14px}
+.ref-it{font-weight:400;color:#5b87a0;font-style:italic;font-size:12px}
+.oral-ref pre{margin:8px 0 0;white-space:pre-wrap;word-break:break-word;font-size:14px;line-height:1.75;background:#fff;border:1px solid #dce8f0;border-radius:8px;padding:10px 12px}
+.otranscript{margin-top:8px}
+.otranscript summary{cursor:pointer;color:#1f5f80;font-weight:600;font-size:13px;user-select:none;list-style:none}
+.otranscript summary::-webkit-details-marker{display:none}
+.otranscript .o-open{display:none}
+.otranscript[open] .o-closed{display:none}
+.otranscript[open] .o-open{display:inline}
+.transcript{margin-top:10px}
+.transcript summary{cursor:pointer;color:#1f5f80;font-weight:600;font-size:14px;user-select:none;list-style:none}
+.transcript summary::-webkit-details-marker{display:none}
+.transcript summary:hover{text-decoration:underline}
+.transcript .t-open{display:none}
+.transcript[open] .t-closed{display:none}
+.transcript[open] .t-open{display:inline}
+.transcript[open] summary{margin-bottom:8px}
+.transcript pre{margin-top:0}
+.soluzioni{margin:28px 0;background:#fff;border:2px dashed var(--wine);border-radius:14px;padding:18px 20px}
+.soluzioni h2{margin:0 0 12px;color:var(--wine);font-size:18px}
+.soluzioni pre{white-space:pre-wrap;font-size:13.5px;line-height:1.8;background:#fbf6f0;border-radius:8px;padding:12px;font-family:"Courier New",monospace}
+#btn-check{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--wine);color:#fff;border:none;font-size:17px;font-weight:700;padding:13px 30px;border-radius:30px;cursor:pointer;box-shadow:0 4px 14px rgba(123,30,43,.4);z-index:10}
+#btn-check:hover{background:var(--wine2)}
+#btn-reset{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);margin-left:170px;background:#555;color:#fff;border:none;font-size:15px;padding:13px 22px;border-radius:30px;cursor:pointer;z-index:10}
+#result{margin-top:20px;padding:18px 20px;border-radius:12px;background:#fff;border:2px solid var(--wine);text-align:center}
+.res-score{font-size:18px;margin-bottom:10px}
+.res-grade{display:inline-block;color:#fff;font-weight:800;font-size:22px;padding:6px 22px;border-radius:10px;margin-bottom:8px}
+.res-note{font-size:14px;color:#555;margin-top:8px}
+.index-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-top:20px}
+.card{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:0 1px 4px rgba(0,0,0,.05);transition:.15s}
+.card:hover{transform:translateY(-3px);border-color:var(--wine)}
+.card .lvl{display:inline-block;background:var(--wine);color:#fff;border-radius:8px;padding:3px 12px;font-weight:800;font-size:18px}
+.card .nm{font-weight:700;margin:8px 0 4px;font-size:16px}
+.card .sb{font-size:13px;color:#666}
+.intro{max-width:880px;margin:24px auto;padding:0 18px;color:#555}
+.vol-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;margin-top:24px}
+.vol{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:0 1px 4px rgba(0,0,0,.05);transition:.15s}
+.vol:hover{transform:translateY(-3px);border-color:var(--wine)}
+.vol .vno{display:inline-block;background:var(--wine);color:#fff;border-radius:8px;padding:3px 12px;font-weight:800;font-size:14px}
+.vol .vt{font-weight:700;margin:10px 0 6px;font-size:18px}
+.vol .vs{font-size:13px;color:#666}
+.vol .vgo{margin-top:12px;font-weight:700;color:var(--wine);font-size:14px}</style></head><body><header class="top"><a href="index.html" class="back">← Indice CILS Vol.5</a><div class="ttl"><span class="lvl">C2</span> CILS QUATTRO</div><div class="sub"></div></header><main><p class="intro">本级主题：Arte, letteratura e tempo libero。CILS 五大模块（Ascolto / Lettura / Analisi delle strutture / Produzione scritta / Produzione orale）。听力为模拟音频文本（由考官/录音播放），本页以文本呈现听力原文，点击展开即可自测。提交后客观题自动判分；写作/口语/开放题请展开下方「✅ Soluzioni」参考答案与评分要点自评。</p><section class="module"><h2>1. Ascolto（听力）</h2><div class="mnote">Ascolto（听力）</div>
+<div class="mnote">B: D&#x27;accordo, ma senza canone non resta che il relativismo delle preferenze.</div>
+<div class="mnote">A: Il canone va però decostruito, non abolito: va riaperto alle voci escluse.</div>
+<div class="mnote">B: E chi riapre? Una nuova autorità sostituisce la vecchia.</div>
+<div class="mnote">A: Appunto: la legittimità viene dal confronto, non dalla tradizione.</div>
+<div class="mnote">Moderatore: Allora il canone è processo, non lista.</div>
+<div class="mnote">_Parte 1 (4)_</div>
+<div class="mnote">1. Secondo l&#x27;intervistato, la domanda sulla funzione è…　A. Neutrale　B. Ideologica　C. Scientifica　D. Inutile</div>
+<div class="mnote">2. Se l&#x27;arte non rappresenta, è…　A. Ornamento　B. Sintomo di frattura　C. Mercato　D. Gioco</div>
+<div class="mnote">3. Società senza spazi simbolici producono…　A. Arte　B. Violenza non detta　C. Pace　D. Turismo</div>
+<div class="mnote">4. L&#x27;arte sopravvive come luogo del…　A. Mercato　B. Non-mercificabile　C. Lusso　D. Stato</div>
+<div class="mnote">_Parte 2 (4)_</div>
+<div class="mnote">5. Il canone è…　A. Ordine naturale　B. Costruzione storica　C. Legge　D. Caso</div>
+<div class="mnote">6. Senza canone resta…　A. Ordine　B. Relativismo　C. Arte　D. Storia</div>
+<div class="mnote">7. Il canone va…　A. Abolito　B. Decostruito e riaperto　C. Congelato　D. Venduto</div>
+<div class="mnote">8. La legittimità viene da…　A. Tradizione　B. Confronto　C. Mercato　D. Stato</div>
+<div class="mnote">_Parte 3 (4, con implicatura)_</div>
+<div class="mnote">9. Cancellare la statua è un gesto…　A. Estetico　B. Politico　C. Casuale　D. Religioso</div>
+<div class="mnote">10. Riscrivere la memoria decide…　A. Chi conta　B. Il tempo　C. I prezzi　D. La legge</div>
+<div class="mnote">11. Chi protesta vede…　A. Giustizia　B. Oblio　C. Arte　D. Pace</div>
+<div class="mnote">12. L&#x27;arte in piazza è un tribunale…　A. Con sentenza　B. Senza sentenza　C. Chiuso　D. Vecchio</div>
+<div class="text"><h4>📝 Testo / Dialogo (simulato)</h4><pre>— La domanda stessa è ideologica: presuppone che l&#x27;arte &quot;serva&quot;. In realtà essa è ciò che una comunità fa per rappresentarsi a sé stessa; quando smette di rappresentare, non è ornamento, è sintomo di frattura.
+— Dunque l&#x27;assenza d&#x27;arte segnala disagio?
+— Esatto: le società che negano spazi simbolici producono violenza non detta.
+— Ma il mercato mercifica tutto…
+— Certo, e proprio per questo l&#x27;arte sopravvive come luogo dove il non-mercificabile resiste, anche solo come protesta.</pre></div></section>
+<section class="module"><h2>2. Lettura（阅读）</h2><div class="mnote">Lettura（阅读）</div>
+<div class="mnote">1. La funzione sociale si misura…　A. Nell&#x27;utilità　B. Nel tenere aperto il simbolico　C. Nel prezzo　D. Nel numero</div>
+<div class="mnote">2. L&#x27;opera…　A. Comunica un messaggio pronto　B. Interroga chi guarda　C. Piace sempre　D. Tace</div>
+<div class="mnote">3. I regimi temono…　A. La propaganda　B. L&#x27;arte autentica　C. Il silenzio　D. Il mercato</div>
+<div class="mnote">4. Il canone è…　A. Archivio neutrale　B. Mappa delle alleanze　C. Caso　D. Legge</div>
+<div class="mnote">5. Decostruire il canone è…　A. Vandalismo　B. Giustizia ermeneutica　C. Errore　D. Moda</div>
+<div class="mnote">Nel cortile c&#x27;era un albero secco, che nessuno potava. I bambini ci giocavano come se fosse vivo; gli adulti lo sfioravano senza vederlo. Un pomeriggio arrivò un pittore e lo dipinse fiammeggiante, rosso contro il muro grigio. Da allora il cortile parlò, e chi passava si fermava. L&#x27;albero era lo stesso, ma la città gli aveva dato nome.</div>
+<div class="mnote">6\. L&#x27;albero è rigoglioso.　(V/F)</div>
+<div class="mnote">7\. I bambini lo trattano come vivo.　(V/F)</div>
+<div class="mnote">8\. Gli adulti lo notano subito.　(V/F)</div>
+<div class="mnote">9\. Il pittore lo dipinge rosso.　(V/F)</div>
+<div class="mnote">10\. Dopo il quadro, il cortile &quot;parla&quot;.　(V/F)</div>
+<div class="mnote">11\. La città dà un nome all&#x27;albero.　(V/F)</div>
+<div class="mnote">B. Tuttavia, la sua abolizione pura produce relativismo.</div>
+<div class="mnote">C. Serve allora una pratica ricorsiva di lettura.</div>
+<div class="mnote">D. Ogni generazione rilegge e contesta i classici.</div>
+<div class="mnote">E. Così il canone resta vivo, non come lista ma come dialogo.</div>
+<div class="mnote">F. La decostruzione è il primo atto di giustizia.</div>
+<div class="mnote">12-17. （risposta: A F B D C E）</div></section>
+<section class="module"><h2>3. Analisi（语法分析）</h2><div class="mnote">Analisi delle strutture（语法分析）</div>
+<div class="q-item" data-type="cloze"><p class="q-stem">1. L&#x27;arte interroga<input class="blank" data-correct="chi"> (chi / cui / che) la guarda.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">2. È un gesto politico,<input class="blank" data-correct="il che"> (il che / che / cui) rivela la posta in gioco.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">3. Benché il canone<input class="blank" data-correct="sia"> (sia / fosse / è) storico, va riaperto.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">4. Colui<input class="blank" data-correct="che"> (che / cui / il quale) scrive determina la memoria.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">5. Non è ornamento, bensì<input class="blank" data-correct="sintomo"> (sintomo / sintomi / sintomatico) di frattura.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">6. Qualora<input class="blank" data-correct="si negasse"> (si negasse / si nega / negò) lo spazio simbolico, la società soffre.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">7. L&#x27;opera,<input class="blank" data-correct="da cui"> (da cui / in cui / cui) traiamo senso, resiste.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">8. Tanto il mercato mercifica,<input class="blank" data-correct="quanto"> (quanto / come / che) l&#x27;arte resiste.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">9. È l&#x27;autore<input class="blank" data-correct="da cui"> (da cui / cui / che) dipende il senso.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">10. Non già ornamento,<input class="blank" data-correct="ma"> (ma / e / o) sintomo di frattura.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">11. Chiunque<input class="blank" data-correct="scriva"> (scriva / scrive / scritto) deve contraddire.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">12. La decostruzione,<input class="blank" data-correct="benché"> (benché / se / perché) necessaria, spaventa.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">13. È un atto<input class="blank" data-correct="il quale"> (il quale / la quale / i quali) ridefinisce l&#x27;identità.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">14. Non appena il canone<input class="blank" data-correct="sarà"> (sarà / è / era) aperto, si riapre.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">15. L&#x27;opera,<input class="blank" data-correct="che"> (che / la quale / cui) disturba, è autentica.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">16. Purché<input class="blank" data-correct="si nomini"> (si nomini / si nomina / nominò) l&#x27;escluso, la giustizia opera.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">17. Tanto vale la visibilità,<input class="blank" data-correct="quanto"> (quanto / come / che) manca la qualità.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">18. Colui<input class="blank" data-correct="che"> (che / il quale / cui) legge diventa attore.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">19. Sebbene<input class="blank" data-correct="fosse"> (fosse / è / sia) tardi, il dibattito continua.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">20. È ciò<input class="blank" data-correct="che"> (che / cui / dove) conta davvero.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">21. <input class="blank" data-correct="A"> (A. non / B. né / C. sì) abolitione. Chi (22) ______ (A. legge / B. legga / C. letto) deve contraddire. Il silenzio (23) ______ (A. imposto / B. impone / C. imposti) va interrotto. Ove il canone (24) ______ (A. esclude / B. escludesse / C. escluso), si riapra. La funzione sociale (25) ______ (A. consiste / B. consta / C. concerne) nel nominare l&#x27;escluso. Tale (26) ______ (A. atto / B. atti / C. atta) è politico. L&#x27;arte (27) ______ (A. sopravvive / B. sopravvisse / C. sopravvissuto) come luogo del non-mercificabile. (28) ______ (A. Dunque / B. Invece / C. Anche) la critica è azione. L&#x27;opera (29) ______ (A. autentica / B. autentiche / C. autenticamente) destabilizza. Il potere (30) ______ (A. rappresenta / B. rappresenti / C. rappresentato) il canone. (31) ______ (A. Chi / B. Cui / C. Che) legge diventa attore. La memoria (32) ______ (A. pubblica / B. pubbliche / C. pubblicamente) si riscrive. (33) ______ (A. Sebbene / B. Perciò / C. Cioè) il gesto sia simbolico, conta. Il canone (34) ______ (A. riflette / B. rifletta / C. riflesso) alleanze culturali. L&#x27;escluso (35) ______ (A. rivendica / B. rivendichi / C. rivendicato) voce. (36) ______ (A. Ci / B. Si / C. Vi) tratta di giustizia ermeneutica. L&#x27;arte (37) ______ (A. interroga / B. interroghi / C. interrogato) il potere. (38) ______ (A. Dunque / B. Invece / C. Ancora) la decostruzione è riparazione. Il testo (39) ______ (A. resiste / B. resista / C. resistito) al tempo. Infine, il senso (40) ______ (A. si riapre / B. si riapra / C. riaperto) nel dialogo.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">1. Il potere si<input class="blank" data-correct="chi"> (rappresenta / raffigura / riproduce / reifica) attraverso l&#x27;arte.</p></div>
+<div class="mnote">42\. La protesta ______ (incarna / include / indica / involge) il rifiuto del mercato.</div>
+<div class="mnote">43\. Il canone va ______ (riaperto / riaperta / riaprente / riaprito) alle voci escluse.</div>
+<div class="mnote">44\. Tale gesto ______ (dissolve / discioglie / dilegua / diluisce) i quadri di senso.</div>
+<div class="mnote">45\. L&#x27;opera ______ (interroga / interroghi / interrogato / interrogando) il potere.</div>
+<div class="mnote">46\. La critica ______ (decostruisce / decostruisca / decostruito / decostruendo) il canone.</div>
+<div class="mnote">47\. Il mercato ______ (mercifica / mercifichi / mercificato / mercificando) l&#x27;arte.</div>
+<div class="mnote">48\. La memoria ______ (si riscrive / si riscriva / riscritto / riscrivendo) pubblicamente.</div>
+<div class="mnote">49\. Il silenzio ______ (imposto / imponga / imponente / imponendo) va interrotto.</div>
+<div class="mnote">50\. L&#x27;escluso ______ (rivendica / rivendichi / rivendicato / rivendicando) voce.</div>
+<div class="mnote">51\. Il senso ______ (si riapre / si riapra / riaperto / riaprendo) nel dialogo.</div>
+<div class="mnote">52\. L&#x27;arte ______ (sopravvive / sopravviva / sopravvissuto / sopravvivendo) al tempo.</div>
+<div class="mnote">53\. La funzione sociale ______ (consiste / consista / consistito / consistendo) nel nominare.</div>
+<div class="mnote">54\. Il pubblico ______ (partecipa / partecipi / partecipato / partecipando) attivamente.</div>
+<div class="mnote">55\. Tale atto ______ (è / sia / stato / essendo) politico.</div>
+<div class="mnote">&amp;#x35;6. &quot;L&#x27;arte interroga chi guarda.&quot; (passiva) → Chi guarda ______ dall&#x27;arte.</div>
+<div class="mnote">57\. &quot;Se il canone esclude, bisogna riaprirlo.&quot; (congiuntivo) → È necessario che il canone ______ riaperto.</div>
+<div class="mnote">58\. &quot;Il mercato mercifica; l&#x27;arte resiste.&quot; (ipotattica) → Mentre il mercato mercifica, l&#x27;arte ______ .</div>
+<div class="mnote">59\. &quot;Non è ornamento, è sintomo.&quot; (enfatica) → Non già ornamento, ______ sintomo di frattura.</div>
+<div class="mnote">60\. &quot;L&#x27;opera autentica destabilizza.&quot; (relativo) → L&#x27;opera, ______ destabilizza, è autentica.</div>
+<div class="mnote">61\. &quot;Il potere rappresenta il canone.&quot; (passiva) → Il canone ______ dal potere.</div>
+<div class="mnote">62\. &quot;La critica decostruisce il testo.&quot; (passiva) → Il testo ______ dalla critica.</div>
+<div class="mnote">63\. &quot;Poiché il gesto è simbolico, conta.&quot; (con sebbene) → ______ il gesto sia simbolico, conta.</div>
+<div class="mnote">64\. &quot;Chi legge diventa attore.&quot; (congiuntivo) → È necessario che chi legge ______ attore.</div>
+<div class="mnote">65\. &quot;L&#x27;arte sopravvive al tempo.&quot; (relativo) → L&#x27;arte, ______ sopravvive al tempo, è eterna.</div></section>
+<section class="module"><h2>4. Scritta（写作）</h2><div class="mnote">Produzione scritta（写作）</div>
+<h3>Prova 1 — Saggio critico / commento letterario (≈200–250 词)</h3>
+<h3>Prova 2 — Proposta di politica culturale (≈120–150 词)</h3>
+<h3>Prova 3 — Riassunto (≈80 词, su testo fornito)</h3>
+<div class="mnote">Prova 1: Il canone letterario non è un archivio neutrale del &quot;bello&quot;, ma la mappa delle alleanze di una cultura: designa chi ha avuto diritto di parola e chi è stato confinato nel silenzio. Parlare di &quot;giustizia ermeneutica&quot; significa riconoscere che la decostruzione del canone non è vandalismo, bensì riparazione simbolica. Tuttavia, la critica deve evitare il rovesciamento speculare: il valore di un testo non deriva dal solo fatto di essere stato escluso. La via è la ricorsività — leggere, contraddire, reinserire — perché il canone resti processo vivo anziché dogmatica rovesciata. (138 词)</div>
+<div class="mnote">Prova 2: A Sua Eccellenza il Ministro, propongo l&#x27;istituzione di un &quot;canone aperto&quot; per la scuola secondaria: commissioni miste (docenti, studiosi, voci della società civile) che ogni cinque anni revisiono i programmi, includendo autori finora esclusi per genere, classe e provenienza. Si affianchi un fondo per traduzioni e archivi digitali liberi. Non si tratta di cancellare i classici, ma di ampliarne il contesto, educando gli studenti alla pluralità ermeneutica. Cordiali saluti. (96 词)</div>
+<div class="mnote">Prova 3: Il saggio sostiene che la funzione sociale dell&#x27;arte sta nel mantenere aperto lo spazio simbolico. L&#x27;opera autentica interroga e destabilizza il potere, a differenza della propaganda. Il canone non è neutrale ma riflette alleanze culturali; decostruirlo è atto di giustizia, purché non diventi nuovo dogma. La critica deve praticarne la ricorsività. (70 词)</div></section>
+<section class="module"><h2>5. Orale（口语）</h2><div class="mnote">Produzione orale（口语）</div>
+<div class="mnote">1. Articola una tesi sulla funzione politica dell&#x27;arte pubblica.</div>
+<div class="mnote">2. Discuti il ruolo del canone nella formazione dell&#x27;identità collettiva.</div>
+<div class="mnote">3. Reagisci a un&#x27;obiezione (es. &quot;la storia non si cancella&quot;) con argomentazione critica.</div>
+<div class="q-item q-oral" data-type="oral"><div class="oral-scoring"><div class="score-head">📋 Criteri di valutazione（口语评分要点）</div><div class="rubric-note">*Punti di valutazione（评分要点）**</div></div></div></section><section class="soluzioni"><h2>✅ Soluzioni e criteri di valutazione（参考答案与评分）</h2><pre>【Ascolto 听力】
+1.B　2.B　3.B　4.B　5.B　6.B　7.B　8.B　9.B　10.A　11.B　12.B
+
+【Lettura 阅读】
+1.B　2.B　3.B　4.B　5.B　6.Falso　7.Vero　8.Falso　9.Vero　10.Vero　11.Vero　12-17: A F B D C E
+
+【Analisi 语法分析】
+1.chi　2.il che　3.sia　4.che　5.sintomo　6.si negasse　7.da cui　8.quanto　9.da cui　10.ma　11.scriva　12.benché　13.il quale　14.sarà　15.che　16.si nomini　17.quanto　18.che　19.fosse　20.che　21.A　22.A　23.A　24.B　25.A　26.A　27.A　28.A　29.A　30.A　31.A　32.A　33.A　34.A　35.A　36.B　37.A　38.A　39.A　40.A　41.rappresenta　42.incarna　43.riaperto　44.dissolve　45.interroga　46.decostruisce　47.mercifica　48.si riscrive　49.imposto　50.rivendica　51.si riapre　52.sopravvive　53.consiste　54.partecipa　55.è　56.è interrogato　57.sia　58.resiste　59.ma　60.che　61.è rappresentato　62.è decostruito　63.Sebhene　64.divenga　65.che
+
+【Orale 口语】
+见上方评分要点。
+
+***
+
+&gt; **本卷编制说明**：全卷严格遵循 format\_spec.md 第三节 CILS 五大模块框架，并体现 2020–2025 改革（B1/B2 听力第 3 题、阅读第 2 题为 Vero/Falso；口语为 4 选 1 对话 + 4 选 1 独白含看图）。六级语法（Analisi）均已扩为真题全量（A1/A2 = 28 题，B1/C1/C2 = 65 题）。六级子主题严格取自 topic\_matrix.md 之&quot;CILS 第5卷&quot;。每等级均附答案与评分量规。</pre></section><button id="btn-check" onclick="verifica()">Verifica le risposte（提交判分）</button><button id="btn-reset" hidden onclick="resetta()">Ricomincia（重做）</button><div id="result" hidden></div></main><script>var SUBJMAX=20;
+function norm(s){return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]/g,'');}
+function gradeOf(p){if(p>=85)return['Eccellente','#1b7a3d'];if(p>=70)return['Buono','#2e7d32'];if(p>=55)return['Discreto','#b8860b'];if(p>=40)return['Insufficiente','#c0392b'];return['Grave','#7b1e2b'];}
+function verifica(){
+  var items=document.querySelectorAll('.q-item');
+  var score=0,total=0;
+  items.forEach(function(el){
+    var t=el.dataset.type;
+    var corr=el.dataset.correct;
+    if(!corr){ el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;}); return; }
+    if(t==='mc'||t==='tf'||t==='match'){
+      total++;
+      var ok=false;
+      if(t==='match'){var sel=el.querySelector('select');if(sel&&sel.value===corr)ok=true;}
+      else{var inp=el.querySelector('input:checked');if(inp&&inp.value===corr)ok=true;}
+      el.classList.add(ok?'correct':'wrong');
+      var n=document.createElement('div');n.className='q-note '+(ok?'ok':'no');
+      n.textContent=ok?'✅ Corretto':'❌ Risposta corretta: '+el.dataset.ctext;
+      el.appendChild(n);
+      el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;});
+    } else if(t==='cloze'){
+      el.querySelectorAll('input.blank').forEach(function(inp){
+        if(!inp.dataset.correct){inp.disabled=true;return;}
+        total++;
+        var v=norm(inp.value);
+        var ok2=v.length>0 && v.indexOf(norm(inp.dataset.correct))>=0;
+        if(ok2)score++;
+        inp.classList.add(ok2?'correct':'wrong');
+        if(!ok2){var s=document.createElement('span');s.className='anshint';s.textContent=' ✓ '+inp.dataset.correct;inp.insertAdjacentElement('afterend',s);}
+        inp.disabled=true;
+      });
+    }
+  });
+  document.querySelectorAll('.q-subj').forEach(function(el){var r=el.querySelector('.ref');if(r)r.hidden=false;});
+  var pct= total? Math.round(score/total*100):0;
+  var g=gradeOf(pct);
+  var box=document.getElementById('result');
+  box.hidden=false;
+  box.innerHTML='<div class="res-score">客观题正确率：<b>'+score+' / '+total+'</b> （'+pct+'%）</div>'+
+    '<div class="res-grade" style="background:'+g[1]+'">'+g[0]+'</div>'+
+    '<div class="res-note">写作 / 口语 / 改写 / 开放题请对照下方「✅ Soluzioni」参考答案与评分要点自评（本卷主观题满分 '+SUBJMAX+' 分）。</div>';
+  box.scrollIntoView({behavior:'smooth'});
+  document.getElementById('btn-check').hidden=true;
+  document.getElementById('btn-reset').hidden=false;
+}
+function resetta(){location.reload();}
+document.addEventListener('play', function(e){
+  if(e.target && e.target.tagName === 'AUDIO'){
+    document.querySelectorAll('audio').forEach(function(a){ if(a!==e.target) a.pause(); });
+  }
+}, true);</script></body></html>

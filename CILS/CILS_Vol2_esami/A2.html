@@ -1,0 +1,210 @@
+<!DOCTYPE html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>CILS A2 — CILS</title><style>:root{--wine:#7b1e2b;--wine2:#a83246;--ink:#23211f;--paper:#fbf8f4;--line:#e4ddd2;--ok:#1b7a3d;--no:#c0392b;}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);background:var(--paper);line-height:1.65}
+header.top{background:linear-gradient(135deg,var(--wine),var(--wine2));color:#fff;padding:26px 20px;box-shadow:0 2px 10px rgba(0,0,0,.15)}
+header.top .back{color:#ffd9df;text-decoration:none;font-size:14px}
+header.top .ttl{font-size:26px;font-weight:800;margin-top:6px}
+header.top .ttl .lvl{display:inline-block;background:#fff;color:var(--wine);border-radius:8px;padding:2px 10px;margin-right:10px;font-size:20px}
+header.top .sub{opacity:.9;margin-top:4px;font-size:15px}
+main{max-width:880px;margin:0 auto;padding:24px 18px 120px}
+section.module{margin:30px 0;background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+section.module h2{margin:0 0 14px;color:var(--wine);font-size:20px;border-bottom:2px solid var(--line);padding-bottom:8px}
+section.module h3{color:#444;font-size:16px;margin:22px 0 10px}
+.mnote{background:#f6f1e9;border-left:4px solid var(--wine);border-radius:8px;padding:10px 14px;margin:12px 0;font-size:13.5px;color:#6b5b4a;line-height:1.7}
+.text{background:#f6f1e9;border-left:4px solid var(--wine);border-radius:8px;padding:12px 14px;margin:12px 0}
+.text h4{margin:0 0 6px;font-size:14px;color:var(--wine)}
+pre{white-space:pre-wrap;margin:0;font-family:"Courier New",monospace;font-size:14px}
+.items{margin-top:14px}
+.q-item{margin:14px 0;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fffdf9}
+.q-item.correct{border-color:var(--ok);background:#f1faf3}
+.q-item.wrong{border-color:var(--no);background:#fdf1f0}
+.q-stem{margin:0 0 8px;font-weight:600}
+.opts{display:flex;flex-direction:column;gap:6px}
+.opt{display:flex;align-items:center;gap:8px;cursor:pointer;padding:4px 6px;border-radius:6px}
+.opt:hover{background:#f3ede3}
+.match-sel{font-size:15px;padding:5px 8px;border-radius:6px;border:1px solid #bbb;margin-top:4px}
+.blank{font-size:15px;padding:3px 6px;border:1px solid #bbb;border-radius:6px;margin:0 4px;min-width:90px}
+.blank.correct{border-color:var(--ok);background:#eafaf0}
+.blank.wrong{border-color:var(--no);background:#fdeceb}
+.anshint{color:var(--no);font-size:13px;margin-left:6px}
+textarea.ans{width:100%;font-size:15px;padding:10px;border:1px solid #ccc;border-radius:8px;font-family:inherit;resize:vertical}
+.q-subj .ref{margin-top:10px;padding:10px 12px;background:#eef6fb;border-left:4px solid #2a7fb8;border-radius:8px;font-size:14px}
+.q-note{margin-top:8px;font-weight:700;font-size:14px}
+.q-note.ok{color:var(--ok)} .q-note.no{color:var(--no)}
+.audio-block{background:#f0f4f7;border:1px solid #cfe0ea;border-radius:10px;padding:12px 14px;margin:12px 0}
+.audio-block h4{margin:0 0 8px;color:#1f5f80}
+audio{width:100%;margin-bottom:8px;display:block}
+.noaudio{color:#b06a00;font-weight:600}
+.q-oral{background:#fbf7ef;border:1px solid #ecd9b0;border-radius:12px;padding:16px 18px;margin:14px 0}
+.q-oral .q-stem{margin:0 0 12px;font-size:15px;line-height:1.7;white-space:pre-wrap}
+.oral-scoring{background:#fff;border:1px solid #e7dcc4;border-radius:10px;padding:12px 14px;margin-bottom:12px}
+.score-head{font-weight:700;color:#9a6b00;margin-bottom:8px;font-size:14px}
+.dims{margin:0;padding-left:20px;font-size:14px;line-height:1.9}
+.dims li{margin-bottom:2px}
+.rubric-note{margin-top:8px;padding-top:8px;border-top:1px dashed #e0d3b6;font-size:13px;color:#5a4a2a;line-height:1.7}
+.oral-ref{background:#eef6fb;border:1px solid #cfe0ea;border-radius:10px;padding:12px 14px}
+.ref-head{font-weight:700;color:#1f5f80;margin-bottom:8px;font-size:14px}
+.ref-it{font-weight:400;color:#5b87a0;font-style:italic;font-size:12px}
+.oral-ref pre{margin:8px 0 0;white-space:pre-wrap;word-break:break-word;font-size:14px;line-height:1.75;background:#fff;border:1px solid #dce8f0;border-radius:8px;padding:10px 12px}
+.otranscript{margin-top:8px}
+.otranscript summary{cursor:pointer;color:#1f5f80;font-weight:600;font-size:13px;user-select:none;list-style:none}
+.otranscript summary::-webkit-details-marker{display:none}
+.otranscript .o-open{display:none}
+.otranscript[open] .o-closed{display:none}
+.otranscript[open] .o-open{display:inline}
+.transcript{margin-top:10px}
+.transcript summary{cursor:pointer;color:#1f5f80;font-weight:600;font-size:14px;user-select:none;list-style:none}
+.transcript summary::-webkit-details-marker{display:none}
+.transcript summary:hover{text-decoration:underline}
+.transcript .t-open{display:none}
+.transcript[open] .t-closed{display:none}
+.transcript[open] .t-open{display:inline}
+.transcript[open] summary{margin-bottom:8px}
+.transcript pre{margin-top:0}
+.soluzioni{margin:28px 0;background:#fff;border:2px dashed var(--wine);border-radius:14px;padding:18px 20px}
+.soluzioni h2{margin:0 0 12px;color:var(--wine);font-size:18px}
+.soluzioni pre{white-space:pre-wrap;font-size:13.5px;line-height:1.8;background:#fbf6f0;border-radius:8px;padding:12px;font-family:"Courier New",monospace}
+#btn-check{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--wine);color:#fff;border:none;font-size:17px;font-weight:700;padding:13px 30px;border-radius:30px;cursor:pointer;box-shadow:0 4px 14px rgba(123,30,43,.4);z-index:10}
+#btn-check:hover{background:var(--wine2)}
+#btn-reset{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);margin-left:170px;background:#555;color:#fff;border:none;font-size:15px;padding:13px 22px;border-radius:30px;cursor:pointer;z-index:10}
+#result{margin-top:20px;padding:18px 20px;border-radius:12px;background:#fff;border:2px solid var(--wine);text-align:center}
+.res-score{font-size:18px;margin-bottom:10px}
+.res-grade{display:inline-block;color:#fff;font-weight:800;font-size:22px;padding:6px 22px;border-radius:10px;margin-bottom:8px}
+.res-note{font-size:14px;color:#555;margin-top:8px}
+.index-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-top:20px}
+.card{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:0 1px 4px rgba(0,0,0,.05);transition:.15s}
+.card:hover{transform:translateY(-3px);border-color:var(--wine)}
+.card .lvl{display:inline-block;background:var(--wine);color:#fff;border-radius:8px;padding:3px 12px;font-weight:800;font-size:18px}
+.card .nm{font-weight:700;margin:8px 0 4px;font-size:16px}
+.card .sb{font-size:13px;color:#666}
+.intro{max-width:880px;margin:24px auto;padding:0 18px;color:#555}
+.vol-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;margin-top:24px}
+.vol{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:0 1px 4px rgba(0,0,0,.05);transition:.15s}
+.vol:hover{transform:translateY(-3px);border-color:var(--wine)}
+.vol .vno{display:inline-block;background:var(--wine);color:#fff;border-radius:8px;padding:3px 12px;font-weight:800;font-size:14px}
+.vol .vt{font-weight:700;margin:10px 0 6px;font-size:18px}
+.vol .vs{font-size:13px;color:#666}
+.vol .vgo{margin-top:12px;font-weight:700;color:var(--wine);font-size:14px}</style></head><body><header class="top"><a href="index.html" class="back">← Indice CILS Vol.2</a><div class="ttl"><span class="lvl">A2</span> CILS</div><div class="sub"></div></header><main><p class="intro">本级主题：Giovani, famiglia e relazioni generazionali。CILS 五大模块（Ascolto / Lettura / Analisi delle strutture / Produzione scritta / Produzione orale）。听力为模拟音频文本（由考官/录音播放），本页以文本呈现听力原文，点击展开即可自测。提交后客观题自动判分；写作/口语/开放题请展开下方「✅ Soluzioni」参考答案与评分要点自评。</p><section class="module"><h2>1. Ascolto（听力）</h2><div class="mnote">Ascolto（听力）</div>
+<div class="mnote">约 20–30 分钟，共 12 题（Prova 1：6 短对话三选一；Prova 2：1 长对话三选一 6 题）。</div>
+<div class="mnote">_Prova 1 — 6 短对&amp;#x8BDD;_&amp;#x44;1. A: Che famiglia numerosa! Quanti siete? B: Siamo in quattro: io, i miei genitori e mia sorella.</div>
+<div class="mnote">D2. A: Uscite stasera? B: Sì, andiamo al cinema con gli amici.</div>
+<div class="mnote">D3. A: Tua madre cucina bene? B: Sì, fa la pasta tutti i giorni.</div>
+<div class="mnote">D4. A: Dove abita tuo zio? B: Abita in periferia, vicino al fiume.</div>
+<div class="mnote">D5. A: Il sabato che fai? B: Vado in pizzeria con i compagni di scuola.</div>
+<div class="mnote">D6. A: Tuo padre lavora molto? B: Sì, è impiegato e parte presto la mattina.</div>
+<div class="mnote">_Prova 2 — 长对话（La domenica in famiglia）_&amp;#x4D;adre: Allora, domenica viene anche la zia Giulia con i cugini.</div>
+<div class="mnote">Figlia: Che bello! Giochiamo in giardino?</div>
+<div class="mnote">Madre: Sì, e tuo padre fa il barbecue. Poi guardiamo la partita in televisione.</div>
+<div class="mnote">Figlia: E i nonni? Vengono anche loro?</div>
+<div class="mnote">Madre: Certo, arrivano alle 12:30. Portano il dolce.</div>
+<div class="mnote">Figlia: Bene. Invito anche Sara e Luca, i miei amici?</div>
+<div class="mnote">Madre: Sì, ma digli di portare una cosa da bere.</div>
+<div class="mnote">Figlia: Ok, mando un messaggio subito.</div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="4"><p class="q-stem">1. La famiglia di B (D1) è composta da ______ persone.</p><div class="opts"><label class="opt"><input type="radio" name="r1" value="0"> A) 3</label><label class="opt"><input type="radio" name="r1" value="1"> B) 4</label><label class="opt"><input type="radio" name="r1" value="2"> C) 5</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="al cinema"><p class="q-stem">2. Stasera B (D2) va ______.</p><div class="opts"><label class="opt"><input type="radio" name="r2" value="0"> A) a teatro</label><label class="opt"><input type="radio" name="r2" value="1"> B) al cinema</label><label class="opt"><input type="radio" name="r2" value="2"> C) a cena</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="tutti i giorni"><p class="q-stem">3. La madre di B (D3) prepara la pasta ______.</p><div class="opts"><label class="opt"><input type="radio" name="r3" value="0"> A) ogni domenica</label><label class="opt"><input type="radio" name="r3" value="1"> B) tutti i giorni</label><label class="opt"><input type="radio" name="r3" value="2"> C) mai</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="in periferia"><p class="q-stem">4. Lo zio di B (D4) abita ______.</p><div class="opts"><label class="opt"><input type="radio" name="r4" value="0"> A) in centro</label><label class="opt"><input type="radio" name="r4" value="1"> B) in periferia</label><label class="opt"><input type="radio" name="r4" value="2"> C) in montagna</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="i compagni"><p class="q-stem">5. Il sabato B (D5) va in pizzeria con ______.</p><div class="opts"><label class="opt"><input type="radio" name="r5" value="0"> A) i genitori</label><label class="opt"><input type="radio" name="r5" value="1"> B) i compagni</label><label class="opt"><input type="radio" name="r5" value="2"> C) i nonni</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="impiegato"><p class="q-stem">6. Il padre di B (D6) è ______.</p><div class="opts"><label class="opt"><input type="radio" name="r6" value="0"> A) operario</label><label class="opt"><input type="radio" name="r6" value="1"> B) impiegato</label><label class="opt"><input type="radio" name="r6" value="2"> C) professore</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="i cugini"><p class="q-stem">7. La domenica viene la zia Giulia con ______.</p><div class="opts"><label class="opt"><input type="radio" name="r7" value="0"> A) i nonni</label><label class="opt"><input type="radio" name="r7" value="1"> B) i cugini</label><label class="opt"><input type="radio" name="r7" value="2"> C) i vicini</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="il padre"><p class="q-stem">8. Chi fa il barbecue?</p><div class="opts"><label class="opt"><input type="radio" name="r8" value="0"> A) la madre</label><label class="opt"><input type="radio" name="r8" value="1"> B) il padre</label><label class="opt"><input type="radio" name="r8" value="2"> C) la figlia</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="12:30"><p class="q-stem">9. I nonni arrivano alle ______.</p><div class="opts"><label class="opt"><input type="radio" name="r9" value="0"> A) 12:00</label><label class="opt"><input type="radio" name="r9" value="1"> B) 12:30</label><label class="opt"><input type="radio" name="r9" value="2"> C) 13:00</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="il dolce"><p class="q-stem">10. I nonni portano ______.</p><div class="opts"><label class="opt"><input type="radio" name="r10" value="0"> A) da bere</label><label class="opt"><input type="radio" name="r10" value="1"> B) il dolce</label><label class="opt"><input type="radio" name="r10" value="2"> C) la pizza</label></div></div>
+<div class="q-item" data-type="mc" data-correct="0" data-ctext="Sara e Luca"><p class="q-stem">11. La figlia invita anche ______.</p><div class="opts"><label class="opt"><input type="radio" name="r11" value="0"> A) Sara e Luca</label><label class="opt"><input type="radio" name="r11" value="1"> B) i cugini</label><label class="opt"><input type="radio" name="r11" value="2"> C) i nonni</label></div></div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="una cosa da bere"><p class="q-stem">12. Gli amici devono portare ______.</p><div class="opts"><label class="opt"><input type="radio" name="r12" value="0"> A) il dolce</label><label class="opt"><input type="radio" name="r12" value="1"> B) una cosa da bere</label><label class="opt"><input type="radio" name="r12" value="2"> C) il giornale</label></div></div></section>
+<section class="module"><h2>2. Lettura（阅读）</h2><div class="mnote">Lettura（阅读）</div>
+<div class="mnote">40 分钟。Prova 1（\~150 词 + 4 单选）；Prova 2（4 微文本各 3 句判断 = 12 V/F）；Prova 3（4 短文 + 8 描述配对）。</div>
+<div class="mnote">_Prova 1 — Testo: Una famiglia italian&amp;#x61;_&amp;#x4C;a famiglia Bianchi abita a Bologna, in un appartamento nel centro storico. Ci sono papà Franco, mamma Laura, il figlio Matteo (14 anni) e la figlia Chiara (11 anni). La domenica la famiglia si riunisce a pranzo dalla nonna, che abita fuori città. Franco lavora in banca, Laura è insegnante. La sera, dopo cena, i ragazzi fanno i compiti e i genitori guardano un film. D&#x27;estate vanno al mare tutti insieme. (147 词)</div>
+<div class="mnote">_Prova 2 — 4 微文本（判断 Vero/Falso，每篇 3 句）_&amp;#x54;1. «Il nonno di Paolo vive con loro. — La famiglia fa colazione insieme. — Il cane si chiama Nino.»</div>
+<div class="mnote">T2. «Sara esce con le amiche il venerdì. — Le amiche abitano lontano. — Vanno in discoteca.»</div>
+<div class="mnote">T3. «Mio cugino studia a Roma. — Lui viene a casa a Natale. — Sua madre è malata.»</div>
+<div class="mnote">T4. «La zia cucina il risotto. — Il pranzo è alle 13:00. — I bambini non mangiano.»</div>
+<div class="mnote">（判断 13–24 见题后说明）</div>
+<div class="mnote">_Prova 3 — 4 短文 + 8 描述配&amp;#x5BF9;_&amp;#x42;1. «Una famiglia numerosa in campagna…» / B2. «Due amiche al bar…» / B3. «Il nonno e il nipote in biblioteca…» / B4. «I vicini organizzano una cena…»</div>
+<div class="q-item" data-type="mc" data-correct="1" data-ctext="Bologna"><p class="q-stem">25. I Bianchi abitano a ______.</p><div class="opts"><label class="opt"><input type="radio" name="r25" value="0"> A) Milano</label><label class="opt"><input type="radio" name="r25" value="1"> B) Bologna</label><label class="opt"><input type="radio" name="r25" value="2"> C) Roma</label></div></div>
+<div class="mnote">26\. Chiara ha ______ anni. a) 11 b) 14 c) 16</div>
+<div class="mnote">27\. La nonna abita ______. a) in centro b) fuori città c) al mare</div>
+<div class="mnote">28\. Franco lavora ______. a) a scuola b) in banca c) in ospedale</div>
+<div class="mnote">29–40. Prova 2（12 句判断，按原文逻辑标注 Vero/Falso）+ Prova 3（8 描述配对）— 见「答案与评分」。</div>
+<div class="mnote">（为便于阅卷，Prova 2 给出 4 篇完整微文本、Prova 3 给出 4 短文与 8 描述，按「答案与评分」对应。）</div></section>
+<section class="module"><h2>3. Analisi（语法分析）</h2><div class="mnote">Analisi（语言结构）</div>
+<div class="mnote">40 分钟。Prova 1（10 空性数配合）；Prova 2（10 空动词变位：近过去/未完成）；Prova 3（8 完形搭配）。</div>
+<h3>Prova 1 — 性数配合（10 空）</h3>
+<div class="q-item" data-type="cloze"><p class="q-stem">1. I<input class="blank" data-correct="miei"> (mio) cugini arrivano domenica.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">2. La<input class="blank" data-correct="buona"> (buono) zia cucina il risotto.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">3. Le<input class="blank" data-correct="tue"> (tuo) amiche sono simpatiche.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">4. Un<input class="blank" data-correct="grande"> (grande) giardino pieno di fiori.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">5. Le<input class="blank" data-correct="piccole"> (piccolo) stanze sono mie.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">6. I<input class="blank" data-correct="nostri"> (nostro) nonni abitano in Toscana.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">7. La<input class="blank" data-correct="bella"> (bel) festa finisce tardi.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">8. Due<input class="blank" data-correct="giovani"> (giovane) fratelli giocano.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">9. Le<input class="blank" data-correct="tue"> (tuo) sorelle studiano.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">10. Un<input class="blank" data-correct="nuovo"> (nuovo) amico di scuola.</p></div>
+<h3>Prova 2 — 动词变位（10 空，passato prossimo / imperfetto）</h3>
+<div class="mnote">&amp;#x31;1. Ieri io (andare) ______ al cinema con gli amici. 12. Da bambino (io / abitare) ______ in campagna. 13. La mamma (preparare) ______ la cena. 14. Noi (vedere) ______ i nonni ogni domenica. 15. Tu (essere) ______ contento della festa. 16. Lui (uscire) ______ con i compagni. 17. Noi (mangiare) ______ la pizza. 18. Voi (giocare) ______ in giardino. 19. Lei (leggere) ______ un libro. 20. Loro (venire) ______ a cena.</div>
+<h3>Prova 3 — 完形（8 空，搭配）</h3>
+<div class="mnote">&amp;#x32;1. Marco ______ la sua famiglia. (ama / beve) 22. Usciamo ______ amici la sera. (con / da) 23. La nonna ______ una torta buonissima. (fa / dice) 24. Abitiamo ______ centro. (in / su) 25. Mio fratello ______ la chitarra. (suona / dorme) 26. Passo il week-end ______ i nonni. (da / di) 27. La mamma ______ la tavola. (apparecchia / apre) 28. Andiamo ______ piedi al parco. (a / di)</div></section>
+<section class="module"><h2>4. Scritta（写作）</h2><div class="mnote">Scrittura（写作）</div>
+<h3>Prova 1 — 话题作文（约 40–60 词）</h3>
+<h3>Prova 2 — 请求邮件（约 25–40 词）</h3></section>
+<section class="module"><h2>5. Orale（口语）</h2><div class="mnote">Orale（口语）</div>
+<div class="mnote">约 10 分钟。</div></section><section class="soluzioni"><h2>✅ Soluzioni e criteri di valutazione（参考答案与评分）</h2><pre>【Ascolto 听力】
+1.b 2.b 3.b 4.b 5.b 6.b 7.b 8.b 9.b 10.b 11.a 12.b
+
+【Lettura 阅读】
+25.b 26.a 27.b 28.b
+T1: V/V/F；T2: V/F/F；T3: V/V/F；T4: V/V/F（以完整微文本为准，评分时按文本判定）
+B1→descrizione「famiglia numerosa campagna」等，按对应分配。
+
+【Analisi 语法分析】
+Prova 1：1.miei 2.buona 3.tue 4.grande 5.piccole 6.nostri 7.bella 8.giovani 9.tue 10.nuovo ｜ Prova 2：11.sono andato 12.abitavo 13.ha preparato/preparava 14.vedevamo 15.sei stato/eri 16.è uscito/usciva 17.abbiamo mangiato/mangiavamo 18.giocavate 19.ha letto/leggeva 20.sono venuti/venivano ｜ Prova 3：21.ama 22.con 23.fa 24.in 25.suona 26.da 27.apparecchia 28.a</pre></section><button id="btn-check" onclick="verifica()">Verifica le risposte（提交判分）</button><button id="btn-reset" hidden onclick="resetta()">Ricomincia（重做）</button><div id="result" hidden></div></main><script>var SUBJMAX=20;
+function norm(s){return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]/g,'');}
+function gradeOf(p){if(p>=85)return['Eccellente','#1b7a3d'];if(p>=70)return['Buono','#2e7d32'];if(p>=55)return['Discreto','#b8860b'];if(p>=40)return['Insufficiente','#c0392b'];return['Grave','#7b1e2b'];}
+function verifica(){
+  var items=document.querySelectorAll('.q-item');
+  var score=0,total=0;
+  items.forEach(function(el){
+    var t=el.dataset.type;
+    var corr=el.dataset.correct;
+    if(!corr){ el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;}); return; }
+    if(t==='mc'||t==='tf'||t==='match'){
+      total++;
+      var ok=false;
+      if(t==='match'){var sel=el.querySelector('select');if(sel&&sel.value===corr)ok=true;}
+      else{var inp=el.querySelector('input:checked');if(inp&&inp.value===corr)ok=true;}
+      el.classList.add(ok?'correct':'wrong');
+      var n=document.createElement('div');n.className='q-note '+(ok?'ok':'no');
+      n.textContent=ok?'✅ Corretto':'❌ Risposta corretta: '+el.dataset.ctext;
+      el.appendChild(n);
+      el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;});
+    } else if(t==='cloze'){
+      el.querySelectorAll('input.blank').forEach(function(inp){
+        if(!inp.dataset.correct){inp.disabled=true;return;}
+        total++;
+        var v=norm(inp.value);
+        var ok2=v.length>0 && v.indexOf(norm(inp.dataset.correct))>=0;
+        if(ok2)score++;
+        inp.classList.add(ok2?'correct':'wrong');
+        if(!ok2){var s=document.createElement('span');s.className='anshint';s.textContent=' ✓ '+inp.dataset.correct;inp.insertAdjacentElement('afterend',s);}
+        inp.disabled=true;
+      });
+    }
+  });
+  document.querySelectorAll('.q-subj').forEach(function(el){var r=el.querySelector('.ref');if(r)r.hidden=false;});
+  var pct= total? Math.round(score/total*100):0;
+  var g=gradeOf(pct);
+  var box=document.getElementById('result');
+  box.hidden=false;
+  box.innerHTML='<div class="res-score">客观题正确率：<b>'+score+' / '+total+'</b> （'+pct+'%）</div>'+
+    '<div class="res-grade" style="background:'+g[1]+'">'+g[0]+'</div>'+
+    '<div class="res-note">写作 / 口语 / 改写 / 开放题请对照下方「✅ Soluzioni」参考答案与评分要点自评（本卷主观题满分 '+SUBJMAX+' 分）。</div>';
+  box.scrollIntoView({behavior:'smooth'});
+  document.getElementById('btn-check').hidden=true;
+  document.getElementById('btn-reset').hidden=false;
+}
+function resetta(){location.reload();}
+document.addEventListener('play', function(e){
+  if(e.target && e.target.tagName === 'AUDIO'){
+    document.querySelectorAll('audio').forEach(function(a){ if(a!==e.target) a.pause(); });
+  }
+}, true);</script></body></html>

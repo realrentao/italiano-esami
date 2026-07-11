@@ -1,0 +1,328 @@
+<!DOCTYPE html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>CILS B2 — CILS DUE</title><style>:root{--wine:#7b1e2b;--wine2:#a83246;--ink:#23211f;--paper:#fbf8f4;--line:#e4ddd2;--ok:#1b7a3d;--no:#c0392b;}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);background:var(--paper);line-height:1.65}
+header.top{background:linear-gradient(135deg,var(--wine),var(--wine2));color:#fff;padding:26px 20px;box-shadow:0 2px 10px rgba(0,0,0,.15)}
+header.top .back{color:#ffd9df;text-decoration:none;font-size:14px}
+header.top .ttl{font-size:26px;font-weight:800;margin-top:6px}
+header.top .ttl .lvl{display:inline-block;background:#fff;color:var(--wine);border-radius:8px;padding:2px 10px;margin-right:10px;font-size:20px}
+header.top .sub{opacity:.9;margin-top:4px;font-size:15px}
+main{max-width:880px;margin:0 auto;padding:24px 18px 120px}
+section.module{margin:30px 0;background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+section.module h2{margin:0 0 14px;color:var(--wine);font-size:20px;border-bottom:2px solid var(--line);padding-bottom:8px}
+section.module h3{color:#444;font-size:16px;margin:22px 0 10px}
+.mnote{background:#f6f1e9;border-left:4px solid var(--wine);border-radius:8px;padding:10px 14px;margin:12px 0;font-size:13.5px;color:#6b5b4a;line-height:1.7}
+.text{background:#f6f1e9;border-left:4px solid var(--wine);border-radius:8px;padding:12px 14px;margin:12px 0}
+.text h4{margin:0 0 6px;font-size:14px;color:var(--wine)}
+pre{white-space:pre-wrap;margin:0;font-family:"Courier New",monospace;font-size:14px}
+.items{margin-top:14px}
+.q-item{margin:14px 0;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fffdf9}
+.q-item.correct{border-color:var(--ok);background:#f1faf3}
+.q-item.wrong{border-color:var(--no);background:#fdf1f0}
+.q-stem{margin:0 0 8px;font-weight:600}
+.opts{display:flex;flex-direction:column;gap:6px}
+.opt{display:flex;align-items:center;gap:8px;cursor:pointer;padding:4px 6px;border-radius:6px}
+.opt:hover{background:#f3ede3}
+.match-sel{font-size:15px;padding:5px 8px;border-radius:6px;border:1px solid #bbb;margin-top:4px}
+.blank{font-size:15px;padding:3px 6px;border:1px solid #bbb;border-radius:6px;margin:0 4px;min-width:90px}
+.blank.correct{border-color:var(--ok);background:#eafaf0}
+.blank.wrong{border-color:var(--no);background:#fdeceb}
+.anshint{color:var(--no);font-size:13px;margin-left:6px}
+textarea.ans{width:100%;font-size:15px;padding:10px;border:1px solid #ccc;border-radius:8px;font-family:inherit;resize:vertical}
+.q-subj .ref{margin-top:10px;padding:10px 12px;background:#eef6fb;border-left:4px solid #2a7fb8;border-radius:8px;font-size:14px}
+.q-note{margin-top:8px;font-weight:700;font-size:14px}
+.q-note.ok{color:var(--ok)} .q-note.no{color:var(--no)}
+.audio-block{background:#f0f4f7;border:1px solid #cfe0ea;border-radius:10px;padding:12px 14px;margin:12px 0}
+.audio-block h4{margin:0 0 8px;color:#1f5f80}
+audio{width:100%;margin-bottom:8px;display:block}
+.noaudio{color:#b06a00;font-weight:600}
+.q-oral{background:#fbf7ef;border:1px solid #ecd9b0;border-radius:12px;padding:16px 18px;margin:14px 0}
+.q-oral .q-stem{margin:0 0 12px;font-size:15px;line-height:1.7;white-space:pre-wrap}
+.oral-scoring{background:#fff;border:1px solid #e7dcc4;border-radius:10px;padding:12px 14px;margin-bottom:12px}
+.score-head{font-weight:700;color:#9a6b00;margin-bottom:8px;font-size:14px}
+.dims{margin:0;padding-left:20px;font-size:14px;line-height:1.9}
+.dims li{margin-bottom:2px}
+.rubric-note{margin-top:8px;padding-top:8px;border-top:1px dashed #e0d3b6;font-size:13px;color:#5a4a2a;line-height:1.7}
+.oral-ref{background:#eef6fb;border:1px solid #cfe0ea;border-radius:10px;padding:12px 14px}
+.ref-head{font-weight:700;color:#1f5f80;margin-bottom:8px;font-size:14px}
+.ref-it{font-weight:400;color:#5b87a0;font-style:italic;font-size:12px}
+.oral-ref pre{margin:8px 0 0;white-space:pre-wrap;word-break:break-word;font-size:14px;line-height:1.75;background:#fff;border:1px solid #dce8f0;border-radius:8px;padding:10px 12px}
+.otranscript{margin-top:8px}
+.otranscript summary{cursor:pointer;color:#1f5f80;font-weight:600;font-size:13px;user-select:none;list-style:none}
+.otranscript summary::-webkit-details-marker{display:none}
+.otranscript .o-open{display:none}
+.otranscript[open] .o-closed{display:none}
+.otranscript[open] .o-open{display:inline}
+.transcript{margin-top:10px}
+.transcript summary{cursor:pointer;color:#1f5f80;font-weight:600;font-size:14px;user-select:none;list-style:none}
+.transcript summary::-webkit-details-marker{display:none}
+.transcript summary:hover{text-decoration:underline}
+.transcript .t-open{display:none}
+.transcript[open] .t-closed{display:none}
+.transcript[open] .t-open{display:inline}
+.transcript[open] summary{margin-bottom:8px}
+.transcript pre{margin-top:0}
+.soluzioni{margin:28px 0;background:#fff;border:2px dashed var(--wine);border-radius:14px;padding:18px 20px}
+.soluzioni h2{margin:0 0 12px;color:var(--wine);font-size:18px}
+.soluzioni pre{white-space:pre-wrap;font-size:13.5px;line-height:1.8;background:#fbf6f0;border-radius:8px;padding:12px;font-family:"Courier New",monospace}
+#btn-check{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--wine);color:#fff;border:none;font-size:17px;font-weight:700;padding:13px 30px;border-radius:30px;cursor:pointer;box-shadow:0 4px 14px rgba(123,30,43,.4);z-index:10}
+#btn-check:hover{background:var(--wine2)}
+#btn-reset{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);margin-left:170px;background:#555;color:#fff;border:none;font-size:15px;padding:13px 22px;border-radius:30px;cursor:pointer;z-index:10}
+#result{margin-top:20px;padding:18px 20px;border-radius:12px;background:#fff;border:2px solid var(--wine);text-align:center}
+.res-score{font-size:18px;margin-bottom:10px}
+.res-grade{display:inline-block;color:#fff;font-weight:800;font-size:22px;padding:6px 22px;border-radius:10px;margin-bottom:8px}
+.res-note{font-size:14px;color:#555;margin-top:8px}
+.index-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-top:20px}
+.card{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:0 1px 4px rgba(0,0,0,.05);transition:.15s}
+.card:hover{transform:translateY(-3px);border-color:var(--wine)}
+.card .lvl{display:inline-block;background:var(--wine);color:#fff;border-radius:8px;padding:3px 12px;font-weight:800;font-size:18px}
+.card .nm{font-weight:700;margin:8px 0 4px;font-size:16px}
+.card .sb{font-size:13px;color:#666}
+.intro{max-width:880px;margin:24px auto;padding:0 18px;color:#555}
+.vol-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;margin-top:24px}
+.vol{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:0 1px 4px rgba(0,0,0,.05);transition:.15s}
+.vol:hover{transform:translateY(-3px);border-color:var(--wine)}
+.vol .vno{display:inline-block;background:var(--wine);color:#fff;border-radius:8px;padding:3px 12px;font-weight:800;font-size:14px}
+.vol .vt{font-weight:700;margin:10px 0 6px;font-size:18px}
+.vol .vs{font-size:13px;color:#666}
+.vol .vgo{margin-top:12px;font-weight:700;color:var(--wine);font-size:14px}</style></head><body><header class="top"><a href="index.html" class="back">← Indice CILS Vol.5</a><div class="ttl"><span class="lvl">B2</span> CILS DUE</div><div class="sub"></div></header><main><p class="intro">本级主题：Arte, letteratura e tempo libero。CILS 五大模块（Ascolto / Lettura / Analisi delle strutture / Produzione scritta / Produzione orale）。听力为模拟音频文本（由考官/录音播放），本页以文本呈现听力原文，点击展开即可自测。提交后客观题自动判分；写作/口语/开放题请展开下方「✅ Soluzioni」参考答案与评分要点自评。</p><section class="module"><h2>1. Ascolto（听力）</h2><div class="mnote">Ascolto（听力）</div>
+<h3>Prova 1 — 7 brevi dialoghi（patrimonio culturale）</h3>
+<div class="mnote">&amp;#x44;1 — Sai che il centro storico è patrimonio UNESCO? — Sì, dal 2015.</div>
+<div class="mnote">D2 — Perché restaurano il castello? — Per preservare la pietra.</div>
+<div class="mnote">D3 — I reperti dove sono esposti? — Nel museo archeologico.</div>
+<div class="mnote">D4 — Chi finanzia la manutenzione? — Il ministero e la regione.</div>
+<div class="mnote">D5 — Le visite guidate sono gratuite? — Solo la prima domenica.</div>
+<div class="mnote">D6 — Cosa tutela la soprintendenza? — Monumenti e siti.</div>
+<div class="mnote">D7 — Il borgo rischia il degrado? — Purtroppo sì, serve cura.</div>
+<h3>Prova 2 — Intervista（lo spettacolo dal vivo）</h3>
+<div class="text"><h4>📝 Testo / Dialogo (simulato)</h4><pre>— Benvenuta, direttrice del teatro comunale. Com&#x27;è la stagione?
+
+— Ricca: dodici produzioni, dall&#x27;opera al contemporaneo.
+
+— Il pubblico è cambiato?
+
+— Sì, ora arrivano anche i giovani, grazie ai prezzi ridotti.
+
+— Lo streaming sostituisce il live?
+
+— No: la presenza fisica resta insostituibile per l&#x27;emozione.
+
+— Quali difficoltà?
+
+— I costi e la burocrazia rallentano le prove.
+
+— Avete residenze per artisti?
+
+— Sì, due spazi di prova aperti tutto l&#x27;anno.
+
+— Un messaggio per i cittadini?
+
+— Sostenete lo spettacolo dal vivo: è memoria viva della comunità.</pre></div>
+<h3>Prova 3 — Monologo（patrimonio culturale）</h3>
+<div class="text"><h4>📝 Testo / Dialogo (simulato)</h4><pre>&amp;#x49;l nostro patrimonio culturale non è fatto solo di monumenti famosi, ma anche di saperi tramandati di generazione in generazione: la lavorazione della ceramica, la musica popolare, le feste religiose. Questi beni immateriali rischiano di scomparire se non vengono praticati. Per questo l&#x27;UNESCO ne tutela alcuni, come la dieta mediterranea o l&#x27;opera dei pupi siciliani. La conservazione richiede risorse, ma anche comunità attive. I Comuni più virtuosi coinvolgono le scuole e i mestieri antichi. Tuttavia, la valorizzazione non deve trasformarsi in mercificazione: il turismo di massa può erodere l&#x27;identità locale. Serve un equilibrio tra accessibilità e tutela. Solo così il patrimonio resterà bene di tutti, non semplice scenografia per visitatori.</pre></div>
+<h3>Domande — Prova 1（7 题，四选一）</h3>
+<div class="mnote">1. Dal quando il centro è UNESCO?　A. 2010　B. 2015　C. 2020　D. 2005</div>
+<div class="mnote">2. Perché restaurano il castello?　A. Per turismo　B. Per preservare la pietra　C. Per eventi　D. Per sicurezza</div>
+<div class="mnote">3. Dove sono i reperti?　A. In castello　B. In municipio　C. Nel museo archeologico　D. In chiesa</div>
+<div class="mnote">4. Chi finanzia?　A. Privati　B. Ministero e regione　C. UE　D. Comune solo</div>
+<div class="mnote">5. Visite gratis?　A. Mai　B. Prima domenica　C. Sempre　D. Agosto</div>
+<div class="mnote">6. Cosa tutela la soprintendenza?　A. Parchi　B. Monumenti e siti　C. Strade　D. Scuole</div>
+<div class="mnote">7. Il borgo rischia?　A. Inondazione　B. Degrado　C. Chiusura　D. Ritardo</div>
+<h3>Domande — Prova 2（7 题，四选一）</h3>
+<div class="mnote">9\. Chi arriva ora al teatro?　A. Anziani　B. Giovani　C. Turisti　D. Bambini</div>
+<div class="mnote">10\. Lo streaming sostituisce il live?　A. Sì　B. No　C. Forse　D. Solo all&#x27;estero</div>
+<div class="mnote">11\. Quale difficoltà?　A. Pubblico　B. Costi e burocrazia　C. Artisti　D. Luce</div>
+<div class="mnote">12\. Ci sono residenze?　A. No　B. Sì, due spazi　C. Una sola　D. Tre</div>
+<div class="mnote">13\. Il teatro apre le prove…　A. Estate　B. Tutto l&#x27;anno　C. Inverno　D. Weekend</div>
+<div class="mnote">14\. Messaggio finale?　A. Chiudere　B. Sostenere il live　C. Aumentare prezzi　D. Streaming</div>
+<div class="text"><h4>📝 Testo / Dialogo (simulato)</h4><pre>&amp;#x38;. Quante produzioni nella stagione?　A. 6　B. 10　C. 12　D. 20</pre></div>
+<h3>Domande — Prova 3（判断正误 12 题）</h3>
+<div class="mnote">&amp;#x31;5. Il patrimonio è solo monumenti famosi.　(V/F)</div>
+<div class="mnote">16\. I saperi tramandati rischiano di scomparire.　(V/F)</div>
+<div class="mnote">17\. L&#x27;UNESCO tutela anche beni immateriali.　(V/F)</div>
+<div class="mnote">18\. La dieta mediterranea è tutelata.　(V/F)</div>
+<div class="mnote">19\. La conservazione richiede solo volontari.　(V/F)</div>
+<div class="mnote">20\. Le scuole sono coinvolte dai Comuni virtuosi.　(V/F)</div>
+<div class="mnote">21\. Il turismo di massa aiuta l&#x27;identità locale.　(V/F)</div>
+<div class="mnote">22\. Serve equilibrio tra accessibilità e tutela.　(V/F)</div>
+<div class="mnote">23\. Il patrimonio è un bene di tutti.　(V/F)</div>
+<div class="mnote">24\. La valorizzazione è sempre positiva.　(V/F)</div>
+<div class="mnote">25\. Gli antichi mestieri sono coinvolti.　(V/F)</div>
+<div class="mnote">26\. Lo spettacolo dal vivo è memoria viva.　(V/F)</div></section>
+<section class="module"><h2>2. Lettura（阅读）</h2><div class="mnote">Lettura（阅读）</div>
+<h3>Prova 1 — Testo (≈350 词) + 7 单选</h3>
+<div class="mnote">1. Cosa moltiplica la digitalizzazione?　A. Costi　B. Occasioni di visione a distanza　C. Biglietti　D. Sale</div>
+<div class="mnote">2. Cosa non eguaglia la tecnologia?　A. Il suono　B. L&#x27;incontro fisico　C. Il prezzo　D. La luce</div>
+<div class="mnote">3. Cosa genera la presenza condivisa?　A. Stanchezza　B. Energia imprevedibile　C. Rumore　D. Paura</div>
+<div class="mnote">4. Cosa respingono i registi?　A. Il pubblico　B. Che il live sia rimpiazzato　C. Il teatro　D. La città</div>
+<div class="mnote">5. Cosa ha ridotto i finanziamenti?　A. La crisi economica　B. Il digitale　C. Il pubblico　D. Le tasse</div>
+<div class="mnote">6. Quali forme ibride nascono?　A. Solo streaming　B. Performance partecipative　C. Film　D. Radio</div>
+<div class="mnote">7. Cos&#x27;è diventato il patrimonio culturale?　A. Decorazione　B. Infrastruttura sociale　C. Ufficio　D. Negozio</div>
+<h3>Prova 2 — Testo pratico + 判断正误 14 题</h3>
+<div class="mnote">Il Comune apre le iscrizioni per 50 volontari under 30 al Festival del Patrimonio Vivente (12–15 settembre). I volontari affiancano artigiani e guide nei siti UNESCO della città. Rimborso spese di 10 euro al giorno; attestato finale riconosciuto per i crediti scolastici. È richiesta la conoscenza di una lingua straniera; non è necessario esperienza pregressa. Le domande vanno inviate entro il 31 luglio all&#x27;indirizzo [cultura@comune.it](mailto:cultura@comune.it). È previsto un incontro di formazione l&#x27;8 agosto. Il vitto non è incluso. I minorenni devono presentare l&#x27;autorizzazione dei genitori. Il festival include concerti serali a ingresso libero.</div>
+<div class="mnote">8\. Il festival è a settembre.　(V/F)</div>
+<div class="mnote">9\. Cercano 50 volontari.　(V/F)</div>
+<div class="mnote">10\. I volontari sono tutti over 30.　(V/F)</div>
+<div class="mnote">11\. C&#x27;è un rimborso di 10 euro/giorno.　(V/F)</div>
+<div class="mnote">12\. Serve esperienza pregressa.　(V/F)</div>
+<div class="mnote">13\. La domanda va inviata entro luglio.　(V/F)</div>
+<div class="mnote">14\. La formazione è l&#x27;8 agosto.　(V/F)</div>
+<div class="mnote">15\. Il vitto è incluso.　(V/F)</div>
+<div class="mnote">16\. I minorenni servono autorizzazione.　(V/F)</div>
+<div class="mnote">17\. Serve una lingua straniera.　(V/F)</div>
+<div class="mnote">18\. I concerti sono a pagamento.　(V/F)</div>
+<div class="mnote">19\. L&#x27;attestato vale per crediti.　(V/F)</div>
+<div class="mnote">20\. I volontari affiancano guide.　(V/F)</div>
+<div class="mnote">21\. Il festival è solo online.　(V/F)</div>
+<h3>Prova 3 — Riordino di 11 frasi</h3>
+<div class="mnote">A. Lo spettacolo dal vivo è patrimonio delle comunità.</div>
+<div class="mnote">B. I teatri storici raccontano secoli di città.</div>
+<div class="mnote">C. Oggi però i finanziamenti calano.</div>
+<div class="mnote">D. Le compagnie cercano nuovi pubblici.</div>
+<div class="mnote">E. Nascono abbonamenti flessibili e spettacoli nei quartieri.</div>
+<div class="mnote">F. Il digitale offre alternative, ma non sostituisce il live.</div>
+<div class="mnote">G. La presenza fisica resta centrale.</div>
+<div class="mnote">H. Anche le scuole portano gli studenti a teatro.</div>
+<div class="mnote">I. Così il teatro resta luogo di cittadinanza.</div>
+<div class="mnote">J. Il pubblico diventa parte attiva.</div>
+<div class="mnote">K. La cultura dal vivo unisce generazioni.</div>
+<div class="mnote">22-32. （risposta: A B C D E F G H I J K 顺序逻辑）</div></section>
+<section class="module"><h2>3. Analisi（语法分析）</h2><div class="mnote">Analisi delle strutture（语法分析）</div>
+<div class="q-item" data-type="cloze"><p class="q-stem">1. <input class="blank" data-correct="Il"> (Il / La) patrimonio culturale va tutelato.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">2. Questi siti sono<input class="blank" data-correct="più"> (più / molto) fragili del previsto.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">3. Ne parliamo<input class="blank" data-correct="con"> (con / da) gli abitanti.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">4. <input class="blank" data-correct="Quali"> (Quale / Quali) monumenti visiti?</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">5. Il teatro<input class="blank" data-correct="storico"> (storico / storica) attira turisti.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">6. Loro valorizzano<input class="blank" data-correct="i loro"> (loro / i loro) beni locali.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">7. È un evento<input class="blank" data-correct="di"> (di / da) grande partecipazione.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">8. Ci<input class="blank" data-correct="ci"> (ci / ne) sono risorse insufficienti.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">9. Tale tradizione è<input class="blank" data-correct="ancora"> (ancora / mai) viva.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">10. <input class="blank" data-correct="Tutto"> (Tutto / Tutti) il pubblico ha applaudito.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">11. Gli esperti<input class="blank" data-correct="lo"> (lo / gli) hanno restaurato.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">12. <input class="blank" data-correct="Quel"> (Quel / Quello) castello è del Cinquecento.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">13. La soprintendenza<input class="blank" data-correct="tutela"> (tutela / tutelano) i monumenti.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">14. Parliamo<input class="blank" data-correct="ne"> (ne / ci) della mostra.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">15. Ho visto<input class="blank" data-correct="un"> (un&#x27; / una) opera d&#x27;arte rara.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">16. <input class="blank" data-correct="Questi"> (Questi / Queste) reperti sono romani.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">17. Il borgo<input class="blank" data-correct="rischia"> (rischia / rischiano) il degrado.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">18. <input class="blank" data-correct="Molti"> (Molto / Molti) visitatori ogni anno.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">19. Ci<input class="blank" data-correct="andiamo"> (andiamo / vanno) in gruppo.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">20. È<input class="blank" data-correct="una"> (una / un&#x27;) tradizione viva.</p></div>
+<div class="mnote">&amp;#x32;1. Speriamo che il sito (essere) ______ tutelato.</div>
+<div class="mnote">22\. Se avessimo fondi, (restaurare) ______ il teatro.</div>
+<div class="mnote">23\. È importante che i giovani (partecipare) ______ .</div>
+<div class="mnote">24\. Quando (aprire) ______ il festival, c&#x27;era folla.</div>
+<div class="mnote">25\. Vorrei che lo spettacolo (iniziare) ______ in orario.</div>
+<div class="mnote">26\. Se piovesse, l&#x27;evento (spostare) ______ .</div>
+<div class="mnote">27\. Benché (fare) ______ freddo, sono venuti.</div>
+<div class="mnote">28\. (Finire) ______ le prove, gli attori sono usciti.</div>
+<div class="mnote">29\. Credevo che tu (sapere) ______ già la data.</div>
+<div class="mnote">30\. Prima che (loro partire) ______ , salutiamo.</div>
+<div class="mnote">31\. Se (potere) ______ , verrei volentieri.</div>
+<div class="mnote">32\. È possibile che il pubblico (aumentare) ______ .</div>
+<div class="mnote">33\. Loro (organizzare) ______ il festival ogni anno.</div>
+<div class="mnote">34\. Pur di (vedere) ______ lo spettacolo, aspettiamo.</div>
+<div class="mnote">35\. La guida disse che il quadro (essere) ______ famoso.</div>
+<div class="mnote">36\. Noi (restaurare) ______ il ponte l&#x27;anno scorso.</div>
+<div class="mnote">37\. Purché tu (venire) ______ , siamo contenti.</div>
+<div class="mnote">38\. Il teatro ______ (è chiuso / chiudono) per lavori.</div>
+<div class="mnote">39\. Se avessi saputo, io (venire) ______ .</div>
+<div class="mnote">40\. Credo che l&#x27;arte (unire) ______ le persone.</div>
+<div class="q-item" data-type="cloze"><p class="q-stem">41. <input class="blank" data-correct="A"> (A. consiste / B. consta / C. concerne) nel preservare l&#x27;opera. La valorizzazione (42) ______ (A. mira / B. merita / C. misura) a renderla accessibile. I beni (43) ______ (A. immateriali / B. immateriale / C. immaterialmente) vanno praticati. Il turismo può (44) ______ (A. erodere / B. erigere / C. errare) l&#x27;identità se è di massa. Serve (45) ______ (A. un / B. uno / C. una) equilibrio tra accesso e tutela. Le comunità (46) ______ (A. attive / B. attivo / C. attivamente) fanno la differenza. Il pubblico (47) ______ (A. partecipa / B. partecipi / C. partecipante) sempre più. Infine, il live (48) ______ (A. resta / B. resti / C. restò) insostituibile. La fruizione (49) ______ (A. digitale / B. digitali / C. digitalmente) cambia le abitudini. Il restauro (50) ______ (A. conserva / B. conservi / C. conservato) l&#x27;originale. Tale (51) ______ (A. impegno / B. impegni / C. impegnata) coinvolge i cittadini. Gli spettatori (52) ______ (A. scelgono / B. scelga / C. scegli) serate diverse. (53) ______ (A. Sebbene / B. Però / C. Dunque) costi molto, vale la pena. Il teatro (54) ______ (A. riunisce / B. riunisca / C. riunì) la comunità. Infine l&#x27;arte (55) ______ (A. sopravvive / B. sopravviva / C. sopravvissuto) al tempo.</p></div>
+<div class="mnote">&amp;#x41;bbina la risposta (a–j) alla situazione (56–65):</div>
+<div class="mnote">56\. Le dispiace spostare lo spettacolo?</div>
+<div class="mnote">57\. Accettereste un finanziamento privato?</div>
+<div class="mnote">58\. A che ora aprono le visite?</div>
+<div class="mnote">59\. Ha visitato il sito UNESCO?</div>
+<div class="mnote">60\. Perché riducono i fondi?</div>
+<div class="mnote">61\. Dove acquisto l&#x27;abbonamento?</div>
+<div class="mnote">62\. È possibile visitare di sera?</div>
+<div class="mnote">63\. Posso fotografare l&#x27;opera?</div>
+<div class="mnote">64\. Quanto costa il biglietto intero?</div>
+<div class="mnote">65\. Consiglia un itinerario?</div>
+<div class="mnote">a. Alle 9:00, presso la biglietteria.</div>
+<div class="mnote">b. Sì, è stata un&#x27;esperienza unica.</div>
+<div class="mnote">c. Purtroppo la crisi economica lo impone.</div>
+<div class="mnote">d. Alla reception del teatro, grazie.</div>
+<div class="mnote">e. Sì, purché non condizioni la programmazione.</div>
+<div class="mnote">f. Capisco, ma il pubblico deve essere avvisato.</div>
+<div class="mnote">g. Certo, su prenotazione online.</div>
+<div class="mnote">h. Sì, senza flash, per favore.</div>
+<div class="mnote">i. Costa 15 euro, ridotto 10.</div>
+<div class="mnote">j. Volentieri: centro storico e museo archeologico.</div></section>
+<section class="module"><h2>4. Scritta（写作）</h2><div class="mnote">Produzione scritta（写作）</div>
+<h3>Prova 1 — Saggio breve / testo espositivo (120–140 词)</h3>
+<h3>Prova 2 — Email formale (80–100 词)</h3>
+<div class="mnote">Prova 1: Lo spettacolo dal vivo possiede un valore che lo streaming non replica. Nella stessa sala, attori e pubblico condividono un tempo e uno spazio unici: nasce un&#x27;energia imprevedibile, fatta di silenzi e applausi collettivi. La tecnologia offre comodità, ma trasforma lo spettatore in fruitore isolato. Tuttavia, il live deve rinnovarsi per sopravvivere: prezzi accessibili, dialogo con i quartieri, forme partecipative. Non si tratta di rifiutare il digitale, bensì di difendere l&#x27;incontro fisico come bene comune. Solo così il teatro resterà patrimonio vivo. (130 词)</div>
+<div class="mnote">Prova 2: Gentile Assessore, Le scrivo in qualità di cittadino per segnalare il degrado del ponte medievale di Via Roma, sito di notevole valore storico. La struttura necessita di interventi urgenti di consolidamento. Propongo l&#x27;inserimento del bene nel piano di tutela comunale e l&#x27;organizzazione di visite guidate per le scuole. Resto a Sua disposizione per ogni approfondimento. Cordiali saluti, Mario Rossi. (86 词)</div></section>
+<section class="module"><h2>5. Orale（口语）</h2><div class="mnote">Produzione orale（口语）</div>
+<h3>Prova 1 — Dialogo interattivo (scegli 1 di 4)</h3>
+<div class="mnote">B. Convincci un compagno a partecipare a un festival del patrimonio.</div>
+<div class="mnote">C. Organizza con un collega una serata di spettacolo dal vivo.</div>
+<div class="mnote">D. Debatta sui rischi del turismo di massa sui siti UNESCO.</div>
+<h3>Prova 2 — Monologo (scegli 1 di 4)</h3>
+<div class="mnote">B. \[Immagine: palcoscenico con attori e pubblico] Commenta lo spettacolo dal vivo.</div>
+<div class="mnote">C. Parla dell&#x27;importanza di trasmettere mestieri antichi.</div>
+<div class="mnote">D. Spiega come il patrimonio culturale crea identità locale.</div>
+<div class="q-item q-oral" data-type="oral"><div class="oral-scoring"><div class="score-head">📋 Criteri di valutazione（口语评分要点）</div><div class="rubric-note">*Punti di valutazione（评分要点）**</div></div></div></section><section class="soluzioni"><h2>✅ Soluzioni e criteri di valutazione（参考答案与评分）</h2><pre>【Ascolto 听力】
+1.B　2.B　3.C　4.B　5.B　6.B　7.B　8.C　9.B　10.B　11.B　12.B　13.B　14.B　15.Falso　16.Vero　17.Vero　18.Vero　19.Falso　20.Vero　21.Falso　22.Vero　23.Vero　24.Falso　25.Vero　26.Vero
+
+【Lettura 阅读】
+1.B　2.B　3.B　4.B　5.A　6.B　7.B　8.Vero　9.Vero　10.Falso　11.Vero　12.Falso　13.Vero　14.Vero　15.Falso　16.Vero　17.Vero　18.Falso　19.Vero　20.Vero　21.Falso　22-32: A B C D E F G H I J K
+
+【Analisi 语法分析】
+1.Il　2.più　3.con　4.Quali　5.storico　6.i loro　7.di　8.ci　9.ancora　10.Tutto　11.lo　12.Quel　13.tutela　14.ne　15.un&#x27;　16.Questi　17.rischia　18.Molti　19.andiamo　20.una　21.sia　22.restaureremmo　23.partecipino　24.ha aperto　25.iniziasse　26.sarebbe spostato　27.facesse　28.Finite　29.sapessi　30.partano　31.potessi　32.aumenti　33.organizzano　34.vedere　35.era　36.abbiamo restaurato　37.venga　38.è chiuso　39.sarei venuto　40.unisca　41.A　42.A　43.A　44.A　45.A　46.A　47.A　48.A　49.A　50.A　51.A　52.A　53.A　54.A　55.A　56.f　57.e　58.a　59.b　60.c　61.d　62.g　63.h　64.i　65.j
+
+【Orale 口语】
+见上方评分要点。
+
+***</pre></section><button id="btn-check" onclick="verifica()">Verifica le risposte（提交判分）</button><button id="btn-reset" hidden onclick="resetta()">Ricomincia（重做）</button><div id="result" hidden></div></main><script>var SUBJMAX=20;
+function norm(s){return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]/g,'');}
+function gradeOf(p){if(p>=85)return['Eccellente','#1b7a3d'];if(p>=70)return['Buono','#2e7d32'];if(p>=55)return['Discreto','#b8860b'];if(p>=40)return['Insufficiente','#c0392b'];return['Grave','#7b1e2b'];}
+function verifica(){
+  var items=document.querySelectorAll('.q-item');
+  var score=0,total=0;
+  items.forEach(function(el){
+    var t=el.dataset.type;
+    var corr=el.dataset.correct;
+    if(!corr){ el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;}); return; }
+    if(t==='mc'||t==='tf'||t==='match'){
+      total++;
+      var ok=false;
+      if(t==='match'){var sel=el.querySelector('select');if(sel&&sel.value===corr)ok=true;}
+      else{var inp=el.querySelector('input:checked');if(inp&&inp.value===corr)ok=true;}
+      el.classList.add(ok?'correct':'wrong');
+      var n=document.createElement('div');n.className='q-note '+(ok?'ok':'no');
+      n.textContent=ok?'✅ Corretto':'❌ Risposta corretta: '+el.dataset.ctext;
+      el.appendChild(n);
+      el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;});
+    } else if(t==='cloze'){
+      el.querySelectorAll('input.blank').forEach(function(inp){
+        if(!inp.dataset.correct){inp.disabled=true;return;}
+        total++;
+        var v=norm(inp.value);
+        var ok2=v.length>0 && v.indexOf(norm(inp.dataset.correct))>=0;
+        if(ok2)score++;
+        inp.classList.add(ok2?'correct':'wrong');
+        if(!ok2){var s=document.createElement('span');s.className='anshint';s.textContent=' ✓ '+inp.dataset.correct;inp.insertAdjacentElement('afterend',s);}
+        inp.disabled=true;
+      });
+    }
+  });
+  document.querySelectorAll('.q-subj').forEach(function(el){var r=el.querySelector('.ref');if(r)r.hidden=false;});
+  var pct= total? Math.round(score/total*100):0;
+  var g=gradeOf(pct);
+  var box=document.getElementById('result');
+  box.hidden=false;
+  box.innerHTML='<div class="res-score">客观题正确率：<b>'+score+' / '+total+'</b> （'+pct+'%）</div>'+
+    '<div class="res-grade" style="background:'+g[1]+'">'+g[0]+'</div>'+
+    '<div class="res-note">写作 / 口语 / 改写 / 开放题请对照下方「✅ Soluzioni」参考答案与评分要点自评（本卷主观题满分 '+SUBJMAX+' 分）。</div>';
+  box.scrollIntoView({behavior:'smooth'});
+  document.getElementById('btn-check').hidden=true;
+  document.getElementById('btn-reset').hidden=false;
+}
+function resetta(){location.reload();}
+document.addEventListener('play', function(e){
+  if(e.target && e.target.tagName === 'AUDIO'){
+    document.querySelectorAll('audio').forEach(function(a){ if(a!==e.target) a.pause(); });
+  }
+}, true);</script></body></html>

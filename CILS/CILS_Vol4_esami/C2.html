@@ -1,0 +1,246 @@
+<!DOCTYPE html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>CILS C2 — CILS QUATTRO</title><style>:root{--wine:#7b1e2b;--wine2:#a83246;--ink:#23211f;--paper:#fbf8f4;--line:#e4ddd2;--ok:#1b7a3d;--no:#c0392b;}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);background:var(--paper);line-height:1.65}
+header.top{background:linear-gradient(135deg,var(--wine),var(--wine2));color:#fff;padding:26px 20px;box-shadow:0 2px 10px rgba(0,0,0,.15)}
+header.top .back{color:#ffd9df;text-decoration:none;font-size:14px}
+header.top .ttl{font-size:26px;font-weight:800;margin-top:6px}
+header.top .ttl .lvl{display:inline-block;background:#fff;color:var(--wine);border-radius:8px;padding:2px 10px;margin-right:10px;font-size:20px}
+header.top .sub{opacity:.9;margin-top:4px;font-size:15px}
+main{max-width:880px;margin:0 auto;padding:24px 18px 120px}
+section.module{margin:30px 0;background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+section.module h2{margin:0 0 14px;color:var(--wine);font-size:20px;border-bottom:2px solid var(--line);padding-bottom:8px}
+section.module h3{color:#444;font-size:16px;margin:22px 0 10px}
+.mnote{background:#f6f1e9;border-left:4px solid var(--wine);border-radius:8px;padding:10px 14px;margin:12px 0;font-size:13.5px;color:#6b5b4a;line-height:1.7}
+.text{background:#f6f1e9;border-left:4px solid var(--wine);border-radius:8px;padding:12px 14px;margin:12px 0}
+.text h4{margin:0 0 6px;font-size:14px;color:var(--wine)}
+pre{white-space:pre-wrap;margin:0;font-family:"Courier New",monospace;font-size:14px}
+.items{margin-top:14px}
+.q-item{margin:14px 0;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fffdf9}
+.q-item.correct{border-color:var(--ok);background:#f1faf3}
+.q-item.wrong{border-color:var(--no);background:#fdf1f0}
+.q-stem{margin:0 0 8px;font-weight:600}
+.opts{display:flex;flex-direction:column;gap:6px}
+.opt{display:flex;align-items:center;gap:8px;cursor:pointer;padding:4px 6px;border-radius:6px}
+.opt:hover{background:#f3ede3}
+.match-sel{font-size:15px;padding:5px 8px;border-radius:6px;border:1px solid #bbb;margin-top:4px}
+.blank{font-size:15px;padding:3px 6px;border:1px solid #bbb;border-radius:6px;margin:0 4px;min-width:90px}
+.blank.correct{border-color:var(--ok);background:#eafaf0}
+.blank.wrong{border-color:var(--no);background:#fdeceb}
+.anshint{color:var(--no);font-size:13px;margin-left:6px}
+textarea.ans{width:100%;font-size:15px;padding:10px;border:1px solid #ccc;border-radius:8px;font-family:inherit;resize:vertical}
+.q-subj .ref{margin-top:10px;padding:10px 12px;background:#eef6fb;border-left:4px solid #2a7fb8;border-radius:8px;font-size:14px}
+.q-note{margin-top:8px;font-weight:700;font-size:14px}
+.q-note.ok{color:var(--ok)} .q-note.no{color:var(--no)}
+.audio-block{background:#f0f4f7;border:1px solid #cfe0ea;border-radius:10px;padding:12px 14px;margin:12px 0}
+.audio-block h4{margin:0 0 8px;color:#1f5f80}
+audio{width:100%;margin-bottom:8px;display:block}
+.noaudio{color:#b06a00;font-weight:600}
+.q-oral{background:#fbf7ef;border:1px solid #ecd9b0;border-radius:12px;padding:16px 18px;margin:14px 0}
+.q-oral .q-stem{margin:0 0 12px;font-size:15px;line-height:1.7;white-space:pre-wrap}
+.oral-scoring{background:#fff;border:1px solid #e7dcc4;border-radius:10px;padding:12px 14px;margin-bottom:12px}
+.score-head{font-weight:700;color:#9a6b00;margin-bottom:8px;font-size:14px}
+.dims{margin:0;padding-left:20px;font-size:14px;line-height:1.9}
+.dims li{margin-bottom:2px}
+.rubric-note{margin-top:8px;padding-top:8px;border-top:1px dashed #e0d3b6;font-size:13px;color:#5a4a2a;line-height:1.7}
+.oral-ref{background:#eef6fb;border:1px solid #cfe0ea;border-radius:10px;padding:12px 14px}
+.ref-head{font-weight:700;color:#1f5f80;margin-bottom:8px;font-size:14px}
+.ref-it{font-weight:400;color:#5b87a0;font-style:italic;font-size:12px}
+.oral-ref pre{margin:8px 0 0;white-space:pre-wrap;word-break:break-word;font-size:14px;line-height:1.75;background:#fff;border:1px solid #dce8f0;border-radius:8px;padding:10px 12px}
+.otranscript{margin-top:8px}
+.otranscript summary{cursor:pointer;color:#1f5f80;font-weight:600;font-size:13px;user-select:none;list-style:none}
+.otranscript summary::-webkit-details-marker{display:none}
+.otranscript .o-open{display:none}
+.otranscript[open] .o-closed{display:none}
+.otranscript[open] .o-open{display:inline}
+.transcript{margin-top:10px}
+.transcript summary{cursor:pointer;color:#1f5f80;font-weight:600;font-size:14px;user-select:none;list-style:none}
+.transcript summary::-webkit-details-marker{display:none}
+.transcript summary:hover{text-decoration:underline}
+.transcript .t-open{display:none}
+.transcript[open] .t-closed{display:none}
+.transcript[open] .t-open{display:inline}
+.transcript[open] summary{margin-bottom:8px}
+.transcript pre{margin-top:0}
+.soluzioni{margin:28px 0;background:#fff;border:2px dashed var(--wine);border-radius:14px;padding:18px 20px}
+.soluzioni h2{margin:0 0 12px;color:var(--wine);font-size:18px}
+.soluzioni pre{white-space:pre-wrap;font-size:13.5px;line-height:1.8;background:#fbf6f0;border-radius:8px;padding:12px;font-family:"Courier New",monospace}
+#btn-check{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--wine);color:#fff;border:none;font-size:17px;font-weight:700;padding:13px 30px;border-radius:30px;cursor:pointer;box-shadow:0 4px 14px rgba(123,30,43,.4);z-index:10}
+#btn-check:hover{background:var(--wine2)}
+#btn-reset{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);margin-left:170px;background:#555;color:#fff;border:none;font-size:15px;padding:13px 22px;border-radius:30px;cursor:pointer;z-index:10}
+#result{margin-top:20px;padding:18px 20px;border-radius:12px;background:#fff;border:2px solid var(--wine);text-align:center}
+.res-score{font-size:18px;margin-bottom:10px}
+.res-grade{display:inline-block;color:#fff;font-weight:800;font-size:22px;padding:6px 22px;border-radius:10px;margin-bottom:8px}
+.res-note{font-size:14px;color:#555;margin-top:8px}
+.index-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-top:20px}
+.card{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:0 1px 4px rgba(0,0,0,.05);transition:.15s}
+.card:hover{transform:translateY(-3px);border-color:var(--wine)}
+.card .lvl{display:inline-block;background:var(--wine);color:#fff;border-radius:8px;padding:3px 12px;font-weight:800;font-size:18px}
+.card .nm{font-weight:700;margin:8px 0 4px;font-size:16px}
+.card .sb{font-size:13px;color:#666}
+.intro{max-width:880px;margin:24px auto;padding:0 18px;color:#555}
+.vol-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;margin-top:24px}
+.vol{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:0 1px 4px rgba(0,0,0,.05);transition:.15s}
+.vol:hover{transform:translateY(-3px);border-color:var(--wine)}
+.vol .vno{display:inline-block;background:var(--wine);color:#fff;border-radius:8px;padding:3px 12px;font-weight:800;font-size:14px}
+.vol .vt{font-weight:700;margin:10px 0 6px;font-size:18px}
+.vol .vs{font-size:13px;color:#666}
+.vol .vgo{margin-top:12px;font-weight:700;color:var(--wine);font-size:14px}</style></head><body><header class="top"><a href="index.html" class="back">← Indice CILS Vol.4</a><div class="ttl"><span class="lvl">C2</span> CILS QUATTRO</div><div class="sub"></div></header><main><p class="intro">本级主题：Istruzione e apprendimento permanente。CILS 五大模块（Ascolto / Lettura / Analisi delle strutture / Produzione scritta / Produzione orale）。听力为模拟音频文本（由考官/录音播放），本页以文本呈现听力原文，点击展开即可自测。提交后客观题自动判分；写作/口语/开放题请展开下方「✅ Soluzioni」参考答案与评分要点自评。</p><section class="module"><h2>1. Ascolto（听力）</h2><div class="mnote">Ascolto（听力）— 50 分钟</div>
+<h3>题型说明</h3>
+<h3>听力原文（模拟音频文本）</h3>
+<h3>理解题（含 inferenza / sottinteso）</h3>
+<div class="mnote">1. La scuola, per l&#x27;autore, è…  A) neutrale  B) territorio di rapporti di forza  C) inutile  D) privat 2. Cosa conta quanto ciò che si dice?  A) Il silenzio su certi temi  B) I voti  C) La moda  D) Lo sport</div>
+<div class="mnote">2. Chi disegna &quot;i confini dell&#x27;immaginabile&quot;?  A) Gli studenti  B) L&#x27;autorità curricolare  C) Il mercato solo  D) Nessuno</div>
+<div class="mnote">3. Delegare al mercato i saperi porta a…  A) più sovranità  B) impoverimento critico  C) uguaglianza  D) libertà</div>
+<div class="mnote">4. L&#x27;emancipazione vera è…  A) accumulare nozioni  B) interrogare le premesse  C) obbedire  D) competere</div>
+<div class="mnote">5. Tono del brano:  A) divulgativo  B) accademico-critico  C) ironico leggero  D) pubblicitario</div></section>
+<section class="module"><h2>2. Lettura（阅读）</h2><div class="mnote">Lettura（阅读）— 80 分钟</div>
+<h3>题型说明</h3>
+<h3>Testo — Saggio (tono accademico-letterario)</h3>
+<div class="text"><pre>&quot;La pedagogia, se osa guardarsi nello specchio, scopre di essere essa stessa un atto politico. Non nel senso riduttivo dell&#x27;indottrinamento, ma perché ogni scelta di ciò che merita di essere appreso disegna una gerarchia di valori. Il sapere non è mai soltanto tecnica: è la grammatica con cui una società nomina il mondo e, nel nominarlo, lo governa. Chi possiede il lessico del potere possiede anche la chiave della delega. Di qui l&#x27;urgenza di una scuola che non addestri sudditi, ma coltivi soggetti capaci di resistere alla seduzione dell&#x27;ovvio.&quot;</pre></div>
+<h3>Domande (dettaglio / posizione autore / simbolo)</h3>
+<div class="mnote">7. La pedagogia è, per l&#x27;autore…  A) neutrale  B) un atto politico  C) un gioco  D) una tecnica</div>
+<div class="mnote">8. &quot;Gerarchia di valori&quot; si crea tramite…  A) i voti  B) la scelta di cosa insegnare  C) la moda  D) lo sport</div>
+<div class="mnote">9. Il sapere come &quot;grammatica&quot; significa che…  A) è solo tecnica  B) nomina e governa il mondo  C) è inutile  D) è breve</div>
+<div class="mnote">10. &quot;Chi possiede il lessico del potere&quot;…  A) obbedisce  B) detiene la chiave della delega  C) è povero  D) tace</div>
+<div class="mnote">11. La scuola ideale non deve addestrare…  A) soggetti  B) sudditi  C) cittadini  D) studiosi</div>
+<div class="mnote">12. Simbolo di &quot;specchio&quot;:  A) vanità  B) autocoscienza critica  C) vetro  D) luce</div>
+<h3>Prova — Ordina 11 frasi (saggio astratto)</h3>
+<div class="mnote">a)Il sapere è da sempre intrecciato al potere. b)Ogni società decide cosa tramandare. c)Ciò che si esclude plasma quanto si afferma. d)La scuola legittima certe forme di sapere. e)Altre vengono relegate ai margini. f)Chi nomina il mondo ne orienta il destino. g)Il linguaggio è la sede prima del comando. h)Resistere all&#x27;ovvio è atto di libertà. i)Educare è dunque anche decostruire. j)La critica è la forma alta della cittadinanza. k)Senza memoria critica, il potere si fa invisibile.</div>
+<div class="mnote">→ Ordine: ______ → ______ → ______ → ______ → ______ → ______ → ______ → ______ → ______ → ______ → ______</div></section>
+<section class="module"><h2>3. Analisi（语法分析）</h2><div class="mnote">Analisi delle strutture（语法）— 90 分钟</div>
+<h3>题型说明（真题全量）</h3>
+<h3>Prova 1 — Grammatica avanzata（无选项, 20 题）</h3>
+<div class="q-item" data-type="cloze"><p class="q-stem">1. Qualora il sapere<input class="blank" data-correct=""> (costituire) una forma di potere, la scuola ne è l&#x27;architrave. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">2. Non v&#x27;è dubbio che tale pedagogia<input class="blank" data-correct=""> (influire) sulle coscienze. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">3. Lungi dal<input class="blank" data-correct=""> (neutralizzare) le disuguaglianze, la scuola le riproduce. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">4. Né la famiglia né la scuola<input class="blank" data-correct=""> (potersi) dirsi neutre. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">5. Chi detiene l&#x27;autorità<input class="blank" data-correct=""> (disegnare) i confini del sapere. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">6. Se la scuola<input class="blank" data-correct=""> (essere) emancipazione, non addesterebbe sudditi. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">7. Non si tratta di<input class="blank" data-correct=""> (imporre) , bensì di ______ (coltivare) il pensiero critico. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">8. Tale discorso,<input class="blank" data-correct=""> (bench&#x27;io) lo condivida, va problematizzato. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">9. La gerarchia dei saperi<input class="blank" data-correct=""> (essere) sempre storica. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">10. Non senza<input class="blank" data-correct=""> (fatica) la sovranità critica si conquista. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">11. Il potere,<input class="blank" data-correct=""> (qualora) si mascheri da sapere, inganna. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">12. Ciò che si tace<input class="blank" data-correct=""> (risultare) talora più eloquente. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">13. Ove la scuola<input class="blank" data-correct=""> (arrendersi) al mercato, perde senso. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">14. Non v&#x27;è chi non<input class="blank" data-correct=""> (riconoscere) il ruolo dell&#x27;educazione. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">15. Il sapere<input class="blank" data-correct=""> (legittimare) dalla scuola non è neutrale. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">16. Da parte loro, gli studenti<input class="blank" data-correct=""> (esigere) partecipazione. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">17. Purché la critica<input class="blank" data-correct=""> (rimanere) vigile, la scuola evolve. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">18. Nulla<input class="blank" data-correct=""> (potere) essere appreso senza dubitare. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">19. La pedagogia, in quanto prassi,<input class="blank" data-correct=""> (trasformare) la società. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">20. Non che la scuola<input class="blank" data-correct=""> (essere) perfetta, ma è indispensabile. → ____</p></div>
+<h3>Prova 2 — Grammatica complessiva / registro（4 选 1, 20 题）</h3>
+<div class="mnote">_Testo:_ &quot;Ogni pedagogia (21)______ un equilibrio di forze. Chi possiede il lessico del potere (22)______ la chiave della delega. Una società che (23)______ al mercato la produzione dei saperi (24)______ la propria sovranità critica. Di qui l&#x27;esigenza di una scuola che non (25)______ sudditi, ma (26)______ soggetti capaci di decostruire l&#x27;ovvio. L&#x27;emancipazione (27)______ nell&#x27;interrogare le premesse. Il sapere, (28)______ da strumento di potere, (29)______ strumento di libertà. Tale quadro (30)______ oggi imprescindibile. La selezione scolastica (31)______ spesso un fattore di disuguaglianza. Chi (32)______ il curricolo detta la norma. La critica (33)______ un esercizio di libertà. Nondimeno, occorre (34)______ vigili. La formazione (35)______ un atto politico. Il docente (36)______ mediatore di senso. La conoscenza non (37)______ mai neutra. Pertanto, (38)______ necessario coltivare il dubbio. La scuola (39)______ un presidio democratico. In conclusione, il sapere (40)______ potere solo se interroga sé stesso.&quot;</div>
+<div class="mnote">21\. A) nega B) incarna C) cela D) sostiene</div>
+<div class="mnote">22\. A) ha B) perde C) detiene D) vende</div>
+<div class="mnote">23\. A) affida B) nega C) vende D) toglie</div>
+<div class="mnote">24\. A) tiene B) guadagna C) rafforza D) perde</div>
+<div class="mnote">25\. A) forma B) addestra C) libera D) accoglie</div>
+<div class="mnote">26\. A) esclude B) addestra C) coltiva D) reprime</div>
+<div class="mnote">27\. A) consiste B) finisce C) cade D) muta</div>
+<div class="mnote">28\. A) nato B) sorto C) fatto D) passato</div>
+<div class="mnote">29\. A) resta B) diventa C) torna D) pare</div>
+<div class="mnote">30\. A) sembra B) è C) risulta D) conta</div>
+<div class="mnote">31\. A) costituisce B) nega C) cela D) rompe</div>
+<div class="mnote">32\. A) segue B) copia C) leggi D) detta</div>
+<div class="mnote">33\. A) nega B) rappresenta C) cela D) rompe</div>
+<div class="mnote">34\. A) essere B) stare C) restare D) tornare</div>
+<div class="mnote">35\. A) è B) era C) fu D) sarà</div>
+<div class="mnote">36\. A) funge B) sta C) pare D) è</div>
+<div class="mnote">37\. A) è B) fu C) sarà D) era</div>
+<div class="mnote">38\. A) sarà B) fu C) è D) era</div>
+<div class="mnote">39\. A) funge B) pare C) sta D) è</div>
+<div class="mnote">40\. A) fu B) è C) sarà D) era</div>
+<h3>Prova 3 — Quadrisinonimi / registro（15 题）</h3>
+<div class="mnote">41. &quot;incarna&quot; (una pedagogia) =  A) nasconde B) personifica C) cancella D) ritarda</div>
+<div class="mnote">42. &quot;premesse&quot; del discorso =  A) conclusioni B) presupposti C) errori D) dati</div>
+<div class="mnote">43. &quot;sovranità critica&quot; =  A) dipendenza B) autonomia nel giudizio C) ignoranza D) moda</div>
+<div class="mnote">44. &quot;seduzione dell&#x27;ovvio&quot; =  A) fascino dell&#x27;evidenza banale B) noia C) paura D) tecnica</div>
+<div class="mnote">45. &quot;delega&quot; =  A) comando diretto B) trasferimento di responsabilità C) voto D) studio</div>
+<div class="mnote">46. &quot;gerarchia&quot; =  A) uguaglianza B) ordine di superiorità C) caos D) gioco</div>
+<div class="mnote">47. &quot;addestri&quot; (sudditi) =  A) liberi B) istruisca meccanicamente C) elogi D) esili</div>
+<div class="mnote">48. &quot;decostruire&quot; =  A) costruire B) smontare analiticamente C) copiare D) fingere</div>
+<div class="mnote">49. &quot;legittima&quot; =  A) rende valido B) proibisce C) ignora D) distrugge</div>
+<div class="mnote">50. &quot;relegate ai margini&quot; =  A) centrali B) emarginate C) premiate D) studiate</div>
+<div class="mnote">51. &quot;dispositivo di potere&quot; =  A) strumento B) ostacolo C) gioco D) errore</div>
+<div class="mnote">52. &quot;sovranità&quot; (senso politico) =  A) sudditanza B) indipendenza C) ignoranza D) moda</div>
+<div class="mnote">53. &quot;pregiudizio&quot; =  A) equità B) prevenzione C) giustizia D) verità</div>
+<div class="mnote">54. &quot;norma&quot; (curricolare) =  A) eccezione B) regola C) errore D) gioco</div>
+<div class="mnote">55. &quot;emancipazione&quot; =  A) sottomissione B) liberazione C) ignoranza D) dipendenza</div>
+<h3>Prova 4 — Riscrivi / analisi sintattica（10 题）</h3>
+<div class="q-item" data-type="cloze"><p class="q-stem">56. &quot;Chi detiene l&#x27;autorità disegna i confini.&quot; → È<input class="blank" data-correct=""> (colei/colui) che detiene l&#x27;autorità a disegnare i confini. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">57. &quot;Non è neutrale.&quot; → Non può<input class="blank" data-correct=""> (considerarsi) neutrale. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">58. &quot;Sapere è potere.&quot; → Il sapere<input class="blank" data-correct=""> (coincidere) con il potere. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">59. &quot;Se deleghiamo al mercato, perdiamo sovranità.&quot; → Delegando al mercato,<input class="blank" data-correct=""> (perdere) sovranità. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">60. &quot;La scuola non addestri sudditi.&quot; → È necessario che la scuola non<input class="blank" data-correct=""> (addestrare) sudditi. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">61. &quot;Ciò che si tace è decisivo.&quot; → Il<input class="blank" data-correct=""> (silenzio) risulta decisivo. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">62. &quot;Interrogare le premesse è emancipazione.&quot; → Emanciparsi<input class="blank" data-correct=""> (significare) interrogare le premesse. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">63. &quot;Ogni pedagogia incarna un equilibrio di forze.&quot; → In ogni pedagogia<input class="blank" data-correct=""> (esserci) un equilibrio di forze. → ____</p></div>
+<div class="mnote">64. &quot;Il sapere legittimato dalla scuola non è oggettivo.&quot; → \[Analisi] Il participio &quot;legittimato&quot; si riferisce a ______.  A) scuola B) sapere C) oggettivo D) potere</div>
+<div class="mnote">65. &quot;La conoscenza non è mai neutra.&quot; → \[Analisi] Il soggetto della frase è ______.  A) conoscenza B) neutra C) non D) mai</div></section>
+<section class="module"><h2>4. Scritta（写作）</h2><div class="mnote">Produzione scritta（写作）— 90 分钟</div>
+<h3>题型说明</h3>
+<h3>Prova 1 — Saggio / Commento critico (≈250–300 parole)</h3>
+<div class="mnote">&quot;Pedagogia e società: il sapere come dispositivo di potere.&quot; Sviluppa un saggio critico intrecciando pedagogia, società e potere, con riferimenti concettuali.</div>
+<h3>Prova 2 — Proposta di policy (≈100–150 parole)</h3>
+<div class="mnote">Redigi una proposta per un ministero: come rendere la scuola luogo di &quot;sovranità critica&quot; anziché di addestramento.</div>
+<h3>Prova 3 (facoltativo) — Riassunto (≈80–100 parole)</h3>
+<div class="mnote">Riassumi il brano d&#x27;ascolto &quot;sapere e potere&quot; in italiano formale.</div></section>
+<section class="module"><h2>5. Orale（口语）</h2><div class="mnote">Produzione orale（口语）— \~15 分钟</div>
+<h3>题型说明</h3>
+<h3>Compito</h3>
+<div class="mnote">Scegli e tratta: &quot;La scuola è uno strumento di liberazione o di conformismo?&quot; Dopo l&#x27;esposizione (3–4 min), il docente ti rivolge 2 obiezioni critiche a cui replicare (es. &quot;Ma senza sapere tecnico non c&#x27;è libertà&quot;; &quot;La scuola è solo selezione sociale&quot;).</div>
+<h3>✅ C2 答案与评分</h3>
+<div class="q-item q-oral" data-type="oral"><div class="oral-scoring"><div class="score-head">📋 Criteri di valutazione（口语评分要点）</div><div class="rubric-note">**Orale 评分要点**：esposizione coerente e astratta (3–4 min) con lessico specialistico (_dispositivo,sovranità, delega, conformismo_); risposta alle 2 obiezioni con argomentazione robusta e contro-esempi; padronanza di congiuntivo, periodo ipotetico, concessive; pronuncia e fluenza C2; capacità di sostenere una posizione complessa senza semplificazioni.</div></div></div>
+<div class="mnote">**Fine del volume.** 本卷 CILS 第 4 卷覆盖 A1–C2 六级，五大模块齐备，B1/B2 已落实听力第 3 题与阅读第 2 题「判断正误（Vero/Falso）」改革及口语「4 选 1 对话 + 4 选 1 独白（含看图）」框架；每级末附「✅ 答案与评分」。</div></section><button id="btn-check" onclick="verifica()">Verifica le risposte（提交判分）</button><button id="btn-reset" hidden onclick="resetta()">Ricomincia（重做）</button><div id="result" hidden></div></main><script>var SUBJMAX=20;
+function norm(s){return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]/g,'');}
+function gradeOf(p){if(p>=85)return['Eccellente','#1b7a3d'];if(p>=70)return['Buono','#2e7d32'];if(p>=55)return['Discreto','#b8860b'];if(p>=40)return['Insufficiente','#c0392b'];return['Grave','#7b1e2b'];}
+function verifica(){
+  var items=document.querySelectorAll('.q-item');
+  var score=0,total=0;
+  items.forEach(function(el){
+    var t=el.dataset.type;
+    var corr=el.dataset.correct;
+    if(!corr){ el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;}); return; }
+    if(t==='mc'||t==='tf'||t==='match'){
+      total++;
+      var ok=false;
+      if(t==='match'){var sel=el.querySelector('select');if(sel&&sel.value===corr)ok=true;}
+      else{var inp=el.querySelector('input:checked');if(inp&&inp.value===corr)ok=true;}
+      el.classList.add(ok?'correct':'wrong');
+      var n=document.createElement('div');n.className='q-note '+(ok?'ok':'no');
+      n.textContent=ok?'✅ Corretto':'❌ Risposta corretta: '+el.dataset.ctext;
+      el.appendChild(n);
+      el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;});
+    } else if(t==='cloze'){
+      el.querySelectorAll('input.blank').forEach(function(inp){
+        if(!inp.dataset.correct){inp.disabled=true;return;}
+        total++;
+        var v=norm(inp.value);
+        var ok2=v.length>0 && v.indexOf(norm(inp.dataset.correct))>=0;
+        if(ok2)score++;
+        inp.classList.add(ok2?'correct':'wrong');
+        if(!ok2){var s=document.createElement('span');s.className='anshint';s.textContent=' ✓ '+inp.dataset.correct;inp.insertAdjacentElement('afterend',s);}
+        inp.disabled=true;
+      });
+    }
+  });
+  document.querySelectorAll('.q-subj').forEach(function(el){var r=el.querySelector('.ref');if(r)r.hidden=false;});
+  var pct= total? Math.round(score/total*100):0;
+  var g=gradeOf(pct);
+  var box=document.getElementById('result');
+  box.hidden=false;
+  box.innerHTML='<div class="res-score">客观题正确率：<b>'+score+' / '+total+'</b> （'+pct+'%）</div>'+
+    '<div class="res-grade" style="background:'+g[1]+'">'+g[0]+'</div>'+
+    '<div class="res-note">写作 / 口语 / 改写 / 开放题请对照下方「✅ Soluzioni」参考答案与评分要点自评（本卷主观题满分 '+SUBJMAX+' 分）。</div>';
+  box.scrollIntoView({behavior:'smooth'});
+  document.getElementById('btn-check').hidden=true;
+  document.getElementById('btn-reset').hidden=false;
+}
+function resetta(){location.reload();}
+document.addEventListener('play', function(e){
+  if(e.target && e.target.tagName === 'AUDIO'){
+    document.querySelectorAll('audio').forEach(function(a){ if(a!==e.target) a.pause(); });
+  }
+}, true);</script></body></html>

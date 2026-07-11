@@ -1,0 +1,252 @@
+<!DOCTYPE html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>CILS A2 — CILS</title><style>:root{--wine:#7b1e2b;--wine2:#a83246;--ink:#23211f;--paper:#fbf8f4;--line:#e4ddd2;--ok:#1b7a3d;--no:#c0392b;}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);background:var(--paper);line-height:1.65}
+header.top{background:linear-gradient(135deg,var(--wine),var(--wine2));color:#fff;padding:26px 20px;box-shadow:0 2px 10px rgba(0,0,0,.15)}
+header.top .back{color:#ffd9df;text-decoration:none;font-size:14px}
+header.top .ttl{font-size:26px;font-weight:800;margin-top:6px}
+header.top .ttl .lvl{display:inline-block;background:#fff;color:var(--wine);border-radius:8px;padding:2px 10px;margin-right:10px;font-size:20px}
+header.top .sub{opacity:.9;margin-top:4px;font-size:15px}
+main{max-width:880px;margin:0 auto;padding:24px 18px 120px}
+section.module{margin:30px 0;background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+section.module h2{margin:0 0 14px;color:var(--wine);font-size:20px;border-bottom:2px solid var(--line);padding-bottom:8px}
+section.module h3{color:#444;font-size:16px;margin:22px 0 10px}
+.mnote{background:#f6f1e9;border-left:4px solid var(--wine);border-radius:8px;padding:10px 14px;margin:12px 0;font-size:13.5px;color:#6b5b4a;line-height:1.7}
+.text{background:#f6f1e9;border-left:4px solid var(--wine);border-radius:8px;padding:12px 14px;margin:12px 0}
+.text h4{margin:0 0 6px;font-size:14px;color:var(--wine)}
+pre{white-space:pre-wrap;margin:0;font-family:"Courier New",monospace;font-size:14px}
+.items{margin-top:14px}
+.q-item{margin:14px 0;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fffdf9}
+.q-item.correct{border-color:var(--ok);background:#f1faf3}
+.q-item.wrong{border-color:var(--no);background:#fdf1f0}
+.q-stem{margin:0 0 8px;font-weight:600}
+.opts{display:flex;flex-direction:column;gap:6px}
+.opt{display:flex;align-items:center;gap:8px;cursor:pointer;padding:4px 6px;border-radius:6px}
+.opt:hover{background:#f3ede3}
+.match-sel{font-size:15px;padding:5px 8px;border-radius:6px;border:1px solid #bbb;margin-top:4px}
+.blank{font-size:15px;padding:3px 6px;border:1px solid #bbb;border-radius:6px;margin:0 4px;min-width:90px}
+.blank.correct{border-color:var(--ok);background:#eafaf0}
+.blank.wrong{border-color:var(--no);background:#fdeceb}
+.anshint{color:var(--no);font-size:13px;margin-left:6px}
+textarea.ans{width:100%;font-size:15px;padding:10px;border:1px solid #ccc;border-radius:8px;font-family:inherit;resize:vertical}
+.q-subj .ref{margin-top:10px;padding:10px 12px;background:#eef6fb;border-left:4px solid #2a7fb8;border-radius:8px;font-size:14px}
+.q-note{margin-top:8px;font-weight:700;font-size:14px}
+.q-note.ok{color:var(--ok)} .q-note.no{color:var(--no)}
+.audio-block{background:#f0f4f7;border:1px solid #cfe0ea;border-radius:10px;padding:12px 14px;margin:12px 0}
+.audio-block h4{margin:0 0 8px;color:#1f5f80}
+audio{width:100%;margin-bottom:8px;display:block}
+.noaudio{color:#b06a00;font-weight:600}
+.q-oral{background:#fbf7ef;border:1px solid #ecd9b0;border-radius:12px;padding:16px 18px;margin:14px 0}
+.q-oral .q-stem{margin:0 0 12px;font-size:15px;line-height:1.7;white-space:pre-wrap}
+.oral-scoring{background:#fff;border:1px solid #e7dcc4;border-radius:10px;padding:12px 14px;margin-bottom:12px}
+.score-head{font-weight:700;color:#9a6b00;margin-bottom:8px;font-size:14px}
+.dims{margin:0;padding-left:20px;font-size:14px;line-height:1.9}
+.dims li{margin-bottom:2px}
+.rubric-note{margin-top:8px;padding-top:8px;border-top:1px dashed #e0d3b6;font-size:13px;color:#5a4a2a;line-height:1.7}
+.oral-ref{background:#eef6fb;border:1px solid #cfe0ea;border-radius:10px;padding:12px 14px}
+.ref-head{font-weight:700;color:#1f5f80;margin-bottom:8px;font-size:14px}
+.ref-it{font-weight:400;color:#5b87a0;font-style:italic;font-size:12px}
+.oral-ref pre{margin:8px 0 0;white-space:pre-wrap;word-break:break-word;font-size:14px;line-height:1.75;background:#fff;border:1px solid #dce8f0;border-radius:8px;padding:10px 12px}
+.otranscript{margin-top:8px}
+.otranscript summary{cursor:pointer;color:#1f5f80;font-weight:600;font-size:13px;user-select:none;list-style:none}
+.otranscript summary::-webkit-details-marker{display:none}
+.otranscript .o-open{display:none}
+.otranscript[open] .o-closed{display:none}
+.otranscript[open] .o-open{display:inline}
+.transcript{margin-top:10px}
+.transcript summary{cursor:pointer;color:#1f5f80;font-weight:600;font-size:14px;user-select:none;list-style:none}
+.transcript summary::-webkit-details-marker{display:none}
+.transcript summary:hover{text-decoration:underline}
+.transcript .t-open{display:none}
+.transcript[open] .t-closed{display:none}
+.transcript[open] .t-open{display:inline}
+.transcript[open] summary{margin-bottom:8px}
+.transcript pre{margin-top:0}
+.soluzioni{margin:28px 0;background:#fff;border:2px dashed var(--wine);border-radius:14px;padding:18px 20px}
+.soluzioni h2{margin:0 0 12px;color:var(--wine);font-size:18px}
+.soluzioni pre{white-space:pre-wrap;font-size:13.5px;line-height:1.8;background:#fbf6f0;border-radius:8px;padding:12px;font-family:"Courier New",monospace}
+#btn-check{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--wine);color:#fff;border:none;font-size:17px;font-weight:700;padding:13px 30px;border-radius:30px;cursor:pointer;box-shadow:0 4px 14px rgba(123,30,43,.4);z-index:10}
+#btn-check:hover{background:var(--wine2)}
+#btn-reset{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);margin-left:170px;background:#555;color:#fff;border:none;font-size:15px;padding:13px 22px;border-radius:30px;cursor:pointer;z-index:10}
+#result{margin-top:20px;padding:18px 20px;border-radius:12px;background:#fff;border:2px solid var(--wine);text-align:center}
+.res-score{font-size:18px;margin-bottom:10px}
+.res-grade{display:inline-block;color:#fff;font-weight:800;font-size:22px;padding:6px 22px;border-radius:10px;margin-bottom:8px}
+.res-note{font-size:14px;color:#555;margin-top:8px}
+.index-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-top:20px}
+.card{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:0 1px 4px rgba(0,0,0,.05);transition:.15s}
+.card:hover{transform:translateY(-3px);border-color:var(--wine)}
+.card .lvl{display:inline-block;background:var(--wine);color:#fff;border-radius:8px;padding:3px 12px;font-weight:800;font-size:18px}
+.card .nm{font-weight:700;margin:8px 0 4px;font-size:16px}
+.card .sb{font-size:13px;color:#666}
+.intro{max-width:880px;margin:24px auto;padding:0 18px;color:#555}
+.vol-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;margin-top:24px}
+.vol{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:0 1px 4px rgba(0,0,0,.05);transition:.15s}
+.vol:hover{transform:translateY(-3px);border-color:var(--wine)}
+.vol .vno{display:inline-block;background:var(--wine);color:#fff;border-radius:8px;padding:3px 12px;font-weight:800;font-size:14px}
+.vol .vt{font-weight:700;margin:10px 0 6px;font-size:18px}
+.vol .vs{font-size:13px;color:#666}
+.vol .vgo{margin-top:12px;font-weight:700;color:var(--wine);font-size:14px}</style></head><body><header class="top"><a href="index.html" class="back">← Indice CILS Vol.5</a><div class="ttl"><span class="lvl">A2</span> CILS</div><div class="sub"></div></header><main><p class="intro">本级主题：Arte, letteratura e tempo libero。CILS 五大模块（Ascolto / Lettura / Analisi delle strutture / Produzione scritta / Produzione orale）。听力为模拟音频文本（由考官/录音播放），本页以文本呈现听力原文，点击展开即可自测。提交后客观题自动判分；写作/口语/开放题请展开下方「✅ Soluzioni」参考答案与评分要点自评。</p><section class="module"><h2>1. Ascolto（听力）</h2><div class="mnote">Ascolto（听力）— 12 题</div>
+<h3>Prova 1 — 6 brevi dialoghi</h3>
+<div class="mnote">D2 — Leggi un libro di sera? — Sì, leggo ogni sera prima di dormire.</div>
+<div class="mnote">D3 — Quanto costa il biglietto del museo? — 5 euro, è economico.</div>
+<div class="mnote">D4 — Che libro leggi? — Un romanzo giallo, molto interessante.</div>
+<div class="mnote">D5 — A che ora apre il museo? — Alle 9:00 di mattina.</div>
+<div class="mnote">D6 — Ti piace leggere? — Sì, è il mio passatempo preferito.</div>
+<div class="text"><h4>📝 Testo / Dialogo (simulato)</h4><pre>D1 — Hai visitato il museo? — Sì, ieri con la scuola.</pre></div>
+<h3>Prova 2 — Dialogo lungo</h3>
+<div class="text"><h4>📝 Testo / Dialogo (simulato)</h4><pre>— Ciao Giulia! Sei andata al Museo del Novecento?
+
+— Sì, Paolo! Ci sono andata sabato con mia madre. C&#x27;erano quadri bellissimi.
+
+— Che tipo di opere hai visto?
+
+— Dipinti moderni e qualche scultura. Il mio preferito era un quadro blu.
+
+— E il biglietto?
+
+— Costa 7 euro, ma per gli studenti è ridotto: 4 euro.
+
+— Che fortuna! E dopo il museo?
+
+— Siamo andate in libreria e ho comprato un libro di poesie. Lo leggo adesso.
+
+— Bello! Leggi spesso?
+
+— Sì, leggo un libro al mese, soprattutto di sera.</pre></div>
+<h3>Domande — Prova 1（6 题，三选一）</h3>
+<div class="mnote">1. Quando ha visitato il museo?　A. Ieri　B. Domani　C. Oggi</div>
+<div class="mnote">2. L&#x27;interlocutore legge di sera?　A. No　B. Sì　C. Solo la domenica</div>
+<div class="mnote">3. Quanto costa il biglietto?　A. 5 euro　B. 10 euro　C. Gratis</div>
+<div class="mnote">4. Che libro legge?　A. Un romanzo giallo　B. Un libro di storia　C. Una poesia</div>
+<div class="mnote">5. A che ora apre il museo?　A. Alle 8　B. Alle 9　C. Alle 10</div>
+<div class="mnote">6. Leggere è il passatempo preferito?　A. No　B. Sì　C. Non si sa</div>
+<h3>Domande — Prova 2（6 题，三选一）</h3>
+<div class="mnote">8\. Che opera le è piaciuta di più?　A. Una scultura　B. Un quadro blu　C. Un quadro rosso</div>
+<div class="mnote">9\. Quanto paga lo studente?　A. 7 euro　B. 4 euro　C. 2 euro</div>
+<div class="mnote">10\. Dopo il museo Giulia va…　A. al cinema　B. in libreria　C. a casa</div>
+<div class="mnote">11\. Cosa ha comprato?　A. Un romanzo　B. Un libro di poesie　C. Un giornale</div>
+<div class="mnote">12\. Quanti libri legge al mese?　A. Due　B. Uno　C. Tre</div>
+<div class="text"><h4>📝 Testo / Dialogo (simulato)</h4><pre>&amp;#x37;. Con chi è andata al museo Giulia?　A. Con Paolo　B. Con sua madre　C. Da sola</pre></div></section>
+<section class="module"><h2>2. Lettura（阅读）</h2><div class="mnote">Lettura（阅读）</div>
+<h3>Prova 1 — Testo (≈150 词) + 4 单选</h3>
+<div class="mnote">1. Dove porta la nonna il bambino?　A. Al cinema　B. Al museo civico　C. In biblioteca</div>
+<div class="mnote">2. Cosa c&#x27;è nel museo?　A. Solo quadri moderni　B. Quadri e reperti romani　C. Solo statue</div>
+<div class="mnote">3. Quale sala preferisce?　A. Quella delle statue di marmo　B. La biblioteca　C. Il bar</div>
+<div class="mnote">4. Cosa compra all&#x27;uscita?　A. Un romanzo　B. Una cartolina　C. Il giornale</div>
+<h3>Prova 2 — 4 micro-testi + giudizio (Vero/Falso)</h3>
+<div class="mnote">&amp;#x41;. Il museo apre alle 9 e chiude alle 19.</div>
+<div class="mnote">B. I bambini entrano gratis la domenica.</div>
+<div class="mnote">C. In biblioteca non si può leggere ad alta voce.</div>
+<div class="mnote">D. La mostra di fotografia finisce questo mese.</div>
+<div class="mnote">5\. Il museo chiude alle 19.　(Vero / Falso)</div>
+<div class="mnote">6\. I bambini entrano gratis la domenica.　(Vero / Falso)</div>
+<div class="mnote">7\. In biblioteca si legge in silenzio.　(Vero / Falso)</div>
+<div class="mnote">8\. La mostra di fotografia è ancora aperta.　(Vero / Falso)</div>
+<h3>Prova 3 — 4 testi + 8 abbinamenti (A–H)</h3>
+<div class="mnote">(1) Museo Egizio: mummie e statue dell&#x27;antico Egitto.</div>
+<div class="mnote">(2) Biblioteca centrale: 50.000 libri e sale di lettura silenziose.</div>
+<div class="mnote">(3) Galleria d&#x27;arte moderna: quadri astratti e installazioni.</div>
+<div class="mnote">(4) Libreria usata: romanzi a 1 euro e poesie rare.</div>
+<div class="mnote">A. Si possono comprare libri a poco prezzo.</div>
+<div class="mnote">B. Ci sono opere senza figure riconoscibili.</div>
+<div class="mnote">C. Si studia la civiltà dei faraoni.</div>
+<div class="mnote">D. Ci sono resti umani conservati.</div>
+<div class="mnote">E. Si legge in tranquillità.</div>
+<div class="mnote">F. Ci sono molti volumi a disposizione.</div>
+<div class="mnote">G. Si trovano versi difficili da reperire.</div>
+<div class="mnote">H. Si ammirano opere del Novecento.</div>
+<div class="mnote">9\. (1) → ____　10. (2) → ____　11. (3) → ____　12. (4) → ____（每篇配 2 条描述：1→C,D；2→E,F；3→B,H；4→A,G）</div></section>
+<section class="module"><h2>3. Analisi（语法分析）</h2><div class="mnote">Analisi（语法分析）</div>
+<div class="q-item" data-type="cloze"><p class="q-stem">1. Il<input class="blank" data-correct="museo"> (museo / musei) è grande.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">2. Le<input class="blank" data-correct="opere"> (opera / opere) sono antiche.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">3. Un<input class="blank" data-correct="bel"> (bel / bella) quadro.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">4. Due<input class="blank" data-correct="libri"> (libro / libri) interessanti.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">5. La<input class="blank" data-correct="piccola"> (piccola / piccolo) biblioteca.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">6. I<input class="blank" data-correct="turisti"> (turista / turisti) visitano il museo.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">7. Una<input class="blank" data-correct="nuova"> (nuovo / nuova) mostra.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">8. Le statue<input class="blank" data-correct="alte"> (alto / alte) sono di marmo.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">9. Il<input class="blank" data-correct="mio"> (mio / mia) libro preferito.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">10. Queste<input class="blank" data-correct="foto"> (foto / foto) sono belle.</p></div>
+<div class="mnote">&amp;#x31;1. Ieri io (andare) ______ al museo.</div>
+<div class="mnote">12\. Da bambino (leggere) ______ sempre fumetti.</div>
+<div class="mnote">13\. Tu (vedere) ______ un quadro famoso?</div>
+<div class="mnote">14\. Noi (comprare) ______ due libri.</div>
+<div class="mnote">15\. Loro (essere) ______ al museo tutto il pomeriggio.</div>
+<div class="mnote">16\. Lei (leggere) ______ un romanzo quando è arrivata.</div>
+<div class="mnote">17\. Marco (visitare) ______ tre musei a Roma.</div>
+<div class="mnote">18\. Noi (andare) ______ spesso in biblioteca.</div>
+<div class="mnote">19\. Tu (prendere) ______ appunti durante la visita.</div>
+<div class="mnote">20\. La guida (spiegare) ______ la storia dell&#x27;opera.</div>
+<div class="q-item" data-type="cloze"><p class="q-stem">21. <input class="blank" data-correct="con"> (con / da) mia nonna sono andato al museo. (22) ______ (Perché / Però) pioveva, siamo entrati subito. Abbiamo visto quadri (23) ______ (di / a) paesaggi. Poi (24) ______ (abbiamo / hanno) letto un libro di arte. (25) ______ (Dopo / Prima) siamo usciti e abbiamo comprato una cartolina. Il museo è (26) ______ (molto / poco) interessante. (27) ______ (Anche / Mai) mio nonno legge volentieri. (28) ______ (Infine / Oggi) voglio tornare.</p></div></section>
+<section class="module"><h2>4. Scritta（写作）</h2><div class="mnote">Scrittura（写作）</div>
+<h3>Prova 1 — Breve testo (40–60 词)</h3>
+<h3>Prova 2 — Email / lettera di richiesta (25–40 词)</h3>
+<div class="mnote">Prova 1: Sabato ho visitato il Museo Civico con la mia famiglia. C&#x27;erano quadri antichi e statue di marmo molto belle. La guida ha spiegato la storia di ogni opera. Mi è piaciuto molto il quadro blu. Leggere i libri d&#x27;arte mi piace tanto. (51 词)</div>
+<div class="mnote">Prova 2: Ciao Sara! Sabato vado al museo civico, vuoi venire con me? Il biglietto costa poco. Possiamo vedere i quadri antichi e poi leggere un libro insieme. Scrivimi presto! Un abbraccio, Giulia. (36 词)</div></section>
+<section class="module"><h2>5. Orale（口语）</h2><div class="mnote">Produzione orale（口语）</div>
+<div class="mnote">：Prova 1 对话 2–3 分钟；Prova 2 独白约 1.5 分钟（含看图）。主题：un museo / leggere un libro。</div>
+<h3>Prova 1 — Conversazione (2–3 min)</h3>
+<h3>Prova 2 — Monologo con immagine (≈1.5 min)</h3>
+<div class="mnote">Descrivi la scena e parla del tuo libro preferito.</div>
+<div class="q-item q-oral" data-type="oral"><div class="oral-scoring"><div class="score-head">📋 Criteri di valutazione（口语评分要点）</div><div class="rubric-note">*Punti di valutazione（评分要点）**</div></div></div></section><section class="soluzioni"><h2>✅ Soluzioni e criteri di valutazione（参考答案与评分）</h2><pre>【Ascolto 听力】
+1.A　2.B　3.A　4.A　5.B　6.B　7.B　8.B　9.B　10.B　11.B　12.B
+
+【Lettura 阅读】
+1.B　2.B　3.A　4.B　5.Vero　6.Vero　7.Vero　8.Falso　9.C,D　10.E,F　11.B,H　12.A,G
+
+【Analisi 语法分析】
+1.museo　2.opere　3.bel　4.libri　5.piccola　6.turisti　7.nuova　8.alte　9.mio　10.foto　11.sono andato　12.leggevo　13.hai visto　14.abbiamo comprato　15.sono stati　16.leggeva　17.ha visitato　18.andavamo　19.hai preso　20.ha spiegato　21.con　22.Perché　23.di　24.abbiamo　25.Dopo　26.molto　27.Anche　28.Infine
+
+【Orale 口语】
+见上方评分要点。
+
+***</pre></section><button id="btn-check" onclick="verifica()">Verifica le risposte（提交判分）</button><button id="btn-reset" hidden onclick="resetta()">Ricomincia（重做）</button><div id="result" hidden></div></main><script>var SUBJMAX=20;
+function norm(s){return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]/g,'');}
+function gradeOf(p){if(p>=85)return['Eccellente','#1b7a3d'];if(p>=70)return['Buono','#2e7d32'];if(p>=55)return['Discreto','#b8860b'];if(p>=40)return['Insufficiente','#c0392b'];return['Grave','#7b1e2b'];}
+function verifica(){
+  var items=document.querySelectorAll('.q-item');
+  var score=0,total=0;
+  items.forEach(function(el){
+    var t=el.dataset.type;
+    var corr=el.dataset.correct;
+    if(!corr){ el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;}); return; }
+    if(t==='mc'||t==='tf'||t==='match'){
+      total++;
+      var ok=false;
+      if(t==='match'){var sel=el.querySelector('select');if(sel&&sel.value===corr)ok=true;}
+      else{var inp=el.querySelector('input:checked');if(inp&&inp.value===corr)ok=true;}
+      el.classList.add(ok?'correct':'wrong');
+      var n=document.createElement('div');n.className='q-note '+(ok?'ok':'no');
+      n.textContent=ok?'✅ Corretto':'❌ Risposta corretta: '+el.dataset.ctext;
+      el.appendChild(n);
+      el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;});
+    } else if(t==='cloze'){
+      el.querySelectorAll('input.blank').forEach(function(inp){
+        if(!inp.dataset.correct){inp.disabled=true;return;}
+        total++;
+        var v=norm(inp.value);
+        var ok2=v.length>0 && v.indexOf(norm(inp.dataset.correct))>=0;
+        if(ok2)score++;
+        inp.classList.add(ok2?'correct':'wrong');
+        if(!ok2){var s=document.createElement('span');s.className='anshint';s.textContent=' ✓ '+inp.dataset.correct;inp.insertAdjacentElement('afterend',s);}
+        inp.disabled=true;
+      });
+    }
+  });
+  document.querySelectorAll('.q-subj').forEach(function(el){var r=el.querySelector('.ref');if(r)r.hidden=false;});
+  var pct= total? Math.round(score/total*100):0;
+  var g=gradeOf(pct);
+  var box=document.getElementById('result');
+  box.hidden=false;
+  box.innerHTML='<div class="res-score">客观题正确率：<b>'+score+' / '+total+'</b> （'+pct+'%）</div>'+
+    '<div class="res-grade" style="background:'+g[1]+'">'+g[0]+'</div>'+
+    '<div class="res-note">写作 / 口语 / 改写 / 开放题请对照下方「✅ Soluzioni」参考答案与评分要点自评（本卷主观题满分 '+SUBJMAX+' 分）。</div>';
+  box.scrollIntoView({behavior:'smooth'});
+  document.getElementById('btn-check').hidden=true;
+  document.getElementById('btn-reset').hidden=false;
+}
+function resetta(){location.reload();}
+document.addEventListener('play', function(e){
+  if(e.target && e.target.tagName === 'AUDIO'){
+    document.querySelectorAll('audio').forEach(function(a){ if(a!==e.target) a.pause(); });
+  }
+}, true);</script></body></html>
