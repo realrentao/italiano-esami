@@ -805,7 +805,7 @@ CSS = """
 *{box-sizing:border-box}
 body{margin:0;font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);background:var(--paper);line-height:1.65}
 header.top{background:linear-gradient(135deg,var(--wine),var(--wine2));color:#fff;padding:26px 20px;box-shadow:0 2px 10px rgba(0,0,0,.15)}
-header.top .back{color:#ffd9df;text-decoration:none;font-size:14px}
+header.top .topnav{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:4px}header.top .back{color:#ffd9df;text-decoration:none;font-size:14px}header.top .back:hover{text-decoration:underline;opacity:.85}
 header.top .ttl{font-size:26px;font-weight:800;margin-top:6px}
 header.top .ttl .lvl{display:inline-block;background:#fff;color:var(--wine);border-radius:8px;padding:2px 10px;margin-right:10px;font-size:20px}
 header.top .sub{opacity:.9;margin-top:4px;font-size:15px}
@@ -946,7 +946,7 @@ def build_page(lv):
 </head>
 <body>
 <header class="top">
-  <a href="index.html" class="back">← Indice CELI Vol.1</a>
+  <nav class="topnav"><a href="index.html" class="back">← Indice CELI Vol.1</a><a href="../CELI.html" class="back">🏠 CELI 导航页</a></nav>
   <div class="ttl"><span class="lvl">{code}</span> {name}</div>
   <div class="sub">{subtitle} · {theme}</div>
 </header>
