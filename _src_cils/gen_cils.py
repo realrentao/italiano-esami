@@ -31,30 +31,19 @@ section.module h3{color:#444;font-size:16px;margin:22px 0 10px}
 .text{background:#f6f1e9;border-left:4px solid var(--wine);border-radius:8px;padding:12px 14px;margin:12px 0}
 .text h4{margin:0 0 6px;font-size:14px;color:var(--wine)}
 pre{white-space:pre-wrap;margin:0;font-family:"Courier New",monospace;font-size:14px}
-/* ====== Ascolto 听力播放器（独立于 CELI 的现代化界面） ====== */
-.text.ascolto-text{border:none;background:transparent;padding:0;margin:14px 0}
-.asc-dlg{position:relative;border:1px solid #cfe3ec;border-left:5px solid #0369a1;border-radius:16px;background:linear-gradient(180deg,#f4fafe,#e9f3fb);padding:14px 16px;box-shadow:0 2px 10px rgba(3,105,161,.08);overflow:hidden}
-.asc-dlg::after{content:"";position:absolute;right:-26px;top:-26px;width:110px;height:110px;border-radius:50%;background:radial-gradient(circle,rgba(3,105,161,.10),transparent 70%);pointer-events:none}
-.asc-sum{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:4px 2px;user-select:none;position:relative;z-index:1;border-radius:12px}
-.asc-sum::-webkit-details-marker{display:none}
-.asc-sum:hover{background:rgba(3,105,161,.06)}
-.asc-sum .asum{font-size:13.5px;color:#075985;font-weight:600;flex:1 1 auto;line-height:1.45}
-.asc-ico{flex:0 0 auto;width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,#0369a1,#0c4a6e);display:inline-flex;align-items:center;justify-content:center;box-shadow:0 4px 10px rgba(3,105,161,.3)}
-.asc-ico::before{content:"🎧";font-size:20px;filter:brightness(0) invert(1)}
-.text.ascolto-text .spk{width:50px;height:50px;font-size:22px;background:linear-gradient(135deg,#0369a1,#0c4a6e);color:#fff;border-radius:50%;box-shadow:0 6px 16px rgba(3,105,161,.4);flex:0 0 auto;transition:transform .15s,background .15s}
-.text.ascolto-text .spk:hover,.text.ascolto-text .spk.playing{transform:scale(1.07);background:linear-gradient(135deg,#0c4a6e,#0369a1)}
-.text.ascolto-text .spk.err{background:#c0392b}
-.asc-wave{flex:0 0 auto;display:flex;align-items:center;gap:3px;height:30px}
-.asc-wave i{display:block;width:3px;height:7px;background:#9cc4dd;border-radius:2px}
-.asc-dlg.playing .asc-wave i{background:#0369a1;animation:ascbar .9s ease-in-out infinite}
-.asc-dlg.playing .asc-wave i:nth-child(2){animation-delay:.12s}
-.asc-dlg.playing .asc-wave i:nth-child(3){animation-delay:.24s}
-.asc-dlg.playing .asc-wave i:nth-child(4){animation-delay:.10s}
-.asc-dlg.playing .asc-wave i:nth-child(5){animation-delay:.20s}
-.asc-dlg.playing .asc-wave i:nth-child(6){animation-delay:.28s}
-.asc-dlg.playing .asc-wave i:nth-child(7){animation-delay:.16s}
-@keyframes ascbar{0%,100%{height:7px}50%{height:24px}}
-.text.ascolto-text > pre{margin:10px 0 0;background:#fff;border:1px solid #dbeaf3;border-radius:10px;padding:12px 14px;color:#243b4a;font-size:14px;line-height:1.7}
+/* ====== Ascolto 听力（布局与 CELI 一致：🎧 标题头 + 原生音频控件 + 折叠原文） ====== */
+.audio-block{background:#eafaf7;border:1px solid #bfe3da;border-left:4px solid #0d9488;border-radius:12px;padding:14px 16px;margin:14px 0}
+.audio-block h4{margin:0 0 10px;color:#0f766e;font-size:15px;font-weight:700}
+.audio-block audio{width:100%;margin:0 0 10px;display:block}
+.transcript{margin-top:2px}
+.transcript summary{cursor:pointer;color:#0f766e;font-weight:600;font-size:14px;user-select:none;list-style:none;display:flex;align-items:center;gap:4px}
+.transcript summary::-webkit-details-marker{display:none}
+.transcript summary:hover{text-decoration:underline}
+.transcript .t-open{display:none}
+.transcript[open] .t-closed{display:none}
+.transcript[open] .t-open{display:inline}
+.transcript[open] summary{margin-bottom:8px}
+.transcript pre{margin-top:0;background:#fff;border:1px solid #d6ece6;border-radius:10px;padding:12px 14px;color:#234e52;font-size:14px;line-height:1.7}
 /* ====== Ascolto 听力题（独立编号卡片） ====== */
 .asc-q{display:flex;gap:12px;align-items:flex-start;background:linear-gradient(180deg,#fff,#f6fbfd);border:1px solid #d7e8f0;border-left:4px solid #0369a1;border-radius:12px}
 .asc-q__no{flex:0 0 auto;width:30px;height:30px;border-radius:50%;background:#0369a1;color:#fff;font-weight:800;display:inline-flex;align-items:center;justify-content:center;font-size:14px;margin-top:2px}
@@ -84,10 +73,6 @@ textarea.ans{width:100%;font-size:15px;padding:10px;border:1px solid #ccc;border
 .q-subj .ref{margin-top:10px;padding:10px 12px;background:#eef6fb;border-left:4px solid #2a7fb8;border-radius:8px;font-size:14px}
 .q-note{margin-top:8px;font-weight:700;font-size:14px}
 .q-note.ok{color:var(--ok)} .q-note.no{color:var(--no)}
-.audio-block{background:#f0f4f7;border:1px solid #cfe0ea;border-radius:10px;padding:12px 14px;margin:12px 0}
-.audio-block h4{margin:0 0 8px;color:#1f5f80}
-audio{width:100%;margin-bottom:8px;display:block}
-.noaudio{color:#b06a00;font-weight:600}
 .q-oral{background:#fbf7ef;border:1px solid #ecd9b0;border-radius:12px;padding:16px 18px;margin:14px 0}
 .q-oral .q-stem{margin:0 0 12px;font-size:15px;line-height:1.7;white-space:pre-wrap}
 .oral-scoring{background:#fff;border:1px solid #e7dcc4;border-radius:10px;padding:12px 14px;margin-bottom:12px}
@@ -418,23 +403,30 @@ def render_module(mod_name, body, ans_mod, level_code, vol_num):
     cur_transcript = []
     in_transcript = False
     cur_subpart = None
+    cur_dialog_title = None
     variant = 'asc' if mod_name == 'Ascolto' else ''
     CIRCLED = '①②③④'
 
     def flush_transcript():
-        nonlocal in_transcript
+        nonlocal in_transcript, cur_dialog_title
         if cur_transcript:
             txt = '\n'.join(cur_transcript).strip()
             if txt:
-                # 听力原文：默认折叠隐藏，summary 内含 🔊 占位（由音频脚本注入真人发音按钮）
-                out.append('<details class="text ascolto-text asc-dlg"><summary class="asc-sum">'
-                           '<span class="asc-ico" aria-hidden="true"></span>'
-                           '<span class="aspk-slot"></span>'
-                           '<span class="asum">📝 Testo / Dialogo (simulato) — clicca 🔊 per ascoltare, o sul testo per mostrarlo</span>'
-                           '<span class="asc-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>'
-                           '</summary><pre>%s</pre></details>' % esc(txt))
+                dlg_t = cur_dialog_title or 'Ascolto'
+                if mod_name == 'Ascolto':
+                    # CELI 风格听力块：🎧 标题头 + 原生 <audio controls>（自带播放/进度条/下载/调速） + 折叠原文
+                    out.append('<div class="audio-block">'
+                               '<h4>🎧 %s</h4>' % esc(dlg_t)
+                               + '<span class="aspk-slot"></span>'
+                               + '<details class="transcript"><summary>'
+                                 '<span class="t-closed">📝 显示听力原文</span>'
+                                 '<span class="t-open">📝 隐藏听力原文</span>'
+                               '</summary><pre>%s</pre></details></div>' % esc(txt))
+                else:
+                    out.append('<div class="text"><pre>%s</pre></div>' % esc(txt))
         cur_transcript.clear()
         in_transcript = False
+        cur_dialog_title = None
 
     for raw_line in lines:
         s = raw_line.strip().replace('\\_', '_')
@@ -446,7 +438,13 @@ def render_module(mod_name, body, ans_mod, level_code, vol_num):
         # markdown 子标题（模块内 ### / ## 标题，如 Vol.4 的「听力原文」「理解题」）
         hm_head = re.match(r'^#{1,3}\s+(.+)$', s)
         if hm_head:
-            out.append('<h3>%s</h3>' % esc(hm_head.group(1).strip()))
+            htxt = hm_head.group(1).strip()
+            # Ascolto 的 Dialogo/Testo/Prova 标题：捕获为 audio-block 的 🎧 头，不再单独发 h3
+            if mod_name == 'Ascolto' and re.match(r'(?i)(dialogo|testo|prova)\b', htxt):
+                flush_transcript()
+                cur_dialog_title = htxt
+            else:
+                out.append('<h3>%s</h3>' % esc(htxt))
             continue
         # 行内加粗小标题
         hm = re.match(r'^\*\*(.+?)\*\*', s)
@@ -464,7 +462,10 @@ def render_module(mod_name, body, ans_mod, level_code, vol_num):
                     sp = 'P' + mp.group(1)
                 if sp:
                     cur_subpart = sp
-                out.append('<h3>%s</h3>' % esc(htxt))
+                if mod_name == 'Ascolto' and re.match(r'(?i)(dialogo|testo|prova)\b', htxt):
+                    cur_dialog_title = htxt
+                else:
+                    out.append('<h3>%s</h3>' % esc(htxt))
                 rest = s[hm.end():].strip()
                 if rest and mod_name == 'Ascolto' and not has_cjk(rest):
                     cur_transcript.append(rest)
@@ -474,7 +475,10 @@ def render_module(mod_name, body, ans_mod, level_code, vol_num):
         um = re.match(r'^_?\s*(Dialogo\b.*)$', s, re.I)
         if um:
             flush_transcript()
-            out.append('<h3>%s</h3>' % esc(um.group(1).strip()))
+            if mod_name == 'Ascolto':
+                cur_dialog_title = um.group(1).strip()
+            else:
+                out.append('<h3>%s</h3>' % esc(um.group(1).strip()))
             in_transcript = True
             continue
         # 引用块
@@ -606,7 +610,7 @@ def render_level(level_code, level_body, vol_num, vol_theme_it, level_sub_it, le
     if level_sub_zh:
         sub += ' · ' + level_sub_zh
     intro = ('本级主题：%s。CILS 五大模块（Ascolto / Lettura / Analisi delle strutture / Produzione scritta / Produzione orale）。'
-             '听力原文默认折叠隐藏，点击标题可展开查看，或点击 🔊 由真人女声朗读听力文本；阅读/语法/写作/口语模块不含音频。'
+             '听力原文默认折叠隐藏，点「📝 显示听力原文」展开；每段听力配原生音频控件（▶ 播放 / 进度条 / 下载 / 调速），由真人女声朗读；阅读/语法/写作/口语模块不含音频。'
              '提交后客观题自动判分；写作/口语/开放题请展开下方「✅ Soluzioni」参考答案与评分要点自评。'
              % esc(vol_theme_it))
     return ('<!DOCTYPE html><html lang="it"><head><meta charset="utf-8">'

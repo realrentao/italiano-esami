@@ -14,30 +14,19 @@ section.module h3{color:#444;font-size:16px;margin:22px 0 10px}
 .text{background:#f6f1e9;border-left:4px solid var(--wine);border-radius:8px;padding:12px 14px;margin:12px 0}
 .text h4{margin:0 0 6px;font-size:14px;color:var(--wine)}
 pre{white-space:pre-wrap;margin:0;font-family:"Courier New",monospace;font-size:14px}
-/* ====== Ascolto 听力播放器（独立于 CELI 的现代化界面） ====== */
-.text.ascolto-text{border:none;background:transparent;padding:0;margin:14px 0}
-.asc-dlg{position:relative;border:1px solid #cfe3ec;border-left:5px solid #0369a1;border-radius:16px;background:linear-gradient(180deg,#f4fafe,#e9f3fb);padding:14px 16px;box-shadow:0 2px 10px rgba(3,105,161,.08);overflow:hidden}
-.asc-dlg::after{content:"";position:absolute;right:-26px;top:-26px;width:110px;height:110px;border-radius:50%;background:radial-gradient(circle,rgba(3,105,161,.10),transparent 70%);pointer-events:none}
-.asc-sum{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:4px 2px;user-select:none;position:relative;z-index:1;border-radius:12px}
-.asc-sum::-webkit-details-marker{display:none}
-.asc-sum:hover{background:rgba(3,105,161,.06)}
-.asc-sum .asum{font-size:13.5px;color:#075985;font-weight:600;flex:1 1 auto;line-height:1.45}
-.asc-ico{flex:0 0 auto;width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,#0369a1,#0c4a6e);display:inline-flex;align-items:center;justify-content:center;box-shadow:0 4px 10px rgba(3,105,161,.3)}
-.asc-ico::before{content:"🎧";font-size:20px;filter:brightness(0) invert(1)}
-.text.ascolto-text .spk{width:50px;height:50px;font-size:22px;background:linear-gradient(135deg,#0369a1,#0c4a6e);color:#fff;border-radius:50%;box-shadow:0 6px 16px rgba(3,105,161,.4);flex:0 0 auto;transition:transform .15s,background .15s}
-.text.ascolto-text .spk:hover,.text.ascolto-text .spk.playing{transform:scale(1.07);background:linear-gradient(135deg,#0c4a6e,#0369a1)}
-.text.ascolto-text .spk.err{background:#c0392b}
-.asc-wave{flex:0 0 auto;display:flex;align-items:center;gap:3px;height:30px}
-.asc-wave i{display:block;width:3px;height:7px;background:#9cc4dd;border-radius:2px}
-.asc-dlg.playing .asc-wave i{background:#0369a1;animation:ascbar .9s ease-in-out infinite}
-.asc-dlg.playing .asc-wave i:nth-child(2){animation-delay:.12s}
-.asc-dlg.playing .asc-wave i:nth-child(3){animation-delay:.24s}
-.asc-dlg.playing .asc-wave i:nth-child(4){animation-delay:.10s}
-.asc-dlg.playing .asc-wave i:nth-child(5){animation-delay:.20s}
-.asc-dlg.playing .asc-wave i:nth-child(6){animation-delay:.28s}
-.asc-dlg.playing .asc-wave i:nth-child(7){animation-delay:.16s}
-@keyframes ascbar{0%,100%{height:7px}50%{height:24px}}
-.text.ascolto-text > pre{margin:10px 0 0;background:#fff;border:1px solid #dbeaf3;border-radius:10px;padding:12px 14px;color:#243b4a;font-size:14px;line-height:1.7}
+/* ====== Ascolto 听力（布局与 CELI 一致：🎧 标题头 + 原生音频控件 + 折叠原文） ====== */
+.audio-block{background:#eafaf7;border:1px solid #bfe3da;border-left:4px solid #0d9488;border-radius:12px;padding:14px 16px;margin:14px 0}
+.audio-block h4{margin:0 0 10px;color:#0f766e;font-size:15px;font-weight:700}
+.audio-block audio{width:100%;margin:0 0 10px;display:block}
+.transcript{margin-top:2px}
+.transcript summary{cursor:pointer;color:#0f766e;font-weight:600;font-size:14px;user-select:none;list-style:none;display:flex;align-items:center;gap:4px}
+.transcript summary::-webkit-details-marker{display:none}
+.transcript summary:hover{text-decoration:underline}
+.transcript .t-open{display:none}
+.transcript[open] .t-closed{display:none}
+.transcript[open] .t-open{display:inline}
+.transcript[open] summary{margin-bottom:8px}
+.transcript pre{margin-top:0;background:#fff;border:1px solid #d6ece6;border-radius:10px;padding:12px 14px;color:#234e52;font-size:14px;line-height:1.7}
 /* ====== Ascolto 听力题（独立编号卡片） ====== */
 .asc-q{display:flex;gap:12px;align-items:flex-start;background:linear-gradient(180deg,#fff,#f6fbfd);border:1px solid #d7e8f0;border-left:4px solid #0369a1;border-radius:12px}
 .asc-q__no{flex:0 0 auto;width:30px;height:30px;border-radius:50%;background:#0369a1;color:#fff;font-weight:800;display:inline-flex;align-items:center;justify-content:center;font-size:14px;margin-top:2px}
@@ -67,10 +56,6 @@ textarea.ans{width:100%;font-size:15px;padding:10px;border:1px solid #ccc;border
 .q-subj .ref{margin-top:10px;padding:10px 12px;background:#eef6fb;border-left:4px solid #2a7fb8;border-radius:8px;font-size:14px}
 .q-note{margin-top:8px;font-weight:700;font-size:14px}
 .q-note.ok{color:var(--ok)} .q-note.no{color:var(--no)}
-.audio-block{background:#f0f4f7;border:1px solid #cfe0ea;border-radius:10px;padding:12px 14px;margin:12px 0}
-.audio-block h4{margin:0 0 8px;color:#1f5f80}
-audio{width:100%;margin-bottom:8px;display:block}
-.noaudio{color:#b06a00;font-weight:600}
 .q-oral{background:#fbf7ef;border:1px solid #ecd9b0;border-radius:12px;padding:16px 18px;margin:14px 0}
 .q-oral .q-stem{margin:0 0 12px;font-size:15px;line-height:1.7;white-space:pre-wrap}
 .oral-scoring{background:#fff;border:1px solid #e7dcc4;border-radius:10px;padding:12px 14px;margin-bottom:12px}
@@ -120,7 +105,7 @@ audio{width:100%;margin-bottom:8px;display:block}
 .vol .vno{display:inline-block;background:var(--wine);color:#fff;border-radius:8px;padding:3px 12px;font-weight:800;font-size:14px}
 .vol .vt{font-weight:700;margin:10px 0 6px;font-size:18px}
 .vol .vs{font-size:13px;color:#666}
-.vol .vgo{margin-top:12px;font-weight:700;color:var(--wine);font-size:14px}</style></head><body><header class="top"><a href="index.html" class="back">← Indice CILS Vol.2</a><div class="ttl"><span class="lvl">A2</span> CILS</div><div class="sub"></div></header><main><p class="intro">本级主题：Giovani, famiglia e relazioni generazionali。CILS 五大模块（Ascolto / Lettura / Analisi delle strutture / Produzione scritta / Produzione orale）。听力原文默认折叠隐藏，点击标题可展开查看，或点击 🔊 由真人女声朗读听力文本；阅读/语法/写作/口语模块不含音频。提交后客观题自动判分；写作/口语/开放题请展开下方「✅ Soluzioni」参考答案与评分要点自评。</p><section class="module"><h2>1. Ascolto（听力）</h2><div class="mnote">Ascolto（听力）</div>
+.vol .vgo{margin-top:12px;font-weight:700;color:var(--wine);font-size:14px}</style></head><body><header class="top"><a href="index.html" class="back">← Indice CILS Vol.2</a><div class="ttl"><span class="lvl">A2</span> CILS</div><div class="sub"></div></header><main><p class="intro">本级主题：Giovani, famiglia e relazioni generazionali。CILS 五大模块（Ascolto / Lettura / Analisi delle strutture / Produzione scritta / Produzione orale）。听力原文默认折叠隐藏，点「📝 显示听力原文」展开；每段听力配原生音频控件（▶ 播放 / 进度条 / 下载 / 调速），由真人女声朗读；阅读/语法/写作/口语模块不含音频。提交后客观题自动判分；写作/口语/开放题请展开下方「✅ Soluzioni」参考答案与评分要点自评。</p><section class="module"><h2>1. Ascolto（听力）</h2><div class="mnote">Ascolto（听力）</div>
 <div class="mnote">约 20–30 分钟，共 12 题（Prova 1：6 短对话三选一；Prova 2：1 长对话三选一 6 题）。</div>
 <div class="mnote">_Prova 1 — 6 短对&amp;#x8BDD;_&amp;#x44;1. A: Che famiglia numerosa! Quanti siete? B: Siamo in quattro: io, i miei genitori e mia sorella.</div>
 <div class="mnote">D2. A: Uscite stasera? B: Sì, andiamo al cinema con gli amici.</div>
@@ -129,7 +114,7 @@ audio{width:100%;margin-bottom:8px;display:block}
 <div class="mnote">D5. A: Il sabato che fai? B: Vado in pizzeria con i compagni di scuola.</div>
 <div class="mnote">D6. A: Tuo padre lavora molto? B: Sì, è impiegato e parte presto la mattina.</div>
 <div class="mnote">_Prova 2 — 长对话（La domenica in famiglia）_&amp;#x4D;adre: Allora, domenica viene anche la zia Giulia con i cugini.</div>
-<details class="text ascolto-text asc-dlg"><summary class="asc-sum"><span class="asc-ico" aria-hidden="true"></span><button class="spk" type="button" data-src="audio/9fa3d468b09fbe5b.mp3" title="Ascolta la pronuncia">🔊</button><span class="asum">📝 Testo / Dialogo (simulato) — clicca 🔊 per ascoltare, o sul testo per mostrarlo</span><span class="asc-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></summary><pre>Figlia: Che bello! Giochiamo in giardino?
+<div class="audio-block"><h4>🎧 Ascolto</h4><audio controls preload="none" src="audio/9fa3d468b09fbe5b.mp3" type="audio/mpeg"></audio><details class="transcript"><summary><span class="t-closed">📝 显示听力原文</span><span class="t-open">📝 隐藏听力原文</span></summary><pre>Figlia: Che bello! Giochiamo in giardino?
 
 Madre: Sì, e tuo padre fa il barbecue. Poi guardiamo la partita in televisione.
 
@@ -141,7 +126,7 @@ Figlia: Bene. Invito anche Sara e Luca, i miei amici?
 
 Madre: Sì, ma digli di portare una cosa da bere.
 
-Figlia: Ok, mando un messaggio subito.</pre></details>
+Figlia: Ok, mando un messaggio subito.</pre></details></div>
 <div class="q-item asc-q" data-type="mc" data-correct="1" data-ctext="4"><span class="asc-q__no">1</span><div class="asc-q__main"><p class="q-stem">La famiglia di B (D1) è composta da ______ persone.</p><div class="opts asc-opts"><label class="opt asc-opt"><input type="radio" name="r1" value="0"><span class="asc-opt__k">A</span><span class="asc-opt__v">3</span></label><label class="opt asc-opt"><input type="radio" name="r1" value="1"><span class="asc-opt__k">B</span><span class="asc-opt__v">4</span></label><label class="opt asc-opt"><input type="radio" name="r1" value="2"><span class="asc-opt__k">C</span><span class="asc-opt__v">5</span></label></div></div></div>
 <div class="q-item asc-q" data-type="mc" data-correct="1" data-ctext="al cinema"><span class="asc-q__no">2</span><div class="asc-q__main"><p class="q-stem">Stasera B (D2) va ______.</p><div class="opts asc-opts"><label class="opt asc-opt"><input type="radio" name="r2" value="0"><span class="asc-opt__k">A</span><span class="asc-opt__v">a teatro</span></label><label class="opt asc-opt"><input type="radio" name="r2" value="1"><span class="asc-opt__k">B</span><span class="asc-opt__v">al cinema</span></label><label class="opt asc-opt"><input type="radio" name="r2" value="2"><span class="asc-opt__k">C</span><span class="asc-opt__v">a cena</span></label></div></div></div>
 <div class="q-item asc-q" data-type="mc" data-correct="1" data-ctext="tutti i giorni"><span class="asc-q__no">3</span><div class="asc-q__main"><p class="q-stem">La madre di B (D3) prepara la pasta ______.</p><div class="opts asc-opts"><label class="opt asc-opt"><input type="radio" name="r3" value="0"><span class="asc-opt__k">A</span><span class="asc-opt__v">ogni domenica</span></label><label class="opt asc-opt"><input type="radio" name="r3" value="1"><span class="asc-opt__k">B</span><span class="asc-opt__v">tutti i giorni</span></label><label class="opt asc-opt"><input type="radio" name="r3" value="2"><span class="asc-opt__k">C</span><span class="asc-opt__v">mai</span></label></div></div></div>
@@ -249,27 +234,4 @@ document.addEventListener('play', function(e){
   if(e.target && e.target.tagName === 'AUDIO'){
     document.querySelectorAll('audio').forEach(function(a){ if(a!==e.target) a.pause(); });
   }
-}, true);</script><script id="ascolto-audio-player">(function(){
-  var cur=null, curBtn=null, curDlg=null;
-  function clearDlg(){ if(curDlg){ curDlg.classList.remove('playing'); curDlg=null; } }
-  function stop(){ if(cur){try{cur.pause();}catch(e){}} if(curBtn){curBtn.textContent='\u{1F50A}';curBtn.classList.remove('playing','err');} clearDlg(); cur=null; curBtn=null; }
-  function play(b){
-    var src=b.getAttribute('data-src'); if(!src) return;
-    if(curBtn===b && cur && !cur.paused){ stop(); return; }
-    stop();
-    b.textContent='\u{1F507}'; b.classList.add('playing');
-    var dlg=b.closest('.asc-dlg'); if(dlg){ dlg.classList.add('playing'); curDlg=dlg; }
-    var a=new Audio(src);
-    a.addEventListener('ended', function(){ b.textContent='\u{1F50A}'; b.classList.remove('playing'); clearDlg(); curBtn=null; cur=null; });
-    a.addEventListener('error', function(){ b.textContent='\u{1F507}'; b.classList.add('err'); b.title='Audio non disponibile'; clearDlg(); });
-    var p=a.play();
-    if(p && p.then){ p.then(function(){ b.textContent='\u{1F508}'; b.classList.add('playing'); })
-      .catch(function(){ b.textContent='\u{1F507}'; b.classList.add('err'); b.title='Riproduzione fallita'; }); }
-    cur=a; curBtn=b;
-  }
-  document.addEventListener('click', function(e){
-    var t=e.target; var b=t && t.closest ? t.closest('.spk') : null;
-    if(b && b.classList.contains('spk')){ e.preventDefault(); e.stopPropagation(); play(b); }
-  });
-})();</script>
-</body></html>
+}, true);</script></body></html>

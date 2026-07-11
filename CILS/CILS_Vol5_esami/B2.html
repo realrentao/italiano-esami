@@ -14,30 +14,19 @@ section.module h3{color:#444;font-size:16px;margin:22px 0 10px}
 .text{background:#f6f1e9;border-left:4px solid var(--wine);border-radius:8px;padding:12px 14px;margin:12px 0}
 .text h4{margin:0 0 6px;font-size:14px;color:var(--wine)}
 pre{white-space:pre-wrap;margin:0;font-family:"Courier New",monospace;font-size:14px}
-/* ====== Ascolto 听力播放器（独立于 CELI 的现代化界面） ====== */
-.text.ascolto-text{border:none;background:transparent;padding:0;margin:14px 0}
-.asc-dlg{position:relative;border:1px solid #cfe3ec;border-left:5px solid #0369a1;border-radius:16px;background:linear-gradient(180deg,#f4fafe,#e9f3fb);padding:14px 16px;box-shadow:0 2px 10px rgba(3,105,161,.08);overflow:hidden}
-.asc-dlg::after{content:"";position:absolute;right:-26px;top:-26px;width:110px;height:110px;border-radius:50%;background:radial-gradient(circle,rgba(3,105,161,.10),transparent 70%);pointer-events:none}
-.asc-sum{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:4px 2px;user-select:none;position:relative;z-index:1;border-radius:12px}
-.asc-sum::-webkit-details-marker{display:none}
-.asc-sum:hover{background:rgba(3,105,161,.06)}
-.asc-sum .asum{font-size:13.5px;color:#075985;font-weight:600;flex:1 1 auto;line-height:1.45}
-.asc-ico{flex:0 0 auto;width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,#0369a1,#0c4a6e);display:inline-flex;align-items:center;justify-content:center;box-shadow:0 4px 10px rgba(3,105,161,.3)}
-.asc-ico::before{content:"🎧";font-size:20px;filter:brightness(0) invert(1)}
-.text.ascolto-text .spk{width:50px;height:50px;font-size:22px;background:linear-gradient(135deg,#0369a1,#0c4a6e);color:#fff;border-radius:50%;box-shadow:0 6px 16px rgba(3,105,161,.4);flex:0 0 auto;transition:transform .15s,background .15s}
-.text.ascolto-text .spk:hover,.text.ascolto-text .spk.playing{transform:scale(1.07);background:linear-gradient(135deg,#0c4a6e,#0369a1)}
-.text.ascolto-text .spk.err{background:#c0392b}
-.asc-wave{flex:0 0 auto;display:flex;align-items:center;gap:3px;height:30px}
-.asc-wave i{display:block;width:3px;height:7px;background:#9cc4dd;border-radius:2px}
-.asc-dlg.playing .asc-wave i{background:#0369a1;animation:ascbar .9s ease-in-out infinite}
-.asc-dlg.playing .asc-wave i:nth-child(2){animation-delay:.12s}
-.asc-dlg.playing .asc-wave i:nth-child(3){animation-delay:.24s}
-.asc-dlg.playing .asc-wave i:nth-child(4){animation-delay:.10s}
-.asc-dlg.playing .asc-wave i:nth-child(5){animation-delay:.20s}
-.asc-dlg.playing .asc-wave i:nth-child(6){animation-delay:.28s}
-.asc-dlg.playing .asc-wave i:nth-child(7){animation-delay:.16s}
-@keyframes ascbar{0%,100%{height:7px}50%{height:24px}}
-.text.ascolto-text > pre{margin:10px 0 0;background:#fff;border:1px solid #dbeaf3;border-radius:10px;padding:12px 14px;color:#243b4a;font-size:14px;line-height:1.7}
+/* ====== Ascolto 听力（布局与 CELI 一致：🎧 标题头 + 原生音频控件 + 折叠原文） ====== */
+.audio-block{background:#eafaf7;border:1px solid #bfe3da;border-left:4px solid #0d9488;border-radius:12px;padding:14px 16px;margin:14px 0}
+.audio-block h4{margin:0 0 10px;color:#0f766e;font-size:15px;font-weight:700}
+.audio-block audio{width:100%;margin:0 0 10px;display:block}
+.transcript{margin-top:2px}
+.transcript summary{cursor:pointer;color:#0f766e;font-weight:600;font-size:14px;user-select:none;list-style:none;display:flex;align-items:center;gap:4px}
+.transcript summary::-webkit-details-marker{display:none}
+.transcript summary:hover{text-decoration:underline}
+.transcript .t-open{display:none}
+.transcript[open] .t-closed{display:none}
+.transcript[open] .t-open{display:inline}
+.transcript[open] summary{margin-bottom:8px}
+.transcript pre{margin-top:0;background:#fff;border:1px solid #d6ece6;border-radius:10px;padding:12px 14px;color:#234e52;font-size:14px;line-height:1.7}
 /* ====== Ascolto 听力题（独立编号卡片） ====== */
 .asc-q{display:flex;gap:12px;align-items:flex-start;background:linear-gradient(180deg,#fff,#f6fbfd);border:1px solid #d7e8f0;border-left:4px solid #0369a1;border-radius:12px}
 .asc-q__no{flex:0 0 auto;width:30px;height:30px;border-radius:50%;background:#0369a1;color:#fff;font-weight:800;display:inline-flex;align-items:center;justify-content:center;font-size:14px;margin-top:2px}
@@ -67,10 +56,6 @@ textarea.ans{width:100%;font-size:15px;padding:10px;border:1px solid #ccc;border
 .q-subj .ref{margin-top:10px;padding:10px 12px;background:#eef6fb;border-left:4px solid #2a7fb8;border-radius:8px;font-size:14px}
 .q-note{margin-top:8px;font-weight:700;font-size:14px}
 .q-note.ok{color:var(--ok)} .q-note.no{color:var(--no)}
-.audio-block{background:#f0f4f7;border:1px solid #cfe0ea;border-radius:10px;padding:12px 14px;margin:12px 0}
-.audio-block h4{margin:0 0 8px;color:#1f5f80}
-audio{width:100%;margin-bottom:8px;display:block}
-.noaudio{color:#b06a00;font-weight:600}
 .q-oral{background:#fbf7ef;border:1px solid #ecd9b0;border-radius:12px;padding:16px 18px;margin:14px 0}
 .q-oral .q-stem{margin:0 0 12px;font-size:15px;line-height:1.7;white-space:pre-wrap}
 .oral-scoring{background:#fff;border:1px solid #e7dcc4;border-radius:10px;padding:12px 14px;margin-bottom:12px}
@@ -120,8 +105,7 @@ audio{width:100%;margin-bottom:8px;display:block}
 .vol .vno{display:inline-block;background:var(--wine);color:#fff;border-radius:8px;padding:3px 12px;font-weight:800;font-size:14px}
 .vol .vt{font-weight:700;margin:10px 0 6px;font-size:18px}
 .vol .vs{font-size:13px;color:#666}
-.vol .vgo{margin-top:12px;font-weight:700;color:var(--wine);font-size:14px}</style></head><body><header class="top"><a href="index.html" class="back">← Indice CILS Vol.5</a><div class="ttl"><span class="lvl">B2</span> CILS DUE</div><div class="sub"></div></header><main><p class="intro">本级主题：Arte, letteratura e tempo libero。CILS 五大模块（Ascolto / Lettura / Analisi delle strutture / Produzione scritta / Produzione orale）。听力原文默认折叠隐藏，点击标题可展开查看，或点击 🔊 由真人女声朗读听力文本；阅读/语法/写作/口语模块不含音频。提交后客观题自动判分；写作/口语/开放题请展开下方「✅ Soluzioni」参考答案与评分要点自评。</p><section class="module"><h2>1. Ascolto（听力）</h2><div class="mnote">Ascolto（听力）</div>
-<h3>Prova 1 — 7 brevi dialoghi（patrimonio culturale）</h3>
+.vol .vgo{margin-top:12px;font-weight:700;color:var(--wine);font-size:14px}</style></head><body><header class="top"><a href="index.html" class="back">← Indice CILS Vol.5</a><div class="ttl"><span class="lvl">B2</span> CILS DUE</div><div class="sub"></div></header><main><p class="intro">本级主题：Arte, letteratura e tempo libero。CILS 五大模块（Ascolto / Lettura / Analisi delle strutture / Produzione scritta / Produzione orale）。听力原文默认折叠隐藏，点「📝 显示听力原文」展开；每段听力配原生音频控件（▶ 播放 / 进度条 / 下载 / 调速），由真人女声朗读；阅读/语法/写作/口语模块不含音频。提交后客观题自动判分；写作/口语/开放题请展开下方「✅ Soluzioni」参考答案与评分要点自评。</p><section class="module"><h2>1. Ascolto（听力）</h2><div class="mnote">Ascolto（听力）</div>
 <div class="mnote">&amp;#x44;1 — Sai che il centro storico è patrimonio UNESCO? — Sì, dal 2015.</div>
 <div class="mnote">D2 — Perché restaurano il castello? — Per preservare la pietra.</div>
 <div class="mnote">D3 — I reperti dove sono esposti? — Nel museo archeologico.</div>
@@ -129,8 +113,7 @@ audio{width:100%;margin-bottom:8px;display:block}
 <div class="mnote">D5 — Le visite guidate sono gratuite? — Solo la prima domenica.</div>
 <div class="mnote">D6 — Cosa tutela la soprintendenza? — Monumenti e siti.</div>
 <div class="mnote">D7 — Il borgo rischia il degrado? — Purtroppo sì, serve cura.</div>
-<h3>Prova 2 — Intervista（lo spettacolo dal vivo）</h3>
-<details class="text ascolto-text asc-dlg"><summary class="asc-sum"><span class="asc-ico" aria-hidden="true"></span><button class="spk" type="button" data-src="audio/30c6a8b687a3d1ff.mp3" title="Ascolta la pronuncia">🔊</button><span class="asum">📝 Testo / Dialogo (simulato) — clicca 🔊 per ascoltare, o sul testo per mostrarlo</span><span class="asc-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></summary><pre>— Benvenuta, direttrice del teatro comunale. Com&#x27;è la stagione?
+<div class="audio-block"><h4>🎧 Prova 2 — Intervista（lo spettacolo dal vivo）</h4><audio controls preload="none" src="audio/30c6a8b687a3d1ff.mp3" type="audio/mpeg"></audio><details class="transcript"><summary><span class="t-closed">📝 显示听力原文</span><span class="t-open">📝 隐藏听力原文</span></summary><pre>— Benvenuta, direttrice del teatro comunale. Com&#x27;è la stagione?
 
 — Ricca: dodici produzioni, dall&#x27;opera al contemporaneo.
 
@@ -152,9 +135,8 @@ audio{width:100%;margin-bottom:8px;display:block}
 
 — Un messaggio per i cittadini?
 
-— Sostenete lo spettacolo dal vivo: è memoria viva della comunità.</pre></details>
-<h3>Prova 3 — Monologo（patrimonio culturale）</h3>
-<details class="text ascolto-text asc-dlg"><summary class="asc-sum"><span class="asc-ico" aria-hidden="true"></span><button class="spk" type="button" data-src="audio/59a33b9186c95fb2.mp3" title="Ascolta la pronuncia">🔊</button><span class="asum">📝 Testo / Dialogo (simulato) — clicca 🔊 per ascoltare, o sul testo per mostrarlo</span><span class="asc-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></summary><pre>&amp;#x49;l nostro patrimonio culturale non è fatto solo di monumenti famosi, ma anche di saperi tramandati di generazione in generazione: la lavorazione della ceramica, la musica popolare, le feste religiose. Questi beni immateriali rischiano di scomparire se non vengono praticati. Per questo l&#x27;UNESCO ne tutela alcuni, come la dieta mediterranea o l&#x27;opera dei pupi siciliani. La conservazione richiede risorse, ma anche comunità attive. I Comuni più virtuosi coinvolgono le scuole e i mestieri antichi. Tuttavia, la valorizzazione non deve trasformarsi in mercificazione: il turismo di massa può erodere l&#x27;identità locale. Serve un equilibrio tra accessibilità e tutela. Solo così il patrimonio resterà bene di tutti, non semplice scenografia per visitatori.</pre></details>
+— Sostenete lo spettacolo dal vivo: è memoria viva della comunità.</pre></details></div>
+<div class="audio-block"><h4>🎧 Prova 3 — Monologo（patrimonio culturale）</h4><audio controls preload="none" src="audio/59a33b9186c95fb2.mp3" type="audio/mpeg"></audio><details class="transcript"><summary><span class="t-closed">📝 显示听力原文</span><span class="t-open">📝 隐藏听力原文</span></summary><pre>&amp;#x49;l nostro patrimonio culturale non è fatto solo di monumenti famosi, ma anche di saperi tramandati di generazione in generazione: la lavorazione della ceramica, la musica popolare, le feste religiose. Questi beni immateriali rischiano di scomparire se non vengono praticati. Per questo l&#x27;UNESCO ne tutela alcuni, come la dieta mediterranea o l&#x27;opera dei pupi siciliani. La conservazione richiede risorse, ma anche comunità attive. I Comuni più virtuosi coinvolgono le scuole e i mestieri antichi. Tuttavia, la valorizzazione non deve trasformarsi in mercificazione: il turismo di massa può erodere l&#x27;identità locale. Serve un equilibrio tra accessibilità e tutela. Solo così il patrimonio resterà bene di tutti, non semplice scenografia per visitatori.</pre></details></div>
 <h3>Domande — Prova 1（7 题，四选一）</h3>
 <div class="mnote">1. Dal quando il centro è UNESCO?　A. 2010　B. 2015　C. 2020　D. 2005</div>
 <div class="mnote">2. Perché restaurano il castello?　A. Per turismo　B. Per preservare la pietra　C. Per eventi　D. Per sicurezza</div>
@@ -170,7 +152,7 @@ audio{width:100%;margin-bottom:8px;display:block}
 <div class="mnote">12\. Ci sono residenze?　A. No　B. Sì, due spazi　C. Una sola　D. Tre</div>
 <div class="mnote">13\. Il teatro apre le prove…　A. Estate　B. Tutto l&#x27;anno　C. Inverno　D. Weekend</div>
 <div class="mnote">14\. Messaggio finale?　A. Chiudere　B. Sostenere il live　C. Aumentare prezzi　D. Streaming</div>
-<details class="text ascolto-text asc-dlg"><summary class="asc-sum"><span class="asc-ico" aria-hidden="true"></span><button class="spk" type="button" data-src="audio/c3052c875a7f5719.mp3" title="Ascolta la pronuncia">🔊</button><span class="asum">📝 Testo / Dialogo (simulato) — clicca 🔊 per ascoltare, o sul testo per mostrarlo</span><span class="asc-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></summary><pre>&amp;#x38;. Quante produzioni nella stagione?　A. 6　B. 10　C. 12　D. 20</pre></details>
+<div class="audio-block"><h4>🎧 Ascolto</h4><audio controls preload="none" src="audio/c3052c875a7f5719.mp3" type="audio/mpeg"></audio><details class="transcript"><summary><span class="t-closed">📝 显示听力原文</span><span class="t-open">📝 隐藏听力原文</span></summary><pre>&amp;#x38;. Quante produzioni nella stagione?　A. 6　B. 10　C. 12　D. 20</pre></details></div>
 <h3>Domande — Prova 3（判断正误 12 题）</h3>
 <div class="mnote">&amp;#x31;5. Il patrimonio è solo monumenti famosi.　(V/F)</div>
 <div class="mnote">16\. I saperi tramandati rischiano di scomparire.　(V/F)</div>
@@ -361,27 +343,4 @@ document.addEventListener('play', function(e){
   if(e.target && e.target.tagName === 'AUDIO'){
     document.querySelectorAll('audio').forEach(function(a){ if(a!==e.target) a.pause(); });
   }
-}, true);</script><script id="ascolto-audio-player">(function(){
-  var cur=null, curBtn=null, curDlg=null;
-  function clearDlg(){ if(curDlg){ curDlg.classList.remove('playing'); curDlg=null; } }
-  function stop(){ if(cur){try{cur.pause();}catch(e){}} if(curBtn){curBtn.textContent='\u{1F50A}';curBtn.classList.remove('playing','err');} clearDlg(); cur=null; curBtn=null; }
-  function play(b){
-    var src=b.getAttribute('data-src'); if(!src) return;
-    if(curBtn===b && cur && !cur.paused){ stop(); return; }
-    stop();
-    b.textContent='\u{1F507}'; b.classList.add('playing');
-    var dlg=b.closest('.asc-dlg'); if(dlg){ dlg.classList.add('playing'); curDlg=dlg; }
-    var a=new Audio(src);
-    a.addEventListener('ended', function(){ b.textContent='\u{1F50A}'; b.classList.remove('playing'); clearDlg(); curBtn=null; cur=null; });
-    a.addEventListener('error', function(){ b.textContent='\u{1F507}'; b.classList.add('err'); b.title='Audio non disponibile'; clearDlg(); });
-    var p=a.play();
-    if(p && p.then){ p.then(function(){ b.textContent='\u{1F508}'; b.classList.add('playing'); })
-      .catch(function(){ b.textContent='\u{1F507}'; b.classList.add('err'); b.title='Riproduzione fallita'; }); }
-    cur=a; curBtn=b;
-  }
-  document.addEventListener('click', function(e){
-    var t=e.target; var b=t && t.closest ? t.closest('.spk') : null;
-    if(b && b.classList.contains('spk')){ e.preventDefault(); e.stopPropagation(); play(b); }
-  });
-})();</script>
-</body></html>
+}, true);</script></body></html>

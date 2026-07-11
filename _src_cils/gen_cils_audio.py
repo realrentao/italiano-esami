@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
 """CILS 听力真人发音补丁（稳健版）：
-只为「Ascolto 听力原文」(.text.ascolto-text) 生成 edge-tts(ELSA) mp3 并注入 🔊 按钮；
+只为「Ascolto 听力原文」(.audio-block) 生成 edge-tts(ELSA) mp3 并注入原生 <audio controls>；
 其他模块（阅读/语法/写作/口语）及所有题目一律不加音频。
-听力原文默认折叠隐藏（<details>），点击标题展开；点击 🔊 由真人女声朗读。
-采用「服务端直注 data-src」取代旧的「运行时文本归一化→全局索引」匹配，按钮必指向已验证存在的文件，
-彻底消除旧版因索引加载/相对路径/静默 play() 失败导致的「点了不能播放」问题。
+听力原文默认折叠隐藏（<details class="transcript">），点「📝 显示听力原文」展开。
+播放/进度条/下载/调速均由浏览器原生 <audio controls> 提供（与 CELI 听力布局一致）。
+采用「服务端直注 src」取代旧的「运行时文本归一化→全局索引」匹配，音频必指向已验证存在的文件。
 用法：
   python gen_cils_audio.py [卷号|all]   生成并注入
   python gen_cils_audio.py validate     仅校验（不生成）
 """
-import os, re, html, sys, asyncio, json, hashlib
+import os, re, html, sys, asyncio, hashlib
 import edge_tts
 
 ROOT = r"D:\意大利语材料\italiano-esami\CILS"
@@ -17,42 +17,6 @@ VOICE = "it-IT-ElsaNeural"
 CONCURRENCY = 6
 RETRIES = 4
 LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2']
-PLAYER_ID = "ascolto-audio-player"
-
-PLAYER_JS = (
-    '<script id="%s">(function(){\n' % PLAYER_ID
-    + '  var cur=null, curBtn=null, curDlg=null;\n'
-    + '  function clearDlg(){ if(curDlg){ curDlg.classList.remove(\'playing\'); curDlg=null; } }\n'
-    + '  function stop(){ if(cur){try{cur.pause();}catch(e){}} if(curBtn){curBtn.textContent=\'\\u{1F50A}\';curBtn.classList.remove(\'playing\',\'err\');} clearDlg(); cur=null; curBtn=null; }\n'
-    + '  function play(b){\n'
-    + '    var src=b.getAttribute(\'data-src\'); if(!src) return;\n'
-    + '    if(curBtn===b && cur && !cur.paused){ stop(); return; }\n'
-    + '    stop();\n'
-    + '    b.textContent=\'\\u{1F507}\'; b.classList.add(\'playing\');\n'
-    + '    var dlg=b.closest(\'.asc-dlg\'); if(dlg){ dlg.classList.add(\'playing\'); curDlg=dlg; }\n'
-    + '    var a=new Audio(src);\n'
-    + '    a.addEventListener(\'ended\', function(){ b.textContent=\'\\u{1F50A}\'; b.classList.remove(\'playing\'); clearDlg(); curBtn=null; cur=null; });\n'
-    + '    a.addEventListener(\'error\', function(){ b.textContent=\'\\u{1F507}\'; b.classList.add(\'err\'); b.title=\'Audio non disponibile\'; clearDlg(); });\n'
-    + '    var p=a.play();\n'
-    + '    if(p && p.then){ p.then(function(){ b.textContent=\'\\u{1F508}\'; b.classList.add(\'playing\'); })\n'
-    + '      .catch(function(){ b.textContent=\'\\u{1F507}\'; b.classList.add(\'err\'); b.title=\'Riproduzione fallita\'; }); }\n'
-    + '    cur=a; curBtn=b;\n'
-    + '  }\n'
-    + '  document.addEventListener(\'click\', function(e){\n'
-    + '    var t=e.target; var b=t && t.closest ? t.closest(\'.spk\') : null;\n'
-    + '    if(b && b.classList.contains(\'spk\')){ e.preventDefault(); e.stopPropagation(); play(b); }\n'
-    + '  });\n'
-    + '})();</script>\n'
-)
-
-SPK_CSS = (
-    ".spk{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;"
-    "border:none;background:rgba(42,127,184,.14);color:#1f5f80;border-radius:50%;font-size:16px;"
-    "cursor:pointer;line-height:1;transition:.15s;flex:0 0 auto}\n"
-    ".spk:hover{background:#1f5fb8;color:#fff}\n"
-    ".spk.playing{background:#1f5fb8;color:#fff}\n"
-    ".spk.err{background:#c0392b;color:#fff}\n"
-)
 
 
 def strip_tags(s):
@@ -115,18 +79,16 @@ def process_volume(vol):
     if not os.path.isdir(vdir):
         print('跳过：目录不存在', vdir)
         return
-    # 说明：audio/ 目录只含 Ascolto 听力 mp3（生成器仅处理 ascolto-text 块），
-    # 旧的非听力 mp3 已在首次运行前经 PowerShell 清空，故此处不再做删除（避免触发 safe-delete 批量保护）。
     adir = os.path.join(vdir, 'audio')
 
-    # 收集本卷所有 Ascolto 听力文本（按页、按块顺序）
-    plan = []  # list of (level, block_text_normalized_for_key, raw_text_for_tts)
+    # 收集本卷所有 Ascolto 听力文本（audio-block 内的 <pre>）
+    plan = []
     for lvl in LEVELS:
         fp = os.path.join(vdir, lvl + '.html')
         if not os.path.exists(fp):
             continue
         h = open(fp, encoding='utf-8').read()
-        for m in re.finditer(r'<details class="[^"]*ascolto-text[^"]*">(.*?)</details>', h, re.S):
+        for m in re.finditer(r'<div class="audio-block">(.*?)</div>', h, re.S):
             block = m.group(1)
             pm = re.search(r'<pre>(.*?)</pre>', block, re.S)
             if not pm:
@@ -142,15 +104,15 @@ def process_volume(vol):
     results = asyncio.run(gen_all(texts, adir))
     print('  -> 成功生成 %d / %d 个 mp3' % (len(results), len(texts)))
 
-    # 注入：每个 ascolto-text 块替换 .aspk-slot 为 🔊 按钮
+    # 注入：每个 audio-block 替换 .aspk-slot 为原生 <audio controls>
     for lvl in LEVELS:
         fp = os.path.join(vdir, lvl + '.html')
         if not os.path.exists(fp):
             continue
         h = open(fp, encoding='utf-8').read()
-        if 'ascolto-audio-player' in h:
+        if '<audio controls' in h:
             continue  # 已注入，跳过整页
-        if 'class="text ascolto-text' not in h:
+        if 'class="audio-block"' not in h:
             continue
 
         def repl(m):
@@ -162,38 +124,33 @@ def process_volume(vol):
             fn = results.get(pm.group(1)) or results.get(nt)
             if not fn:
                 return block
-            btn = ('<button class="spk" type="button" data-src="audio/%s" '
-                   'title="Ascolta la pronuncia">\U0001F50A</button>' % fn)
-            return block.replace('<span class="aspk-slot"></span>', btn, 1)
+            audio = ('<audio controls preload="none" src="audio/%s" '
+                      'type="audio/mpeg"></audio>' % fn)
+            return block.replace('<span class="aspk-slot"></span>', audio, 1)
 
-        h2 = re.sub(r'<details class="[^"]*ascolto-text[^"]*">(.*?)</details>', repl, h, flags=re.S)
-        if '.spk{' not in h2:
-            h2 = h2.replace('</style>', SPK_CSS + '</style>', 1)
-        if 'ascolto-audio-player' not in h2:
-            h2 = h2.replace('</body>', PLAYER_JS + '</body>', 1)
+        h2 = re.sub(r'<div class="audio-block">(.*?)</div>', repl, h, flags=re.S)
         open(fp, 'w', encoding='utf-8').write(h2)
-    print('  -> 已注入 🔊 按钮与播放脚本')
+    print('  -> 已注入原生 <audio controls> 播放器')
 
 
 def validate_volume(vol):
     vdir = os.path.join(ROOT, 'CILS_Vol%d_esami' % vol)
     total_blocks = 0
-    btn_ok = 0
+    audio_ok = 0
     missing_file = 0
     invalid_file = 0
-    stray_spk = 0  # 出现在 ascolto-text 之外的 .spk
+    stray_audio = 0  # 出现在 audio-block 之外的 <audio controls>
     for lvl in LEVELS:
         fp = os.path.join(vdir, lvl + '.html')
         if not os.path.exists(fp):
             continue
         h = open(fp, encoding='utf-8').read()
-        # ascolto 块
-        blocks = re.findall(r'<details class="[^"]*ascolto-text[^"]*">(.*?)</details>', h, re.S)
+        blocks = re.findall(r'<div class="audio-block">(.*?)</div>', h, re.S)
         for b in blocks:
             total_blocks += 1
-            if 'class="spk"' in b and 'data-src=' in b:
-                btn_ok += 1
-                dm = re.search(r'data-src="([^"]+)"', b)
+            if '<audio controls' in b and 'src="audio/' in b:
+                audio_ok += 1
+                dm = re.search(r'src="(audio/[^"]+)"', b)
                 if dm:
                     fpath = os.path.join(vdir, dm.group(1))
                     if not os.path.exists(fpath):
@@ -202,14 +159,14 @@ def validate_volume(vol):
                         invalid_file += 1
             else:
                 missing_file += 1
-        # 检查整页里是否有不在 ascolto-text 内的 .spk
-        for m in re.finditer(r'class="spk"[^>]*data-src="([^"]+)"', h):
-            # 该 button 必须位于某个 ascolto-text 块内
-            if 'ascolto-text' not in h[:h.find('data-src="%s"' % m.group(1))]:
-                stray_spk += 1
-    print('Vol.%d  听力块=%d  按钮OK=%d  缺文件=%d  无效=%d  越界按钮=%d'
-          % (vol, total_blocks, btn_ok, missing_file, invalid_file, stray_spk))
-    return total_blocks == btn_ok and missing_file == 0 and invalid_file == 0 and stray_spk == 0
+        # 检查整页里是否有不在 audio-block 内的 <audio controls>
+        for m in re.finditer(r'<audio controls[^>]*src="(audio/[^"]+)"', h):
+            if 'audio-block' not in h[:h.find('src="%s"' % m.group(1))]:
+                stray_audio += 1
+    print('Vol.%d  听力块=%d  音频OK=%d  缺文件=%d  无效=%d  越界音频=%d'
+          % (vol, total_blocks, audio_ok, missing_file, invalid_file, stray_audio))
+    return (total_blocks == audio_ok and missing_file == 0
+            and invalid_file == 0 and stray_audio == 0)
 
 
 def main():
