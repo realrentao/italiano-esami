@@ -31,6 +31,16 @@ section.module h3{color:#444;font-size:16px;margin:22px 0 10px}
 .text{background:#f6f1e9;border-left:4px solid var(--wine);border-radius:8px;padding:12px 14px;margin:12px 0}
 .text h4{margin:0 0 6px;font-size:14px;color:var(--wine)}
 pre{white-space:pre-wrap;margin:0;font-family:"Courier New",monospace;font-size:14px}
+.text.ascolto-text{border-left-color:#2a7fb8;background:#eef6fb}
+.text.ascolto-text summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;font-weight:600;color:#1f5f80;padding:2px 0;user-select:none}
+.text.ascolto-text summary::-webkit-details-marker{display:none}
+.text.ascolto-text summary:hover{text-decoration:underline}
+.text.ascolto-text[open] summary{margin-bottom:8px}
+.text.ascolto-text .asum{font-size:14px}
+.spk{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:none;background:rgba(42,127,184,.14);color:#1f5f80;border-radius:50%;font-size:16px;cursor:pointer;line-height:1;transition:.15s;flex:0 0 auto}
+.spk:hover{background:#1f5f80;color:#fff}
+.spk.playing{background:#1f5f80;color:#fff}
+.spk.err{background:#c0392b;color:#fff}
 .items{margin-top:14px}
 .q-item{margin:14px 0;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fffdf9}
 .q-item.correct{border-color:var(--ok);background:#f1faf3}
@@ -366,7 +376,11 @@ def render_module(mod_name, body, ans_mod, level_code, vol_num):
         if cur_transcript:
             txt = '\n'.join(cur_transcript).strip()
             if txt:
-                out.append('<div class="text"><h4>📝 Testo / Dialogo (simulato)</h4><pre>%s</pre></div>' % esc(txt))
+                # 听力原文：默认折叠隐藏，summary 内含 🔊 占位（由音频脚本注入真人发音按钮）
+                out.append('<details class="text ascolto-text"><summary>'
+                           '<span class="aspk-slot"></span>'
+                           '<span class="asum">📝 Testo / Dialogo (simulato) — clicca 🔊 per ascoltare, o sul testo per mostrarlo</span>'
+                           '</summary><pre>%s</pre></details>' % esc(txt))
         cur_transcript.clear()
         in_transcript = False
 
@@ -404,6 +418,13 @@ def render_module(mod_name, body, ans_mod, level_code, vol_num):
                     cur_transcript.append(rest)
                     in_transcript = True
                 continue
+        # 下划线样式小标题：_Dialogo 1 — ...（部分卷如 Vol.2 仅前导下划线、无闭合）
+        um = re.match(r'^_?\s*(Dialogo\b.*)$', s, re.I)
+        if um:
+            flush_transcript()
+            out.append('<h3>%s</h3>' % esc(um.group(1).strip()))
+            in_transcript = True
+            continue
         # 引用块
         if s.startswith('>'):
             t = re.sub(r'^>\s?', '', s).strip()
@@ -445,6 +466,11 @@ def render_module(mod_name, body, ans_mod, level_code, vol_num):
         if q:
             flush_transcript()
             out.append(q)
+            continue
+        # Ascolto 对话行：Speaker: testo（如 Vol.2 的 Lucia: ... / Insegnante: ...，逐行归入听力原文）
+        if mod_name == 'Ascolto' and not has_cjk(s) and re.match(r'^[A-Za-zÀ-ÿ][\wàèéìòù\'’ ]*:\s', s):
+            cur_transcript.append(s)
+            in_transcript = True
             continue
         if not s.startswith('*'):
             out.append('<div class="mnote">%s</div>' % esc(s))
@@ -528,7 +554,7 @@ def render_level(level_code, level_body, vol_num, vol_theme_it, level_sub_it, le
     if level_sub_zh:
         sub += ' · ' + level_sub_zh
     intro = ('本级主题：%s。CILS 五大模块（Ascolto / Lettura / Analisi delle strutture / Produzione scritta / Produzione orale）。'
-             '听力为模拟音频文本（由考官/录音播放），本页以文本呈现听力原文，点击展开即可自测。'
+             '听力原文默认折叠隐藏，点击标题可展开查看，或点击 🔊 由真人女声朗读听力文本；阅读/语法/写作/口语模块不含音频。'
              '提交后客观题自动判分；写作/口语/开放题请展开下方「✅ Soluzioni」参考答案与评分要点自评。'
              % esc(vol_theme_it))
     return ('<!DOCTYPE html><html lang="it"><head><meta charset="utf-8">'

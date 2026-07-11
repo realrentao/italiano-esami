@@ -14,6 +14,16 @@ section.module h3{color:#444;font-size:16px;margin:22px 0 10px}
 .text{background:#f6f1e9;border-left:4px solid var(--wine);border-radius:8px;padding:12px 14px;margin:12px 0}
 .text h4{margin:0 0 6px;font-size:14px;color:var(--wine)}
 pre{white-space:pre-wrap;margin:0;font-family:"Courier New",monospace;font-size:14px}
+.text.ascolto-text{border-left-color:#2a7fb8;background:#eef6fb}
+.text.ascolto-text summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;font-weight:600;color:#1f5f80;padding:2px 0;user-select:none}
+.text.ascolto-text summary::-webkit-details-marker{display:none}
+.text.ascolto-text summary:hover{text-decoration:underline}
+.text.ascolto-text[open] summary{margin-bottom:8px}
+.text.ascolto-text .asum{font-size:14px}
+.spk{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:none;background:rgba(42,127,184,.14);color:#1f5f80;border-radius:50%;font-size:16px;cursor:pointer;line-height:1;transition:.15s;flex:0 0 auto}
+.spk:hover{background:#1f5f80;color:#fff}
+.spk.playing{background:#1f5f80;color:#fff}
+.spk.err{background:#c0392b;color:#fff}
 .items{margin-top:14px}
 .q-item{margin:14px 0;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fffdf9}
 .q-item.correct{border-color:var(--ok);background:#f1faf3}
@@ -84,11 +94,7 @@ audio{width:100%;margin-bottom:8px;display:block}
 .vol .vno{display:inline-block;background:var(--wine);color:#fff;border-radius:8px;padding:3px 12px;font-weight:800;font-size:14px}
 .vol .vt{font-weight:700;margin:10px 0 6px;font-size:18px}
 .vol .vs{font-size:13px;color:#666}
-.vol .vgo{margin-top:12px;font-weight:700;color:var(--wine);font-size:14px}.q-item,.text{position:relative}
-.spk{position:absolute;top:8px;right:8px;z-index:2;border:none;background:rgba(123,30,43,.08);color:var(--wine);border-radius:50%;width:30px;height:30px;font-size:15px;cursor:pointer;line-height:1;display:flex;align-items:center;justify-content:center;transition:.15s}
-.spk:hover{background:var(--wine);color:#fff}
-.spk.playing{background:var(--wine2);color:#fff}
-</style></head><body><header class="top"><a href="index.html" class="back">← Indice CILS Vol.3</a><div class="ttl"><span class="lvl">A2</span> CILS</div><div class="sub"></div></header><main><p class="intro">本级主题：Città, mobilità e vita sostenibile。CILS 五大模块（Ascolto / Lettura / Analisi delle strutture / Produzione scritta / Produzione orale）。听力为模拟音频文本（由考官/录音播放），本页以文本呈现听力原文，点击展开即可自测。提交后客观题自动判分；写作/口语/开放题请展开下方「✅ Soluzioni」参考答案与评分要点自评。</p><section class="module"><h2>1. Ascolto（听力）</h2><div class="mnote">Ascolto（听力）⏱ 约 20–30 分钟 ｜ 12 题（Prova1 6 短对话三选一 + Prova2 1 长对话三选一 6 题）</div>
+.vol .vgo{margin-top:12px;font-weight:700;color:var(--wine);font-size:14px}</style></head><body><header class="top"><a href="index.html" class="back">← Indice CILS Vol.3</a><div class="ttl"><span class="lvl">A2</span> CILS</div><div class="sub"></div></header><main><p class="intro">本级主题：Città, mobilità e vita sostenibile。CILS 五大模块（Ascolto / Lettura / Analisi delle strutture / Produzione scritta / Produzione orale）。听力原文默认折叠隐藏，点击标题可展开查看，或点击 🔊 由真人女声朗读听力文本；阅读/语法/写作/口语模块不含音频。提交后客观题自动判分；写作/口语/开放题请展开下方「✅ Soluzioni」参考答案与评分要点自评。</p><section class="module"><h2>1. Ascolto（听力）</h2><div class="mnote">Ascolto（听力）⏱ 约 20–30 分钟 ｜ 12 题（Prova1 6 短对话三选一 + Prova2 1 长对话三选一 6 题）</div>
 <div class="mnote">「听力原文（模拟音频文本）」。</div>
 <h3>Prova 1 — Sei brevi dialoghi（6 题）</h3>
 <div class="mnote">&amp;#x44;1. A: Che autobus prendi? B: Il 12, va in centro. → Dove va l&#x27;autobus 12?</div>
@@ -98,14 +104,6 @@ audio{width:100%;margin-bottom:8px;display:block}
 <div class="mnote">D5. A: Preferisci il tram o la metro? B: Il tram, è più tranquillo. → Cosa preferisce?</div>
 <div class="mnote">D6. A: La fermata è qui vicino? B: Sì, a due minuti. → Dov&#x27;è la fermata?</div>
 <h3>Prova 2 — Dialogo lungo（6 题）</h3>
-<div class="mnote">Giulia: Scusi, come arrivo in centro?</div>
-<div class="mnote">Impiegato: Prenda l&#x27;autobus 27, parte ogni 10 minuti.</div>
-<div class="mnote">Giulia: E il biglietto?</div>
-<div class="mnote">Impiegato: Costa 1,50 euro, si compra alla macchinetta.</div>
-<div class="mnote">Giulia: C&#x27;è anche la metro?</div>
-<div class="mnote">Impiegato: Sì, la linea 2, ma è lontana da qui.</div>
-<div class="mnote">Giulia: Grazie, il mio quartiere è vicino al fiume.</div>
-<div class="mnote">Impiegato: Allora l&#x27;autobus 27 è perfetto.</div>
 <div class="mnote">1. L&#x27;autobus 12 va… A) in centro B) al fiume C) in montagna</div>
 <div class="mnote">2. Il biglietto costa… A) 1 euro B) 1,50 euro C) 2 euro</div>
 <div class="mnote">3. L&#x27;interlocutore abita in… A) via Roma B) via Garibaldi C) via Milano</div>
@@ -118,7 +116,23 @@ audio{width:100%;margin-bottom:8px;display:block}
 <div class="mnote">10. La metro linea 2 è… A) vicina B) lontana C) chiusa</div>
 <div class="mnote">11. Il quartiere di Giulia è… A) vicino al fiume B) in centro C) in collina</div>
 <div class="mnote">12. Per Giulia l&#x27;autobus 27 è… A) lento B) perfetto C) costoso</div>
-<div class="text"><h4>📝 Testo / Dialogo (simulato)</h4><pre>&amp;#x47;iulia parla con un impiegato all&#x27;ufficio informazioni della stazione.</pre></div></section>
+<details class="text ascolto-text"><summary><button class="spk" type="button" data-src="audio/1d1d7ef8cc00ddf0.mp3" title="Ascolta la pronuncia">🔊</button><span class="asum">📝 Testo / Dialogo (simulato) — clicca 🔊 per ascoltare, o sul testo per mostrarlo</span></summary><pre>&amp;#x47;iulia parla con un impiegato all&#x27;ufficio informazioni della stazione.
+
+Giulia: Scusi, come arrivo in centro?
+
+Impiegato: Prenda l&#x27;autobus 27, parte ogni 10 minuti.
+
+Giulia: E il biglietto?
+
+Impiegato: Costa 1,50 euro, si compra alla macchinetta.
+
+Giulia: C&#x27;è anche la metro?
+
+Impiegato: Sì, la linea 2, ma è lontana da qui.
+
+Giulia: Grazie, il mio quartiere è vicino al fiume.
+
+Impiegato: Allora l&#x27;autobus 27 è perfetto.</pre></details></section>
 <section class="module"><h2>2. Lettura（阅读）</h2><div class="mnote">Lettura（阅读）⏱ 约 40 分钟</div>
 <h3>Prova 1 — Testo \~150 词 + 4 单选</h3>
 <div class="mnote">13\. San Salvario è a… A) Milano B) Torino C) Roma</div>
@@ -227,37 +241,25 @@ document.addEventListener('play', function(e){
   if(e.target && e.target.tagName === 'AUDIO'){
     document.querySelectorAll('audio').forEach(function(a){ if(a!==e.target) a.pause(); });
   }
-}, true);</script><script src="audio_index.js"></script>
-<script>
-(function(){
-  function normQ(s){ return s.replace(/^\s*\d+\s*[\.\)]\s*/,'').replace(/\s+/g,' ').trim().toLowerCase(); }
-  function normP(s){ return s.replace(/\s+/g,' ').trim().toLowerCase(); }
+}, true);</script><script id="ascolto-audio-player">(function(){
   var cur=null, curBtn=null;
-  function addSpk(el, file){
-    var b=document.createElement('button');
-    b.className='spk'; b.type='button'; b.textContent='\u{1F50A}'; b.title='Ascolta la pronuncia';
-    b.addEventListener('click', function(e){ e.stopPropagation(); toggle(b,file); });
-    el.appendChild(b);
+  function stop(){ if(cur){try{cur.pause();}catch(e){}} if(curBtn){curBtn.textContent='\u{1F50A}';curBtn.classList.remove('playing','err');} cur=null; curBtn=null; }
+  function play(b){
+    var src=b.getAttribute('data-src'); if(!src) return;
+    if(curBtn===b && cur && !cur.paused){ stop(); return; }
+    stop();
+    b.textContent='\u{1F507}'; b.classList.add('playing');
+    var a=new Audio(src);
+    a.addEventListener('ended', function(){ b.textContent='\u{1F50A}'; b.classList.remove('playing'); curBtn=null; cur=null; });
+    a.addEventListener('error', function(){ b.textContent='\u{1F507}'; b.classList.add('err'); b.title='Audio non disponibile'; });
+    var p=a.play();
+    if(p && p.then){ p.then(function(){ b.textContent='\u{1F508}'; b.classList.add('playing'); })
+      .catch(function(){ b.textContent='\u{1F507}'; b.classList.add('err'); b.title='Riproduzione fallita'; }); }
+    cur=a; curBtn=b;
   }
-  function toggle(b,file){
-    if(cur && curBtn!==b){ cur.pause(); curBtn.textContent='\u{1F50A}'; curBtn.classList.remove('playing'); }
-    if(b._a && !b._a.paused){ b._a.pause(); b._a=null; b.textContent='\u{1F50A}'; b.classList.remove('playing'); if(curBtn===b)curBtn=null; return; }
-    var a=new Audio(file); a.play().catch(function(){});
-    b._a=a; cur=a; curBtn=b; b.textContent='\u{1F508}'; b.classList.add('playing');
-    a.onended=function(){ b.textContent='\u{1F50A}'; b.classList.remove('playing'); if(curBtn===b)curBtn=null; };
-  }
-  function run(){
-    var A=window.CILS_AUDIO||{};
-    document.querySelectorAll('.q-item').forEach(function(el){
-      var s=el.querySelector('.q-stem'); if(!s) return;
-      var t=normQ(s.textContent); if(A[t]) addSpk(el, A[t]);
-    });
-    document.querySelectorAll('.text').forEach(function(el){
-      var p=el.querySelector('pre'); if(!p) return;
-      var t=normP(p.textContent); if(A[t]) addSpk(el, A[t]);
-    });
-  }
-  if(document.readyState!=='loading') run(); else document.addEventListener('DOMContentLoaded', run);
-})();
-</script>
+  document.addEventListener('click', function(e){
+    var t=e.target; var b=t && t.closest ? t.closest('.spk') : null;
+    if(b && b.classList.contains('spk')){ e.preventDefault(); e.stopPropagation(); play(b); }
+  });
+})();</script>
 </body></html>

@@ -14,6 +14,16 @@ section.module h3{color:#444;font-size:16px;margin:22px 0 10px}
 .text{background:#f6f1e9;border-left:4px solid var(--wine);border-radius:8px;padding:12px 14px;margin:12px 0}
 .text h4{margin:0 0 6px;font-size:14px;color:var(--wine)}
 pre{white-space:pre-wrap;margin:0;font-family:"Courier New",monospace;font-size:14px}
+.text.ascolto-text{border-left-color:#2a7fb8;background:#eef6fb}
+.text.ascolto-text summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;font-weight:600;color:#1f5f80;padding:2px 0;user-select:none}
+.text.ascolto-text summary::-webkit-details-marker{display:none}
+.text.ascolto-text summary:hover{text-decoration:underline}
+.text.ascolto-text[open] summary{margin-bottom:8px}
+.text.ascolto-text .asum{font-size:14px}
+.spk{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:none;background:rgba(42,127,184,.14);color:#1f5f80;border-radius:50%;font-size:16px;cursor:pointer;line-height:1;transition:.15s;flex:0 0 auto}
+.spk:hover{background:#1f5f80;color:#fff}
+.spk.playing{background:#1f5f80;color:#fff}
+.spk.err{background:#c0392b;color:#fff}
 .items{margin-top:14px}
 .q-item{margin:14px 0;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fffdf9}
 .q-item.correct{border-color:var(--ok);background:#f1faf3}
@@ -84,11 +94,7 @@ audio{width:100%;margin-bottom:8px;display:block}
 .vol .vno{display:inline-block;background:var(--wine);color:#fff;border-radius:8px;padding:3px 12px;font-weight:800;font-size:14px}
 .vol .vt{font-weight:700;margin:10px 0 6px;font-size:18px}
 .vol .vs{font-size:13px;color:#666}
-.vol .vgo{margin-top:12px;font-weight:700;color:var(--wine);font-size:14px}.q-item,.text{position:relative}
-.spk{position:absolute;top:8px;right:8px;z-index:2;border:none;background:rgba(123,30,43,.08);color:var(--wine);border-radius:50%;width:30px;height:30px;font-size:15px;cursor:pointer;line-height:1;display:flex;align-items:center;justify-content:center;transition:.15s}
-.spk:hover{background:var(--wine);color:#fff}
-.spk.playing{background:var(--wine2);color:#fff}
-</style></head><body><header class="top"><a href="index.html" class="back">← Indice CILS Vol.1</a><div class="ttl"><span class="lvl">B2</span> CILS DUE</div><div class="sub">pluralismo culturale / diritti di cittadinanza · 文化多元主义 / 公民权利</div></header><main><p class="intro">本级主题：Migrazioni, multiculturalismo e cittadinanza。CILS 五大模块（Ascolto / Lettura / Analisi delle strutture / Produzione scritta / Produzione orale）。听力为模拟音频文本（由考官/录音播放），本页以文本呈现听力原文，点击展开即可自测。提交后客观题自动判分；写作/口语/开放题请展开下方「✅ Soluzioni」参考答案与评分要点自评。</p><section class="module"><h2>1. Ascolto（听力）</h2><div class="mnote">Ascolto（听力，约 30 分钟）</div>
+.vol .vgo{margin-top:12px;font-weight:700;color:var(--wine);font-size:14px}</style></head><body><header class="top"><a href="index.html" class="back">← Indice CILS Vol.1</a><div class="ttl"><span class="lvl">B2</span> CILS DUE</div><div class="sub">pluralismo culturale / diritti di cittadinanza · 文化多元主义 / 公民权利</div></header><main><p class="intro">本级主题：Migrazioni, multiculturalismo e cittadinanza。CILS 五大模块（Ascolto / Lettura / Analisi delle strutture / Produzione scritta / Produzione orale）。听力原文默认折叠隐藏，点击标题可展开查看，或点击 🔊 由真人女声朗读听力文本；阅读/语法/写作/口语模块不含音频。提交后客观题自动判分；写作/口语/开放题请展开下方「✅ Soluzioni」参考答案与评分要点自评。</p><section class="module"><h2>1. Ascolto（听力）</h2><div class="mnote">Ascolto（听力，约 30 分钟）</div>
 <div class="mnote">改革要点：Prova 3（独白）使用「判断正误 Vero/Falso」。以下为「听力原文（模拟音频文本）」。</div>
 <h3>Prova 1 — 7 短对话（四选一）</h3>
 <div class="q-item" data-type="mc" data-correct="1" data-ctext="è una ricchezza"><p class="q-stem">1. — Il pluralismo culturale è una ricchezza? — Certamente, arricchisce la società. （D: Secondo l&#x27;uomo, il pluralismo…</p><div class="opts"><label class="opt"><input type="radio" name="r1" value="0"> A) è un problema</label><label class="opt"><input type="radio" name="r1" value="1"> B) è una ricchezza</label><label class="opt"><input type="radio" name="r1" value="2"> C) è inutile</label><label class="opt"><input type="radio" name="r1" value="3"> D) è pericoloso）</label></div></div>
@@ -99,7 +105,7 @@ audio{width:100%;margin-bottom:8px;display:block}
 <div class="q-item" data-type="mc" data-correct="1" data-ctext="dibattuto"><p class="q-stem">6. — Il voto agli stranieri? — È dibattuto in molti paesi. （D: Il voto agli stranieri è…</p><div class="opts"><label class="opt"><input type="radio" name="r6" value="0"> A) garantito ovunque</label><label class="opt"><input type="radio" name="r6" value="1"> B) dibattuto</label><label class="opt"><input type="radio" name="r6" value="2"> C) vietato</label><label class="opt"><input type="radio" name="r6" value="3"> D) inutile）</label></div></div>
 <div class="q-item" data-type="mc" data-correct="1" data-ctext="funziona con politiche giuste"><p class="q-stem">7. — L&#x27;integrazione fallisce? — No, con le politiche giuste funziona. （D: L&#x27;integrazione…</p><div class="opts"><label class="opt"><input type="radio" name="r7" value="0"> A) fallisce sempre</label><label class="opt"><input type="radio" name="r7" value="1"> B) funziona con politiche giuste</label><label class="opt"><input type="radio" name="r7" value="2"> C) è impossibile</label><label class="opt"><input type="radio" name="r7" value="3"> D) è lenta ma certa）</label></div></div>
 <h3>Prova 2 — 长访谈（Intervista su diritti di cittadinanza，四选一，7 题）</h3>
-<div class="text"><h4>📝 Testo / Dialogo (simulato)</h4><pre>Giornalista: Professoressa, che cos&#x27;è il pluralismo culturale?
+<details class="text ascolto-text"><summary><button class="spk" type="button" data-src="audio/6fa2ac6f14d0c47d.mp3" title="Ascolta la pronuncia">🔊</button><span class="asum">📝 Testo / Dialogo (simulato) — clicca 🔊 per ascoltare, o sul testo per mostrarlo</span></summary><pre>Giornalista: Professoressa, che cos&#x27;è il pluralismo culturale?
 Esperta: È la convivenza di più culture in uno stesso spazio pubblico, con pari dignità.
 Giornalista: E i diritti di cittadinanza?
 Esperta: Sono diritti civili e sociali che spettano a chi risiede, indipendentemente dalla nascita.
@@ -109,7 +115,7 @@ Giornalista: Quali rischi?
 Esperta: La marginalizzazione di giovani che si sentono esclusi.
 Giornalista: Una riforma possibile?
 Esperta: Riconoscere la cittadinanza a chi completa un ciclo scolastico.
-Giornalista: Grazie.</pre></div>
+Giornalista: Grazie.</pre></details>
 <div class="q-item" data-type="mc" data-correct="1" data-ctext="convivenza pari dignità"><p class="q-stem">1. Il pluralismo è…</p><div class="opts"><label class="opt"><input type="radio" name="r1" value="0"> A) una sola cultura</label><label class="opt"><input type="radio" name="r1" value="1"> B) convivenza pari dignità</label><label class="opt"><input type="radio" name="r1" value="2"> C) separazione</label><label class="opt"><input type="radio" name="r1" value="3"> D) dominio</label></div></div>
 <div class="q-item" data-type="mc" data-correct="1" data-ctext="risiede"><p class="q-stem">2. I diritti spettano a chi…</p><div class="opts"><label class="opt"><input type="radio" name="r2" value="0"> A) nasce qui</label><label class="opt"><input type="radio" name="r2" value="1"> B) risiede</label><label class="opt"><input type="radio" name="r2" value="2"> C) è ricco</label><label class="opt"><input type="radio" name="r2" value="3"> D) vota</label></div></div>
 <div class="q-item" data-type="mc" data-correct="1" data-ctext="limitato"><p class="q-stem">3. L&#x27;Italia ha lo ius soli…</p><div class="opts"><label class="opt"><input type="radio" name="r3" value="0"> A) pieno</label><label class="opt"><input type="radio" name="r3" value="1"> B) limitato</label><label class="opt"><input type="radio" name="r3" value="2"> C) assente</label><label class="opt"><input type="radio" name="r3" value="3"> D) totale</label></div></div>
@@ -125,8 +131,8 @@ Giornalista: Grazie.</pre></div>
 <div class="mnote">5. Le seconde generazioni vogliono piena appartenenza. (V)</div>
 <div class="mnote">6. Le politiche inclusive aumentano la radicalizzazione. (F)</div>
 <div class="mnote">7. Il multiculturalismo &quot;forte&quot; isola le comunità. (F)</div>
-<div class="text"><h4>📝 Testo / Dialogo (simulato)</h4><pre>Testo ascoltato: «Pluralismo culturale e diritti»
-Il pluralismo culturale riconosce che convivono legittimamente più visioni del mondo. La laicità dello Stato non significa neutralità assoluta, ma equidistanza tra credenze. I diritti di cittadinanza non si esauriscono nel voto: comprendono sanità, istruzione e mobilità. La discriminazione sui luoghi di lavoro resta diffusa nonostante le leggi. Le seconde generazioni chiedono piena appartenenza. Le politiche inclusive riducono la radicalizzazione. Il multiculturalismo &quot;debole&quot; isola le comunità; quello &quot;forte&quot; le integra nel dialogo. La libertà religiosa ha limiti nel rispetto dei diritti fondamentali. La lingua comune è un collante, non un obbligo di assimilazione. La rappresentanza politica delle minoranze è ancora scarsa. L&#x27;Unione Europea fissa principi minimi condivisi.</pre></div>
+<details class="text ascolto-text"><summary><button class="spk" type="button" data-src="audio/d36a1b9786d6b040.mp3" title="Ascolta la pronuncia">🔊</button><span class="asum">📝 Testo / Dialogo (simulato) — clicca 🔊 per ascoltare, o sul testo per mostrarlo</span></summary><pre>Testo ascoltato: «Pluralismo culturale e diritti»
+Il pluralismo culturale riconosce che convivono legittimamente più visioni del mondo. La laicità dello Stato non significa neutralità assoluta, ma equidistanza tra credenze. I diritti di cittadinanza non si esauriscono nel voto: comprendono sanità, istruzione e mobilità. La discriminazione sui luoghi di lavoro resta diffusa nonostante le leggi. Le seconde generazioni chiedono piena appartenenza. Le politiche inclusive riducono la radicalizzazione. Il multiculturalismo &quot;debole&quot; isola le comunità; quello &quot;forte&quot; le integra nel dialogo. La libertà religiosa ha limiti nel rispetto dei diritti fondamentali. La lingua comune è un collante, non un obbligo di assimilazione. La rappresentanza politica delle minoranze è ancora scarsa. L&#x27;Unione Europea fissa principi minimi condivisi.</pre></details>
 <div class="q-item" data-type="tf" data-correct="0" data-ctext="Vero"><p class="q-stem">8. La libertà religiosa ha limiti.</p><div class="opts"><label class="opt"><input type="radio" name="r8" value="0"> Vero</label><label class="opt"><input type="radio" name="r8" value="1"> Falso</label></div></div>
 <div class="q-item" data-type="tf" data-correct="1" data-ctext="Falso"><p class="q-stem">9. La lingua comune è un obbligo di assimilazione.</p><div class="opts"><label class="opt"><input type="radio" name="r9" value="0"> Vero</label><label class="opt"><input type="radio" name="r9" value="1"> Falso</label></div></div>
 <div class="q-item" data-type="tf" data-correct="1" data-ctext="Falso"><p class="q-stem">10. La rappresentanza delle minoranze è ampia.</p><div class="opts"><label class="opt"><input type="radio" name="r10" value="0"> Vero</label><label class="opt"><input type="radio" name="r10" value="1"> Falso</label></div></div>
@@ -303,37 +309,25 @@ document.addEventListener('play', function(e){
   if(e.target && e.target.tagName === 'AUDIO'){
     document.querySelectorAll('audio').forEach(function(a){ if(a!==e.target) a.pause(); });
   }
-}, true);</script><script src="audio_index.js"></script>
-<script>
-(function(){
-  function normQ(s){ return s.replace(/^\s*\d+\s*[\.\)]\s*/,'').replace(/\s+/g,' ').trim().toLowerCase(); }
-  function normP(s){ return s.replace(/\s+/g,' ').trim().toLowerCase(); }
+}, true);</script><script id="ascolto-audio-player">(function(){
   var cur=null, curBtn=null;
-  function addSpk(el, file){
-    var b=document.createElement('button');
-    b.className='spk'; b.type='button'; b.textContent='\u{1F50A}'; b.title='Ascolta la pronuncia';
-    b.addEventListener('click', function(e){ e.stopPropagation(); toggle(b,file); });
-    el.appendChild(b);
+  function stop(){ if(cur){try{cur.pause();}catch(e){}} if(curBtn){curBtn.textContent='\u{1F50A}';curBtn.classList.remove('playing','err');} cur=null; curBtn=null; }
+  function play(b){
+    var src=b.getAttribute('data-src'); if(!src) return;
+    if(curBtn===b && cur && !cur.paused){ stop(); return; }
+    stop();
+    b.textContent='\u{1F507}'; b.classList.add('playing');
+    var a=new Audio(src);
+    a.addEventListener('ended', function(){ b.textContent='\u{1F50A}'; b.classList.remove('playing'); curBtn=null; cur=null; });
+    a.addEventListener('error', function(){ b.textContent='\u{1F507}'; b.classList.add('err'); b.title='Audio non disponibile'; });
+    var p=a.play();
+    if(p && p.then){ p.then(function(){ b.textContent='\u{1F508}'; b.classList.add('playing'); })
+      .catch(function(){ b.textContent='\u{1F507}'; b.classList.add('err'); b.title='Riproduzione fallita'; }); }
+    cur=a; curBtn=b;
   }
-  function toggle(b,file){
-    if(cur && curBtn!==b){ cur.pause(); curBtn.textContent='\u{1F50A}'; curBtn.classList.remove('playing'); }
-    if(b._a && !b._a.paused){ b._a.pause(); b._a=null; b.textContent='\u{1F50A}'; b.classList.remove('playing'); if(curBtn===b)curBtn=null; return; }
-    var a=new Audio(file); a.play().catch(function(){});
-    b._a=a; cur=a; curBtn=b; b.textContent='\u{1F508}'; b.classList.add('playing');
-    a.onended=function(){ b.textContent='\u{1F50A}'; b.classList.remove('playing'); if(curBtn===b)curBtn=null; };
-  }
-  function run(){
-    var A=window.CILS_AUDIO||{};
-    document.querySelectorAll('.q-item').forEach(function(el){
-      var s=el.querySelector('.q-stem'); if(!s) return;
-      var t=normQ(s.textContent); if(A[t]) addSpk(el, A[t]);
-    });
-    document.querySelectorAll('.text').forEach(function(el){
-      var p=el.querySelector('pre'); if(!p) return;
-      var t=normP(p.textContent); if(A[t]) addSpk(el, A[t]);
-    });
-  }
-  if(document.readyState!=='loading') run(); else document.addEventListener('DOMContentLoaded', run);
-})();
-</script>
+  document.addEventListener('click', function(e){
+    var t=e.target; var b=t && t.closest ? t.closest('.spk') : null;
+    if(b && b.classList.contains('spk')){ e.preventDefault(); e.stopPropagation(); play(b); }
+  });
+})();</script>
 </body></html>

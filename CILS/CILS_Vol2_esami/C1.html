@@ -14,6 +14,16 @@ section.module h3{color:#444;font-size:16px;margin:22px 0 10px}
 .text{background:#f6f1e9;border-left:4px solid var(--wine);border-radius:8px;padding:12px 14px;margin:12px 0}
 .text h4{margin:0 0 6px;font-size:14px;color:var(--wine)}
 pre{white-space:pre-wrap;margin:0;font-family:"Courier New",monospace;font-size:14px}
+.text.ascolto-text{border-left-color:#2a7fb8;background:#eef6fb}
+.text.ascolto-text summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;font-weight:600;color:#1f5f80;padding:2px 0;user-select:none}
+.text.ascolto-text summary::-webkit-details-marker{display:none}
+.text.ascolto-text summary:hover{text-decoration:underline}
+.text.ascolto-text[open] summary{margin-bottom:8px}
+.text.ascolto-text .asum{font-size:14px}
+.spk{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:none;background:rgba(42,127,184,.14);color:#1f5f80;border-radius:50%;font-size:16px;cursor:pointer;line-height:1;transition:.15s;flex:0 0 auto}
+.spk:hover{background:#1f5f80;color:#fff}
+.spk.playing{background:#1f5f80;color:#fff}
+.spk.err{background:#c0392b;color:#fff}
 .items{margin-top:14px}
 .q-item{margin:14px 0;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fffdf9}
 .q-item.correct{border-color:var(--ok);background:#f1faf3}
@@ -84,11 +94,7 @@ audio{width:100%;margin-bottom:8px;display:block}
 .vol .vno{display:inline-block;background:var(--wine);color:#fff;border-radius:8px;padding:3px 12px;font-weight:800;font-size:14px}
 .vol .vt{font-weight:700;margin:10px 0 6px;font-size:18px}
 .vol .vs{font-size:13px;color:#666}
-.vol .vgo{margin-top:12px;font-weight:700;color:var(--wine);font-size:14px}.q-item,.text{position:relative}
-.spk{position:absolute;top:8px;right:8px;z-index:2;border:none;background:rgba(123,30,43,.08);color:var(--wine);border-radius:50%;width:30px;height:30px;font-size:15px;cursor:pointer;line-height:1;display:flex;align-items:center;justify-content:center;transition:.15s}
-.spk:hover{background:var(--wine);color:#fff}
-.spk.playing{background:var(--wine2);color:#fff}
-</style></head><body><header class="top"><a href="index.html" class="back">← Indice CILS Vol.2</a><div class="ttl"><span class="lvl">C1</span> CILS TRE</div><div class="sub"></div></header><main><p class="intro">本级主题：Giovani, famiglia e relazioni generazionali。CILS 五大模块（Ascolto / Lettura / Analisi delle strutture / Produzione scritta / Produzione orale）。听力为模拟音频文本（由考官/录音播放），本页以文本呈现听力原文，点击展开即可自测。提交后客观题自动判分；写作/口语/开放题请展开下方「✅ Soluzioni」参考答案与评分要点自评。</p><section class="module"><h2>1. Ascolto（听力）</h2><div class="mnote">Ascolto（听力）</div>
+.vol .vgo{margin-top:12px;font-weight:700;color:var(--wine);font-size:14px}</style></head><body><header class="top"><a href="index.html" class="back">← Indice CILS Vol.2</a><div class="ttl"><span class="lvl">C1</span> CILS TRE</div><div class="sub"></div></header><main><p class="intro">本级主题：Giovani, famiglia e relazioni generazionali。CILS 五大模块（Ascolto / Lettura / Analisi delle strutture / Produzione scritta / Produzione orale）。听力原文默认折叠隐藏，点击标题可展开查看，或点击 🔊 由真人女声朗读听力文本；阅读/语法/写作/口语模块不含音频。提交后客观题自动判分；写作/口语/开放题请展开下方「✅ Soluzioni」参考答案与评分要点自评。</p><section class="module"><h2>1. Ascolto（听力）</h2><div class="mnote">Ascolto（听力）</div>
 <div class="mnote">40 分钟，全为长对话/讲座，3 部分。提供原文 + 题。</div>
 <div class="mnote">_Parte 1 — Intervista a una sociologa (il ruolo della famiglia)_«La famiglia oggi non è più un&#x27;istituzione chiusa, ma una rete affettiva aperta. Il suo ruolo non è scomparso: si è spostato. Non garantisce più la sopravvivenza economica, ma resta la fonte primaria di cura e senso. I legami si scelgono, non si subiscono. Tuttavia, lo Stato delega ancora troppo alla famiglia, senza sostegni adeguati.»</div>
 <div class="mnote">_Parte 2 — Conferenza (natalità)_«L&#x27;Italia ha uno dei tassi di natalità più bassi al mondo. Le cause? Precarietà, costo delle case, assenza di servizi. Le politiche familiari sono insufficienti. Senza un investimento serio, il calo demografico diventa irreversibile. Servono asili nido, congedi parentali equi, case accessibili.»</div>
@@ -237,37 +243,4 @@ document.addEventListener('play', function(e){
   if(e.target && e.target.tagName === 'AUDIO'){
     document.querySelectorAll('audio').forEach(function(a){ if(a!==e.target) a.pause(); });
   }
-}, true);</script><script src="audio_index.js"></script>
-<script>
-(function(){
-  function normQ(s){ return s.replace(/^\s*\d+\s*[\.\)]\s*/,'').replace(/\s+/g,' ').trim().toLowerCase(); }
-  function normP(s){ return s.replace(/\s+/g,' ').trim().toLowerCase(); }
-  var cur=null, curBtn=null;
-  function addSpk(el, file){
-    var b=document.createElement('button');
-    b.className='spk'; b.type='button'; b.textContent='\u{1F50A}'; b.title='Ascolta la pronuncia';
-    b.addEventListener('click', function(e){ e.stopPropagation(); toggle(b,file); });
-    el.appendChild(b);
-  }
-  function toggle(b,file){
-    if(cur && curBtn!==b){ cur.pause(); curBtn.textContent='\u{1F50A}'; curBtn.classList.remove('playing'); }
-    if(b._a && !b._a.paused){ b._a.pause(); b._a=null; b.textContent='\u{1F50A}'; b.classList.remove('playing'); if(curBtn===b)curBtn=null; return; }
-    var a=new Audio(file); a.play().catch(function(){});
-    b._a=a; cur=a; curBtn=b; b.textContent='\u{1F508}'; b.classList.add('playing');
-    a.onended=function(){ b.textContent='\u{1F50A}'; b.classList.remove('playing'); if(curBtn===b)curBtn=null; };
-  }
-  function run(){
-    var A=window.CILS_AUDIO||{};
-    document.querySelectorAll('.q-item').forEach(function(el){
-      var s=el.querySelector('.q-stem'); if(!s) return;
-      var t=normQ(s.textContent); if(A[t]) addSpk(el, A[t]);
-    });
-    document.querySelectorAll('.text').forEach(function(el){
-      var p=el.querySelector('pre'); if(!p) return;
-      var t=normP(p.textContent); if(A[t]) addSpk(el, A[t]);
-    });
-  }
-  if(document.readyState!=='loading') run(); else document.addEventListener('DOMContentLoaded', run);
-})();
-</script>
-</body></html>
+}, true);</script></body></html>

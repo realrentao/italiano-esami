@@ -14,6 +14,16 @@ section.module h3{color:#444;font-size:16px;margin:22px 0 10px}
 .text{background:#f6f1e9;border-left:4px solid var(--wine);border-radius:8px;padding:12px 14px;margin:12px 0}
 .text h4{margin:0 0 6px;font-size:14px;color:var(--wine)}
 pre{white-space:pre-wrap;margin:0;font-family:"Courier New",monospace;font-size:14px}
+.text.ascolto-text{border-left-color:#2a7fb8;background:#eef6fb}
+.text.ascolto-text summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;font-weight:600;color:#1f5f80;padding:2px 0;user-select:none}
+.text.ascolto-text summary::-webkit-details-marker{display:none}
+.text.ascolto-text summary:hover{text-decoration:underline}
+.text.ascolto-text[open] summary{margin-bottom:8px}
+.text.ascolto-text .asum{font-size:14px}
+.spk{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:none;background:rgba(42,127,184,.14);color:#1f5f80;border-radius:50%;font-size:16px;cursor:pointer;line-height:1;transition:.15s;flex:0 0 auto}
+.spk:hover{background:#1f5f80;color:#fff}
+.spk.playing{background:#1f5f80;color:#fff}
+.spk.err{background:#c0392b;color:#fff}
 .items{margin-top:14px}
 .q-item{margin:14px 0;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fffdf9}
 .q-item.correct{border-color:var(--ok);background:#f1faf3}
@@ -84,11 +94,7 @@ audio{width:100%;margin-bottom:8px;display:block}
 .vol .vno{display:inline-block;background:var(--wine);color:#fff;border-radius:8px;padding:3px 12px;font-weight:800;font-size:14px}
 .vol .vt{font-weight:700;margin:10px 0 6px;font-size:18px}
 .vol .vs{font-size:13px;color:#666}
-.vol .vgo{margin-top:12px;font-weight:700;color:var(--wine);font-size:14px}.q-item,.text{position:relative}
-.spk{position:absolute;top:8px;right:8px;z-index:2;border:none;background:rgba(123,30,43,.08);color:var(--wine);border-radius:50%;width:30px;height:30px;font-size:15px;cursor:pointer;line-height:1;display:flex;align-items:center;justify-content:center;transition:.15s}
-.spk:hover{background:var(--wine);color:#fff}
-.spk.playing{background:var(--wine2);color:#fff}
-</style></head><body><header class="top"><a href="index.html" class="back">← Indice CILS Vol.4</a><div class="ttl"><span class="lvl">B2</span> CILS DUE</div><div class="sub"></div></header><main><p class="intro">本级主题：Istruzione e apprendimento permanente。CILS 五大模块（Ascolto / Lettura / Analisi delle strutture / Produzione scritta / Produzione orale）。听力为模拟音频文本（由考官/录音播放），本页以文本呈现听力原文，点击展开即可自测。提交后客观题自动判分；写作/口语/开放题请展开下方「✅ Soluzioni」参考答案与评分要点自评。</p><section class="module"><h2>1. Ascolto（听力）</h2><div class="mnote">Ascolto（听力）— 30 分钟</div>
+.vol .vgo{margin-top:12px;font-weight:700;color:var(--wine);font-size:14px}</style></head><body><header class="top"><a href="index.html" class="back">← Indice CILS Vol.4</a><div class="ttl"><span class="lvl">B2</span> CILS DUE</div><div class="sub"></div></header><main><p class="intro">本级主题：Istruzione e apprendimento permanente。CILS 五大模块（Ascolto / Lettura / Analisi delle strutture / Produzione scritta / Produzione orale）。听力原文默认折叠隐藏，点击标题可展开查看，或点击 🔊 由真人女声朗读听力文本；阅读/语法/写作/口语模块不含音频。提交后客观题自动判分；写作/口语/开放题请展开下方「✅ Soluzioni」参考答案与评分要点自评。</p><section class="module"><h2>1. Ascolto（听力）</h2><div class="mnote">Ascolto（听力）— 30 分钟</div>
 <h3>题型说明（近年改革）</h3>
 <h3>听力原文（模拟音频文本）</h3>
 <h3>Prova 1 — 7 brevi dialoghi (competenze del futuro)</h3>
@@ -100,17 +106,24 @@ audio{width:100%;margin-bottom:8px;display:block}
 <div class="mnote">_D6._ A: Meglio laurea o ITS? B: Dipende: l&#x27;ITS forma subito per il mestiere.</div>
 <div class="mnote">_D7._ A: Come restare aggiornati? B: Corsi brevi, micro-credential e progetti reali.</div>
 <h3>Prova 2 — Intervista (formazione professionale)</h3>
-<div class="mnote">S: Grazie. Il nostro istituto offre percorsi di due anni per elettricisti, cuochi e operatori turistici.</div>
-<div class="mnote">G: Quanto conta il tirocinio?</div>
-<div class="mnote">S: Moltissimo: sei mesi in azienda, dove lo studente applica davvero ciò che impara.</div>
-<div class="mnote">G: E l&#x27;inserimento nel mondo del lavoro?</div>
-<div class="mnote">S: L&#x27;80% dei nostri diplomati trova occupazione entro un anno. Le aziende ci cercano.</div>
-<div class="mnote">G: Un consiglio per i giovani?</div>
-<div class="mnote">S: Non aver paura della formazione continua: il mestiere si impara, poi si aggiorna sempre.</div>
-<div class="text"><h4>📝 Testo / Dialogo (simulato)</h4><pre>&amp;#x47;: Benvenuti. Oggi con noi c&#x27;è Sofia, direttrice di un centro di formazione professionale.</pre></div>
+<details class="text ascolto-text"><summary><button class="spk" type="button" data-src="audio/67dca2e5aadb257f.mp3" title="Ascolta la pronuncia">🔊</button><span class="asum">📝 Testo / Dialogo (simulato) — clicca 🔊 per ascoltare, o sul testo per mostrarlo</span></summary><pre>&amp;#x47;: Benvenuti. Oggi con noi c&#x27;è Sofia, direttrice di un centro di formazione professionale.
+
+S: Grazie. Il nostro istituto offre percorsi di due anni per elettricisti, cuochi e operatori turistici.
+
+G: Quanto conta il tirocinio?
+
+S: Moltissimo: sei mesi in azienda, dove lo studente applica davvero ciò che impara.
+
+G: E l&#x27;inserimento nel mondo del lavoro?
+
+S: L&#x27;80% dei nostri diplomati trova occupazione entro un anno. Le aziende ci cercano.
+
+G: Un consiglio per i giovani?
+
+S: Non aver paura della formazione continua: il mestiere si impara, poi si aggiorna sempre.</pre></details>
 <h3>Prova 3 — Monologo (le competenze del 2030)</h3>
 <h3>理解题</h3>
-<div class="text"><h4>📝 Testo / Dialogo (simulato)</h4><pre>&amp;#x4C;e previsioni indicano che entro il 2030 metà delle competenze attuali sarà obsoleta. Non spariranno solo i mestieri ripetitivi: cambierà il modo di lavorare. Resilienza e apprendimento autonomo diventeranno essenziali. La formazione professionale, se aggiornata, può colmare il divario tra scuola e impresa. Tuttavia, serve una strategia pubblica: lasciare tutto al mercato non basta. Le micro-qualifiche aiutano chi è già occupato a cambiare rotta. In conclusione, chi impara per tutta la vita avrà più sicurezza.</pre></div>
+<details class="text ascolto-text"><summary><button class="spk" type="button" data-src="audio/914b8bafaa7acb6c.mp3" title="Ascolta la pronuncia">🔊</button><span class="asum">📝 Testo / Dialogo (simulato) — clicca 🔊 per ascoltare, o sul testo per mostrarlo</span></summary><pre>&amp;#x4C;e previsioni indicano che entro il 2030 metà delle competenze attuali sarà obsoleta. Non spariranno solo i mestieri ripetitivi: cambierà il modo di lavorare. Resilienza e apprendimento autonomo diventeranno essenziali. La formazione professionale, se aggiornata, può colmare il divario tra scuola e impresa. Tuttavia, serve una strategia pubblica: lasciare tutto al mercato non basta. Le micro-qualifiche aiutano chi è già occupato a cambiare rotta. In conclusione, chi impara per tutta la vita avrà più sicurezza.</pre></details>
 <h3>Prova 1（7 题，四选一）</h3>
 <div class="mnote">1. Secondo D1, cosa conta di più?  A) Il calcolo  B) Critica e creatività  C) La memoria  D) L&#x27;obbedienza</div>
 <div class="mnote">2. L&#x27;IA (D2)…  A) elimina tutto  B) sostituisce alcuni e ne crea  C) non serve  D) è lenta</div>
@@ -126,7 +139,7 @@ audio{width:100%;margin-bottom:8px;display:block}
 <div class="mnote">12\. Chi cerca i diplomati?  A) Lo Stato  B) Le aziende  C) Nessuno  D) Le famiglie</div>
 <div class="mnote">13\. Il consiglio di Sofia?  A) Smettere  B) Formazione continua  C) Solo teoria  D) Andare all&#x27;estero</div>
 <div class="mnote">14\. La formazione è…  A) statica  B) da aggiornare sempre  C) breve  D) inutile</div>
-<div class="text"><h4>📝 Testo / Dialogo (simulato)</h4><pre>&amp;#x38;. Che tipo di percorsi offre l&#x27;istituto?  A) Solo lauree  B) Due anni professionali  C) Dottorati  D) Nessuno</pre></div>
+<details class="text ascolto-text"><summary><button class="spk" type="button" data-src="audio/d7b613a2a9220ae7.mp3" title="Ascolta la pronuncia">🔊</button><span class="asum">📝 Testo / Dialogo (simulato) — clicca 🔊 per ascoltare, o sul testo per mostrarlo</span></summary><pre>&amp;#x38;. Che tipo di percorsi offre l&#x27;istituto?  A) Solo lauree  B) Due anni professionali  C) Dottorati  D) Nessuno</pre></details>
 <h3>Prova 3 — Vero / Falso (12 题)</h3>
 <div class="mnote">&amp;#x31;5. Metà delle competenze attuali sarà obsoleta nel 2030.  ☐ Vero ☐ Falso</div>
 <div class="mnote">16\. Spariranno solo i mestieri ripetitivi.  ☐ Vero ☐ Falso</div>
@@ -313,37 +326,25 @@ document.addEventListener('play', function(e){
   if(e.target && e.target.tagName === 'AUDIO'){
     document.querySelectorAll('audio').forEach(function(a){ if(a!==e.target) a.pause(); });
   }
-}, true);</script><script src="audio_index.js"></script>
-<script>
-(function(){
-  function normQ(s){ return s.replace(/^\s*\d+\s*[\.\)]\s*/,'').replace(/\s+/g,' ').trim().toLowerCase(); }
-  function normP(s){ return s.replace(/\s+/g,' ').trim().toLowerCase(); }
+}, true);</script><script id="ascolto-audio-player">(function(){
   var cur=null, curBtn=null;
-  function addSpk(el, file){
-    var b=document.createElement('button');
-    b.className='spk'; b.type='button'; b.textContent='\u{1F50A}'; b.title='Ascolta la pronuncia';
-    b.addEventListener('click', function(e){ e.stopPropagation(); toggle(b,file); });
-    el.appendChild(b);
+  function stop(){ if(cur){try{cur.pause();}catch(e){}} if(curBtn){curBtn.textContent='\u{1F50A}';curBtn.classList.remove('playing','err');} cur=null; curBtn=null; }
+  function play(b){
+    var src=b.getAttribute('data-src'); if(!src) return;
+    if(curBtn===b && cur && !cur.paused){ stop(); return; }
+    stop();
+    b.textContent='\u{1F507}'; b.classList.add('playing');
+    var a=new Audio(src);
+    a.addEventListener('ended', function(){ b.textContent='\u{1F50A}'; b.classList.remove('playing'); curBtn=null; cur=null; });
+    a.addEventListener('error', function(){ b.textContent='\u{1F507}'; b.classList.add('err'); b.title='Audio non disponibile'; });
+    var p=a.play();
+    if(p && p.then){ p.then(function(){ b.textContent='\u{1F508}'; b.classList.add('playing'); })
+      .catch(function(){ b.textContent='\u{1F507}'; b.classList.add('err'); b.title='Riproduzione fallita'; }); }
+    cur=a; curBtn=b;
   }
-  function toggle(b,file){
-    if(cur && curBtn!==b){ cur.pause(); curBtn.textContent='\u{1F50A}'; curBtn.classList.remove('playing'); }
-    if(b._a && !b._a.paused){ b._a.pause(); b._a=null; b.textContent='\u{1F50A}'; b.classList.remove('playing'); if(curBtn===b)curBtn=null; return; }
-    var a=new Audio(file); a.play().catch(function(){});
-    b._a=a; cur=a; curBtn=b; b.textContent='\u{1F508}'; b.classList.add('playing');
-    a.onended=function(){ b.textContent='\u{1F50A}'; b.classList.remove('playing'); if(curBtn===b)curBtn=null; };
-  }
-  function run(){
-    var A=window.CILS_AUDIO||{};
-    document.querySelectorAll('.q-item').forEach(function(el){
-      var s=el.querySelector('.q-stem'); if(!s) return;
-      var t=normQ(s.textContent); if(A[t]) addSpk(el, A[t]);
-    });
-    document.querySelectorAll('.text').forEach(function(el){
-      var p=el.querySelector('pre'); if(!p) return;
-      var t=normP(p.textContent); if(A[t]) addSpk(el, A[t]);
-    });
-  }
-  if(document.readyState!=='loading') run(); else document.addEventListener('DOMContentLoaded', run);
-})();
-</script>
+  document.addEventListener('click', function(e){
+    var t=e.target; var b=t && t.closest ? t.closest('.spk') : null;
+    if(b && b.classList.contains('spk')){ e.preventDefault(); e.stopPropagation(); play(b); }
+  });
+})();</script>
 </body></html>
