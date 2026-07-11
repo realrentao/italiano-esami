@@ -404,11 +404,27 @@ def render_module(mod_name, body, ans_mod, level_code, vol_num):
     in_transcript = False
     cur_subpart = None
     cur_dialog_title = None
+    cur_reading = []
+    cur_reading_title = None
     variant = 'asc' if mod_name == 'Ascolto' else ''
     CIRCLED = '①②③④'
 
+    def flush_reading():
+        nonlocal cur_reading, cur_reading_title
+        if cur_reading:
+            txt = '\n'.join(cur_reading).strip()
+            if txt:
+                if cur_reading_title:
+                    out.append('<div class="text"><h4>%s</h4><pre>%s</pre></div>'
+                               % (esc(cur_reading_title), esc(txt)))
+                else:
+                    out.append('<div class="text"><pre>%s</pre></div>' % esc(txt))
+        cur_reading.clear()
+        cur_reading_title = None
+
     def flush_transcript():
         nonlocal in_transcript, cur_dialog_title
+        flush_reading()
         if cur_transcript:
             txt = '\n'.join(cur_transcript).strip()
             if txt:
@@ -434,10 +450,13 @@ def render_module(mod_name, body, ans_mod, level_code, vol_num):
         if not s:
             if mod_name == 'Ascolto' and in_transcript:
                 cur_transcript.append('')
+            elif mod_name == 'Lettura' and cur_reading:
+                cur_reading.append('')
             continue
         # markdown 子标题（模块内 ### / ## 标题，如 Vol.4 的「听力原文」「理解题」）
         hm_head = re.match(r'^#{1,3}\s+(.+)$', s)
         if hm_head:
+            flush_reading()
             htxt = hm_head.group(1).strip()
             # Ascolto 的 Dialogo/Testo/Prova 标题：捕获为 audio-block 的 🎧 头，不再单独发 h3
             if mod_name == 'Ascolto' and re.match(r'(?i)(dialogo|testo|prova)\b', htxt):
@@ -464,6 +483,8 @@ def render_module(mod_name, body, ans_mod, level_code, vol_num):
                     cur_subpart = sp
                 if mod_name == 'Ascolto' and re.match(r'(?i)(dialogo|testo|prova)\b', htxt):
                     cur_dialog_title = htxt
+                elif mod_name == 'Lettura' and re.match(r'(?i)(testo)\b', htxt):
+                    cur_reading_title = htxt
                 else:
                     out.append('<h3>%s</h3>' % esc(htxt))
                 rest = s[hm.end():].strip()
@@ -492,15 +513,19 @@ def render_module(mod_name, body, ans_mod, level_code, vol_num):
                     out.append(render_cloze_passage(t, ans_mod, cur_subpart))
                 continue
             if has_cjk(t):
+                flush_reading()
                 out.append('<div class="mnote">%s</div>' % esc(t))
             else:
                 if mod_name == 'Ascolto':
                     cur_transcript.append(t)
+                elif mod_name == 'Lettura':
+                    cur_reading.append(t)
                 else:
                     out.append('<div class="text"><pre>%s</pre></div>' % esc(t))
             continue
         # 对话行
         if re.match(r'^[—–]', s):
+            flush_reading()
             if has_cjk(s):
                 out.append('<div class="mnote">%s</div>' % esc(s))
             elif mod_name == 'Ascolto':
@@ -529,6 +554,7 @@ def render_module(mod_name, body, ans_mod, level_code, vol_num):
             in_transcript = True
             continue
         if not s.startswith('*'):
+            flush_reading()
             out.append('<div class="mnote">%s</div>' % esc(s))
     flush_transcript()
     return '\n'.join(out)
