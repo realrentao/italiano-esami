@@ -28,6 +28,11 @@ section.module{margin:30px 0;background:#fff;border:1px solid var(--line);border
 section.module h2{margin:0 0 14px;color:var(--wine);font-size:20px;border-bottom:2px solid var(--line);padding-bottom:8px}
 section.module h3{color:#444;font-size:16px;margin:22px 0 10px}
 .mnote{background:#f6f1e9;border-left:4px solid var(--wine);border-radius:8px;padding:10px 14px;margin:12px 0;font-size:13.5px;color:#6b5b4a;line-height:1.7}
+/* ====== 模块题目说明气泡（每个板块开头一段说明） ====== */
+.mod-instr{margin:14px 0;padding:14px 18px;background:linear-gradient(135deg,#0f766e,#14b8a6);color:#fff;border-radius:14px;box-shadow:0 3px 12px rgba(15,118,110,.18)}
+.mod-instr-h{font-weight:800;font-size:16px;margin-bottom:6px;display:flex;align-items:center;gap:8px;letter-spacing:.2px}
+.mod-instr-h::before{content:"\1F4CB";font-size:18px}
+.mod-instr-b{font-size:14px;line-height:1.75;opacity:.96;white-space:pre-wrap}
 .text{background:#f6f1e9;border-left:4px solid var(--wine);border-radius:8px;padding:12px 14px;margin:12px 0}
 .text h4{margin:0 0 6px;font-size:14px;color:var(--wine)}
 pre{white-space:pre-wrap;margin:0;font-family:"Courier New",monospace;font-size:14px}
@@ -408,6 +413,26 @@ def render_module(mod_name, body, ans_mod, level_code, vol_num):
     cur_reading_title = None
     variant = 'asc' if mod_name == 'Ascolto' else ''
     CIRCLED = '①②③④'
+    # 模块题目说明气泡：捕获模块开头的标题行 + 说明文字，合并为一个气泡卡片
+    instr_done = False
+    mod_instr_head = None
+    mod_instr_body = []
+
+    def flush_instr():
+        nonlocal instr_done, mod_instr_head, mod_instr_body
+        if mod_instr_head or mod_instr_body:
+            h = esc(mod_instr_head) if mod_instr_head else ''
+            b = esc('\n'.join(mod_instr_body).strip()) if mod_instr_body else ''
+            html = '<div class="mod-instr">'
+            if h:
+                html += '<div class="mod-instr-h">%s</div>' % h
+            if b:
+                html += '<div class="mod-instr-b">%s</div>' % b
+            html += '</div>'
+            out.append(html)
+        mod_instr_head = None
+        mod_instr_body = []
+        instr_done = True
 
     def flush_reading():
         nonlocal cur_reading, cur_reading_title
@@ -447,6 +472,40 @@ def render_module(mod_name, body, ans_mod, level_code, vol_num):
     for raw_line in lines:
         s = raw_line.strip().replace('\\_', '_')
         s = re.sub(r'^\*\*题目?\*\*', '', s).strip()  # 源文件用 \_ 表示空白，归一化为 _
+        # ---- 模块题目说明捕获（合并标题行+说明为单一气泡）----
+        if not instr_done:
+            if not s:
+                continue
+            is_content = False
+            if parse_question_line(s, ans_mod, cur_subpart, variant):
+                is_content = True
+            elif s.startswith('>') and ('_____' in s or re.search(r'\(\d+\)\s*_{2,}', s)):
+                is_content = True
+            elif re.match(r'^\*\*(.+?)\*\*', s):
+                is_content = True
+            elif re.match(r'^_?\s*(Dialogo\b.*)$', s, re.I):
+                is_content = True
+            elif re.match(r'^#{1,3}\s+(.+)$', s):
+                is_content = True
+            elif re.match(r'^[—–]', s):
+                is_content = True
+            elif '口语评分要点' in s:
+                is_content = True
+            elif mod_name == 'Ascolto' and not has_cjk(s) and re.match(r'^[A-Za-zÀ-ÿ][\wàèéìòù\'’ ]*:\s', s):
+                is_content = True
+            if is_content:
+                flush_instr()  # 遇到首个真实内容，先flush说明气泡，再走正常分支渲染该内容
+            else:
+                if mod_instr_head is None:
+                    mod_instr_head = s
+                elif s.startswith('>'):
+                    t = re.sub(r'^>\s?', '', s).strip()
+                    if t:
+                        mod_instr_body.append(t)
+                else:
+                    mod_instr_body.append(s)
+                continue
+        # ---- 说明捕获结束 ----
         if not s:
             if mod_name == 'Ascolto' and in_transcript:
                 cur_transcript.append('')
@@ -556,6 +615,7 @@ def render_module(mod_name, body, ans_mod, level_code, vol_num):
         if not s.startswith('*'):
             flush_reading()
             out.append('<div class="mnote">%s</div>' % esc(s))
+    flush_instr()
     flush_transcript()
     return '\n'.join(out)
 

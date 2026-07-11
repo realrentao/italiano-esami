@@ -11,6 +11,11 @@ section.module{margin:30px 0;background:#fff;border:1px solid var(--line);border
 section.module h2{margin:0 0 14px;color:var(--wine);font-size:20px;border-bottom:2px solid var(--line);padding-bottom:8px}
 section.module h3{color:#444;font-size:16px;margin:22px 0 10px}
 .mnote{background:#f6f1e9;border-left:4px solid var(--wine);border-radius:8px;padding:10px 14px;margin:12px 0;font-size:13.5px;color:#6b5b4a;line-height:1.7}
+/* ====== 模块题目说明气泡（每个板块开头一段说明） ====== */
+.mod-instr{margin:14px 0;padding:14px 18px;background:linear-gradient(135deg,#0f766e,#14b8a6);color:#fff;border-radius:14px;box-shadow:0 3px 12px rgba(15,118,110,.18)}
+.mod-instr-h{font-weight:800;font-size:16px;margin-bottom:6px;display:flex;align-items:center;gap:8px;letter-spacing:.2px}
+.mod-instr-h::before{content:"F4CB";font-size:18px}
+.mod-instr-b{font-size:14px;line-height:1.75;opacity:.96;white-space:pre-wrap}
 .text{background:#f6f1e9;border-left:4px solid var(--wine);border-radius:8px;padding:12px 14px;margin:12px 0}
 .text h4{margin:0 0 6px;font-size:14px;color:var(--wine)}
 pre{white-space:pre-wrap;margin:0;font-family:"Courier New",monospace;font-size:14px}
@@ -105,8 +110,7 @@ textarea.ans{width:100%;font-size:15px;padding:10px;border:1px solid #ccc;border
 .vol .vno{display:inline-block;background:var(--wine);color:#fff;border-radius:8px;padding:3px 12px;font-weight:800;font-size:14px}
 .vol .vt{font-weight:700;margin:10px 0 6px;font-size:18px}
 .vol .vs{font-size:13px;color:#666}
-.vol .vgo{margin-top:12px;font-weight:700;color:var(--wine);font-size:14px}</style></head><body><header class="top"><a href="index.html" class="back">← Indice CILS Vol.2</a><div class="ttl"><span class="lvl">C1</span> CILS TRE</div><div class="sub"></div></header><main><p class="intro">本级主题：Giovani, famiglia e relazioni generazionali。CILS 五大模块（Ascolto / Lettura / Analisi delle strutture / Produzione scritta / Produzione orale）。听力原文默认折叠隐藏，点「📝 显示听力原文」展开；每段听力配原生音频控件（▶ 播放 / 进度条 / 下载 / 调速），由真人女声朗读；阅读/语法/写作/口语模块不含音频。提交后客观题自动判分；写作/口语/开放题请展开下方「✅ Soluzioni」参考答案与评分要点自评。</p><section class="module"><h2>1. Ascolto（听力）</h2><div class="mnote">Ascolto（听力）</div>
-<div class="mnote">40 分钟，全为长对话/讲座，3 部分。提供原文 + 题。</div>
+.vol .vgo{margin-top:12px;font-weight:700;color:var(--wine);font-size:14px}</style></head><body><header class="top"><a href="index.html" class="back">← Indice CILS Vol.2</a><div class="ttl"><span class="lvl">C1</span> CILS TRE</div><div class="sub"></div></header><main><p class="intro">本级主题：Giovani, famiglia e relazioni generazionali。CILS 五大模块（Ascolto / Lettura / Analisi delle strutture / Produzione scritta / Produzione orale）。听力原文默认折叠隐藏，点「📝 显示听力原文」展开；每段听力配原生音频控件（▶ 播放 / 进度条 / 下载 / 调速），由真人女声朗读；阅读/语法/写作/口语模块不含音频。提交后客观题自动判分；写作/口语/开放题请展开下方「✅ Soluzioni」参考答案与评分要点自评。</p><section class="module"><h2>1. Ascolto（听力）</h2><div class="mod-instr"><div class="mod-instr-h">Ascolto（听力）</div><div class="mod-instr-b">40 分钟，全为长对话/讲座，3 部分。提供原文 + 题。</div></div>
 <div class="mnote">_Parte 1 — Intervista a una sociologa (il ruolo della famiglia)_«La famiglia oggi non è più un&#x27;istituzione chiusa, ma una rete affettiva aperta. Il suo ruolo non è scomparso: si è spostato. Non garantisce più la sopravvivenza economica, ma resta la fonte primaria di cura e senso. I legami si scelgono, non si subiscono. Tuttavia, lo Stato delega ancora troppo alla famiglia, senza sostegni adeguati.»</div>
 <div class="mnote">_Parte 2 — Conferenza (natalità)_«L&#x27;Italia ha uno dei tassi di natalità più bassi al mondo. Le cause? Precarietà, costo delle case, assenza di servizi. Le politiche familiari sono insufficienti. Senza un investimento serio, il calo demografico diventa irreversibile. Servono asili nido, congedi parentali equi, case accessibili.»</div>
 <div class="mnote">_Parte 3 — Dibattito (giovani e genitori)_«Giovane: Voglio figli, ma non ora. Genitore: Noi li facemmo a 25 anni. Giovane: Il lavoro non ce lo permette. Moderatore: Il punto è strutturale, non culturale.»</div>
@@ -118,31 +122,29 @@ textarea.ans{width:100%;font-size:15px;padding:10px;border:1px solid #ccc;border
 <div class="q-item asc-q" data-type="mc" data-correct="1" data-ctext="insufficienti"><span class="asc-q__no">6</span><div class="asc-q__main"><p class="q-stem">Le politiche familiari sono ______.</p><div class="opts asc-opts"><label class="opt asc-opt"><input type="radio" name="r6" value="0"><span class="asc-opt__k">A</span><span class="asc-opt__v">generose</span></label><label class="opt asc-opt"><input type="radio" name="r6" value="1"><span class="asc-opt__k">B</span><span class="asc-opt__v">insufficienti</span></label><label class="opt asc-opt"><input type="radio" name="r6" value="2"><span class="asc-opt__k">C</span><span class="asc-opt__v">perfette</span></label></div></div></div>
 <div class="q-item asc-q" data-type="mc" data-correct="1" data-ctext="asili e case accessibili"><span class="asc-q__no">7</span><div class="asc-q__main"><p class="q-stem">Servono ______ per invertire il trend.</p><div class="opts asc-opts"><label class="opt asc-opt"><input type="radio" name="r7" value="0"><span class="asc-opt__k">A</span><span class="asc-opt__v">meno tasse</span></label><label class="opt asc-opt"><input type="radio" name="r7" value="1"><span class="asc-opt__k">B</span><span class="asc-opt__v">asili e case accessibili</span></label><label class="opt asc-opt"><input type="radio" name="r7" value="2"><span class="asc-opt__k">C</span><span class="asc-opt__v">meno immigrati</span></label></div></div></div>
 <div class="q-item asc-q" data-type="mc" data-correct="1" data-ctext="strutturale"><span class="asc-q__no">8</span><div class="asc-q__main"><p class="q-stem">Per il giovane, il problema è ______.</p><div class="opts asc-opts"><label class="opt asc-opt"><input type="radio" name="r8" value="0"><span class="asc-opt__k">A</span><span class="asc-opt__v">culturale</span></label><label class="opt asc-opt"><input type="radio" name="r8" value="1"><span class="asc-opt__k">B</span><span class="asc-opt__v">strutturale</span></label><label class="opt asc-opt"><input type="radio" name="r8" value="2"><span class="asc-opt__k">C</span><span class="asc-opt__v">religioso</span></label></div></div></div></section>
-<section class="module"><h2>2. Lettura（阅读）</h2><div class="mnote">Lettura（阅读）</div>
-<div class="mnote">70 分钟，3 部分含句子排序；文学节选/专业期刊/评论。</div>
-<div class="mnote">_Parte 1 — Saggio sociologico (il ruolo della famiglia oggi)_&amp;#x4C;a famiglia contemporanea ha perso il monopolio dell&#x27;assistenza, ma ne ha conservato il cuore affettivo. Non è più l&#x27;unità produttiva di un tempo; è diventata il luogo elettivo della cura. Questo spostamento ha conseguenze: i legami si costruiscono, non si ereditano. La libertà cresce, ma cresce anche la solitudine di chi resta senza rete. Lo Stato deve integrare, non sostituire.（148 词）</div>
-<div class="mnote">_Parte 2 — Dati ISTAT (natalità)_&amp;#x4E;el 2024 le nascite sono scese sotto la soglia psicologica. Il numero medio di figli per donna è 1,2. Il primo figlio arriva oltre i 32 anni. Il Sud perde popolazione più del Nord. Gli esperti parlano di &quot;inverno demografico&quot;. Mancano politiche incisive. L&#x27;immigrazione attenua, non risolve.（96 词）</div>
-<div class="mnote">_Parte 3 — 11 句排序（Il declino della natalità）_&amp;#x41;. L&#x27;Italia invecchia rapidamente.</div>
-<div class="mnote">B. Le nascite calano da decenni.</div>
-<div class="mnote">C. Il primo figlio arriva tardi.</div>
-<div class="mnote">D. Le cause sono economiche e sociali.</div>
-<div class="mnote">E. La precarietà scoraggia i progetti.</div>
-<div class="mnote">F. Le case costano troppo.</div>
-<div class="mnote">G. I servizi per l&#x27;infanzia mancano.</div>
-<div class="mnote">H. Lo Stato interviene poco.</div>
-<div class="mnote">I. Alcuni propongono un reddito per i neonati.</div>
-<div class="mnote">L. L&#x27;immigrazione aiuta, ma non basta.</div>
-<div class="mnote">M. Serve un patto tra generazioni.</div>
-<div class="mnote">9. La famiglia ha perso il monopolio dell&#x27;______. a) affetto b) assistenza c) cura</div>
-<div class="mnote">10\. Non è più unità ______. a) affettiva b) produttiva c) elettiva</div>
-<div class="mnote">11\. I legami oggi si ______. a) ereditano b) costruiscono c) subiscono</div>
-<div class="mnote">12\. Chi resta senza rete conosce la ______. a) libertà b) solitudine c) ricchezza</div>
-<div class="mnote">13\. Nel 2024 i figli per donna sono ______. a) 2,1 b) 1,2 c) 1,8</div>
-<div class="mnote">14\. Il primo figlio arriva oltre i ______ anni. a) 32 b) 28 c) 25</div>
-<div class="mnote">15\. Gli esperti parlano di ______. a) primavera b) inverno demografico c) estate</div>
-<div class="mnote">16–26. Parte 3（11 排序 A-B-C-D-E-F-G-H-I-L-M）见「答案与评分」。</div></section>
-<section class="module"><h2>3. Analisi（语法分析）</h2><div class="mnote">Analisi delle strutture（语言结构）</div>
-<div class="mnote">75 分钟，4 部分，共 65 题（真题全量）。</div>
+<section class="module"><h2>2. Lettura（阅读）</h2><div class="mod-instr"><div class="mod-instr-h">Lettura（阅读）</div><div class="mod-instr-b">70 分钟，3 部分含句子排序；文学节选/专业期刊/评论。
+_Parte 1 — Saggio sociologico (il ruolo della famiglia oggi)_&amp;#x4C;a famiglia contemporanea ha perso il monopolio dell&#x27;assistenza, ma ne ha conservato il cuore affettivo. Non è più l&#x27;unità produttiva di un tempo; è diventata il luogo elettivo della cura. Questo spostamento ha conseguenze: i legami si costruiscono, non si ereditano. La libertà cresce, ma cresce anche la solitudine di chi resta senza rete. Lo Stato deve integrare, non sostituire.（148 词）
+_Parte 2 — Dati ISTAT (natalità)_&amp;#x4E;el 2024 le nascite sono scese sotto la soglia psicologica. Il numero medio di figli per donna è 1,2. Il primo figlio arriva oltre i 32 anni. Il Sud perde popolazione più del Nord. Gli esperti parlano di &quot;inverno demografico&quot;. Mancano politiche incisive. L&#x27;immigrazione attenua, non risolve.（96 词）
+_Parte 3 — 11 句排序（Il declino della natalità）_&amp;#x41;. L&#x27;Italia invecchia rapidamente.
+B. Le nascite calano da decenni.
+C. Il primo figlio arriva tardi.
+D. Le cause sono economiche e sociali.
+E. La precarietà scoraggia i progetti.
+F. Le case costano troppo.
+G. I servizi per l&#x27;infanzia mancano.
+H. Lo Stato interviene poco.
+I. Alcuni propongono un reddito per i neonati.
+L. L&#x27;immigrazione aiuta, ma non basta.
+M. Serve un patto tra generazioni.
+9. La famiglia ha perso il monopolio dell&#x27;______. a) affetto b) assistenza c) cura
+10\. Non è più unità ______. a) affettiva b) produttiva c) elettiva
+11\. I legami oggi si ______. a) ereditano b) costruiscono c) subiscono
+12\. Chi resta senza rete conosce la ______. a) libertà b) solitudine c) ricchezza
+13\. Nel 2024 i figli per donna sono ______. a) 2,1 b) 1,2 c) 1,8
+14\. Il primo figlio arriva oltre i ______ anni. a) 32 b) 28 c) 25
+15\. Gli esperti parlano di ______. a) primavera b) inverno demografico c) estate
+16–26. Parte 3（11 排序 A-B-C-D-E-F-G-H-I-L-M）见「答案与评分」。</div></div></section>
+<section class="module"><h2>3. Analisi（语法分析）</h2><div class="mod-instr"><div class="mod-instr-h">Analisi delle strutture（语言结构）</div><div class="mod-instr-b">75 分钟，4 部分，共 65 题（真题全量）。</div></div>
 <h3>① 关系代词/地点副词/连接词填空（20 空）</h3>
 <div class="q-item" data-type="cloze"><p class="q-stem">1. La famiglia,<input class="blank" data-correct="il cui"> (che/il cui) ruolo cambia, resta centrale.</p></div>
 <div class="q-item" data-type="cloze"><p class="q-stem">2. È il luogo in<input class="blank" data-correct="cui"> (cui/dove) si costruisce la cura.</p></div>
@@ -193,10 +195,12 @@ textarea.ans{width:100%;font-size:15px;padding:10px;border:1px solid #ccc;border
 <div class="mnote">63\. «Il calo preoccupa. Servono misure.» → Il calo preoccupa, ______ servono misure.</div>
 <div class="mnote">64\. «I nonni sostengono. I genitori lavorano.» → I nonni sostengono, ______ i genitori lavorano.</div>
 <div class="mnote">65\. «Lo Stato investe. Il futuro migliora.» → Se lo Stato investe, il futuro ______.</div></section>
-<section class="module"><h2>4. Scritta（写作）</h2><div class="mnote">Scrittura（写作）</div>
-<div class="mnote">90 分钟，2 题，约 250–300 词。</div></section>
-<section class="module"><h2>5. Orale（口语）</h2><div class="mnote">Produzione orale（口语）</div>
-<div class="mnote">约 15 分钟。给一段文字，表达观点/提出方案，偏抽象。</div></section><section class="soluzioni"><h2>✅ Soluzioni e criteri di valutazione（参考答案与评分）</h2><pre>【Ascolto 听力】
+<section class="module"><h2>4. Scritta（写作）</h2><div class="mod-instr"><div class="mod-instr-h">Scrittura（写作）</div><div class="mod-instr-b">90 分钟，2 题，约 250–300 词。
+* **Prova 1 — 深度议论文/评论**：«Il ruolo della famiglia nella società contemporanea si è trasformato ma non esaurito. Discuti, alla luce dei dati sulla natalità, quali politiche pubbliche sarebbero urgenti.»
+* **Prova 2 — 正式信函（约 120–150 词）**：Scrivi a un parlamentare per proporre un piano nazionale per la natalità (asili nido, congedi, case accessibili).</div></div></section>
+<section class="module"><h2>5. Orale（口语）</h2><div class="mod-instr"><div class="mod-instr-h">Produzione orale（口语）</div><div class="mod-instr-b">约 15 分钟。给一段文字，表达观点/提出方案，偏抽象。
+* **Materiale**：Breve articolo su «inverno demografico e ruolo della famiglia».
+* **Compito**：Dopo 3 min di preparazione, esponi la tua posizione e proponi 2–3 misure concrete, rispondendo alle domande del candidato-esaminatore.</div></div></section><section class="soluzioni"><h2>✅ Soluzioni e criteri di valutazione（参考答案与评分）</h2><pre>【Ascolto 听力】
 1.b 2.b 3.a 4.b 5.b 6.b 7.b 8.b
 
 【Lettura 阅读】
