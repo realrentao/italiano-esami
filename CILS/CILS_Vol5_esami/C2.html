@@ -84,7 +84,11 @@ audio{width:100%;margin-bottom:8px;display:block}
 .vol .vno{display:inline-block;background:var(--wine);color:#fff;border-radius:8px;padding:3px 12px;font-weight:800;font-size:14px}
 .vol .vt{font-weight:700;margin:10px 0 6px;font-size:18px}
 .vol .vs{font-size:13px;color:#666}
-.vol .vgo{margin-top:12px;font-weight:700;color:var(--wine);font-size:14px}</style></head><body><header class="top"><a href="index.html" class="back">← Indice CILS Vol.5</a><div class="ttl"><span class="lvl">C2</span> CILS QUATTRO</div><div class="sub"></div></header><main><p class="intro">本级主题：Arte, letteratura e tempo libero。CILS 五大模块（Ascolto / Lettura / Analisi delle strutture / Produzione scritta / Produzione orale）。听力为模拟音频文本（由考官/录音播放），本页以文本呈现听力原文，点击展开即可自测。提交后客观题自动判分；写作/口语/开放题请展开下方「✅ Soluzioni」参考答案与评分要点自评。</p><section class="module"><h2>1. Ascolto（听力）</h2><div class="mnote">Ascolto（听力）</div>
+.vol .vgo{margin-top:12px;font-weight:700;color:var(--wine);font-size:14px}.q-item,.text{position:relative}
+.spk{position:absolute;top:8px;right:8px;z-index:2;border:none;background:rgba(123,30,43,.08);color:var(--wine);border-radius:50%;width:30px;height:30px;font-size:15px;cursor:pointer;line-height:1;display:flex;align-items:center;justify-content:center;transition:.15s}
+.spk:hover{background:var(--wine);color:#fff}
+.spk.playing{background:var(--wine2);color:#fff}
+</style></head><body><header class="top"><a href="index.html" class="back">← Indice CILS Vol.5</a><div class="ttl"><span class="lvl">C2</span> CILS QUATTRO</div><div class="sub"></div></header><main><p class="intro">本级主题：Arte, letteratura e tempo libero。CILS 五大模块（Ascolto / Lettura / Analisi delle strutture / Produzione scritta / Produzione orale）。听力为模拟音频文本（由考官/录音播放），本页以文本呈现听力原文，点击展开即可自测。提交后客观题自动判分；写作/口语/开放题请展开下方「✅ Soluzioni」参考答案与评分要点自评。</p><section class="module"><h2>1. Ascolto（听力）</h2><div class="mnote">Ascolto（听力）</div>
 <div class="mnote">B: D&#x27;accordo, ma senza canone non resta che il relativismo delle preferenze.</div>
 <div class="mnote">A: Il canone va però decostruito, non abolito: va riaperto alle voci escluse.</div>
 <div class="mnote">B: E chi riapre? Una nuova autorità sostituisce la vecchia.</div>
@@ -251,4 +255,37 @@ document.addEventListener('play', function(e){
   if(e.target && e.target.tagName === 'AUDIO'){
     document.querySelectorAll('audio').forEach(function(a){ if(a!==e.target) a.pause(); });
   }
-}, true);</script></body></html>
+}, true);</script><script src="audio_index.js"></script>
+<script>
+(function(){
+  function normQ(s){ return s.replace(/^\s*\d+\s*[\.\)]\s*/,'').replace(/\s+/g,' ').trim().toLowerCase(); }
+  function normP(s){ return s.replace(/\s+/g,' ').trim().toLowerCase(); }
+  var cur=null, curBtn=null;
+  function addSpk(el, file){
+    var b=document.createElement('button');
+    b.className='spk'; b.type='button'; b.textContent='\u{1F50A}'; b.title='Ascolta la pronuncia';
+    b.addEventListener('click', function(e){ e.stopPropagation(); toggle(b,file); });
+    el.appendChild(b);
+  }
+  function toggle(b,file){
+    if(cur && curBtn!==b){ cur.pause(); curBtn.textContent='\u{1F50A}'; curBtn.classList.remove('playing'); }
+    if(b._a && !b._a.paused){ b._a.pause(); b._a=null; b.textContent='\u{1F50A}'; b.classList.remove('playing'); if(curBtn===b)curBtn=null; return; }
+    var a=new Audio(file); a.play().catch(function(){});
+    b._a=a; cur=a; curBtn=b; b.textContent='\u{1F508}'; b.classList.add('playing');
+    a.onended=function(){ b.textContent='\u{1F50A}'; b.classList.remove('playing'); if(curBtn===b)curBtn=null; };
+  }
+  function run(){
+    var A=window.CILS_AUDIO||{};
+    document.querySelectorAll('.q-item').forEach(function(el){
+      var s=el.querySelector('.q-stem'); if(!s) return;
+      var t=normQ(s.textContent); if(A[t]) addSpk(el, A[t]);
+    });
+    document.querySelectorAll('.text').forEach(function(el){
+      var p=el.querySelector('pre'); if(!p) return;
+      var t=normP(p.textContent); if(A[t]) addSpk(el, A[t]);
+    });
+  }
+  if(document.readyState!=='loading') run(); else document.addEventListener('DOMContentLoaded', run);
+})();
+</script>
+</body></html>
