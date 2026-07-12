@@ -163,13 +163,14 @@ function verifica(){
     }
   });
   document.querySelectorAll('.q-subj').forEach(function(el){var r=el.querySelector('.ref');if(r)r.hidden=false;});
+  document.querySelectorAll('.q-oral').forEach(function(el){var r=el.querySelector('.oral-ref');if(r)r.hidden=false;});
   var pct= total? Math.round(score/total*100):0;
   var g=gradeOf(pct);
   var box=document.getElementById('result');
   box.hidden=false;
   box.innerHTML='<div class="res-score">客观题正确率：<b>'+score+' / '+total+'</b> （'+pct+'%）</div>'+
     '<div class="res-grade" style="background:'+g[1]+'">'+g[0]+'</div>'+
-    '<div class="res-note">写作 / 口语 / 改写 / 开放题请对照下方「✅ Soluzioni」参考答案与评分要点自评（本卷主观题满分 '+SUBJMAX+' 分）。</div>';
+    '<div class="res-note">写作 / 口语请在上方展开的参考答案与评分要点自评（本卷主观题满分 '+SUBJMAX+' 分）。</div>';
   box.scrollIntoView({behavior:'smooth'});
   document.getElementById('btn-check').hidden=true;
   document.getElementById('btn-reset').hidden=false;
@@ -243,6 +244,200 @@ def parse_key_lookup(ans_mod, subpart, num):
     if None in ans_mod and num in ans_mod[None]:
         return ans_mod[None][num]
     return None
+
+
+# ---------- 主观题参考答案解析（写作范例 + 口语评分要点）----------
+# CILS 源文件的 Soluzioni 段里，写作范例 / 口语评分要点 的标签无法映射到
+# MODULE_ORDER（如「Scrittura 范例 P1」「口语评分要点」），被 parse_key 丢弃，
+# 导致主观题参考答案从未展示。这里单独抽取，供 render_subjective 生成与 CELI
+# 完全一致的主观题「题目 + 参考答案」组件。
+def parse_subjective_refs(key_text):
+    write_refs = []   # 写作范例，按出现顺序（末端对齐到写作任务）
+    oral_scoring = '' # 口语评分要点（文本）
+    SEP = ('***', '---', '___', '* * *', '- - -')
+    parts = re.split(r'^\*\s+\*\*(.+?)\*\*\s*[:：]', key_text, flags=re.M)
+    for i in range(1, len(parts), 2):
+        label = parts[i].strip()
+        content = parts[i + 1] if i + 1 < len(parts) else ''
+        # 去掉 markdown 分隔线（*** / --- / ___），避免渲染成多余的乱码
+        content = '\n'.join(ln for ln in content.split('\n') if ln.strip() not in SEP)
+        # 写作范例：标签含「范例」且属于 Scritta/Scrittura
+        if re.search(r'(?:Scrit|Scrittura)\s*范例', label) or re.search(r'Scrittura?\b[^\n]*范例', label):
+            lines = []
+            for ln in content.split('\n'):
+                lt = ln.strip()
+                if lt.startswith('>'):
+                    lines.append(re.sub(r'^>\s?', '', lt))
+            txt = '\n'.join(lines).strip()
+            if txt:
+                write_refs.append(txt)
+            continue
+        # 口语评分要点
+        if '口语评分要点' in label or ('评分要点' in label and 'Orale' in label):
+            txt = content.strip()
+            if txt:
+                oral_scoring = txt
+            continue
+    return write_refs, oral_scoring
+
+
+def split_task_header(s):
+    """识别写作任务的标题行（**Modulo N** / **Prova N**），返回 (标题, 同行余下提示)。"""
+    m = re.match(r'^\*\*(.+?)\*\*', s)
+    if not m:
+        return None, None
+    title = m.group(1).strip()
+    rest = s[m.end():].strip()
+    rest = re.sub(r'^[：:]\s?', '', rest).strip()
+    if re.search(r'(?:Modulo|Prova)\s*[0-9]', title, re.I):
+        return title, rest
+    return None, None
+
+
+def fmt_stem_line(s):
+    """把口语任务要点行（* **X**：rest）渲染为 <b>X</b>：rest。"""
+    s = re.sub(r'^\*\s*', '', s)
+    m = re.match(r'^\*\*(.+?)\*\*\s*[:：]?\s*(.*)$', s)
+    if m:
+        return '<b>%s</b>%s' % (esc(m.group(1)), (': ' + esc(m.group(2))) if m.group(2) else '')
+    return esc(s)
+
+
+def render_subjective(mod_name, body, subj, level_code, vol_num):
+    """渲染主观题（写作/口语），输出与 CELI 完全一致的组件：
+       - 写作：每题 .q-item.q-subj（题目 + 文本框 + 提交后展开的 .ref 参考答案）
+       - 口语：.q-item.q-oral（题目 + .oral-scoring 评分要点 + 提交后展开的 .oral-ref）
+    """
+    write_refs = subj.get('write', [])
+    oral_scoring = subj.get('oral', '')
+    lines = merge_stem_options(preprocess_body(body))
+    instr_head = None
+    instr_body = []
+    tasks = []            # 写作任务: {'title','prompt':[]}
+    cur = None
+    oral_inline_scoring = ''
+    oral_intro_head = None
+    oral_intro_body = []
+    oral_stem = []        # 口语任务要点行
+    SEP = ('***', '---', '___', '* * *', '- - -')
+
+    for raw_line in lines:
+        s = raw_line.strip().replace('\\_', '_')
+        s = re.sub(r'^\*\*题目?\*\*', '', s).strip()
+        if not s:
+            continue
+        if s in SEP:
+            continue
+        # 口语评分要点（可能写在模块体内，如 C1/C2）
+        if '评分要点' in s and mod_name == 'Orale':
+            t = re.sub(r'^\*\s*', '', s)
+            t = re.sub(r'^\*\*口语评分要点\*\*[：:]', '', t)
+            t = re.sub(r'^\*\*评分要点\*\*[：:]', '', t)
+            t = re.sub(r'^\*\*', '', t)
+            t = re.sub(r'\*\*$', '', t).strip()
+            if t:
+                oral_inline_scoring = t
+            continue
+
+        if mod_name == 'Scritta':
+            th, rest = split_task_header(s)
+            if th:
+                if cur is not None:
+                    tasks.append(cur)
+                cur = {'title': th, 'prompt': []}
+                if rest:
+                    cur['prompt'].append(rest)
+                continue
+            if cur is None:
+                # 模块开头说明 → mod-instr
+                if instr_head is None:
+                    instr_head = s
+                elif s.startswith('>'):
+                    instr_body.append(re.sub(r'^>\s?', '', s).strip())
+                else:
+                    instr_body.append(s)
+            else:
+                if s.startswith('>'):
+                    t = re.sub(r'^>\s?', '', s).strip()
+                    if t:
+                        cur['prompt'].append(t)
+                else:
+                    cur['prompt'].append(s)
+        else:  # Orale
+            # 说明：在首个任务要点（* **...）之前的内容 → mod-instr
+            if not oral_stem and not s.startswith('* **'):
+                if s.startswith('>'):
+                    oral_intro_body.append(re.sub(r'^>\s?', '', s).strip())
+                elif oral_intro_head is None:
+                    oral_intro_head = s
+                else:
+                    oral_intro_body.append(s)
+                continue
+            oral_stem.append(s)
+
+    if cur is not None:
+        tasks.append(cur)
+    eff_oral = oral_scoring or oral_inline_scoring
+
+    out = []
+    # 模块说明气泡（与客观模块一致）
+    if mod_name == 'Scritta' and (instr_head or instr_body):
+        h = esc(instr_head) if instr_head else ''
+        b = esc('\n'.join(instr_body).strip()) if instr_body else ''
+        out.append('<div class="mod-instr">')
+        if h:
+            out.append('<div class="mod-instr-h">%s</div>' % h)
+        if b:
+            out.append('<div class="mod-instr-b">%s</div>' % b)
+        out.append('</div>')
+    elif mod_name == 'Orale' and (oral_intro_head or oral_intro_body):
+        out.append('<div class="mod-instr">')
+        if oral_intro_head:
+            out.append('<div class="mod-instr-h">%s</div>' % esc(oral_intro_head))
+        if oral_intro_body:
+            out.append('<div class="mod-instr-b">%s</div>' % esc('\n'.join(oral_intro_body).strip()))
+        out.append('</div>')
+
+    if mod_name == 'Scritta':
+        out.append('<div class="items">')
+        n = len(tasks)
+        m = len(write_refs)
+        for idx, tk in enumerate(tasks):
+            ref_idx = idx - (n - m)   # 末端对齐（写作范例匹配最后一个写作任务）
+            ref = write_refs[ref_idx] if (0 <= ref_idx < m) else ''
+            title = tk['title']
+            prompt = '\n'.join(tk['prompt']).strip()
+            wm = re.search(r'(\d+)\s*[-–]\s*(\d+)\s*词', title + ' ' + prompt)
+            limit = ('%s–%s 词' % (wm.group(1), wm.group(2))) if wm else ''
+            out.append('<div class="q-item q-subj" data-type="write">')
+            out.append('<p class="q-stem"><b>%s</b>' % esc(title))
+            if prompt:
+                out.append('<br>%s' % esc(prompt))
+            if limit:
+                out.append('<br><i>字数：%s</i>' % esc(limit))
+            out.append('</p>')
+            out.append('<textarea class="ans" rows="9" placeholder="La tua risposta..."></textarea>')
+            if ref:
+                out.append('<div class="ref" hidden><b>写作范例 / Risposta di riferimento：</b><br>%s</div>' % esc(ref))
+            out.append('</div>')
+        out.append('</div>')
+    else:  # Orale
+        out.append('<div class="items">')
+        stem_html = '<br>'.join(fmt_stem_line(x) for x in oral_stem)
+        out.append('<div class="q-item q-oral" data-type="oral">')
+        out.append('<p class="q-stem">%s</p>' % stem_html)
+        if eff_oral:
+            out.append('<div class="oral-scoring">')
+            out.append('<div class="score-head">📋 评分维度 · Criteri di valutazione（口语评分要点）</div>')
+            out.append('<div class="rubric-note">%s</div>' % esc(eff_oral))
+            out.append('</div>')
+            out.append('<div class="oral-ref" hidden>')
+            out.append('<div class="ref-head">🗣️ 参考答案 <span class="ref-it">Risposta di riferimento</span></div>')
+            out.append('<details class="otranscript"><summary><span class="o-closed">📝 显示口语指导 / 评分要点</span><span class="o-open">📝 隐藏口语指导 / 评分要点</span></summary><pre>%s</pre></details>' % esc(eff_oral))
+            out.append('</div>')
+        out.append('</div>')
+        out.append('</div>')
+    return '\n'.join(out)
 
 
 # ---------- 选项切分（修正：按标记位置切片，不排斥 a-d 字母）----------
@@ -405,7 +600,10 @@ def merge_stem_options(lines):
 
 
 # ---------- 模块渲染 ----------
-def render_module(mod_name, body, ans_mod, level_code, vol_num):
+def render_module(mod_name, body, ans_mod, level_code, vol_num, subj=None):
+    # 主观题（写作/口语）走专用渲染，输出与 CELI 一致的主观题组件
+    if mod_name in ('Scritta', 'Orale'):
+        return render_subjective(mod_name, body, subj or {'write': [], 'oral': ''}, level_code, vol_num)
     out = []
     lines = merge_stem_options(preprocess_body(body))
     cur_transcript = []
@@ -668,6 +866,8 @@ def render_level(level_code, level_body, vol_num, vol_theme_it, level_sub_it, le
     main_body = level_body[:km.start()] if km else level_body
     key_text = level_body[km.start():] if km else ''
     answers, raw = parse_key(key_text)
+    write_refs, oral_scoring = parse_subjective_refs(key_text)
+    subj = {'write': write_refs, 'oral': oral_scoring}
 
     mods = re.split(r'^#{2,3}\s*(\d+)\.\s*', main_body, flags=re.M)
     mod_html = []
@@ -681,7 +881,7 @@ def render_level(level_code, level_body, vol_num, vol_theme_it, level_sub_it, le
         else:
             mod_key = MODULE_ORDER[0]
         ans_mod = answers.get(mod_key, {})
-        rendered = render_module(mod_key, mname_full, ans_mod, level_code, vol_num)
+        rendered = render_module(mod_key, mname_full, ans_mod, level_code, vol_num, subj)
         title = '%d. %s（%s）' % (mnum, mod_key, MODULE_ZH[mod_key])
         mod_html.append('<section class="module"><h2>%s</h2>%s</section>' % (esc(title), rendered))
         mnum += 1
@@ -700,7 +900,7 @@ def render_level(level_code, level_body, vol_num, vol_theme_it, level_sub_it, le
         sub += ' · ' + level_sub_zh
     intro = ('本级主题：%s。CILS 五大模块（Ascolto / Lettura / Analisi delle strutture / Produzione scritta / Produzione orale）。'
              '听力原文默认折叠隐藏，点「📝 显示听力原文」展开；每段听力配原生音频控件（▶ 播放 / 进度条 / 下载 / 调速），由真人女声朗读；阅读/语法/写作/口语模块不含音频。'
-             '提交后客观题自动判分；写作/口语/开放题请展开下方「✅ Soluzioni」参考答案与评分要点自评。'
+             '提交后客观题自动判分；写作 / 口语主观题点击「提交」后，在上方展开参考答案与评分要点供自评。'
              % esc(vol_theme_it))
     return ('<!DOCTYPE html><html lang="it"><head><meta charset="utf-8">'
             '<meta name="viewport" content="width=device-width, initial-scale=1">'
