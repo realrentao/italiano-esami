@@ -19,7 +19,7 @@ CILS_CSS = """:root{--wine:#0f766e;--wine2:#14b8a6;--ink:#23211f;--paper:#fbf8f4
 *{box-sizing:border-box}
 body{margin:0;font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);background:var(--paper);line-height:1.65}
 header.top{background:linear-gradient(135deg,var(--wine),var(--wine2));color:#fff;padding:26px 20px;box-shadow:0 2px 10px rgba(0,0,0,.15)}
-header.top .back{color:#ffd9df;text-decoration:none;font-size:14px}
+header.top .back{color:#ffd9df;text-decoration:none;font-size:14px}header.top .topnav{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:4px}header.top .back:hover{text-decoration:underline;opacity:.85}
 header.top .ttl{font-size:26px;font-weight:800;margin-top:6px}
 header.top .ttl .lvl{display:inline-block;background:#fff;color:var(--wine);border-radius:8px;padding:2px 10px;margin-right:10px;font-size:20px}
 header.top .sub{opacity:.9;margin-top:4px;font-size:15px}
@@ -705,7 +705,9 @@ def render_level(level_code, level_body, vol_num, vol_theme_it, level_sub_it, le
     return ('<!DOCTYPE html><html lang="it"><head><meta charset="utf-8">'
             '<meta name="viewport" content="width=device-width, initial-scale=1">'
             '<title>CILS %s — %s</title><style>%s</style></head><body>'
-            '<header class="top"><a href="index.html" class="back">← Indice CILS Vol.%d</a>'
+            '<header class="top"><nav class="topnav">'
+            '<a href="index.html" class="back">← Indice CILS Vol.%d</a>'
+            '<a href="../CILS.html" class="back">🏠 CILS 导航页</a></nav>'
             '<div class="ttl"><span class="lvl">%s</span> %s</div>'
             '<div class="sub">%s</div></header><main>'
             '<p class="intro">%s</p>%s%s'
@@ -769,7 +771,9 @@ def render_volume_index(vol_num, title_full, theme_it, theme_zh, sub_map):
     return ('<!DOCTYPE html><html lang="it"><head><meta charset="utf-8">'
             '<meta name="viewport" content="width=device-width, initial-scale=1">'
             '<title>CILS 模拟题库 · 第%d卷（A1–C2）</title><style>%s</style></head><body>'
-            '<header class="top"><div class="ttl">CILS 模拟题库 · 第%d卷</div>'
+            '<header class="top"><nav class="topnav">'
+            '<a href="../CILS.html" class="back">🏠 CILS 导航页</a></nav>'
+            '<div class="ttl">CILS 模拟题库 · 第%d卷</div>'
             '<div class="sub">%s — 六个等级（A1–C2）考试页面</div></header>'
             '<main><p class="intro">本卷严格按锡耶纳大学（CILS）真题五大模块结构命题。'
             '点击任意等级进入对应考试页面：含听力（文本呈现）、阅读、语法分析、写作、口语。'
