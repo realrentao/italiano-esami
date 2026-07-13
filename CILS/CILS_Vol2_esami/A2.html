@@ -58,9 +58,10 @@ pre{white-space:pre-wrap;margin:0;font-family:"Courier New",monospace;font-size:
 .blank.wrong{border-color:var(--no);background:#fdeceb}
 .anshint{color:var(--no);font-size:13px;margin-left:6px}
 textarea.ans{width:100%;font-size:15px;padding:10px;border:1px solid #ccc;border-radius:8px;font-family:inherit;resize:vertical}
-.q-subj .ref{margin-top:10px;padding:10px 12px;background:#eef6fb;border-left:4px solid #2a7fb8;border-radius:8px;font-size:14px}
+.q-subj .ref{margin-top:10px;padding:10px 12px;background:#eef6fb;border-left:4px solid #2a7fb8;border-radius:8px;font-size:14px;white-space:pre-line}
 .q-note{margin-top:8px;font-weight:700;font-size:14px}
 .q-note.ok{color:var(--ok)} .q-note.no{color:var(--no)}
+.q-note.ans{color:var(--wine)}
 .q-oral{background:#fbf7ef;border:1px solid #ecd9b0;border-radius:12px;padding:16px 18px;margin:14px 0}
 .q-oral .q-stem{margin:0 0 12px;font-size:15px;line-height:1.7;white-space:pre-wrap}
 .oral-scoring{background:#fff;border:1px solid #e7dcc4;border-radius:10px;padding:12px 14px;margin-bottom:12px}
@@ -72,6 +73,7 @@ textarea.ans{width:100%;font-size:15px;padding:10px;border:1px solid #ccc;border
 .ref-head{font-weight:700;color:#1f5f80;margin-bottom:8px;font-size:14px}
 .ref-it{font-weight:400;color:#5b87a0;font-style:italic;font-size:12px}
 .oral-ref pre{margin:8px 0 0;white-space:pre-wrap;word-break:break-word;font-size:14px;line-height:1.75;background:#fff;border:1px solid #dce8f0;border-radius:8px;padding:10px 12px}
+.oral-audio{margin:6px 0 10px}
 .otranscript{margin-top:8px}
 .otranscript summary{cursor:pointer;color:#1f5f80;font-weight:600;font-size:13px;user-select:none;list-style:none}
 .otranscript summary::-webkit-details-marker{display:none}
@@ -159,16 +161,16 @@ _Prova 3 — 4 短文 + 8 描述配&amp;#x5BF9;_&amp;#x42;1. «Una famiglia nume
 <div class="mnote">（为便于阅卷，Prova 2 给出 4 篇完整微文本、Prova 3 给出 4 短文与 8 描述，按「答案与评分」对应。）</div></section>
 <section class="module"><h2>3. Analisi（语法分析）</h2><div class="mod-instr"><div class="mod-instr-h">Analisi（语言结构）</div><div class="mod-instr-b">40 分钟。Prova 1（10 空性数配合）；Prova 2（10 空动词变位：近过去/未完成）；Prova 3（8 完形搭配）。</div></div>
 <h3>Prova 1 — 性数配合（10 空）</h3>
-<div class="q-item" data-type="cloze"><p class="q-stem">1. I<input class="blank" data-correct="miei"> (mio) cugini arrivano domenica.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">2. La<input class="blank" data-correct="buona"> (buono) zia cucina il risotto.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">3. Le<input class="blank" data-correct="tue"> (tuo) amiche sono simpatiche.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">4. Un<input class="blank" data-correct="grande"> (grande) giardino pieno di fiori.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">5. Le<input class="blank" data-correct="piccole"> (piccolo) stanze sono mie.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">6. I<input class="blank" data-correct="nostri"> (nostro) nonni abitano in Toscana.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">7. La<input class="blank" data-correct="bella"> (bel) festa finisce tardi.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">8. Due<input class="blank" data-correct="giovani"> (giovane) fratelli giocano.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">9. Le<input class="blank" data-correct="tue"> (tuo) sorelle studiano.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">10. Un<input class="blank" data-correct="nuovo"> (nuovo) amico di scuola.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">1. I <input class="blank" data-correct="miei"> (mio) cugini arrivano domenica.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">2. La <input class="blank" data-correct="buona"> (buono) zia cucina il risotto.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">3. Le <input class="blank" data-correct="tue"> (tuo) amiche sono simpatiche.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">4. Un <input class="blank" data-correct="grande"> (grande) giardino pieno di fiori.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">5. Le <input class="blank" data-correct="piccole"> (piccolo) stanze sono mie.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">6. I <input class="blank" data-correct="nostri"> (nostro) nonni abitano in Toscana.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">7. La <input class="blank" data-correct="bella"> (bel) festa finisce tardi.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">8. Due <input class="blank" data-correct="giovani"> (giovane) fratelli giocano.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">9. Le <input class="blank" data-correct="tue"> (tuo) sorelle studiano.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">10. Un <input class="blank" data-correct="nuovo"> (nuovo) amico di scuola.</p></div>
 <h3>Prova 2 — 动词变位（10 空，passato prossimo / imperfetto）</h3>
 <div class="mnote">&amp;#x31;1. Ieri io (andare) ______ al cinema con gli amici. 12. Da bambino (io / abitare) ______ in campagna. 13. La mamma (preparare) ______ la cena. 14. Noi (vedere) ______ i nonni ogni domenica. 15. Tu (essere) ______ contento della festa. 16. Lui (uscire) ______ con i compagni. 17. Noi (mangiare) ______ la pizza. 18. Voi (giocare) ______ in giardino. 19. Lei (leggere) ______ un libro. 20. Loro (venire) ______ a cena.</div>
 <h3>Prova 3 — 完形（8 空，搭配）</h3>
@@ -190,6 +192,7 @@ _Prova 3 — 4 短文 + 8 描述配&amp;#x5BF9;_&amp;#x42;1. «Una famiglia nume
 <br><i>字数：25–40 词</i>
 </p>
 <textarea class="ans" rows="9" placeholder="La tua risposta..."></textarea>
+<div class="ref" hidden><b>写作范例 / Risposta di riferimento：</b><br>：Ciao Luca, sabato sera usciamo con gli amici? Andiamo al cinema e poi in pizzeria. Dimmi se vieni! Un abbraccio.（约 28 词）</div>
 </div>
 </div></section>
 <section class="module"><h2>5. Orale（口语）</h2><div class="mod-instr">
@@ -200,7 +203,7 @@ _Prova 3 — 4 短文 + 8 描述配&amp;#x5BF9;_&amp;#x42;1. «Una famiglia nume
 <div class="q-item q-oral" data-type="oral">
 <p class="q-stem"><b>Prova 1（对话，2–3 分钟）</b>: 与考官聊 famiglia / hobby / amici — «Parlami della tua famiglia. Che fai nel tempo libero con gli amici?»<br><b>Prova 2（独白，约 1.5 分钟，含看图）</b>: 给一张「一群年轻人 al bar」图，描述 chi ci sono, cosa fanno, se è divertente.</p>
 <div class="oral-scoring">
-<div class="score-head">📋 评分维度 · Criteri di valutazione（口语评分要点）</div>
+<div class="score-head">📋 评分维度 · Criteri di valutazione（满分 20 分）</div>
 <div class="rubric-note">能描述家庭成员与日常；用现在时/近过去基本正确；Prova 2 看图能说 4–6 句连贯意语；发音清晰。</div>
 </div>
 <div class="oral-ref" hidden>
@@ -208,16 +211,7 @@ _Prova 3 — 4 短文 + 8 描述配&amp;#x5BF9;_&amp;#x42;1. «Una famiglia nume
 <details class="otranscript"><summary><span class="o-closed">📝 显示口语指导 / 评分要点</span><span class="o-open">📝 隐藏口语指导 / 评分要点</span></summary><pre>能描述家庭成员与日常；用现在时/近过去基本正确；Prova 2 看图能说 4–6 句连贯意语；发音清晰。</pre></details>
 </div>
 </div>
-</div></section><section class="soluzioni"><h2>✅ Soluzioni e criteri di valutazione（参考答案与评分）</h2><pre>【Ascolto 听力】
-1.b 2.b 3.b 4.b 5.b 6.b 7.b 8.b 9.b 10.b 11.a 12.b
-
-【Lettura 阅读】
-25.b 26.a 27.b 28.b
-T1: V/V/F；T2: V/F/F；T3: V/V/F；T4: V/V/F（以完整微文本为准，评分时按文本判定）
-B1→descrizione「famiglia numerosa campagna」等，按对应分配。
-
-【Analisi 语法分析】
-Prova 1：1.miei 2.buona 3.tue 4.grande 5.piccole 6.nostri 7.bella 8.giovani 9.tue 10.nuovo ｜ Prova 2：11.sono andato 12.abitavo 13.ha preparato/preparava 14.vedevamo 15.sei stato/eri 16.è uscito/usciva 17.abbiamo mangiato/mangiavamo 18.giocavate 19.ha letto/leggeva 20.sono venuti/venivano ｜ Prova 3：21.ama 22.con 23.fa 24.in 25.suona 26.da 27.apparecchia 28.a</pre></section><button id="btn-check" onclick="verifica()">Verifica le risposte（提交判分）</button><button id="btn-reset" hidden onclick="resetta()">Ricomincia（重做）</button><div id="result" hidden></div></main><script>var SUBJMAX=20;
+</div></section><button id="btn-check" onclick="verifica()">Verifica le risposte（提交判分）</button><button id="btn-reset" hidden onclick="resetta()">Ricomincia（重做）</button><div id="result" hidden></div></main><script>var SUBJMAX=20;
 function norm(s){return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]/g,'');}
 function gradeOf(p){if(p>=85)return['Eccellente','#1b7a3d'];if(p>=70)return['Buono','#2e7d32'];if(p>=55)return['Discreto','#b8860b'];if(p>=40)return['Insufficiente','#c0392b'];return['Grave','#7b1e2b'];}
 function verifica(){
@@ -226,7 +220,7 @@ function verifica(){
   items.forEach(function(el){
     var t=el.dataset.type;
     var corr=el.dataset.correct;
-    if(!corr){ el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;}); return; }
+    if(t!=='cloze' && !corr){ el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;}); return; }
     if(t==='mc'||t==='tf'||t==='match'){
       total++;
       var ok=false;
@@ -238,20 +232,27 @@ function verifica(){
       el.appendChild(n);
       el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;});
     } else if(t==='cloze'){
+      var ans=[];
       el.querySelectorAll('input.blank').forEach(function(inp){
         if(!inp.dataset.correct){inp.disabled=true;return;}
         total++;
         var v=norm(inp.value);
-        var ok2=v.length>0 && v.indexOf(norm(inp.dataset.correct))>=0;
+        var alts=String(inp.dataset.correct).split('/');
+        var ok2=v.length>0 && alts.some(function(a){return v.indexOf(norm(a))>=0;});
         if(ok2)score++;
         inp.classList.add(ok2?'correct':'wrong');
-        if(!ok2){var s=document.createElement('span');s.className='anshint';s.textContent=' ✓ '+inp.dataset.correct;inp.insertAdjacentElement('afterend',s);}
+        ans.push(inp.dataset.correct);
         inp.disabled=true;
       });
+      if(ans.length){
+        var cn=document.createElement('div');cn.className='q-note ans';
+        cn.textContent='📝 正确答案：'+ans.join('　');
+        el.appendChild(cn);
+      }
     }
   });
-  document.querySelectorAll('.q-subj').forEach(function(el){var r=el.querySelector('.ref');if(r)r.hidden=false;});
-  document.querySelectorAll('.q-oral').forEach(function(el){var r=el.querySelector('.oral-ref');if(r)r.hidden=false;});
+  document.querySelectorAll('.q-subj').forEach(function(el){el.querySelectorAll('.ref').forEach(function(r){r.hidden=false;});});
+  document.querySelectorAll('.q-oral').forEach(function(el){el.querySelectorAll('.oral-ref').forEach(function(r){r.hidden=false;});});
   var pct= total? Math.round(score/total*100):0;
   var g=gradeOf(pct);
   var box=document.getElementById('result');

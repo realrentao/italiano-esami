@@ -58,9 +58,10 @@ pre{white-space:pre-wrap;margin:0;font-family:"Courier New",monospace;font-size:
 .blank.wrong{border-color:var(--no);background:#fdeceb}
 .anshint{color:var(--no);font-size:13px;margin-left:6px}
 textarea.ans{width:100%;font-size:15px;padding:10px;border:1px solid #ccc;border-radius:8px;font-family:inherit;resize:vertical}
-.q-subj .ref{margin-top:10px;padding:10px 12px;background:#eef6fb;border-left:4px solid #2a7fb8;border-radius:8px;font-size:14px}
+.q-subj .ref{margin-top:10px;padding:10px 12px;background:#eef6fb;border-left:4px solid #2a7fb8;border-radius:8px;font-size:14px;white-space:pre-line}
 .q-note{margin-top:8px;font-weight:700;font-size:14px}
 .q-note.ok{color:var(--ok)} .q-note.no{color:var(--no)}
+.q-note.ans{color:var(--wine)}
 .q-oral{background:#fbf7ef;border:1px solid #ecd9b0;border-radius:12px;padding:16px 18px;margin:14px 0}
 .q-oral .q-stem{margin:0 0 12px;font-size:15px;line-height:1.7;white-space:pre-wrap}
 .oral-scoring{background:#fff;border:1px solid #e7dcc4;border-radius:10px;padding:12px 14px;margin-bottom:12px}
@@ -72,6 +73,7 @@ textarea.ans{width:100%;font-size:15px;padding:10px;border:1px solid #ccc;border
 .ref-head{font-weight:700;color:#1f5f80;margin-bottom:8px;font-size:14px}
 .ref-it{font-weight:400;color:#5b87a0;font-style:italic;font-size:12px}
 .oral-ref pre{margin:8px 0 0;white-space:pre-wrap;word-break:break-word;font-size:14px;line-height:1.75;background:#fff;border:1px solid #dce8f0;border-radius:8px;padding:10px 12px}
+.oral-audio{margin:6px 0 10px}
 .otranscript{margin-top:8px}
 .otranscript summary{cursor:pointer;color:#1f5f80;font-weight:600;font-size:13px;user-select:none;list-style:none}
 .otranscript summary::-webkit-details-marker{display:none}
@@ -122,7 +124,7 @@ textarea.ans{width:100%;font-size:15px;padding:10px;border:1px solid #ccc;border
 — E i tuoi amici?
 
 — Il mio amico Ahmed è egiziano. Lui parla arabo e italiano.</pre></details></div>
-<div class="audio-block"><h4>🎧 Dialogo 2 — Una nuova amica</h4><audio controls preload="none" src="audio/3cf1b2d655419adf.mp3" type="audio/mpeg"></audio><details class="transcript"><summary><span class="t-closed">📝 显示听力原文</span><span class="t-open">📝 隐藏听力原文</span></summary><pre>— Ciao! Io sono Giulia.
+<div class="audio-block"><h4>🎧 Dialogo 2 — Una nuova amica</h4><audio controls preload="none" src="audio/9ddae4ead3a2ff36.mp3" type="audio/mpeg"></audio><details class="transcript"><summary><span class="t-closed">📝 显示听力原文</span><span class="t-open">📝 隐藏听力原文</span></summary><pre>— Ciao! Io sono Giulia.
 
 — Ciao Giulia, io sono Lin.
 
@@ -130,7 +132,7 @@ textarea.ans{width:100%;font-size:15px;padding:10px;border:1px solid #ccc;border
 
 — Vengo dalla Cina. Abito a Milano con la mia famiglia.
 
-— Che bella! Il mio amico Yusuf viene dal Marocco.
+— Che bello! Il mio amico Yusuf viene dal Marocco.
 
 — Io ho molti amici di culture diverse!</pre></details></div>
 <div class="audio-block"><h4>🎧 Dialogo 3 — Un nuovo amico</h4><audio controls preload="none" src="audio/2fb634e0c103add8.mp3" type="audio/mpeg"></audio><details class="transcript"><summary><span class="t-closed">📝 显示听力原文</span><span class="t-open">📝 隐藏听力原文</span></summary><pre>— Mamma, ho un nuovo amico! Si chiama Tom ed è americano.
@@ -159,26 +161,26 @@ Entrata gratis. Dalle 15:00 alle 18:00.</pre></div>
 <section class="module"><h2>3. Analisi（语法分析）</h2><div class="mod-instr"><div class="mod-instr-h">Analisi delle strutture di accoglienza（语法分析，约 30 分钟）</div><div class="mod-instr-b">真题全量（共 28 题）：① 词形/性数配合 10；② 动词现在时变位 10；③ 简单完形 8。</div></div>
 <h3>① — Genere e numero（10 空）</h3>
 <div class="q-item" data-type="cloze"><p class="q-stem">1. <input class="blank" data-correct="il"> (La/Il) mio amico viene dal Marocco.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">2. Ho due<input class="blank" data-correct="amici"> (amico) egiziani.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">3. La<input class="blank" data-correct="ragazza"> (ragazza) cinese studia con me.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">4. Questi<input class="blank" data-correct="libri"> (libro) sono interessanti.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">5. Il mio<input class="blank" data-correct="amico"> (amico) nuovo è di Tunisi.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">6. Le<input class="blank" data-correct="bambine"> (bambina) giocano insieme.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">7. Uno<input class="blank" data-correct="stand"> (stand) con cibi del mondo.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">8. Le nostre<input class="blank" data-correct="famiglie"> (famiglia) sono diverse.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">9. La<input class="blank" data-correct="festa"> (festa) delle culture è bella.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">10. Quattro<input class="blank" data-correct="vicini"> (vicino) nuovi abitano qui.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">2. Ho due <input class="blank" data-correct="amici"> (amico) egiziani.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">3. La <input class="blank" data-correct="ragazza"> (ragazza) cinese studia con me.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">4. Questi <input class="blank" data-correct="libri"> (libro) sono interessanti.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">5. Il mio <input class="blank" data-correct="amico"> (amico) nuovo è di Tunisi.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">6. Le <input class="blank" data-correct="bambine"> (bambina) giocano insieme.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">7. Uno <input class="blank" data-correct="stand"> (stand) con cibi del mondo.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">8. Le nostre <input class="blank" data-correct="famiglie"> (famiglia) sono diverse.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">9. La <input class="blank" data-correct="festa"> (festa) delle culture è bella.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">10. Quattro <input class="blank" data-correct="vicini"> (vicino) nuovi abitano qui.</p></div>
 <h3>② — Presente indicativo（10 空）</h3>
-<div class="q-item" data-type="cloze"><p class="q-stem">1. Io<input class="blank" data-correct="ho"> (avere) nove anni.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">2. Tu<input class="blank" data-correct="vieni"> (venire) dalla Cina?</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">3. Lui<input class="blank" data-correct="parla"> (parlare) arabo e italiano.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">4. Noi<input class="blank" data-correct="abitiamo"> (abitare) a Milano.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">5. Lei<input class="blank" data-correct="è"> (essere) la mia amica.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">6. Voi<input class="blank" data-correct="mangiate"> (mangiare) il riso alla cantonese.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">7. Io<input class="blank" data-correct="imparo"> (imparare) una lingua nuova.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">8. Il mio amico<input class="blank" data-correct="suona"> (suonare) la chitarra.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">9. Noi<input class="blank" data-correct="conosciamo"> (conoscere) ragazzi di tutto il mondo.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">10. Tu<input class="blank" data-correct="hai"> (avere) molti amici?</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">1. Io <input class="blank" data-correct="ho"> (avere) nove anni.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">2. Tu <input class="blank" data-correct="vieni"> (venire) dalla Cina?</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">3. Lui <input class="blank" data-correct="parla"> (parlare) arabo e italiano.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">4. Noi <input class="blank" data-correct="abitiamo"> (abitare) a Milano.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">5. Lei <input class="blank" data-correct="è"> (essere) la mia amica.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">6. Voi <input class="blank" data-correct="mangiate"> (mangiare) il riso alla cantonese.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">7. Io <input class="blank" data-correct="imparo"> (imparare) una lingua nuova.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">8. Il mio amico <input class="blank" data-correct="suona"> (suonare) la chitarra.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">9. Noi <input class="blank" data-correct="conosciamo"> (conoscere) ragazzi di tutto il mondo.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">10. Tu <input class="blank" data-correct="hai"> (avere) molti amici?</p></div>
 <h3>③ — Cloze semplice（8 空）</h3>
 <div class="q-item" data-type="cloze"><p class="q-stem">Mi chiamo Marco. Ho un amico <input class="blank" data-correct="dall"> Egitto. Lui <input class="blank" data-correct="parla"> arabo e italiano. La sua <input class="blank" data-correct="famiglia"> viene dal Marocco. A scuola noi <input class="blank" data-correct="abbiamo"> tanti amici diversi. La festa <input class="blank" data-correct="delle"> culture è bella! Portiamo un piatto <input class="blank" data-correct="del"> nostro paese. I bambini <input class="blank" data-correct="che"> giocano insieme ogni sabato. Sono felice <input class="blank" data-correct="di"> avere amici di tutto il mondo!</p></div></section>
 <section class="module"><h2>4. Scritta（写作）</h2><div class="mod-instr">
@@ -195,6 +197,11 @@ Entrata gratis. Dalle 15:00 alle 18:00.</pre></div>
 * Lingua che parli a casa: ________________
 </p>
 <textarea class="ans" rows="9" placeholder="La tua risposta..."></textarea>
+<div class="ref" hidden><b>写作范例 / Risposta di riferimento：</b><br>Nome: Marco Rossi
+Età: 14
+Paese di origine della tua famiglia: Cina
+Piatto che porti alla festa: riso alla cantonese
+Lingua che parli a casa: cinese</div>
 </div>
 <div class="q-item q-subj" data-type="write">
 <p class="q-stem"><b>Modulo 2 — Messaggio（写 2–3 句话介绍你一位不同文化的朋友，30–50 词）</b>
@@ -210,25 +217,32 @@ Entrata gratis. Dalle 15:00 alle 18:00.</pre></div>
 <div class="mod-instr-b">① 问答（个人 / 家庭 / 日常）；② 简单陈述 / 看图说 1–2 句。</div>
 </div>
 <div class="items">
-<div class="q-item q-oral" data-type="oral">
-<p class="q-stem"><b>Prova 1（问答）</b>: Come ti chiami? / Quanti anni hai? / Hai fratelli? / Hai amici di altri paesi?<br><b>Prova 2（看图陈述）</b>: 描述图片——一群孩子在不同国旗前大笑。说 1–2 句，如：_«Ci sono bambini di culture diverse. Giocano insieme.»_</p>
 <div class="oral-scoring">
-<div class="score-head">📋 评分维度 · Criteri di valutazione（口语评分要点）</div>
-<div class="rubric-note">能否用现在时介绍姓名/年龄/家庭；能否说出 1 个外国朋友及其国别；语音基本可懂；用简单句即可得分。</div>
+<div class="score-head">📋 评分维度 · Criteri di valutazione（满分 20 分）</div>
+<ul class="dims">
+<li><b>Pronuncia 发音</b> — 单音基本准确，语调自然，能听懂简单指令</li>
+<li><b>Fluenza 流利度</b> — 能用基本词汇与单句作答，无明显长时间停顿</li>
+<li><b>Grammatica 语法</b> — 使用基础句型（essere/avere/ presente），错误不影响理解</li>
+<li><b>Contenuto 内容</b> — 覆盖姓名 / 年龄 / 家庭 / 1 个外国朋友等任务要求</li>
+<li><b>Interazione 互动</b> — 能回应考官提问，维持简短交流</li>
+</ul>
+<div class="rubric-note">能否用现在时介绍姓名/年龄/家庭；能否说出 1 个外国朋友及其国别；语音基本可懂；用简单句即可得分。达到 11 分即通过。</div>
 </div>
+<div class="q-item q-oral" data-type="oral">
+<p class="q-stem"><b>Prova 1（问答）</b>: Come ti chiami? / Quanti anni hai? / Hai fratelli? / Hai amici di altri paesi?</p>
 <div class="oral-ref" hidden>
-<div class="ref-head">🗣️ 参考答案 <span class="ref-it">Risposta di riferimento</span></div>
-<details class="otranscript"><summary><span class="o-closed">📝 显示口语指导 / 评分要点</span><span class="o-open">📝 隐藏口语指导 / 评分要点</span></summary><pre>能否用现在时介绍姓名/年龄/家庭；能否说出 1 个外国朋友及其国别；语音基本可懂；用简单句即可得分。</pre></details>
+<div class="ref-head">🗣️ Prova 1 · <span class="ref-it">Risposta di riferimento</span></div>
+<div class="oral-audio"><audio controls preload="none" src="audio/09531459e6c74f9a.mp3" type="audio/mpeg"></audio><details class="otranscript"><summary><span class="o-closed">📝 显示参考答案原文</span><span class="o-open">📝 隐藏参考答案原文</span></summary><pre>Buongiorno, mi chiamo Marco e ho quattordici anni. Abito a Roma con la mia famiglia. Ho un amico straniero, Yusuf: viene dal Marocco e parla arabo e italiano. Mi piace giocare a calcio con lui. Piacere di conoscervi!</pre></details></div>
 </div>
 </div>
-</div></section><section class="soluzioni"><h2>✅ Soluzioni e criteri di valutazione（参考答案与评分）</h2><pre>【Ascolto 听力】
-1-B, 2-B, 3-A, 4-B, 5-A
-
-【Lettura 阅读】
-1-B, 2-B, 3-B, 4-B, 5-A
-
-【Analisi 语法分析】
-P1: 1-il, 2-amici, 3-ragazza, 4-libri, 5-amico, 6-bambine, 7-stand, 8-famiglie, 9-festa, 10-vicini；P2: 1-ho, 2-vieni, 3-parla, 4-abitiamo, 5-è, 6-mangiate, 7-imparo, 8-suona, 9-conosciamo, 10-hai；P3: 1-dall&#x27;, 2-parla, 3-famiglia, 4-abbiamo, 5-delle, 6-del, 7-che, 8-di</pre></section><button id="btn-check" onclick="verifica()">Verifica le risposte（提交判分）</button><button id="btn-reset" hidden onclick="resetta()">Ricomincia（重做）</button><div id="result" hidden></div></main><script>var SUBJMAX=20;
+<div class="q-item q-oral" data-type="oral">
+<p class="q-stem"><b>Prova 2（看图陈述）</b>: 描述图片——一群孩子在不同国旗前大笑。说 1–2 句，如：_«Ci sono bambini di culture diverse. Giocano insieme.»_</p>
+<div class="oral-ref" hidden>
+<div class="ref-head">🗣️ Prova 2 · <span class="ref-it">Risposta di riferimento</span></div>
+<div class="oral-audio"><audio controls preload="none" src="audio/2e856910ba897646.mp3" type="audio/mpeg"></audio><details class="otranscript"><summary><span class="o-closed">📝 显示参考答案原文</span><span class="o-open">📝 隐藏参考答案原文</span></summary><pre>Nell&#x27;immagine ci sono bambini di culture diverse. Stanno ridendo davanti alle bandiere di vari paesi. Giocano insieme e sono molto felici. Mi piace questa foto della festa delle culture!</pre></details></div>
+</div>
+</div>
+</div></section><button id="btn-check" onclick="verifica()">Verifica le risposte（提交判分）</button><button id="btn-reset" hidden onclick="resetta()">Ricomincia（重做）</button><div id="result" hidden></div></main><script>var SUBJMAX=20;
 function norm(s){return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]/g,'');}
 function gradeOf(p){if(p>=85)return['Eccellente','#1b7a3d'];if(p>=70)return['Buono','#2e7d32'];if(p>=55)return['Discreto','#b8860b'];if(p>=40)return['Insufficiente','#c0392b'];return['Grave','#7b1e2b'];}
 function verifica(){
@@ -237,7 +251,7 @@ function verifica(){
   items.forEach(function(el){
     var t=el.dataset.type;
     var corr=el.dataset.correct;
-    if(!corr){ el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;}); return; }
+    if(t!=='cloze' && !corr){ el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;}); return; }
     if(t==='mc'||t==='tf'||t==='match'){
       total++;
       var ok=false;
@@ -249,20 +263,27 @@ function verifica(){
       el.appendChild(n);
       el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;});
     } else if(t==='cloze'){
+      var ans=[];
       el.querySelectorAll('input.blank').forEach(function(inp){
         if(!inp.dataset.correct){inp.disabled=true;return;}
         total++;
         var v=norm(inp.value);
-        var ok2=v.length>0 && v.indexOf(norm(inp.dataset.correct))>=0;
+        var alts=String(inp.dataset.correct).split('/');
+        var ok2=v.length>0 && alts.some(function(a){return v.indexOf(norm(a))>=0;});
         if(ok2)score++;
         inp.classList.add(ok2?'correct':'wrong');
-        if(!ok2){var s=document.createElement('span');s.className='anshint';s.textContent=' ✓ '+inp.dataset.correct;inp.insertAdjacentElement('afterend',s);}
+        ans.push(inp.dataset.correct);
         inp.disabled=true;
       });
+      if(ans.length){
+        var cn=document.createElement('div');cn.className='q-note ans';
+        cn.textContent='📝 正确答案：'+ans.join('　');
+        el.appendChild(cn);
+      }
     }
   });
-  document.querySelectorAll('.q-subj').forEach(function(el){var r=el.querySelector('.ref');if(r)r.hidden=false;});
-  document.querySelectorAll('.q-oral').forEach(function(el){var r=el.querySelector('.oral-ref');if(r)r.hidden=false;});
+  document.querySelectorAll('.q-subj').forEach(function(el){el.querySelectorAll('.ref').forEach(function(r){r.hidden=false;});});
+  document.querySelectorAll('.q-oral').forEach(function(el){el.querySelectorAll('.oral-ref').forEach(function(r){r.hidden=false;});});
   var pct= total? Math.round(score/total*100):0;
   var g=gradeOf(pct);
   var box=document.getElementById('result');

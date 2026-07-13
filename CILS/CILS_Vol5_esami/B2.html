@@ -58,9 +58,10 @@ pre{white-space:pre-wrap;margin:0;font-family:"Courier New",monospace;font-size:
 .blank.wrong{border-color:var(--no);background:#fdeceb}
 .anshint{color:var(--no);font-size:13px;margin-left:6px}
 textarea.ans{width:100%;font-size:15px;padding:10px;border:1px solid #ccc;border-radius:8px;font-family:inherit;resize:vertical}
-.q-subj .ref{margin-top:10px;padding:10px 12px;background:#eef6fb;border-left:4px solid #2a7fb8;border-radius:8px;font-size:14px}
+.q-subj .ref{margin-top:10px;padding:10px 12px;background:#eef6fb;border-left:4px solid #2a7fb8;border-radius:8px;font-size:14px;white-space:pre-line}
 .q-note{margin-top:8px;font-weight:700;font-size:14px}
 .q-note.ok{color:var(--ok)} .q-note.no{color:var(--no)}
+.q-note.ans{color:var(--wine)}
 .q-oral{background:#fbf7ef;border:1px solid #ecd9b0;border-radius:12px;padding:16px 18px;margin:14px 0}
 .q-oral .q-stem{margin:0 0 12px;font-size:15px;line-height:1.7;white-space:pre-wrap}
 .oral-scoring{background:#fff;border:1px solid #e7dcc4;border-radius:10px;padding:12px 14px;margin-bottom:12px}
@@ -72,6 +73,7 @@ textarea.ans{width:100%;font-size:15px;padding:10px;border:1px solid #ccc;border
 .ref-head{font-weight:700;color:#1f5f80;margin-bottom:8px;font-size:14px}
 .ref-it{font-weight:400;color:#5b87a0;font-style:italic;font-size:12px}
 .oral-ref pre{margin:8px 0 0;white-space:pre-wrap;word-break:break-word;font-size:14px;line-height:1.75;background:#fff;border:1px solid #dce8f0;border-radius:8px;padding:10px 12px}
+.oral-audio{margin:6px 0 10px}
 .otranscript{margin-top:8px}
 .otranscript summary{cursor:pointer;color:#1f5f80;font-weight:600;font-size:13px;user-select:none;list-style:none}
 .otranscript summary::-webkit-details-marker{display:none}
@@ -211,25 +213,25 @@ textarea.ans{width:100%;font-size:15px;padding:10px;border:1px solid #ccc;border
 <div class="mnote">22-32. （risposta: A B C D E F G H I J K 顺序逻辑）</div></section>
 <section class="module"><h2>3. Analisi（语法分析）</h2><div class="mod-instr"><div class="mod-instr-h">Analisi delle strutture（语法分析）</div></div>
 <div class="q-item" data-type="cloze"><p class="q-stem">1. <input class="blank" data-correct="Il"> (Il / La) patrimonio culturale va tutelato.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">2. Questi siti sono<input class="blank" data-correct="più"> (più / molto) fragili del previsto.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">3. Ne parliamo<input class="blank" data-correct="con"> (con / da) gli abitanti.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">2. Questi siti sono <input class="blank" data-correct="più"> (più / molto) fragili del previsto.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">3. Ne parliamo <input class="blank" data-correct="con"> (con / da) gli abitanti.</p></div>
 <div class="q-item" data-type="cloze"><p class="q-stem">4. <input class="blank" data-correct="Quali"> (Quale / Quali) monumenti visiti?</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">5. Il teatro<input class="blank" data-correct="storico"> (storico / storica) attira turisti.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">6. Loro valorizzano<input class="blank" data-correct="i loro"> (loro / i loro) beni locali.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">7. È un evento<input class="blank" data-correct="di"> (di / da) grande partecipazione.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">8. Ci<input class="blank" data-correct="ci"> (ci / ne) sono risorse insufficienti.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">9. Tale tradizione è<input class="blank" data-correct="ancora"> (ancora / mai) viva.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">5. Il teatro <input class="blank" data-correct="storico"> (storico / storica) attira turisti.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">6. Loro valorizzano <input class="blank" data-correct="i loro"> (loro / i loro) beni locali.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">7. È un evento <input class="blank" data-correct="di"> (di / da) grande partecipazione.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">8. Ci <input class="blank" data-correct="ci"> (ci / ne) sono risorse insufficienti.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">9. Tale tradizione è <input class="blank" data-correct="ancora"> (ancora / mai) viva.</p></div>
 <div class="q-item" data-type="cloze"><p class="q-stem">10. <input class="blank" data-correct="Tutto"> (Tutto / Tutti) il pubblico ha applaudito.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">11. Gli esperti<input class="blank" data-correct="lo"> (lo / gli) hanno restaurato.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">11. Gli esperti <input class="blank" data-correct="lo"> (lo / gli) hanno restaurato.</p></div>
 <div class="q-item" data-type="cloze"><p class="q-stem">12. <input class="blank" data-correct="Quel"> (Quel / Quello) castello è del Cinquecento.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">13. La soprintendenza<input class="blank" data-correct="tutela"> (tutela / tutelano) i monumenti.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">14. Parliamo<input class="blank" data-correct="ne"> (ne / ci) della mostra.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">15. Ho visto<input class="blank" data-correct="un"> (un&#x27; / una) opera d&#x27;arte rara.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">13. La soprintendenza <input class="blank" data-correct="tutela"> (tutela / tutelano) i monumenti.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">14. Parliamo <input class="blank" data-correct="ne"> (ne / ci) della mostra.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">15. Ho visto <input class="blank" data-correct="un"> (un&#x27; / una) opera d&#x27;arte rara.</p></div>
 <div class="q-item" data-type="cloze"><p class="q-stem">16. <input class="blank" data-correct="Questi"> (Questi / Queste) reperti sono romani.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">17. Il borgo<input class="blank" data-correct="rischia"> (rischia / rischiano) il degrado.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">17. Il borgo <input class="blank" data-correct="rischia"> (rischia / rischiano) il degrado.</p></div>
 <div class="q-item" data-type="cloze"><p class="q-stem">18. <input class="blank" data-correct="Molti"> (Molto / Molti) visitatori ogni anno.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">19. Ci<input class="blank" data-correct="andiamo"> (andiamo / vanno) in gruppo.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">20. È<input class="blank" data-correct="una"> (una / un&#x27;) tradizione viva.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">19. Ci <input class="blank" data-correct="andiamo"> (andiamo / vanno) in gruppo.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">20. È <input class="blank" data-correct="una"> (una / un&#x27;) tradizione viva.</p></div>
 <div class="mnote">&amp;#x32;1. Speriamo che il sito (essere) ______ tutelato.</div>
 <div class="mnote">22\. Se avessimo fondi, (restaurare) ______ il teatro.</div>
 <div class="mnote">23\. È importante che i giovani (partecipare) ______ .</div>
@@ -250,7 +252,7 @@ textarea.ans{width:100%;font-size:15px;padding:10px;border:1px solid #ccc;border
 <div class="mnote">38\. Il teatro ______ (è chiuso / chiudono) per lavori.</div>
 <div class="mnote">39\. Se avessi saputo, io (venire) ______ .</div>
 <div class="mnote">40\. Credo che l&#x27;arte (unire) ______ le persone.</div>
-<div class="q-item" data-type="cloze"><p class="q-stem">41. <input class="blank" data-correct="A"> (A. consiste / B. consta / C. concerne) nel preservare l&#x27;opera. La valorizzazione (42) ______ (A. mira / B. merita / C. misura) a renderla accessibile. I beni (43) ______ (A. immateriali / B. immateriale / C. immaterialmente) vanno praticati. Il turismo può (44) ______ (A. erodere / B. erigere / C. errare) l&#x27;identità se è di massa. Serve (45) ______ (A. un / B. uno / C. una) equilibrio tra accesso e tutela. Le comunità (46) ______ (A. attive / B. attivo / C. attivamente) fanno la differenza. Il pubblico (47) ______ (A. partecipa / B. partecipi / C. partecipante) sempre più. Infine, il live (48) ______ (A. resta / B. resti / C. restò) insostituibile. La fruizione (49) ______ (A. digitale / B. digitali / C. digitalmente) cambia le abitudini. Il restauro (50) ______ (A. conserva / B. conservi / C. conservato) l&#x27;originale. Tale (51) ______ (A. impegno / B. impegni / C. impegnata) coinvolge i cittadini. Gli spettatori (52) ______ (A. scelgono / B. scelga / C. scegli) serate diverse. (53) ______ (A. Sebbene / B. Però / C. Dunque) costi molto, vale la pena. Il teatro (54) ______ (A. riunisce / B. riunisca / C. riunì) la comunità. Infine l&#x27;arte (55) ______ (A. sopravvive / B. sopravviva / C. sopravvissuto) al tempo.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">41. <input class="blank" data-correct="A"> (A. consiste / B. consta / C. concerne) nel preservare l&#x27;opera. La valorizzazione (42) <input class="blank" data-correct="A"> (A. mira / B. merita / C. misura) a renderla accessibile. I beni (43) <input class="blank" data-correct="A"> (A. immateriali / B. immateriale / C. immaterialmente) vanno praticati. Il turismo può (44) <input class="blank" data-correct="A"> (A. erodere / B. erigere / C. errare) l&#x27;identità se è di massa. Serve (45) <input class="blank" data-correct="A"> (A. un / B. uno / C. una) equilibrio tra accesso e tutela. Le comunità (46) <input class="blank" data-correct="A"> (A. attive / B. attivo / C. attivamente) fanno la differenza. Il pubblico (47) <input class="blank" data-correct="A"> (A. partecipa / B. partecipi / C. partecipante) sempre più. Infine, il live (48) <input class="blank" data-correct="A"> (A. resta / B. resti / C. restò) insostituibile. La fruizione (49) <input class="blank" data-correct="A"> (A. digitale / B. digitali / C. digitalmente) cambia le abitudini. Il restauro (50) <input class="blank" data-correct="A"> (A. conserva / B. conservi / C. conservato) l&#x27;originale. Tale (51) <input class="blank" data-correct="A"> (A. impegno / B. impegni / C. impegnata) coinvolge i cittadini. Gli spettatori (52) <input class="blank" data-correct="A"> (A. scelgono / B. scelga / C. scegli) serate diverse. (53) <input class="blank" data-correct="A"> (A. Sebbene / B. Però / C. Dunque) costi molto, vale la pena. Il teatro (54) <input class="blank" data-correct="A"> (A. riunisce / B. riunisca / C. riunì) la comunità. Infine l&#x27;arte (55) <input class="blank" data-correct="A"> (A. sopravvive / B. sopravviva / C. sopravvissuto) al tempo.</p></div>
 <div class="mnote">&amp;#x41;bbina la risposta (a–j) alla situazione (56–65):</div>
 <div class="mnote">56\. Le dispiace spostare lo spettacolo?</div>
 <div class="mnote">57\. Accettereste un finanziamento privato?</div>
@@ -293,6 +295,7 @@ Prova 2: Gentile Assessore, Le scrivo in qualità di cittadino per segnalare il 
 <br><i>字数：80–100 词</i>
 </p>
 <textarea class="ans" rows="9" placeholder="La tua risposta..."></textarea>
+<div class="ref" hidden><b>写作范例 / Risposta di riferimento：</b><br>评分按词数（120–140 / 80–100）、论点清晰、条件/虚拟式、正式语域与书信格式。</div>
 </div>
 </div></section>
 <section class="module"><h2>5. Orale（口语）</h2><div class="mod-instr">
@@ -315,7 +318,7 @@ D. Spiega come il patrimonio culturale crea identità locale.
 <div class="q-item q-oral" data-type="oral">
 <p class="q-stem"></p>
 <div class="oral-scoring">
-<div class="score-head">📋 评分维度 · Criteri di valutazione（口语评分要点）</div>
+<div class="score-head">📋 评分维度 · Criteri di valutazione（满分 20 分）</div>
 <div class="rubric-note">*Punti di valutazione（评分要点）</div>
 </div>
 <div class="oral-ref" hidden>
@@ -323,17 +326,7 @@ D. Spiega come il patrimonio culturale crea identità locale.
 <details class="otranscript"><summary><span class="o-closed">📝 显示口语指导 / 评分要点</span><span class="o-open">📝 隐藏口语指导 / 评分要点</span></summary><pre>*Punti di valutazione（评分要点）</pre></details>
 </div>
 </div>
-</div></section><section class="soluzioni"><h2>✅ Soluzioni e criteri di valutazione（参考答案与评分）</h2><pre>【Ascolto 听力】
-1.B　2.B　3.C　4.B　5.B　6.B　7.B　8.C　9.B　10.B　11.B　12.B　13.B　14.B　15.Falso　16.Vero　17.Vero　18.Vero　19.Falso　20.Vero　21.Falso　22.Vero　23.Vero　24.Falso　25.Vero　26.Vero
-
-【Lettura 阅读】
-1.B　2.B　3.B　4.B　5.A　6.B　7.B　8.Vero　9.Vero　10.Falso　11.Vero　12.Falso　13.Vero　14.Vero　15.Falso　16.Vero　17.Vero　18.Falso　19.Vero　20.Vero　21.Falso　22-32: A B C D E F G H I J K
-
-【Analisi 语法分析】
-1.Il　2.più　3.con　4.Quali　5.storico　6.i loro　7.di　8.ci　9.ancora　10.Tutto　11.lo　12.Quel　13.tutela　14.ne　15.un&#x27;　16.Questi　17.rischia　18.Molti　19.andiamo　20.una　21.sia　22.restaureremmo　23.partecipino　24.ha aperto　25.iniziasse　26.sarebbe spostato　27.facesse　28.Finite　29.sapessi　30.partano　31.potessi　32.aumenti　33.organizzano　34.vedere　35.era　36.abbiamo restaurato　37.venga　38.è chiuso　39.sarei venuto　40.unisca　41.A　42.A　43.A　44.A　45.A　46.A　47.A　48.A　49.A　50.A　51.A　52.A　53.A　54.A　55.A　56.f　57.e　58.a　59.b　60.c　61.d　62.g　63.h　64.i　65.j
-
-【Orale 口语】
-见上方评分要点。</pre></section><button id="btn-check" onclick="verifica()">Verifica le risposte（提交判分）</button><button id="btn-reset" hidden onclick="resetta()">Ricomincia（重做）</button><div id="result" hidden></div></main><script>var SUBJMAX=20;
+</div></section><button id="btn-check" onclick="verifica()">Verifica le risposte（提交判分）</button><button id="btn-reset" hidden onclick="resetta()">Ricomincia（重做）</button><div id="result" hidden></div></main><script>var SUBJMAX=20;
 function norm(s){return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]/g,'');}
 function gradeOf(p){if(p>=85)return['Eccellente','#1b7a3d'];if(p>=70)return['Buono','#2e7d32'];if(p>=55)return['Discreto','#b8860b'];if(p>=40)return['Insufficiente','#c0392b'];return['Grave','#7b1e2b'];}
 function verifica(){
@@ -342,7 +335,7 @@ function verifica(){
   items.forEach(function(el){
     var t=el.dataset.type;
     var corr=el.dataset.correct;
-    if(!corr){ el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;}); return; }
+    if(t!=='cloze' && !corr){ el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;}); return; }
     if(t==='mc'||t==='tf'||t==='match'){
       total++;
       var ok=false;
@@ -354,20 +347,27 @@ function verifica(){
       el.appendChild(n);
       el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;});
     } else if(t==='cloze'){
+      var ans=[];
       el.querySelectorAll('input.blank').forEach(function(inp){
         if(!inp.dataset.correct){inp.disabled=true;return;}
         total++;
         var v=norm(inp.value);
-        var ok2=v.length>0 && v.indexOf(norm(inp.dataset.correct))>=0;
+        var alts=String(inp.dataset.correct).split('/');
+        var ok2=v.length>0 && alts.some(function(a){return v.indexOf(norm(a))>=0;});
         if(ok2)score++;
         inp.classList.add(ok2?'correct':'wrong');
-        if(!ok2){var s=document.createElement('span');s.className='anshint';s.textContent=' ✓ '+inp.dataset.correct;inp.insertAdjacentElement('afterend',s);}
+        ans.push(inp.dataset.correct);
         inp.disabled=true;
       });
+      if(ans.length){
+        var cn=document.createElement('div');cn.className='q-note ans';
+        cn.textContent='📝 正确答案：'+ans.join('　');
+        el.appendChild(cn);
+      }
     }
   });
-  document.querySelectorAll('.q-subj').forEach(function(el){var r=el.querySelector('.ref');if(r)r.hidden=false;});
-  document.querySelectorAll('.q-oral').forEach(function(el){var r=el.querySelector('.oral-ref');if(r)r.hidden=false;});
+  document.querySelectorAll('.q-subj').forEach(function(el){el.querySelectorAll('.ref').forEach(function(r){r.hidden=false;});});
+  document.querySelectorAll('.q-oral').forEach(function(el){el.querySelectorAll('.oral-ref').forEach(function(r){r.hidden=false;});});
   var pct= total? Math.round(score/total*100):0;
   var g=gradeOf(pct);
   var box=document.getElementById('result');

@@ -58,9 +58,10 @@ pre{white-space:pre-wrap;margin:0;font-family:"Courier New",monospace;font-size:
 .blank.wrong{border-color:var(--no);background:#fdeceb}
 .anshint{color:var(--no);font-size:13px;margin-left:6px}
 textarea.ans{width:100%;font-size:15px;padding:10px;border:1px solid #ccc;border-radius:8px;font-family:inherit;resize:vertical}
-.q-subj .ref{margin-top:10px;padding:10px 12px;background:#eef6fb;border-left:4px solid #2a7fb8;border-radius:8px;font-size:14px}
+.q-subj .ref{margin-top:10px;padding:10px 12px;background:#eef6fb;border-left:4px solid #2a7fb8;border-radius:8px;font-size:14px;white-space:pre-line}
 .q-note{margin-top:8px;font-weight:700;font-size:14px}
 .q-note.ok{color:var(--ok)} .q-note.no{color:var(--no)}
+.q-note.ans{color:var(--wine)}
 .q-oral{background:#fbf7ef;border:1px solid #ecd9b0;border-radius:12px;padding:16px 18px;margin:14px 0}
 .q-oral .q-stem{margin:0 0 12px;font-size:15px;line-height:1.7;white-space:pre-wrap}
 .oral-scoring{background:#fff;border:1px solid #e7dcc4;border-radius:10px;padding:12px 14px;margin-bottom:12px}
@@ -72,6 +73,7 @@ textarea.ans{width:100%;font-size:15px;padding:10px;border:1px solid #ccc;border
 .ref-head{font-weight:700;color:#1f5f80;margin-bottom:8px;font-size:14px}
 .ref-it{font-weight:400;color:#5b87a0;font-style:italic;font-size:12px}
 .oral-ref pre{margin:8px 0 0;white-space:pre-wrap;word-break:break-word;font-size:14px;line-height:1.75;background:#fff;border:1px solid #dce8f0;border-radius:8px;padding:10px 12px}
+.oral-audio{margin:6px 0 10px}
 .otranscript{margin-top:8px}
 .otranscript summary{cursor:pointer;color:#1f5f80;font-weight:600;font-size:13px;user-select:none;list-style:none}
 .otranscript summary::-webkit-details-marker{display:none}
@@ -143,16 +145,16 @@ Anna: Va bene. Ci vediamo a scuola.</pre></details></div></section>
 <div class="mnote">9\. Giulia va a scuola in…  A) autobus  B) tram  C) bicicletta</div>
 <div class="mnote">10\. Il biglietto dell&#x27;autobus costa…  A) 1 euro  B) 2 euro  C) 5 euro</div></section>
 <section class="module"><h2>3. Analisi（语法分析）</h2><div class="mod-instr"><div class="mod-instr-h">Analisi delle strutture di accoglienza（语法）⏱ 约 30 分钟 ｜ 28 题</div></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">1. <input class="blank" data-correct=""> (il) bambino → ___ (i) bambini</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">2. <input class="blank" data-correct=""> (la) casa → ___ (le) case</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">3. <input class="blank" data-correct=""> (l&#x27;) amico → ___ (gli) amici</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">4. <input class="blank" data-correct=""> (la) città → ___ (le) città</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">5. <input class="blank" data-correct=""> (lo) zaino → ___ (gli) zaini</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">6. <input class="blank" data-correct=""> (il) libro → ___ (i) libri</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">7. <input class="blank" data-correct=""> (la) scuola → ___ (le) scuole</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">8. <input class="blank" data-correct=""> (l&#x27;) automobile → ___ (le) automobili</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">9. <input class="blank" data-correct=""> (il) tram → ___ (i) tram</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">10. <input class="blank" data-correct=""> (la) fermata → ___ (le) fermate</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">1. <input class="blank"> (il) bambino → <input class="blank"> (i) bambini</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">2. <input class="blank"> (la) casa → <input class="blank"> (le) case</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">3. <input class="blank"> (l&#x27;) amico → <input class="blank"> (gli) amici</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">4. <input class="blank"> (la) città → <input class="blank"> (le) città</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">5. <input class="blank"> (lo) zaino → <input class="blank"> (gli) zaini</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">6. <input class="blank"> (il) libro → <input class="blank"> (i) libri</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">7. <input class="blank"> (la) scuola → <input class="blank"> (le) scuole</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">8. <input class="blank"> (l&#x27;) automobile → <input class="blank"> (le) automobili</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">9. <input class="blank"> (il) tram → <input class="blank"> (i) tram</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">10. <input class="blank"> (la) fermata → <input class="blank"> (le) fermate</p></div>
 <div class="mnote">11\. io (andare) ______ a scuola.</div>
 <div class="mnote">12\. tu (abitare) ______ in una città piccola.</div>
 <div class="mnote">13\. lui (prendere) ______ l&#x27;autobus.</div>
@@ -175,6 +177,10 @@ Anna: Va bene. Ci vediamo a scuola.</pre></details></div></section>
 | ​        | ​       | ​         | ​                             |
 </p>
 <textarea class="ans" rows="9" placeholder="La tua risposta..."></textarea>
+<div class="ref" hidden><b>写作范例 / Risposta di riferimento：</b><br>Nome: Sara Rossi
+Età: 13
+Città: Bologna
+Mezzo per andare a scuola: autobus giallo</div>
 </div>
 <div class="q-item q-subj" data-type="write">
 <p class="q-stem"><b>Prova 2 — Scrivi un messaggio（写 2–3 句短消息 / 约 30–50 词）</b>
@@ -183,20 +189,37 @@ Esempio da completare / da scrivere: «Ciao Luca, abito a Bologna, una città be
 <br><i>字数：30–50 词</i>
 </p>
 <textarea class="ans" rows="9" placeholder="La tua risposta..."></textarea>
+<div class="ref" hidden><b>写作范例 / Risposta di riferimento：</b><br>Ciao Sara, abito a Firenze, una città molto bella. Vado a scuola in autobus perché la mia casa è lontana dalla scuola. La mattina l&#x27;autobus parte alle otto. Mi piace la mia città! A presto!</div>
 </div>
 </div></section>
 <section class="module"><h2>5. Orale（口语）</h2><div class="mod-instr">
 <div class="mod-instr-h">Produzione orale（口语）⏱ 约 10 分钟</div>
-<div class="mod-instr-b">**Prova 1 — Domande e risposte（问答，个人 / 家庭 / 日常）**
-* Come ti chiami?
-* Dove abiti?
-* Vai a scuola a piedi o in autobus?
-* Ti piace la tua città? Perché?
-**Prova 2 — Breve presentazione / con immagine（简单陈述 / 看图）**&amp;#x44;escrivi l&#x27;immagine: una scuola con bambini e un autobus giallo. Dove va l&#x27;autobus?</div>
 </div>
 <div class="items">
+<div class="oral-scoring">
+<div class="score-head">📋 评分维度 · Criteri di valutazione（满分 20 分）</div>
+<ul class="dims">
+<li><b>Pronuncia 发音</b> — 单音基本准确，语调自然，能听懂简单指令</li>
+<li><b>Fluenza 流利度</b> — 能用基本词汇与单句作答，无明显长时间停顿</li>
+<li><b>Grammatica 语法</b> — 使用基础句型（essere/avere/ presente），错误不影响理解</li>
+<li><b>Contenuto 内容</b> — 覆盖姓名 / 住址 / 上学方式 / 城市等任务要求</li>
+<li><b>Interazione 互动</b> — 能回应考官提问，维持简短交流</li>
+</ul>
+<div class="rubric-note">能否用现在时介绍基本信息与上学方式；看图能否说出 scuola / autobus / bambini 等基础词汇；语音清晰、错误不影响理解即可得分。达到 11 分即通过。</div>
+</div>
 <div class="q-item q-oral" data-type="oral">
-<p class="q-stem"></p>
+<p class="q-stem"><b>Prova 1（问答）</b>: 考官提问 — «Come ti chiami? Dove abiti? Vai a scuola a piedi o in autobus? Ti piace la tua città? Perché?»</p>
+<div class="oral-ref" hidden>
+<div class="ref-head">🗣️ Prova 1 · <span class="ref-it">Risposta di riferimento</span></div>
+<div class="oral-audio"><audio controls preload="none" src="audio/a28b9cd8cc141f10.mp3" type="audio/mpeg"></audio><details class="otranscript"><summary><span class="o-closed">📝 显示参考答案原文</span><span class="o-open">📝 隐藏参考答案原文</span></summary><pre>Buongiorno, mi chiamo Sara e ho tredici anni. Abito a Bologna, vicino alla stazione. Vado a scuola in autobus giallo perché casa mia è lontana. Mi piace la mia città perché è piena di biciclette e parchi.</pre></details></div>
+</div>
+</div>
+<div class="q-item q-oral" data-type="oral">
+<p class="q-stem"><b>Prova 2（看图陈述）</b>: 给一张「学校与黄色校车」图，说 2–3 句，例如 cos&#x27;è, chi ci sono, dove va l&#x27;autobus.</p>
+<div class="oral-ref" hidden>
+<div class="ref-head">🗣️ Prova 2 · <span class="ref-it">Risposta di riferimento</span></div>
+<div class="oral-audio"><audio controls preload="none" src="audio/745e197a440f3f6c.mp3" type="audio/mpeg"></audio><details class="otranscript"><summary><span class="o-closed">📝 显示参考答案原文</span><span class="o-open">📝 隐藏参考答案原文</span></summary><pre>Nell&#x27;immagine vedo una scuola con tanti bambini. Davanti alla scuola c&#x27;è un autobus giallo. I bambini salgono sull&#x27;autobus per tornare a casa. È un momento allegro della giornata.</pre></details></div>
+</div>
 </div>
 </div></section><button id="btn-check" onclick="verifica()">Verifica le risposte（提交判分）</button><button id="btn-reset" hidden onclick="resetta()">Ricomincia（重做）</button><div id="result" hidden></div></main><script>var SUBJMAX=20;
 function norm(s){return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]/g,'');}
@@ -207,7 +230,7 @@ function verifica(){
   items.forEach(function(el){
     var t=el.dataset.type;
     var corr=el.dataset.correct;
-    if(!corr){ el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;}); return; }
+    if(t!=='cloze' && !corr){ el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;}); return; }
     if(t==='mc'||t==='tf'||t==='match'){
       total++;
       var ok=false;
@@ -219,20 +242,27 @@ function verifica(){
       el.appendChild(n);
       el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;});
     } else if(t==='cloze'){
+      var ans=[];
       el.querySelectorAll('input.blank').forEach(function(inp){
         if(!inp.dataset.correct){inp.disabled=true;return;}
         total++;
         var v=norm(inp.value);
-        var ok2=v.length>0 && v.indexOf(norm(inp.dataset.correct))>=0;
+        var alts=String(inp.dataset.correct).split('/');
+        var ok2=v.length>0 && alts.some(function(a){return v.indexOf(norm(a))>=0;});
         if(ok2)score++;
         inp.classList.add(ok2?'correct':'wrong');
-        if(!ok2){var s=document.createElement('span');s.className='anshint';s.textContent=' ✓ '+inp.dataset.correct;inp.insertAdjacentElement('afterend',s);}
+        ans.push(inp.dataset.correct);
         inp.disabled=true;
       });
+      if(ans.length){
+        var cn=document.createElement('div');cn.className='q-note ans';
+        cn.textContent='📝 正确答案：'+ans.join('　');
+        el.appendChild(cn);
+      }
     }
   });
-  document.querySelectorAll('.q-subj').forEach(function(el){var r=el.querySelector('.ref');if(r)r.hidden=false;});
-  document.querySelectorAll('.q-oral').forEach(function(el){var r=el.querySelector('.oral-ref');if(r)r.hidden=false;});
+  document.querySelectorAll('.q-subj').forEach(function(el){el.querySelectorAll('.ref').forEach(function(r){r.hidden=false;});});
+  document.querySelectorAll('.q-oral').forEach(function(el){el.querySelectorAll('.oral-ref').forEach(function(r){r.hidden=false;});});
   var pct= total? Math.round(score/total*100):0;
   var g=gradeOf(pct);
   var box=document.getElementById('result');

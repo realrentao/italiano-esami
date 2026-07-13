@@ -156,20 +156,9 @@ Scrivi 2–3 frasi alla tua maestra o a un'amica per parlare della scuola (30–
 
 ## 5. Produzione orale（口语）— \~10 分钟
 
-**题型说明**：① 考官引导问答（个人/家庭/日常）；② 简单陈述 / 看图。
+* **Prova 1（问答）**：考官提问 — «Come ti chiami? Quanti anni hai? Vai a scuola? Come ci vai? Chi è il tuo insegnante preferito? Perché? Che materia studi volentieri?»
 
-### Prova 1 — Domande e risposte（问答）
-
-Esempi di domande del docente:
-
-* Come ti chiami? Quanti anni hai?
-* Vai a scuola? Come ci vai?
-* Chi è il tuo insegnante preferito? Perché?
-* Che materia studi volentieri?
-
-### Prova 2 — Breve descrizione (con immagine)（看图陈述）
-
-Descrivi l'immagine (un'aula con banchi, una lavagna e un'insegnante): "Nell'immagine vedo una classe. C'è una maestra davanti alla lavagna. Ci sono dei banchi e degli studenti."
+* **Prova 2（看图陈述）**：给一张「教室：课桌、黑板、老师」图，描述 4–5 个元素并用 perché 说明。
 
 ## ✅ A1 答案与评分
 
@@ -179,6 +168,14 @@ Descrivi l'immagine (un'aula con banchi, una lavagna e un'insegnante): "Nell'imm
   * Prova 1：1.La  2.I  3.è  4.libri  5.amica  6.compito  7.studentesse  8.Una  9.banchi  10.ha
   * Prova 2：11.vado  12.studi  13.ha  14.facciamo  15.legge  16.scrivono  17.siete  18.imparo  19.spiega  20.apriamo
   * Prova 3：21.a  22.di  23.la  24.alle  25.di  26.il  27.alle  28.di
+* **Scrittura 范例（填表）**：
+
+> Nome: Luca Verdi
+> Età: 11
+> Classe: 6A
+> Materia preferita: italiano
+> Nome dell'insegnante: maestra Anna
+
 * **Scrittura（范例）**：
 
 > Cara maestra Anna,
@@ -186,7 +183,15 @@ Descrivi l'immagine (un'aula con banchi, una lavagna e un'insegnante): "Nell'imm
 > Un bacio, Giulia
 > （约 28 词，符合 30–50 词区间；如使用短消息，2–3 句即可。）
 
-* **Orale 评分要点**：① 能正确回答个人/家庭/学校类基础问题，使用 presente 与 art. determinativi；② 看图能说出 3–4 个名词（aula, lavagna, banco, insegnante）并用 _c'è/ci sono_；发音可懂，无需完美。
+* **口语评分维度（满分 20 分）**：
+  - **Pronuncia 发音** — 单音基本准确，语调自然，能听懂简单指令
+  - **Fluenza 流利度** — 能用基本词汇与单句作答，无明显长时间停顿
+  - **Grammatica 语法** — 使用基础句型（presente / art. determinativi），错误不影响理解
+  - **Contenuto 内容** — 覆盖姓名 / 年龄 / 上学方式 / 老师与学科等任务要求
+  - **Interazione 互动** — 能回应考官提问，维持简短交流
+* **口语评分说明**：能否用现在时与定冠词介绍个人/家庭/学校；看图能否说出 aula / lavagna / banco / insegnante 并用 c'è/ci sono；发音可懂即可得分。达到 11 分即通过。
+* **口语参考答案 Prova 1（问答）**：Buongiorno, mi chiamo Luca e ho undici anni. Vado a scuola a piedi perché è vicina a casa mia. La mia insegnante preferita è la maestra Anna, perché è paziente e simpatica. Studio volentieri italiano e matematica.
+* **口语参考答案 Prova 2（看图陈述）**：Nell'immagine vedo un'aula con molti banchi. C'è una maestra davanti alla lavagna e ci sono degli studenti seduti ai banchi. È una classe allegra e ordinata.
 
 ***
 

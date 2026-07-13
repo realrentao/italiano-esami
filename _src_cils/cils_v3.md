@@ -123,14 +123,9 @@ La mia città è (21. \_\_\_ ) A) piccoli B) piccola C) piccolo. Vado a scuola (
 
 ### 5. Produzione orale（口语）⏱ 约 10 分钟
 
-**Prova 1 — Domande e risposte（问答，个人 / 家庭 / 日常）**
+* **Prova 1（问答）**：考官提问 — «Come ti chiami? Dove abiti? Vai a scuola a piedi o in autobus? Ti piace la tua città? Perché?»
 
-* Come ti chiami?
-* Dove abiti?
-* Vai a scuola a piedi o in autobus?
-* Ti piace la tua città? Perché?
-
-**Prova 2 — Breve presentazione / con immagine（简单陈述 / 看图）**&#x44;escrivi l'immagine: una scuola con bambini e un autobus giallo. Dove va l'autobus?
+* **Prova 2（看图陈述）**：给一张「学校与黄色校车」图，说 2–3 句，例如 cos'è, chi ci sono, dove va l'autobus.
 
 ### ✅ A1 答案与评分
 
@@ -140,9 +135,24 @@ La mia città è (21. \_\_\_ ) A) piccoli B) piccola C) piccolo. Vado a scuola (
 
 **Analisi**：1.il/i 2.la/le 3.l'/gli 4.la/le 5.lo/gli 6.il/i 7.la/le 8.l'/le 9.il/i 10.la/le 11.vado 12.abiti 13.prende 14.siamo 15.avete 16.vengono 17.faccio 18.esci 19.vive 20.andiamo 21.B 22.B 23.C 24.C 25.C 26.C 27.C 28.B
 
+* **Scrittura 范例（填表）**：
+
+> Nome: Sara Rossi
+> Età: 13
+> Città: Bologna
+> Mezzo per andare a scuola: autobus giallo
+
 **Scrittura 范例（约 35 词）**：Ciao Sara, abito a Firenze, una città molto bella. Vado a scuola in autobus perché la mia casa è lontana dalla scuola. La mattina l'autobus parte alle otto. Mi piace la mia città! A presto!
 
-**Orale 评分要点**：① 能正确回答个人/日常问题（姓名、住址、上学方式）；② 发音清晰、用 present tense 基本正确；③ 看图能说出 scuola / autobus / bambini 等基础词汇；④ 互动自然，能用 sì/no 及简单句回应。
+* **口语评分维度（满分 20 分）**：
+  - **Pronuncia 发音** — 单音基本准确，语调自然，能听懂简单指令
+  - **Fluenza 流利度** — 能用基本词汇与单句作答，无明显长时间停顿
+  - **Grammatica 语法** — 使用基础句型（essere/avere/ presente），错误不影响理解
+  - **Contenuto 内容** — 覆盖姓名 / 住址 / 上学方式 / 城市等任务要求
+  - **Interazione 互动** — 能回应考官提问，维持简短交流
+* **口语评分说明**：能否用现在时介绍基本信息与上学方式；看图能否说出 scuola / autobus / bambini 等基础词汇；语音清晰、错误不影响理解即可得分。达到 11 分即通过。
+* **口语参考答案 Prova 1（问答）**：Buongiorno, mi chiamo Sara e ho tredici anni. Abito a Bologna, vicino alla stazione. Vado a scuola in autobus giallo perché casa mia è lontana. Mi piace la mia città perché è piena di biciclette e parchi.
+* **口语参考答案 Prova 2（看图陈述）**：Nell'immagine vedo una scuola con tanti bambini. Davanti alla scuola c'è un autobus giallo. I bambini salgono sull'autobus per tornare a casa. È un momento allegro della giornata.
 
 ***
 

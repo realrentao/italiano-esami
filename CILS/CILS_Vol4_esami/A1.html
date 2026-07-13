@@ -58,9 +58,10 @@ pre{white-space:pre-wrap;margin:0;font-family:"Courier New",monospace;font-size:
 .blank.wrong{border-color:var(--no);background:#fdeceb}
 .anshint{color:var(--no);font-size:13px;margin-left:6px}
 textarea.ans{width:100%;font-size:15px;padding:10px;border:1px solid #ccc;border-radius:8px;font-family:inherit;resize:vertical}
-.q-subj .ref{margin-top:10px;padding:10px 12px;background:#eef6fb;border-left:4px solid #2a7fb8;border-radius:8px;font-size:14px}
+.q-subj .ref{margin-top:10px;padding:10px 12px;background:#eef6fb;border-left:4px solid #2a7fb8;border-radius:8px;font-size:14px;white-space:pre-line}
 .q-note{margin-top:8px;font-weight:700;font-size:14px}
 .q-note.ok{color:var(--ok)} .q-note.no{color:var(--no)}
+.q-note.ans{color:var(--wine)}
 .q-oral{background:#fbf7ef;border:1px solid #ecd9b0;border-radius:12px;padding:16px 18px;margin:14px 0}
 .q-oral .q-stem{margin:0 0 12px;font-size:15px;line-height:1.7;white-space:pre-wrap}
 .oral-scoring{background:#fff;border:1px solid #e7dcc4;border-radius:10px;padding:12px 14px;margin-bottom:12px}
@@ -72,6 +73,7 @@ textarea.ans{width:100%;font-size:15px;padding:10px;border:1px solid #ccc;border
 .ref-head{font-weight:700;color:#1f5f80;margin-bottom:8px;font-size:14px}
 .ref-it{font-weight:400;color:#5b87a0;font-style:italic;font-size:12px}
 .oral-ref pre{margin:8px 0 0;white-space:pre-wrap;word-break:break-word;font-size:14px;line-height:1.75;background:#fff;border:1px solid #dce8f0;border-radius:8px;padding:10px 12px}
+.oral-audio{margin:6px 0 10px}
 .otranscript{margin-top:8px}
 .otranscript summary{cursor:pointer;color:#1f5f80;font-weight:600;font-size:13px;user-select:none;list-style:none}
 .otranscript summary::-webkit-details-marker{display:none}
@@ -160,74 +162,95 @@ B: La scuola finisce alle quattro. Poi vado a casa e faccio i compiti.</pre></de
 <section class="module"><h2>3. Analisi（语法分析）</h2><div class="mod-instr"><div class="mod-instr-h">Analisi delle strutture di accoglienza（语法）— 30 分钟</div></div>
 <h3>题型说明（真题全量）</h3>
 <h3>Prova 1 — Genere e numero（性数配合）</h3>
-<div class="q-item" data-type="cloze"><p class="q-stem">1. <input class="blank" data-correct=""> (Il / La) maestra è gentile. → ____</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">2. <input class="blank" data-correct=""> (I / Le) bambini giocano in cortile. → ____</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">3. La scuola<input class="blank" data-correct=""> (è / sono) grande. → ____</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">4. Due<input class="blank" data-correct=""> (libro / libri) nuovi sul banco. → ____</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">5. La mia<input class="blank" data-correct=""> (amico / amica) studia l&#x27;italiano. → ____</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">6. Un<input class="blank" data-correct=""> (compito / compiti) difficile da fare. → ____</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">7. Le<input class="blank" data-correct=""> (studente / studentesse) leggono un libro. → ____</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">8. <input class="blank" data-correct=""> (Uno / Una) insegnante molto paziente. → ____</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">9. I<input class="blank" data-correct=""> (banco / banchi) sono puliti. → ____</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">10. La classe<input class="blank" data-correct=""> (ha / hanno) molti alunni. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">1. <input class="blank"> (Il / La) maestra è gentile. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">2. <input class="blank"> (I / Le) bambini giocano in cortile. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">3. La scuola <input class="blank"> (è / sono) grande. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">4. Due <input class="blank"> (libro / libri) nuovi sul banco. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">5. La mia <input class="blank"> (amico / amica) studia l&#x27;italiano. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">6. Un <input class="blank"> (compito / compiti) difficile da fare. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">7. Le <input class="blank"> (studente / studentesse) leggono un libro. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">8. <input class="blank"> (Uno / Una) insegnante molto paziente. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">9. I <input class="blank"> (banco / banchi) sono puliti. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">10. La classe <input class="blank"> (ha / hanno) molti alunni. → ____</p></div>
 <h3>Prova 2 — Presente indicativo（现在时变位）</h3>
-<div class="q-item" data-type="cloze"><p class="q-stem">11. Io<input class="blank" data-correct=""> (andare) a scuola in bicicletta. → ____</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">12. Tu<input class="blank" data-correct=""> (studiare) l&#x27;italiano con la maestra Anna. → ____</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">13. Marco<input class="blank" data-correct=""> (avere) una buona insegnante. → ____</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">14. Noi<input class="blank" data-correct=""> (fare) i compiti a casa. → ____</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">15. Lei<input class="blank" data-correct=""> (leggere) un libro di scuola. → ____</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">16. Gli alunni<input class="blank" data-correct=""> (scrivere) sulla lavagna. → ____</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">17. Tu e Paolo<input class="blank" data-correct=""> (essere) bravi studenti. → ____</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">18. Io<input class="blank" data-correct=""> (imparare) l&#x27;inglese anche. → ____</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">19. La professoressa<input class="blank" data-correct=""> (spiegare) la lezione. → ____</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">20. Noi<input class="blank" data-correct=""> (aprire) il libro alle otto. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">11. Io <input class="blank"> (andare) a scuola in bicicletta. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">12. Tu <input class="blank"> (studiare) l&#x27;italiano con la maestra Anna. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">13. Marco <input class="blank"> (avere) una buona insegnante. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">14. Noi <input class="blank"> (fare) i compiti a casa. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">15. Lei <input class="blank"> (leggere) un libro di scuola. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">16. Gli alunni <input class="blank"> (scrivere) sulla lavagna. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">17. Tu e Paolo <input class="blank"> (essere) bravi studenti. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">18. Io <input class="blank"> (imparare) l&#x27;inglese anche. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">19. La professoressa <input class="blank"> (spiegare) la lezione. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">20. Noi <input class="blank"> (aprire) il libro alle otto. → ____</p></div>
 <h3>Prova 3 — Cloze semplice</h3>
 <div class="mnote">21. Vado ______ scuola in bicicletta. → ____</div>
-<div class="q-item" data-type="cloze"><p class="q-stem">22. La maestra<input class="blank" data-correct=""> (di / da) Anna è simpatica. → ____</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">23. Studio<input class="blank" data-correct=""> (il / la) matematica e l&#x27;italiano. → ____</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">24. Le lezioni finiscono<input class="blank" data-correct=""> (a / alle) quattro. → ____</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">25. Sono contento<input class="blank" data-correct=""> (di / da) imparare. → ____</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">26. Studio con<input class="blank" data-correct=""> (il / la) mio amico. → ____</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">27. La scuola comincia<input class="blank" data-correct=""> (a / alle) otto. → ____</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">28. C&#x27;è un libro<input class="blank" data-correct=""> (di / da) italiano. → ____</p></div></section>
+<div class="q-item" data-type="cloze"><p class="q-stem">22. La maestra <input class="blank"> (di / da) Anna è simpatica. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">23. Studio <input class="blank"> (il / la) matematica e l&#x27;italiano. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">24. Le lezioni finiscono <input class="blank"> (a / alle) quattro. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">25. Sono contento <input class="blank"> (di / da) imparare. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">26. Studio con <input class="blank"> (il / la) mio amico. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">27. La scuola comincia <input class="blank"> (a / alle) otto. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">28. C&#x27;è un libro <input class="blank"> (di / da) italiano. → ____</p></div></section>
 <section class="module"><h2>4. Scritta（写作）</h2><div class="mod-instr">
 <div class="mod-instr-h">Produzione scritta（写作）— 30 分钟</div>
-<div class="mod-instr-b">**题型说明**：① 填表；② 写 2–3 句短消息/邮件。约 **30–50 词**。
-### Prova 1 — Modulo della scuola（填表）
-Compila il modulo con i tuoi dati:
+<div class="mod-instr-b">**题型说明**：① 填表；② 写 2–3 句短消息/邮件。约 **30–50 词**。</div>
+</div>
+<div class="items">
+<div class="q-item q-subj" data-type="write">
+<p class="q-stem"><b>Prova 1 — Modulo della scuola（填表）</b>
+<br>Compila il modulo con i tuoi dati:
 * Nome: ____________________
 * Età: ____________________
 * Classe: ____________________
 * Materia preferita: ____________________
 * Nome dell&#x27;insegnante: ____________________
-### Prova 2 — Breve messaggio（短消息）
-Scrivi 2–3 frasi alla tua maestra o a un&#x27;amica per parlare della scuola (30–50 parole).</div>
+</p>
+<textarea class="ans" rows="9" placeholder="La tua risposta..."></textarea>
+<div class="ref" hidden><b>写作范例 / Risposta di riferimento：</b><br>Nome: Luca Verdi
+Età: 11
+Classe: 6A
+Materia preferita: italiano
+Nome dell&#x27;insegnante: maestra Anna</div>
 </div>
-<div class="items">
+<div class="q-item q-subj" data-type="write">
+<p class="q-stem"><b>Prova 2 — Breve messaggio（短消息）</b>
+<br>Scrivi 2–3 frasi alla tua maestra o a un&#x27;amica per parlare della scuola (30–50 parole).
+</p>
+<textarea class="ans" rows="9" placeholder="La tua risposta..."></textarea>
+<div class="ref" hidden><b>写作范例 / Risposta di riferimento：</b><br>Cara maestra Anna,
+sono felice nella tua classe. Studio l&#x27;italiano con te e imparo molto. La mia materia preferita è italiano. Grazie per le tue lezioni!
+Un bacio, Giulia
+（约 28 词，符合 30–50 词区间；如使用短消息，2–3 句即可。）</div>
+</div>
 </div></section>
 <section class="module"><h2>5. Orale（口语）</h2><div class="mod-instr">
 <div class="mod-instr-h">Produzione orale（口语）— \~10 分钟</div>
-<div class="mod-instr-b">**题型说明**：① 考官引导问答（个人/家庭/日常）；② 简单陈述 / 看图。
-### Prova 1 — Domande e risposte（问答）
-Esempi di domande del docente:
-* Come ti chiami? Quanti anni hai?
-* Vai a scuola? Come ci vai?
-* Chi è il tuo insegnante preferito? Perché?
-* Che materia studi volentieri?
-### Prova 2 — Breve descrizione (con immagine)（看图陈述）
-Descrivi l&#x27;immagine (un&#x27;aula con banchi, una lavagna e un&#x27;insegnante): &quot;Nell&#x27;immagine vedo una classe. C&#x27;è una maestra davanti alla lavagna. Ci sono dei banchi e degli studenti.&quot;
-## ✅ A1 答案与评分</div>
 </div>
 <div class="items">
-<div class="q-item q-oral" data-type="oral">
-<p class="q-stem"><b>Ascolto</b>: 1.B  2.B  3.B  4.A  5.B<br><b>Lettura</b>: 6.B  7.Falso（mensa aperta solo da martedì, lunedì scuola chiusa）  8.B  9.B  10.Vero<br><b>Analisi</b><br>Prova 1：1.La  2.I  3.è  4.libri  5.amica  6.compito  7.studentesse  8.Una  9.banchi  10.ha<br>Prova 2：11.vado  12.studi  13.ha  14.facciamo  15.legge  16.scrivono  17.siete  18.imparo  19.spiega  20.apriamo<br>Prova 3：21.a  22.di  23.la  24.alle  25.di  26.il  27.alle  28.di<br><b>Scrittura（范例）</b><br>&gt; Cara maestra Anna,<br>&gt; sono felice nella tua classe. Studio l&#x27;italiano con te e imparo molto. La mia materia preferita è italiano. Grazie per le tue lezioni!<br>&gt; Un bacio, Giulia<br>&gt; （约 28 词，符合 30–50 词区间；如使用短消息，2–3 句即可。）</p>
 <div class="oral-scoring">
-<div class="score-head">📋 评分维度 · Criteri di valutazione（口语评分要点）</div>
-<div class="rubric-note">Orale 评分要点**：① 能正确回答个人/家庭/学校类基础问题，使用 presente 与 art. determinativi；② 看图能说出 3–4 个名词（aula, lavagna, banco, insegnante）并用 _c&#x27;è/ci sono_；发音可懂，无需完美。</div>
+<div class="score-head">📋 评分维度 · Criteri di valutazione（满分 20 分）</div>
+<ul class="dims">
+<li><b>Pronuncia 发音</b> — 单音基本准确，语调自然，能听懂简单指令</li>
+<li><b>Fluenza 流利度</b> — 能用基本词汇与单句作答，无明显长时间停顿</li>
+<li><b>Grammatica 语法</b> — 使用基础句型（presente / art. determinativi），错误不影响理解</li>
+<li><b>Contenuto 内容</b> — 覆盖姓名 / 年龄 / 上学方式 / 老师与学科等任务要求</li>
+<li><b>Interazione 互动</b> — 能回应考官提问，维持简短交流</li>
+</ul>
+<div class="rubric-note">能否用现在时与定冠词介绍个人/家庭/学校；看图能否说出 aula / lavagna / banco / insegnante 并用 c&#x27;è/ci sono；发音可懂即可得分。达到 11 分即通过。</div>
 </div>
+<div class="q-item q-oral" data-type="oral">
+<p class="q-stem"><b>Prova 1（问答）</b>: 考官提问 — «Come ti chiami? Quanti anni hai? Vai a scuola? Come ci vai? Chi è il tuo insegnante preferito? Perché? Che materia studi volentieri?»</p>
 <div class="oral-ref" hidden>
-<div class="ref-head">🗣️ 参考答案 <span class="ref-it">Risposta di riferimento</span></div>
-<details class="otranscript"><summary><span class="o-closed">📝 显示口语指导 / 评分要点</span><span class="o-open">📝 隐藏口语指导 / 评分要点</span></summary><pre>Orale 评分要点**：① 能正确回答个人/家庭/学校类基础问题，使用 presente 与 art. determinativi；② 看图能说出 3–4 个名词（aula, lavagna, banco, insegnante）并用 _c&#x27;è/ci sono_；发音可懂，无需完美。</pre></details>
+<div class="ref-head">🗣️ Prova 1 · <span class="ref-it">Risposta di riferimento</span></div>
+<div class="oral-audio"><audio controls preload="none" src="audio/77088b28c36cd03f.mp3" type="audio/mpeg"></audio><details class="otranscript"><summary><span class="o-closed">📝 显示参考答案原文</span><span class="o-open">📝 隐藏参考答案原文</span></summary><pre>Buongiorno, mi chiamo Luca e ho undici anni. Vado a scuola a piedi perché è vicina a casa mia. La mia insegnante preferita è la maestra Anna, perché è paziente e simpatica. Studio volentieri italiano e matematica.</pre></details></div>
+</div>
+</div>
+<div class="q-item q-oral" data-type="oral">
+<p class="q-stem"><b>Prova 2（看图陈述）</b>: 给一张「教室：课桌、黑板、老师」图，描述 4–5 个元素并用 perché 说明。<br>## ✅ A1 答案与评分<br><b>Ascolto</b>: 1.B  2.B  3.B  4.A  5.B<br><b>Lettura</b>: 6.B  7.Falso（mensa aperta solo da martedì, lunedì scuola chiusa）  8.B  9.B  10.Vero<br><b>Analisi</b><br>Prova 1：1.La  2.I  3.è  4.libri  5.amica  6.compito  7.studentesse  8.Una  9.banchi  10.ha<br>Prova 2：11.vado  12.studi  13.ha  14.facciamo  15.legge  16.scrivono  17.siete  18.imparo  19.spiega  20.apriamo<br>Prova 3：21.a  22.di  23.la  24.alle  25.di  26.il  27.alle  28.di<br><b>Scrittura 范例（填表）</b><br>&gt; Nome: Luca Verdi<br>&gt; Età: 11<br>&gt; Classe: 6A<br>&gt; Materia preferita: italiano<br>&gt; Nome dell&#x27;insegnante: maestra Anna<br><b>Scrittura（范例）</b><br>&gt; Cara maestra Anna,<br>&gt; sono felice nella tua classe. Studio l&#x27;italiano con te e imparo molto. La mia materia preferita è italiano. Grazie per le tue lezioni!<br>&gt; Un bacio, Giulia<br>&gt; （约 28 词，符合 30–50 词区间；如使用短消息，2–3 句即可。）<br><b>口语评分维度（满分 20 分）</b><br>- **Pronuncia 发音** — 单音基本准确，语调自然，能听懂简单指令<br>- **Fluenza 流利度** — 能用基本词汇与单句作答，无明显长时间停顿<br>- **Grammatica 语法** — 使用基础句型（presente / art. determinativi），错误不影响理解<br>- **Contenuto 内容** — 覆盖姓名 / 年龄 / 上学方式 / 老师与学科等任务要求<br>- **Interazione 互动** — 能回应考官提问，维持简短交流<br><b>口语评分说明</b>: 能否用现在时与定冠词介绍个人/家庭/学校；看图能否说出 aula / lavagna / banco / insegnante 并用 c&#x27;è/ci sono；发音可懂即可得分。达到 11 分即通过。<br><b>口语参考答案 Prova 1（问答）</b>: Buongiorno, mi chiamo Luca e ho undici anni. Vado a scuola a piedi perché è vicina a casa mia. La mia insegnante preferita è la maestra Anna, perché è paziente e simpatica. Studio volentieri italiano e matematica.<br><b>口语参考答案 Prova 2（看图陈述）</b>: Nell&#x27;immagine vedo un&#x27;aula con molti banchi. C&#x27;è una maestra davanti alla lavagna e ci sono degli studenti seduti ai banchi. È una classe allegra e ordinata.</p>
+<div class="oral-ref" hidden>
+<div class="ref-head">🗣️ Prova 2 · <span class="ref-it">Risposta di riferimento</span></div>
+<div class="oral-audio"><audio controls preload="none" src="audio/b89d8bb6cd895482.mp3" type="audio/mpeg"></audio><details class="otranscript"><summary><span class="o-closed">📝 显示参考答案原文</span><span class="o-open">📝 隐藏参考答案原文</span></summary><pre>Nell&#x27;immagine vedo un&#x27;aula con molti banchi. C&#x27;è una maestra davanti alla lavagna e ci sono degli studenti seduti ai banchi. È una classe allegra e ordinata.</pre></details></div>
 </div>
 </div>
 </div></section><button id="btn-check" onclick="verifica()">Verifica le risposte（提交判分）</button><button id="btn-reset" hidden onclick="resetta()">Ricomincia（重做）</button><div id="result" hidden></div></main><script>var SUBJMAX=20;
@@ -239,7 +262,7 @@ function verifica(){
   items.forEach(function(el){
     var t=el.dataset.type;
     var corr=el.dataset.correct;
-    if(!corr){ el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;}); return; }
+    if(t!=='cloze' && !corr){ el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;}); return; }
     if(t==='mc'||t==='tf'||t==='match'){
       total++;
       var ok=false;
@@ -251,20 +274,27 @@ function verifica(){
       el.appendChild(n);
       el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;});
     } else if(t==='cloze'){
+      var ans=[];
       el.querySelectorAll('input.blank').forEach(function(inp){
         if(!inp.dataset.correct){inp.disabled=true;return;}
         total++;
         var v=norm(inp.value);
-        var ok2=v.length>0 && v.indexOf(norm(inp.dataset.correct))>=0;
+        var alts=String(inp.dataset.correct).split('/');
+        var ok2=v.length>0 && alts.some(function(a){return v.indexOf(norm(a))>=0;});
         if(ok2)score++;
         inp.classList.add(ok2?'correct':'wrong');
-        if(!ok2){var s=document.createElement('span');s.className='anshint';s.textContent=' ✓ '+inp.dataset.correct;inp.insertAdjacentElement('afterend',s);}
+        ans.push(inp.dataset.correct);
         inp.disabled=true;
       });
+      if(ans.length){
+        var cn=document.createElement('div');cn.className='q-note ans';
+        cn.textContent='📝 正确答案：'+ans.join('　');
+        el.appendChild(cn);
+      }
     }
   });
-  document.querySelectorAll('.q-subj').forEach(function(el){var r=el.querySelector('.ref');if(r)r.hidden=false;});
-  document.querySelectorAll('.q-oral').forEach(function(el){var r=el.querySelector('.oral-ref');if(r)r.hidden=false;});
+  document.querySelectorAll('.q-subj').forEach(function(el){el.querySelectorAll('.ref').forEach(function(r){r.hidden=false;});});
+  document.querySelectorAll('.q-oral').forEach(function(el){el.querySelectorAll('.oral-ref').forEach(function(r){r.hidden=false;});});
   var pct= total? Math.round(score/total*100):0;
   var g=gradeOf(pct);
   var box=document.getElementById('result');

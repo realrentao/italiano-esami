@@ -7,3 +7,9 @@ __pycache__/
 
 # 临时/中间文件
 *.tmp
+
+# 项目本地记忆（不推送）
+.workbuddy/
+
+# 临时调试文件
+zz_last.txt

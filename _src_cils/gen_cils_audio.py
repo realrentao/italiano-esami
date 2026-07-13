@@ -81,7 +81,7 @@ def process_volume(vol):
         return
     adir = os.path.join(vdir, 'audio')
 
-    # 收集本卷所有 Ascolto 听力文本（audio-block 内的 <pre>）
+    # 收集本卷所有 Ascolto 听力文本（audio-block 内的 <pre>）+ 口语参考答案文本（oral-audio 内的 <pre>）
     plan = []
     for lvl in LEVELS:
         fp = os.path.join(vdir, lvl + '.html')
@@ -97,14 +97,23 @@ def process_volume(vol):
             nt = norm_fn(raw)
             if nt:
                 plan.append((lvl, nt, raw))
+        for m in re.finditer(r'<div class="oral-audio">(.*?)</div>', h, re.S):
+            block = m.group(1)
+            pm = re.search(r'<pre>(.*?)</pre>', block, re.S)
+            if not pm:
+                continue
+            raw = pm.group(1)
+            nt = norm_fn(raw)
+            if nt:
+                plan.append((lvl, nt, raw))
 
-    print('Vol.%d 待生成听力音频片段：%d' % (vol, len(plan)))
+    print('Vol.%d 待生成音频片段（听力+口语参考）：%d' % (vol, len(plan)))
     os.makedirs(adir, exist_ok=True)
     texts = [p[2] for p in plan]
     results = asyncio.run(gen_all(texts, adir))
     print('  -> 成功生成 %d / %d 个 mp3' % (len(results), len(texts)))
 
-    # 注入：每个 audio-block 替换 .aspk-slot 为原生 <audio controls>
+    # 注入：每个 audio-block / oral-audio 替换 .aspk-slot 为原生 <audio controls>
     for lvl in LEVELS:
         fp = os.path.join(vdir, lvl + '.html')
         if not os.path.exists(fp):
@@ -112,7 +121,7 @@ def process_volume(vol):
         h = open(fp, encoding='utf-8').read()
         if '<audio controls' in h:
             continue  # 已注入，跳过整页
-        if 'class="audio-block"' not in h:
+        if 'class="audio-block"' not in h and 'class="oral-audio"' not in h:
             continue
 
         def repl(m):
@@ -129,6 +138,7 @@ def process_volume(vol):
             return block.replace('<span class="aspk-slot"></span>', audio, 1)
 
         h2 = re.sub(r'<div class="audio-block">(.*?)</div>', repl, h, flags=re.S)
+        h2 = re.sub(r'<div class="oral-audio">(.*?)</div>', repl, h2, flags=re.S)
         open(fp, 'w', encoding='utf-8').write(h2)
     print('  -> 已注入原生 <audio controls> 播放器')
 
@@ -159,9 +169,10 @@ def validate_volume(vol):
                         invalid_file += 1
             else:
                 missing_file += 1
-        # 检查整页里是否有不在 audio-block 内的 <audio controls>
+        # 检查整页里是否有不在 audio-block / oral-audio 内的 <audio controls>
         for m in re.finditer(r'<audio controls[^>]*src="(audio/[^"]+)"', h):
-            if 'audio-block' not in h[:h.find('src="%s"' % m.group(1))]:
+            prefix = h[:h.find('src="%s"' % m.group(1))]
+            if 'audio-block' not in prefix and 'oral-audio' not in prefix:
                 stray_audio += 1
     print('Vol.%d  听力块=%d  音频OK=%d  缺文件=%d  无效=%d  越界音频=%d'
           % (vol, total_blocks, audio_ok, missing_file, invalid_file, stray_audio))

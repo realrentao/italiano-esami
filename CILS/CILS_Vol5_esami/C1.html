@@ -58,9 +58,10 @@ pre{white-space:pre-wrap;margin:0;font-family:"Courier New",monospace;font-size:
 .blank.wrong{border-color:var(--no);background:#fdeceb}
 .anshint{color:var(--no);font-size:13px;margin-left:6px}
 textarea.ans{width:100%;font-size:15px;padding:10px;border:1px solid #ccc;border-radius:8px;font-family:inherit;resize:vertical}
-.q-subj .ref{margin-top:10px;padding:10px 12px;background:#eef6fb;border-left:4px solid #2a7fb8;border-radius:8px;font-size:14px}
+.q-subj .ref{margin-top:10px;padding:10px 12px;background:#eef6fb;border-left:4px solid #2a7fb8;border-radius:8px;font-size:14px;white-space:pre-line}
 .q-note{margin-top:8px;font-weight:700;font-size:14px}
 .q-note.ok{color:var(--ok)} .q-note.no{color:var(--no)}
+.q-note.ans{color:var(--wine)}
 .q-oral{background:#fbf7ef;border:1px solid #ecd9b0;border-radius:12px;padding:16px 18px;margin:14px 0}
 .q-oral .q-stem{margin:0 0 12px;font-size:15px;line-height:1.7;white-space:pre-wrap}
 .oral-scoring{background:#fff;border:1px solid #e7dcc4;border-radius:10px;padding:12px 14px;margin-bottom:12px}
@@ -72,6 +73,7 @@ textarea.ans{width:100%;font-size:15px;padding:10px;border:1px solid #ccc;border
 .ref-head{font-weight:700;color:#1f5f80;margin-bottom:8px;font-size:14px}
 .ref-it{font-weight:400;color:#5b87a0;font-style:italic;font-size:12px}
 .oral-ref pre{margin:8px 0 0;white-space:pre-wrap;word-break:break-word;font-size:14px;line-height:1.75;background:#fff;border:1px solid #dce8f0;border-radius:8px;padding:10px 12px}
+.oral-audio{margin:6px 0 10px}
 .otranscript{margin-top:8px}
 .otranscript summary{cursor:pointer;color:#1f5f80;font-weight:600;font-size:13px;user-select:none;list-style:none}
 .otranscript summary::-webkit-details-marker{display:none}
@@ -155,28 +157,28 @@ Relatrice A: È onnivoro ma selettivo per esposizione.</pre></details></div></se
 <div class="mnote">F. La sfida è ritrovare parametri estetici autentici.</div>
 <div class="mnote">11-16. （risposta: B A C D E F）</div></section>
 <section class="module"><h2>3. Analisi（语法分析）</h2><div class="mod-instr"><div class="mod-instr-h">Analisi delle strutture（语法分析）</div></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">1. L&#x27;opera<input class="blank" data-correct="che"> (che / cui / quale) ha scritto è controversa.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">2. Il museo in<input class="blank" data-correct="cui"> (cui / che / dove) lavoro è antico.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">3. Non vado,<input class="blank" data-correct="perché"> (perché / affinché / sebbene) piove.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">4. Lo studio<input class="blank" data-correct="da cui"> (da cui / in cui / sul quale) traiamo dati è serio.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">5. È un fenomeno<input class="blank" data-correct="il quale"> (il quale / la quale / i quali) riguarda i giovani.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">6. Ciò<input class="blank" data-correct="che"> (che / cui / dove) conta è la ricezione.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">7. Partono,<input class="blank" data-correct="mentre"> (mentre / benché / affinché) noi restiamo.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">8. La città<input class="blank" data-correct="dove"> (dove / cui / che) vivo tutela il centro.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">9. L&#x27;autore<input class="blank" data-correct="di cui"> (di cui / cui / che) parliamo è molto noto.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">10. Il pubblico,<input class="blank" data-correct="il quale"> (che / il quale / la quale) era numeroso, ha applaudito.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">11. È un libro<input class="blank" data-correct="da cui"> (da cui / in cui / su cui) imparo molto.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">12. Non esco<input class="blank" data-correct="se"> (se / perché / affinché) piove.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">13. La mostra<input class="blank" data-correct="in cui"> (dove / in cui / cui) siamo stati era bellissima.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">14. Colui<input class="blank" data-correct="che"> (che / cui / il quale) scrive determina la memoria.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">1. L&#x27;opera <input class="blank" data-correct="che"> (che / cui / quale) ha scritto è controversa.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">2. Il museo in <input class="blank" data-correct="cui"> (cui / che / dove) lavoro è antico.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">3. Non vado, <input class="blank" data-correct="perché"> (perché / affinché / sebbene) piove.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">4. Lo studio <input class="blank" data-correct="da cui"> (da cui / in cui / sul quale) traiamo dati è serio.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">5. È un fenomeno <input class="blank" data-correct="il quale"> (il quale / la quale / i quali) riguarda i giovani.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">6. Ciò <input class="blank" data-correct="che"> (che / cui / dove) conta è la ricezione.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">7. Partono, <input class="blank" data-correct="mentre"> (mentre / benché / affinché) noi restiamo.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">8. La città <input class="blank" data-correct="dove"> (dove / cui / che) vivo tutela il centro.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">9. L&#x27;autore <input class="blank" data-correct="di cui"> (di cui / cui / che) parliamo è molto noto.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">10. Il pubblico, <input class="blank" data-correct="il quale"> (che / il quale / la quale) era numeroso, ha applaudito.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">11. È un libro <input class="blank" data-correct="da cui"> (da cui / in cui / su cui) imparo molto.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">12. Non esco <input class="blank" data-correct="se"> (se / perché / affinché) piove.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">13. La mostra <input class="blank" data-correct="in cui"> (dove / in cui / cui) siamo stati era bellissima.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">14. Colui <input class="blank" data-correct="che"> (che / cui / il quale) scrive determina la memoria.</p></div>
 <div class="q-item" data-type="cloze"><p class="q-stem">15. <input class="blank" data-correct="Benché"> (Benché / Perché / Se) fosse tardi, siamo rimasti.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">16. Il film<input class="blank" data-correct="che"> (che / cui / quale) hai visto è premiato.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">17. La piattaforma<input class="blank" data-correct="su cui"> (su cui / cui / che) contiamo funziona.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">18. Escono prima<input class="blank" data-correct="che"> (che / di / per) inizi la pioggia.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">19. L&#x27;artista<input class="blank" data-correct="con cui"> (con cui / cui / che) collaboro è giovane.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">20. È un tema<input class="blank" data-correct="su cui"> (su cui / cui / che) torneremo.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">21. <input class="blank" data-correct="A"> (A. produce / B. prodotto / C. produca) beni simbolici. Chi (22) ______ (A. consuma / B. consumi / C. consumato) li recepisce. Le piattaforme (23) ______ (A. ordinano / B. ordina / C. ordini) il repertorio. Se il pubblico (24) ______ (A. sceglie / B. scegliesse / C. scegliendo) liberamente, il mercato cambierebbe. (25) ______ (A. Benché / B. Perciò / C. Cioè) esista l&#x27;illusione della scelta. L&#x27;artista (26) ______ (A. indipendente / B. indipendenti / C. indipendentemente) fatica. (27) ______ (A. Si / B. Vi / C. Ne) richiede pluralismo. (28) ______ (A. Così / B. Anche / C. Mai) la critica ha un ruolo. Il sistema (29) ______ (A. premia / B. premi / C. premiato) ciò che è visibile. La rete (30) ______ (A. filtra / B. filtri / C. filtrato) i contenuti. (31) ______ (A. Chi / B. Cui / C. Che) crea deve adattarsi. L&#x27;algoritmo (32) ______ (A. decide / B. decida / C. deciso) cosa vediamo. (33) ______ (A. Sebbene / B. Perciò / C. Dunque) esista scelta, il margine è stretto. Il pubblico (34) ______ (A. premi / B. premia / C. premiato) il familiare. L&#x27;opera (35) ______ (A. alta / B. alto / C. alti) esige attenzione. (36) ______ (A. Vi / B. Si / C. Ci) vuole pluralismo. Le istituzioni (37) ______ (A. tuteli / B. tutelano / C. tutelato) il canone. (38) ______ (A. Dunque / B. Invece / C. Ancora) serve educazione critica. Il mercato (39) ______ (A. omologhi / B. omologa / C. omologato) i gusti. Infine, la cultura (40) ______ (A. resiste / B. resista / C. resisté) al tempo.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">1. La cultura di massa spesso<input class="blank" data-correct="che"> (omologa / omologhi / omologato / omologando) i gusti.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">16. Il film <input class="blank" data-correct="che"> (che / cui / quale) hai visto è premiato.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">17. La piattaforma <input class="blank" data-correct="su cui"> (su cui / cui / che) contiamo funziona.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">18. Escono prima <input class="blank" data-correct="che"> (che / di / per) inizi la pioggia.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">19. L&#x27;artista <input class="blank" data-correct="con cui"> (con cui / cui / che) collaboro è giovane.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">20. È un tema <input class="blank" data-correct="su cui"> (su cui / cui / che) torneremo.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">21. <input class="blank" data-correct="A"> (A. produce / B. prodotto / C. produca) beni simbolici. Chi (22) <input class="blank" data-correct="A"> (A. consuma / B. consumi / C. consumato) li recepisce. Le piattaforme (23) <input class="blank" data-correct="A"> (A. ordinano / B. ordina / C. ordini) il repertorio. Se il pubblico (24) <input class="blank" data-correct="A"> (A. sceglie / B. scegliesse / C. scegliendo) liberamente, il mercato cambierebbe. (25) <input class="blank" data-correct="A"> (A. Benché / B. Perciò / C. Cioè) esista l&#x27;illusione della scelta. L&#x27;artista (26) <input class="blank" data-correct="A"> (A. indipendente / B. indipendenti / C. indipendentemente) fatica. (27) <input class="blank" data-correct="A"> (A. Si / B. Vi / C. Ne) richiede pluralismo. (28) <input class="blank" data-correct="A"> (A. Così / B. Anche / C. Mai) la critica ha un ruolo. Il sistema (29) <input class="blank" data-correct="A"> (A. premia / B. premi / C. premiato) ciò che è visibile. La rete (30) <input class="blank" data-correct="A"> (A. filtra / B. filtri / C. filtrato) i contenuti. (31) <input class="blank" data-correct="A"> (A. Chi / B. Cui / C. Che) crea deve adattarsi. L&#x27;algoritmo (32) <input class="blank" data-correct="A"> (A. decide / B. decida / C. deciso) cosa vediamo. (33) <input class="blank" data-correct="A"> (A. Sebbene / B. Perciò / C. Dunque) esista scelta, il margine è stretto. Il pubblico (34) <input class="blank" data-correct="A"> (A. premi / B. premia / C. premiato) il familiare. L&#x27;opera (35) <input class="blank" data-correct="A"> (A. alta / B. alto / C. alti) esige attenzione. (36) <input class="blank" data-correct="A"> (A. Vi / B. Si / C. Ci) vuole pluralismo. Le istituzioni (37) <input class="blank" data-correct="A"> (A. tuteli / B. tutelano / C. tutelato) il canone. (38) <input class="blank" data-correct="A"> (A. Dunque / B. Invece / C. Ancora) serve educazione critica. Il mercato (39) <input class="blank" data-correct="A"> (A. omologhi / B. omologa / C. omologato) i gusti. Infine, la cultura (40) <input class="blank" data-correct="A"> (A. resiste / B. resista / C. resisté) al tempo.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">1. La cultura di massa spesso <input class="blank" data-correct="che"> (omologa / omologhi / omologato / omologando) i gusti.</p></div>
 <div class="mnote">42\. Un&#x27;opera ______ (elevata / elevato / elevare / elevati) esige attenzione.</div>
 <div class="mnote">43\. Il mercato ______ (veicola / veicoli / veicolato / veicolando) immagini globali.</div>
 <div class="mnote">44\. Tale processo ______ (appiattisce / appiattisca / appiattito / appiattendo) la differenza.</div>
@@ -222,6 +224,7 @@ Prova 2: Egregio Amministratore, scrivo per rappresentare la preoccupazione di m
 <br><i>字数：80–100 词</i>
 </p>
 <textarea class="ans" rows="9" placeholder="La tua risposta..."></textarea>
+<div class="ref" hidden><b>写作范例 / Risposta di riferimento：</b><br>评分按词数（≈250–300 总）、论点辩证、语域正式、结构（tesi–sviluppo–esempi–conclusione）。</div>
 </div>
 </div></section>
 <section class="module"><h2>5. Orale（口语）</h2><div class="mod-instr">
@@ -241,7 +244,7 @@ Prova 2: Egregio Amministratore, scrivo per rappresentare la preoccupazione di m
 <div class="q-item q-oral" data-type="oral">
 <p class="q-stem"></p>
 <div class="oral-scoring">
-<div class="score-head">📋 评分维度 · Criteri di valutazione（口语评分要点）</div>
+<div class="score-head">📋 评分维度 · Criteri di valutazione（满分 20 分）</div>
 <div class="rubric-note">*Punti di valutazione（评分要点）</div>
 </div>
 <div class="oral-ref" hidden>
@@ -249,17 +252,7 @@ Prova 2: Egregio Amministratore, scrivo per rappresentare la preoccupazione di m
 <details class="otranscript"><summary><span class="o-closed">📝 显示口语指导 / 评分要点</span><span class="o-open">📝 隐藏口语指导 / 评分要点</span></summary><pre>*Punti di valutazione（评分要点）</pre></details>
 </div>
 </div>
-</div></section><section class="soluzioni"><h2>✅ Soluzioni e criteri di valutazione（参考答案与评分）</h2><pre>【Ascolto 听力】
-1.B　2.B　3.B　4.B　5.B　6.B　7.B　8.B　9.A　10.A
-
-【Lettura 阅读】
-1.B　2.B　3.B　4.B　5.Vero　6.Falso　7.Vero　8.Vero　9.Falso　10.Vero　11-16: B A C D E F
-
-【Analisi 语法分析】
-1.che　2.cui　3.perché　4.da cui　5.il quale　6.che　7.mentre　8.dove　9.di cui　10.il quale　11.da cui　12.se　13.in cui　14.che　15.Benché　16.che　17.su cui　18.che　19.con cui　20.su cui　21.A　22.A　23.A　24.A　25.A　26.A　27.A　28.A　29.A　30.A　31.A　32.A　33.A　34.B　35.A　36.B　37.B　38.A　39.B　40.A　41.omologa　42.elevata　43.veicola　44.appiattisce　45.seleziona　46.diffonde　47.premia　48.mercifica　49.nomina　50.esclude　51.interpreta　52.omologa　53.resiste　54.consuma　55.veicola　56.che　57.è ordinato　58.nomini　59.Sebhene　60.sono omologati　61.che　62.sono filtrati　63.scelga　64.Benché　65.è tutelato
-
-【Orale 口语】
-见上方评分要点。</pre></section><button id="btn-check" onclick="verifica()">Verifica le risposte（提交判分）</button><button id="btn-reset" hidden onclick="resetta()">Ricomincia（重做）</button><div id="result" hidden></div></main><script>var SUBJMAX=20;
+</div></section><button id="btn-check" onclick="verifica()">Verifica le risposte（提交判分）</button><button id="btn-reset" hidden onclick="resetta()">Ricomincia（重做）</button><div id="result" hidden></div></main><script>var SUBJMAX=20;
 function norm(s){return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]/g,'');}
 function gradeOf(p){if(p>=85)return['Eccellente','#1b7a3d'];if(p>=70)return['Buono','#2e7d32'];if(p>=55)return['Discreto','#b8860b'];if(p>=40)return['Insufficiente','#c0392b'];return['Grave','#7b1e2b'];}
 function verifica(){
@@ -268,7 +261,7 @@ function verifica(){
   items.forEach(function(el){
     var t=el.dataset.type;
     var corr=el.dataset.correct;
-    if(!corr){ el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;}); return; }
+    if(t!=='cloze' && !corr){ el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;}); return; }
     if(t==='mc'||t==='tf'||t==='match'){
       total++;
       var ok=false;
@@ -280,20 +273,27 @@ function verifica(){
       el.appendChild(n);
       el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;});
     } else if(t==='cloze'){
+      var ans=[];
       el.querySelectorAll('input.blank').forEach(function(inp){
         if(!inp.dataset.correct){inp.disabled=true;return;}
         total++;
         var v=norm(inp.value);
-        var ok2=v.length>0 && v.indexOf(norm(inp.dataset.correct))>=0;
+        var alts=String(inp.dataset.correct).split('/');
+        var ok2=v.length>0 && alts.some(function(a){return v.indexOf(norm(a))>=0;});
         if(ok2)score++;
         inp.classList.add(ok2?'correct':'wrong');
-        if(!ok2){var s=document.createElement('span');s.className='anshint';s.textContent=' ✓ '+inp.dataset.correct;inp.insertAdjacentElement('afterend',s);}
+        ans.push(inp.dataset.correct);
         inp.disabled=true;
       });
+      if(ans.length){
+        var cn=document.createElement('div');cn.className='q-note ans';
+        cn.textContent='📝 正确答案：'+ans.join('　');
+        el.appendChild(cn);
+      }
     }
   });
-  document.querySelectorAll('.q-subj').forEach(function(el){var r=el.querySelector('.ref');if(r)r.hidden=false;});
-  document.querySelectorAll('.q-oral').forEach(function(el){var r=el.querySelector('.oral-ref');if(r)r.hidden=false;});
+  document.querySelectorAll('.q-subj').forEach(function(el){el.querySelectorAll('.ref').forEach(function(r){r.hidden=false;});});
+  document.querySelectorAll('.q-oral').forEach(function(el){el.querySelectorAll('.oral-ref').forEach(function(r){r.hidden=false;});});
   var pct= total? Math.round(score/total*100):0;
   var g=gradeOf(pct);
   var box=document.getElementById('result');

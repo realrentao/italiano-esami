@@ -75,9 +75,10 @@ pre{white-space:pre-wrap;margin:0;font-family:"Courier New",monospace;font-size:
 .blank.wrong{border-color:var(--no);background:#fdeceb}
 .anshint{color:var(--no);font-size:13px;margin-left:6px}
 textarea.ans{width:100%;font-size:15px;padding:10px;border:1px solid #ccc;border-radius:8px;font-family:inherit;resize:vertical}
-.q-subj .ref{margin-top:10px;padding:10px 12px;background:#eef6fb;border-left:4px solid #2a7fb8;border-radius:8px;font-size:14px}
+.q-subj .ref{margin-top:10px;padding:10px 12px;background:#eef6fb;border-left:4px solid #2a7fb8;border-radius:8px;font-size:14px;white-space:pre-line}
 .q-note{margin-top:8px;font-weight:700;font-size:14px}
 .q-note.ok{color:var(--ok)} .q-note.no{color:var(--no)}
+.q-note.ans{color:var(--wine)}
 .q-oral{background:#fbf7ef;border:1px solid #ecd9b0;border-radius:12px;padding:16px 18px;margin:14px 0}
 .q-oral .q-stem{margin:0 0 12px;font-size:15px;line-height:1.7;white-space:pre-wrap}
 .oral-scoring{background:#fff;border:1px solid #e7dcc4;border-radius:10px;padding:12px 14px;margin-bottom:12px}
@@ -89,6 +90,7 @@ textarea.ans{width:100%;font-size:15px;padding:10px;border:1px solid #ccc;border
 .ref-head{font-weight:700;color:#1f5f80;margin-bottom:8px;font-size:14px}
 .ref-it{font-weight:400;color:#5b87a0;font-style:italic;font-size:12px}
 .oral-ref pre{margin:8px 0 0;white-space:pre-wrap;word-break:break-word;font-size:14px;line-height:1.75;background:#fff;border:1px solid #dce8f0;border-radius:8px;padding:10px 12px}
+.oral-audio{margin:6px 0 10px}
 .otranscript{margin-top:8px}
 .otranscript summary{cursor:pointer;color:#1f5f80;font-weight:600;font-size:13px;user-select:none;list-style:none}
 .otranscript summary::-webkit-details-marker{display:none}
@@ -138,7 +140,7 @@ function verifica(){
   items.forEach(function(el){
     var t=el.dataset.type;
     var corr=el.dataset.correct;
-    if(!corr){ el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;}); return; }
+    if(t!=='cloze' && !corr){ el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;}); return; }
     if(t==='mc'||t==='tf'||t==='match'){
       total++;
       var ok=false;
@@ -150,20 +152,27 @@ function verifica(){
       el.appendChild(n);
       el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;});
     } else if(t==='cloze'){
+      var ans=[];
       el.querySelectorAll('input.blank').forEach(function(inp){
         if(!inp.dataset.correct){inp.disabled=true;return;}
         total++;
         var v=norm(inp.value);
-        var ok2=v.length>0 && v.indexOf(norm(inp.dataset.correct))>=0;
+        var alts=String(inp.dataset.correct).split('/');
+        var ok2=v.length>0 && alts.some(function(a){return v.indexOf(norm(a))>=0;});
         if(ok2)score++;
         inp.classList.add(ok2?'correct':'wrong');
-        if(!ok2){var s=document.createElement('span');s.className='anshint';s.textContent=' ✓ '+inp.dataset.correct;inp.insertAdjacentElement('afterend',s);}
+        ans.push(inp.dataset.correct);
         inp.disabled=true;
       });
+      if(ans.length){
+        var cn=document.createElement('div');cn.className='q-note ans';
+        cn.textContent='📝 正确答案：'+ans.join('　');
+        el.appendChild(cn);
+      }
     }
   });
-  document.querySelectorAll('.q-subj').forEach(function(el){var r=el.querySelector('.ref');if(r)r.hidden=false;});
-  document.querySelectorAll('.q-oral').forEach(function(el){var r=el.querySelector('.oral-ref');if(r)r.hidden=false;});
+  document.querySelectorAll('.q-subj').forEach(function(el){el.querySelectorAll('.ref').forEach(function(r){r.hidden=false;});});
+  document.querySelectorAll('.q-oral').forEach(function(el){el.querySelectorAll('.oral-ref').forEach(function(r){r.hidden=false;});});
   var pct= total? Math.round(score/total*100):0;
   var g=gradeOf(pct);
   var box=document.getElementById('result');
@@ -202,7 +211,7 @@ def mod_from_label(label):
     return None
 
 
-NUM_ANS_RE = r'(?<![0-9])([0-9]+)\s*[-:.]\s*([A-Za-zàèéìòù\'’\-]+(?:\s+[A-Za-zàèéìòù\'’\-]+){0,3})'
+NUM_ANS_RE = r'(?<![0-9])([0-9]+)\s*[-:.]\s*([A-Za-zàèéìòù\'’\-/]+(?:\s+[A-Za-zàèéìòù\'’\-/]+){0,3})'
 
 
 def parse_key(key_text):
@@ -227,6 +236,13 @@ def parse_key(key_text):
                 if num not in answers[mod][None]:
                     answers[mod][None][num] = nm.group(2).strip().strip("'").strip("’")
         else:
+            # segs[0] 是首个 P 标记之前的内容（通常为 P1 答案，但源文件常省略 "P1:" 前缀）。
+            # 若不补到 P1，这部分答案会被整体丢弃，导致对应填空题 data-correct 为空（提交后无判定/无答案）。
+            fill0 = answers[mod].setdefault('P1', {})
+            for nm in re.finditer(NUM_ANS_RE, segs[0]):
+                num = int(nm.group(1))
+                if num not in fill0:
+                    fill0[num] = nm.group(2).strip().strip("'").strip("’")
             for k in range(1, len(segs), 2):
                 pnum = 'P' + segs[k]
                 seg_content = segs[k + 1] if k + 1 < len(segs) else ''
@@ -251,47 +267,148 @@ def parse_key_lookup(ans_mod, subpart, num):
 # MODULE_ORDER（如「Scrittura 范例 P1」「口语评分要点」），被 parse_key 丢弃，
 # 导致主观题参考答案从未展示。这里单独抽取，供 render_subjective 生成与 CELI
 # 完全一致的主观题「题目 + 参考答案」组件。
+def _extract_write_examples(content):
+    """从 Soluzioni 的写作范例段落抽取各 Prova 范文，兼容 5 卷不同写法：
+       - Vol4：段落内含多行「* Prova N (...): _text」子弹，逐条抽出
+       - Vol1：引用块「> ...」拼成一篇
+       - Vol2/Vol3：行内多 Prova 切分（**P2**：… / Prova1 (…)«…»）
+    """
+    content = content.strip()
+    if not content:
+        return []
+    # Vol4 风格：* Prova N (...): _text （可能跨多行子弹）
+    prova_lines = re.findall(r'^\*\s*Prova\s*\d+\b.*?[:：]\s*_?\s*(.+)$', content, flags=re.M)
+    if prova_lines:
+        out = [x.strip() for x in prova_lines if x.strip()]
+        if out:
+            return out
+    # 引用块（Vol1 等）：逐行 > 拼成一篇（保留换行，便于填表模板多行展示）
+    bq = [re.sub(r'^>\s?', '', ln).strip() for ln in content.split('\n') if ln.strip().startswith('>')]
+    if bq:
+        txt = '\n'.join(bq).strip()
+        if txt:
+            return [txt]
+    # 行内多 Prova 切分（Vol2: **P2**：… ；Vol3: Prova1 (…)«…» Prova2 (…)）
+    segs = re.split(r'(?:\*\*P\d+\*\*|P\d+\s*[:：]|Prova\s*\d+)', content)
+    out = [s.strip(' *\n') for s in segs[1:] if s.strip()]
+    if out:
+        return out
+    return [content]
+
+
+def _extract_body_examples(body):
+    """Vol5 等：写作范文写在正文 **Esempio（范例）** 下的「> Prova N: ...」引用块。"""
+    refs = {}
+    for ln in body.split('\n'):
+        s = ln.strip()
+        m = re.match(r'^>\s*(?:\*\s*)?Prova\s*(\d+)\s*[:：]?\s*(.+)$', s)
+        if m:
+            refs.setdefault(int(m.group(1)), []).append(m.group(2).strip())
+    return [' '.join(refs[k]).strip() for k in sorted(refs) if refs.get(k)]
+
+
 def parse_subjective_refs(key_text):
     write_refs = []   # 写作范例，按出现顺序（末端对齐到写作任务）
-    oral_scoring = '' # 口语评分要点（文本）
+    oral_scoring = '' # 口语评分说明（rubric note，文本）
+    oral_dims = []    # [(名称, 描述), ...] 口语评分维度（CELI 布局：5 维清单）
+    oral_max = '20'   # 口语满分（默认 20，标签可写「满分 NN 分」）
+    oral_answers = {} # {prova_num(int) 或 0: 口语参考答案原文}（按 Prova 拆分，用于音频 + 折叠展示）
     SEP = ('***', '---', '___', '* * *', '- - -')
-    parts = re.split(r'^\*\s+\*\*(.+?)\*\*\s*[:：]', key_text, flags=re.M)
+    # 标签行：支持「* **标签**：」（子弹+粗体）与「**标签**：」（纯粗体）两种写法
+    parts = re.split(r'^\s*(?:\*\s+)?\*\*(.+?)\*\*\s*[:：]', key_text, flags=re.M)
     for i in range(1, len(parts), 2):
         label = parts[i].strip()
         content = parts[i + 1] if i + 1 < len(parts) else ''
         # 去掉 markdown 分隔线（*** / --- / ___），避免渲染成多余的乱码
         content = '\n'.join(ln for ln in content.split('\n') if ln.strip() not in SEP)
-        # 写作范例：标签含「范例」且属于 Scritta/Scrittura
-        if re.search(r'(?:Scrit|Scrittura)\s*范例', label) or re.search(r'Scrittura?\b[^\n]*范例', label):
-            lines = []
+        # 写作范例：标签含「范例」（Scrittura / Scrit / 写作，可带括号）
+        if re.search(r'(?:Scrit(?:tura)?|写作)\s*[（(]?\s*范例', label):
+            # Vol5 等用「范例见上」占位，真实范文在正文，跳过此处占位
+            if '见上' in content:
+                continue
+            examples = _extract_write_examples(content)
+            write_refs.extend(examples)
+            continue
+        # 口语评分维度（标签可含「满分 NN 分」）：抽取子弹「- **名称** — 描述」
+        if '口语评分维度' in label or ('评分维度' in label and 'Orale' in label):
+            mm = re.search(r'满分\s*(\d+)\s*分', label)
+            if mm:
+                oral_max = mm.group(1)
             for ln in content.split('\n'):
                 lt = ln.strip()
-                if lt.startswith('>'):
-                    lines.append(re.sub(r'^>\s?', '', lt))
-            txt = '\n'.join(lines).strip()
-            if txt:
-                write_refs.append(txt)
+                if not lt or (not lt.startswith('-') and not lt.startswith('*')):
+                    continue
+                dm = re.match(r'^[-*]\s*(?:\*\*)?(.+?)(?:\*\*)?\s*[—–-]\s*(.+)$', lt)
+                if dm:
+                    oral_dims.append((dm.group(1).strip(), dm.group(2).strip()))
             continue
-        # 口语评分要点
-        if '口语评分要点' in label or ('评分要点' in label and 'Orale' in label):
+        # 口语参考答案原文（model answer）：支持按 Prova 拆分（口语参考答案 Prova 1 / Prova 2）
+        if '口语参考答案' in label or ('参考答案' in label and 'Orale' in label):
+            pm = re.search(r'Prova\s*(\d+)', label)
+            pnum = int(pm.group(1)) if pm else 0
+            txt = ' '.join(l.strip() for l in content.split('\n') if l.strip())
+            if txt:
+                oral_answers[pnum] = txt
+            continue
+        # 口语评分说明（rubric note）
+        if '口语评分说明' in label or ('评分说明' in label and 'Orale' in label):
             txt = content.strip()
             if txt:
                 oral_scoring = txt
             continue
-    return write_refs, oral_scoring
+        # 旧版兼容：单行「口语评分要点」（无维度清单时回退使用）
+        if '口语评分要点' in label or ('评分要点' in label and 'Orale' in label):
+            txt = content.strip()
+            if txt and not oral_scoring:
+                oral_scoring = txt
+            continue
+    return write_refs, oral_scoring, oral_dims, oral_answers, oral_max
 
 
 def split_task_header(s):
-    """识别写作任务的标题行（**Modulo N** / **Prova N**），返回 (标题, 同行余下提示)。"""
+    """识别写作任务的标题行，兼容三种写法：
+       - **Modulo N** / **Prova N**（纯粗体，Vol1/2A1A2/3/5）
+       - * **Prova N**（子弹+粗体，Vol2 B1–C2）
+       - ### Prova N（标题形式，Vol4）
+       返回 (标题, 同行余下提示)。"""
+    s = s.strip()
+    s = re.sub(r'^#+\s+', '', s)   # 标题形式 ### Prova N
+    s = re.sub(r'^\*\s+', '', s)   # 子弹形式 * **Prova N**
     m = re.match(r'^\*\*(.+?)\*\*', s)
-    if not m:
-        return None, None
-    title = m.group(1).strip()
-    rest = s[m.end():].strip()
+    if m:
+        title = m.group(1).strip()
+        rest = s[m.end():].strip()
+    else:
+        # 纯文本标题（Vol4 去掉 # 后）：Prova 1 — ...
+        if re.match(r'^(?:Prova|Modulo)\s*[0-9]', s, re.I):
+            title = s
+            rest = ''
+        else:
+            return None, None
     rest = re.sub(r'^[：:]\s?', '', rest).strip()
     if re.search(r'(?:Modulo|Prova)\s*[0-9]', title, re.I):
         return title, rest
     return None, None
+
+
+def group_oral_provas(stem_lines):
+    """把口语任务要点行按「Prova N」拆成多个任务块；无 Prova 标记则整段作为一个块（num=0）。"""
+    provas = []
+    cur = None
+    for ln in stem_lines:
+        m = re.match(r'^\*\s*\*\*\s*Prova\s*(\d+)\b', ln) or re.match(r'^\*\*\s*Prova\s*(\d+)\b', ln)
+        if m:
+            if cur is not None:
+                provas.append(cur)
+            cur = {'num': int(m.group(1)), 'lines': [ln]}
+        else:
+            if cur is None:
+                cur = {'num': 0, 'lines': [ln]}
+            else:
+                cur['lines'].append(ln)
+    if cur is not None:
+        provas.append(cur)
+    return provas
 
 
 def fmt_stem_line(s):
@@ -310,6 +427,12 @@ def render_subjective(mod_name, body, subj, level_code, vol_num):
     """
     write_refs = subj.get('write', [])
     oral_scoring = subj.get('oral', '')
+    # Vol5 等：Soluzioni 用「范例见上」占位，真实范文在正文，从正文抽取
+    if not write_refs:
+        write_refs = _extract_body_examples(body)
+        if write_refs:
+            subj = dict(subj)
+            subj['write'] = write_refs
     lines = merge_stem_options(preprocess_body(body))
     instr_head = None
     instr_body = []
@@ -422,20 +545,63 @@ def render_subjective(mod_name, body, subj, level_code, vol_num):
             out.append('</div>')
         out.append('</div>')
     else:  # Orale
+        oral_dims = subj.get('oral_dims') or []
+        oral_max = subj.get('oral_max') or '20'
+        oral_answers = subj.get('oral_answers') or {}
+        has_per_prova = bool(oral_answers)
         out.append('<div class="items">')
-        stem_html = '<br>'.join(fmt_stem_line(x) for x in oral_stem)
-        out.append('<div class="q-item q-oral" data-type="oral">')
-        out.append('<p class="q-stem">%s</p>' % stem_html)
-        if eff_oral:
-            out.append('<div class="oral-scoring">')
-            out.append('<div class="score-head">📋 评分维度 · Criteri di valutazione（口语评分要点）</div>')
-            out.append('<div class="rubric-note">%s</div>' % esc(eff_oral))
+
+        if not has_per_prova:
+            # 旧版：单块（兼容未提供按 Prova 拆分的卷，行为不变）
+            stem_html = '<br>'.join(fmt_stem_line(x) for x in oral_stem)
+            out.append('<div class="q-item q-oral" data-type="oral">')
+            out.append('<p class="q-stem">%s</p>' % stem_html)
+            if oral_dims or eff_oral:
+                out.append('<div class="oral-scoring">')
+                out.append('<div class="score-head">📋 评分维度 · Criteri di valutazione（满分 %s 分）</div>' % esc(oral_max))
+                if oral_dims:
+                    out.append('<ul class="dims">')
+                    for dn, dd in oral_dims:
+                        out.append('<li><b>%s</b> — %s</li>' % (esc(dn), esc(dd)))
+                    out.append('</ul>')
+                if eff_oral:
+                    out.append('<div class="rubric-note">%s</div>' % esc(eff_oral))
+                out.append('</div>')
+            if eff_oral:
+                out.append('<div class="oral-ref" hidden>')
+                out.append('<div class="ref-head">🗣️ 参考答案 <span class="ref-it">Risposta di riferimento</span></div>')
+                out.append('<details class="otranscript"><summary><span class="o-closed">📝 显示口语指导 / 评分要点</span><span class="o-open">📝 隐藏口语指导 / 评分要点</span></summary><pre>%s</pre></details>' % esc(eff_oral))
+                out.append('</div>')
             out.append('</div>')
-            out.append('<div class="oral-ref" hidden>')
-            out.append('<div class="ref-head">🗣️ 参考答案 <span class="ref-it">Risposta di riferimento</span></div>')
-            out.append('<details class="otranscript"><summary><span class="o-closed">📝 显示口语指导 / 评分要点</span><span class="o-open">📝 隐藏口语指导 / 评分要点</span></summary><pre>%s</pre></details>' % esc(eff_oral))
-            out.append('</div>')
-        out.append('</div>')
+        else:
+            # 新版（CELI 布局）：共享评分维度 + 每个 Prova 独立参考答案（Prova 2 也做类似参考）
+            if oral_dims or eff_oral:
+                out.append('<div class="oral-scoring">')
+                out.append('<div class="score-head">📋 评分维度 · Criteri di valutazione（满分 %s 分）</div>' % esc(oral_max))
+                if oral_dims:
+                    out.append('<ul class="dims">')
+                    for dn, dd in oral_dims:
+                        out.append('<li><b>%s</b> — %s</li>' % (esc(dn), esc(dd)))
+                    out.append('</ul>')
+                if eff_oral:
+                    out.append('<div class="rubric-note">%s</div>' % esc(eff_oral))
+                out.append('</div>')
+            for pv in group_oral_provas(oral_stem):
+                pv_num = pv['num']
+                ans = oral_answers.get(pv_num) or oral_answers.get(0, '')
+                stem_html = '<br>'.join(fmt_stem_line(x) for x in pv['lines'])
+                label = ('Prova %d' % pv_num) if pv_num else 'Risposta di riferimento'
+                out.append('<div class="q-item q-oral" data-type="oral">')
+                out.append('<p class="q-stem">%s</p>' % stem_html)
+                if ans:
+                    out.append('<div class="oral-ref" hidden>')
+                    out.append('<div class="ref-head">🗣️ %s · <span class="ref-it">Risposta di riferimento</span></div>' % esc(label))
+                    # 注意：<pre> 必须置于 .oral-audio 内部，音频脚本才能抽取文本生成并注入 <audio>
+                    out.append('<div class="oral-audio"><span class="aspk-slot"></span>'
+                               '<details class="otranscript"><summary><span class="o-closed">📝 显示参考答案原文</span>'
+                               '<span class="o-open">📝 隐藏参考答案原文</span></summary><pre>%s</pre></details></div>' % esc(ans))
+                    out.append('</div>')
+                out.append('</div>')
         out.append('</div>')
     return '\n'.join(out)
 
@@ -499,16 +665,43 @@ def render_tf(num, stem, ans_vf, variant=''):
             '<p class="q-stem">%d. %s</p><div class="opts">%s</div></div>' % (
                 val, esc(ctxt), num, esc(stem), opts_html))
 
-def render_cloze_item(num, pre, hint, post, answer, variant=''):
-    dc = esc(answer) if answer else ''
+def render_cloze_line(num, body, answer, variant=''):
+    """渲染一道填空行，支持一行内多个 '___ (hint)' 空。
+    answer 为该题号答案：含 '/' 时，若空数与 '/' 拆分出的答案数一致则逐空对应（如 "amico/amiche" 配两空），
+    否则所有空共用完整答案（含 '/'），由 verifica() 兼容任选其一。"""
+    dc_parts = [a.strip() for a in answer.split('/')] if answer else []
+    blanks = list(re.finditer(r'_{2,}\s*\(([^)]*)\)', body))
+    nb = len(blanks)
+    out = []
+    last = 0
+    idx = 0
+    for m in blanks:
+        out.append(esc(body[last:m.start()]))
+        hint = m.group(1)
+        if dc_parts:
+            # 多空且答案按 '/' 拆出与空数一致 → 逐空对应；否则所有空共用完整答案（含 '/'）
+            if nb > 1 and len(dc_parts) == nb:
+                dc = dc_parts[idx]
+            else:
+                dc = '/'.join(dc_parts)
+        else:
+            dc = ''
+        inp = '<input class="blank"'
+        if dc:
+            inp += ' data-correct="%s"' % esc(dc)
+        inp += '>'
+        if hint:
+            inp += ' (%s)' % esc(hint)
+        out.append(inp)
+        idx += 1
+        last = m.end()
+    out.append(esc(body[last:]))
+    inner = ''.join(out)
     if variant == 'asc':
         return ('<div class="q-item asc-q" data-type="cloze">'
                 '<span class="asc-q__no">%d</span><div class="asc-q__main">'
-                '<p class="q-stem">%s<input class="blank" data-correct="%s"> %s %s</p></div></div>' % (
-                    num, esc(pre), dc, esc(hint), esc(post)))
-    return ('<div class="q-item" data-type="cloze"><p class="q-stem">%d. %s'
-            '<input class="blank" data-correct="%s"> %s %s</p></div>' % (
-                num, esc(pre), dc, esc(hint), esc(post)))
+                '<p class="q-stem">%s</p></div></div>' % (num, inner))
+    return '<div class="q-item" data-type="cloze"><p class="q-stem">%d. %s</p></div>' % (num, inner)
 
 def render_cloze_passage(text, ans_mod, subpart):
     def repl(m):
@@ -848,15 +1041,13 @@ def parse_question_line(line, ans_mod, subpart, variant=''):
                 stem = re.sub(r'Domanda:\s*', '', stem).strip()
                 an = parse_key_lookup(ans_mod, subpart, num)
                 return render_mc(num, stem, opts, an, variant)
-    # Cloze 项：支持 "N. 文本 ______ (提示) 文本" 与 "N. ______ (提示) 文本"
-    clm = re.search(r'(\d+)\s*[\.\)]\s*(.*?)(_{2,})\s*\(([^)]*)\)\s*(.*)$', line)
-    if clm:
+    # Cloze 项：支持一行内多个 "______ (提示)" 填空（如 "Un ___ (amico) e due ___ (amica)"）
+    clm = re.search(r'(\d+)\s*[\.\)]\s*(.*)$', line)
+    if clm and re.search(r'_{2,}\s*\(', clm.group(2)):
         num = int(clm.group(1))
-        pre = clm.group(2).strip()
-        hint = clm.group(4)
-        post = clm.group(5).strip()
+        body = clm.group(2).strip()
         an = parse_key_lookup(ans_mod, subpart, num)
-        return render_cloze_item(num, pre, '(' + hint + ')', post, an, variant)
+        return render_cloze_line(num, body, an, variant)
     return None
 
 
@@ -865,9 +1056,14 @@ def render_level(level_code, level_body, vol_num, vol_theme_it, level_sub_it, le
     km = re.search(r'###\s*✅.*', level_body, flags=re.S)
     main_body = level_body[:km.start()] if km else level_body
     key_text = level_body[km.start():] if km else ''
-    answers, raw = parse_key(key_text)
-    write_refs, oral_scoring = parse_subjective_refs(key_text)
-    subj = {'write': write_refs, 'oral': oral_scoring}
+    answers, raw = parse_key(key_text)   # 客观题答案：严格沿用 ### ✅ 匹配，行为不变
+    # 主观题参考答案：用更宽的 #{2,3} ✅ 匹配，使 Vol4（## ✅）也能抽取写作/口语范文；
+    # 仅用于主观题解析，不影响上面的 parse_key（客观题）行为。
+    skm = re.search(r'#{2,3}\s*✅.*', level_body, flags=re.S)
+    subj_key_text = level_body[skm.start():] if skm else ''
+    write_refs, oral_scoring, oral_dims, oral_answers, oral_max = parse_subjective_refs(subj_key_text)
+    subj = {'write': write_refs, 'oral': oral_scoring,
+            'oral_dims': oral_dims, 'oral_answers': oral_answers, 'oral_max': oral_max}
 
     mods = re.split(r'^#{2,3}\s*(\d+)\.\s*', main_body, flags=re.M)
     mod_html = []
@@ -886,14 +1082,8 @@ def render_level(level_code, level_body, vol_num, vol_theme_it, level_sub_it, le
         mod_html.append('<section class="module"><h2>%s</h2>%s</section>' % (esc(title), rendered))
         mnum += 1
 
-    sol_parts = []
-    for mk in MODULE_ORDER:
-        if raw.get(mk):
-            sol_parts.append('【%s %s】\n%s' % (mk, MODULE_ZH[mk], raw[mk].strip()))
+    # 底部「参考答案与评分」整块删除（已改为各模块内联展开，与 CELI 布局一致）
     sol_html = ''
-    if sol_parts:
-        sol_html = ('<section class="soluzioni"><h2>✅ Soluzioni e criteri di valutazione（参考答案与评分）</h2>'
-                    '<pre>%s</pre></section>' % esc('\n\n'.join(sol_parts)))
 
     sub = level_sub_it
     if level_sub_zh:

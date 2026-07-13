@@ -58,9 +58,10 @@ pre{white-space:pre-wrap;margin:0;font-family:"Courier New",monospace;font-size:
 .blank.wrong{border-color:var(--no);background:#fdeceb}
 .anshint{color:var(--no);font-size:13px;margin-left:6px}
 textarea.ans{width:100%;font-size:15px;padding:10px;border:1px solid #ccc;border-radius:8px;font-family:inherit;resize:vertical}
-.q-subj .ref{margin-top:10px;padding:10px 12px;background:#eef6fb;border-left:4px solid #2a7fb8;border-radius:8px;font-size:14px}
+.q-subj .ref{margin-top:10px;padding:10px 12px;background:#eef6fb;border-left:4px solid #2a7fb8;border-radius:8px;font-size:14px;white-space:pre-line}
 .q-note{margin-top:8px;font-weight:700;font-size:14px}
 .q-note.ok{color:var(--ok)} .q-note.no{color:var(--no)}
+.q-note.ans{color:var(--wine)}
 .q-oral{background:#fbf7ef;border:1px solid #ecd9b0;border-radius:12px;padding:16px 18px;margin:14px 0}
 .q-oral .q-stem{margin:0 0 12px;font-size:15px;line-height:1.7;white-space:pre-wrap}
 .oral-scoring{background:#fff;border:1px solid #e7dcc4;border-radius:10px;padding:12px 14px;margin-bottom:12px}
@@ -72,6 +73,7 @@ textarea.ans{width:100%;font-size:15px;padding:10px;border:1px solid #ccc;border
 .ref-head{font-weight:700;color:#1f5f80;margin-bottom:8px;font-size:14px}
 .ref-it{font-weight:400;color:#5b87a0;font-style:italic;font-size:12px}
 .oral-ref pre{margin:8px 0 0;white-space:pre-wrap;word-break:break-word;font-size:14px;line-height:1.75;background:#fff;border:1px solid #dce8f0;border-radius:8px;padding:10px 12px}
+.oral-audio{margin:6px 0 10px}
 .otranscript{margin-top:8px}
 .otranscript summary{cursor:pointer;color:#1f5f80;font-weight:600;font-size:13px;user-select:none;list-style:none}
 .otranscript summary::-webkit-details-marker{display:none}
@@ -141,16 +143,16 @@ textarea.ans{width:100%;font-size:15px;padding:10px;border:1px solid #ccc;border
 <div class="mnote">5\. Marco va a un corso di disegno…</div>
 <div class="mnote">A. il lunedì　B. il sabato　C. la domenica</div></section>
 <section class="module"><h2>3. Analisi（语法分析）</h2><div class="mod-instr"><div class="mod-instr-h">Analisi delle strutture di accoglienza（语法分析）</div></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">1. Luca ha una<input class="blank" data-correct="bella"> (bel / bella) chitarra.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">2. Marco e Paolo sono<input class="blank" data-correct="amici"> (amico / amici) .</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">3. Il film è<input class="blank" data-correct="interessante"> (interessante / interessanti) .</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">4. Le ragazze<input class="blank" data-correct="suonano"> (suonano / suona) la chitarra.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">5. Una<input class="blank" data-correct="bella"> (bello / bella) canzone.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">6. Il mio<input class="blank" data-correct="amico"> (amico / amica) disegna ogni giorno.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">7. Due<input class="blank" data-correct="libri"> (libro / libri) di fantascienza.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">8. La musica<input class="blank" data-correct="è"> (è / sono) bella.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">9. Un<input class="blank" data-correct="film"> (film / filmi) nuovo al cinema.</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">10. Queste<input class="blank" data-correct="foto"> (foto / foto) sono divertenti.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">1. Luca ha una <input class="blank" data-correct="bella"> (bel / bella) chitarra.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">2. Marco e Paolo sono <input class="blank" data-correct="amici"> (amico / amici).</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">3. Il film è <input class="blank" data-correct="interessante"> (interessante / interessanti).</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">4. Le ragazze <input class="blank" data-correct="suonano"> (suonano / suona) la chitarra.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">5. Una <input class="blank" data-correct="bella"> (bello / bella) canzone.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">6. Il mio <input class="blank" data-correct="amico"> (amico / amica) disegna ogni giorno.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">7. Due <input class="blank" data-correct="libri"> (libro / libri) di fantascienza.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">8. La musica <input class="blank" data-correct="è"> (è / sono) bella.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">9. Un <input class="blank" data-correct="film"> (film / filmi) nuovo al cinema.</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">10. Queste <input class="blank" data-correct="foto"> (foto / foto) sono divertenti.</p></div>
 <div class="mnote">&amp;#x31;1. Io (guardare) ______ un film.</div>
 <div class="mnote">12\. Tu (suonare) ______ la chitarra.</div>
 <div class="mnote">13\. Maria (avere) ______ 12 anni.</div>
@@ -161,7 +163,7 @@ textarea.ans{width:100%;font-size:15px;padding:10px;border:1px solid #ccc;border
 <div class="mnote">18\. Il bambino (dormire) ______ presto.</div>
 <div class="mnote">19\. Io (scrivere) ______ una recensione.</div>
 <div class="mnote">20\. Lei (aprire) ______ il libro.</div>
-<div class="q-item" data-type="cloze"><p class="q-stem">21. <input class="blank" data-correct="disegno"> (disegno / disegni) i miei animali. Mio fratello (22) ______ (suona / suono) la chitarra. Noi (23) ______ (guardiamo / guardate) i film insieme la domenica. I film di fantascienza (24) ______ (sono / è) belli. La musica (25) ______ (piace / piacciono) a tutti. (26) ______ (Un / Una) mio amico colleziona i fumetti. Lui legge (27) ______ (i / le) giornali. (28) ______ (Per / Da) me, il cinema è il miglior hobby.</p></div></section>
+<div class="q-item" data-type="cloze"><p class="q-stem">21. <input class="blank" data-correct="disegno"> (disegno / disegni) i miei animali. Mio fratello (22) <input class="blank" data-correct="disegno"> (suona / suono) la chitarra. Noi (23) <input class="blank" data-correct="disegno"> (guardiamo / guardate) i film insieme la domenica. I film di fantascienza (24) <input class="blank" data-correct="disegno"> (sono / è) belli. La musica (25) <input class="blank" data-correct="disegno"> (piace / piacciono) a tutti. (26) <input class="blank" data-correct="disegno"> (Un / Una) mio amico colleziona i fumetti. Lui legge (27) <input class="blank" data-correct="disegno"> (i / le) giornali. (28) <input class="blank" data-correct="disegno"> (Per / Da) me, il cinema è il miglior hobby.</p></div></section>
 <section class="module"><h2>4. Scritta（写作）</h2><div class="mod-instr">
 <div class="mod-instr-h">Produzione scritta（写作）</div>
 <div class="mod-instr-b">**说明**：① 填表；② 写 2–3 句短消息/邮件。总长约 **30–50 词**。主题：un film / un mio hobby。</div>
@@ -175,6 +177,10 @@ textarea.ans{width:100%;font-size:15px;padding:10px;border:1px solid #ccc;border
 * Perché ti piace: ____________
 </p>
 <textarea class="ans" rows="9" placeholder="La tua risposta..."></textarea>
+<div class="ref" hidden><b>写作范例 / Risposta di riferimento：</b><br>Nome: Marco Neri
+Età: 14
+Hobby preferito: disegnare e suonare la chitarra
+Perché ti piace: è creativo e rilassante</div>
 </div>
 <div class="q-item q-subj" data-type="write">
 <p class="q-stem"><b>Prova 2 — Messaggio a un amico（30–50 词）</b>
@@ -184,46 +190,39 @@ Ciao Marco! Ieri ho visto un bel film di fantascienza: si chiama «Stelle lontan
 <br><i>字数：30–50 词</i>
 </p>
 <textarea class="ans" rows="9" placeholder="La tua risposta..."></textarea>
+<div class="ref" hidden><b>写作范例 / Risposta di riferimento：</b><br>Ciao Marco! Ieri ho visto un bel film di fantascienza: si chiama «Stelle lontane». Mi piace perché è divertente. Nel tempo libero io suono la chitarra. E tu, che hobby hai? Un abbraccio, Luca.</div>
 </div>
 </div></section>
 <section class="module"><h2>5. Orale（口语）</h2><div class="mod-instr">
 <div class="mod-instr-h">Produzione orale（口语）</div>
-<div class="mod-instr-b">**说明**：① 考官问答（个人/家庭/日常）；② 简单看图陈述。约 10 分钟。主题：un film / un mio hobby。
-**Prova 1 — Domande (2–3 min)**
-* Come ti chiami?
-* Che film hai visto recentemente?
-* Qual è il tuo hobby?
-* Suoni uno strumento?
-**Prova 2 — Descrizione con immagine**\[图片：一个男孩在桌前画画，桌上有一把吉他]
-Descrivi: chi è? Cosa fa? Ti piace disegnare o suonare?
-* 能听懂并作出基础回答（A1 要求）。
-* 正确使用现在时、冠词与基础形容词。
-* 运用与&quot;电影/爱好&quot;相关的词汇（film, hobby, chitarra, guardare…）。
-* 最低限度的流利度，沟通基本成功即可。</div>
 </div>
 <div class="items">
-<div class="q-item q-oral" data-type="oral">
-<p class="q-stem"></p>
 <div class="oral-scoring">
-<div class="score-head">📋 评分维度 · Criteri di valutazione（口语评分要点）</div>
-<div class="rubric-note">*Punti di valutazione（评分要点）</div>
+<div class="score-head">📋 评分维度 · Criteri di valutazione（满分 20 分）</div>
+<ul class="dims">
+<li><b>Pronuncia 发音</b> — 单音基本准确，语调自然，能听懂简单指令</li>
+<li><b>Fluenza 流利度</b> — 能用基本词汇与单句作答，无明显长时间停顿</li>
+<li><b>Grammatica 语法</b> — 使用基础句型（essere/avere/ presente），错误不影响理解</li>
+<li><b>Contenuto 内容</b> — 覆盖姓名 / 电影 / 爱好 / 乐器等任务要求</li>
+<li><b>Interazione 互动</b> — 能回应考官提问，维持简短交流</li>
+</ul>
+<div class="rubric-note">能否用现在时介绍基本信息、电影与爱好；看图能否描述男孩画画与吉他；语音基本可懂、用简单句即可得分。达到 11 分即通过。</div>
 </div>
+<div class="q-item q-oral" data-type="oral">
+<p class="q-stem"><b>Prova 1（问答）</b>: 考官提问 — «Come ti chiami? Che film hai visto recentemente? Qual è il tuo hobby? Suoni uno strumento?»</p>
 <div class="oral-ref" hidden>
-<div class="ref-head">🗣️ 参考答案 <span class="ref-it">Risposta di riferimento</span></div>
-<details class="otranscript"><summary><span class="o-closed">📝 显示口语指导 / 评分要点</span><span class="o-open">📝 隐藏口语指导 / 评分要点</span></summary><pre>*Punti di valutazione（评分要点）</pre></details>
+<div class="ref-head">🗣️ Prova 1 · <span class="ref-it">Risposta di riferimento</span></div>
+<div class="oral-audio"><audio controls preload="none" src="audio/483c605410ab6857.mp3" type="audio/mpeg"></audio><details class="otranscript"><summary><span class="o-closed">📝 显示参考答案原文</span><span class="o-open">📝 隐藏参考答案原文</span></summary><pre>Buongiorno, mi chiamo Marco e ho quattordici anni. Il film che ho visto recentemente è un cartone animato divertente. Il mio hobby è disegnare e suono la chitarra nel tempo libero. Mi piace molto la musica!</pre></details></div>
 </div>
 </div>
-</div></section><section class="soluzioni"><h2>✅ Soluzioni e criteri di valutazione（参考答案与评分）</h2><pre>【Ascolto 听力】
-1.B　2.B　3.C　4.A　5.B
-
-【Lettura 阅读】
-1.Falso　2.Vero　3.Vero　4.A　5.B
-
-【Analisi 语法分析】
-1.bella　2.amici　3.interessante　4.suonano　5.bella　6.amico　7.libri　8.è　9.film　10.foto　11.guardo　12.suoni　13.ha　14.andiamo　15.collezionano　16.legge　17.disegnate　18.dorme　19.scrivo　20.apre　21.disegno　22.suona　23.guardiamo　24.sono　25.piace　26.Un　27.i　28.Per
-
-【Orale 口语】
-见上方评分要点。</pre></section><button id="btn-check" onclick="verifica()">Verifica le risposte（提交判分）</button><button id="btn-reset" hidden onclick="resetta()">Ricomincia（重做）</button><div id="result" hidden></div></main><script>var SUBJMAX=20;
+<div class="q-item q-oral" data-type="oral">
+<p class="q-stem"><b>Prova 2（看图陈述）</b>: 给一张「男孩在桌前画画，桌上有吉他」图，描述 2–3 句。<br>能听懂并作出基础回答（A1 要求）。<br>正确使用现在时、冠词与基础形容词。<br>运用与&quot;电影/爱好&quot;相关的词汇（film, hobby, chitarra, guardare…）。<br>最低限度的流利度，沟通基本成功即可。</p>
+<div class="oral-ref" hidden>
+<div class="ref-head">🗣️ Prova 2 · <span class="ref-it">Risposta di riferimento</span></div>
+<div class="oral-audio"><audio controls preload="none" src="audio/bd8f1fa343965b10.mp3" type="audio/mpeg"></audio><details class="otranscript"><summary><span class="o-closed">📝 显示参考答案原文</span><span class="o-open">📝 隐藏参考答案原文</span></summary><pre>Nell&#x27;immagine vedo un ragazzo seduto a un tavolo. Sta disegnando con i colori e sulla tavola c&#x27;è anche una chitarra. Gli piace disegnare e suonare: è un ragazzo creativo.</pre></details></div>
+</div>
+</div>
+</div></section><button id="btn-check" onclick="verifica()">Verifica le risposte（提交判分）</button><button id="btn-reset" hidden onclick="resetta()">Ricomincia（重做）</button><div id="result" hidden></div></main><script>var SUBJMAX=20;
 function norm(s){return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]/g,'');}
 function gradeOf(p){if(p>=85)return['Eccellente','#1b7a3d'];if(p>=70)return['Buono','#2e7d32'];if(p>=55)return['Discreto','#b8860b'];if(p>=40)return['Insufficiente','#c0392b'];return['Grave','#7b1e2b'];}
 function verifica(){
@@ -232,7 +231,7 @@ function verifica(){
   items.forEach(function(el){
     var t=el.dataset.type;
     var corr=el.dataset.correct;
-    if(!corr){ el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;}); return; }
+    if(t!=='cloze' && !corr){ el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;}); return; }
     if(t==='mc'||t==='tf'||t==='match'){
       total++;
       var ok=false;
@@ -244,20 +243,27 @@ function verifica(){
       el.appendChild(n);
       el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;});
     } else if(t==='cloze'){
+      var ans=[];
       el.querySelectorAll('input.blank').forEach(function(inp){
         if(!inp.dataset.correct){inp.disabled=true;return;}
         total++;
         var v=norm(inp.value);
-        var ok2=v.length>0 && v.indexOf(norm(inp.dataset.correct))>=0;
+        var alts=String(inp.dataset.correct).split('/');
+        var ok2=v.length>0 && alts.some(function(a){return v.indexOf(norm(a))>=0;});
         if(ok2)score++;
         inp.classList.add(ok2?'correct':'wrong');
-        if(!ok2){var s=document.createElement('span');s.className='anshint';s.textContent=' ✓ '+inp.dataset.correct;inp.insertAdjacentElement('afterend',s);}
+        ans.push(inp.dataset.correct);
         inp.disabled=true;
       });
+      if(ans.length){
+        var cn=document.createElement('div');cn.className='q-note ans';
+        cn.textContent='📝 正确答案：'+ans.join('　');
+        el.appendChild(cn);
+      }
     }
   });
-  document.querySelectorAll('.q-subj').forEach(function(el){var r=el.querySelector('.ref');if(r)r.hidden=false;});
-  document.querySelectorAll('.q-oral').forEach(function(el){var r=el.querySelector('.oral-ref');if(r)r.hidden=false;});
+  document.querySelectorAll('.q-subj').forEach(function(el){el.querySelectorAll('.ref').forEach(function(r){r.hidden=false;});});
+  document.querySelectorAll('.q-oral').forEach(function(el){el.querySelectorAll('.oral-ref').forEach(function(r){r.hidden=false;});});
   var pct= total? Math.round(score/total*100):0;
   var g=gradeOf(pct);
   var box=document.getElementById('result');

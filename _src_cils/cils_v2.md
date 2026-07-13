@@ -178,8 +178,23 @@ a) sabato  b) domenica  c) lunedì
 * **Ascolto**：1.b 2.b 3.b 4.a 5.b
 * **Lettura**：6.b 7.b 8.b 9.Vero 10.Falso
 * **Analisi**：① 1.i miei 2.piccola 3.tuoi 4.bella 5.tue 6.grande 7.mie 8.buon 9.piccole 10.nostri ② 11.abito 12.hai 13.giochiamo 14.legge 15.siete 16.cucina 17.dormono 18.apre 19.usciamo 20.scrive ③ 21.è 22.Nel 23.vengono 24.prepara 25.Noi 26.fa 27.giocano 28.Con
+* **Scrittura 范例（填表）**：
+
+> Nome: Giulia Bianchi
+> Età: 12
+> Abiti con: i miei genitori e la sorella
+> Hai nonni? Sì
+
 * **写作范例（Prova 2）**：Cara nonna, domenica vengo a trovarti con mamma, papà e mio fratello. Portiamo la torta di casa. Giochiamo e mangiamo la pizza del nonno. Un bacio!（约 28 词）
-* **口语评分要点**：能正确说出姓名/住所/家庭成员；用现在时基本正确；发音可懂；Prova 2 能描述图中人物与动作。未答或全错计 0 分。
+* **口语评分维度（满分 20 分）**：
+  - **Pronuncia 发音** — 单音基本准确，语调自然，能听懂简单指令
+  - **Fluenza 流利度** — 能用基本词汇与单句作答，无明显长时间停顿
+  - **Grammatica 语法** — 使用基础句型（essere/avere/ presente），错误不影响理解
+  - **Contenuto 内容** — 覆盖姓名 / 住所 / 家庭成员 / 周末活动等任务要求
+  - **Interazione 互动** — 能回应考官提问，维持简短交流
+* **口语评分说明**：能否用现在时介绍姓名/年龄/家庭；能否描述图中人物与动作；语音基本可懂；用简单句即可得分。达到 11 分即通过。
+* **口语参考答案 Prova 1（问答）**：Buongiorno, mi chiamo Giulia e ho dodici anni. Abito a Milano con i miei genitori e la mia sorellina. Nel fine settimana vado dai nonni: mangiamo la pizza insieme e giochiamo a carte. Piacere di conoscervi!
+* **口语参考答案 Prova 2（看图陈述）**：Nell'immagine vedo una famiglia a tavola per il pranzo della domenica. Ci sono il nonno, la nonna, i genitori e i bambini. Stanno mangiando e sorridono: sono molto felici insieme.
 
 ***
 

@@ -159,18 +159,9 @@ Nel tempo libero io (21) \_\_\_\_\_\_ (disegno / disegni) i miei animali. Mio fr
 
 ### 5. Produzione orale（口语）
 
-**说明**：① 考官问答（个人/家庭/日常）；② 简单看图陈述。约 10 分钟。主题：un film / un mio hobby。
+* **Prova 1（问答）**：考官提问 — «Come ti chiami? Che film hai visto recentemente? Qual è il tuo hobby? Suoni uno strumento?»
 
-**Prova 1 — Domande (2–3 min)**
-
-* Come ti chiami?
-* Che film hai visto recentemente?
-* Qual è il tuo hobby?
-* Suoni uno strumento?
-
-**Prova 2 — Descrizione con immagine**\[图片：一个男孩在桌前画画，桌上有一把吉他]
-
-Descrivi: chi è? Cosa fa? Ti piace disegnare o suonare?
+* **Prova 2（看图陈述）**：给一张「男孩在桌前画画，桌上有吉他」图，描述 2–3 句。
 
 **Punti di valutazione（评分要点）**
 
@@ -184,8 +175,25 @@ Descrivi: chi è? Cosa fa? Ti piace disegnare o suonare?
 * **Ascolto**：1.B　2.B　3.C　4.A　5.B
 * **Lettura**：1.Falso　2.Vero　3.Vero　4.A　5.B
 * **Analisi**：1.bella　2.amici　3.interessante　4.suonano　5.bella　6.amico　7.libri　8.è　9.film　10.foto　11.guardo　12.suoni　13.ha　14.andiamo　15.collezionano　16.legge　17.disegnate　18.dorme　19.scrivo　20.apre　21.disegno　22.suona　23.guardiamo　24.sono　25.piace　26.Un　27.i　28.Per
-* **Scrittura（范例见上，约 40 词）**：评分按内容切题、现在时与基础搭配正确、词数达标。
-* **Orale**：见上方评分要点。
+* **Scrittura 范例（填表）**：
+
+> Nome: Marco Neri
+> Età: 14
+> Hobby preferito: disegnare e suonare la chitarra
+> Perché ti piace: è creativo e rilassante
+
+* **Scrittura 范例（短消息）**：
+
+> Ciao Marco! Ieri ho visto un bel film di fantascienza: si chiama «Stelle lontane». Mi piace perché è divertente. Nel tempo libero io suono la chitarra. E tu, che hobby hai? Un abbraccio, Luca.
+* **口语评分维度（满分 20 分）**：
+  - **Pronuncia 发音** — 单音基本准确，语调自然，能听懂简单指令
+  - **Fluenza 流利度** — 能用基本词汇与单句作答，无明显长时间停顿
+  - **Grammatica 语法** — 使用基础句型（essere/avere/ presente），错误不影响理解
+  - **Contenuto 内容** — 覆盖姓名 / 电影 / 爱好 / 乐器等任务要求
+  - **Interazione 互动** — 能回应考官提问，维持简短交流
+* **口语评分说明**：能否用现在时介绍基本信息、电影与爱好；看图能否描述男孩画画与吉他；语音基本可懂、用简单句即可得分。达到 11 分即通过。
+* **口语参考答案 Prova 1（问答）**：Buongiorno, mi chiamo Marco e ho quattordici anni. Il film che ho visto recentemente è un cartone animato divertente. Il mio hobby è disegnare e suono la chitarra nel tempo libero. Mi piace molto la musica!
+* **口语参考答案 Prova 2（看图陈述）**：Nell'immagine vedo un ragazzo seduto a un tavolo. Sta disegnando con i colori e sulla tavola c'è anche una chitarra. Gli piace disegnare e suonare: è un ragazzo creativo.
 
 ***
 

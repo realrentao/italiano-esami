@@ -39,7 +39,7 @@
 
 — Vengo dalla Cina. Abito a Milano con la mia famiglia.
 
-— Che bella! Il mio amico Yusuf viene dal Marocco.
+— Che bello! Il mio amico Yusuf viene dal Marocco.
 
 — Io ho molti amici di culture diverse!
 
@@ -143,11 +143,27 @@
 * **Ascolto**：1-B, 2-B, 3-A, 4-B, 5-A
 * **Lettura**：1-B, 2-B, 3-B, 4-B, 5-A
 * **Analisi**：P1: 1-il, 2-amici, 3-ragazza, 4-libri, 5-amico, 6-bambine, 7-stand, 8-famiglie, 9-festa, 10-vicini；P2: 1-ho, 2-vieni, 3-parla, 4-abitiamo, 5-è, 6-mangiate, 7-imparo, 8-suona, 9-conosciamo, 10-hai；P3: 1-dall', 2-parla, 3-famiglia, 4-abbiamo, 5-delle, 6-del, 7-che, 8-di
+* **Scrittura 范例（填表）**：
+
+> Nome: Marco Rossi
+> Età: 14
+> Paese di origine della tua famiglia: Cina
+> Piatto che porti alla festa: riso alla cantonese
+> Lingua che parli a casa: cinese
+
 * **Scrittura 范例（约 38 词）**：
 
 > Ciao Sara! Ti presento il mio amico Ahmed. Lui viene dall'Egitto e parla arabo e italiano. È molto simpatico e gioca a calcio con me. Sabato viene alla festa delle culture. Un abbraccio!
 
-* **口语评分要点**：能否用现在时介绍姓名/年龄/家庭；能否说出 1 个外国朋友及其国别；语音基本可懂；用简单句即可得分。
+* **口语评分维度（满分 20 分）**：
+  - **Pronuncia 发音** — 单音基本准确，语调自然，能听懂简单指令
+  - **Fluenza 流利度** — 能用基本词汇与单句作答，无明显长时间停顿
+  - **Grammatica 语法** — 使用基础句型（essere/avere/ presente），错误不影响理解
+  - **Contenuto 内容** — 覆盖姓名 / 年龄 / 家庭 / 1 个外国朋友等任务要求
+  - **Interazione 互动** — 能回应考官提问，维持简短交流
+* **口语评分说明**：能否用现在时介绍姓名/年龄/家庭；能否说出 1 个外国朋友及其国别；语音基本可懂；用简单句即可得分。达到 11 分即通过。
+* **口语参考答案 Prova 1（问答）**：Buongiorno, mi chiamo Marco e ho quattordici anni. Abito a Roma con la mia famiglia. Ho un amico straniero, Yusuf: viene dal Marocco e parla arabo e italiano. Mi piace giocare a calcio con lui. Piacere di conoscervi!
+* **口语参考答案 Prova 2（看图陈述）**：Nell'immagine ci sono bambini di culture diverse. Stanno ridendo davanti alle bandiere di vari paesi. Giocano insieme e sono molto felici. Mi piace questa foto della festa delle culture!
 
 ***
 
@@ -160,11 +176,11 @@
 **Prova 1 — 6 短对话**
 
 1. — Ciao! Vieni alla festa multiculturale di sabato? — Sì, porto il riso alla cantonese. （Domanda: Cosa porta? A) pizza B) riso cinese C) torta）
-2. — Il nuovo vicino è arrivato ieri. — Di dove è? — Del Perù. （D: Il vicino viene dal… A) Perù B) Perù→Cile C) Brasile）
+2. — Il nuovo vicino è arrivato ieri. — Di dove è? — Del Perù. （D: Il vicino viene dal… A) Perù B) Cile C) Brasile）
 3. — Suoni uno strumento? — Sì, la tabla, della musica indiana. （D: Che strumento suona? A) chitarra B) tabla C) pianoforte）
 4. — A che ora è la cena di quartiere? — Alle 20:00, in piazza. （D: Dove è la cena? A) a casa B) in piazza C) al ristorante）
 5. — Parli arabo con tuo nonno? — No, solo francese. （D: Che lingua parla con il nonno? A) arabo B) francese C) italiano）
-6. — Quanti vicini nuovi ci sono? — Tre: uno spagnolo, uno egiziano e uno cinese. （D: Quanti vicini nuovi? A) due B) tre C) quattro）
+6. — Quanti vicini nuovi ci sono? — Tre: uno spagnolo, un egiziano e un cinese. （D: Quanti vicini nuovi? A) due B) tre C) quattro）
 
 **Prova 2 — 长对话（Conoscere un nuovo vicino）**
 
@@ -249,8 +265,8 @@
 
 **Prova 3 — Cloze（8 空，搭配）**
 
-> Sabato ho \_\_\_\_\_\_ (1) il nuovo vicino. Abita \_\_\_\_\_\_ (2) noi e parla bene \_\_\_\_\_\_ (3) italiano. La sua cucina è \_\_\_\_\_\_ (4) per tutti. Ci siamo \_\_\_\_\_\_ (5) subito. La festa è \_\_\_\_\_\_ (6) porta \_\_\_\_\_\_ (7) tutti. È un \_\_\_\_\_\_ (8) di amicizia.
-> (opzioni: conosciuto / con / di / aperta / trovati / aperta / a / segno …)
+> Sabato ho \_\_\_\_\_\_ (1) il nuovo vicino. Abita \_\_\_\_\_\_ (2) a noi e parla bene \_\_\_\_\_\_ (3) italiano. La sua cucina è \_\_\_\_\_\_ (4) per tutti. Ci siamo \_\_\_\_\_\_ (5) subito. La festa è \_\_\_\_\_\_ (6) \_\_\_\_\_\_ (7) tutti. È un \_\_\_\_\_\_ (8) di amicizia.
+> (opzioni: conosciuto / vicino / in / aperta / trovati / aperta / a / segno …)
 
 ### 4. Produzione scritta（写作，约 40 分钟）
 
@@ -272,7 +288,7 @@
 
 * **Ascolto P1**: 1-B, 2-A, 3-B, 4-B, 5-B, 6-B；**P2**: 1-B, 2-A, 3-B, 4-B, 5-B, 6-B
 * **Lettura P1**: 1-B, 2-B, 3-B, 4-B；**P2 示例**: T1①V②F(è piano terra, non primo)③V；**P3**: A-1,5 / B-2,6 / C-3,7 / D-4,8
-* **Analisi P1**: 1-vicini, 2-festa, 3-donne, 4-amico/amiche, 5-bandiere, 6-piatto, 7-tradizioni, 8-stand, 9-musiche, 10-bambini；P2: 1-è arrivato, 2-abitavo, 3-abbiamo organizzato, 4-è venuta, 5-parlavano, 6-hai conosciuto, 7-era, 8-ho imparato, 9-avete portato, 10-ha suonato；P3: 1-conosciuto, 2-con, 3-in, 4-aperta, 5-trovati, 6-a, 7-a, 8-segno
+* **Analisi P1**: 1-vicini, 2-festa, 3-donne, 4-amico/amiche, 5-bandiere, 6-piatto, 7-tradizioni, 8-stand, 9-musiche, 10-bambini；P2: 1-è arrivato, 2-abitavo, 3-abbiamo organizzato, 4-è venuta, 5-parlavano, 6-hai conosciuto, 7-era, 8-ho imparato, 9-avete portato, 10-ha suonato；P3: 1-conosciuto, 2-vicino, 3-in, 4-aperta, 5-trovati, 6-aperta, 7-a, 8-segno
 * **Scrittura 范例 P1（约 52 词）**：
 
 > Il mio vicino si chiama Hassan e viene dalla Tunisia. È molto gentile e cucina piatti buonissimi. Ogni sabato giochiamo a calcio nel parco e poi mangiamo insieme. Lui mi insegna qualche parola di arabo e io gli spiego l'italiano. È un vero amico.

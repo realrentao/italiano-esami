@@ -58,9 +58,10 @@ pre{white-space:pre-wrap;margin:0;font-family:"Courier New",monospace;font-size:
 .blank.wrong{border-color:var(--no);background:#fdeceb}
 .anshint{color:var(--no);font-size:13px;margin-left:6px}
 textarea.ans{width:100%;font-size:15px;padding:10px;border:1px solid #ccc;border-radius:8px;font-family:inherit;resize:vertical}
-.q-subj .ref{margin-top:10px;padding:10px 12px;background:#eef6fb;border-left:4px solid #2a7fb8;border-radius:8px;font-size:14px}
+.q-subj .ref{margin-top:10px;padding:10px 12px;background:#eef6fb;border-left:4px solid #2a7fb8;border-radius:8px;font-size:14px;white-space:pre-line}
 .q-note{margin-top:8px;font-weight:700;font-size:14px}
 .q-note.ok{color:var(--ok)} .q-note.no{color:var(--no)}
+.q-note.ans{color:var(--wine)}
 .q-oral{background:#fbf7ef;border:1px solid #ecd9b0;border-radius:12px;padding:16px 18px;margin:14px 0}
 .q-oral .q-stem{margin:0 0 12px;font-size:15px;line-height:1.7;white-space:pre-wrap}
 .oral-scoring{background:#fff;border:1px solid #e7dcc4;border-radius:10px;padding:12px 14px;margin-bottom:12px}
@@ -72,6 +73,7 @@ textarea.ans{width:100%;font-size:15px;padding:10px;border:1px solid #ccc;border
 .ref-head{font-weight:700;color:#1f5f80;margin-bottom:8px;font-size:14px}
 .ref-it{font-weight:400;color:#5b87a0;font-style:italic;font-size:12px}
 .oral-ref pre{margin:8px 0 0;white-space:pre-wrap;word-break:break-word;font-size:14px;line-height:1.75;background:#fff;border:1px solid #dce8f0;border-radius:8px;padding:10px 12px}
+.oral-audio{margin:6px 0 10px}
 .otranscript{margin-top:8px}
 .otranscript summary{cursor:pointer;color:#1f5f80;font-weight:600;font-size:13px;user-select:none;list-style:none}
 .otranscript summary::-webkit-details-marker{display:none}
@@ -177,45 +179,54 @@ A: Grazie, non vedo l&#x27;ora di cominciare!</pre></details></div>
 <section class="module"><h2>3. Analisi（语法分析）</h2><div class="mod-instr"><div class="mod-instr-h">Analisi（语法）— 40 分钟</div></div>
 <h3>题型说明（真题全量）</h3>
 <h3>Prova 1 — Genere e numero (10 空)</h3>
-<div class="q-item" data-type="cloze"><p class="q-stem">1. Le<input class="blank" data-correct=""> (studentessa) studiano l&#x27;italiano. → ____</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">2. Un<input class="blank" data-correct=""> (corso) serale interessante. → ____</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">3. Le<input class="blank" data-correct=""> (lezione) sono facili. → ____</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">4. La mia<input class="blank" data-correct=""> (insegnante) è paziente. → ____</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">5. Due<input class="blank" data-correct=""> (libro) nuovi. → ____</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">6. Le<input class="blank" data-correct=""> (parola) difficili. → ____</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">7. Un&#x27;<input class="blank" data-correct=""> (amica) italiana. → ____</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">8. I<input class="blank" data-correct=""> (compito) a casa. → ____</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">9. La<input class="blank" data-correct=""> (scuola) serale. → ____</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">10. Le<input class="blank" data-correct=""> (serata) di studio. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">1. Le <input class="blank"> (studentessa) studiano l&#x27;italiano. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">2. Un <input class="blank"> (corso) serale interessante. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">3. Le <input class="blank"> (lezione) sono facili. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">4. La mia <input class="blank"> (insegnante) è paziente. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">5. Due <input class="blank"> (libro) nuovi. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">6. Le <input class="blank"> (parola) difficili. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">7. Un&#x27;<input class="blank"> (amica) italiana. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">8. I <input class="blank"> (compito) a casa. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">9. La <input class="blank"> (scuola) serale. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">10. Le <input class="blank"> (serata) di studio. → ____</p></div>
 <h3>Prova 2 — Passato prossimo / Imperfetto (10 空)</h3>
-<div class="q-item" data-type="cloze"><p class="q-stem">11. Ieri<input class="blank" data-correct=""> (io, andare) al corso. → ____</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">12. Quando ero bambino,<input class="blank" data-correct=""> (io, studiare) sempre. → ____</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">13. Marco<input class="blank" data-correct=""> (finire) il libro la settimana scorsa. → ____</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">14. Noi<input class="blank" data-correct=""> (frequentare) un corso serale due anni fa. → ____</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">15. La maestra<input class="blank" data-correct=""> (spiegare) bene la grammatica. → ____</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">16. Tu<input class="blank" data-correct=""> (imparare) molte parole nuove? → ____</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">17. L&#x27;anno scorso lei<input class="blank" data-correct=""> (iniziare) l&#x27;italiano. → ____</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">18. Mentre io<input class="blank" data-correct=""> (leggere) , lui scriveva. → ____</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">19. Gli studenti<input class="blank" data-correct=""> (fare) un esercizio ieri. → ____</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">20. Noi<input class="blank" data-correct=""> (essere) felici della lezione. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">11. Ieri <input class="blank"> (io, andare) al corso. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">12. Quando ero bambino, <input class="blank"> (io, studiare) sempre. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">13. Marco <input class="blank"> (finire) il libro la settimana scorsa. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">14. Noi <input class="blank"> (frequentare) un corso serale due anni fa. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">15. La maestra <input class="blank"> (spiegare) bene la grammatica. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">16. Tu <input class="blank"> (imparare) molte parole nuove? → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">17. L&#x27;anno scorso lei <input class="blank"> (iniziare) l&#x27;italiano. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">18. Mentre io <input class="blank"> (leggere), lui scriveva. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">19. Gli studenti <input class="blank"> (fare) un esercizio ieri. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">20. Noi <input class="blank"> (essere) felici della lezione. → ____</p></div>
 <h3>Prova 3 — Cloze (collocazioni) (8 空)</h3>
-<div class="q-item" data-type="cloze"><p class="q-stem">21. Studio<input class="blank" data-correct=""> (per / da) migliorare l&#x27;italiano. → ____</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">22. Sono iscritto<input class="blank" data-correct=""> (a / in) un corso serale. → ____</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">23. Imparo<input class="blank" data-correct=""> (molto / molti) vocaboli nuovi. → ____</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">24. Ascolto la musica<input class="blank" data-correct=""> (per / di) praticare. → ____</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">25. Ho bisogno<input class="blank" data-correct=""> (di / a) esercitarmi. → ____</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">26. Parlo<input class="blank" data-correct=""> (con / da) i vicini in italiano. → ____</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">27. Riesco a fare la spesa<input class="blank" data-correct=""> (da / con) solo. → ____</p></div>
-<div class="q-item" data-type="cloze"><p class="q-stem">28. Sono contento<input class="blank" data-correct=""> (di / per) i progressi. → ____</p></div></section>
+<div class="q-item" data-type="cloze"><p class="q-stem">21. Studio <input class="blank"> (per / da) migliorare l&#x27;italiano. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">22. Sono iscritto <input class="blank"> (a / in) un corso serale. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">23. Imparo <input class="blank"> (molto / molti) vocaboli nuovi. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">24. Ascolto la musica <input class="blank"> (per / di) praticare. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">25. Ho bisogno <input class="blank"> (di / a) esercitarmi. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">26. Parlo <input class="blank"> (con / da) i vicini in italiano. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">27. Riesco a fare la spesa <input class="blank"> (da / con) solo. → ____</p></div>
+<div class="q-item" data-type="cloze"><p class="q-stem">28. Sono contento <input class="blank"> (di / per) i progressi. → ____</p></div></section>
 <section class="module"><h2>4. Scritta（写作）</h2><div class="mod-instr">
 <div class="mod-instr-h">Scrittura（写作）— 40 分钟</div>
-<div class="mod-instr-b">**题型说明**：Prova 1 话题作文 **40–60 词**；Prova 2 请求信/邮件 **25–40 词**。
-### Prova 1 — Temina (40–60 parole)
-Scrivi del tuo corso di italiano o di un corso serale che frequenti/frequentersti.
-### Prova 2 — Email di richiesta (25–40 parole)
-Scrivi all&#x27;ufficio della scuola per chiedere informazioni su un corso serale.</div>
+<div class="mod-instr-b">**题型说明**：Prova 1 话题作文 **40–60 词**；Prova 2 请求信/邮件 **25–40 词**。</div>
 </div>
 <div class="items">
+<div class="q-item q-subj" data-type="write">
+<p class="q-stem"><b>Prova 1 — Temina (40–60 parole)</b>
+<br>Scrivi del tuo corso di italiano o di un corso serale che frequenti/frequentersti.
+</p>
+<textarea class="ans" rows="9" placeholder="La tua risposta..."></textarea>
+</div>
+<div class="q-item q-subj" data-type="write">
+<p class="q-stem"><b>Prova 2 — Email di richiesta (25–40 parole)</b>
+<br>Scrivi all&#x27;ufficio della scuola per chiedere informazioni su un corso serale.
+</p>
+<textarea class="ans" rows="9" placeholder="La tua risposta..."></textarea>
+<div class="ref" hidden><b>写作范例 / Risposta di riferimento：</b><br>Frequento un corso serale di italiano da tre mesi. Vado a lezione due volte alla settimana, dopo il lavoro. La mia insegnante è molto paziente e la classe è divertente. Ora capisco meglio le persone e parlo con i miei vicini._ (≈ 43 词)</div>
+</div>
 </div></section>
 <section class="module"><h2>5. Orale（口语）</h2><div class="mod-instr">
 <div class="mod-instr-h">Produzione orale（口语）— \~10 分钟</div>
@@ -231,12 +242,12 @@ Descrivi l&#x27;immagine di una classe serale (adulti a un banco, lavagna, inseg
 <div class="q-item q-oral" data-type="oral">
 <p class="q-stem"><b>Ascolto</b>: 1.A 2.B 3.B 4.B 5.B 6.B 7.B 8.B 9.B 10.B 11.A 12.B<br><b>Lettura</b><br>Prova1：13.B 14.A 15.A 16.B<br>Prova2：17.Falso 18.Vero 19.Falso 20.Vero 21.Vero 22.Falso 23.Vero 24.Falso 25.Falso 26.Vero 27.Falso 28.Vero<br>Prova3：A=29,33 B=30,34 C=31,35 D=32,36<br><b>Analisi</b><br>Prova1：1.studentesse 2.corso 3.lezioni 4.insegnante 5.libri 6.parole 7.amica 8.compiti 9.scuola 10.serate<br>Prova2：11.sono andato/a 12.studiavo 13.ha finito 14.abbiamo frequentato 15.spiegava 16.hai imparato 17.ha iniziato 18.leggevo 19.hanno fatto 20.siamo stati<br>Prova3：21.per 22.a 23.molti 24.per 25.di 26.con 27.da 28.dei<br><b>Scrittura（范例）</b><br>Prova1: _Frequento un corso serale di italiano da tre mesi. Vado a lezione due volte alla settimana, dopo il lavoro. La mia insegnante è molto paziente e la classe è divertente. Ora capisco meglio le persone e parlo con i miei vicini._ (≈ 43 词)<br>Prova2: _Gentile segreteria, vorrei informazioni sul corso serale di italiano: giorni, orari e costo. Grazie mille. Saluti, Marco._ (≈ 21→aggiungere: _Resto in attesa di una Sua risposta._ ≈ 30 词)</p>
 <div class="oral-scoring">
-<div class="score-head">📋 评分维度 · Criteri di valutazione（口语评分要点）</div>
-<div class="rubric-note">Orale 评分要点**：① 对话能连贯说明学习动机与作息（presente + passato prossimo）；② 独白看图能描述 4–5 元素并用 _perché_ 说明成人学语言的用处；用词基本正确，偶有错误不影响理解。</div>
+<div class="score-head">📋 评分维度 · Criteri di valutazione（满分 20 分）</div>
+<div class="rubric-note">① 对话能连贯说明学习动机与作息（presente + passato prossimo）；② 独白看图能描述 4–5 元素并用 _perché_ 说明成人学语言的用处；用词基本正确，偶有错误不影响理解。</div>
 </div>
 <div class="oral-ref" hidden>
 <div class="ref-head">🗣️ 参考答案 <span class="ref-it">Risposta di riferimento</span></div>
-<details class="otranscript"><summary><span class="o-closed">📝 显示口语指导 / 评分要点</span><span class="o-open">📝 隐藏口语指导 / 评分要点</span></summary><pre>Orale 评分要点**：① 对话能连贯说明学习动机与作息（presente + passato prossimo）；② 独白看图能描述 4–5 元素并用 _perché_ 说明成人学语言的用处；用词基本正确，偶有错误不影响理解。</pre></details>
+<details class="otranscript"><summary><span class="o-closed">📝 显示口语指导 / 评分要点</span><span class="o-open">📝 隐藏口语指导 / 评分要点</span></summary><pre>① 对话能连贯说明学习动机与作息（presente + passato prossimo）；② 独白看图能描述 4–5 元素并用 _perché_ 说明成人学语言的用处；用词基本正确，偶有错误不影响理解。</pre></details>
 </div>
 </div>
 </div></section><button id="btn-check" onclick="verifica()">Verifica le risposte（提交判分）</button><button id="btn-reset" hidden onclick="resetta()">Ricomincia（重做）</button><div id="result" hidden></div></main><script>var SUBJMAX=20;
@@ -248,7 +259,7 @@ function verifica(){
   items.forEach(function(el){
     var t=el.dataset.type;
     var corr=el.dataset.correct;
-    if(!corr){ el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;}); return; }
+    if(t!=='cloze' && !corr){ el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;}); return; }
     if(t==='mc'||t==='tf'||t==='match'){
       total++;
       var ok=false;
@@ -260,20 +271,27 @@ function verifica(){
       el.appendChild(n);
       el.querySelectorAll('input,select').forEach(function(i){i.disabled=true;});
     } else if(t==='cloze'){
+      var ans=[];
       el.querySelectorAll('input.blank').forEach(function(inp){
         if(!inp.dataset.correct){inp.disabled=true;return;}
         total++;
         var v=norm(inp.value);
-        var ok2=v.length>0 && v.indexOf(norm(inp.dataset.correct))>=0;
+        var alts=String(inp.dataset.correct).split('/');
+        var ok2=v.length>0 && alts.some(function(a){return v.indexOf(norm(a))>=0;});
         if(ok2)score++;
         inp.classList.add(ok2?'correct':'wrong');
-        if(!ok2){var s=document.createElement('span');s.className='anshint';s.textContent=' ✓ '+inp.dataset.correct;inp.insertAdjacentElement('afterend',s);}
+        ans.push(inp.dataset.correct);
         inp.disabled=true;
       });
+      if(ans.length){
+        var cn=document.createElement('div');cn.className='q-note ans';
+        cn.textContent='📝 正确答案：'+ans.join('　');
+        el.appendChild(cn);
+      }
     }
   });
-  document.querySelectorAll('.q-subj').forEach(function(el){var r=el.querySelector('.ref');if(r)r.hidden=false;});
-  document.querySelectorAll('.q-oral').forEach(function(el){var r=el.querySelector('.oral-ref');if(r)r.hidden=false;});
+  document.querySelectorAll('.q-subj').forEach(function(el){el.querySelectorAll('.ref').forEach(function(r){r.hidden=false;});});
+  document.querySelectorAll('.q-oral').forEach(function(el){el.querySelectorAll('.oral-ref').forEach(function(r){r.hidden=false;});});
   var pct= total? Math.round(score/total*100):0;
   var g=gradeOf(pct);
   var box=document.getElementById('result');
